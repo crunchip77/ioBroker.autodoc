@@ -1,5 +1,19 @@
 {
-	"autodoc adapter settings": "Adapter settings for autodoc",
-	"option1": "option1",
-	"option2": "option2"
+    "autodoc adapter settings": "Adapter settings for autodoc",
+    "Project name": "Project name",
+    "Name of the ioBroker project or installation": "Name of the ioBroker project or installation",
+    "Target system": "Target system",
+    "Usually ioBroker": "Usually ioBroker",
+    "Project description": "Project description",
+    "Short description of what should be documented": "Short description of what should be documented",
+    "Additional notes": "Additional notes",
+    "Optional notes, devices, adapters or special requirements": "Optional notes, devices, adapters or special requirements",
+    "Generate documentation on adapter start": "Generate documentation on adapter start",
+    "If enabled, a first documentation draft is created when the adapter starts": "If enabled, a first documentation draft is created when the adapter starts",
+	"Only document enabled instances": "Only document enabled instances",
+    "If enabled, only active adapter instances are included in the documentation": "If enabled, only active adapter instances are included in the documentation",
+	"Hide instance details in markdown": "Hide instance details in markdown",
+    "If enabled, the markdown output contains only summary information without the full instance list": "If enabled, the markdown output contains only summary information without the full instance list",
+	"Maximum documented instances": "Maximum documented instances",
+    "Limits how many adapter instances are included in the generated documentation, 0 means unlimited": "Limits how many adapter instances are included in the generated documentation, 0 means unlimited"
 }

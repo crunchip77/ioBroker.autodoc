@@ -1,84 +1,112 @@
 {
-	"common": {
-		"name": "autodoc",
-		"version": "0.0.1",
-		"news": {
-			"0.0.1": {
-				"en": "initial release",
-				"de": "Erstveröffentlichung",
-				"ru": "Начальная версия",
-				"pt": "lançamento inicial",
-				"nl": "Eerste uitgave",
-				"fr": "Première version",
-				"it": "Versione iniziale",
-				"es": "Versión inicial",
-				"pl": "Pierwsze wydanie",
-				"uk": "Початкова версія",
-				"zh-cn": "首次出版"
-			}
-		},
-		"titleLang": {
-			"en": "AutoDoc",
-			"de": "AutoDoc",
-			"ru": "АвтоДок",
-			"pt": "AutoDoc",
-			"nl": "AutoDoc",
-			"fr": "AutoDoc",
-			"it": "AutoDoc",
-			"es": "AutoDoc",
-			"pl": "AutoDoc",
-			"uk": "AutoDoc",
-			"zh-cn": "自动文档"
-		},
-		"desc": {
-			"en": "On-demand documentation for ioBroker",
-			"de": "On-Demand-Dokumentation für ioBroker",
-			"ru": "Документация по запросу для ioBroker",
-			"pt": "Documentação sob demanda para ioBroker",
-			"nl": "Documentatie op aanvraag voor ioBroker",
-			"fr": "Documentation à la demande pour ioBroker",
-			"it": "Documentazione su richiesta per ioBroker",
-			"es": "Documentación bajo demanda para ioBroker",
-			"pl": "Dokumentacja na żądanie dla ioBroker",
-			"uk": "Документація на вимогу для ioBroker",
-			"zh-cn": "ioBroker 的按需文档"
-		},
-		"authors": ["crunchip77 <41550245+crunchip77@users.noreply.github.com>"],
-		"keywords": ["doc", "documentation", "analysis", "mermaid", "pdf"],
-		"licenseInformation": {
-			"type": "free",
-			"license": "MIT"
-		},
-		"platform": "Javascript/Node.js",
-		"icon": "autodoc.png",
-		"enabled": true,
-		"extIcon": "https://raw.githubusercontent.com/crunchip77/ioBroker.autodoc/main/admin/autodoc.png",
-		"readme": "https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md",
-		"loglevel": "info",
-		"tier": 3,
-		"mode": "daemon",
-		"type": "general",
-		"compact": true,
-		"connectionType": "local",
-		"dataSource": "assumption",
-		"adminUI": {
-			"config": "json"
-		},
-		"dependencies": [
-			{
-				"js-controller": ">=6.0.11"
-			}
-		],
-		"globalDependencies": [
-			{
-				"admin": ">=7.0.23"
-			}
-		]
-	},
-	"native": {
-		"option1": true,
-		"option2": "42"
-	},
-	"objects": [],
-	"instanceObjects": []
+    "common": {
+        "name": "autodoc",
+        "version": "0.0.1",
+        "news": {
+            "0.0.1": {
+                "en": "initial release",
+                "de": "Erstveröffentlichung",
+                "ru": "Начальная версия",
+                "pt": "lançamento inicial",
+                "nl": "Eerste uitgave",
+                "fr": "Première version",
+                "it": "Versione iniziale",
+                "es": "Versión inicial",
+                "pl": "Pierwsze wydanie",
+                "uk": "Початкова версія",
+                "zh-cn": "首次出版"
+            }
+        },
+        "titleLang": {
+            "en": "AutoDoc",
+            "de": "AutoDoc",
+            "ru": "АвтоДок",
+            "pt": "AutoDoc",
+            "nl": "AutoDoc",
+            "fr": "AutoDoc",
+            "it": "AutoDoc",
+            "es": "AutoDoc",
+            "pl": "AutoDoc",
+            "uk": "АвтоДок",
+            "zh-cn": "自动文档"
+        },
+        "desc": {
+            "en": "Creates structured documentation for ioBroker projects from user-defined input",
+            "de": "Erzeugt strukturierte Dokumentation für ioBroker-Projekte aus Benutzereingaben",
+            "ru": "Создает структурированную документацию для проектов ioBroker на основе пользовательского ввода",
+            "pt": "Cria documentação estruturada para projetos ioBroker a partir da entrada do usuário",
+            "nl": "Maakt gestructureerde documentatie voor ioBroker-projecten op basis van gebruikersinvoer",
+            "fr": "Crée une documentation structurée pour les projets ioBroker à partir des saisies utilisateur",
+            "it": "Crea documentazione strutturata per progetti ioBroker a partire dall'input dell'utente",
+            "es": "Crea documentación estructurada para proyectos ioBroker a partir de la entrada del usuario",
+            "pl": "Tworzy uporządkowaną dokumentację projektów ioBroker na podstawie danych użytkownika",
+            "uk": "Створює структуровану документацію для проєктів ioBroker на основі введених користувачем даних",
+            "zh-cn": "根据用户输入为 ioBroker 项目生成结构化文档"
+        },
+        "authors": [
+            "crunchip77 <41550245+crunchip77@users.noreply.github.com>"
+        ],
+        "keywords": [
+            "documentation",
+            "markdown",
+            "ioBroker",
+            "project",
+            "automation"
+        ],
+        "licenseInformation": {
+            "type": "free",
+            "license": "MIT"
+        },
+        "platform": "Javascript/Node.js",
+        "icon": "autodoc.png",
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/crunchip77/ioBroker.autodoc/main/admin/autodoc.png",
+        "readme": "https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md",
+        "loglevel": "info",
+        "tier": 3,
+        "mode": "daemon",
+        "type": "general",
+        "compact": true,
+        "connectionType": "local",
+        "dataSource": "push",
+        "adminUI": {
+            "config": "json"
+        },
+        "dependencies": [
+            {
+                "js-controller": ">=6.0.11"
+            }
+        ],
+        "globalDependencies": [
+            {
+                "admin": ">=7.0.23"
+            }
+        ]
+    },
+    "native": {
+        "projectName": "",
+        "projectDescription": "",
+        "targetSystem": "ioBroker",
+        "additionalNotes": "",
+        "autoGenerateOnStart": false,
+	    "onlyEnabledInstances": false,
+		"hideInstanceDetailsInMarkdown": false,
+	    "maxDocumentedInstances": 0
+    },
+    "objects": [],
+    "instanceObjects": [
+        {
+            "_id": "info.connection",
+            "type": "state",
+            "common": {
+                "name": "If connected to service",
+                "type": "boolean",
+                "role": "indicator.connected",
+                "read": true,
+                "write": false,
+                "def": false
+            },
+            "native": {}
+        }
+    ]
 }

@@ -1,138 +1,146 @@
 ![Logo](admin/autodoc.png)
+
 # ioBroker.autodoc
 
 [![NPM version](https://img.shields.io/npm/v/iobroker.autodoc.svg)](https://www.npmjs.com/package/iobroker.autodoc)
 [![Downloads](https://img.shields.io/npm/dm/iobroker.autodoc.svg)](https://www.npmjs.com/package/iobroker.autodoc)
 ![Number of Installations](https://iobroker.live/badges/autodoc-installed.svg)
 ![Current version in stable repository](https://iobroker.live/badges/autodoc-stable.svg)
-
 [![NPM](https://nodei.co/npm/iobroker.autodoc.png?downloads=true)](https://nodei.co/npm/iobroker.autodoc/)
-
 **Tests:** ![Test and Release](https://github.com/crunchip77/ioBroker.autodoc/workflows/Test%20and%20Release/badge.svg)
 
-## autodoc adapter for ioBroker
+## Overview
 
-On-demand documentation for ioBroker
+**ioBroker.autodoc** creates a simple structured markdown documentation for an ioBroker project from user-defined configuration values.
 
-## Developer manual
-This section is intended for the developer. It can be deleted later.
+Current features:
+- Read user input from the adapter configuration
+- Generate markdown documentation
+- Store the generated result in adapter states
+- Trigger generation automatically on startup
+- Trigger generation manually via state
 
-### DISCLAIMER
+## Configuration
 
-Please make sure that you consider copyrights and trademarks when you use names or logos of a company and add a disclaimer to your README.
-You can check other adapters for examples or ask in the developer community. Using a name or logo of a company without permission may cause legal problems for you.
+The adapter settings are available in the ioBroker admin UI.
 
-### Getting started
+Available settings:
+- **Project name**: Name of the ioBroker project or installation
+- **Target system**: Usually `ioBroker`
+- **Project description**: Short description of what should be documented
+- **Additional notes**: Optional notes, devices, adapters or special requirements
+- **Generate documentation on adapter start**: Automatically creates a first documentation draft when the adapter starts
+- **Only document enabled instances**: If enabled, only active adapter instances are included in the documentation
+- **Hide instance details in markdown**: If enabled, the markdown output contains only summary information without the full instance list
+- **Maximum documented instances**: Limits how many adapter instances are included in the generated documentation, `0` means unlimited
 
-You are almost done, only a few steps left:
-1. Create a new repository on GitHub with the name `ioBroker.autodoc`
-1. Initialize the current folder as a new git repository:  
-	```bash
-	git init -b main
-	git add .
-	git commit -m "Initial commit"
-	```
-1. Link your local repository with the one on GitHub:  
-	```bash
-	git remote add origin https://github.com/crunchip77/ioBroker.autodoc
-	```
+## States
 
-1. Push all files to the GitHub repo:  
-	```bash
-	git push origin main
-	```
-1. Add a new secret under https://github.com/crunchip77/ioBroker.autodoc/settings/secrets. It must be named `AUTO_MERGE_TOKEN` and contain a personal access token with push access to the repository, e.g. yours. You can create a new token under https://github.com/settings/tokens.
+### `info.connection`
+Indicates whether the adapter is running.
 
-1. Head over to [main.js](main.js) and start programming!
+### `info.lastGeneration`
+Contains the ISO timestamp of the last generated documentation.
 
-### Best Practices
-We've collected some [best practices](https://github.com/ioBroker/ioBroker.repositories#development-and-coding-best-practices) regarding ioBroker development and coding in general. If you're new to ioBroker or Node.js, you should
-check them out. If you're already experienced, you should also take a look at them - you might learn something new :)
+### `info.lastTrigger`
+Contains the source of the last generation, for example `startup` or `manual`.
 
-### State Roles
-When creating state objects, it is important to use the correct role for the state. The role defines how the state should be interpreted by visualizations and other adapters. For a list of available roles and their meanings, please refer to the [state roles documentation](https://www.iobroker.net/#en/documentation/dev/stateroles.md).
+### `info.summary`
+Contains a short summary of the last generation.
 
-**Important:** Do not invent your own custom role names. If you need a role that is not part of the official list, please contact the ioBroker developer community for guidance and discussion about adding new roles.
+### `info.systemLanguage`
+Contains the configured ioBroker system language from `system.config`.
 
-### Scripts in `package.json`
-Several npm scripts are predefined for your convenience. You can run them using `npm run <scriptname>`
-| Script name | Description |
-|-------------|-------------|
-| `test:js` | Executes the tests you defined in `*.test.js` files. |
-| `test:package` | Ensures your `package.json` and `io-package.json` are valid. |
-| `test:integration` | Tests the adapter startup with an actual instance of ioBroker. |
-| `test` | Performs a minimal test run on package files and your tests. |
-| `check` | Performs a type-check on your code (without compiling anything). |
-| `lint` | Runs `ESLint` to check your code for formatting errors and potential bugs. |
-| `translate` | Translates texts in your adapter to all required languages, see [`@iobroker/adapter-dev`](https://github.com/ioBroker/adapter-dev#manage-translations) for more details. |
-| `release` | Creates a new release, see [`@alcalzone/release-script`](https://github.com/AlCalzone/release-script#usage) for more details. |
+### `info.instanceCount`
+Contains the total number of detected adapter instances.
 
-### Writing tests
-When done right, testing code is invaluable, because it gives you the 
-confidence to change your code while knowing exactly if and when 
-something breaks. A good read on the topic of test-driven development 
-is https://hackernoon.com/introduction-to-test-driven-development-tdd-61a13bc92d92. 
-Although writing tests before the code might seem strange at first, but it has very 
-clear upsides.
+### `info.enabledInstanceCount`
+Contains the number of enabled adapter instances.
 
-The template provides you with basic tests for the adapter startup and package files.
-It is recommended that you add your own tests into the mix.
+### `info.disabledInstanceCount`
+Contains the number of disabled adapter instances.
 
-### Publishing the adapter
-Using GitHub Actions, you can enable automatic releases on npm whenever you push a new git tag that matches the form 
-`v<major>.<minor>.<patch>`. We **strongly recommend** that you do. The necessary steps are described in `.github/workflows/test-and-release.yml`.
+### `info.instanceHosts`
+Contains a JSON-formatted host summary for detected adapter instances.
 
-Since you installed the release script, you can create a new
-release simply by calling:
-```bash
-npm run release
+### `info.hostName`
+Contains the detected host name of the current adapter instance.
+
+### `info.hostPlatform`
+Contains the detected platform of the current host.
+
+### `info.hostVersion`
+Contains the detected version of the current host.
+
+### `documentation.markdown`
+Contains the generated markdown documentation.
+
+### `documentation.json`
+Contains the generated JSON documentation.
+
+### `action.generate`
+Write `true` to this state to trigger a manual documentation generation.
+
+## Usage
+
+1. Open the adapter configuration in ioBroker admin.
+2. Fill in the project information.
+3. Optionally enable filters for documented instances.
+4. Save the configuration.
+5. Restart the adapter or set `autodoc.0.action.generate` to `true`.
+6. Read the result from `autodoc.0.documentation.markdown` or `autodoc.0.documentation.json`.
+
+## Example output
+
+```md
+# My Smart Home
+
+## Overview
+Central ioBroker installation with lighting, heating and energy monitoring.
+
+## Target system
+ioBroker
+
+## Additional notes
+Runs on Unraid Docker, includes Shelly, MQTT and Grafana.
+
+## Generated by
+AutoDoc ioBroker adapter
+
+## Generated at
+2026-04-01T15:00:00.000Z
 ```
-Additional command line options for the release script are explained in the
-[release-script documentation](https://github.com/AlCalzone/release-script#command-line).
 
-To get your adapter released in ioBroker, please refer to the documentation 
-of [ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories#requirements-for-adapter-to-get-added-to-the-latest-repository).
+## Current limitations
 
-### Test the adapter manually with dev-server
-Since you set up `dev-server`, you can use it to run, test and debug your adapter.
+Version `0.0.1` currently generates documentation from adapter configuration values plus basic ioBroker system information.
 
-You may start `dev-server` by calling from your dev directory:
-```bash
-dev-server watch
-```
+Included so far:
+- Project metadata from adapter configuration
+- System language from `system.config`
+- Basic host information
+- Detected adapter instances
+- Enabled/disabled instance counts
+- Host summary for instances
+- Optional filtering to enabled instances only
+- Optional compact markdown output
+- Optional limit for documented instances
+- Markdown and JSON output in adapter states
 
-The ioBroker.admin interface will then be available at http://localhost:undefined/
-
-Please refer to the [`dev-server` documentation](https://github.com/ioBroker/dev-server#command-line) for more details.
+Not included yet:
+- Detailed object tree analysis
+- State structure analysis
+- Room or function evaluation
+- Automatic file export
+- Advanced documentation templates
 
 ## Changelog
-<!--
-	Placeholder for the next version (at the beginning of the line):
-	### **WORK IN PROGRESS**
--->
 
-### **WORK IN PROGRESS**
-* (crunchip77) initial release
+### 0.0.1
+- Initial release
 
 ## License
+
 MIT License
 
 Copyright (c) 2026 crunchip77 <41550245+crunchip77@users.noreply.github.com>
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.

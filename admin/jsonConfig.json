@@ -1,26 +1,94 @@
 {
-	"i18n": true,
-	"type": "panel",
-	"items": {
-		"option1": {
-			"type": "checkbox",
-			"label": "option1",
-			"newLine": true,
-			"xs": 12,
-			"sm": 12,
-			"md": 6,
-			"lg": 4,
-			"xl": 4
-		},
-		"option2": {
-			"type": "text",
-			"label": "option2",
-			"newLine": true,
-			"xs": 12,
-			"sm": 12,
-			"md": 6,
-			"lg": 4,
-			"xl": 4
-		}
-	}
+    "i18n": true,
+    "type": "panel",
+    "items": {
+        "projectName": {
+            "type": "text",
+            "label": "Project name",
+            "help": "Name of the ioBroker project or installation",
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 6,
+            "xl": 6
+        },
+        "targetSystem": {
+            "type": "text",
+            "label": "Target system",
+            "help": "Usually ioBroker",
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 6,
+            "xl": 6
+        },
+        "projectDescription": {
+            "type": "text",
+            "label": "Project description",
+            "help": "Short description of what should be documented",
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 12,
+            "lg": 12,
+            "xl": 12
+        },
+        "additionalNotes": {
+            "type": "text",
+            "label": "Additional notes",
+            "help": "Optional notes, devices, adapters or special requirements",
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 12,
+            "lg": 12,
+            "xl": 12
+        },
+        "autoGenerateOnStart": {
+            "type": "checkbox",
+            "label": "Generate documentation on adapter start",
+            "help": "If enabled, a first documentation draft is created when the adapter starts",
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 12,
+            "lg": 12,
+            "xl": 12
+        },
+		        "onlyEnabledInstances": {
+            "type": "checkbox",
+            "label": "Only document enabled instances",
+            "help": "If enabled, only active adapter instances are included in the documentation",
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 12,
+            "lg": 12,
+            "xl": 12
+        },
+		        "hideInstanceDetailsInMarkdown": {
+            "type": "checkbox",
+            "label": "Hide instance details in markdown",
+            "help": "If enabled, the markdown output contains only summary information without the full instance list",
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 12,
+            "lg": 12,
+            "xl": 12
+        },
+		        "maxDocumentedInstances": {
+            "type": "number",
+            "label": "Maximum documented instances",
+            "help": "Limits how many adapter instances are included in the generated documentation, 0 means unlimited",
+            "newLine": true,
+            "min": 0,
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 6,
+            "xl": 6
+        }
+    }
 }

@@ -1,5 +1,19 @@
 {
-	"autodoc adapter settings": "Adaptereinstellungen für autodoc",
-	"option1": "Option1",
-	"option2": "Option2"
+    "autodoc adapter settings": "Adaptereinstellungen für autodoc",
+    "Project name": "Projektname",
+    "Name of the ioBroker project or installation": "Name des ioBroker-Projekts oder der Installation",
+    "Target system": "Zielsystem",
+    "Usually ioBroker": "Normalerweise ioBroker",
+    "Project description": "Projektbeschreibung",
+    "Short description of what should be documented": "Kurze Beschreibung dessen, was dokumentiert werden soll",
+    "Additional notes": "Zusätzliche Hinweise",
+    "Optional notes, devices, adapters or special requirements": "Optionale Hinweise, Geräte, Adapter oder besondere Anforderungen",
+    "Generate documentation on adapter start": "Dokumentation beim Start des Adapters erzeugen",
+    "If enabled, a first documentation draft is created when the adapter starts": "Wenn aktiviert, wird beim Start des Adapters ein erster Dokumentationsentwurf erzeugt",
+    "Only document enabled instances": "Nur aktivierte Instanzen dokumentieren",
+    "If enabled, only active adapter instances are included in the documentation": "Wenn aktiviert, werden nur aktive Adapter-Instanzen in die Dokumentation aufgenommen",
+	"Hide instance details in markdown": "Instanzdetails im Markdown ausblenden",
+    "If enabled, the markdown output contains only summary information without the full instance list": "Wenn aktiviert, enthält die Markdown-Ausgabe nur Zusammenfassungen ohne die vollständige Instanzliste",
+	"Maximum documented instances": "Maximale Anzahl dokumentierter Instanzen",
+    "Limits how many adapter instances are included in the generated documentation, 0 means unlimited": "Begrenzt, wie viele Adapter-Instanzen in die erzeugte Dokumentation aufgenommen werden, 0 bedeutet unbegrenzt"
 }
