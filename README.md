@@ -9,6 +9,23 @@
 [![NPM](https://nodei.co/npm/iobroker.autodoc.png?downloads=true)](https://nodei.co/npm/iobroker.autodoc/)
 **Tests:** ![Test and Release](https://github.com/crunchip77/ioBroker.autodoc/workflows/Test%20and%20Release/badge.svg)
 
+## Description
+
+The `autodoc` adapter generates basic technical documentation for an ioBroker installation.
+
+The adapter currently creates:
+- Markdown documentation in `autodoc.0.documentation.markdown`
+- JSON documentation in `autodoc.0.documentation.json`
+
+The generated documentation can include:
+- Project metadata from the adapter configuration
+- Basic ioBroker system information
+- Host information of the current adapter instance
+- Adapter instance overview
+- Enabled and disabled instance counts
+- Host summary for detected instances
+- Applied filter metadata
+
 ## Overview
 
 **ioBroker.autodoc** creates a simple structured markdown documentation for an ioBroker project from user-defined configuration values.
@@ -120,7 +137,7 @@ Included so far:
 - System language from `system.config`
 - Basic host information
 - Detected adapter instances
-- Enabled/disabled instance counts
+- Enabled and disabled instance counts
 - Host summary for instances
 - Optional filtering to enabled instances only
 - Optional compact markdown output
