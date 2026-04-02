@@ -299,15 +299,7 @@ class Autodoc extends utils.Adapter {
 	/**
 	 * Read and summarize all state objects from the object database.
 	 *
-	 * @returns {Promise<{
-	 *   total: number,
-	 *   writable: number,
-	 *   readonly: number,
-	 *   readwrite: number,
-	 *   writeonly: number,
-	 *   roles: Array<{role: string, count: number}>,
-	 *   sampleStates: Array<{id: string, role: string, type: string, read: boolean, write: boolean}>
-	 * }>} State object summary.
+	 * @returns {Promise<object>} State object summary.
 	 */
 	async readStateObjectsSummary() {
 		try {
@@ -387,7 +379,7 @@ class Autodoc extends utils.Adapter {
 	/**
 	 * Generate and store documentation.
 	 *
-	 * @param {string} trigger
+	 * @param {string} trigger Generation trigger source.
 	 */
 	async generateDocumentation(trigger) {
 		const projectName = (this.config.projectName || '').trim() || 'Unnamed project';
@@ -395,6 +387,7 @@ class Autodoc extends utils.Adapter {
 		const projectDescription = (this.config.projectDescription || '').trim() || 'No project description provided.';
 		const additionalNotes = (this.config.additionalNotes || '').trim() || 'No additional notes provided.';
 		const generatedAt = new Date().toISOString();
+		const adapterVersion = this.version || 'unknown';
 
 		const onlyEnabledInstances = this.config.onlyEnabledInstances === true;
 		const hideInstanceDetailsInMarkdown = this.config.hideInstanceDetailsInMarkdown === true;
@@ -417,9 +410,17 @@ class Autodoc extends utils.Adapter {
 		try {
 			const hostObject = await this.getForeignObjectAsync(`system.host.${this.host}`);
 			if (hostObject && hostObject.common) {
-				hostName = hostObject.common.name || hostName;
+				hostName =
+					hostObject.common.hostname ||
+					hostObject.common.name ||
+					this.host ||
+					'unknown';
+
 				hostPlatform = hostObject.common.platform || 'unknown';
-				hostVersion = hostObject.common.installedVersion || hostObject.common.version || 'unknown';
+				hostVersion =
+					hostObject.common.installedVersion ||
+					hostObject.common.version ||
+					'unknown';
 			}
 		} catch (error) {
 			this.log.warn(`Could not read host information: ${error.message}`);
@@ -434,7 +435,7 @@ class Autodoc extends utils.Adapter {
 		}
 
 		const allInstances = instanceRows
-			.map(row => row && row.value ? row.value : null)
+			.map(row => (row && row.value ? row.value : null))
 			.filter(obj => obj && obj._id && obj.common)
 			.map(obj => ({
 				id: obj._id,
@@ -506,7 +507,7 @@ class Autodoc extends utils.Adapter {
 				: 'Es wurden keine zusätzlichen Hinweise hinterlegt.',
 			'',
 			'## Generiert von',
-			'AutoDoc ioBroker Adapter',
+			`AutoDoc ioBroker Adapter (${adapterVersion})`,
 			'',
 			'## Generiert am',
 			generatedAt,
@@ -535,7 +536,9 @@ class Autodoc extends utils.Adapter {
 			markdownLines.push('- Keine dokumentierten Instanzen gefunden');
 		} else {
 			for (const [host, info] of sortedHosts) {
-				markdownLines.push(`- ${host}: gesamt=${info.total}, aktiviert=${info.enabled}, deaktiviert=${info.disabled}`);
+				markdownLines.push(
+					`- ${host}: gesamt=${info.total}, aktiviert=${info.enabled}, deaktiviert=${info.disabled}`,
+				);
 			}
 		}
 
@@ -578,7 +581,9 @@ class Autodoc extends utils.Adapter {
 
 		markdownLines.push('');
 		markdownLines.push('## Beispielhafte State-Objekte');
-		markdownLines.push('Dieser Abschnitt zeigt eine kleine Auswahl erkannter State-Objekte zur schnellen Orientierung.');
+		markdownLines.push(
+			'Dieser Abschnitt zeigt eine kleine Auswahl erkannter State-Objekte zur schnellen Orientierung.',
+		);
 
 		if (stateSummary.sampleStates.length === 0) {
 			markdownLines.push('- Keine Beispiel-States verfügbar');
@@ -604,6 +609,7 @@ class Autodoc extends utils.Adapter {
 			generated: {
 				at: generatedAt,
 				by: 'AutoDoc ioBroker Adapter',
+				adapterVersion,
 				trigger,
 			},
 			system: {
