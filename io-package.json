@@ -64,6 +64,7 @@
         "readme": "https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md",
         "loglevel": "info",
         "tier": 3,
+        "dataFolder": "files",
         "mode": "daemon",
         "type": "general",
         "compact": true,
@@ -89,9 +90,9 @@
         "targetSystem": "ioBroker",
         "additionalNotes": "",
         "autoGenerateOnStart": false,
-	    "onlyEnabledInstances": false,
-		"hideInstanceDetailsInMarkdown": false,
-	    "maxDocumentedInstances": 0
+        "onlyEnabledInstances": false,
+        "hideInstanceDetailsInMarkdown": false,
+        "maxDocumentedInstances": 0
     },
     "objects": [],
     "instanceObjects": [
