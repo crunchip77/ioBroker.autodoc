@@ -217,6 +217,58 @@ class Autodoc extends utils.Adapter {
 			native: {},
 		});
 
+		await this.setObjectNotExistsAsync('info.totalStateObjects', {
+			type: 'state',
+			common: {
+				name: 'Total number of detected state objects',
+				type: 'number',
+				role: 'value',
+				read: true,
+				write: false,
+				def: 0,
+			},
+			native: {},
+		});
+
+		await this.setObjectNotExistsAsync('info.writableStateObjects', {
+			type: 'state',
+			common: {
+				name: 'Number of writable state objects',
+				type: 'number',
+				role: 'value',
+				read: true,
+				write: false,
+				def: 0,
+			},
+			native: {},
+		});
+
+		await this.setObjectNotExistsAsync('info.readonlyStateObjects', {
+			type: 'state',
+			common: {
+				name: 'Number of read-only state objects',
+				type: 'number',
+				role: 'value',
+				read: true,
+				write: false,
+				def: 0,
+			},
+			native: {},
+		});
+
+		await this.setObjectNotExistsAsync('documentation.stateSummary', {
+			type: 'state',
+			common: {
+				name: 'Generated state object summary',
+				type: 'string',
+				role: 'json',
+				read: true,
+				write: false,
+				def: '{}',
+			},
+			native: {},
+		});
+
 		await this.setObjectNotExistsAsync('documentation.markdown', {
 			type: 'state',
 			common: {
@@ -376,6 +428,94 @@ class Autodoc extends utils.Adapter {
 			return [];
 		}
 	}
+
+	    /**
+     * Read and summarize all state objects from the object database.
+     *
+     * @returns {Promise<{
+     *   total: number,
+     *   writable: number,
+     *   readonly: number,
+     *   readwrite: number,
+     *   writeonly: number,
+     *   roles: Array<{role: string, count: number}>,
+     *   sampleStates: Array<{id: string, role: string, type: string, read: boolean, write: boolean}>
+     * }>} State object summary.
+     */
+    async readStateObjectsSummary() {
+        try {
+            const result = await this.getObjectViewAsync('system', 'state', {});
+            const rows = Array.isArray(result && result.rows) ? result.rows : [];
+
+            const summary = {
+                total: 0,
+                writable: 0,
+                readonly: 0,
+                readwrite: 0,
+                writeonly: 0,
+                roles: [],
+                sampleStates: [],
+            };
+
+            const roleMap = {};
+
+            for (const row of rows) {
+                const obj = row && row.value ? row.value : null;
+                if (!obj || !obj._id || !obj.common) {
+                    continue;
+                }
+
+                const role = obj.common.role || 'undefined';
+                const type = obj.common.type || 'mixed';
+                const read = obj.common.read !== false;
+                const write = obj.common.write === true;
+
+                summary.total++;
+
+                if (write) {
+                    summary.writable++;
+                }
+
+                if (read && !write) {
+                    summary.readonly++;
+                } else if (read && write) {
+                    summary.readwrite++;
+                } else if (!read && write) {
+                    summary.writeonly++;
+                }
+
+                roleMap[role] = (roleMap[role] || 0) + 1;
+
+                if (summary.sampleStates.length < 10) {
+                    summary.sampleStates.push({
+                        id: obj._id,
+                        role,
+                        type,
+                        read,
+                        write,
+                    });
+                }
+            }
+
+            summary.roles = Object.entries(roleMap)
+                .map(([role, count]) => ({ role, count }))
+                .sort((a, b) => b.count - a.count)
+                .slice(0, 10);
+
+            return summary;
+        } catch (error) {
+            this.log.warn(`Could not read state objects summary: ${error.message}`);
+            return {
+                total: 0,
+                writable: 0,
+                readonly: 0,
+                readwrite: 0,
+                writeonly: 0,
+                roles: [],
+                sampleStates: [],
+            };
+        }
+    }
 
 	/**
 	 * Build host summary for adapter instances.
@@ -578,64 +718,264 @@ ${generatedAt}
 	/**
 	 * Generate and store documentation.
 	 *
-	 * @param {string} trigger Source that triggered the generation.
+	 * @param {string} trigger
 	 */
 	async generateDocumentation(trigger) {
-		const projectName = (this.config.projectName || '').trim() || 'Unnamed project';
-		const systemInfo = await this.readSystemInfo();
-		const hostInfo = await this.readHostInfo();
-		const allAdapterInstances = await this.readAdapterInstances();
+			const projectName = (this.config.projectName || '').trim() || 'Unnamed project';
+			const targetSystem = (this.config.targetSystem || 'ioBroker').trim();
+			const projectDescription = (this.config.projectDescription || '').trim() || 'No project description provided.';
+			const additionalNotes = (this.config.additionalNotes || '').trim() || 'No additional notes provided.';
+			const generatedAt = new Date().toISOString();
 
-		const filteredInstances = this.config.onlyEnabledInstances
-			? allAdapterInstances.filter(instance => instance.enabled)
-			: allAdapterInstances;
+			const onlyEnabledInstances = this.config.onlyEnabledInstances === true;
+			const hideInstanceDetailsInMarkdown = this.config.hideInstanceDetailsInMarkdown === true;
+			const maxDocumentedInstances = Number(this.config.maxDocumentedInstances || 0);
 
-		const maxInstances = Number(this.config.maxDocumentedInstances) || 0;
-		const adapterInstances = maxInstances > 0 ? filteredInstances.slice(0, maxInstances) : filteredInstances;
+			let systemLanguage = 'unknown';
+			let hostName = this.host || 'unknown';
+			let hostPlatform = 'unknown';
+			let hostVersion = 'unknown';
 
-		const instanceSummary = this.buildInstanceSummary(adapterInstances);
-		const filterMetadata = this.buildFilterMetadata(allAdapterInstances.length, adapterInstances.length);
-		const markdown = this.buildMarkdown(systemInfo, hostInfo, adapterInstances, instanceSummary, filterMetadata);
-		const jsonDocumentation = this.buildJsonDocumentation(
-			systemInfo,
-			hostInfo,
-			adapterInstances,
-			instanceSummary,
-			filterMetadata,
-			trigger,
-		);
-		const timestamp = new Date().toISOString();
+			try {
+					const systemConfig = await this.getForeignObjectAsync('system.config');
+					if (systemConfig && systemConfig.common && systemConfig.common.language) {
+							systemLanguage = systemConfig.common.language;
+					}
+			} catch (error) {
+					this.log.warn(`Could not read system.config: ${error.message}`);
+			}
 
-		let summary = `Documentation for "${projectName}" generated (${instanceSummary.total} instances, ${instanceSummary.enabled} enabled, ${instanceSummary.disabled} disabled`;
+			try {
+					const hostObject = await this.getForeignObjectAsync(`system.host.${this.host}`);
+					if (hostObject && hostObject.common) {
+							hostName = hostObject.common.name || hostName;
+							hostPlatform = hostObject.common.platform || 'unknown';
+							hostVersion = hostObject.common.installedVersion || hostObject.common.version || 'unknown';
+					}
+			} catch (error) {
+					this.log.warn(`Could not read host information: ${error.message}`);
+			}
 
-		if (this.config.onlyEnabledInstances) {
-			summary += ', filtered: enabled only';
-		}
+			let instanceRows = [];
+			try {
+					const instanceView = await this.getObjectViewAsync('system', 'instance', {});
+					instanceRows = Array.isArray(instanceView && instanceView.rows) ? instanceView.rows : [];
+			} catch (error) {
+					this.log.warn(`Could not read adapter instances: ${error.message}`);
+			}
 
-		if (maxInstances > 0) {
-			summary += `, limited to ${maxInstances}`;
-		}
+			const allInstances = instanceRows
+					.map(row => row && row.value ? row.value : null)
+					.filter(obj => obj && obj._id && obj.common)
+					.map(obj => ({
+							id: obj._id,
+							name: obj.common.name || '',
+							title: obj.common.titleLang?.en || obj.common.title || obj.common.name || obj._id,
+							version: obj.common.version || 'unknown',
+							enabled: obj.common.enabled === true,
+							mode: obj.common.mode || 'daemon',
+							host: obj.common.host || 'unknown',
+					}));
 
-		summary += ')';
+			let documentedInstances = [...allInstances];
 
-		await this.setStateAsync('documentation.markdown', { val: markdown, ack: true });
-		await this.setStateAsync('documentation.json', { val: jsonDocumentation, ack: true });
-		await this.setStateAsync('info.summary', { val: summary, ack: true });
-		await this.setStateAsync('info.lastTrigger', { val: trigger, ack: true });
-		await this.setStateAsync('info.lastGeneration', { val: timestamp, ack: true });
-		await this.setStateAsync('info.systemLanguage', { val: systemInfo.language || '', ack: true });
-		await this.setStateAsync('info.instanceCount', { val: instanceSummary.total, ack: true });
-		await this.setStateAsync('info.enabledInstanceCount', { val: instanceSummary.enabled, ack: true });
-		await this.setStateAsync('info.disabledInstanceCount', { val: instanceSummary.disabled, ack: true });
-		await this.setStateAsync('info.instanceHosts', {
-			val: JSON.stringify(instanceSummary.hosts, null, 2),
-			ack: true,
-		});
-		await this.setStateAsync('info.hostName', { val: hostInfo.hostname || hostInfo.name || '', ack: true });
-		await this.setStateAsync('info.hostPlatform', { val: hostInfo.platform || '', ack: true });
-		await this.setStateAsync('info.hostVersion', { val: hostInfo.version || '', ack: true });
+			if (onlyEnabledInstances) {
+					documentedInstances = documentedInstances.filter(instance => instance.enabled);
+			}
 
-		this.log.info(`Documentation generated via ${trigger}`);
+			if (maxDocumentedInstances > 0) {
+					documentedInstances = documentedInstances.slice(0, maxDocumentedInstances);
+			}
+
+			const enabledInstanceCount = documentedInstances.filter(instance => instance.enabled).length;
+			const disabledInstanceCount = documentedInstances.filter(instance => !instance.enabled).length;
+
+			const instanceHostsMap = {};
+			for (const instance of documentedInstances) {
+					if (!instanceHostsMap[instance.host]) {
+							instanceHostsMap[instance.host] = {
+									total: 0,
+									enabled: 0,
+									disabled: 0,
+							};
+					}
+
+					instanceHostsMap[instance.host].total++;
+
+					if (instance.enabled) {
+							instanceHostsMap[instance.host].enabled++;
+					} else {
+							instanceHostsMap[instance.host].disabled++;
+					}
+			}
+
+			const stateSummary = await this.readStateObjectsSummary();
+
+			const filterSummary = {
+					onlyEnabledInstances,
+					hideInstanceDetailsInMarkdown,
+					maxDocumentedInstances,
+			};
+
+			const markdownLines = [
+					`# ${projectName}`,
+					'',
+					'## Overview',
+					projectDescription,
+					'',
+					'## Target system',
+					targetSystem,
+					'',
+					'## Additional notes',
+					additionalNotes,
+					'',
+					'## Generated by',
+					'AutoDoc ioBroker adapter',
+					'',
+					'## Generated at',
+					generatedAt,
+					'',
+					'## System information',
+					`- Language: ${systemLanguage}`,
+					`- Host name: ${hostName}`,
+					`- Host platform: ${hostPlatform}`,
+					`- Host version: ${hostVersion}`,
+					'',
+					'## Applied filters',
+					`- Only enabled instances: ${onlyEnabledInstances}`,
+					`- Hide instance details in markdown: ${hideInstanceDetailsInMarkdown}`,
+					`- Maximum documented instances: ${maxDocumentedInstances}`,
+					'',
+					'## Instance summary',
+					`- Documented instances: ${documentedInstances.length}`,
+					`- Enabled instances: ${enabledInstanceCount}`,
+					`- Disabled instances: ${disabledInstanceCount}`,
+					'',
+					'## Instance hosts',
+			];
+
+			const sortedHosts = Object.entries(instanceHostsMap).sort((a, b) => a[0].localeCompare(b[0]));
+			if (sortedHosts.length === 0) {
+					markdownLines.push('- No documented instances found');
+			} else {
+					for (const [host, info] of sortedHosts) {
+							markdownLines.push(`- ${host}: total=${info.total}, enabled=${info.enabled}, disabled=${info.disabled}`);
+					}
+			}
+
+			markdownLines.push('');
+			markdownLines.push('## State object summary');
+			markdownLines.push(`- Total state objects: ${stateSummary.total}`);
+			markdownLines.push(`- Writable state objects: ${stateSummary.writable}`);
+			markdownLines.push(`- Read-only state objects: ${stateSummary.readonly}`);
+			markdownLines.push(`- Read/write state objects: ${stateSummary.readwrite}`);
+			markdownLines.push(`- Write-only state objects: ${stateSummary.writeonly}`);
+			markdownLines.push('');
+
+			markdownLines.push('## Top state roles');
+			if (stateSummary.roles.length === 0) {
+					markdownLines.push('- No state roles found');
+			} else {
+					for (const entry of stateSummary.roles) {
+							markdownLines.push(`- ${entry.role}: ${entry.count}`);
+					}
+			}
+
+			if (!hideInstanceDetailsInMarkdown) {
+					markdownLines.push('');
+					markdownLines.push('## Documented instances');
+
+					if (documentedInstances.length === 0) {
+							markdownLines.push('- No instances found');
+					} else {
+							for (const instance of documentedInstances) {
+									markdownLines.push(`- ${instance.id}`);
+									markdownLines.push(`  - Title: ${instance.title}`);
+									markdownLines.push(`  - Name: ${instance.name}`);
+									markdownLines.push(`  - Version: ${instance.version}`);
+									markdownLines.push(`  - Host: ${instance.host}`);
+									markdownLines.push(`  - Enabled: ${instance.enabled}`);
+									markdownLines.push(`  - Mode: ${instance.mode}`);
+							}
+					}
+			}
+
+			markdownLines.push('');
+			markdownLines.push('## Sample state objects');
+
+			if (stateSummary.sampleStates.length === 0) {
+					markdownLines.push('- No sample states available');
+			} else {
+					for (const sample of stateSummary.sampleStates) {
+							markdownLines.push(`- ${sample.id}`);
+							markdownLines.push(`  - Role: ${sample.role}`);
+							markdownLines.push(`  - Type: ${sample.type}`);
+							markdownLines.push(`  - Read: ${sample.read}`);
+							markdownLines.push(`  - Write: ${sample.write}`);
+					}
+			}
+
+			const markdown = markdownLines.join('\n');
+
+			const jsonDocument = {
+					project: {
+							name: projectName,
+							targetSystem,
+							description: projectDescription,
+							additionalNotes,
+					},
+					generated: {
+							at: generatedAt,
+							by: 'AutoDoc ioBroker adapter',
+							trigger,
+					},
+					system: {
+							language: systemLanguage,
+					},
+					host: {
+							name: hostName,
+							platform: hostPlatform,
+							version: hostVersion,
+					},
+					filters: filterSummary,
+					instances: {
+							total: documentedInstances.length,
+							enabled: enabledInstanceCount,
+							disabled: disabledInstanceCount,
+							hosts: instanceHostsMap,
+							items: documentedInstances,
+					},
+					states: stateSummary,
+			};
+
+			const json = JSON.stringify(jsonDocument, null, 2);
+			const stateSummaryJson = JSON.stringify(stateSummary, null, 2);
+			const hostSummaryJson = JSON.stringify(instanceHostsMap, null, 2);
+			const summary = `Documentation for "${projectName}" generated: ${documentedInstances.length} instances, ${stateSummary.total} state objects`;
+
+			await this.setStateAsync('documentation.markdown', { val: markdown, ack: true });
+			await this.setStateAsync('documentation.json', { val: json, ack: true });
+			await this.setStateAsync('documentation.stateSummary', { val: stateSummaryJson, ack: true });
+
+			await this.setStateAsync('info.summary', { val: summary, ack: true });
+			await this.setStateAsync('info.lastTrigger', { val: trigger, ack: true });
+			await this.setStateAsync('info.lastGeneration', { val: generatedAt, ack: true });
+
+			await this.setStateAsync('info.systemLanguage', { val: systemLanguage, ack: true });
+			await this.setStateAsync('info.instanceCount', { val: documentedInstances.length, ack: true });
+			await this.setStateAsync('info.enabledInstanceCount', { val: enabledInstanceCount, ack: true });
+			await this.setStateAsync('info.disabledInstanceCount', { val: disabledInstanceCount, ack: true });
+			await this.setStateAsync('info.instanceHosts', { val: hostSummaryJson, ack: true });
+
+			await this.setStateAsync('info.hostName', { val: hostName, ack: true });
+			await this.setStateAsync('info.hostPlatform', { val: hostPlatform, ack: true });
+			await this.setStateAsync('info.hostVersion', { val: hostVersion, ack: true });
+
+			await this.setStateAsync('info.totalStateObjects', { val: stateSummary.total, ack: true });
+			await this.setStateAsync('info.writableStateObjects', { val: stateSummary.writable, ack: true });
+			await this.setStateAsync('info.readonlyStateObjects', { val: stateSummary.readonly, ack: true });
+
+			this.log.info(`Documentation generated via ${trigger}`);
 	}
 
 	/**
