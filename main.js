@@ -37,6 +37,7 @@ class Autodoc extends utils.Adapter {
 		this.log.debug(`config maxDocumentedInstances: ${this.config.maxDocumentedInstances}`);
 
 		await this.subscribeStatesAsync('action.generate');
+		await this.subscribeStatesAsync('action.download*');
 
 		if (this.config.autoGenerateOnStart) {
 			await this.generateDocumentation('startup');
@@ -294,6 +295,32 @@ class Autodoc extends utils.Adapter {
 			},
 			native: {},
 		});
+
+		await this.setObjectNotExistsAsync('action.downloadMarkdown', {
+			type: 'state',
+			common: {
+				name: 'Download markdown documentation',
+				type: 'boolean',
+				role: 'button',
+				read: false,
+				write: true,
+				def: false,
+			},
+			native: {},
+		});
+
+		await this.setObjectNotExistsAsync('action.downloadJson', {
+			type: 'state',
+			common: {
+				name: 'Download JSON documentation',
+				type: 'boolean',
+				role: 'button',
+				read: false,
+				write: true,
+				def: false,
+			},
+			native: {},
+		});
 	}
 
 	/**
@@ -411,7 +438,7 @@ class Autodoc extends utils.Adapter {
 			const hostObject = await this.getForeignObjectAsync(`system.host.${this.host}`);
 			if (hostObject && hostObject.common) {
 				hostName = hostObject.common.hostname || hostObject.common.name || this.host || 'unknown';
-
+				hostPlatform = hostObject.common.platform || hostObject.common.os || 'unknown';
 				hostVersion = hostObject.common.installedVersion || hostObject.common.version || 'unknown';
 			}
 		} catch (error) {
@@ -491,6 +518,7 @@ class Autodoc extends utils.Adapter {
 			projectDescription && projectDescription !== 'No project description provided.'
 				? projectDescription
 				: 'Für dieses Projekt wurde noch keine Beschreibung hinterlegt.',
+			'',
 			'## Zielsystem',
 			targetSystem,
 			'',
@@ -498,6 +526,7 @@ class Autodoc extends utils.Adapter {
 			additionalNotes && additionalNotes !== 'No additional notes provided.'
 				? additionalNotes
 				: 'Es wurden keine zusätzlichen Hinweise hinterlegt.',
+			'',
 			'## Generiert von',
 			`AutoDoc ioBroker Adapter (${adapterVersion})`,
 			'',
@@ -622,6 +651,7 @@ class Autodoc extends utils.Adapter {
 			},
 			states: stateSummary,
 		};
+
 		const json = JSON.stringify(jsonDocument, null, 2);
 		const stateSummaryJson = JSON.stringify(stateSummary, null, 2);
 		const hostSummaryJson = JSON.stringify(instanceHostsMap, null, 2);
@@ -653,6 +683,28 @@ class Autodoc extends utils.Adapter {
 	}
 
 	/**
+	 * Write file content to the ioBroker file storage.
+	 *
+	 * @param {string} stateId State ID containing the content.
+	 * @param {string} filename Target filename.
+	 */
+	async downloadFile(stateId, filename) {
+		try {
+			const state = await this.getStateAsync(stateId);
+
+			if (!state || state.val === null || state.val === undefined || state.val === '') {
+				this.log.warn(`No content available for download from state ${stateId}`);
+				return;
+			}
+
+			await this.writeFileAsync(this.namespace, filename, String(state.val));
+			this.log.info(`File ${filename} written to /files/${this.namespace}/${filename}`);
+		} catch (error) {
+			this.log.error(`Download failed for ${filename}: ${error.message}`);
+		}
+	}
+
+	/**
 	 * Is called if a subscribed state changes.
 	 *
 	 * @param {string} id State ID.
@@ -667,6 +719,21 @@ class Autodoc extends utils.Adapter {
 			this.log.info('Manual generate command received');
 			await this.generateDocumentation('manual');
 			await this.setStateAsync('action.generate', { val: false, ack: true });
+			return;
+		}
+
+		if (id === `${this.namespace}.action.downloadMarkdown` && state.ack === false && state.val === true) {
+			this.log.info('Manual markdown download command received');
+			await this.downloadFile('documentation.markdown', 'autodoc.md');
+			await this.setStateAsync('action.downloadMarkdown', { val: false, ack: true });
+			return;
+		}
+
+		if (id === `${this.namespace}.action.downloadJson` && state.ack === false && state.val === true) {
+			this.log.info('Manual JSON download command received');
+			await this.downloadFile('documentation.json', 'autodoc.json');
+			await this.setStateAsync('action.downloadJson', { val: false, ack: true });
+			return;
 		}
 	}
 }
