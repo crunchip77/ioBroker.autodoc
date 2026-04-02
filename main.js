@@ -25,6 +25,15 @@ class Autodoc extends utils.Adapter {
 	 */
 	async onReady() {
 		await this.createStates();
+		// Files-Objekt für dataFolder="files" erstellen
+		await this.setObjectNotExistsAsync('files', {
+			type: 'meta',
+			common: {
+				name: 'Files',
+				type: 'meta.user',
+			},
+			native: {},
+		});
 		await this.setStateAsync('info.connection', { val: false, ack: true });
 
 		this.log.info('AutoDoc adapter starting');
