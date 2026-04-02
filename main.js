@@ -410,17 +410,9 @@ class Autodoc extends utils.Adapter {
 		try {
 			const hostObject = await this.getForeignObjectAsync(`system.host.${this.host}`);
 			if (hostObject && hostObject.common) {
-				hostName =
-					hostObject.common.hostname ||
-					hostObject.common.name ||
-					this.host ||
-					'unknown';
+				hostName = hostObject.common.hostname || hostObject.common.name || this.host || 'unknown';
 
-				hostPlatform = hostObject.common.platform || 'unknown';
-				hostVersion =
-					hostObject.common.installedVersion ||
-					hostObject.common.version ||
-					'unknown';
+				hostVersion = hostObject.common.installedVersion || hostObject.common.version || 'unknown';
 			}
 		} catch (error) {
 			this.log.warn(`Could not read host information: ${error.message}`);
@@ -481,8 +473,10 @@ class Autodoc extends utils.Adapter {
 
 		const stateSummary = await this.readStateObjectsSummary();
 
-		const writablePercent = stateSummary.total > 0 ? ((stateSummary.writable / stateSummary.total) * 100).toFixed(1) : '0.0';
-		const readonlyPercent = stateSummary.total > 0 ? ((stateSummary.readonly / stateSummary.total) * 100).toFixed(1) : '0.0';
+		const writablePercent =
+			stateSummary.total > 0 ? ((stateSummary.writable / stateSummary.total) * 100).toFixed(1) : '0.0';
+		const readonlyPercent =
+			stateSummary.total > 0 ? ((stateSummary.readonly / stateSummary.total) * 100).toFixed(1) : '0.0';
 
 		const filterSummary = {
 			onlyEnabledInstances,
@@ -497,7 +491,6 @@ class Autodoc extends utils.Adapter {
 			projectDescription && projectDescription !== 'No project description provided.'
 				? projectDescription
 				: 'Für dieses Projekt wurde noch keine Beschreibung hinterlegt.',
-			'',
 			'## Zielsystem',
 			targetSystem,
 			'',
@@ -505,7 +498,6 @@ class Autodoc extends utils.Adapter {
 			additionalNotes && additionalNotes !== 'No additional notes provided.'
 				? additionalNotes
 				: 'Es wurden keine zusätzlichen Hinweise hinterlegt.',
-			'',
 			'## Generiert von',
 			`AutoDoc ioBroker Adapter (${adapterVersion})`,
 			'',
