@@ -296,6 +296,94 @@ class Autodoc extends utils.Adapter {
 		});
 	}
 
+  /**
+   * Read and summarize all state objects from the object database.
+   *
+   * @returns {Promise<{
+   *   total: number,
+   *   writable: number,
+   *   readonly: number,
+   *   readwrite: number,
+   *   writeonly: number,
+   *   roles: Array<{role: string, count: number}>,
+   *   sampleStates: Array<{id: string, role: string, type: string, read: boolean, write: boolean}>
+   * }>} State object summary.
+   */
+  async readStateObjectsSummary() {
+    try {
+      const result = await this.getObjectViewAsync('system', 'state', {});
+      const rows = Array.isArray(result && result.rows) ? result.rows : [];
+
+      const summary = {
+        total: 0,
+        writable: 0,
+        readonly: 0,
+        readwrite: 0,
+        writeonly: 0,
+        roles: [],
+        sampleStates: [],
+      };
+
+      const roleMap = {};
+
+      for (const row of rows) {
+        const obj = row && row.value ? row.value : null;
+        if (!obj || !obj._id || !obj.common) {
+          continue;
+        }
+
+        const role = obj.common.role || 'undefined';
+        const type = obj.common.type || 'mixed';
+        const read = obj.common.read !== false;
+        const write = obj.common.write === true;
+
+        summary.total++;
+
+        if (write) {
+          summary.writable++;
+        }
+
+        if (read && !write) {
+          summary.readonly++;
+        } else if (read && write) {
+          summary.readwrite++;
+        } else if (!read && write) {
+          summary.writeonly++;
+        }
+
+        roleMap[role] = (roleMap[role] || 0) + 1;
+
+        if (summary.sampleStates.length < 10) {
+          summary.sampleStates.push({
+            id: obj._id,
+            role,
+            type,
+            read,
+            write,
+          });
+        }
+      }
+
+      summary.roles = Object.entries(roleMap)
+        .map(([role, count]) => ({ role, count }))
+        .sort((a, b) => b.count - a.count)
+        .slice(0, 10);
+
+      return summary;
+    } catch (error) {
+      this.log.warn(`Could not read state objects summary: ${error.message}`);
+      return {
+        total: 0,
+        writable: 0,
+        readonly: 0,
+        readwrite: 0,
+        writeonly: 0,
+        roles: [],
+        sampleStates: [],
+      };
+    }
+  }
+
 	/**
 	 * Generate and store documentation.
 	 *
