@@ -1,5 +1,4 @@
 'use strict';
-
 /*
  * Created with @iobroker/create-adapter v3.1.2
  */
@@ -697,7 +696,7 @@ class Autodoc extends utils.Adapter {
 				return;
 			}
 
-			await this.writeFileAsync(this.namespace, filename, String(state.val));
+			await this.writeFileAsync(`${this.namespace}.files`, filename, String(state.val));
 			this.log.info(`File ${filename} written to /files/${this.namespace}/${filename}`);
 		} catch (error) {
 			this.log.error(`Download failed for ${filename}: ${error.message}`);
