@@ -1,164 +1,129 @@
 # AutoDoc Adapter - Projektplan
 
-## 📊 FEATURE-ANALYSE: AutoDoc Adapter (Final Version)
+## Vision
 
-### 🎯 Aktueller Plan ist GUT - aber hier sind Verbesserungen:
-
-#### ✅ Was bleiben sollte (Kernwert):
-- 4 Zielgruppen-Profile ✓ (unbedingt behalten)
-- Automatische Discovery ✓ (Alleinstellungsmerkmal)
-- Kapitelstruktur ✓ (macht es intelligent)
-- Manuelle Ergänzungen ✓ (für Individualität)
-
-#### ❌ Was du weglassen solltest:
-- Mermaid-Diagramme → Zu komplex, Nice-to-have
-- PDF von Anfang an → HTML reicht, PDF später
-- Zu viele Kapitel → 7 sind zu viel, 4-5 reichen
-
-#### 🔍 WICHTIGE FEATURES DIE FEHLEN:
-1. **Versionsverfolgung** ⭐⭐⭐
-   - Diff zwischen Dokumentationen
-   - "Was hat sich geändert?"
-   - Historie mit Zeitstempeln
-
-2. **Automatische Generierung** ⭐⭐⭐
-   - Zeitgesteuert (cron-like)
-   - Event-basiert (nach Adapter-Änderungen)
-   - Backup-Integration
-
-3. **Adapter-Integrationen** ⭐⭐
-   - Backup-Adapter: Doku mit Backup speichern
-   - History-Adapter: Längere Historie
-   - Notification-Adapter: Benachrichtigung bei neuer Doku
-
-4. **Mehrsprachigkeit** ⭐⭐
-   - Automatische Spracherkennung
-   - Lokalisierte Templates
-   - Internationaler Appeal
-
-5. **API für Entwickler** ⭐⭐
-   - REST-API für andere Adapter
-   - SDK für Integration
-   - Webhook-Support
-
-#### 💡 NEUE FEATURE-IDEEEN (Nice-to-have):
-**Smart Home Fokus:**
-- Raum-basierte Dokumentation
-- Alexa/Google Home Integration
-- Geräte-Gruppierungen
-
-**Troubleshooting:**
-- Automatische Fehleranalyse
-- Health-Check Integration
-- Problemlösungsvorschläge
-
-**Analytics:**
-- Nutzungsstatistiken
-- Adapter-Popularität
-- System-Health-Trends
-
-#### 🏆 EMPFOHLENES FINAL FEATURE-SET:
-
-**Must-Have (v1.0):**
-- ✅ 3 Profile (Admin, User, Onboarding)
-- ✅ Markdown + HTML
-- ✅ Automatische Discovery
-- ✅ 4-5 Kernkapitel
-- ✅ Manuelle Ergänzungen
-- ✅ Versionsverfolgung
-- ✅ Automatische Generierung
-
-**Should-Have (v1.x):**
-- ✅ Adapter-Integrationen
-- ✅ Mehrsprachigkeit
-- ✅ Developer API
-
-**Nice-to-Have (v2.x):**
-- PDF-Export
-- Templates/Customization
-- Troubleshooting-Assistent
-- Analytics
-
-**Never (zu komplex):**
-- ❌ Mermaid-Diagramme
-- ❌ Kollaborative Features
-- ❌ Mobile-App
+AutoDoc ist ein ioBroker-Adapter, der aus einer Installation automatisch eine lesbare,
+strukturierte und ständig neu erzeugbare Dokumentation macht. Der Mehrwert liegt darin,
+dass man endlich einen aktuellen Überblick über ein oft sehr komplexes System bekommt,
+ohne alles manuell pflegen zu müssen — auch nach Monaten noch erklärbar, für sich selbst,
+für Familie, Mitbewohner oder bei Migrationen.
 
 ## Technische Grundlagen
-- **Sprache**: JavaScript (gewählt beim ioBroker Creator - Standard und empfohlen)
-- **Admin UI**: JSON/jsonConfig (gewählt beim ioBroker Creator - gute Wahl für Konfiguration)
+
+- **Sprache**: JavaScript (ioBroker Creator Standard)
+- **Admin UI**: JSON/jsonConfig
 - **Framework**: @iobroker/create-adapter v3.1.2
 - **Node.js**: Version 22
-- **Anpassbarkeit**: Sprache und Admin-UI können später noch geändert werden, erfordert aber Refaktorierung
-
-### Anmerkung zu ioBroker Creator Wahl:
-- **JavaScript**: ✅ Perfekt für ioBroker Adapter - keine Probleme
-- **JSON Admin UI**: ✅ Gute Wahl - einfach zu handhaben, ausreichend für unsere Bedürfnisse
-- **Fallback Optionen**: Bei Bedarf kann später auf React UI gewechselt werden, aber JSON reicht für v1.0
-
-## Kernfeatures
-- Automatische Discovery von Adapterinstanzen, Hosts, Systemmetadaten und State-Objekten
-- Generierung von Dokumentation per Button / Aktion
-- Export als Markdown und HTML
-- Vier Zielgruppenprofile: admin, familie, gaeste, onboarding
-- Strukturierte Kapitel: Projekt, System, Adapter, Anhang
-- Manuelle Ergänzungen aus Konfiguration
-- Dateiausgabe über ioBroker `/files`, keine großen Dokumente als State-Strings speichern
-- Versionsverfolgung / Historie der Dokumentation
-- Optional: automatische, zeitgesteuerte Generierung
-
-## Wichtige Referenzen
-- [ioBroker AI Developer Guide](https://github.com/Jey-Cee/iobroker-ai-developer-guide) - Best Practices für saubere Adapter-Entwicklung
-- [Adapter Creator](https://github.com/ioBroker/create-adapter) - Offizielles Tool für neue Adapter
-- [Adapter Checker](https://adapter-check.iobroker.in/) - Validierung vor Einreichung
-
-## Repository-Status
-- **GitHub Repository**: [crunchip77/ioBroker.autodoc](https://github.com/crunchip77/ioBroker.autodoc)
-- **Aktueller Stand**: Der Code vor Beginn der Refaktorierung ist bereits im GitHub-Repository committet
-- **Branch-Strategie**: Hauptentwicklung auf `main` branch, feature branches für größere Änderungen
-- **Versionierung**: Semantic versioning (v1.0.0 für erste stabile Version)
+- **Repository**: [crunchip77/ioBroker.autodoc](https://github.com/crunchip77/ioBroker.autodoc)
 
 ## Entwicklungs-Umgebung
-- **IDE**: Visual Studio Code auf Windows-Rechner
-- **Testsystem**: ioBroker läuft auf Unraid-Server (separat vom Produktivsystem)
-- **Lokaler Testserver**: Nicht vorhanden auf Windows-Rechner
-- **Deployment-Workflow**: 
-  1. Entwicklung in VS Code
-  2. Push zu GitHub-Repository
-  3. Installation/Test vom Unraid-Testsystem aus
-- **Test-Setup**: Adapter wird über GitHub-Installation auf Test-iobroker getestet
 
-## Phase 1 - MVP
-1. Stabilisierung der aktuellen Discovery-Logik
-2. Umstellung auf filebasierten Export statt Dokumente in States
-3. English logging und ioBroker Creator Compliance überprüfen
-4. Modularisierung: `lib/` für Discovery, Modell, Rendering
-5. Markdown Rendering mit einer einfachen Kapitelstruktur
-6. `admin/jsonConfig.json5` + i18n für Konfiguration
+- **IDE**: Visual Studio Code auf Windows
+- **Testsystem**: ioBroker auf Unraid-Server (separat vom Produktivsystem)
+- **Deployment**: Entwicklung → GitHub Push → Installation auf Testserver
 
-## Phase 2 - Ausbau
-1. Profil-konformes Rendering für mindestens admin und ein allgemeines User-Profil
-2. HTML-Rendering mit Navigation
-3. Konfiguration von Filtern und Ausgabeoptionen
-4. Versionshistorie und Dokumentations-Historie speichern
-5. Automatische Generierung (timer / events)
+## Wichtige Referenzen
 
-## Phase 3 - Erweiterung
-1. Vollständige Zielgruppenprofile für `familie`, `gaeste` und `onboarding`
-2. Mehrsprachigkeit in Templates
-3. API / Webhook-Schnittstelle für andere Adapter
-4. Optionaler PDF-Export
-5. Erweiterte Dokumentvorlagen / Customization
+- [ioBroker AI Developer Guide](https://github.com/Jey-Cee/iobroker-ai-developer-guide)
+- [Adapter Creator](https://github.com/ioBroker/create-adapter)
+- [Adapter Checker](https://adapter-check.iobroker.in/)
 
-## Nicht für v1.0
-- Mermaid-Diagramme
-- Mobile App
-- Collaboration-Features
-- PDF als Pflichtformat
+---
 
-## Erfolgskriterien für v1.0
-- Funktionierender Knopfdruck-Export
-- Markdown-Datei wird zuverlässig erzeugt und gespeichert
-- Admin UI zur Konfiguration vorhanden
-- Adapter ist ioBroker-kompatibel und prüfbar
-- Modulstruktur statisch und testbar
+## Phase 1 — Basis ✅ ABGESCHLOSSEN
+
+- Modularisierung: `lib/discovery.js`, `lib/documentModel.js`, `lib/markdownRenderer.js`
+- Dateibasierter Export: Markdown, HTML, JSON nach `/files/autodoc.0/`
+- Admin UI: `jsonConfig.json5` + i18n (EN, DE)
+- Drei Zielgruppenprofile: Admin, User, Onboarding
+- Adapter-Beschreibungen aus ioBroker-Metadaten (`common.desc`, `common.titleLang`)
+- Versionsverfolgung mit Diff und Changelog
+- Automatische Generierung: Startup, Timer, Event-basiert (30s Debounce)
+- HTML-Renderer mit Sidebar-Navigation, Stat-Cards, profil-bewusstem Layout
+
+---
+
+## Phase 2 — Inhalt ← WIR SIND HIER
+
+Der Sprung von "Adapter-Inventar" zu echter "System-Dokumentation".
+Alles was den Nutzer befähigt zu verstehen **wie sein System aufgebaut ist**.
+
+### 2.1 Räume und Geräte
+- `enum.rooms` und `enum.functions` aus ioBroker auslesen
+- Welche Geräte/Datenpunkte sind welchem Raum zugeordnet
+- Welche Funktionen (Licht, Heizung, Sicherheit...) sind definiert
+- Räume mit ihren Geräten als eigenes Kapitel in der Dokumentation
+- Objekte ohne Raum-Zuordnung als Wartungshinweis markieren
+
+### 2.2 Skript-Dokumentation
+- Alle Skripte aus `script.js.*` auslesen (JavaScript + Blockly)
+- Name, Status (aktiv/inaktiv), Beschreibung (falls vorhanden)
+- Trigger-Typ soweit erkennbar (subscribe, schedule, on-start)
+- Skripte ohne Beschreibung als Wartungshinweis markieren
+
+### 2.3 Wartungs- und Diagnosehilfe
+- Instanzen ohne zugewiesenen Raum
+- Skripte ohne Beschreibung
+- Deaktivierte Instanzen die schon länger inaktiv sind
+- Objekte mit unklaren oder generischen Namen
+- Einfache Checkliste: "Was fehlt in deiner Dokumentation?"
+
+### 2.4 Such- und Filterfunktion im HTML
+- Clientseitiges JavaScript im generierten HTML
+- Suchfeld das Adapter, Räume, Skripte durchsucht
+- Kein Server nötig, funktioniert in der heruntergeladenen Datei
+
+---
+
+## Phase 3 — Tiefe (aufwändig, aber machbar)
+
+### 3.1 Einfache Abhängigkeitsanalyse
+- Welche Skripte referenzieren welche States (Regex-basiert, kein vollständiges Parsing)
+- Welche Adapter schreiben in welche Datenpunkt-Namespaces
+- Darstellung als lesbarer Text, keine Graphen
+
+### 3.2 Menschenlesbare Dokumentation (KI-optional)
+- **Weg A (Standard)**: Beschreibungstext aus Metadaten + strukturierte Kapitel mit Kontext
+- **Weg B (optional)**: Claude API — wenn API-Key konfiguriert, wird Fließtext generiert
+  - Opt-in per Checkbox im Admin-UI + API-Key-Feld
+  - Klare Kennzeichnung als "KI-unterstützt"
+  - Kosten: ca. 1–3 Cent pro Generierung (Haiku-Modell)
+
+### 3.3 Notifications
+- `sendTo` an Telegram, Email, Pushover wenn neue Doku generiert
+- Konfigurierbar: welcher Adapter, welche Instanz, welche Nachricht
+
+---
+
+## Phase 4 — Erweiterungen (Nice-to-Have)
+
+- PDF-Export
+- Backup-Adapter Integration (Doku mit Backup speichern)
+- Mehrsprachige Templates (Kapitelüberschriften, Statusmeldungen)
+- Automatische Spracherkennung aus `system.config`
+- Customizable Templates
+
+---
+
+## Bewusst weggelassen
+
+| Feature | Grund |
+|---|---|
+| Mermaid-Diagramme / Graphen | Zu komplex, andere Tools besser geeignet |
+| Vollständiges Code-Parsing für Abhängigkeiten | Fehleranfällig, unverhältnismäßiger Aufwand |
+| REST-API / Webhooks | Wer JSON hat, kann selbst damit arbeiten — kein Kernnutzen |
+| Alexa/Google Home Integration | Kein Bezug zur Dokumentation |
+| Analytics/Adapter-Popularität | Kein Dokumentations-Feature |
+| Mobile App | Außerhalb des Scope |
+| Kollaborative Features | Außerhalb des Scope |
+
+---
+
+## Ausbaustufen Zusammenfassung
+
+| Version | Inhalt |
+|---|---|
+| **v0.x** ✅ | Basis: Adapter-Inventar, Export, Profile, Versionierung |
+| **v1.0** | Phase 2: Räume, Skripte, Wartungshinweise, Suche im HTML |
+| **v1.x** | Phase 3: Abhängigkeitsanalyse, KI-Option, Notifications |
+| **v2.x** | Phase 4: PDF, Backup-Integration, erweiterte Templates |

@@ -143,18 +143,24 @@ The HTML file is a **standalone** document — no internet connection required, 
 
 ## Roadmap
 
-### v1.x — Should-Have
-- **Notification adapter integration** — send a message when new documentation is generated (Telegram, Pushover, Email)
-- **Backup adapter integration** — attach documentation to backups
-- **History adapter integration** — extended long-term documentation history
-- **Multilingual templates** — localized section headings and content throughout
-- **Developer API** — REST endpoint and webhook support for third-party integrations
+### v1.0 — Content (next)
+The step from "adapter inventory" to real system documentation:
 
-### v2.x — Nice-to-Have
-- **PDF export** — generate a print-ready PDF alongside HTML/Markdown
-- **Custom templates** — bring-your-own layout and chapter structure
-- **Troubleshooting assistant** — automated health checks with suggested fixes
-- **Analytics** — adapter usage statistics and system health trends
+- **Rooms & devices** — reads `enum.rooms` and `enum.functions` from ioBroker, documents which devices belong to which room
+- **Script documentation** — lists all JavaScript/Blockly scripts with name, status, description and trigger type
+- **Maintenance hints** — flags instances without room assignment, scripts without description, inactive adapters
+- **Search in HTML** — client-side search field in the generated HTML file, no server needed
+
+### v1.x — Depth
+- **Dependency analysis** — which scripts reference which states (regex-based, readable text output)
+- **AI-enhanced documentation** (opt-in) — optional Claude API integration for human-readable narrative text; requires API key, approx. 1–3 ct per generation
+- **Notifications** — send a message via Telegram, Email or Pushover when new documentation is generated
+
+### v2.x — Extensions
+- **PDF export**
+- **Backup adapter integration** — save documentation together with backups
+- **Multilingual templates** — localized chapter headings and status texts
+- **Custom templates**
 
 ## Changelog
 

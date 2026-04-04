@@ -1,73 +1,98 @@
 # AutoDoc Adapter - TODO-Liste
 
 ## Wichtige Referenzen
-- [ioBroker AI Developer Guide](https://github.com/Jey-Cee/iobroker-ai-developer-guide) - Best Practices für saubere Adapter-Entwicklung konsultieren und befolgen
-- [Adapter Creator](https://github.com/ioBroker/create-adapter) - Offizielles Tool für neue Adapter
-- [Adapter Checker](https://adapter-check.iobroker.in/) - Validierung vor Einreichung
+- [ioBroker AI Developer Guide](https://github.com/Jey-Cee/iobroker-ai-developer-guide)
+- [Adapter Creator](https://github.com/ioBroker/create-adapter)
+- [Adapter Checker](https://adapter-check.iobroker.in/)
 
-## 🏆 FINAL FEATURE-SET (Priorisiert)
+---
 
-### Must-Have (v1.0): ✅ VOLLSTÄNDIG
-- [x] 3 Profile (Admin, User, Onboarding) implementieren
-- [x] Markdown + HTML Export
-- [x] Automatische Discovery (Adapter, States, System)
-- [x] 4-5 Kernkapitel strukturieren
-- [x] Manuelle Ergänzungen aus Konfiguration
-- [x] Versionsverfolgung mit Diff-Funktion
-- [x] Automatische Generierung (zeitgesteuert + event-basiert)
+## Phase 1 — Basis ✅ ABGESCHLOSSEN
 
-### Should-Have (v1.x):
-- [ ] Adapter-Integrationen (Backup, History, Notification)
-- [ ] Mehrsprachigkeit (Templates + UI)
-- [ ] Developer API (REST + Webhooks)
+- [x] Modularisierung: `lib/discovery.js`, `lib/documentModel.js`, `lib/markdownRenderer.js`
+- [x] Dateibasierter Export: Markdown, HTML, JSON nach `/files/autodoc.0/`
+- [x] Admin UI: `jsonConfig.json5` + i18n EN + DE
+- [x] Drei Profile: Admin, User, Onboarding — profil-bewusstes Rendering
+- [x] Adapter-Beschreibungen aus ioBroker-Metadaten (`common.desc`, `common.titleLang`)
+- [x] Versionsverfolgung mit Diff und Changelog (`lib/versionTracker.js`)
+- [x] Automatische Generierung: Startup, Timer, Event-basiert (30s Debounce)
+- [x] HTML-Renderer mit Sidebar, Stat-Cards, Adapter-Cards je Profil
+- [x] `lib/i18n.js` mit EN, DE, FR
+- [x] Lokale Zeitstempel für Dateinamen
+- [x] Lint-sauber (prettier + eslint)
 
-### Nice-to-Have (v2.x):
+---
+
+## Phase 2 — Inhalt ← NÄCHSTER SCHRITT
+
+### 2.1 Räume und Geräte
+- [ ] `enum.rooms` aus ioBroker auslesen (Discovery erweitern)
+- [ ] `enum.functions` aus ioBroker auslesen
+- [ ] Räume mit zugeordneten Geräten/Datenpunkten im DocumentModel abbilden
+- [ ] Räume-Kapitel in Markdown- und HTML-Renderer einbauen
+- [ ] Objekte ohne Raum-Zuordnung erfassen → Basis für Wartungshinweise
+
+### 2.2 Skript-Dokumentation
+- [ ] Skripte aus `script.js.*` auslesen (Discovery erweitern)
+- [ ] Name, Status (aktiv/inaktiv), Beschreibung, Trigger-Typ erfassen
+- [ ] Skript-Kapitel in Markdown- und HTML-Renderer einbauen
+- [ ] Admin-Profil: vollständige Skriptliste mit Details
+- [ ] User/Onboarding-Profil: nur aktive Skripte, vereinfacht
+
+### 2.3 Wartungs- und Diagnosehilfe
+- [ ] Instanzen ohne Raum-Zuordnung markieren
+- [ ] Skripte ohne Beschreibung markieren
+- [ ] Deaktivierte Instanzen gesondert hervorheben
+- [ ] Wartungs-Kapitel in Dokumentation einbauen (nur Admin-Profil)
+- [ ] Einfache Checkliste: "Was fehlt in deiner Dokumentation?"
+
+### 2.4 Such-/Filterfunktion im HTML
+- [ ] Suchfeld in HTML-Output einbauen (clientseitiges JS)
+- [ ] Adapter, Räume, Skripte durchsuchbar machen
+- [ ] Funktioniert ohne Server in der heruntergeladenen Datei
+
+### 2.5 UX-Verbesserungen (parallel umsetzbar)
+- [ ] Direktlink auf letzte HTML-Datei im Admin-UI
+- [ ] Automatische Spracherkennung aus `system.config` als Fallback
+
+---
+
+## Phase 3 — Tiefe
+
+### 3.1 Einfache Abhängigkeitsanalyse
+- [ ] Skripte nach State-Referenzen durchsuchen (Regex-basiert)
+- [ ] Welche Adapter schreiben in welche Namespaces
+- [ ] Als lesbarer Abschnitt in der Dokumentation (kein Graph)
+
+### 3.2 Menschenlesbare Dokumentation
+- [ ] Weg A: Strukturierte Einleitungstexte auf Basis der gesammelten Daten
+- [ ] Weg B (opt-in): Claude API Integration
+  - [ ] Checkbox + API-Key-Feld in Admin-UI
+  - [ ] `lib/aiEnhancer.js` mit Anthropic SDK
+  - [ ] Fließtext-Generierung für Systemeinleitung + Adapter-Zusammenfassung
+  - [ ] Klare Kennzeichnung als "KI-unterstützt" in der Ausgabe
+
+### 3.3 Notifications
+- [ ] `sendTo` an Telegram/Email/Pushover nach Generierung
+- [ ] Konfigurierbar: Adapter-Instanz + Nachrichtentext in Admin-UI
+
+---
+
+## Phase 4 — Erweiterungen (Nice-to-Have)
+
 - [ ] PDF-Export
-- [ ] Templates/Customization
-- [ ] Troubleshooting-Assistent
-- [ ] Analytics (Nutzungsstatistiken)
+- [ ] Backup-Adapter Integration (Doku mit Backup speichern)
+- [ ] Mehrsprachige Templates (Kapitelüberschriften, Statusmeldungen)
+- [ ] Customizable Templates
 
-### Never (zu komplex):
-- ❌ Mermaid-Diagramme
+---
+
+## Bewusst weggelassen
+
+- ❌ Mermaid-Diagramme / Graphen
+- ❌ Vollständiges Code-Parsing für Abhängigkeiten
+- ❌ REST-API / Webhooks
+- ❌ Alexa/Google Home Integration
+- ❌ Analytics/Adapter-Popularität
+- ❌ Mobile App
 - ❌ Kollaborative Features
-- ❌ Mobile-App
-
-## Priorität 1: Basis umsetzen (Must-Have Foundation) ✅ TEILWEISE ABGESCHLOSSEN
-- [x] `main.js` so anpassen, dass komplette Dokumente nicht als große States gespeichert werden
-- [x] Datei-Export implementieren: Markdown und HTML nach `/files/<adaptername>/`
-- [x] `admin/jsonConfig.json5` mit grundlegender Konfiguration anlegen
-- [x] `admin/i18n/en.json` und `admin/i18n/de.json` für UI-Texte erstellen
-- [x] `info.connection` korrekt setzen
-- [x] Logs auf Englisch umstellen
-- [x] `lib/` anlegen und erste Module einrichten
-  - [x] `lib/discovery.js`
-  - [x] `lib/documentModel.js`
-  - [x] `lib/markdownRenderer.js`
-
-## Priorität 2: Kernfeatures (Must-Have Core) ✅ ABGESCHLOSSEN
-- [x] 3 Zielgruppenprofile im Adapter-Code definieren (Admin, User, Onboarding)
-- [x] Profil-basiertes Rendering implementieren (markdownRenderer.js)
-- [x] Kapitelstruktur mit 4-5 Kernkapiteln umsetzen (TOC per Profil in markdownRenderer)
-- [x] Manual Context aus Konfiguration einbinden (config.manualContext JSON-Feld)
-- [x] Filteroptionen (`onlyEnabledInstances`, `maxDocumentedInstances`) verwenden
-- [x] Versionsverfolgung der generierten Dokumente (Diff + Historie via versionTracker.js)
-- [x] Automatische Generierung: `autoGenerateOnStart` + zeitgesteuert (`autoGenerateInterval`)
-- [x] Event-basierte Generierung (nach Adapter-Änderungen, `autoGenerateOnEvents` + 30s Debounce)
-
-## Priorität 3: Integrationen (Should-Have)
-- [ ] Backup-Adapter Integration: Doku mit Backup speichern
-- [ ] History-Adapter Integration: Längere Historie
-- [ ] Notification-Adapter Integration: Benachrichtigung bei neuer Doku
-- [ ] Mehrsprachige Templates implementieren
-- [ ] Automatische Spracherkennung
-- [ ] Developer API (REST-API für andere Adapter)
-- [ ] Webhook-Support für Integrationen
-
-## Priorität 4: Erweiterungen (Nice-to-Have)
-- [x] HTML-Export mit Navigation und Basis-Layout
-- [ ] PDF-Export (optional)
-- [ ] Templates/Customization System
-- [ ] Troubleshooting-Assistent
-- [ ] Analytics: Nutzungsstatistiken
-- [ ] Raum-basierte Dokumentation
-- [ ] Geräte-Gruppierungen
