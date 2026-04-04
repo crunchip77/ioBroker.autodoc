@@ -32,19 +32,19 @@
 - ❌ Kollaborative Features
 - ❌ Mobile-App
 
-## Priorität 1: Basis umsetzen (Must-Have Foundation)
-- [ ] `main.js` so anpassen, dass komplette Dokumente nicht als große States gespeichert werden
-- [ ] Datei-Export implementieren: Markdown und HTML nach `/files/<adaptername>/`
-- [ ] `admin/jsonConfig.json5` mit grundlegender Konfiguration anlegen
-- [ ] `admin/i18n/en.json` und `admin/i18n/de.json` für UI-Texte erstellen
-- [ ] `info.connection` korrekt setzen
-- [ ] Logs auf Englisch umstellen
-- [ ] `lib/` anlegen und erste Module einrichten
-  - `lib/discovery.js`
-  - `lib/documentModel.js`
-  - `lib/markdownRenderer.js`
+## Priorität 1: Basis umsetzen (Must-Have Foundation) ✅ TEILWEISE ABGESCHLOSSEN
+- [x] `main.js` so anpassen, dass komplette Dokumente nicht als große States gespeichert werden
+- [x] Datei-Export implementieren: Markdown und HTML nach `/files/<adaptername>/`
+- [x] `admin/jsonConfig.json5` mit grundlegender Konfiguration anlegen
+- [x] `admin/i18n/en.json` und `admin/i18n/de.json` für UI-Texte erstellen
+- [x] `info.connection` korrekt setzen
+- [x] Logs auf Englisch umstellen
+- [x] `lib/` anlegen und erste Module einrichten
+  - [x] `lib/discovery.js`
+  - [x] `lib/documentModel.js`
+  - [x] `lib/markdownRenderer.js`
 
-## Priorität 2: Kernfeatures (Must-Have Core)
+## Priorität 2: Kernfeatures (Must-Have Core) 🔄 NÄCHSTER SCHRITT
 - [ ] 3 Zielgruppenprofile im Adapter-Code definieren (Admin, User, Onboarding)
 - [ ] Profil-basiertes Rendering implementieren
 - [ ] Kapitelstruktur mit 4-5 Kernkapiteln umsetzen

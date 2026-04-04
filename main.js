@@ -11,11 +11,10 @@ const DocumentModel = require('./lib/documentModel');
 const MarkdownRenderer = require('./lib/markdownRenderer');
 
 const PROFILE_ADMIN = 'admin';
-const PROFILE_FAMILY = 'familie';
-const PROFILE_GUESTS = 'gaeste';
+const PROFILE_USER = 'user';
 const PROFILE_ONBOARDING = 'onboarding';
 
-const AVAILABLE_PROFILES = [PROFILE_ADMIN, PROFILE_FAMILY, PROFILE_GUESTS, PROFILE_ONBOARDING];
+const AVAILABLE_PROFILES = [PROFILE_ADMIN, PROFILE_USER, PROFILE_ONBOARDING];
 
 const DOCUMENT_SCHEMA_VERSION = '1.0.0';
 
@@ -251,30 +250,6 @@ class Autodoc extends utils.Adapter {
 				write: false,
 				def: 0,
 			},
-			'documentation.stateSummary': {
-				name: 'Generated state object summary',
-				type: 'string',
-				role: 'json',
-				read: true,
-				write: false,
-				def: '{}',
-			},
-			'documentation.markdown': {
-				name: 'Generated markdown documentation',
-				type: 'string',
-				role: 'text',
-				read: true,
-				write: false,
-				def: '',
-			},
-			'documentation.json': {
-				name: 'Generated JSON documentation',
-				type: 'string',
-				role: 'json',
-				read: true,
-				write: false,
-				def: '{}',
-			},
 		};
 
 		for (const [id, common] of Object.entries(definitions)) {
@@ -292,7 +267,7 @@ class Autodoc extends utils.Adapter {
 	 * @returns {string} Active profile.
 	 */
 	getActiveProfile() {
-		const rawProfile = typeof this.config.targetProfile === 'string' ? this.config.targetProfile.trim() : '';
+		const rawProfile = typeof this.config.profile === 'string' ? this.config.profile.trim() : '';
 
 		return AVAILABLE_PROFILES.includes(rawProfile) ? rawProfile : PROFILE_ADMIN;
 	}
@@ -500,7 +475,10 @@ class Autodoc extends utils.Adapter {
 					return {
 						id: obj._id,
 						name,
-						title: obj.common.titleLang?.en || obj.common.title || name || obj._id,
+						title:
+							typeof obj.common.titleLang === 'object' && typeof obj.common.titleLang?.en === 'string'
+								? obj.common.titleLang.en
+								: obj.common.title || name || obj._id,
 						version: obj.common.version || 'unknown',
 						enabled: obj.common.enabled === true,
 						mode: obj.common.mode || 'daemon',
@@ -581,15 +559,15 @@ class Autodoc extends utils.Adapter {
 			{
 				id: 'important-adapters',
 				title: 'Wichtige Adapter und Dienste',
-				audiences: [PROFILE_ADMIN, PROFILE_FAMILY, PROFILE_ONBOARDING],
+				audiences: [PROFILE_ADMIN, PROFILE_USER, PROFILE_ONBOARDING],
 				summary: 'Priorisierte Adapter statt vollständiger Rohdatenliste.',
 				items: ['Top-Adapter', 'Rollen', 'Hosts', 'Bedeutung'],
 			},
 			{
 				id: 'daily-use',
 				title: 'Bedienung im Alltag',
-				audiences: [PROFILE_FAMILY, PROFILE_GUESTS, PROFILE_ONBOARDING],
-				summary: 'Alltagssicht für Familie, Gäste und neue Nutzer.',
+				audiences: [PROFILE_USER, PROFILE_ONBOARDING],
+				summary: 'Alltagssicht für Nutzer und neue Anwender.',
 				items: ['Panels', 'Sprachsteuerung', 'Licht', 'Heizung'],
 			},
 			{
@@ -987,17 +965,34 @@ class Autodoc extends utils.Adapter {
 			await this.setStateAsync('info.lastTrigger', { val: docModel.meta.trigger, ack: true });
 			await this.setStateAsync('info.lastGeneration', { val: docModel.meta.generatedAt, ack: true });
 			await this.setStateAsync('info.systemLanguage', { val: docModel.meta.language, ack: true });
-			await this.setStateAsync('info.instanceCount', { val: docModel.system.statistics.instanceCount, ack: true });
-			await this.setStateAsync('info.enabledInstanceCount', { val: docModel.system.statistics.enabledInstanceCount, ack: true });
-			await this.setStateAsync('info.disabledInstanceCount', { val: docModel.system.statistics.disabledInstanceCount, ack: true });
+			await this.setStateAsync('info.instanceCount', {
+				val: docModel.system.statistics.instanceCount,
+				ack: true,
+			});
+			await this.setStateAsync('info.enabledInstanceCount', {
+				val: docModel.system.statistics.enabledInstanceCount,
+				ack: true,
+			});
+			await this.setStateAsync('info.disabledInstanceCount', {
+				val: docModel.system.statistics.disabledInstanceCount,
+				ack: true,
+			});
 			await this.setStateAsync('info.instanceHosts', { val: hostSummaryJson, ack: true });
 			await this.setStateAsync('info.hostName', { val: docModel.system.primaryHost.name, ack: true });
 			await this.setStateAsync('info.hostPlatform', { val: docModel.system.primaryHost.platform, ack: true });
 			await this.setStateAsync('info.hostVersion', { val: docModel.system.primaryHost.version, ack: true });
-			await this.setStateAsync('info.totalStateObjects', { val: docModel.appendices.stateSummary.total, ack: true });
-			await this.setStateAsync('info.writableStateObjects', { val: docModel.appendices.stateSummary.writable, ack: true });
-			await this.setStateAsync('info.readonlyStateObjects', { val: docModel.appendices.stateSummary.readonly, ack: true });
-
+			await this.setStateAsync('info.totalStateObjects', {
+				val: docModel.appendices.stateSummary.total,
+				ack: true,
+			});
+			await this.setStateAsync('info.writableStateObjects', {
+				val: docModel.appendices.stateSummary.writable,
+				ack: true,
+			});
+			await this.setStateAsync('info.readonlyStateObjects', {
+				val: docModel.appendices.stateSummary.readonly,
+				ack: true,
+			});
 		} catch (error) {
 			this.log.error(`Error persisting documentation: ${error.message}`);
 			throw error;
