@@ -437,7 +437,9 @@ class Autodoc extends utils.Adapter {
 	 */
 	async persistDocumentation(docModel, markdown, html, json) {
 		try {
-			const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+			const now = new Date();
+			const pad = n => String(n).padStart(2, '0');
+			const timestamp = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}T${pad(now.getHours())}-${pad(now.getMinutes())}-${pad(now.getSeconds())}`;
 			const basePath = `${this.namespace}.files`;
 
 			// Save Markdown file
