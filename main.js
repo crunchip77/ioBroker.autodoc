@@ -926,7 +926,7 @@ class Autodoc extends utils.Adapter {
 	buildSummary(docModel) {
 		const stateSummary = docModel.appendices.stateSummary;
 
-		return `Dokumentation für "${docModel.project.name}" erzeugt: ${docModel.system.statistics.instanceCount} Instanzen, ${docModel.system.statistics.enabledInstanceCount} aktiviert, ${docModel.system.statistics.disabledInstanceCount} deaktiviert, ${stateSummary.total} State-Objekte (${stateSummary.writable} schreibbar, ${stateSummary.readonly} nur lesbar).`;
+		return `Dokumentation für "${docModel.system.projectName}" erzeugt: ${docModel.system.statistics.instanceCount} Instanzen, ${docModel.system.statistics.enabledInstanceCount} aktiviert, ${docModel.system.statistics.disabledInstanceCount} deaktiviert, ${stateSummary.total} State-Objekte (${stateSummary.writable} schreibbar, ${stateSummary.readonly} nur lesbar).`;
 	}
 
 	/**
