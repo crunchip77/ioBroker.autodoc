@@ -130,6 +130,22 @@ class Autodoc extends utils.Adapter {
 				write: false,
 				def: '',
 			},
+			'documentation.markdown': {
+				name: 'Last generated markdown content',
+				type: 'string',
+				role: 'text',
+				read: true,
+				write: false,
+				def: '',
+			},
+			'documentation.json': {
+				name: 'Last generated JSON content',
+				type: 'string',
+				role: 'json',
+				read: true,
+				write: false,
+				def: '{}',
+			},
 			'documentation.stateSummary': {
 				name: 'State objects summary (JSON)',
 				type: 'string',
@@ -959,6 +975,8 @@ class Autodoc extends utils.Adapter {
 
 			await this.setStateAsync('documentation.lastMarkdownFile', { val: markdownFilename, ack: true });
 			await this.setStateAsync('documentation.lastJsonFile', { val: jsonFilename, ack: true });
+			await this.setStateAsync('documentation.markdown', { val: markdown, ack: true });
+			await this.setStateAsync('documentation.json', { val: json, ack: true });
 			await this.setStateAsync('documentation.stateSummary', { val: stateSummaryJson, ack: true });
 
 			await this.setStateAsync('info.summary', { val: summary, ack: true });
