@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "autodoc",
-        "version": "0.0.1",
+        "version": "0.1.0",
         "news": {
+            "0.1.0": {
+                "en": "Rooms & functions, script documentation, maintenance hints",
+                "de": "Räume & Funktionen, Skript-Dokumentation, Wartungshinweise",
+                "ru": "Комнаты и функции, документация скриптов, советы по обслуживанию",
+                "pt": "Quartos e funções, documentação de scripts, dicas de manutenção",
+                "nl": "Kamers en functies, scriptdocumentatie, onderhoudstips",
+                "fr": "Pièces et fonctions, documentation des scripts, conseils de maintenance",
+                "it": "Stanze e funzioni, documentazione degli script, suggerimenti di manutenzione",
+                "es": "Habitaciones y funciones, documentación de scripts, consejos de mantenimiento",
+                "pl": "Pokoje i funkcje, dokumentacja skryptów, wskazówki dotyczące konserwacji",
+                "uk": "Кімнати та функції, документація скриптів, поради з обслуговування",
+                "zh-cn": "房间和功能、脚本文档、维护提示"
+            },
             "0.0.1": {
                 "en": "initial release",
                 "de": "Erstveröffentlichung",
