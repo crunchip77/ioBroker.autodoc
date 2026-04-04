@@ -1112,9 +1112,7 @@ class Autodoc extends utils.Adapter {
 			const changelogEntry = this.versionTracker.buildChangelogEntry(version, changeData);
 			await this.versionTracker.appendChangelog(changelogEntry);
 
-			this.log.info(
-				`Documentation generated via ${trigger} (v${version}) - ${changeData.summary}`,
-			);
+			this.log.info(`Documentation generated via ${trigger} (v${version}) - ${changeData.summary}`);
 		} catch (error) {
 			this.log.error(`Error generating documentation: ${error.message}`);
 			throw error;
