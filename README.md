@@ -143,10 +143,10 @@ The HTML file is a **standalone** document — no internet connection required, 
 
 ## Roadmap
 
-### v1.0 — Content (next)
+### v1.0 — Content (in progress)
 The step from "adapter inventory" to real system documentation:
 
-- **Rooms & devices** — reads `enum.rooms` and `enum.functions` from ioBroker, documents which devices belong to which room
+- ✅ **Rooms & functions** — reads `enum.rooms` and `enum.functions`, documents which devices belong to which room
 - **Script documentation** — lists all JavaScript/Blockly scripts with name, status, description and trigger type
 - **Maintenance hints** — flags instances without room assignment, scripts without description, inactive adapters
 - **Search in HTML** — client-side search field in the generated HTML file, no server needed
@@ -163,6 +163,18 @@ The step from "adapter inventory" to real system documentation:
 - **Custom templates**
 
 ## Changelog
+
+### 0.1.0
+- Modular architecture: `lib/discovery.js`, `lib/documentModel.js`, `lib/markdownRenderer.js`, `lib/htmlRenderer.js`, `lib/versionTracker.js`, `lib/i18n.js`
+- File-based export: Markdown, HTML, and JSON to `/files/autodoc.0/`
+- Three documentation profiles: Admin, User, Onboarding with profile-aware content
+- HTML export with sidebar navigation, stat cards, and adapter cards
+- Adapter descriptions and titles from ioBroker metadata (`common.desc`, `common.titleLang`)
+- Version tracking with semantic versioning and changelog generation
+- Automatic generation: on startup, timer (configurable interval), event-based with 30 s debounce
+- i18n support: English, German, French
+- Rooms & functions chapter: reads `enum.rooms` and `enum.functions`, shows room assignments per profile
+- Admin UI via `jsonConfig.json5` with full i18n (EN, DE)
 
 ### 0.0.1
 - Initial release with Markdown/HTML/JSON export, three documentation profiles, automatic discovery, version tracking, event-based and scheduled auto-generation
