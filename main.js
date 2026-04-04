@@ -10,6 +10,7 @@ const Discovery = require('./lib/discovery');
 const DocumentModel = require('./lib/documentModel');
 const MarkdownRenderer = require('./lib/markdownRenderer');
 const I18n = require('./lib/i18n');
+const VersionTracker = require('./lib/versionTracker');
 
 const PROFILE_ADMIN = 'admin';
 const PROFILE_USER = 'user';
@@ -34,6 +35,7 @@ class Autodoc extends utils.Adapter {
 		this.documentModel = new DocumentModel(this);
 		this.i18n = new I18n();
 		this.markdownRenderer = new MarkdownRenderer(this, this.i18n);
+		this.versionTracker = new VersionTracker(this);
 
 		// Timer for periodic auto-generation
 		this.autoGenerateInterval = null;
@@ -297,6 +299,30 @@ class Autodoc extends utils.Adapter {
 				read: true,
 				write: false,
 				def: 0,
+			},
+			'versioning.latestVersion': {
+				name: 'Latest documentation version',
+				type: 'string',
+				role: 'text',
+				read: true,
+				write: false,
+				def: '',
+			},
+			'versioning.changeCount': {
+				name: 'Number of changes in latest version',
+				type: 'number',
+				role: 'value',
+				read: true,
+				write: false,
+				def: 0,
+			},
+			'versioning.changelog': {
+				name: 'Complete changelog history',
+				type: 'string',
+				role: 'json',
+				read: true,
+				write: false,
+				def: '[]',
 			},
 		};
 
@@ -1062,6 +1088,14 @@ class Autodoc extends utils.Adapter {
 			// Use modular document model building
 			const docModel = await this.documentModel.buildDocumentModel(rawData, trigger);
 
+			// Generate version for this documentation
+			const version = this.versionTracker.generateVersion();
+			docModel.meta.version = version;
+
+			// Version tracking: Compare with previous version
+			const previousDocModel = await this.versionTracker.getPreviousVersion();
+			const changeData = this.versionTracker.compareVersions(docModel, previousDocModel);
+
 			// Use modular markdown rendering
 			const markdown = this.markdownRenderer.renderMarkdown(docModel);
 
@@ -1071,7 +1105,16 @@ class Autodoc extends utils.Adapter {
 			// Persist documentation (now saves to files directly)
 			await this.persistDocumentation(docModel, markdown, json);
 
-			this.log.info(`Documentation generated via ${trigger}`);
+			// Store current version for next comparison
+			await this.versionTracker.storeCurrentVersion(docModel);
+
+			// Add changelog entry
+			const changelogEntry = this.versionTracker.buildChangelogEntry(version, changeData);
+			await this.versionTracker.appendChangelog(changelogEntry);
+
+			this.log.info(
+				`Documentation generated via ${trigger} (v${version}) - ${changeData.summary}`,
+			);
 		} catch (error) {
 			this.log.error(`Error generating documentation: ${error.message}`);
 			throw error;
