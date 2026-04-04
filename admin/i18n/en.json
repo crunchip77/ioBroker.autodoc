@@ -14,6 +14,8 @@
     "Optional notes, devices, adapters or special requirements": "Optional notes, devices, adapters or special requirements",
     "Generate documentation on adapter start": "Generate documentation on adapter start",
     "If enabled, a first documentation draft is created when the adapter starts": "If enabled, a first documentation draft is created when the adapter starts",
+    "Generate documentation on adapter changes": "Generate documentation on adapter changes",
+    "If enabled, documentation is regenerated automatically when adapters are installed, removed, or enabled/disabled (30 second debounce)": "If enabled, documentation is regenerated automatically when adapters are installed, removed, or enabled/disabled (30 second debounce)",
     "Auto-generate interval (hours)": "Auto-generate interval (hours)",
     "Automatically generate documentation every X hours (0 = disabled)": "Automatically generate documentation every X hours (0 = disabled)",
     "Only document enabled instances": "Only document enabled instances",

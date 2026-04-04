@@ -14,6 +14,8 @@
     "Optional notes, devices, adapters or special requirements": "Optionale Hinweise, Geräte, Adapter oder besondere Anforderungen",
     "Generate documentation on adapter start": "Dokumentation beim Start des Adapters erzeugen",
     "If enabled, a first documentation draft is created when the adapter starts": "Wenn aktiviert, wird beim Start des Adapters ein erster Dokumentationsentwurf erzeugt",
+    "Generate documentation on adapter changes": "Dokumentation bei Adapteränderungen erzeugen",
+    "If enabled, documentation is regenerated automatically when adapters are installed, removed, or enabled/disabled (30 second debounce)": "Wenn aktiviert, wird die Dokumentation automatisch neu erzeugt, wenn Adapter installiert, entfernt oder aktiviert/deaktiviert werden (30 Sekunden Verzögerung)",
     "Auto-generate interval (hours)": "Automatische Generierung Intervall (Stunden)",
     "Automatically generate documentation every X hours (0 = disabled)": "Automatisch Dokumentation alle X Stunden erzeugen (0 = deaktiviert)",
     "Only document enabled instances": "Nur aktivierte Instanzen dokumentieren",

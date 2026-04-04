@@ -88,6 +88,17 @@
             "lg": 12,
             "xl": 12
         },
+        "autoGenerateOnEvents": {
+            "type": "checkbox",
+            "label": "Generate documentation on adapter changes",
+            "help": "If enabled, documentation is regenerated automatically when adapters are installed, removed, or enabled/disabled (30 second debounce)",
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 12,
+            "lg": 12,
+            "xl": 12
+        },
         "autoGenerateInterval": {
             "type": "number",
             "label": "Auto-generate interval (hours)",
