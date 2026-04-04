@@ -13,7 +13,6 @@ const HtmlRenderer = require('./lib/htmlRenderer');
 const I18n = require('./lib/i18n');
 const VersionTracker = require('./lib/versionTracker');
 
-
 class Autodoc extends utils.Adapter {
 	/**
 	 * @param {object} [options] Adapter options.
