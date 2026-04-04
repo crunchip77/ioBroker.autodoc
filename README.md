@@ -19,7 +19,8 @@ The generated documentation is tailored to the selected target audience: technic
 ## Features
 
 - **Automatic Discovery** — scans all adapter instances, hosts, state objects and system metadata
-- **Three Target Profiles** — Admin, User/Family, Onboarding, each with different levels of detail
+- **Three Target Profiles** — Admin, User/Family, Onboarding, each with different language and level of detail
+- **Adapter Descriptions** — automatically reads adapter titles and descriptions from ioBroker metadata, no manual input needed, multilingual
 - **Markdown + HTML Export** — files saved directly to `/files/autodoc.0/`, readable in any browser
 - **Multilingual** — documentation language selectable: English, German (more via i18n)
 - **Version Tracking** — every generation is versioned (YYYY.MM.DD.HH), changes are detected and logged in a changelog
@@ -61,11 +62,13 @@ Open the adapter settings in the ioBroker admin UI.
 
 ### Documentation Profiles
 
-| Profile | Content |
-|---|---|
-| **admin** | Full detail — all instances, state statistics, hosts, troubleshooting, appendices |
-| **user** | Active adapters only, simplified status, manual context, basic troubleshooting |
-| **onboarding** | Quick Start section first, active adapters, manual context — no technical details |
+| Profile | Audience | Adapter presentation | Technical details |
+|---|---|---|---|
+| **admin** | System administrator | Technical name + description + instance list | Full — hosts, state stats, appendices |
+| **user** | Family members, regular users | Human-readable title + description, active adapters only | Minimal — status only |
+| **onboarding** | New users, guests | Human-readable title + description + friendly note | None |
+
+Each adapter's description is read directly from ioBroker metadata (`common.desc`, `common.titleLang`) in the configured documentation language — no manual input required.
 
 ## Usage
 
