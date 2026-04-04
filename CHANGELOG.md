@@ -1,6 +1,31 @@
 # CHANGELOG
 
+## 0.1.0 (2026-04-04)
+
+Phase 1 complete — adapter is fully functional with modular architecture,
+three documentation profiles, HTML export, version tracking, and i18n support.
+
+### Features
+- Modular architecture: `lib/discovery.js`, `lib/documentModel.js`, `lib/markdownRenderer.js`, `lib/htmlRenderer.js`, `lib/versionTracker.js`, `lib/i18n.js`
+- File-based export: Markdown, HTML, and JSON to `/files/autodoc.0/`
+- Three documentation profiles: Admin, User, Onboarding — each with profile-aware content and detail level
+- HTML export with sidebar navigation, stat cards, and adapter cards
+- Adapter descriptions and titles from ioBroker metadata (`common.desc`, `common.titleLang`)
+- Version tracking with semantic versioning and changelog generation
+- Automatic documentation generation: on startup, on timer (configurable interval), event-based with 30s debounce
+- i18n support with translations for English, German, and French
+- Local timestamps for generated file names
+- Admin UI via `jsonConfig.json5` with full i18n (EN, DE)
+
+### Fixes
+- Use local time instead of UTC for documentation file names
+- Lint-clean codebase (prettier + eslint)
+
+---
+
 ## 0.0.1 (2026-04-01)
+
+Initial adapter scaffold.
 
 ### Features
 - Generate markdown documentation from adapter configuration

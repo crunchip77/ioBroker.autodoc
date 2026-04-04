@@ -1,6 +1,6 @@
 {
   "name": "iobroker.autodoc",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "On-demand documentation for ioBroker",
   "author": {
     "name": "crunchip77",
