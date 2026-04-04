@@ -9,6 +9,7 @@ const utils = require('@iobroker/adapter-core');
 const Discovery = require('./lib/discovery');
 const DocumentModel = require('./lib/documentModel');
 const MarkdownRenderer = require('./lib/markdownRenderer');
+const I18n = require('./lib/i18n');
 
 const PROFILE_ADMIN = 'admin';
 const PROFILE_USER = 'user';
@@ -31,7 +32,8 @@ class Autodoc extends utils.Adapter {
 		// Initialize modular components
 		this.discovery = new Discovery(this);
 		this.documentModel = new DocumentModel(this);
-		this.markdownRenderer = new MarkdownRenderer(this);
+		this.i18n = new I18n();
+		this.markdownRenderer = new MarkdownRenderer(this, this.i18n);
 
 		// Timer for periodic auto-generation
 		this.autoGenerateInterval = null;
@@ -68,6 +70,11 @@ class Autodoc extends utils.Adapter {
 
 		await this.subscribeStatesAsync('action.generate');
 		await this.subscribeStatesAsync('action.download*');
+
+		// Set documentation language
+		const language = this.config.language || 'en';
+		this.i18n.setLanguage(language);
+		this.log.debug(`Using documentation language: ${language}`);
 
 		if (this.config.autoGenerateOnStart) {
 			await this.generateDocumentation('startup');
