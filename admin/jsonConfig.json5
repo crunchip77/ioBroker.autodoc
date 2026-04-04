@@ -1,0 +1,151 @@
+{
+    "i18n": true,
+    "type": "panel",
+    "items": {
+        "projectName": {
+            "type": "text",
+            "label": "Project name",
+            "help": "Name of the ioBroker project or installation",
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 6,
+            "xl": 6
+        },
+        "targetSystem": {
+            "type": "text",
+            "label": "Target system",
+            "help": "Usually ioBroker",
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 6,
+            "xl": 6
+        },
+        "profile": {
+            "type": "select",
+            "label": "Documentation profile",
+            "help": "Target audience for the generated documentation",
+            "options": [
+                {"label": "Admin", "value": "admin"},
+                {"label": "User/Family", "value": "user"},
+                {"label": "Onboarding", "value": "onboarding"}
+            ],
+            "default": "admin",
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 6,
+            "xl": 6
+        },
+        "language": {
+            "type": "select",
+            "label": "Documentation language",
+            "help": "Language for the generated documentation",
+            "options": [
+                {"label": "English", "value": "en"},
+                {"label": "German", "value": "de"}
+            ],
+            "default": "en",
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 6,
+            "xl": 6
+        },
+        "projectDescription": {
+            "type": "text",
+            "label": "Project description",
+            "help": "Short description of what should be documented",
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 12,
+            "lg": 12,
+            "xl": 12
+        },
+        "additionalNotes": {
+            "type": "text",
+            "label": "Additional notes",
+            "help": "Optional notes, devices, adapters or special requirements",
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 12,
+            "lg": 12,
+            "xl": 12
+        },
+        "autoGenerateOnStart": {
+            "type": "checkbox",
+            "label": "Generate documentation on adapter start",
+            "help": "If enabled, a first documentation draft is created when the adapter starts",
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 12,
+            "lg": 12,
+            "xl": 12
+        },
+        "autoGenerateInterval": {
+            "type": "number",
+            "label": "Auto-generate interval (hours)",
+            "help": "Automatically generate documentation every X hours (0 = disabled)",
+            "min": 0,
+            "max": 168,
+            "default": 0,
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 6,
+            "xl": 6
+        },
+        "onlyEnabledInstances": {
+            "type": "checkbox",
+            "label": "Only document enabled instances",
+            "help": "If enabled, only active adapter instances are included in the documentation",
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 12,
+            "lg": 12,
+            "xl": 12
+        },
+        "hideInstanceDetailsInMarkdown": {
+            "type": "checkbox",
+            "label": "Hide instance details in markdown",
+            "help": "If enabled, the markdown output contains only summary information without the full instance list",
+            "xs": 12,
+            "sm": 12,
+            "md": 12,
+            "lg": 12,
+            "xl": 12
+        },
+        "maxDocumentedInstances": {
+            "type": "number",
+            "label": "Maximum documented instances",
+            "help": "Limits how many adapter instances are included in the generated documentation, 0 means unlimited",
+            "min": 0,
+            "default": 0,
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 6,
+            "xl": 6
+        },
+        "manualContext": {
+            "type": "json",
+            "label": "Manual context (JSON)",
+            "help": "Additional manual information to include in documentation (description, contact, notes)",
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 12,
+            "lg": 12,
+            "xl": 12
+        }
+    }
+}
