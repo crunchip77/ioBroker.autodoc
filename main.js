@@ -33,6 +33,9 @@ class Autodoc extends utils.Adapter {
 		this.documentModel = new DocumentModel(this);
 		this.markdownRenderer = new MarkdownRenderer(this);
 
+		// Timer for periodic auto-generation
+		this.autoGenerateInterval = null;
+
 		this.on('ready', this.onReady.bind(this));
 		this.on('stateChange', this.onStateChange.bind(this));
 		this.on('unload', this.onUnload.bind(this));
@@ -70,6 +73,22 @@ class Autodoc extends utils.Adapter {
 			await this.generateDocumentation('startup');
 		}
 
+		// Setup periodic auto-generation if interval is configured
+		if (this.config.autoGenerateInterval && this.config.autoGenerateInterval > 0) {
+			const intervalMs = this.config.autoGenerateInterval * 60 * 60 * 1000; // Convert hours to milliseconds
+			this.log.info(
+				`Setting up automatic documentation generation every ${this.config.autoGenerateInterval} hours`,
+			);
+			this.autoGenerateInterval = setInterval(async () => {
+				this.log.debug('Auto-generating documentation on schedule');
+				try {
+					await this.generateDocumentation('scheduled');
+				} catch (error) {
+					this.log.error(`Scheduled documentation generation failed: ${error.message}`);
+				}
+			}, intervalMs);
+		}
+
 		await this.setStateAsync('info.connection', { val: true, ack: true });
 		this.log.info('AutoDoc adapter started');
 	}
@@ -80,6 +99,12 @@ class Autodoc extends utils.Adapter {
 	 * @param {() => void} callback Function that finalizes adapter shutdown.
 	 */
 	onUnload(callback) {
+		// Clear periodic auto-generation timer
+		if (this.autoGenerateInterval) {
+			clearInterval(this.autoGenerateInterval);
+			this.autoGenerateInterval = null;
+		}
+
 		this.setStateAsync('info.connection', { val: false, ack: true })
 			.then(() => callback())
 			.catch(() => callback());
