@@ -25,7 +25,7 @@ Drei echte Zielgruppen mit komplett unterschiedlicher Sprache:
 
 - **IDE**: Visual Studio Code auf Windows
 - **Testsystem**: ioBroker auf Unraid-Server (separat vom Produktivsystem)
-- **Deployment**: `dev`-Branch → GitHub Push → manuelle Installation auf Testserver via URL (`iobroker url https://github.com/crunchip77/ioBroker.autodoc`)
+- **Deployment**: `dev`-Branch → GitHub Push → manuelle Installation auf Testserver via ioBroker Admin UI → Adapter → "Benutzerdefinierte URL" → `https://github.com/crunchip77/ioBroker.autodoc/tarball/dev`
 - **Release-Strategie während Entwicklung**: `dev` → Test → Lint → Merge nach `main`; **kein Tag, kein Versionssprung** bis zum echten Release
 
 ## Branch-Strategie
