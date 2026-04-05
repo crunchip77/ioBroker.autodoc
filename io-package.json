@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "autodoc",
-        "version": "0.1.0",
+        "version": "1.0.0",
         "news": {
+            "1.0.0": {
+                "en": "Notifications, dependency analysis, AI-enhanced docs, full i18n, fixed latest HTML file and direct URL",
+                "de": "Benachrichtigungen, Abhängigkeitsanalyse, KI-Dokumentation, vollständige i18n, feste Latest-Datei und direkte URL",
+                "ru": "Уведомления, анализ зависимостей, AI-документация, полный i18n, фиксированный HTML-файл и прямой URL",
+                "pt": "Notificações, análise de dependências, documentação AI, i18n completo, arquivo HTML fixo e URL direto",
+                "nl": "Meldingen, afhankelijkheidsanalyse, AI-documentatie, volledige i18n, vast HTML-bestand en directe URL",
+                "fr": "Notifications, analyse des dépendances, docs IA, i18n complet, fichier HTML fixe et URL direct",
+                "it": "Notifiche, analisi delle dipendenze, documentazione AI, i18n completo, file HTML fisso e URL diretto",
+                "es": "Notificaciones, análisis de dependencias, documentación IA, i18n completo, archivo HTML fijo y URL directo",
+                "pl": "Powiadomienia, analiza zależności, dokumentacja AI, pełne i18n, stały plik HTML i bezpośredni URL",
+                "uk": "Сповіщення, аналіз залежностей, AI-документація, повний i18n, фіксований HTML-файл і пряме посилання",
+                "zh-cn": "通知、依赖分析、AI文档、完整i18n、固定HTML文件和直接URL"
+            },
             "0.1.0": {
                 "en": "Rooms & functions, script documentation, maintenance hints",
                 "de": "Räume & Funktionen, Skript-Dokumentation, Wartungshinweise",

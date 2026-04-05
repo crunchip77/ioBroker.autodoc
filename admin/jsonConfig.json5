@@ -147,6 +147,19 @@
             "lg": 6,
             "xl": 6
         },
+        "maxStoredFiles": {
+            "type": "number",
+            "label": "Maximum stored documentation files",
+            "help": "How many timestamped file sets to keep (per type: .md, .html, .json). Oldest are deleted automatically. 0 = use default (5).",
+            "min": 0,
+            "default": 5,
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 6,
+            "xl": 6
+        },
         "manualContext": {
             "type": "json",
             "label": "Manual context (JSON)",
@@ -157,6 +170,96 @@
             "md": 12,
             "lg": 12,
             "xl": 12
+        },
+        "_notifyHeader": {
+            "type": "header",
+            "text": "Notifications",
+            "newLine": true
+        },
+        "notifyEnabled": {
+            "type": "checkbox",
+            "label": "Send notification after documentation generation",
+            "help": "If enabled, a message is sent via the configured adapter after each generation",
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 12,
+            "lg": 12,
+            "xl": 12
+        },
+        "notifyInstance": {
+            "type": "text",
+            "label": "Messaging adapter instance",
+            "help": "Instance to send the notification through, e.g. telegram.0, pushover.0, email.0",
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 6,
+            "xl": 6
+        },
+        "notifyTarget": {
+            "type": "text",
+            "label": "Recipient (optional)",
+            "help": "Telegram username, Pushover device, or email address — leave empty for adapter default",
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 6,
+            "xl": 6
+        },
+        "notifyMessage": {
+            "type": "text",
+            "label": "Custom message template (optional)",
+            "help": "Use {project}, {summary}, {version}, {trigger} as placeholders. Leave empty for default message.",
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 12,
+            "lg": 12,
+            "xl": 12
+        },
+        "_aiHeader": {
+            "type": "header",
+            "text": "AI-Enhanced Documentation",
+            "newLine": true
+        },
+        "aiEnabled": {
+            "type": "checkbox",
+            "label": "Enable AI-enhanced documentation (opt-in)",
+            "help": "If enabled, Claude AI generates a narrative summary after each documentation run. Requires an Anthropic API key.",
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 12,
+            "lg": 12,
+            "xl": 12
+        },
+        "aiApiKey": {
+            "type": "password",
+            "label": "Anthropic API key",
+            "help": "Your Anthropic API key (starts with sk-ant-...). The key is stored encrypted.",
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 8,
+            "lg": 8,
+            "xl": 8
+        },
+        "aiModel": {
+            "type": "select",
+            "label": "AI model",
+            "help": "Haiku is fast and cost-effective (~0.01 ct/run). Sonnet delivers higher quality (~0.3 ct/run).",
+            "options": [
+                {"label": "Claude Haiku (fast, low cost)", "value": "claude-haiku-4-5-20251001"},
+                {"label": "Claude Sonnet (higher quality)", "value": "claude-sonnet-4-6"}
+            ],
+            "default": "claude-haiku-4-5-20251001",
+            "xs": 12,
+            "sm": 12,
+            "md": 4,
+            "lg": 4,
+            "xl": 4
         }
     }
 }
