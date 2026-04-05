@@ -174,6 +174,15 @@ Genuine per-audience documentation — not just "more or less detail", but a com
 
 ## Changelog
 
+### 1.0.0
+- Notifications after generation: Telegram, Email, Pushover, Signal, WhatsApp, generic
+- Dependency analysis: state references extracted from script source, cross-reference table (Admin)
+- AI-enhanced documentation (opt-in): Claude Haiku/Sonnet narrative summary and maintenance recommendations
+- Full i18n: all rendered output translated (EN, DE, FR)
+- Fixed `autodoc-latest.{md,html,json}` files for stable browser access
+- New `info.htmlUrl` state with direct URL to latest HTML via web adapter
+- Configurable file rotation (`maxStoredFiles`, default 5 timestamped sets)
+
 ### 0.1.0
 - Modular architecture: `lib/discovery.js`, `lib/documentModel.js`, `lib/markdownRenderer.js`, `lib/htmlRenderer.js`, `lib/versionTracker.js`, `lib/i18n.js`
 - File-based export: Markdown, HTML, and JSON to `/files/autodoc.0/`
