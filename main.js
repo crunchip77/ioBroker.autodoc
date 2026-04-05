@@ -13,6 +13,7 @@ const HtmlRenderer = require('./lib/htmlRenderer');
 const I18n = require('./lib/i18n');
 const VersionTracker = require('./lib/versionTracker');
 const Notifier = require('./lib/notifier');
+const AiEnhancer = require('./lib/aiEnhancer');
 
 class Autodoc extends utils.Adapter {
 	/**
@@ -32,6 +33,7 @@ class Autodoc extends utils.Adapter {
 		this.htmlRenderer = new HtmlRenderer(this, this.i18n);
 		this.versionTracker = new VersionTracker(this);
 		this.notifier = new Notifier(this);
+		this.aiEnhancer = new AiEnhancer(this);
 
 		// Timer for periodic auto-generation
 		this.autoGenerateInterval = null;
@@ -530,6 +532,9 @@ class Autodoc extends utils.Adapter {
 			// Version tracking: Compare with previous version
 			const previousDocModel = await this.versionTracker.getPreviousVersion();
 			const changeData = this.versionTracker.compareVersions(docModel, previousDocModel);
+
+			// AI enhancement (opt-in, non-blocking — failure does not abort generation)
+			docModel.ai = await this.aiEnhancer.enhance(docModel);
 
 			// Use modular markdown rendering
 			const markdown = this.markdownRenderer.renderMarkdown(docModel);

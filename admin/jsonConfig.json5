@@ -205,6 +205,48 @@
             "md": 12,
             "lg": 12,
             "xl": 12
+        },
+        "_aiHeader": {
+            "type": "header",
+            "text": "AI-Enhanced Documentation",
+            "newLine": true
+        },
+        "aiEnabled": {
+            "type": "checkbox",
+            "label": "Enable AI-enhanced documentation (opt-in)",
+            "help": "If enabled, Claude AI generates a narrative summary after each documentation run. Requires an Anthropic API key.",
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 12,
+            "lg": 12,
+            "xl": 12
+        },
+        "aiApiKey": {
+            "type": "password",
+            "label": "Anthropic API key",
+            "help": "Your Anthropic API key (starts with sk-ant-...). The key is stored encrypted.",
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 8,
+            "lg": 8,
+            "xl": 8
+        },
+        "aiModel": {
+            "type": "select",
+            "label": "AI model",
+            "help": "Haiku is fast and cost-effective (~0.01 ct/run). Sonnet delivers higher quality (~0.3 ct/run).",
+            "options": [
+                {"label": "Claude Haiku (fast, low cost)", "value": "claude-haiku-4-5-20251001"},
+                {"label": "Claude Sonnet (higher quality)", "value": "claude-sonnet-4-6"}
+            ],
+            "default": "claude-haiku-4-5-20251001",
+            "xs": 12,
+            "sm": 12,
+            "md": 4,
+            "lg": 4,
+            "xl": 4
         }
     }
 }

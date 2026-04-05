@@ -34,5 +34,14 @@
     "Recipient (optional)": "Recipient (optional)",
     "Telegram username, Pushover device, or email address — leave empty for adapter default": "Telegram username, Pushover device, or email address — leave empty for adapter default",
     "Custom message template (optional)": "Custom message template (optional)",
-    "Use {project}, {summary}, {version}, {trigger} as placeholders. Leave empty for default message.": "Use {project}, {summary}, {version}, {trigger} as placeholders. Leave empty for default message."
+    "Use {project}, {summary}, {version}, {trigger} as placeholders. Leave empty for default message.": "Use {project}, {summary}, {version}, {trigger} as placeholders. Leave empty for default message.",
+    "AI-Enhanced Documentation": "AI-Enhanced Documentation",
+    "Enable AI-enhanced documentation (opt-in)": "Enable AI-enhanced documentation (opt-in)",
+    "If enabled, Claude AI generates a narrative summary after each documentation run. Requires an Anthropic API key.": "If enabled, Claude AI generates a narrative summary after each documentation run. Requires an Anthropic API key.",
+    "Anthropic API key": "Anthropic API key",
+    "Your Anthropic API key (starts with sk-ant-...). The key is stored encrypted.": "Your Anthropic API key (starts with sk-ant-...). The key is stored encrypted.",
+    "AI model": "AI model",
+    "Haiku is fast and cost-effective (~0.01 ct/run). Sonnet delivers higher quality (~0.3 ct/run).": "Haiku is fast and cost-effective (~0.01 ct/run). Sonnet delivers higher quality (~0.3 ct/run).",
+    "Claude Haiku (fast, low cost)": "Claude Haiku (fast, low cost)",
+    "Claude Sonnet (higher quality)": "Claude Sonnet (higher quality)"
 }
