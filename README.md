@@ -31,7 +31,11 @@ The generated documentation is tailored to the selected target audience: technic
 - **Script Documentation** — lists all JavaScript/Blockly scripts with name, status, description and trigger type
 - **Dependency Analysis** — which scripts reference which states (regex-based), cross-reference table for shared states
 - **Maintenance Hints** — flags scripts without description and disabled adapter instances with documentation score
-- **Diagnosis Section** — scan statistics, concrete Admin UI paths for troubleshooting, data-driven findings
+- **Diagnosis Section** — scan statistics, Node.js version badge (LTS check), OS info, data-driven findings including OS update reminder
+- **Troubleshooting Section** — 4 concrete scenarios (adapter not starting, not connecting, script not running, doc not generating) with numbered steps
+- **Node.js & OS Info** — host Node.js version displayed with green/red LTS badge, kernel and architecture in system chapter
+- **Smart Adapter Table** (Admin) — enabled adapters shown by default; disabled adapters collapsed in a toggle group; real-time filter with hints
+- **Script Folder Labels** — Root, General Scripts (common), Global Scripts (global) and custom folders shown in human-readable form
 - **AI-enhanced Documentation** (opt-in) — pluggable providers: Anthropic Claude, Groq (free tier), Ollama (local/private); narrative summary for user/onboarding profiles
 - **Notifications** — send a message via Telegram, Email, Pushover or generic `sendTo` after generation
 - **Manual Context** — add project description, contact info, and per-adapter / per-room notes via configuration
@@ -205,7 +209,11 @@ Genuine per-audience documentation — completely different language and structu
 - Profile redesign: genuine per-audience templates for Admin, User and Onboarding
 - Device resolution and role mapping (29 patterns → 14 categories + icons)
 - Live state values (opt-in), system.config integration
-- Admin diagnosis section: scan statistics, Admin UI paths, data-driven findings
+- Admin diagnosis section: scan statistics, Admin UI paths, data-driven findings incl. Node.js LTS check and OS update reminder
+- Fehlerbehebung / Troubleshooting section: 4 concrete scenarios with numbered steps
+- Node.js version badge (green = LTS ≥ v20, red = outdated) and OS kernel/arch in system chapter and hosts table
+- Adapter table (Admin): disabled instances collapsed by default, real-time filter with field hints
+- Script folder labels: Root, General Scripts (common), Global Scripts (global), custom folders
 - Adapter badges: connection type (Local/Cloud), data source (Push/Polling), quality tier
 - Removed misleading "instances without room assignment" metric
 - Multiple bugfixes (room.devices alignment, onboarding adapter section, markdownRenderer crash)

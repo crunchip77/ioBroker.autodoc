@@ -79,11 +79,17 @@
 - [x] Hosts-Tabelle: leere adapterCount-Spalte entfernt
 - [x] Diagnose-Sektion neu aufgebaut: Erfassungsstatus, Wo nachschauen (alive/connected), Befunde
 
-### 4.x Abschluss ✅
+### 4.x UI-Verbesserungen Session 2 ✅
+- [x] Adapter-Tabelle: deaktivierte Instanzen eingeklappt (`<details>`), lokaler Filter-Input mit Hinweistext
+- [x] Node.js-Version aus `host.native` (via `getForeignObjectAsync`) + Badge grün/rot (LTS ≥ v20)
+- [x] OS-Info (Kernel, Architektur) im System-Kapitel und Hosts-Tabelle
+- [x] Node.js-Warnung + OS-Update-Hinweis in Diagnose-Befunde
+- [x] Script-Ordner-Labels: `null` → Root-Verzeichnis, `common` → Allgemeine Skripte, `global` → Globale Skripte
+
+### 4.x Abschluss
 - [x] i18n: alle neuen Keys (EN/DE/FR)
 - [x] Lint sauber (0 Errors)
-- [x] CHANGELOG.md aktualisiert
-- [x] README.md aktualisiert
+- [x] README.md + TODO.md + PLAN.md aktualisiert
 - [ ] `dev` → nach Test → Merge nach `main`
 
 ---

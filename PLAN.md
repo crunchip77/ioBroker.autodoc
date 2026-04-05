@@ -205,6 +205,6 @@ Echte Zielgruppen-Dokus statt "mehr oder weniger Detail vom selben Template".
 |---|---|---|---|
 | **v0.x** | Basis: Adapter-Inventar, Export, Profile, Versionierung | ✅ main | interner Meilenstein |
 | **v1.0** | Phase 2+3: Räume, Skripte, Wartung, Suche, Notifications, AI, i18n | ✅ main | interner Meilenstein, noch kein npm-Release |
-| **v1.5** | Phase 4: Profile-Redesign (echte Zielgruppen-Dokus) | ✅ dev | merge nach main ausstehend |
+| **v1.5** | Phase 4: Profile-Redesign + UX-Verbesserungen (Adapter-Filter, Node.js-Badge, Fehlerbehebung, Script-Ordner-Labels) | ✅ dev | merge nach main ausstehend |
 | **v2.x** | Phase 5: PDF, Backup-Integration, Custom Templates | ⬜ geplant | |
 | **npm/public** | Adapter Checker grün + npm publish + ioBroker.repositories PR | ⬜ offen | erst dann sind Versionen/Tags wirkungsvoll |
