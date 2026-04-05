@@ -1,5 +1,24 @@
 # CHANGELOG
 
+## 1.5.0-dev (2026-04-05)
+
+Phase 4 complete — genuine audience-targeted profiles with device resolution, role mapping, and live states.
+
+### Features
+- **Discovery extensions** (4.1): `system.config` (city, country, language), room device resolution via `getForeignObjectAsync`, live states for key roles (opt-in via `readLiveStates`)
+- **Role mapper** (4.2): `lib/roleMapper.js` — 29 role patterns → 14 categories + icons (💡🌡️🚪🪟🚨🔒 …)
+- **Document model extensions** (4.3): `docModel.systemConfig`, `rooms[].devices[]` with resolved names / categories / live values
+- **Renderer dispatcher** (4.4): `renderHtml()` dispatches to `renderAdminHtml()` / `renderUserHtml()` / `renderOnboardingHtml()`
+- **Onboarding profile** (4.5): "Du"-Ansprache, city-aware greeting, device-grid with icons + live values, automations as plain sentences, adapter cards (friendly), AI-box prominent, hint when no manualContext
+- **User/Familie profile** (4.6): device-grid per room, scripts with name+desc only, adapters title-only
+- **Admin profile** (4.7): device hierarchy table per room with OIDs
+
+### Fixes
+- `room.devices` field name aligned between DocumentModel (`members` → `devices`) and all renderer methods
+- Onboarding profile: `renderAdaptersChapter` was not called — adapter section now rendered and added to nav
+
+---
+
 ## 0.1.0 (2026-04-04)
 
 Phase 1 complete — adapter is fully functional with modular architecture,

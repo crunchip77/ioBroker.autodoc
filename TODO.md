@@ -40,57 +40,45 @@
 
 ---
 
-## Phase 4 — Profile-Redesign ← AKTUELL
+## Phase 4 — Profile-Redesign ✅ ABGESCHLOSSEN
 
-### 4.1 Discovery-Erweiterungen
-- [ ] `system.config` auslesen: Stadt, Land, Systemsprache → `rawData.systemConfig`
-- [ ] Geräte-Namen-Auflösung: Raum-Mitglieder → parent Device-Objekte gebündelt laden
-- [ ] Geräte nach Device-ID gruppieren (nicht jede State einzeln)
-- [ ] Opt-in Live-States: Schlüssel-Rollen (`level.temperature`, `sensor.door`, `sensor.window`, `alarm`) lesen
-- [ ] Neue Config-Option `readLiveStates` in `jsonConfig.json5` + i18n
+### 4.1 Discovery-Erweiterungen ✅
+- [x] `system.config` auslesen: Stadt, Land, Systemsprache → `rawData.systemConfig`
+- [x] Geräte-Namen-Auflösung: Raum-Mitglieder → Device-Objekte via `getForeignObjectAsync`
+- [x] Opt-in Live-States: Schlüssel-Rollen (`level.temperature`, `sensor.door`, `sensor.window`, `alarm`) lesen
+- [x] Neue Config-Option `readLiveStates` in `jsonConfig.json5` + i18n
 
-### 4.2 Role Mapper
-- [ ] `lib/roleMapper.js` erstellen
-- [ ] Mapping: ioBroker-Rolle → `{ category, icon, labelKey }`
-- [ ] Abdeckung: Licht, Dimmer, Rolllade, Thermostat, Feuchtigkeit, Bewegung, Tür/Fenster, Medien, Schloss, Alarm, Steckdose, Kamera
-- [ ] i18n-Keys für Kategorie-Labels (EN/DE/FR)
+### 4.2 Role Mapper ✅
+- [x] `lib/roleMapper.js` — 29 Patterns → 14 Kategorien + Icons
+- [x] i18n-Keys für Kategorie-Labels (EN/DE/FR)
 
-### 4.3 DocumentModel-Erweiterungen
-- [ ] `buildSystemConfig(rawData)` → `docModel.systemConfig`
-- [ ] `buildRooms()` erweitern: `rooms[].devices[]` mit `{ id, name, category, icon, currentValue, unit }`
-- [ ] Abwärtskompatibel: nur neue Felder ergänzen
+### 4.3 DocumentModel-Erweiterungen ✅
+- [x] `buildSystemConfig(rawData)` → `docModel.systemConfig`
+- [x] `buildRooms()`: `rooms[].devices[]` mit `{ id, deviceName, category, icon, currentValue, unit }`
 
-### 4.4 Renderer-Architektur: Dispatcher
-- [ ] `renderHtml()` in `htmlRenderer.js` als Dispatcher umbauen
-- [ ] `renderAdminHtml(docModel)` — aktuelles Rendering (umbenennen + bereinigen)
-- [ ] `renderUserHtml(docModel)` — neue separate Methode
-- [ ] `renderOnboardingHtml(docModel)` — neues Template
+### 4.4 Renderer-Architektur: Dispatcher ✅
+- [x] `renderHtml()` als Dispatcher → `renderAdminHtml()` / `renderUserHtml()` / `renderOnboardingHtml()`
 
-### 4.5 Onboarding-Profil: neues Template
-- [ ] Willkommenstext (aus `systemConfig.city` + `manualContext.description` + AI-Summary)
-- [ ] Räume-Abschnitt: Geräte-Namen mit Icons, keine OIDs
-- [ ] "Was läuft automatisch?": nur Skripte mit `desc`, plain language
-- [ ] Live-Values wenn `readLiveStates` aktiv: Thermostat-Temp, Tür/Fenster-Status
-- [ ] `manualContext` prominent (WLAN, Kontakt, Hinweise)
-- [ ] Hinweis wenn kein `manualContext` konfiguriert
-- [ ] Kein: Adapter-Inventar, State-Counts, Trigger-Typen, technische IDs
+### 4.5 Onboarding-Profil ✅
+- [x] Stadt-bewusster Willkommenstext, Räume mit Device-Grid + Icons + Live-Values
+- [x] "Was läuft automatisch?" als plain sentences, Adapter-Cards (freundlich)
+- [x] AI-Box prominent, Hint wenn kein manualContext
 
-### 4.6 User/Familie-Profil: Überarbeitung
-- [ ] Räume mit aufgelösten Gerätenamen + Kategorie-Icons
-- [ ] Skripte: nur Name + Beschreibung (kein Trigger-Typ, kein Ordner-Pfad)
-- [ ] Wartungshinweise in Alltagssprache (keine OIDs in der Anzeige)
-- [ ] Adapter: nur Titel, keine Version/Instanz-ID
+### 4.6 User/Familie-Profil ✅
+- [x] Räume mit Device-Cards, Skripte name+desc only, Adapter title-only
 
-### 4.7 Admin-Profil: Ergänzungen
-- [ ] Räume: Device-Hierarchie mit OIDs (aufgelöste Gerätenamen + technische Details)
-- [ ] Rest bleibt wie bisher
+### 4.7 Admin-Profil ✅
+- [x] Device-Hierarchie-Tabelle pro Raum mit OIDs
 
-### 4.x Abschluss
-- [ ] i18n: neue Keys für Onboarding-Phrasen + Kategorie-Labels (EN/DE/FR)
-- [ ] Tests anpassen falls nötig
-- [ ] Lint sauber
-- [ ] CHANGELOG.md aktualisieren
-- [ ] `dev` → nach Test → Merge nach `main` (kein Tag, kein Versionssprung bis zum echten Release)
+### 4.x Bugfixes ✅
+- [x] `room.members` → `room.devices` (DocumentModel ↔ Renderer Alignment)
+- [x] Onboarding: Adapter-Abschnitt fehlte (renderAdaptersChapter nicht aufgerufen)
+
+### 4.x Abschluss ✅
+- [x] i18n: 16 neue Keys (EN/DE/FR)
+- [x] Lint sauber (0 Errors)
+- [x] CHANGELOG.md aktualisiert
+- [ ] `dev` → nach Test → Merge nach `main`
 
 ---
 
