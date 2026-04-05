@@ -1,4 +1,4 @@
-# AutoDoc Adapter - TODO-Liste
+# AutoDoc Adapter — TODO-Liste
 
 ## Wichtige Referenzen
 - [ioBroker AI Developer Guide](https://github.com/Jey-Cee/iobroker-ai-developer-guide)
@@ -7,83 +7,97 @@
 
 ---
 
-## Phase 1 — Basis ✅ ABGESCHLOSSEN
+## Phase 1 — Basis ✅ ABGESCHLOSSEN (v0.1.0)
 
-- [x] Modularisierung: `lib/discovery.js`, `lib/documentModel.js`, `lib/markdownRenderer.js`
+- [x] Modularisierung: `lib/discovery.js`, `lib/documentModel.js`, `lib/markdownRenderer.js`, `lib/htmlRenderer.js`, `lib/versionTracker.js`, `lib/i18n.js`
 - [x] Dateibasierter Export: Markdown, HTML, JSON nach `/files/autodoc.0/`
-- [x] Admin UI: `jsonConfig.json5` + i18n EN + DE
-- [x] Drei Profile: Admin, User, Onboarding — profil-bewusstes Rendering
-- [x] Adapter-Beschreibungen aus ioBroker-Metadaten (`common.desc`, `common.titleLang`)
-- [x] Versionsverfolgung mit Diff und Changelog (`lib/versionTracker.js`)
+- [x] Admin UI: `jsonConfig.json5` + i18n EN + DE + FR
+- [x] Drei Profile: Admin, User, Onboarding
+- [x] Adapter-Beschreibungen aus ioBroker-Metadaten
+- [x] Versionsverfolgung mit Diff und Changelog
 - [x] Automatische Generierung: Startup, Timer, Event-basiert (30s Debounce)
 - [x] HTML-Renderer mit Sidebar, Stat-Cards, Adapter-Cards je Profil
-- [x] `lib/i18n.js` mit EN, DE, FR
-- [x] Lokale Zeitstempel für Dateinamen
-- [x] Lint-sauber (prettier + eslint)
 
 ---
 
-## Phase 2 — Inhalt ← NÄCHSTER SCHRITT
+## Phase 2 — Inhalt ✅ ABGESCHLOSSEN
 
-### 2.1 Räume und Geräte
-- [ ] `enum.rooms` aus ioBroker auslesen (Discovery erweitern)
-- [ ] `enum.functions` aus ioBroker auslesen
-- [ ] Räume mit zugeordneten Geräten/Datenpunkten im DocumentModel abbilden
-- [ ] Räume-Kapitel in Markdown- und HTML-Renderer einbauen
-- [ ] Objekte ohne Raum-Zuordnung erfassen → Basis für Wartungshinweise
-
-### 2.2 Skript-Dokumentation
-- [ ] Skripte aus `script.js.*` auslesen (Discovery erweitern)
-- [ ] Name, Status (aktiv/inaktiv), Beschreibung, Trigger-Typ erfassen
-- [ ] Skript-Kapitel in Markdown- und HTML-Renderer einbauen
-- [ ] Admin-Profil: vollständige Skriptliste mit Details
-- [ ] User/Onboarding-Profil: nur aktive Skripte, vereinfacht
-
-### 2.3 Wartungs- und Diagnosehilfe
-- [ ] Instanzen ohne Raum-Zuordnung markieren
-- [ ] Skripte ohne Beschreibung markieren
-- [ ] Deaktivierte Instanzen gesondert hervorheben
-- [ ] Wartungs-Kapitel in Dokumentation einbauen (nur Admin-Profil)
-- [ ] Einfache Checkliste: "Was fehlt in deiner Dokumentation?"
-
-### 2.4 Such-/Filterfunktion im HTML
-- [ ] Suchfeld in HTML-Output einbauen (clientseitiges JS)
-- [ ] Adapter, Räume, Skripte durchsuchbar machen
-- [ ] Funktioniert ohne Server in der heruntergeladenen Datei
-
-### 2.5 UX-Verbesserungen (parallel umsetzbar)
-- [ ] Direktlink auf letzte HTML-Datei im Admin-UI
-- [ ] Automatische Spracherkennung aus `system.config` als Fallback
+- [x] 2.1 `enum.rooms` + `enum.functions` auslesen und als Kapitel rendern
+- [x] 2.2 Skripte aus `script.js.*`: Name, Status, Beschreibung, Trigger-Typ
+- [x] 2.3 Wartungs-Score, Checkliste, Instanzen/Skripte ohne Beschreibung
+- [x] 2.4 Clientseitige Such-/Filterfunktion im HTML (Nav-Suchbox, Escape-Reset)
 
 ---
 
-## Phase 3 — Tiefe
+## Phase 3 — Tiefe ✅ ABGESCHLOSSEN
 
-### 3.1 Einfache Abhängigkeitsanalyse
-- [ ] Skripte nach State-Referenzen durchsuchen (Regex-basiert)
-- [ ] Welche Adapter schreiben in welche Namespaces
-- [ ] Als lesbarer Abschnitt in der Dokumentation (kein Graph)
-
-### 3.2 Menschenlesbare Dokumentation
-- [ ] Weg A: Strukturierte Einleitungstexte auf Basis der gesammelten Daten
-- [ ] Weg B (opt-in): Claude API Integration
-  - [ ] Checkbox + API-Key-Feld in Admin-UI
-  - [ ] `lib/aiEnhancer.js` mit Anthropic SDK
-  - [ ] Fließtext-Generierung für Systemeinleitung + Adapter-Zusammenfassung
-  - [ ] Klare Kennzeichnung als "KI-unterstützt" in der Ausgabe
-
-### 3.3 Notifications
-- [ ] `sendTo` an Telegram/Email/Pushover nach Generierung
-- [ ] Konfigurierbar: Adapter-Instanz + Nachrichtentext in Admin-UI
+- [x] 3.1 Notifications: `sendTo` nach Generierung (Telegram, Email, Pushover, generic)
+- [x] 3.2 Dependency-Analyse: `lib/dependencyAnalyzer.js`, stateRefs + Cross-Reference
+- [x] 3.3 AI-Enhanced Docs: `lib/aiEnhancer.js`, Anthropic API, Haiku/Sonnet, opt-in
+- [x] 3.x i18n-Fix: alle hardcodierten englischen Strings ersetzt (EN/DE/FR vollständig)
 
 ---
 
-## Phase 4 — Erweiterungen (Nice-to-Have)
+## Phase 4 — Profile-Redesign ← AKTUELL
+
+### 4.1 Discovery-Erweiterungen
+- [ ] `system.config` auslesen: Stadt, Land, Systemsprache → `rawData.systemConfig`
+- [ ] Geräte-Namen-Auflösung: Raum-Mitglieder → parent Device-Objekte gebündelt laden
+- [ ] Geräte nach Device-ID gruppieren (nicht jede State einzeln)
+- [ ] Opt-in Live-States: Schlüssel-Rollen (`level.temperature`, `sensor.door`, `sensor.window`, `alarm`) lesen
+- [ ] Neue Config-Option `readLiveStates` in `jsonConfig.json5` + i18n
+
+### 4.2 Role Mapper
+- [ ] `lib/roleMapper.js` erstellen
+- [ ] Mapping: ioBroker-Rolle → `{ category, icon, labelKey }`
+- [ ] Abdeckung: Licht, Dimmer, Rolllade, Thermostat, Feuchtigkeit, Bewegung, Tür/Fenster, Medien, Schloss, Alarm, Steckdose, Kamera
+- [ ] i18n-Keys für Kategorie-Labels (EN/DE/FR)
+
+### 4.3 DocumentModel-Erweiterungen
+- [ ] `buildSystemConfig(rawData)` → `docModel.systemConfig`
+- [ ] `buildRooms()` erweitern: `rooms[].devices[]` mit `{ id, name, category, icon, currentValue, unit }`
+- [ ] Abwärtskompatibel: nur neue Felder ergänzen
+
+### 4.4 Renderer-Architektur: Dispatcher
+- [ ] `renderHtml()` in `htmlRenderer.js` als Dispatcher umbauen
+- [ ] `renderAdminHtml(docModel)` — aktuelles Rendering (umbenennen + bereinigen)
+- [ ] `renderUserHtml(docModel)` — neue separate Methode
+- [ ] `renderOnboardingHtml(docModel)` — neues Template
+
+### 4.5 Onboarding-Profil: neues Template
+- [ ] Willkommenstext (aus `systemConfig.city` + `manualContext.description` + AI-Summary)
+- [ ] Räume-Abschnitt: Geräte-Namen mit Icons, keine OIDs
+- [ ] "Was läuft automatisch?": nur Skripte mit `desc`, plain language
+- [ ] Live-Values wenn `readLiveStates` aktiv: Thermostat-Temp, Tür/Fenster-Status
+- [ ] `manualContext` prominent (WLAN, Kontakt, Hinweise)
+- [ ] Hinweis wenn kein `manualContext` konfiguriert
+- [ ] Kein: Adapter-Inventar, State-Counts, Trigger-Typen, technische IDs
+
+### 4.6 User/Familie-Profil: Überarbeitung
+- [ ] Räume mit aufgelösten Gerätenamen + Kategorie-Icons
+- [ ] Skripte: nur Name + Beschreibung (kein Trigger-Typ, kein Ordner-Pfad)
+- [ ] Wartungshinweise in Alltagssprache (keine OIDs in der Anzeige)
+- [ ] Adapter: nur Titel, keine Version/Instanz-ID
+
+### 4.7 Admin-Profil: Ergänzungen
+- [ ] Räume: Device-Hierarchie mit OIDs (aufgelöste Gerätenamen + technische Details)
+- [ ] Rest bleibt wie bisher
+
+### 4.x Abschluss
+- [ ] i18n: neue Keys für Onboarding-Phrasen + Kategorie-Labels (EN/DE/FR)
+- [ ] Tests anpassen falls nötig
+- [ ] Lint sauber
+- [ ] CHANGELOG.md aktualisieren
+- [ ] `dev` → nach Test → Merge nach `main` + Tag v1.5.0
+
+---
+
+## Phase 5 — Erweiterungen (Nice-to-Have)
 
 - [ ] PDF-Export
-- [ ] Backup-Adapter Integration (Doku mit Backup speichern)
-- [ ] Mehrsprachige Templates (Kapitelüberschriften, Statusmeldungen)
-- [ ] Customizable Templates
+- [ ] Backup-Adapter Integration
+- [ ] Custom Templates
+- [ ] QR-Code für Onboarding (externe Lib)
 
 ---
 

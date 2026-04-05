@@ -143,23 +143,33 @@ The HTML file is a **standalone** document — no internet connection required, 
 
 ## Roadmap
 
-### v1.0 — Content (in progress)
+### v1.0 — Content ✅
 The step from "adapter inventory" to real system documentation:
 
 - ✅ **Rooms & functions** — reads `enum.rooms` and `enum.functions`, documents which devices belong to which room
-- **Script documentation** — lists all JavaScript/Blockly scripts with name, status, description and trigger type
-- **Maintenance hints** — flags instances without room assignment, scripts without description, inactive adapters
-- **Search in HTML** — client-side search field in the generated HTML file, no server needed
+- ✅ **Script documentation** — lists all JavaScript/Blockly scripts with name, status, description and trigger type
+- ✅ **Maintenance hints** — flags instances without room assignment, scripts without description, inactive adapters
+- ✅ **Search in HTML** — client-side search field in the generated HTML file, no server needed
 
-### v1.x — Depth
-- **Dependency analysis** — which scripts reference which states (regex-based, readable text output)
-- **AI-enhanced documentation** (opt-in) — optional Claude API integration for human-readable narrative text; requires API key, approx. 1–3 ct per generation
-- **Notifications** — send a message via Telegram, Email or Pushover when new documentation is generated
+### v1.x — Depth ✅
+- ✅ **Notifications** — send a message via Telegram, Email or Pushover when new documentation is generated
+- ✅ **Dependency analysis** — which scripts reference which states (regex-based), cross-reference table for shared states
+- ✅ **AI-enhanced documentation** (opt-in) — Claude API integration for narrative summary and maintenance recommendations; requires API key, approx. 0.01–0.3 ct per generation (Haiku/Sonnet)
+- ✅ **Full i18n** — all rendered output fully translated (EN, DE, FR)
+
+### v1.5 — Profile Redesign (in progress)
+Genuine per-audience documentation — not just "more or less detail", but a completely different language and perspective per profile:
+
+- **Onboarding** — "How do I use this home?" — no technical terms, no adapter names or OIDs, narrative style for guests
+- **User / Family** — "How does our home work?" — everyday language, rooms & devices by name, automations explained plainly
+- **Admin** — "Why does the system do X when Y happens?" — full technical depth, dependencies, config details
+- **Device resolution** — room members resolved to human-readable device names via ioBroker object metadata
+- **Role mapping** — ioBroker roles normalized to categories with icons (💡 Light, 🌡️ Climate, 🪟 Shutters …)
+- **Live state values** (opt-in) — show current thermostat temperature, door/window status in Onboarding
 
 ### v2.x — Extensions
 - **PDF export**
 - **Backup adapter integration** — save documentation together with backups
-- **Multilingual templates** — localized chapter headings and status texts
 - **Custom templates**
 
 ## Changelog
