@@ -113,6 +113,12 @@ Der Sprung von "Adapter-Inventar" zu echter "System-Dokumentation".
 - Alle hardcodierten englischen Strings in htmlRenderer.js durch i18n-Schlüssel ersetzt
 - EN, DE, FR vollständig
 
+### 3.x Adapter-Metadaten & manualContext ✅
+- `discovery.js`: liest `connectionType`, `dataSource`, `tier` aus `common.*` je Instanz
+- `discovery.js`: `filterNative()` entfernt sensitive Felder (password/token/key/secret/...) per Regex, behält nur skalare Werte → sicheres Admin-Detail
+- `documentModel.js`: `parseManualContext()` normalisiert manualContext (JSON-String oder Objekt), gibt immer `{description, contact, notes, adapters:{}, rooms:{}}` zurück
+- `htmlRenderer.js`: Admin-Tabelle zeigt Badges (🔌/☁️ connectionType, Push/Poll dataSource, Tier); manualContext-Notiz pro Adapter in allen Profilen
+
 ---
 
 ## Phase 4 — Profile-Redesign ← AKTUELL

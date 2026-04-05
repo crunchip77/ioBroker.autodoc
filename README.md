@@ -60,7 +60,7 @@ Open the adapter settings in the ioBroker admin UI.
 | **Maximum documented instances** | Cap the number of instances in the output, `0` = unlimited | `0` |
 | **Maximum stored documentation files** | How many timestamped file sets to keep, oldest deleted automatically | `5` |
 | **ioBroker base URL** | Used for `info.htmlUrl`, e.g. `192.168.1.100:8081`. Protocol optional. Leave empty for auto-detect (may fail in Docker) | — |
-| **Manual context (JSON)** | Additional structured info: `{"description":"...","contact":"...","notes":"..."}` | — |
+| **Manual context (JSON)** | Structured info: `{"description":"...","contact":"...","notes":"...","adapters":{"hue.0":"Controls living room"},"rooms":{"Living room":"Shutters close at 21:00"}}` | — |
 | **AI provider** | `none`, `anthropic`, `groq`, or `ollama`. Not used for admin profile | `none` |
 | **AI model** | Model ID — leave empty for provider default | — |
 | **API key** | Anthropic (`sk-ant-...`) or Groq (`gsk_...`) — not needed for Ollama | — |
@@ -75,6 +75,30 @@ Open the adapter settings in the ioBroker admin UI.
 | **onboarding** | New users, guests | Human-readable title + description + friendly note | None |
 
 Each adapter's description is read directly from ioBroker metadata (`common.desc`, `common.titleLang`) in the configured documentation language — no manual input required.
+
+### Manual Context
+
+The **Manual context** field accepts a JSON object with the following structure:
+
+```json
+{
+  "description": "Our smart home in Munich",
+  "contact": "Max, 0171-123456",
+  "notes": "WiFi password: ...",
+  "adapters": {
+    "hue.0": "Controls living room and kitchen lights",
+    "telegram.0": "Family notifications — add via /start"
+  },
+  "rooms": {
+    "Living room": "Shutters close automatically at 21:00",
+    "Bedroom": "Do not disturb mode active from 22:00"
+  }
+}
+```
+
+- `adapters` notes are shown per-adapter in the documentation (all profiles)
+- `rooms` notes are shown per-room (planned for Phase 4)
+- Sensitive fields in adapter native configs (passwords, tokens, keys) are always filtered out automatically
 
 ## Usage
 
@@ -162,6 +186,8 @@ The step from "adapter inventory" to real system documentation:
 - ✅ **Dependency analysis** — which scripts reference which states (regex-based), cross-reference table for shared states
 - ✅ **AI-enhanced documentation** (opt-in) — pluggable AI providers: Anthropic Claude (paid), Groq (free tier), or Ollama (local/private); narrative summary for user/onboarding profiles; admin profile always skipped
 - ✅ **Full i18n** — all rendered output fully translated (EN, DE, FR)
+- ✅ **Adapter metadata enrichment** — reads `connectionType`, `dataSource`, `tier` from ioBroker metadata; filtered native config shown in admin profile; sensitive fields (passwords, tokens, keys) always removed
+- ✅ **Structured manual context** — per-adapter and per-room notes via `manualContext.adapters` and `manualContext.rooms`
 
 ### v1.5 — Profile Redesign (in progress)
 Genuine per-audience documentation — not just "more or less detail", but a completely different language and perspective per profile:
