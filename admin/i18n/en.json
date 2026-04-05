@@ -24,6 +24,8 @@
     "If enabled, the markdown output contains only summary information without the full instance list": "If enabled, the markdown output contains only summary information without the full instance list",
     "Maximum documented instances": "Maximum documented instances",
     "Limits how many adapter instances are included in the generated documentation, 0 means unlimited": "Limits how many adapter instances are included in the generated documentation, 0 means unlimited",
+    "Maximum stored documentation files": "Maximum stored documentation files",
+    "How many timestamped file sets to keep (per type: .md, .html, .json). Oldest are deleted automatically. 0 = use default (5).": "How many timestamped file sets to keep (per type: .md, .html, .json). Oldest are deleted automatically. 0 = use default (5).",
     "Manual context (JSON)": "Manual context (JSON)",
     "Additional manual information to include in documentation (description, contact, notes)": "Additional manual information to include in documentation (description, contact, notes)",
     "Notifications": "Notifications",

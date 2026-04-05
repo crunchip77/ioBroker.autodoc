@@ -375,6 +375,14 @@ class Autodoc extends utils.Adapter {
 				write: false,
 				def: 0,
 			},
+			'info.htmlUrl': {
+				name: 'Direct URL to latest HTML documentation',
+				type: 'string',
+				role: 'url',
+				read: true,
+				write: false,
+				def: '',
+			},
 			'versioning.lastDocumentModel': {
 				name: 'Last generated document model (JSON)',
 				type: 'string',
@@ -431,6 +439,64 @@ class Autodoc extends utils.Adapter {
 	}
 
 	/**
+	 * Delete oldest timestamped autodoc files, keeping only the newest `maxFiles` of each type.
+	 *
+	 * @param {string} basePath ioBroker file namespace path.
+	 * @param {number} maxFiles Maximum number of timestamped files to keep per type.
+	 * @returns {Promise<void>}
+	 */
+	async rotateFiles(basePath, maxFiles) {
+		try {
+			const files = await this.readDirAsync(basePath, '');
+			const names = files.map(f => f.file);
+
+			for (const ext of ['md', 'html', 'json']) {
+				const pattern = /^autodoc-\d{4}-\d{2}-\d{2}T/;
+				const typed = names.filter(n => n.endsWith(`.${ext}`) && pattern.test(n)).sort();
+				if (typed.length > maxFiles) {
+					const toDelete = typed.slice(0, typed.length - maxFiles);
+					for (const name of toDelete) {
+						try {
+							await this.delFileAsync(basePath, name);
+							this.log.debug(`Rotated old file: ${name}`);
+						} catch (e) {
+							this.log.warn(`Could not delete old file ${name}: ${e.message}`);
+						}
+					}
+				}
+			}
+		} catch (e) {
+			this.log.warn(`File rotation failed: ${e.message}`);
+		}
+	}
+
+	/**
+	 * Build a direct URL to autodoc-latest.html via the web or admin adapter.
+	 *
+	 * @returns {Promise<string>} URL string or empty string if not determinable.
+	 */
+	async buildHtmlUrl() {
+		try {
+			const host = this.host || 'localhost';
+			const filePath = `/files/${this.namespace}.files/autodoc-latest.html`;
+
+			// Try web adapter first
+			const webObj = await this.getForeignObjectAsync('system.adapter.web.0');
+			if (webObj && webObj.native) {
+				const port = webObj.native.port || 8082;
+				const secure = webObj.native.secure ? 'https' : 'http';
+				return `${secure}://${host}:${port}${filePath}`;
+			}
+
+			// Fallback: admin adapter on port 8081
+			return `http://${host}:8081${filePath}`;
+		} catch (e) {
+			this.log.warn(`Could not build HTML URL: ${e.message}`);
+			return '';
+		}
+	}
+
+	/**
 	 * Persist generated documentation and info states.
 	 *
 	 * @param {object} docModel Structured documentation model.
@@ -446,20 +512,31 @@ class Autodoc extends utils.Adapter {
 			const timestamp = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}T${pad(now.getHours())}-${pad(now.getMinutes())}-${pad(now.getSeconds())}`;
 			const basePath = `${this.namespace}.files`;
 
-			// Save Markdown file
+			// Save timestamped files
 			const markdownFilename = `autodoc-${timestamp}.md`;
 			await this.writeFileAsync(basePath, markdownFilename, markdown);
 			this.log.info(`Markdown documentation saved to /files/${this.namespace}/${markdownFilename}`);
 
-			// Save HTML file
 			const htmlFilename = `autodoc-${timestamp}.html`;
 			await this.writeFileAsync(basePath, htmlFilename, html);
 			this.log.info(`HTML documentation saved to /files/${this.namespace}/${htmlFilename}`);
 
-			// Save JSON file
 			const jsonFilename = `autodoc-${timestamp}.json`;
 			await this.writeFileAsync(basePath, jsonFilename, json);
 			this.log.info(`JSON documentation saved to /files/${this.namespace}/${jsonFilename}`);
+
+			// Save fixed "latest" files for direct access
+			await this.writeFileAsync(basePath, 'autodoc-latest.md', markdown);
+			await this.writeFileAsync(basePath, 'autodoc-latest.html', html);
+			await this.writeFileAsync(basePath, 'autodoc-latest.json', json);
+
+			// Rotate old timestamped files
+			const maxFiles = this.config.maxStoredFiles > 0 ? this.config.maxStoredFiles : 5;
+			await this.rotateFiles(basePath, maxFiles);
+
+			// Build and store direct HTML URL
+			const htmlUrl = await this.buildHtmlUrl();
+			await this.setStateAsync('info.htmlUrl', { val: htmlUrl, ack: true });
 
 			// Update info states (keep metadata as states for quick access)
 			const summary = this.buildSummary(docModel);

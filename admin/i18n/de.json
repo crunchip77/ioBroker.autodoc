@@ -24,6 +24,8 @@
     "If enabled, the markdown output contains only summary information without the full instance list": "Wenn aktiviert, enthält die Markdown-Ausgabe nur Zusammenfassungen ohne die vollständige Instanzliste",
     "Maximum documented instances": "Maximale Anzahl dokumentierter Instanzen",
     "Limits how many adapter instances are included in the generated documentation, 0 means unlimited": "Begrenzt, wie viele Adapter-Instanzen in die erzeugte Dokumentation aufgenommen werden, 0 bedeutet unbegrenzt",
+    "Maximum stored documentation files": "Maximale Anzahl gespeicherter Dokumentationsdateien",
+    "How many timestamped file sets to keep (per type: .md, .html, .json). Oldest are deleted automatically. 0 = use default (5).": "Wie viele Dateisätze mit Zeitstempel behalten werden sollen (je Typ: .md, .html, .json). Älteste werden automatisch gelöscht. 0 = Standard (5).",
     "Manual context (JSON)": "Manueller Kontext (JSON)",
     "Additional manual information to include in documentation (description, contact, notes)": "Zusätzliche manuelle Informationen für die Dokumentation (Beschreibung, Kontakt, Notizen)",
     "Notifications": "Benachrichtigungen",

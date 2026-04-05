@@ -147,6 +147,19 @@
             "lg": 6,
             "xl": 6
         },
+        "maxStoredFiles": {
+            "type": "number",
+            "label": "Maximum stored documentation files",
+            "help": "How many timestamped file sets to keep (per type: .md, .html, .json). Oldest are deleted automatically. 0 = use default (5).",
+            "min": 0,
+            "default": 5,
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 6,
+            "xl": 6
+        },
         "manualContext": {
             "type": "json",
             "label": "Manual context (JSON)",
