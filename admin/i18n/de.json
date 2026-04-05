@@ -16,6 +16,8 @@
     "If enabled, a first documentation draft is created when the adapter starts": "Wenn aktiviert, wird beim Start des Adapters ein erster Dokumentationsentwurf erzeugt",
     "Generate documentation on adapter changes": "Dokumentation bei Adapteränderungen erzeugen",
     "If enabled, documentation is regenerated automatically when adapters are installed, removed, or enabled/disabled (30 second debounce)": "Wenn aktiviert, wird die Dokumentation automatisch neu erzeugt, wenn Adapter installiert, entfernt oder aktiviert/deaktiviert werden (30 Sekunden Verzögerung)",
+    "Read live state values (opt-in)": "Live-Statuswerte lesen (opt-in)",
+    "If enabled, current values for key states (temperature, door/window, alarm) are read and shown in Onboarding profile": "Wenn aktiviert, werden aktuelle Werte für Schlüssel-States (Temperatur, Tür/Fenster, Alarm) gelesen und im Onboarding-Profil angezeigt",
     "Auto-generate interval (hours)": "Automatische Generierung Intervall (Stunden)",
     "Automatically generate documentation every X hours (0 = disabled)": "Automatisch Dokumentation alle X Stunden erzeugen (0 = deaktiviert)",
     "Only document enabled instances": "Nur aktivierte Instanzen dokumentieren",

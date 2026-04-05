@@ -99,6 +99,17 @@
             "lg": 12,
             "xl": 12
         },
+        "readLiveStates": {
+            "type": "checkbox",
+            "label": "Read live state values (opt-in)",
+            "help": "If enabled, current values for key states (temperature, door/window, alarm) are read and shown in Onboarding profile",
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 12,
+            "lg": 12,
+            "xl": 12
+        },
         "autoGenerateInterval": {
             "type": "number",
             "label": "Auto-generate interval (hours)",

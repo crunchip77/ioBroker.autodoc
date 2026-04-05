@@ -16,6 +16,8 @@
     "If enabled, a first documentation draft is created when the adapter starts": "If enabled, a first documentation draft is created when the adapter starts",
     "Generate documentation on adapter changes": "Generate documentation on adapter changes",
     "If enabled, documentation is regenerated automatically when adapters are installed, removed, or enabled/disabled (30 second debounce)": "If enabled, documentation is regenerated automatically when adapters are installed, removed, or enabled/disabled (30 second debounce)",
+    "Read live state values (opt-in)": "Read live state values (opt-in)",
+    "If enabled, current values for key states (temperature, door/window, alarm) are read and shown in Onboarding profile": "If enabled, current values for key states (temperature, door/window, alarm) are read and shown in Onboarding profile",
     "Auto-generate interval (hours)": "Auto-generate interval (hours)",
     "Automatically generate documentation every X hours (0 = disabled)": "Automatically generate documentation every X hours (0 = disabled)",
     "Only document enabled instances": "Only document enabled instances",
