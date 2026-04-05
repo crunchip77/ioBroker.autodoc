@@ -101,9 +101,11 @@ Der Sprung von "Adapter-Inventar" zu echter "System-Dokumentation".
 - HTML: Unterabschnitt "State References" + "Shared States" (Admin-only)
 
 ### 3.3 AI-Enhanced Documentation ✅
-- `lib/aiEnhancer.js`: Anthropic Messages API, opt-in
-- Modelle: claude-haiku-4-5 (Standard) + claude-sonnet-4-6
-- Narrative Zusammenfassung + Maintenance-Empfehlungen
+- `lib/aiEnhancer.js`: pluggable Provider-Architektur, opt-in
+- Provider: `anthropic` (Claude Haiku/Sonnet, paid), `groq` (Llama 3.3 70B, Free Tier), `ollama` (lokal, kein Datenschutzproblem)
+- Groq + Ollama nutzen OpenAI-kompatible API — minimaler Overhead
+- Admin-Profil wird automatisch übersprungen (alle Daten bereits faktisch vorhanden)
+- Narrative Zusammenfassung + Maintenance-Empfehlungen (nur user/onboarding)
 - HTML: hervorgehobene AI-Box; Markdown: Blockquote
 - Fehler → stille Warnung, Doku wird trotzdem generiert
 

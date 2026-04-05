@@ -33,7 +33,7 @@
 
 - [x] 3.1 Notifications: `sendTo` nach Generierung (Telegram, Email, Pushover, generic)
 - [x] 3.2 Dependency-Analyse: `lib/dependencyAnalyzer.js`, stateRefs + Cross-Reference
-- [x] 3.3 AI-Enhanced Docs: `lib/aiEnhancer.js`, Anthropic API, Haiku/Sonnet, opt-in
+- [x] 3.3 AI-Enhanced Docs: `lib/aiEnhancer.js`, pluggable Providers (Anthropic/Groq/Ollama), opt-in, Admin-Profil wird übersprungen
 - [x] 3.x i18n-Fix: alle hardcodierten englischen Strings ersetzt (EN/DE/FR vollständig)
 
 ---

@@ -58,7 +58,13 @@ Open the adapter settings in the ioBroker admin UI.
 | **Only document enabled instances** | Exclude disabled adapter instances from the output | off |
 | **Hide instance details** | Show only summary counts, no per-instance rows | off |
 | **Maximum documented instances** | Cap the number of instances in the output, `0` = unlimited | `0` |
+| **Maximum stored documentation files** | How many timestamped file sets to keep, oldest deleted automatically | `5` |
+| **ioBroker base URL** | Used for `info.htmlUrl`, e.g. `192.168.1.100:8081`. Protocol optional. Leave empty for auto-detect (may fail in Docker) | — |
 | **Manual context (JSON)** | Additional structured info: `{"description":"...","contact":"...","notes":"..."}` | — |
+| **AI provider** | `none`, `anthropic`, `groq`, or `ollama`. Not used for admin profile | `none` |
+| **AI model** | Model ID — leave empty for provider default | — |
+| **API key** | Anthropic (`sk-ant-...`) or Groq (`gsk_...`) — not needed for Ollama | — |
+| **Ollama base URL** | Only for Ollama, e.g. `http://localhost:11434` | — |
 
 ### Documentation Profiles
 
@@ -154,7 +160,7 @@ The step from "adapter inventory" to real system documentation:
 ### v1.x — Depth ✅
 - ✅ **Notifications** — send a message via Telegram, Email or Pushover when new documentation is generated
 - ✅ **Dependency analysis** — which scripts reference which states (regex-based), cross-reference table for shared states
-- ✅ **AI-enhanced documentation** (opt-in) — Claude API integration for narrative summary and maintenance recommendations; requires API key, approx. 0.01–0.3 ct per generation (Haiku/Sonnet)
+- ✅ **AI-enhanced documentation** (opt-in) — pluggable AI providers: Anthropic Claude (paid), Groq (free tier), or Ollama (local/private); narrative summary for user/onboarding profiles; admin profile always skipped
 - ✅ **Full i18n** — all rendered output fully translated (EN, DE, FR)
 
 ### v1.5 — Profile Redesign (in progress)
