@@ -235,21 +235,38 @@
             "text": "AI-Enhanced Documentation",
             "newLine": true
         },
-        "aiEnabled": {
-            "type": "checkbox",
-            "label": "Enable AI-enhanced documentation (opt-in)",
-            "help": "If enabled, Claude AI generates a narrative summary after each documentation run. Requires an Anthropic API key.",
+        "aiProvider": {
+            "type": "select",
+            "label": "AI provider",
+            "help": "Select an AI provider for narrative summaries. Disabled for admin profile (all data is already factual). Not used for admin profile.",
+            "options": [
+                {"label": "Disabled", "value": "none"},
+                {"label": "Anthropic Claude (cloud, paid)", "value": "anthropic"},
+                {"label": "Groq (cloud, free tier available)", "value": "groq"},
+                {"label": "Ollama (local, private)", "value": "ollama"}
+            ],
+            "default": "none",
             "newLine": true,
             "xs": 12,
             "sm": 12,
-            "md": 12,
-            "lg": 12,
-            "xl": 12
+            "md": 6,
+            "lg": 6,
+            "xl": 6
+        },
+        "aiModel": {
+            "type": "text",
+            "label": "AI model (optional)",
+            "help": "Leave empty for default. Anthropic: claude-haiku-4-5-20251001 / claude-sonnet-4-6. Groq: llama-3.3-70b-versatile. Ollama: llama3.2",
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 6,
+            "xl": 6
         },
         "aiApiKey": {
             "type": "password",
-            "label": "Anthropic API key",
-            "help": "Your Anthropic API key (starts with sk-ant-...). The key is stored encrypted.",
+            "label": "API key (Anthropic or Groq)",
+            "help": "Anthropic: starts with sk-ant-... | Groq: starts with gsk_... | Ollama: leave empty",
             "newLine": true,
             "xs": 12,
             "sm": 12,
@@ -257,15 +274,10 @@
             "lg": 8,
             "xl": 8
         },
-        "aiModel": {
-            "type": "select",
-            "label": "AI model",
-            "help": "Haiku is fast and cost-effective (~0.01 ct/run). Sonnet delivers higher quality (~0.3 ct/run).",
-            "options": [
-                {"label": "Claude Haiku (fast, low cost)", "value": "claude-haiku-4-5-20251001"},
-                {"label": "Claude Sonnet (higher quality)", "value": "claude-sonnet-4-6"}
-            ],
-            "default": "claude-haiku-4-5-20251001",
+        "aiBaseUrl": {
+            "type": "text",
+            "label": "Ollama base URL",
+            "help": "Only for Ollama. Default: http://localhost:11434",
             "xs": 12,
             "sm": 12,
             "md": 4,
