@@ -481,7 +481,10 @@ class Autodoc extends utils.Adapter {
 
 			// User-configured base URL takes priority (solves Docker/hostname issues)
 			if (this.config.baseUrl) {
-				const base = this.config.baseUrl.replace(/\/$/, '');
+				let base = this.config.baseUrl.trim().replace(/\/$/, '');
+				if (!base.startsWith('http://') && !base.startsWith('https://')) {
+					base = `http://${base}`;
+				}
 				return `${base}${filePath}`;
 			}
 
