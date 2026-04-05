@@ -477,10 +477,16 @@ class Autodoc extends utils.Adapter {
 	 */
 	async buildHtmlUrl() {
 		try {
-			const host = this.host || 'localhost';
 			const filePath = `/files/${this.namespace}.files/autodoc-latest.html`;
 
-			// Try web adapter first
+			// User-configured base URL takes priority (solves Docker/hostname issues)
+			if (this.config.baseUrl) {
+				const base = this.config.baseUrl.replace(/\/$/, '');
+				return `${base}${filePath}`;
+			}
+
+			// Auto-detect: try web adapter for port, fall back to admin
+			const host = this.host || 'localhost';
 			const webObj = await this.getForeignObjectAsync('system.adapter.web.0');
 			if (webObj && webObj.native) {
 				const port = webObj.native.port || 8082;
@@ -488,7 +494,6 @@ class Autodoc extends utils.Adapter {
 				return `${secure}://${host}:${port}${filePath}`;
 			}
 
-			// Fallback: admin adapter on port 8081
 			return `http://${host}:8081${filePath}`;
 		} catch (e) {
 			this.log.warn(`Could not build HTML URL: ${e.message}`);

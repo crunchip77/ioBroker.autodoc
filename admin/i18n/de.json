@@ -24,6 +24,8 @@
     "If enabled, the markdown output contains only summary information without the full instance list": "Wenn aktiviert, enthält die Markdown-Ausgabe nur Zusammenfassungen ohne die vollständige Instanzliste",
     "Maximum documented instances": "Maximale Anzahl dokumentierter Instanzen",
     "Limits how many adapter instances are included in the generated documentation, 0 means unlimited": "Begrenzt, wie viele Adapter-Instanzen in die erzeugte Dokumentation aufgenommen werden, 0 bedeutet unbegrenzt",
+    "ioBroker base URL (optional)": "ioBroker Basis-URL (optional)",
+    "Used for the info.htmlUrl state, e.g. http://192.168.1.100 or http://myserver:8082. Leave empty for auto-detection (may fail in Docker).": "Wird für den info.htmlUrl-State verwendet, z.B. http://192.168.1.100 oder http://myserver:8082. Leer lassen für automatische Erkennung (kann in Docker fehlschlagen).",
     "Maximum stored documentation files": "Maximale Anzahl gespeicherter Dokumentationsdateien",
     "How many timestamped file sets to keep (per type: .md, .html, .json). Oldest are deleted automatically. 0 = use default (5).": "Wie viele Dateisätze mit Zeitstempel behalten werden sollen (je Typ: .md, .html, .json). Älteste werden automatisch gelöscht. 0 = Standard (5).",
     "Manual context (JSON)": "Manueller Kontext (JSON)",
