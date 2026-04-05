@@ -70,14 +70,20 @@
 ### 4.7 Admin-Profil ✅
 - [x] Device-Hierarchie-Tabelle pro Raum mit OIDs
 
-### 4.x Bugfixes ✅
+### 4.x Bugfixes & UI-Verbesserungen ✅
 - [x] `room.members` → `room.devices` (DocumentModel ↔ Renderer Alignment)
 - [x] Onboarding: Adapter-Abschnitt fehlte (renderAdaptersChapter nicht aufgerufen)
+- [x] markdownRenderer: gleicher room.devices Bug → UNCAUGHT_EXCEPTION im Admin-Profil
+- [x] Adapter-Badges: "none"/"assumption" ausblenden, Tier mit Qualitätsbezeichnung
+- [x] "Instanzen ohne Raumzuweisung" entfernt (konzeptionell falsch)
+- [x] Hosts-Tabelle: leere adapterCount-Spalte entfernt
+- [x] Diagnose-Sektion neu aufgebaut: Erfassungsstatus, Wo nachschauen (alive/connected), Befunde
 
 ### 4.x Abschluss ✅
-- [x] i18n: 16 neue Keys (EN/DE/FR)
+- [x] i18n: alle neuen Keys (EN/DE/FR)
 - [x] Lint sauber (0 Errors)
 - [x] CHANGELOG.md aktualisiert
+- [x] README.md aktualisiert
 - [ ] `dev` → nach Test → Merge nach `main`
 
 ---

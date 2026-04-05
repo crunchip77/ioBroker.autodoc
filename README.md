@@ -18,26 +18,31 @@ The generated documentation is tailored to the selected target audience: technic
 
 ## Features
 
-- **Automatic Discovery** — scans all adapter instances, hosts, state objects and system metadata
-- **Three Target Profiles** — Admin, User/Family, Onboarding, each with different language and level of detail
-- **Adapter Descriptions** — automatically reads adapter titles and descriptions from ioBroker metadata, no manual input needed, multilingual
-- **Markdown + HTML Export** — files saved directly to `/files/autodoc.0/`, readable in any browser
-- **Multilingual** — documentation language selectable: English, German (more via i18n)
+- **Automatic Discovery** — scans adapter instances, hosts, rooms, functions, scripts, state objects and system metadata
+- **Three Target Profiles** — Admin, User/Family, Onboarding — each with genuinely different language, structure and level of detail
+- **Device Resolution** — room members resolved to human-readable device names via ioBroker object metadata
+- **Role Mapping** — ioBroker roles normalized to categories with icons (💡 Light, 🌡️ Climate, 🪟 Shutters, 🚪 Door …)
+- **Live State Values** (opt-in) — show current thermostat temperature, door/window status in Onboarding and User profiles
+- **Adapter Metadata** — reads adapter titles, descriptions, connection type and tier from ioBroker metadata; no manual input required, multilingual
+- **Markdown + HTML Export** — standalone files saved to `/files/autodoc.0/`, readable in any browser without internet access
+- **Multilingual** — documentation language selectable: English, German, French
 - **Version Tracking** — every generation is versioned (YYYY.MM.DD.HH), changes are detected and logged in a changelog
-- **Flexible Triggering**:
-  - Manual via button in ioBroker admin or state
-  - Automatic on adapter start
-  - Scheduled at a configurable interval (hours)
-  - Event-based after adapter installs, removals or enable/disable changes (30 s debounce)
-- **Manual Context** — add project description, contact and custom notes via configuration
-- **Configurable Filters** — limit to enabled instances only, hide instance details, cap instance count
+- **Flexible Triggering** — manual via button, on adapter start, on a configurable schedule, or event-based after adapter changes (30 s debounce)
+- **Script Documentation** — lists all JavaScript/Blockly scripts with name, status, description and trigger type
+- **Dependency Analysis** — which scripts reference which states (regex-based), cross-reference table for shared states
+- **Maintenance Hints** — flags scripts without description and disabled adapter instances with documentation score
+- **Diagnosis Section** — scan statistics, concrete Admin UI paths for troubleshooting, data-driven findings
+- **AI-enhanced Documentation** (opt-in) — pluggable providers: Anthropic Claude, Groq (free tier), Ollama (local/private); narrative summary for user/onboarding profiles
+- **Notifications** — send a message via Telegram, Email, Pushover or generic `sendTo` after generation
+- **Manual Context** — add project description, contact info, and per-adapter / per-room notes via configuration
+- **Search in HTML** — client-side filter in the generated HTML file, no server needed
 
 ## Installation
 
-Install via ioBroker admin under **Adapters → Search → autodoc**, or directly from GitHub:
+Install via ioBroker admin under **Adapters → Install from custom URL**:
 
 ```
-iobroker url https://github.com/crunchip77/ioBroker.autodoc
+https://github.com/crunchip77/ioBroker.autodoc/tarball/dev
 ```
 
 ## Configuration
@@ -50,8 +55,7 @@ Open the adapter settings in the ioBroker admin UI.
 | **Target system** | Usually `ioBroker` | `ioBroker` |
 | **Documentation profile** | Target audience: `admin`, `user`, `onboarding` | `admin` |
 | **Documentation language** | Language for generated documentation | `en` |
-| **Project description** | Short description of what is being documented | — |
-| **Additional notes** | Optional hints, devices, or special requirements | — |
+| **Read live states** | Show current device values in Onboarding/User profiles (thermostat, door/window) | off |
 | **Generate on adapter start** | Create documentation automatically when adapter starts | off |
 | **Generate on adapter changes** | Regenerate after adapter install/remove/enable/disable (30 s debounce) | off |
 | **Auto-generate interval (hours)** | Periodically generate every X hours, `0` = disabled | `0` |
@@ -59,8 +63,8 @@ Open the adapter settings in the ioBroker admin UI.
 | **Hide instance details** | Show only summary counts, no per-instance rows | off |
 | **Maximum documented instances** | Cap the number of instances in the output, `0` = unlimited | `0` |
 | **Maximum stored documentation files** | How many timestamped file sets to keep, oldest deleted automatically | `5` |
-| **ioBroker base URL** | Used for `info.htmlUrl`, e.g. `192.168.1.100:8081`. Protocol optional. Leave empty for auto-detect (may fail in Docker) | — |
-| **Manual context (JSON)** | Structured info: `{"description":"...","contact":"...","notes":"...","adapters":{"hue.0":"Controls living room"},"rooms":{"Living room":"Shutters close at 21:00"}}` | — |
+| **ioBroker base URL** | Used for `info.htmlUrl`, e.g. `192.168.1.100:8081`. Protocol optional. | — |
+| **Manual context (JSON)** | Structured info: `{"description":"...","contact":"...","notes":"...","adapters":{},"rooms":{}}` | — |
 | **AI provider** | `none`, `anthropic`, `groq`, or `ollama`. Not used for admin profile | `none` |
 | **AI model** | Model ID — leave empty for provider default | — |
 | **API key** | Anthropic (`sk-ant-...`) or Groq (`gsk_...`) — not needed for Ollama | — |
@@ -68,13 +72,11 @@ Open the adapter settings in the ioBroker admin UI.
 
 ### Documentation Profiles
 
-| Profile | Audience | Adapter presentation | Technical details |
+| Profile | Audience | Language | Content |
 |---|---|---|---|
-| **admin** | System administrator | Technical name + description + instance list | Full — hosts, state stats, appendices |
-| **user** | Family members, regular users | Human-readable title + description, active adapters only | Minimal — status only |
-| **onboarding** | New users, guests | Human-readable title + description + friendly note | None |
-
-Each adapter's description is read directly from ioBroker metadata (`common.desc`, `common.titleLang`) in the configured documentation language — no manual input required.
+| **admin** | System administrator | Technical | Full system overview, adapter table with badges, device hierarchy with OIDs, script analysis, maintenance score, diagnosis |
+| **user** | Family members, regular users | Plain language | Rooms with device names and icons, automations, connected systems (title only) |
+| **onboarding** | New users, guests | Informal ("Du") | Welcome with city, device grid with icons and live values, automations as plain sentences, adapter cards |
 
 ### Manual Context
 
@@ -97,14 +99,14 @@ The **Manual context** field accepts a JSON object with the following structure:
 ```
 
 - `adapters` notes are shown per-adapter in the documentation (all profiles)
-- `rooms` notes are shown per-room (planned for Phase 4)
+- `rooms` notes are shown per-room in all profiles
 - Sensitive fields in adapter native configs (passwords, tokens, keys) are always filtered out automatically
 
 ## Usage
 
 1. Open the adapter configuration and fill in your project details.
 2. Select the desired profile and language.
-3. Save and restart the adapter, or click **Generate documentation** in the ioBroker Objects view by setting `autodoc.0.action.generate` to `true`.
+3. Save and restart the adapter, or set `autodoc.0.action.generate` to `true` in the Objects view.
 4. Find the generated files in `/files/autodoc.0/` — open the `.html` file in any browser or the `.md` file in any Markdown viewer.
 
 ## States
@@ -173,43 +175,45 @@ The HTML file is a **standalone** document — no internet connection required, 
 
 ## Roadmap
 
-### v1.0 — Content ✅
-The step from "adapter inventory" to real system documentation:
+### v0.1 — Basis ✅
+Modular architecture, file export, three profiles, adapter metadata, version tracking, auto-generation, i18n.
 
-- ✅ **Rooms & functions** — reads `enum.rooms` and `enum.functions`, documents which devices belong to which room
-- ✅ **Script documentation** — lists all JavaScript/Blockly scripts with name, status, description and trigger type
-- ✅ **Maintenance hints** — flags instances without room assignment, scripts without description, inactive adapters
-- ✅ **Search in HTML** — client-side search field in the generated HTML file, no server needed
+### v1.0 — Content ✅
+Rooms & functions, script documentation, maintenance hints, client-side search in HTML.
 
 ### v1.x — Depth ✅
-- ✅ **Notifications** — send a message via Telegram, Email or Pushover when new documentation is generated
-- ✅ **Dependency analysis** — which scripts reference which states (regex-based), cross-reference table for shared states
-- ✅ **AI-enhanced documentation** (opt-in) — pluggable AI providers: Anthropic Claude (paid), Groq (free tier), or Ollama (local/private); narrative summary for user/onboarding profiles; admin profile always skipped
-- ✅ **Full i18n** — all rendered output fully translated (EN, DE, FR)
-- ✅ **Adapter metadata enrichment** — reads `connectionType`, `dataSource`, `tier` from ioBroker metadata; filtered native config shown in admin profile; sensitive fields (passwords, tokens, keys) always removed
-- ✅ **Structured manual context** — per-adapter and per-room notes via `manualContext.adapters` and `manualContext.rooms`
+Notifications, dependency analysis, AI-enhanced documentation, full i18n (EN/DE/FR), adapter metadata enrichment, structured manual context.
 
-### v1.5 — Profile Redesign (in progress)
-Genuine per-audience documentation — not just "more or less detail", but a completely different language and perspective per profile:
+### v1.5 — Profile Redesign ✅
+Genuine per-audience documentation — completely different language and structure per profile:
+- **Dispatcher architecture** — `renderAdminHtml()` / `renderUserHtml()` / `renderOnboardingHtml()`
+- **Device resolution** — room members resolved to human-readable names, categories, icons
+- **Role mapping** — 29 ioBroker role patterns → 14 categories + icons
+- **Live state values** (opt-in) — thermostat temperature, door/window status
+- **Onboarding** — city-aware welcome, device grid, automations as plain sentences, AI box prominent
+- **User/Family** — device cards per room, scripts name+description only, adapters title only
+- **Admin** — device hierarchy table per room with OIDs, diagnosis section with scan statistics and concrete troubleshooting paths
 
-- **Onboarding** — "How do I use this home?" — no technical terms, no adapter names or OIDs, narrative style for guests
-- **User / Family** — "How does our home work?" — everyday language, rooms & devices by name, automations explained plainly
-- **Admin** — "Why does the system do X when Y happens?" — full technical depth, dependencies, config details
-- **Device resolution** — room members resolved to human-readable device names via ioBroker object metadata
-- **Role mapping** — ioBroker roles normalized to categories with icons (💡 Light, 🌡️ Climate, 🪟 Shutters …)
-- **Live state values** (opt-in) — show current thermostat temperature, door/window status in Onboarding
-
-### v2.x — Extensions
-- **PDF export**
-- **Backup adapter integration** — save documentation together with backups
-- **Custom templates**
+### v2.x — Extensions (planned)
+- PDF export
+- Backup adapter integration — save documentation together with backups
+- Custom templates
 
 ## Changelog
+
+### 1.5.0-dev
+- Profile redesign: genuine per-audience templates for Admin, User and Onboarding
+- Device resolution and role mapping (29 patterns → 14 categories + icons)
+- Live state values (opt-in), system.config integration
+- Admin diagnosis section: scan statistics, Admin UI paths, data-driven findings
+- Adapter badges: connection type (Local/Cloud), data source (Push/Polling), quality tier
+- Removed misleading "instances without room assignment" metric
+- Multiple bugfixes (room.devices alignment, onboarding adapter section, markdownRenderer crash)
 
 ### 1.0.0
 - Notifications after generation: Telegram, Email, Pushover, Signal, WhatsApp, generic
 - Dependency analysis: state references extracted from script source, cross-reference table (Admin)
-- AI-enhanced documentation (opt-in): Claude Haiku/Sonnet narrative summary and maintenance recommendations
+- AI-enhanced documentation (opt-in): narrative summary and maintenance recommendations
 - Full i18n: all rendered output translated (EN, DE, FR)
 - Fixed `autodoc-latest.{md,html,json}` files for stable browser access
 - New `info.htmlUrl` state with direct URL to latest HTML via web adapter
@@ -220,15 +224,14 @@ Genuine per-audience documentation — not just "more or less detail", but a com
 - File-based export: Markdown, HTML, and JSON to `/files/autodoc.0/`
 - Three documentation profiles: Admin, User, Onboarding with profile-aware content
 - HTML export with sidebar navigation, stat cards, and adapter cards
-- Adapter descriptions and titles from ioBroker metadata (`common.desc`, `common.titleLang`)
-- Version tracking with semantic versioning and changelog generation
-- Automatic generation: on startup, timer (configurable interval), event-based with 30 s debounce
+- Version tracking with changelog generation
+- Automatic generation: on startup, timer, event-based with 30 s debounce
 - i18n support: English, German, French
-- Rooms & functions chapter: reads `enum.rooms` and `enum.functions`, shows room assignments per profile
+- Rooms & functions chapter: reads `enum.rooms` and `enum.functions`
 - Admin UI via `jsonConfig.json5` with full i18n (EN, DE)
 
 ### 0.0.1
-- Initial release with Markdown/HTML/JSON export, three documentation profiles, automatic discovery, version tracking, event-based and scheduled auto-generation
+- Initial release with Markdown/HTML/JSON export, three documentation profiles, automatic discovery, version tracking
 
 ## License
 
