@@ -12,6 +12,7 @@ const MarkdownRenderer = require('./lib/markdownRenderer');
 const HtmlRenderer = require('./lib/htmlRenderer');
 const I18n = require('./lib/i18n');
 const VersionTracker = require('./lib/versionTracker');
+const Notifier = require('./lib/notifier');
 
 class Autodoc extends utils.Adapter {
 	/**
@@ -30,6 +31,7 @@ class Autodoc extends utils.Adapter {
 		this.markdownRenderer = new MarkdownRenderer(this, this.i18n);
 		this.htmlRenderer = new HtmlRenderer(this, this.i18n);
 		this.versionTracker = new VersionTracker(this);
+		this.notifier = new Notifier(this);
 
 		// Timer for periodic auto-generation
 		this.autoGenerateInterval = null;
@@ -547,6 +549,9 @@ class Autodoc extends utils.Adapter {
 			// Add changelog entry
 			const changelogEntry = this.versionTracker.buildChangelogEntry(version, changeData);
 			await this.versionTracker.appendChangelog(changelogEntry);
+
+			// Send notification if configured
+			await this.notifier.send(docModel, changeData);
 
 			this.log.info(`Documentation generated via ${trigger} (v${version}) - ${changeData.summary}`);
 		} catch (error) {

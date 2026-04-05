@@ -25,5 +25,14 @@
     "Maximum documented instances": "Maximale Anzahl dokumentierter Instanzen",
     "Limits how many adapter instances are included in the generated documentation, 0 means unlimited": "Begrenzt, wie viele Adapter-Instanzen in die erzeugte Dokumentation aufgenommen werden, 0 bedeutet unbegrenzt",
     "Manual context (JSON)": "Manueller Kontext (JSON)",
-    "Additional manual information to include in documentation (description, contact, notes)": "Zusätzliche manuelle Informationen für die Dokumentation (Beschreibung, Kontakt, Notizen)"
+    "Additional manual information to include in documentation (description, contact, notes)": "Zusätzliche manuelle Informationen für die Dokumentation (Beschreibung, Kontakt, Notizen)",
+    "Notifications": "Benachrichtigungen",
+    "Send notification after documentation generation": "Benachrichtigung nach Dokumentationsgenerierung senden",
+    "If enabled, a message is sent via the configured adapter after each generation": "Wenn aktiviert, wird nach jeder Generierung eine Nachricht über den konfigurierten Adapter gesendet",
+    "Messaging adapter instance": "Messaging-Adapter-Instanz",
+    "Instance to send the notification through, e.g. telegram.0, pushover.0, email.0": "Instanz, über die die Benachrichtigung gesendet wird, z.B. telegram.0, pushover.0, email.0",
+    "Recipient (optional)": "Empfänger (optional)",
+    "Telegram username, Pushover device, or email address — leave empty for adapter default": "Telegram-Benutzername, Pushover-Gerät oder E-Mail-Adresse — leer lassen für Adapter-Standard",
+    "Custom message template (optional)": "Eigene Nachrichtenvorlage (optional)",
+    "Use {project}, {summary}, {version}, {trigger} as placeholders. Leave empty for default message.": "Platzhalter: {project}, {summary}, {version}, {trigger}. Leer lassen für Standardnachricht."
 }

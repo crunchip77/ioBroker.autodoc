@@ -157,6 +157,54 @@
             "md": 12,
             "lg": 12,
             "xl": 12
+        },
+        "_notifyHeader": {
+            "type": "header",
+            "text": "Notifications",
+            "newLine": true
+        },
+        "notifyEnabled": {
+            "type": "checkbox",
+            "label": "Send notification after documentation generation",
+            "help": "If enabled, a message is sent via the configured adapter after each generation",
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 12,
+            "lg": 12,
+            "xl": 12
+        },
+        "notifyInstance": {
+            "type": "text",
+            "label": "Messaging adapter instance",
+            "help": "Instance to send the notification through, e.g. telegram.0, pushover.0, email.0",
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 6,
+            "xl": 6
+        },
+        "notifyTarget": {
+            "type": "text",
+            "label": "Recipient (optional)",
+            "help": "Telegram username, Pushover device, or email address — leave empty for adapter default",
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 6,
+            "xl": 6
+        },
+        "notifyMessage": {
+            "type": "text",
+            "label": "Custom message template (optional)",
+            "help": "Use {project}, {summary}, {version}, {trigger} as placeholders. Leave empty for default message.",
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 12,
+            "lg": 12,
+            "xl": 12
         }
     }
 }
