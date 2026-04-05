@@ -25,14 +25,27 @@ Drei echte Zielgruppen mit komplett unterschiedlicher Sprache:
 
 - **IDE**: Visual Studio Code auf Windows
 - **Testsystem**: ioBroker auf Unraid-Server (separat vom Produktivsystem)
-- **Deployment**: `dev`-Branch → GitHub Push → manuelle Installation auf Testserver via URL
-- **Release-Strategie**: `dev` → Test → Merge nach `main` → Tag
+- **Deployment**: `dev`-Branch → GitHub Push → manuelle Installation auf Testserver via URL (`iobroker url https://github.com/crunchip77/ioBroker.autodoc`)
+- **Release-Strategie während Entwicklung**: `dev` → Test → Lint → Merge nach `main`; **kein Tag, kein Versionssprung** bis zum echten Release
 
 ## Branch-Strategie
 
-- `main` = stabiler Stand, aktuell getaggt als v0.1.0
+- `main` = stabiler Stand; enthält aktuell den letzten Entwicklungsstand (v1.0.0 als interner Meilenstein)
 - `dev` = aktive Entwicklung; Commits immer auf `dev`
-- Kein direkter Push auf `main` außer für Releases
+- Kein direkter Push auf `main` außer für Merges nach Test
+
+## Release-Prozess (echter ioBroker-Release)
+
+Solange der Adapter **nicht auf npm** und **nicht in `ioBroker.repositories`** eingetragen ist, haben Git-Tags und GitHub Releases keine Wirkung auf Update-Erkennung oder Installation im ioBroker Admin. URL-Installation lädt immer `main` HEAD.
+
+**Reihenfolge für einen echten Release:**
+1. `package.json` + `io-package.json` Version synchron bumpen
+2. News-Eintrag in `io-package.json` (EN + DE minimum)
+3. `dev` → Merge nach `main`
+4. `npm publish` → Paket auf npmjs.com
+5. Git-Tag + GitHub Release erstellen (erst jetzt sinnvoll)
+6. PR zu [ioBroker/ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories) für Beta-Eintrag (`sources-dist.json`)
+7. Voraussetzung: [Adapter Checker](https://adapter-check.iobroker.in/) vollständig grün
 
 ## Wichtige Referenzen
 
@@ -180,10 +193,10 @@ Echte Zielgruppen-Dokus statt "mehr oder weniger Detail vom selben Template".
 
 ## Ausbaustufen Zusammenfassung
 
-| Version | Inhalt | Status |
-|---|---|---|
-| **v0.x** | Basis: Adapter-Inventar, Export, Profile, Versionierung | ✅ |
-| **v1.0** | Phase 2: Räume, Skripte, Wartungshinweise, Suche im HTML | ✅ dev |
-| **v1.x** | Phase 3: Notifications, Dependency-Analyse, AI, i18n-Fix | ✅ dev |
-| **v1.5** | Phase 4: Profile-Redesign (echte Zielgruppen-Dokus) | ⬜ in Arbeit |
-| **v2.x** | Phase 5: PDF, Backup-Integration, Custom Templates | ⬜ geplant |
+| Version | Inhalt | Status | Anmerkung |
+|---|---|---|---|
+| **v0.x** | Basis: Adapter-Inventar, Export, Profile, Versionierung | ✅ main | interner Meilenstein |
+| **v1.0** | Phase 2+3: Räume, Skripte, Wartung, Suche, Notifications, AI, i18n | ✅ main | interner Meilenstein, noch kein npm-Release |
+| **v1.5** | Phase 4: Profile-Redesign (echte Zielgruppen-Dokus) | ⬜ in Arbeit | |
+| **v2.x** | Phase 5: PDF, Backup-Integration, Custom Templates | ⬜ geplant | |
+| **npm/public** | Adapter Checker grün + npm publish + ioBroker.repositories PR | ⬜ offen | erst dann sind Versionen/Tags wirkungsvoll |

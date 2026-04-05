@@ -88,7 +88,7 @@
 - [ ] Tests anpassen falls nötig
 - [ ] Lint sauber
 - [ ] CHANGELOG.md aktualisieren
-- [ ] `dev` → nach Test → Merge nach `main` + Tag v1.5.0
+- [ ] `dev` → nach Test → Merge nach `main` (kein Tag, kein Versionssprung bis zum echten Release)
 
 ---
 
@@ -98,6 +98,25 @@
 - [ ] Backup-Adapter Integration
 - [ ] Custom Templates
 - [ ] QR-Code für Onboarding (externe Lib)
+
+---
+
+## Release-Prozess (wenn bereit für echte Veröffentlichung)
+
+> Solange der Adapter nicht auf npm und nicht in `ioBroker.repositories` eingetragen ist, haben Tags und GitHub Releases **keine Wirkung** auf Update-Erkennung oder Installation im ioBroker Admin.
+
+### Voraussetzungen
+- [ ] [Adapter Checker](https://adapter-check.iobroker.in/) vollständig grün
+- [ ] npm-Account vorhanden, `iobroker.autodoc` als Paketname verfügbar
+
+### Schritte
+1. [ ] Versionsnummer in `package.json` + `io-package.json` synchron bumpen
+2. [ ] News-Eintrag in `io-package.json` (EN + DE minimum)
+3. [ ] Changelog in `README.md` ergänzen
+4. [ ] `dev` → Merge nach `main`
+5. [ ] `npm publish` (veröffentlicht auf npmjs.com)
+6. [ ] GitHub Release aus Tag erstellen (dann erst sinnvoll)
+7. [ ] PR zu [ioBroker/ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories) für Eintrag in Beta-Liste (`sources-dist.json`)
 
 ---
 
