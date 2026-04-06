@@ -113,8 +113,11 @@
     "native": {
         "projectName": "",
         "projectDescription": "",
-        "targetSystem": "ioBroker",
+        "manualContact": "",
         "additionalNotes": "",
+        "adapterNotes": [],
+        "roomNotes": [],
+        "targetSystem": "ioBroker",
         "autoGenerateOnStart": false,
         "onlyEnabledInstances": false,
         "hideInstanceDetailsInMarkdown": false,

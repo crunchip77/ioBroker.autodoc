@@ -1,94 +1,291 @@
 {
     "i18n": true,
-    "type": "panel",
+    "type": "tabs",
     "items": {
-        "projectName": {
-            "type": "text",
-            "label": "Project name",
-            "help": "Name of the ioBroker project or installation",
-            "newLine": true,
-            "xs": 12,
-            "sm": 12,
-            "md": 6,
-            "lg": 6,
-            "xl": 6
+        "tabBasic": {
+            "type": "panel",
+            "label": "Basic settings",
+            "items": {
+                "profile": {
+                    "type": "select",
+                    "label": "Documentation profile",
+                    "help": "Target audience for the generated documentation",
+                    "options": [
+                        {"label": "Admin", "value": "admin"},
+                        {"label": "User/Family", "value": "user"},
+                        {"label": "Onboarding", "value": "onboarding"}
+                    ],
+                    "default": "admin",
+                    "newLine": true,
+                    "xs": 12, "sm": 12, "md": 6, "lg": 6, "xl": 6
+                },
+                "language": {
+                    "type": "select",
+                    "label": "Documentation language",
+                    "help": "Language for the generated documentation",
+                    "options": [
+                        {"label": "English", "value": "en"},
+                        {"label": "German", "value": "de"},
+                        {"label": "French", "value": "fr"}
+                    ],
+                    "default": "en",
+                    "xs": 12, "sm": 12, "md": 6, "lg": 6, "xl": 6
+                },
+                "autoGenerateOnStart": {
+                    "type": "checkbox",
+                    "label": "Generate documentation on adapter start",
+                    "help": "If enabled, a first documentation draft is created when the adapter starts",
+                    "newLine": true,
+                    "xs": 12, "sm": 12, "md": 12, "lg": 12, "xl": 12
+                },
+                "autoGenerateOnEvents": {
+                    "type": "checkbox",
+                    "label": "Generate documentation on adapter changes",
+                    "help": "If enabled, documentation is regenerated automatically when adapters are installed, removed, or enabled/disabled (30 second debounce)",
+                    "newLine": true,
+                    "xs": 12, "sm": 12, "md": 12, "lg": 12, "xl": 12
+                },
+                "autoGenerateInterval": {
+                    "type": "number",
+                    "label": "Auto-generate interval (hours)",
+                    "help": "Automatically generate documentation every X hours (0 = disabled)",
+                    "min": 0,
+                    "max": 168,
+                    "default": 0,
+                    "newLine": true,
+                    "xs": 12, "sm": 12, "md": 6, "lg": 6, "xl": 6
+                },
+                "readLiveStates": {
+                    "type": "checkbox",
+                    "label": "Read live state values (opt-in)",
+                    "help": "If enabled, current values for key states (temperature, door/window, alarm) are read and shown in Onboarding profile",
+                    "newLine": true,
+                    "xs": 12, "sm": 12, "md": 12, "lg": 12, "xl": 12
+                }
+            }
         },
-        "targetSystem": {
-            "type": "text",
-            "label": "Target system",
-            "help": "Usually ioBroker",
-            "xs": 12,
-            "sm": 12,
-            "md": 6,
-            "lg": 6,
-            "xl": 6
+        "tabManual": {
+            "type": "panel",
+            "label": "My documentation",
+            "items": {
+                "_manualHint": {
+                    "type": "staticText",
+                    "text": "Manual documentation hint",
+                    "newLine": true,
+                    "xs": 12, "sm": 12, "md": 12, "lg": 12, "xl": 12
+                },
+                "projectName": {
+                    "type": "text",
+                    "label": "Project name",
+                    "help": "Name of the ioBroker project or installation",
+                    "newLine": true,
+                    "xs": 12, "sm": 12, "md": 6, "lg": 6, "xl": 6
+                },
+                "projectDescription": {
+                    "type": "text",
+                    "label": "Project description",
+                    "help": "Short description of what should be documented",
+                    "newLine": true,
+                    "xs": 12, "sm": 12, "md": 12, "lg": 12, "xl": 12
+                },
+                "manualContact": {
+                    "type": "text",
+                    "label": "Contact person",
+                    "help": "Name or contact for this ioBroker installation",
+                    "newLine": true,
+                    "xs": 12, "sm": 12, "md": 6, "lg": 6, "xl": 6
+                },
+                "additionalNotes": {
+                    "type": "text",
+                    "label": "General notes",
+                    "help": "General notes about this installation (e.g. special setups, known issues)",
+                    "newLine": true,
+                    "xs": 12, "sm": 12, "md": 12, "lg": 12, "xl": 12
+                },
+                "_adapterNotesHeader": {
+                    "type": "header",
+                    "text": "Per-adapter notes",
+                    "newLine": true
+                },
+                "adapterNotes": {
+                    "type": "table",
+                    "label": "Adapter notes",
+                    "help": "Add a human-readable note for specific adapters (shown in all profiles)",
+                    "newLine": true,
+                    "xs": 12, "sm": 12, "md": 12, "lg": 12, "xl": 12,
+                    "items": [
+                        {
+                            "attr": "adapter",
+                            "type": "text",
+                            "title": "Adapter (e.g. telegram)",
+                            "width": "30%"
+                        },
+                        {
+                            "attr": "note",
+                            "type": "text",
+                            "title": "Note",
+                            "width": "70%"
+                        }
+                    ]
+                },
+                "_roomNotesHeader": {
+                    "type": "header",
+                    "text": "Per-room notes",
+                    "newLine": true
+                },
+                "roomNotes": {
+                    "type": "table",
+                    "label": "Room notes",
+                    "help": "Add a human-readable note for specific rooms (shown in User and Onboarding profiles)",
+                    "newLine": true,
+                    "xs": 12, "sm": 12, "md": 12, "lg": 12, "xl": 12,
+                    "items": [
+                        {
+                            "attr": "room",
+                            "type": "text",
+                            "title": "Room name",
+                            "width": "30%"
+                        },
+                        {
+                            "attr": "note",
+                            "type": "text",
+                            "title": "Note",
+                            "width": "70%"
+                        }
+                    ]
+                }
+            }
         },
-        "projectDescription": {
-            "type": "text",
-            "label": "Project description",
-            "help": "Short description of what should be documented",
-            "newLine": true,
-            "xs": 12,
-            "sm": 12,
-            "md": 12,
-            "lg": 12,
-            "xl": 12
+        "tabAdvanced": {
+            "type": "panel",
+            "label": "Advanced",
+            "items": {
+                "onlyEnabledInstances": {
+                    "type": "checkbox",
+                    "label": "Only document enabled instances",
+                    "help": "If enabled, only active adapter instances are included in the documentation",
+                    "newLine": true,
+                    "xs": 12, "sm": 12, "md": 12, "lg": 12, "xl": 12
+                },
+                "hideInstanceDetailsInMarkdown": {
+                    "type": "checkbox",
+                    "label": "Hide instance details in markdown",
+                    "help": "If enabled, the markdown output contains only summary information without the full instance list",
+                    "newLine": true,
+                    "xs": 12, "sm": 12, "md": 12, "lg": 12, "xl": 12
+                },
+                "maxDocumentedInstances": {
+                    "type": "number",
+                    "label": "Maximum documented instances",
+                    "help": "Limits how many adapter instances are included in the generated documentation, 0 means unlimited",
+                    "min": 0,
+                    "default": 0,
+                    "newLine": true,
+                    "xs": 12, "sm": 12, "md": 6, "lg": 6, "xl": 6
+                },
+                "maxStoredFiles": {
+                    "type": "number",
+                    "label": "Maximum stored documentation files",
+                    "help": "How many timestamped file sets to keep (per type: .md, .html, .json). Oldest are deleted automatically. 0 = use default (5).",
+                    "min": 0,
+                    "default": 5,
+                    "newLine": true,
+                    "xs": 12, "sm": 12, "md": 6, "lg": 6, "xl": 6
+                },
+                "baseUrl": {
+                    "type": "text",
+                    "label": "ioBroker base URL (optional)",
+                    "help": "Used for the info.htmlUrl state. Include port, e.g. 192.168.1.100:8081 or http://myserver:8082. Protocol is optional. Leave empty for auto-detection (may fail in Docker).",
+                    "newLine": true,
+                    "xs": 12, "sm": 12, "md": 8, "lg": 8, "xl": 8
+                },
+                "targetSystem": {
+                    "type": "text",
+                    "label": "Target system",
+                    "help": "Usually ioBroker",
+                    "newLine": true,
+                    "xs": 12, "sm": 12, "md": 6, "lg": 6, "xl": 6
+                },
+                "manualContext": {
+                    "type": "json",
+                    "label": "Manual context (JSON, legacy)",
+                    "help": "Legacy JSON field. Use the 'My documentation' tab instead. Only needed for migration.",
+                    "newLine": true,
+                    "xs": 12, "sm": 12, "md": 12, "lg": 12, "xl": 12
+                }
+            }
         },
-        "additionalNotes": {
-            "type": "text",
-            "label": "Additional notes",
-            "help": "Optional notes, devices, adapters or special requirements",
-            "newLine": true,
-            "xs": 12,
-            "sm": 12,
-            "md": 12,
-            "lg": 12,
-            "xl": 12
+        "tabNotify": {
+            "type": "panel",
+            "label": "Notifications",
+            "items": {
+                "notifyEnabled": {
+                    "type": "checkbox",
+                    "label": "Send notification after documentation generation",
+                    "help": "If enabled, a message is sent via the configured adapter after each generation",
+                    "newLine": true,
+                    "xs": 12, "sm": 12, "md": 12, "lg": 12, "xl": 12
+                },
+                "notifyInstance": {
+                    "type": "text",
+                    "label": "Messaging adapter instance",
+                    "help": "Instance to send the notification through, e.g. telegram.0, pushover.0, email.0",
+                    "newLine": true,
+                    "xs": 12, "sm": 12, "md": 6, "lg": 6, "xl": 6
+                },
+                "notifyTarget": {
+                    "type": "text",
+                    "label": "Recipient (optional)",
+                    "help": "Telegram username, Pushover device, or email address - leave empty for adapter default",
+                    "xs": 12, "sm": 12, "md": 6, "lg": 6, "xl": 6
+                },
+                "notifyMessage": {
+                    "type": "text",
+                    "label": "Custom message template (optional)",
+                    "help": "Use {project}, {summary}, {version}, {trigger} as placeholders. Leave empty for default message.",
+                    "newLine": true,
+                    "xs": 12, "sm": 12, "md": 12, "lg": 12, "xl": 12
+                }
+            }
         },
-        "autoGenerateOnStart": {
-            "type": "checkbox",
-            "label": "Generate documentation on adapter start",
-            "help": "If enabled, a first documentation draft is created when the adapter starts",
-            "newLine": true,
-            "xs": 12,
-            "sm": 12,
-            "md": 12,
-            "lg": 12,
-            "xl": 12
-        },
-		        "onlyEnabledInstances": {
-            "type": "checkbox",
-            "label": "Only document enabled instances",
-            "help": "If enabled, only active adapter instances are included in the documentation",
-            "newLine": true,
-            "xs": 12,
-            "sm": 12,
-            "md": 12,
-            "lg": 12,
-            "xl": 12
-        },
-		        "hideInstanceDetailsInMarkdown": {
-            "type": "checkbox",
-            "label": "Hide instance details in markdown",
-            "help": "If enabled, the markdown output contains only summary information without the full instance list",
-            "newLine": true,
-            "xs": 12,
-            "sm": 12,
-            "md": 12,
-            "lg": 12,
-            "xl": 12
-        },
-		        "maxDocumentedInstances": {
-            "type": "number",
-            "label": "Maximum documented instances",
-            "help": "Limits how many adapter instances are included in the generated documentation, 0 means unlimited",
-            "newLine": true,
-            "min": 0,
-            "xs": 12,
-            "sm": 12,
-            "md": 6,
-            "lg": 6,
-            "xl": 6
+        "tabAi": {
+            "type": "panel",
+            "label": "AI documentation",
+            "items": {
+                "aiProvider": {
+                    "type": "select",
+                    "label": "AI provider",
+                    "help": "Select an AI provider for narrative summaries. Not used for admin profile (all data is already factual).",
+                    "options": [
+                        {"label": "Disabled", "value": "none"},
+                        {"label": "Anthropic Claude (cloud, paid)", "value": "anthropic"},
+                        {"label": "Groq (cloud, free tier available)", "value": "groq"},
+                        {"label": "Ollama (local, private)", "value": "ollama"}
+                    ],
+                    "default": "none",
+                    "newLine": true,
+                    "xs": 12, "sm": 12, "md": 6, "lg": 6, "xl": 6
+                },
+                "aiModel": {
+                    "type": "text",
+                    "label": "AI model (optional)",
+                    "help": "Leave empty for default. Anthropic: claude-haiku-4-5-20251001 / claude-sonnet-4-6. Groq: llama-3.3-70b-versatile. Ollama: llama3.2",
+                    "xs": 12, "sm": 12, "md": 6, "lg": 6, "xl": 6
+                },
+                "aiApiKey": {
+                    "type": "password",
+                    "label": "API key (Anthropic or Groq)",
+                    "help": "Anthropic: starts with sk-ant-... | Groq: starts with gsk_... | Ollama: leave empty",
+                    "newLine": true,
+                    "xs": 12, "sm": 12, "md": 8, "lg": 8, "xl": 8
+                },
+                "aiBaseUrl": {
+                    "type": "text",
+                    "label": "Ollama base URL",
+                    "help": "Only for Ollama. Default: http://localhost:11434",
+                    "xs": 12, "sm": 12, "md": 4, "lg": 4, "xl": 4
+                }
+            }
         }
     }
 }
