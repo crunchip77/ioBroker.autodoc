@@ -475,9 +475,27 @@ class Autodoc extends utils.Adapter {
 			const files = await this.readDirAsync(basePath, '');
 			const names = files.map(f => f.file);
 
-			for (const ext of ['md', 'html', 'json']) {
+			// md and json: autodoc-TIMESTAMP.md / .json
+			for (const ext of ['md', 'json']) {
 				const pattern = /^autodoc-\d{4}-\d{2}-\d{2}T/;
 				const typed = names.filter(n => n.endsWith(`.${ext}`) && pattern.test(n)).sort();
+				if (typed.length > maxFiles) {
+					const toDelete = typed.slice(0, typed.length - maxFiles);
+					for (const name of toDelete) {
+						try {
+							await this.delFileAsync(basePath, name);
+							this.log.debug(`Rotated old file: ${name}`);
+						} catch (e) {
+							this.log.warn(`Could not delete old file ${name}: ${e.message}`);
+						}
+					}
+				}
+			}
+
+			// html: autodoc-{profile}-TIMESTAMP.html (three profiles)
+			for (const profile of ['admin', 'user', 'onboarding']) {
+				const pattern = new RegExp(`^autodoc-${profile}-\\d{4}-\\d{2}-\\d{2}T`);
+				const typed = names.filter(n => n.endsWith('.html') && pattern.test(n)).sort();
 				if (typed.length > maxFiles) {
 					const toDelete = typed.slice(0, typed.length - maxFiles);
 					for (const name of toDelete) {
@@ -591,10 +609,10 @@ class Autodoc extends utils.Adapter {
 			const hostSummaryJson = JSON.stringify(docModel.system.hosts, null, 2);
 
 			await this.setStateAsync('documentation.lastMarkdownFile', { val: markdownFilename, ack: true });
-			await this.setStateAsync('documentation.lastHtmlFile', { val: htmlFilename, ack: true });
+			await this.setStateAsync('documentation.lastHtmlFile', { val: `autodoc-admin-${timestamp}.html`, ack: true });
 			await this.setStateAsync('documentation.lastJsonFile', { val: jsonFilename, ack: true });
 			await this.setStateAsync('documentation.markdown', { val: markdown, ack: true });
-			await this.setStateAsync('documentation.html', { val: html, ack: true });
+			await this.setStateAsync('documentation.html', { val: htmlAll.admin, ack: true });
 			await this.setStateAsync('documentation.json', { val: json, ack: true });
 			await this.setStateAsync('documentation.stateSummary', { val: stateSummaryJson, ack: true });
 
