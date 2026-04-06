@@ -101,7 +101,7 @@
         },
         "localLinks": {
             "_default": {
-                "link": "/files/autodoc.%INSTANCE%.files/autodoc-latest.html",
+                "link": "/files/autodoc.0.files/autodoc-latest.html",
                 "name": "Documentation"
             }
         },
