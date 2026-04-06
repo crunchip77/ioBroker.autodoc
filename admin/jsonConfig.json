@@ -84,21 +84,21 @@
                 "projectDescription": {
                     "type": "text",
                     "label": "Project description",
-                    "help": "Short description of what should be documented",
+                    "help": "What does this system do? e.g. 'Single-family home, heating + lighting + security on 3 floors'",
                     "newLine": true,
                     "xs": 12, "sm": 12, "md": 12, "lg": 12, "xl": 12
                 },
                 "manualContact": {
                     "type": "text",
                     "label": "Contact person",
-                    "help": "Name or contact for this ioBroker installation",
+                    "help": "Who manages this system? e.g. 'Max Mustermann, Telegram @max' — shown so guests/family know who to ask",
                     "newLine": true,
                     "xs": 12, "sm": 12, "md": 6, "lg": 6, "xl": 6
                 },
                 "additionalNotes": {
                     "type": "text",
                     "label": "General notes",
-                    "help": "General notes about this installation (e.g. special setups, known issues)",
+                    "help": "Anything that doesn't fit elsewhere: e.g. 'Backup runs every Sunday, server is in the basement'",
                     "newLine": true,
                     "xs": 12, "sm": 12, "md": 12, "lg": 12, "xl": 12
                 },
