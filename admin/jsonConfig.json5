@@ -95,7 +95,7 @@
                 "manualContact": {
                     "type": "text",
                     "label": "Contact person",
-                    "help": "Who manages this system? e.g. 'Max Mustermann, Telegram @max' — shown so guests/family know who to ask",
+                    "help": "Who manages this system? e.g. 'Max Mustermann, Telegram @max' - shown so guests and family know who to ask",
                     "newLine": true,
                     "xs": 12, "sm": 12, "md": 6, "lg": 6, "xl": 6
                 },
@@ -207,13 +207,6 @@
                     "newLine": true,
                     "xs": 12, "sm": 12, "md": 8, "lg": 8, "xl": 8
                 },
-                "manualContext": {
-                    "type": "json",
-                    "label": "Manual context (JSON, legacy)",
-                    "help": "Legacy JSON field. Use the 'My documentation' tab instead. Only needed for migration.",
-                    "newLine": true,
-                    "xs": 12, "sm": 12, "md": 12, "lg": 12, "xl": 12
-                }
             }
         },
 

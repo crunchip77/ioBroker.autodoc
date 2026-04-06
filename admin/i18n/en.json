@@ -38,7 +38,7 @@
     "AI documentation": "AI documentation",
     "Manual documentation hint": "These fields are shown in all documentation profiles. Adapter and room notes make the documentation more readable for non-technical users.",
     "Contact person": "Contact person",
-    "Name or contact for this ioBroker installation": "Name or contact for this ioBroker installation",
+    "Who manages this system? e.g. 'Max Mustermann, Telegram @max' - shown so guests and family know who to ask": "Who manages this system? e.g. 'Max Mustermann, Telegram @max' - shown so guests and family know who to ask",
     "General notes": "General notes",
     "General notes about this installation (e.g. special setups, known issues)": "General notes about this installation (e.g. special setups, known issues)",
     "Per-adapter notes": "Per-adapter notes",
