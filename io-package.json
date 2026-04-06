@@ -99,6 +99,12 @@
         "adminUI": {
             "config": "json"
         },
+        "localLinks": {
+            "_default": {
+                "link": "%info.htmlUrl%",
+                "name": "Documentation"
+            }
+        },
         "dependencies": [
             {
                 "js-controller": ">=6.0.11"

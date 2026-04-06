@@ -618,6 +618,9 @@ class Autodoc extends utils.Adapter {
 			const previousDocModel = await this.versionTracker.getPreviousVersion();
 			const changeData = this.versionTracker.compareVersions(docModel, previousDocModel);
 
+			// Attach changelog to docModel so the renderer can include it
+			docModel.changelog = await this.versionTracker.getChangelog();
+
 			// AI enhancement (opt-in, non-blocking — failure does not abort generation)
 			docModel.ai = await this.aiEnhancer.enhance(docModel);
 
