@@ -205,13 +205,6 @@
                     "newLine": true,
                     "xs": 12, "sm": 12, "md": 8, "lg": 8, "xl": 8
                 },
-                "targetSystem": {
-                    "type": "text",
-                    "label": "Target system",
-                    "help": "Usually ioBroker",
-                    "newLine": true,
-                    "xs": 12, "sm": 12, "md": 6, "lg": 6, "xl": 6
-                },
                 "manualContext": {
                     "type": "json",
                     "label": "Manual context (JSON, legacy)",
@@ -268,8 +261,9 @@
                     "help": "Select an AI provider for narrative summaries. Not used for admin profile (all data is already factual).",
                     "options": [
                         {"label": "Disabled", "value": "none"},
-                        {"label": "Anthropic Claude (cloud, paid)", "value": "anthropic"},
+                        {"label": "Google AI Studio (cloud, free tier)", "value": "google"},
                         {"label": "Groq (cloud, free tier available)", "value": "groq"},
+                        {"label": "Anthropic Claude (cloud, paid)", "value": "anthropic"},
                         {"label": "Ollama (local, private)", "value": "ollama"}
                     ],
                     "default": "none",
@@ -279,13 +273,13 @@
                 "aiModel": {
                     "type": "text",
                     "label": "AI model (optional)",
-                    "help": "Leave empty for default. Anthropic: claude-haiku-4-5-20251001 / claude-sonnet-4-6. Groq: llama-3.3-70b-versatile. Ollama: llama3.2",
+                    "help": "Leave empty for default. Google: gemini-2.0-flash / gemma-3-27b-it. Groq: llama-3.3-70b-versatile. Anthropic: claude-haiku-4-5-20251001. Ollama: llama3.2 / gemma3",
                     "xs": 12, "sm": 12, "md": 6, "lg": 6, "xl": 6
                 },
                 "aiApiKey": {
                     "type": "password",
-                    "label": "API key (Anthropic or Groq)",
-                    "help": "Anthropic: starts with sk-ant-... | Groq: starts with gsk_... | Ollama: leave empty",
+                    "label": "API key",
+                    "help": "Google: from aistudio.google.com | Groq: starts with gsk_... | Anthropic: starts with sk-ant-... | Ollama: leave empty",
                     "newLine": true,
                     "xs": 12, "sm": 12, "md": 8, "lg": 8, "xl": 8
                 },

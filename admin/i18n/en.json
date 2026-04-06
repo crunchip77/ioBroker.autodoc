@@ -67,13 +67,14 @@
     "AI provider": "AI provider",
     "Select an AI provider for narrative summaries. Disabled for admin profile (all data is already factual). Not used for admin profile.": "Select an AI provider for narrative summaries. Not used for admin profile (all data is already factual).",
     "Disabled": "Disabled",
+    "Google AI Studio (cloud, free tier)": "Google AI Studio (cloud, free tier)",
     "Anthropic Claude (cloud, paid)": "Anthropic Claude (cloud, paid)",
     "Groq (cloud, free tier available)": "Groq (cloud, free tier available)",
     "Ollama (local, private)": "Ollama (local, private)",
     "AI model (optional)": "AI model (optional)",
-    "Leave empty for default. Anthropic: claude-haiku-4-5-20251001 / claude-sonnet-4-6. Groq: llama-3.3-70b-versatile. Ollama: llama3.2": "Leave empty for default. Anthropic: claude-haiku-4-5-20251001 / claude-sonnet-4-6. Groq: llama-3.3-70b-versatile. Ollama: llama3.2",
-    "API key (Anthropic or Groq)": "API key (Anthropic or Groq)",
-    "Anthropic: starts with sk-ant-... | Groq: starts with gsk_... | Ollama: leave empty": "Anthropic: starts with sk-ant-... | Groq: starts with gsk_... | Ollama: leave empty",
+    "Leave empty for default. Google: gemini-2.0-flash / gemma-3-27b-it. Groq: llama-3.3-70b-versatile. Anthropic: claude-haiku-4-5-20251001. Ollama: llama3.2 / gemma3": "Leave empty for default. Google: gemini-2.0-flash / gemma-3-27b-it. Groq: llama-3.3-70b-versatile. Anthropic: claude-haiku-4-5-20251001. Ollama: llama3.2 / gemma3",
+    "API key": "API key",
+    "Google: from aistudio.google.com | Groq: starts with gsk_... | Anthropic: starts with sk-ant-... | Ollama: leave empty": "Google: from aistudio.google.com | Groq: starts with gsk_... | Anthropic: starts with sk-ant-... | Ollama: leave empty",
     "Ollama base URL": "Ollama base URL",
     "Only for Ollama. Default: http://localhost:11434": "Only for Ollama. Default: http://localhost:11434"
 }
