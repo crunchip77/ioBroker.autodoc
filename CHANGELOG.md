@@ -1,79 +1,54 @@
-# CHANGELOG
+# Changelog
 
-## 1.5.0-dev (2026-04-05)
+## [Unreleased] — dev branch
 
-Phase 4 complete — genuine audience-targeted profiles with device resolution, role mapping, and live states.
+### Added
+- Generate all three profiles (Admin, User, Onboarding) simultaneously in one pass — separate HTML files `autodoc-admin.html`, `autodoc-user.html`, `autodoc-onboarding.html`
+- **"Generate now" button** in adapter settings — trigger documentation without restarting
+- `sendTo('autodoc.0', 'generateNow', {})` command for use in ioBroker scripts and automations
+- New ioBroker states: `info.htmlUrlAdmin`, `info.htmlUrlUser`, `info.htmlUrlOnboarding`
+- **Dark mode toggle** in generated HTML (floating button, preference stored in localStorage)
+- **Full-text search** in generated HTML — real-time highlighting with prev/next navigation (Enter / Shift+Enter), Escape clears
+- **Print-friendly CSS** — `@media print` hides navigation, expands collapsed `<details>` blocks
+- **Changelog section** in Admin profile — last 5 entries visible, older entries and change details collapsible
+- **Collapsible rooms** — each room in all profiles wrapped in `<details>` (room name + device count as summary)
+- **Collapsible device hierarchy** in Admin profile — per room
+- **User/Family hide list** — `userHideRooms` and `userHideAdapters` config tables to exclude content from User profile
+- **Onboarding hide list** — `onboardingHideRooms` and `onboardingHideAdapters` config tables to exclude technical rooms/adapters from guest view
+- **Ansprechpartner (contact person)** shown prominently on Onboarding welcome page with 👤 icon
+- **Mistral AI** provider added; Google AI removed; privacy warning added prominently to AI settings tab
+- Clickable documentation link in ioBroker admin instance list via `localLinks`
+- Collapsible maintenance tables (scripts without description, disabled instances)
+- Script filter + collapsible inactive scripts in Admin profile
+- Tabbed admin UI (Basic settings, My documentation, Advanced, Notifications, AI documentation)
+- Per-adapter notes, per-room notes, contact person, general notes as dedicated table inputs
+- `autoGenerateInterval` for scheduled generation (hourly)
 
-### Features
-- **Discovery extensions** (4.1): `system.config` (city, country, language), room device resolution via `getForeignObjectAsync`, live states for key roles (opt-in via `readLiveStates`)
-- **Role mapper** (4.2): `lib/roleMapper.js` — 29 role patterns → 14 categories + icons (💡🌡️🚪🪟🚨🔒 …)
-- **Document model extensions** (4.3): `docModel.systemConfig`, `rooms[].devices[]` with resolved names / categories / live values
-- **Renderer dispatcher** (4.4): `renderHtml()` dispatches to `renderAdminHtml()` / `renderUserHtml()` / `renderOnboardingHtml()`
-- **Onboarding profile** (4.5): "Du"-Ansprache, city-aware greeting, device-grid with icons + live values, automations as plain sentences, adapter cards (friendly), AI-box prominent, hint when no manualContext
-- **User/Familie profile** (4.6): device-grid per room, scripts with name+desc only, adapters title-only
-- **Admin profile** (4.7): device hierarchy table per room with OIDs
+### Fixed
+- Node.js version displayed correctly (was showing js-controller version)
+- js-controller version now shown separately in Diagnosis section
+- `renderManualContext` received raw config instead of parsed `docModel.manualContext`
+- `UNCAUGHT_EXCEPTION` in `aiEnhancer.js` for User/Onboarding profiles (removed stale `instancesWithoutRoom` reference)
+- Missing comma in `admin/i18n/de.json` and `en.json` causing mixed-language UI
+- i18n help text lookup mismatch caused by em-dash vs hyphen in key strings
+- `jsonConfig` validation error: `header` type missing required `size` property
+- `localLinks` `%INSTANCE%` placeholder not supported — hardcoded to instance `0`
+- Dead code `void roomNote` in `renderUserRoomsChapter`
 
-### Fixes
-- `room.devices` field name aligned between DocumentModel (`members` → `devices`) and all renderer methods
-- Onboarding profile: `renderAdaptersChapter` was not called — adapter section now rendered and added to nav
+### Changed
+- `buildHtmlUrl()` refactored to `buildBaseUrl()` — profile-specific URLs constructed separately
+- `persistDocumentation()` now writes all three HTML profiles instead of one
+- Onboarding automations section: shows fallback when no active scripts, separates described/undescribed scripts
 
 ---
 
-## 0.1.0 (2026-04-04)
+## [1.0.0] — 2025-xx-xx
 
-Phase 1 complete — adapter is fully functional with modular architecture,
-three documentation profiles, HTML export, version tracking, and i18n support.
-
-### Features
-- Modular architecture: `lib/discovery.js`, `lib/documentModel.js`, `lib/markdownRenderer.js`, `lib/htmlRenderer.js`, `lib/versionTracker.js`, `lib/i18n.js`
-- File-based export: Markdown, HTML, and JSON to `/files/autodoc.0/`
-- Three documentation profiles: Admin, User, Onboarding — each with profile-aware content and detail level
-- HTML export with sidebar navigation, stat cards, and adapter cards
-- Adapter descriptions and titles from ioBroker metadata (`common.desc`, `common.titleLang`)
-- Version tracking with semantic versioning and changelog generation
-- Automatic documentation generation: on startup, on timer (configurable interval), event-based with 30s debounce
-- i18n support with translations for English, German, and French
-- Local timestamps for generated file names
-- Admin UI via `jsonConfig.json5` with full i18n (EN, DE)
-
-### Fixes
-- Use local time instead of UTC for documentation file names
-- Lint-clean codebase (prettier + eslint)
-
----
-
-## 0.0.1 (2026-04-01)
-
-Initial adapter scaffold.
-
-### Features
-- Generate markdown documentation from adapter configuration
-- Generate JSON documentation from adapter configuration
-- Read basic ioBroker system information from `system.config`
-- Read host information of the current adapter instance
-- Detect adapter instances including host, enabled state, title and version
-- Build enabled and disabled instance summaries
-- Build per-host instance summaries
-- Support optional filtering to enabled instances only
-- Support optional compact markdown output without full instance details
-- Support optional limit for documented instances
-- Include applied filter metadata in markdown and JSON output
-- Support automatic generation on adapter start
-- Support manual generation via `action.generate`
-
-### States
-- Add `info.connection`
-- Add `info.lastGeneration`
-- Add `info.lastTrigger`
-- Add `info.summary`
-- Add `info.systemLanguage`
-- Add `info.instanceCount`
-- Add `info.enabledInstanceCount`
-- Add `info.disabledInstanceCount`
-- Add `info.instanceHosts`
-- Add `info.hostName`
-- Add `info.hostPlatform`
-- Add `info.hostVersion`
-- Add `documentation.markdown`
-- Add `documentation.json`
-- Add `action.generate`
+### Added
+- Initial release
+- Multi-profile HTML/Markdown documentation generation (Admin, User/Family, Onboarding)
+- Adapter instance discovery, rooms, functions, scripts
+- Version tracking and changelog storage
+- AI enhancement (Ollama, Groq, Anthropic)
+- Notifications (Telegram, email, Pushover)
+- i18n: English, German, French

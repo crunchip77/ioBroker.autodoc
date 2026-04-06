@@ -18,28 +18,45 @@ The generated documentation is tailored to the selected target audience: technic
 
 ## Features
 
+### Documentation generation
 - **Automatic Discovery** — scans adapter instances, hosts, rooms, functions, scripts, state objects and system metadata
-- **Three Target Profiles** — Admin, User/Family, Onboarding — each with genuinely different language, structure and level of detail
+- **Three Profiles simultaneously** — Admin, User/Family, and Onboarding are always generated in one pass → three separate HTML files (`autodoc-admin.html`, `autodoc-user.html`, `autodoc-onboarding.html`)
+- **"Generate Now" button** — trigger documentation generation directly from the adapter settings without restarting
+- **Flexible Triggering** — on adapter start, scheduled (hourly interval), event-based after adapter changes (30 s debounce), or via `sendTo('autodoc.0', 'generateNow', {})`
+
+### Content
 - **Device Resolution** — room members resolved to human-readable device names via ioBroker object metadata
 - **Role Mapping** — ioBroker roles normalized to categories with icons (💡 Light, 🌡️ Climate, 🪟 Shutters, 🚪 Door …)
 - **Live State Values** (opt-in) — show current thermostat temperature, door/window status in Onboarding and User profiles
-- **Adapter Metadata** — reads adapter titles, descriptions, connection type and tier from ioBroker metadata; no manual input required, multilingual
-- **Markdown + HTML Export** — standalone files saved to `/files/autodoc.0/`, readable in any browser without internet access
-- **Multilingual** — documentation language selectable: English, German, French
-- **Version Tracking** — every generation is versioned (YYYY.MM.DD.HH), changes are detected and logged in a changelog
-- **Flexible Triggering** — manual via button, on adapter start, on a configurable schedule, or event-based after adapter changes (30 s debounce)
+- **Adapter Metadata** — reads adapter titles, descriptions, connection type and tier from ioBroker metadata; multilingual
 - **Script Documentation** — lists all JavaScript/Blockly scripts with name, status, description and trigger type
 - **Dependency Analysis** — which scripts reference which states (regex-based), cross-reference table for shared states
 - **Maintenance Hints** — flags scripts without description and disabled adapter instances with documentation score
-- **Diagnosis Section** — scan statistics, Node.js version badge (LTS check), OS info, data-driven findings including OS update reminder
-- **Troubleshooting Section** — 4 concrete scenarios (adapter not starting, not connecting, script not running, doc not generating) with numbered steps
-- **Node.js & OS Info** — host Node.js version displayed with green/red LTS badge, kernel and architecture in system chapter
-- **Smart Adapter Table** (Admin) — enabled adapters shown by default; disabled adapters collapsed in a toggle group; real-time filter with hints
-- **Script Folder Labels** — Root, General Scripts (common), Global Scripts (global) and custom folders shown in human-readable form
-- **AI-enhanced Documentation** (opt-in) — pluggable providers: Anthropic Claude, Groq (free tier), Ollama (local/private); narrative summary for user/onboarding profiles
+- **Diagnosis Section** — Node.js version badge (LTS check), OS info, js-controller version, scan statistics
+- **Changelog Section** — last 5 generation events visible at a glance, older entries collapsed
+- **Troubleshooting Section** — 4 concrete scenarios with numbered steps
+
+### Manual documentation
+- **Tabbed settings UI** — five tabs: Basic settings, My documentation, Advanced, Notifications, AI documentation
+- **Project info** — project name, description, contact person, general notes
+- **Per-adapter notes** — add a human-readable hint for specific adapters (shown in all profiles)
+- **Per-room notes** — add a note for specific rooms (shown in User and Onboarding profiles)
+- **Onboarding hide list** — exclude rooms and adapters from the guest/onboarding profile (technical rooms, backup adapters, etc.)
+- **User/Family hide list** — separately control what family members see
+
+### HTML viewer
+- **Full-text search** — real-time search with highlight, prev/next navigation, Escape to clear
+- **Dark mode toggle** — persistent dark/light theme, stored in localStorage
+- **Collapsible sections** — rooms, device hierarchies, disabled adapters, changelog entries all use `<details>` — stays manageable with 15+ rooms
+- **Print-friendly CSS** — `Ctrl+P` produces a clean document (nav hidden, details blocks expanded)
+- **Direct link** — admin instance list shows an "open" button linking to `autodoc-admin.html`
+
+### Exports & integrations
+- **Markdown + HTML + JSON** — three formats, timestamped + latest files saved to `/files/autodoc.0.files/`
+- **URL states** — `info.htmlUrl`, `info.htmlUrlAdmin`, `info.htmlUrlUser`, `info.htmlUrlOnboarding` available as ioBroker states
 - **Notifications** — send a message via Telegram, Email, Pushover or generic `sendTo` after generation
-- **Manual Context** — add project description, contact info, and per-adapter / per-room notes via configuration
-- **Search in HTML** — client-side filter in the generated HTML file, no server needed
+- **AI-enhanced Documentation** (opt-in) — pluggable providers: Ollama (local/private), Mistral AI, Groq, Anthropic Claude; privacy warning shown prominently
+- **Multilingual** — documentation language: English, German, French
 
 ## Installation
 

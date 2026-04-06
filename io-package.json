@@ -125,6 +125,8 @@
         "roomNotes": [],
         "onboardingHideRooms": [],
         "onboardingHideAdapters": [],
+        "userHideRooms": [],
+        "userHideAdapters": [],
         "targetSystem": "ioBroker",
         "autoGenerateOnStart": false,
         "onlyEnabledInstances": false,

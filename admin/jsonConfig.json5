@@ -63,6 +63,30 @@
                     "help": "If enabled, current values for key states (temperature, door/window, alarm) are read and shown in Onboarding profile",
                     "newLine": true,
                     "xs": 12, "sm": 12, "md": 12, "lg": 12, "xl": 12
+                },
+
+                // ── Generate Now Button ───────────────────────────────────────────
+                "_generateDivider": {
+                    "type": "divider",
+                    "newLine": true
+                },
+                "_generateHint": {
+                    "type": "staticText",
+                    "text": "Generate now hint",
+                    "newLine": true,
+                    "xs": 12, "sm": 12, "md": 12, "lg": 12, "xl": 12
+                },
+                "_generateButton": {
+                    "type": "sendTo",
+                    "command": "generateNow",
+                    "jsonData": "{}",
+                    "label": "Generate documentation now",
+                    "variant": "contained",
+                    "icon": "refresh",
+                    "result": "{result}",
+                    "error": "{error}",
+                    "newLine": true,
+                    "xs": 12, "sm": 12, "md": 6, "lg": 4, "xl": 3
                 }
             }
         },
@@ -193,6 +217,50 @@
                     "type": "table",
                     "label": "Hidden adapters (Onboarding)",
                     "help": "Onboarding hidden adapters help",
+                    "newLine": false,
+                    "xs": 12, "sm": 6, "md": 6, "lg": 6, "xl": 6,
+                    "items": [
+                        {
+                            "attr": "adapter",
+                            "type": "text",
+                            "title": "Adapter name (e.g. backitup)",
+                            "width": "100%"
+                        }
+                    ]
+                },
+
+                // ── User/Family: Ausblenden ─────────────────────────────────────────
+                "_userHideHeader": {
+                    "type": "header",
+                    "text": "User/Family - hide from family",
+                    "size": 4,
+                    "newLine": true
+                },
+                "_userHideHint": {
+                    "type": "staticText",
+                    "text": "User hide hint",
+                    "newLine": true,
+                    "xs": 12, "sm": 12, "md": 12, "lg": 12, "xl": 12
+                },
+                "userHideRooms": {
+                    "type": "table",
+                    "label": "Hidden rooms (User/Family)",
+                    "help": "User hidden rooms help",
+                    "newLine": true,
+                    "xs": 12, "sm": 6, "md": 6, "lg": 6, "xl": 6,
+                    "items": [
+                        {
+                            "attr": "room",
+                            "type": "text",
+                            "title": "Room name (exact)",
+                            "width": "100%"
+                        }
+                    ]
+                },
+                "userHideAdapters": {
+                    "type": "table",
+                    "label": "Hidden adapters (User/Family)",
+                    "help": "User hidden adapters help",
                     "newLine": false,
                     "xs": 12, "sm": 6, "md": 6, "lg": 6, "xl": 6,
                     "items": [

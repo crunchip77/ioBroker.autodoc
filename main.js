@@ -44,6 +44,7 @@ class Autodoc extends utils.Adapter {
 		this.on('ready', this.onReady.bind(this));
 		this.on('stateChange', this.onStateChange.bind(this));
 		this.on('objectChange', this.onObjectChange.bind(this));
+		this.on('message', this.onMessage.bind(this));
 		this.on('unload', this.onUnload.bind(this));
 	}
 
@@ -376,7 +377,31 @@ class Autodoc extends utils.Adapter {
 				def: 0,
 			},
 			'info.htmlUrl': {
-				name: 'Direct URL to latest HTML documentation',
+				name: 'Direct URL to latest HTML documentation (primary profile)',
+				type: 'string',
+				role: 'url',
+				read: true,
+				write: false,
+				def: '',
+			},
+			'info.htmlUrlAdmin': {
+				name: 'Direct URL to Admin HTML documentation',
+				type: 'string',
+				role: 'url',
+				read: true,
+				write: false,
+				def: '',
+			},
+			'info.htmlUrlUser': {
+				name: 'Direct URL to User/Family HTML documentation',
+				type: 'string',
+				role: 'url',
+				read: true,
+				write: false,
+				def: '',
+			},
+			'info.htmlUrlOnboarding': {
+				name: 'Direct URL to Onboarding HTML documentation',
 				type: 'string',
 				role: 'url',
 				read: true,
@@ -475,17 +500,15 @@ class Autodoc extends utils.Adapter {
 	 *
 	 * @returns {Promise<string>} URL string or empty string if not determinable.
 	 */
-	async buildHtmlUrl() {
+	async buildBaseUrl() {
 		try {
-			const filePath = `/files/${this.namespace}.files/autodoc-latest.html`;
-
 			// User-configured base URL takes priority (solves Docker/hostname issues)
 			if (this.config.baseUrl) {
 				let base = this.config.baseUrl.trim().replace(/\/$/, '');
 				if (!base.startsWith('http://') && !base.startsWith('https://')) {
 					base = `http://${base}`;
 				}
-				return `${base}${filePath}`;
+				return base;
 			}
 
 			// Auto-detect: try web adapter for port, fall back to admin
@@ -494,12 +517,12 @@ class Autodoc extends utils.Adapter {
 			if (webObj && webObj.native) {
 				const port = webObj.native.port || 8082;
 				const secure = webObj.native.secure ? 'https' : 'http';
-				return `${secure}://${host}:${port}${filePath}`;
+				return `${secure}://${host}:${port}`;
 			}
 
-			return `http://${host}:8081${filePath}`;
+			return `http://${host}:8081`;
 		} catch (e) {
-			this.log.warn(`Could not build HTML URL: ${e.message}`);
+			this.log.warn(`Could not build base URL: ${e.message}`);
 			return '';
 		}
 	}
@@ -513,37 +536,53 @@ class Autodoc extends utils.Adapter {
 	 * @param {string} json JSON output.
 	 * @returns {Promise<void>} Promise that resolves when states are written.
 	 */
-	async persistDocumentation(docModel, markdown, html, json) {
+	async persistDocumentation(docModel, markdown, htmlAll, json) {
 		try {
 			const now = new Date();
 			const pad = n => String(n).padStart(2, '0');
 			const timestamp = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}T${pad(now.getHours())}-${pad(now.getMinutes())}-${pad(now.getSeconds())}`;
 			const basePath = `${this.namespace}.files`;
 
-			// Save timestamped files
+			// Save timestamped markdown + json
 			const markdownFilename = `autodoc-${timestamp}.md`;
 			await this.writeFileAsync(basePath, markdownFilename, markdown);
-			this.log.info(`Markdown documentation saved to /files/${this.namespace}/${markdownFilename}`);
-
-			const htmlFilename = `autodoc-${timestamp}.html`;
-			await this.writeFileAsync(basePath, htmlFilename, html);
-			this.log.info(`HTML documentation saved to /files/${this.namespace}/${htmlFilename}`);
+			this.log.info(`Markdown saved to /files/${this.namespace}/${markdownFilename}`);
 
 			const jsonFilename = `autodoc-${timestamp}.json`;
 			await this.writeFileAsync(basePath, jsonFilename, json);
-			this.log.info(`JSON documentation saved to /files/${this.namespace}/${jsonFilename}`);
+
+			// Save all three HTML profiles (timestamped)
+			const profiles = ['admin', 'user', 'onboarding'];
+			for (const profile of profiles) {
+				const content = htmlAll[profile];
+				if (content) {
+					const filename = `autodoc-${profile}-${timestamp}.html`;
+					await this.writeFileAsync(basePath, filename, content);
+					this.log.info(`HTML (${profile}) saved to /files/${this.namespace}/${filename}`);
+				}
+			}
 
 			// Save fixed "latest" files for direct access
 			await this.writeFileAsync(basePath, 'autodoc-latest.md', markdown);
-			await this.writeFileAsync(basePath, 'autodoc-latest.html', html);
 			await this.writeFileAsync(basePath, 'autodoc-latest.json', json);
+			await this.writeFileAsync(basePath, 'autodoc-admin.html', htmlAll.admin);
+			await this.writeFileAsync(basePath, 'autodoc-user.html', htmlAll.user);
+			await this.writeFileAsync(basePath, 'autodoc-onboarding.html', htmlAll.onboarding);
+			// Keep autodoc-latest.html pointing to the admin profile for backward compat
+			await this.writeFileAsync(basePath, 'autodoc-latest.html', htmlAll.admin);
 
 			// Rotate old timestamped files
 			const maxFiles = this.config.maxStoredFiles > 0 ? this.config.maxStoredFiles : 5;
 			await this.rotateFiles(basePath, maxFiles);
 
-			// Build and store direct HTML URL
-			const htmlUrl = await this.buildHtmlUrl();
+			// Build and store profile URLs
+			const baseUrl = await this.buildBaseUrl();
+			const filePath = profile => `/files/${this.namespace}.files/autodoc-${profile}.html`;
+			await this.setStateAsync('info.htmlUrlAdmin', { val: `${baseUrl}${filePath('admin')}`, ack: true });
+			await this.setStateAsync('info.htmlUrlUser', { val: `${baseUrl}${filePath('user')}`, ack: true });
+			await this.setStateAsync('info.htmlUrlOnboarding', { val: `${baseUrl}${filePath('onboarding')}`, ack: true });
+			// Legacy state: keep pointing to admin
+			const htmlUrl = `${baseUrl}${filePath('admin')}`;
 			await this.setStateAsync('info.htmlUrl', { val: htmlUrl, ack: true });
 
 			// Update info states (keep metadata as states for quick access)
@@ -627,14 +666,14 @@ class Autodoc extends utils.Adapter {
 			// Use modular markdown rendering
 			const markdown = this.markdownRenderer.renderMarkdown(docModel);
 
-			// Use modular HTML rendering
-			const html = this.htmlRenderer.renderHtml(docModel);
+			// Render all three profiles simultaneously
+			const htmlAll = this.htmlRenderer.renderAllHtml(docModel);
 
 			// Create JSON representation
 			const json = JSON.stringify(docModel, null, 2);
 
 			// Persist documentation (saves to files directly)
-			await this.persistDocumentation(docModel, markdown, html, json);
+			await this.persistDocumentation(docModel, markdown, htmlAll, json);
 
 			// Store current version for next comparison
 			await this.versionTracker.storeCurrentVersion(docModel);
@@ -711,6 +750,31 @@ class Autodoc extends utils.Adapter {
 			this.log.info('Manual HTML download command received');
 			await this.downloadFile('documentation.html', 'autodoc.html');
 			await this.setStateAsync('action.downloadHtml', { val: false, ack: true });
+		}
+	}
+	/**
+	 * Handle sendTo messages — used by the "Generate now" button and external scripts.
+	 *
+	 * @param {object} obj Message object from ioBroker.
+	 */
+	async onMessage(obj) {
+		if (!obj || typeof obj !== 'object' || !obj.command) {
+			return;
+		}
+
+		if (obj.command === 'generateNow') {
+			this.log.info('Generate-now requested via sendTo');
+			try {
+				await this.generateDocumentation('manual');
+				if (obj.callback) {
+					this.sendTo(obj.from, obj.command, { result: 'ok' }, obj.callback);
+				}
+			} catch (err) {
+				this.log.error(`sendTo generate failed: ${err.message}`);
+				if (obj.callback) {
+					this.sendTo(obj.from, obj.command, { error: err.message }, obj.callback);
+				}
+			}
 		}
 	}
 }
