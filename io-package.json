@@ -123,6 +123,8 @@
         "additionalNotes": "",
         "adapterNotes": [],
         "roomNotes": [],
+        "onboardingHideRooms": [],
+        "onboardingHideAdapters": [],
         "targetSystem": "ioBroker",
         "autoGenerateOnStart": false,
         "onlyEnabledInstances": false,

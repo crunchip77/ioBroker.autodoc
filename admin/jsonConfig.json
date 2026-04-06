@@ -155,6 +155,48 @@
                             "width": "70%"
                         }
                     ]
+                },
+                "_onboardingHideHeader": {
+                    "type": "header",
+                    "text": "Onboarding - hide from guests",
+                    "size": 4,
+                    "newLine": true
+                },
+                "_onboardingHideHint": {
+                    "type": "staticText",
+                    "text": "Onboarding hide hint",
+                    "newLine": true,
+                    "xs": 12, "sm": 12, "md": 12, "lg": 12, "xl": 12
+                },
+                "onboardingHideRooms": {
+                    "type": "table",
+                    "label": "Hidden rooms (Onboarding)",
+                    "help": "Onboarding hidden rooms help",
+                    "newLine": true,
+                    "xs": 12, "sm": 6, "md": 6, "lg": 6, "xl": 6,
+                    "items": [
+                        {
+                            "attr": "room",
+                            "type": "text",
+                            "title": "Room name (exact)",
+                            "width": "100%"
+                        }
+                    ]
+                },
+                "onboardingHideAdapters": {
+                    "type": "table",
+                    "label": "Hidden adapters (Onboarding)",
+                    "help": "Onboarding hidden adapters help",
+                    "newLine": false,
+                    "xs": 12, "sm": 6, "md": 6, "lg": 6, "xl": 6,
+                    "items": [
+                        {
+                            "attr": "adapter",
+                            "type": "text",
+                            "title": "Adapter name (e.g. backitup)",
+                            "width": "100%"
+                        }
+                    ]
                 }
             }
         },
