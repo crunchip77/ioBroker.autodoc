@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "autodoc",
-        "version": "0.9.1",
+        "version": "0.9.2",
         "news": {
+            "0.9.2": {
+                "en": "Fix: RAM HTML rendering, filter bars for custom variables and aliases, documentation score explanation, manual notes moved to top of admin profile",
+                "de": "Fix: RAM HTML-Darstellung, Filterleisten für eigene Variablen und Aliase, Dokumentations-Score-Erklärung, manuelle Hinweise im Admin-Profil nach oben"
+            },
             "0.9.1": {
                 "en": "Fix: dark mode colors for collapsibles and changelog, search hint always visible, alias chapter, functions heading in admin profile",
                 "de": "Fix: Dark-Mode-Farben für Aufklappmenüs und Änderungsprotokoll, Suchhinweis immer sichtbar, Alias-Kapitel, Funktionen-Überschrift im Admin-Profil"
