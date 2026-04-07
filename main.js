@@ -782,17 +782,14 @@ class Autodoc extends utils.Adapter {
 
 		if (obj.command === 'generateNow') {
 			this.log.info('Generate-now requested via sendTo');
-			try {
-				await this.generateDocumentation('manual');
-				if (obj.callback) {
-					this.sendTo(obj.from, obj.command, { result: 'ok' }, obj.callback);
-				}
-			} catch (err) {
-				this.log.error(`sendTo generate failed: ${err.message}`);
-				if (obj.callback) {
-					this.sendTo(obj.from, obj.command, { error: err.message }, obj.callback);
-				}
+			// Acknowledge immediately so the UI spinner stops
+			if (obj.callback) {
+				this.sendTo(obj.from, obj.command, { result: 'ok' }, obj.callback);
 			}
+			// Run generation in background (non-blocking)
+			this.generateDocumentation('manual').catch(err => {
+				this.log.error(`sendTo generate failed: ${err.message}`);
+			});
 		}
 	}
 }
