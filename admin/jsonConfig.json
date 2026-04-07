@@ -73,8 +73,9 @@
                     "xs": 12, "sm": 12, "md": 12, "lg": 12, "xl": 12
                 },
                 "_generateButton": {
-                    "type": "sendTo",
-                    "command": "generateNow",
+                    "type": "setState",
+                    "id": "autodoc.0.action.generate",
+                    "val": true,
                     "label": "Generate documentation now",
                     "variant": "contained",
                     "newLine": true,
