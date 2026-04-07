@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "autodoc",
-        "version": "0.9.0",
+        "version": "0.9.1",
         "news": {
+            "0.9.1": {
+                "en": "Fix: dark mode colors for collapsibles and changelog, search hint always visible, alias chapter, functions heading in admin profile",
+                "de": "Fix: Dark-Mode-Farben für Aufklappmenüs und Änderungsprotokoll, Suchhinweis immer sichtbar, Alias-Kapitel, Funktionen-Überschrift im Admin-Profil"
+            },
             "0.9.0": {
                 "en": "Release candidate: mobile layout, search hints, RAM/CPU stats, script schedules, custom variables, repository badge, auto-regenerate on template change",
                 "de": "Release-Kandidat: Mobile-Layout, Suche-Hinweise, RAM/CPU-Statistiken, Script-Zeitpläne, eigene Variablen, Repository-Badge, Auto-Regenerierung bei Template-Änderung"
