@@ -79,7 +79,6 @@
                 "_generateButton": {
                     "type": "sendTo",
                     "command": "generateNow",
-                    "data": {},
                     "label": "Generate documentation now",
                     "variant": "contained",
                     "newLine": true,
