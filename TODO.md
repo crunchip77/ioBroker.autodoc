@@ -89,8 +89,17 @@
 ### 4.x Abschluss
 - [x] i18n: alle neuen Keys (EN/DE/FR)
 - [x] Lint sauber (0 Errors)
-- [x] README.md + TODO.md + PLAN.md aktualisiert
-- [ ] `dev` → nach Test → Merge nach `main`
+- [x] README.md + CHANGELOG.md + TODO.md + PLAN.md aktualisiert (Abschluss RC 0.9.x)
+- [ ] `dev` → nach Test + Adapter-Checker → Merge nach `main`
+
+---
+
+### 4.y Release-Kandidat (0.9.x) — umgesetzt
+
+- [x] Aliase (`alias.0.*`), eigene Variablen mit Filter; Repository in Diagnose; RAM-Summe Adapter
+- [x] Manuelle Hinweise oben (Admin/User); Doku-Score erklärt; visuelle Akzente (Gold/Orange/Blau)
+- [x] Onboarding: Capabilities, Tipps immer sichtbar, ⏱ bei Cron-Skripten, QR + Copy
+- [x] `RENDERER_VERSION` / `info.templateVersion` für Template-Updates ohne Versions-Chaos
 
 ---
 
@@ -99,7 +108,7 @@
 - [ ] PDF-Export
 - [ ] Backup-Adapter Integration
 - [ ] Custom Templates
-- [ ] QR-Code für Onboarding (externe Lib)
+- [x] QR-Code für Onboarding (qrcodejs CDN + Fallback)
 
 ---
 
@@ -112,9 +121,9 @@
 - [ ] npm-Account vorhanden, `iobroker.autodoc` als Paketname verfügbar
 
 ### Schritte
-1. [ ] Versionsnummer in `package.json` + `io-package.json` synchron bumpen
+1. [ ] Versionsnummer in `package.json` + `io-package.json` auf **1.0.0** synchron setzen
 2. [ ] News-Eintrag in `io-package.json` (EN + DE minimum)
-3. [ ] Changelog in `README.md` ergänzen
+3. [x] `CHANGELOG.md` + README Kurzüberblick gepflegt
 4. [ ] `dev` → Merge nach `main`
 5. [ ] `npm publish` (veröffentlicht auf npmjs.com)
 6. [ ] GitHub Release aus Tag erstellen (dann erst sinnvoll)

@@ -25,12 +25,12 @@ Drei echte Zielgruppen mit komplett unterschiedlicher Sprache:
 
 - **IDE**: Visual Studio Code auf Windows
 - **Testsystem**: ioBroker auf Unraid-Server (separat vom Produktivsystem)
-- **Deployment**: `dev`-Branch → GitHub Push → manuelle Installation auf Testserver via ioBroker Admin UI → Adapter → "Benutzerdefinierte URL" → `https://github.com/crunchip77/ioBroker.autodoc/tarball/dev`
-- **Release-Strategie während Entwicklung**: `dev` → Test → Lint → Merge nach `main`; **kein Tag, kein Versionssprung** bis zum echten Release
+- **Deployment**: `dev`-Branch → GitHub Push → Installation auf Testserver via ioBroker Admin → **Benutzerdefinierte URL** → `https://github.com/crunchip77/ioBroker.autodoc/tarball/dev` (oder `/tarball/main` nach Merge)
+- **Release-Strategie**: `dev` testen → bei grünem Adapter-Checker Merge nach `main`; **npm** erst mit echtem **1.0.0**-Release
 
 ## Branch-Strategie
 
-- `main` = stabiler Stand; enthält aktuell den letzten Entwicklungsstand (v1.0.0 als interner Meilenstein)
+- `main` = stabiler Stand nach Merge aus `dev` (Release-Kandidat **0.9.x**, bis **1.0.0** npm)
 - `dev` = aktive Entwicklung; Commits immer auf `dev`
 - Kein direkter Push auf `main` außer für Merges nach Test
 
@@ -181,7 +181,8 @@ Echte Zielgruppen-Dokus statt "mehr oder weniger Detail vom selben Template".
 - PDF-Export
 - Backup-Adapter Integration (Doku mit Backup speichern)
 - Custom Templates
-- QR-Code für Onboarding-Profil (externe Lib nötig)
+
+**Erledigt (ehemals Phase 5-Idee):** QR-Code Onboarding (CDN qrcodejs + Link kopieren).
 
 ---
 
@@ -204,6 +205,6 @@ Echte Zielgruppen-Dokus statt "mehr oder weniger Detail vom selben Template".
 | Version | Inhalt | Status | Anmerkung |
 |---|---|---|---|
 | **v0.x** | Basis: Adapter-Inventar, Export, Profile, Versionierung | ✅ main | interner Meilenstein |
-| **v0.9.0** | Phase 2–4 komplett: Räume, Skripte, Mobile, UX, RENDERER_VERSION, Auto-Regenerierung | ✅ dev | merge nach main + Forum-Vorstellung |
+| **v0.9.x** | RC: drei Profile, Aliase, UX-Akzente, RAM-Summe, Onboarding-Capabilities, Filter, Doku-Score-Erklärung, README/CHANGELOG | ✅ dev | Merge `main` + Forum „Adapter in testing“ wenn Checker OK |
 | **v1.0.0** | Erster offizieller Release nach Adapter-Checker grün | ⬜ geplant | npm publish + ioBroker.repositories PR |
 | **v1.x** | Phase 5: PDF, Backup-Integration, Custom Templates | ⬜ geplant | |
