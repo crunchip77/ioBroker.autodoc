@@ -79,9 +79,16 @@
                 "_generateButton": {
                     "type": "sendTo",
                     "command": "generateNow",
-                    "jsonData": "{}",
+                    "data": {},
                     "label": "Generate documentation now",
                     "variant": "contained",
+                    "showProcess": true,
+                    "result": {
+                        "ok": { "en": "Documentation generated successfully!", "de": "Dokumentation erfolgreich generiert!" }
+                    },
+                    "error": {
+                        "error": { "en": "Error generating documentation", "de": "Fehler beim Generieren der Dokumentation" }
+                    },
                     "newLine": true,
                     "xs": 12, "sm": 12, "md": 6, "lg": 4, "xl": 3
                 }
