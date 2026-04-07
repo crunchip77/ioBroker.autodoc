@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "autodoc",
-        "version": "1.0.0",
+        "version": "1.1.0",
         "news": {
+            "1.1.0": {
+                "en": "Multi-profile HTML, generate button, dark mode, full-text search, collapsible sections, privacy-first AI",
+                "de": "Multi-Profil HTML, Generieren-Button, Dark Mode, Volltext-Suche, einklappbare Sektionen, datenschutzfreundliche KI"
+            },
             "1.0.0": {
                 "en": "Notifications, dependency analysis, AI-enhanced docs, full i18n, fixed latest HTML file and direct URL",
                 "de": "Benachrichtigungen, Abhängigkeitsanalyse, KI-Dokumentation, vollständige i18n, feste Latest-Datei und direkte URL",
