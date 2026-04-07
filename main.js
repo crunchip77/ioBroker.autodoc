@@ -776,15 +776,14 @@ class Autodoc extends utils.Adapter {
 	 * @param {object} obj Message object from ioBroker.
 	 */
 	async onMessage(obj) {
-		this.log.info(`[onMessage] received: command=${obj && obj.command}, from=${obj && obj.from}`);
-		if (!obj || typeof obj !== 'object') {
+		if (!obj || typeof obj !== 'object' || !obj.command) {
 			return;
 		}
 
-		if (obj.command === 'generateNow' || (!obj.command && obj.message && obj.message.command === 'generateNow')) {
+		if (obj.command === 'generateNow') {
 			this.log.info('Generate-now requested via sendTo');
 			if (obj.callback) {
-				this.sendTo(obj.from, obj.command || 'generateNow', { result: 'ok' }, obj.callback);
+				this.sendTo(obj.from, obj.command, { result: 'ok' }, obj.callback);
 			}
 			this.generateDocumentation('manual').catch(err => {
 				this.log.error(`sendTo generate failed: ${err.message}`);
