@@ -745,28 +745,44 @@ class Autodoc extends utils.Adapter {
 
 		if (id === `${this.namespace}.action.generate` && state.ack === false && state.val === true) {
 			this.log.info('Manual generate command received');
-			await this.generateDocumentation('manual');
+			try {
+				await this.generateDocumentation('manual');
+			} catch (err) {
+				this.log.error(`Manual generation failed: ${err.message}`);
+			}
 			await this.setStateAsync('action.generate', { val: false, ack: true });
 			return;
 		}
 
 		if (id === `${this.namespace}.action.downloadMarkdown` && state.ack === false && state.val === true) {
 			this.log.info('Manual markdown download command received');
-			await this.downloadFile('documentation.markdown', 'autodoc.md');
+			try {
+				await this.downloadFile('documentation.markdown', 'autodoc.md');
+			} catch (err) {
+				this.log.error(`Markdown download failed: ${err.message}`);
+			}
 			await this.setStateAsync('action.downloadMarkdown', { val: false, ack: true });
 			return;
 		}
 
 		if (id === `${this.namespace}.action.downloadJson` && state.ack === false && state.val === true) {
 			this.log.info('Manual JSON download command received');
-			await this.downloadFile('documentation.json', 'autodoc.json');
+			try {
+				await this.downloadFile('documentation.json', 'autodoc.json');
+			} catch (err) {
+				this.log.error(`JSON download failed: ${err.message}`);
+			}
 			await this.setStateAsync('action.downloadJson', { val: false, ack: true });
 			return;
 		}
 
 		if (id === `${this.namespace}.action.downloadHtml` && state.ack === false && state.val === true) {
 			this.log.info('Manual HTML download command received');
-			await this.downloadFile('documentation.html', 'autodoc.html');
+			try {
+				await this.downloadFile('documentation.html', 'autodoc.html');
+			} catch (err) {
+				this.log.error(`HTML download failed: ${err.message}`);
+			}
 			await this.setStateAsync('action.downloadHtml', { val: false, ack: true });
 		}
 	}
