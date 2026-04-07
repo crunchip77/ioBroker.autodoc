@@ -86,6 +86,15 @@
                     },
                     "newLine": true,
                     "xs": 12, "sm": 12, "md": 6, "lg": 4, "xl": 3
+                },
+                "_lastGenStatus": {
+                    "type": "textSendTo",
+                    "command": "getStatus",
+                    "label": "Last generated",
+                    "container": "div",
+                    "copyToClipboard": false,
+                    "newLine": true,
+                    "xs": 12, "sm": 12, "md": 12, "lg": 12, "xl": 12
                 }
             }
         },

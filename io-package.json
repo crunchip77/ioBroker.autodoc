@@ -106,8 +106,16 @@
         },
         "localLinks": {
             "_default": {
-                "link": "/files/autodoc.0.files/autodoc-latest.html",
-                "name": "Documentation"
+                "link": "/files/autodoc.0.files/autodoc-admin.html",
+                "name": "Admin Docs"
+            },
+            "user": {
+                "link": "/files/autodoc.0.files/autodoc-user.html",
+                "name": "User / Family"
+            },
+            "onboarding": {
+                "link": "/files/autodoc.0.files/autodoc-onboarding.html",
+                "name": "Onboarding"
             }
         },
         "dependencies": [

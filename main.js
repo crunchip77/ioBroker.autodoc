@@ -65,6 +65,15 @@ class Autodoc extends utils.Adapter {
 
 		await this.setStateAsync('info.connection', { val: false, ack: true });
 
+		// Ensure messageable is set in the adapter object in the DB (may be missing on fresh install)
+		try {
+			await this.extendForeignObjectAsync(`system.adapter.${this.namespace}`, {
+				common: { messageable: true },
+			});
+		} catch (e) {
+			this.log.debug(`Could not set messageable flag: ${e.message}`);
+		}
+
 		this.log.info('AutoDoc adapter starting');
 		this.log.debug(`config projectName: ${this.config.projectName || ''}`);
 		this.log.debug(`config targetSystem: ${this.config.targetSystem || ''}`);
@@ -93,10 +102,15 @@ class Autodoc extends utils.Adapter {
 
 		// Setup periodic auto-generation if interval is configured
 		if (this.config.autoGenerateInterval && this.config.autoGenerateInterval > 0) {
-			const intervalMs = this.config.autoGenerateInterval * 60 * 60 * 1000; // Convert hours to milliseconds
+			const intervalMs = this.config.autoGenerateInterval * 60 * 60 * 1000;
 			this.log.info(
 				`Setting up automatic documentation generation every ${this.config.autoGenerateInterval} hours`,
 			);
+			const updateNextGeneration = async () => {
+				const next = new Date(Date.now() + intervalMs);
+				await this.setStateAsync('info.nextGeneration', { val: next.toISOString(), ack: true });
+			};
+			await updateNextGeneration();
 			this.autoGenerateInterval = setInterval(async () => {
 				this.log.debug('Auto-generating documentation on schedule');
 				try {
@@ -104,6 +118,7 @@ class Autodoc extends utils.Adapter {
 				} catch (error) {
 					this.log.error(`Scheduled documentation generation failed: ${error.message}`);
 				}
+				await updateNextGeneration();
 			}, intervalMs);
 		}
 
@@ -266,6 +281,14 @@ class Autodoc extends utils.Adapter {
 			},
 			'info.lastGeneration': {
 				name: 'Last generation timestamp',
+				type: 'string',
+				role: 'text',
+				read: true,
+				write: false,
+				def: '',
+			},
+			'info.nextGeneration': {
+				name: 'Next scheduled generation timestamp',
 				type: 'string',
 				role: 'text',
 				read: true,
@@ -804,6 +827,28 @@ class Autodoc extends utils.Adapter {
 			this.generateDocumentation('manual').catch(err => {
 				this.log.error(`sendTo generate failed: ${err.message}`);
 			});
+			return;
+		}
+
+		if (obj.command === 'getStatus') {
+			try {
+				const lastGen = await this.getStateAsync('info.lastGeneration');
+				const nextGen = await this.getStateAsync('info.nextGeneration');
+				const lastTrigger = await this.getStateAsync('info.lastTrigger');
+				const lastVal = lastGen && lastGen.val ? String(lastGen.val) : '';
+				const nextVal = nextGen && nextGen.val ? String(nextGen.val) : '';
+				const triggerVal = lastTrigger && lastTrigger.val ? String(lastTrigger.val) : '';
+				const display = lastVal
+					? `${lastVal}${triggerVal ? ' (' + triggerVal + ')' : ''}${nextVal ? ' · Next: ' + nextVal : ''}`
+					: 'Not yet generated';
+				if (obj.callback) {
+					this.sendTo(obj.from, obj.command, display, obj.callback);
+				}
+			} catch (err) {
+				if (obj.callback) {
+					this.sendTo(obj.from, obj.command, 'Error reading status', obj.callback);
+				}
+			}
 		}
 	}
 }
