@@ -94,6 +94,7 @@
         "mode": "daemon",
         "type": "general",
         "compact": true,
+        "messageable": true,
         "connectionType": "local",
         "dataSource": "push",
         "adminUI": {
