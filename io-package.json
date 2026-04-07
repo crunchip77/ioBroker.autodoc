@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "autodoc",
-        "version": "1.1.0",
+        "version": "1.2.0",
         "news": {
+            "1.2.0": {
+                "en": "Mobile responsive layout, relative timestamps, host RAM/CPU, script schedules, custom variables, stale-docs banner, health badge",
+                "de": "Mobile Ansicht, relative Zeitangaben, Host RAM/CPU, Script-Zeitpläne, eigene Variablen, Veraltet-Banner, Health-Badge"
+            },
             "1.1.0": {
                 "en": "Multi-profile HTML, generate button, dark mode, full-text search, collapsible sections, privacy-first AI",
                 "de": "Multi-Profil HTML, Generieren-Button, Dark Mode, Volltext-Suche, einklappbare Sektionen, datenschutzfreundliche KI"
