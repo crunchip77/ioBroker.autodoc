@@ -78,6 +78,12 @@
                     "val": true,
                     "label": "Generate documentation now",
                     "variant": "contained",
+                    "confirm": {
+                        "title": "Generate documentation",
+                        "text": "Start documentation generation now? This may take a few seconds.",
+                        "ok": "Generate",
+                        "cancel": "Cancel"
+                    },
                     "newLine": true,
                     "xs": 12, "sm": 12, "md": 6, "lg": 4, "xl": 3
                 }
