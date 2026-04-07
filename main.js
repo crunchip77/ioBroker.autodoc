@@ -65,15 +65,6 @@ class Autodoc extends utils.Adapter {
 
 		await this.setStateAsync('info.connection', { val: false, ack: true });
 
-		// Ensure messageable is set in the adapter object in the DB (may be missing on fresh install)
-		try {
-			await this.extendForeignObjectAsync(`system.adapter.${this.namespace}`, {
-				common: { messageable: true },
-			});
-		} catch (e) {
-			this.log.debug(`Could not set messageable flag: ${e.message}`);
-		}
-
 		this.log.info('AutoDoc adapter starting');
 		this.log.debug(`config projectName: ${this.config.projectName || ''}`);
 		this.log.debug(`config targetSystem: ${this.config.targetSystem || ''}`);
