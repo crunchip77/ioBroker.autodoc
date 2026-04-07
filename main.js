@@ -87,7 +87,15 @@ class Autodoc extends utils.Adapter {
 		this.i18n.setLanguage(language);
 		this.log.debug(`Using documentation language: ${language}`);
 
-		if (this.config.autoGenerateOnStart) {
+		// Check if HTML template has changed since last generation — force regenerate if so
+		const { RENDERER_VERSION } = require('./lib/htmlRenderer');
+		const storedTemplateVersion = await this.getStateAsync('info.templateVersion');
+		const templateChanged = !storedTemplateVersion || storedTemplateVersion.val !== RENDERER_VERSION;
+		if (templateChanged) {
+			this.log.info(`HTML template updated (${storedTemplateVersion ? storedTemplateVersion.val : 'none'} → ${RENDERER_VERSION}), forcing regeneration`);
+		}
+
+		if (this.config.autoGenerateOnStart || templateChanged) {
 			await this.generateDocumentation('startup');
 		}
 
@@ -288,6 +296,14 @@ class Autodoc extends utils.Adapter {
 			},
 			'info.lastTrigger': {
 				name: 'Last generation trigger',
+				type: 'string',
+				role: 'text',
+				read: true,
+				write: false,
+				def: '',
+			},
+			'info.templateVersion': {
+				name: 'HTML renderer version used for last generation',
 				type: 'string',
 				role: 'text',
 				read: true,
@@ -633,6 +649,7 @@ class Autodoc extends utils.Adapter {
 			await this.setStateAsync('info.summary', { val: summary, ack: true });
 			await this.setStateAsync('info.lastTrigger', { val: docModel.meta.trigger, ack: true });
 			await this.setStateAsync('info.lastGeneration', { val: docModel.meta.generatedAt, ack: true });
+			await this.setStateAsync('info.templateVersion', { val: this.htmlRenderer.constructor.RENDERER_VERSION || require('./lib/htmlRenderer').RENDERER_VERSION, ack: true });
 			await this.setStateAsync('info.systemLanguage', { val: docModel.meta.language, ack: true });
 			await this.setStateAsync('info.instanceCount', {
 				val: docModel.system.statistics.instanceCount,
