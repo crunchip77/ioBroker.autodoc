@@ -92,7 +92,9 @@ class Autodoc extends utils.Adapter {
 		const storedTemplateVersion = await this.getStateAsync('info.templateVersion');
 		const templateChanged = !storedTemplateVersion || storedTemplateVersion.val !== RENDERER_VERSION;
 		if (templateChanged) {
-			this.log.info(`HTML template updated (${storedTemplateVersion ? storedTemplateVersion.val : 'none'} → ${RENDERER_VERSION}), forcing regeneration`);
+			this.log.info(
+				`HTML template updated (${storedTemplateVersion ? storedTemplateVersion.val : 'none'} → ${RENDERER_VERSION}), forcing regeneration`,
+			);
 		}
 
 		if (this.config.autoGenerateOnStart || templateChanged) {
@@ -475,7 +477,7 @@ class Autodoc extends utils.Adapter {
 		for (const [id, common] of Object.entries(definitions)) {
 			await this.setObjectNotExistsAsync(id, {
 				type: 'state',
-				common,
+				common: /** @type {ioBroker.StateCommon} */ (common),
 				native: {},
 			});
 		}
@@ -580,7 +582,7 @@ class Autodoc extends utils.Adapter {
 	 *
 	 * @param {object} docModel Structured documentation model.
 	 * @param {string} markdown Markdown output.
-	 * @param {string} html HTML output.
+	 * @param {{ admin: string, user: string, onboarding: string }} htmlAll HTML per profile.
 	 * @param {string} json JSON output.
 	 * @returns {Promise<void>} Promise that resolves when states are written.
 	 */
@@ -628,7 +630,10 @@ class Autodoc extends utils.Adapter {
 			const filePath = profile => `/files/${this.namespace}.files/autodoc-${profile}.html`;
 			await this.setStateAsync('info.htmlUrlAdmin', { val: `${baseUrl}${filePath('admin')}`, ack: true });
 			await this.setStateAsync('info.htmlUrlUser', { val: `${baseUrl}${filePath('user')}`, ack: true });
-			await this.setStateAsync('info.htmlUrlOnboarding', { val: `${baseUrl}${filePath('onboarding')}`, ack: true });
+			await this.setStateAsync('info.htmlUrlOnboarding', {
+				val: `${baseUrl}${filePath('onboarding')}`,
+				ack: true,
+			});
 			// Legacy state: keep pointing to admin
 			const htmlUrl = `${baseUrl}${filePath('admin')}`;
 			await this.setStateAsync('info.htmlUrl', { val: htmlUrl, ack: true });
@@ -639,7 +644,10 @@ class Autodoc extends utils.Adapter {
 			const hostSummaryJson = JSON.stringify(docModel.system.hosts, null, 2);
 
 			await this.setStateAsync('documentation.lastMarkdownFile', { val: markdownFilename, ack: true });
-			await this.setStateAsync('documentation.lastHtmlFile', { val: `autodoc-admin-${timestamp}.html`, ack: true });
+			await this.setStateAsync('documentation.lastHtmlFile', {
+				val: `autodoc-admin-${timestamp}.html`,
+				ack: true,
+			});
 			await this.setStateAsync('documentation.lastJsonFile', { val: jsonFilename, ack: true });
 			await this.setStateAsync('documentation.markdown', { val: markdown, ack: true });
 			await this.setStateAsync('documentation.html', { val: htmlAll.admin, ack: true });
@@ -649,7 +657,10 @@ class Autodoc extends utils.Adapter {
 			await this.setStateAsync('info.summary', { val: summary, ack: true });
 			await this.setStateAsync('info.lastTrigger', { val: docModel.meta.trigger, ack: true });
 			await this.setStateAsync('info.lastGeneration', { val: docModel.meta.generatedAt, ack: true });
-			await this.setStateAsync('info.templateVersion', { val: this.htmlRenderer.constructor.RENDERER_VERSION || require('./lib/htmlRenderer').RENDERER_VERSION, ack: true });
+			await this.setStateAsync('info.templateVersion', {
+				val: require('./lib/htmlRenderer').RENDERER_VERSION,
+				ack: true,
+			});
 			await this.setStateAsync('info.systemLanguage', { val: docModel.meta.language, ack: true });
 			await this.setStateAsync('info.instanceCount', {
 				val: docModel.system.statistics.instanceCount,
@@ -847,12 +858,12 @@ class Autodoc extends utils.Adapter {
 				const nextVal = nextGen && nextGen.val ? String(nextGen.val) : '';
 				const triggerVal = lastTrigger && lastTrigger.val ? String(lastTrigger.val) : '';
 				const display = lastVal
-					? `${lastVal}${triggerVal ? ' (' + triggerVal + ')' : ''}${nextVal ? ' · Next: ' + nextVal : ''}`
+					? `${lastVal}${triggerVal ? ` (${triggerVal})` : ''}${nextVal ? ` · Next: ${nextVal}` : ''}`
 					: 'Not yet generated';
 				if (obj.callback) {
 					this.sendTo(obj.from, obj.command, display, obj.callback);
 				}
-			} catch (err) {
+			} catch {
 				if (obj.callback) {
 					this.sendTo(obj.from, obj.command, 'Error reading status', obj.callback);
 				}

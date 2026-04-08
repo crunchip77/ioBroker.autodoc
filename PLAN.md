@@ -9,6 +9,7 @@ ohne alles manuell pflegen zu müssen — auch nach Monaten noch erklärbar, fü
 für Familie, Mitbewohner oder bei Migrationen.
 
 Drei echte Zielgruppen mit komplett unterschiedlicher Sprache:
+
 - **Admin**: "Warum macht das System X wenn Y passiert?" — volle technische Tiefe
 - **User / Familie**: "Wie funktioniert unser Zuhause?" — verständlich, kein JSON
 - **Onboarding / Gäste**: "Wie benutze ich dieses Haus?" — null Technik, reine Alltagssprache
@@ -39,6 +40,7 @@ Drei echte Zielgruppen mit komplett unterschiedlicher Sprache:
 Solange der Adapter **nicht auf npm** und **nicht in `ioBroker.repositories`** eingetragen ist, haben Git-Tags und GitHub Releases keine Wirkung auf Update-Erkennung oder Installation im ioBroker Admin. URL-Installation lädt immer `main` HEAD.
 
 **Reihenfolge für einen echten Release:**
+
 1. `package.json` + `io-package.json` Version synchron bumpen
 2. News-Eintrag in `io-package.json` (EN + DE minimum)
 3. `dev` → Merge nach `main`
@@ -73,17 +75,21 @@ Solange der Adapter **nicht auf npm** und **nicht in `ioBroker.repositories`** e
 Der Sprung von "Adapter-Inventar" zu echter "System-Dokumentation".
 
 ### 2.1 Räume und Geräte ✅
+
 - `enum.rooms` und `enum.functions` auslesen
 - Räume-Kapitel in HTML + Markdown
 
 ### 2.2 Skript-Dokumentation ✅
+
 - Alle Skripte aus `script.js.*` mit Name, Status, Beschreibung, Trigger-Typ
 
 ### 2.3 Wartungs- und Diagnosehilfe ✅
+
 - Instanzen ohne Raum, Skripte ohne Beschreibung, deaktivierte Instanzen
 - Score + Checkliste (Admin-Profil)
 
 ### 2.4 Such-/Filterfunktion im HTML ✅
+
 - Clientseitiges JS, kein Server, filtert Tabellen + Karten
 - Suchbox im Nav-Sidebar, Ergebnis-Zähler, Escape-Reset
 
@@ -92,15 +98,18 @@ Der Sprung von "Adapter-Inventar" zu echter "System-Dokumentation".
 ## Phase 3 — Tiefe ✅ ABGESCHLOSSEN
 
 ### 3.1 Notifications ✅
+
 - `sendTo` nach Generierung: Telegram, Email, Pushover, Signal, WhatsApp, generisch
 - Konfigurierbar: Instanz, Empfänger, optionales Nachrichten-Template
 
 ### 3.2 Dependency-Analyse ✅
+
 - `lib/dependencyAnalyzer.js`: Regex-Extraktion von State-Referenzen aus Script-Quellcode
 - `stateRefs` pro Script + Cross-Reference-Tabelle (Shared States)
 - HTML: Unterabschnitt "State References" + "Shared States" (Admin-only)
 
 ### 3.3 AI-Enhanced Documentation ✅
+
 - `lib/aiEnhancer.js`: pluggable Provider-Architektur, opt-in
 - Provider: `anthropic` (Claude Haiku/Sonnet, paid), `groq` (Llama 3.3 70B, Free Tier), `ollama` (lokal, kein Datenschutzproblem)
 - Groq + Ollama nutzen OpenAI-kompatible API — minimaler Overhead
@@ -110,10 +119,12 @@ Der Sprung von "Adapter-Inventar" zu echter "System-Dokumentation".
 - Fehler → stille Warnung, Doku wird trotzdem generiert
 
 ### 3.x i18n-Vollständigkeit ✅
+
 - Alle hardcodierten englischen Strings in htmlRenderer.js durch i18n-Schlüssel ersetzt
 - EN, DE, FR vollständig
 
 ### 3.x Adapter-Metadaten & manualContext ✅
+
 - `discovery.js`: liest `connectionType`, `dataSource`, `tier` aus `common.*` je Instanz
 - `discovery.js`: `filterNative()` entfernt sensitive Felder (password/token/key/secret/...) per Regex, behält nur skalare Werte → sicheres Admin-Detail
 - `documentModel.js`: `parseManualContext()` normalisiert manualContext (JSON-String oder Objekt), gibt immer `{description, contact, notes, adapters:{}, rooms:{}}` zurück
@@ -126,11 +137,13 @@ Der Sprung von "Adapter-Inventar" zu echter "System-Dokumentation".
 Echte Zielgruppen-Dokus statt "mehr oder weniger Detail vom selben Template".
 
 ### Architektur-Entscheidungen
+
 - **Dispatcher-Muster** in `htmlRenderer.js`: `renderHtml()` → `renderAdminHtml()` / `renderUserHtml()` / `renderOnboardingHtml()`
 - Bestehende Kapitel-Methoden bleiben für Admin/User nutzbar
 - Onboarding bekommt eigene Methoden ohne technische Kapitel
 
 ### Bekannte Probleme & Lösungen
+
 - **Raum-Mitglieder auflösen**: Unique Device-IDs bündeln, einmalig `getForeignObjectsAsync` statt N Einzelaufrufe
 - **Rollen-Inkonsistenz**: `lib/roleMapper.js` normalisiert alle Adapter-Rollen auf Kategorien + Icons
 - **Live-States**: Opt-in (`config.readLiveStates`), nur sinnvolle Rollen (Thermostat, Tür/Fenster, Alarm), fault-tolerant
@@ -138,39 +151,46 @@ Echte Zielgruppen-Dokus statt "mehr oder weniger Detail vom selben Template".
 - **`system.config`**: Graceful fallback wenn Stadt/Land nicht gepflegt
 
 ### 4.1 Discovery-Erweiterungen
+
 - `system.config` auslesen (Stadt, Land, Systemsprache)
 - Geräte-Namen-Auflösung: Raum-Mitglieder → Device-Objekte → `common.name`
 - Geräte nach Device gruppieren (nicht jede State einzeln)
 - Live-States für Schlüssel-Rollen (opt-in)
 
 ### 4.2 `lib/roleMapper.js`
+
 - ioBroker-Rollen → Kategorien + Icons + Labels (EN/DE/FR)
 - Abdeckung: Licht, Dimmer, Rolllade, Thermostat, Feuchtigkeit, Bewegung, Tür/Fenster, Medien, Schloss, Alarm, Steckdose, Kamera
 
 ### 4.3 DocumentModel-Erweiterungen
+
 - `docModel.systemConfig`: Stadt, Land, Sprache
 - `docModel.rooms.rooms[].devices[]`: aufgelöste Geräte mit Name, Kategorie, Icon, ggf. currentValue + unit
 - Abwärtskompatibel: nur neue Felder hinzu
 
 ### 4.4 Renderer-Architektur: Dispatcher
+
 - `renderHtml()` als Dispatcher
 - `renderAdminHtml()` = aktuelles Rendering (leicht bereinigt)
 - `renderUserHtml()` = neue User-Methode
 - `renderOnboardingHtml()` = komplett neu
 
 ### 4.5 Onboarding-Profil: Neues Template
+
 - Sprache: "Du", kurze Sätze, kein Passiv, kein Fachjargon
 - Inhalt: Willkommenstext, Räume mit Geräte-Namen, "Was läuft automatisch?", manualContext, AI-Summary prominent
 - Kein: Adapter-Inventar, OIDs, State-Counts, Trigger-Typen
 - Live-Values wenn aktiviert: Thermostat-Temperatur, Tür/Fenster-Status
 
 ### 4.6 User/Familie-Profil: Überarbeitung
+
 - Räume mit aufgelösten Gerätenamen + Funktion
 - Skripte: nur Name + Beschreibung, kein Trigger-Typ
 - Wartungshinweise in Alltagssprache (keine OIDs)
 - Adapter: nur Titel, keine Version/ID
 
 ### 4.7 Admin-Profil: Ergänzungen
+
 - Device-Hierarchie in Räumen (mit OIDs für Vollständigkeit)
 - Rest bleibt wie bisher
 
@@ -188,23 +208,23 @@ Echte Zielgruppen-Dokus statt "mehr oder weniger Detail vom selben Template".
 
 ## Bewusst weggelassen
 
-| Feature | Grund |
-|---|---|
-| Mermaid-Diagramme / Graphen | Zu komplex, andere Tools besser geeignet |
+| Feature                                       | Grund                                       |
+| --------------------------------------------- | ------------------------------------------- |
+| Mermaid-Diagramme / Graphen                   | Zu komplex, andere Tools besser geeignet    |
 | Vollständiges Code-Parsing für Abhängigkeiten | Fehleranfällig, unverhältnismäßiger Aufwand |
-| REST-API / Webhooks | Wer JSON hat, kann selbst damit arbeiten |
-| Alexa/Google Home Integration | Kein Bezug zur Dokumentation |
-| Analytics/Adapter-Popularität | Kein Dokumentations-Feature |
-| Mobile App | Außerhalb des Scope |
-| Kollaborative Features | Außerhalb des Scope |
+| REST-API / Webhooks                           | Wer JSON hat, kann selbst damit arbeiten    |
+| Alexa/Google Home Integration                 | Kein Bezug zur Dokumentation                |
+| Analytics/Adapter-Popularität                 | Kein Dokumentations-Feature                 |
+| Mobile App                                    | Außerhalb des Scope                         |
+| Kollaborative Features                        | Außerhalb des Scope                         |
 
 ---
 
 ## Ausbaustufen Zusammenfassung
 
-| Version | Inhalt | Status | Anmerkung |
-|---|---|---|---|
-| **v0.x** | Basis: Adapter-Inventar, Export, Profile, Versionierung | ✅ main | interner Meilenstein |
-| **v0.9.x** | RC: drei Profile, Aliase, UX-Akzente, RAM-Summe, Onboarding-Capabilities, Filter, Doku-Score-Erklärung, README/CHANGELOG | ✅ dev | Merge `main` + Forum „Adapter in testing“ wenn Checker OK |
-| **v1.0.0** | Erster offizieller Release nach Adapter-Checker grün | ⬜ geplant | npm publish + ioBroker.repositories PR |
-| **v1.x** | Phase 5: PDF, Backup-Integration, Custom Templates | ⬜ geplant | |
+| Version    | Inhalt                                                                                                                   | Status     | Anmerkung                                                 |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------------------------------------------------- |
+| **v0.x**   | Basis: Adapter-Inventar, Export, Profile, Versionierung                                                                  | ✅ main    | interner Meilenstein                                      |
+| **v0.9.x** | RC: drei Profile, Aliase, UX-Akzente, RAM-Summe, Onboarding-Capabilities, Filter, Doku-Score-Erklärung, README/CHANGELOG | ✅ dev     | Merge `main` + Forum „Adapter in testing“ wenn Checker OK |
+| **v1.0.0** | Erster offizieller Release nach Adapter-Checker grün                                                                     | ⬜ geplant | npm publish + ioBroker.repositories PR                    |
+| **v1.x**   | Phase 5: PDF, Backup-Integration, Custom Templates                                                                       | ⬜ geplant |                                                           |

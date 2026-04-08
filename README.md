@@ -2,6 +2,8 @@
 
 # ioBroker.autodoc
 
+**Adapter version:** `0.9.2` (release candidate). Release notes: [CHANGELOG.md](CHANGELOG.md).
+
 [![NPM version](https://img.shields.io/npm/v/iobroker.autodoc.svg)](https://www.npmjs.com/package/iobroker.autodoc)
 [![Downloads](https://img.shields.io/npm/dm/iobroker.autodoc.svg)](https://www.npmjs.com/package/iobroker.autodoc)
 ![Number of Installations](https://iobroker.live/badges/autodoc-installed.svg)
@@ -17,23 +19,25 @@
 
 Three documentation profiles are always generated in one run:
 
-| Profile | Audience | Focus |
-|---|---|---|
-| **Admin** | System administrator | Adapters, hosts, RAM/CPU, scripts, aliases, userdata, maintenance score, diagnosis |
-| **User / Family** | Everyday users | Rooms, devices, automations, connected systems — plain language |
-| **Onboarding / Guest** | Visitors | Welcome, tips, capabilities overview, rooms, what runs automatically, QR code |
+| Profile                | Audience             | Focus                                                                              |
+| ---------------------- | -------------------- | ---------------------------------------------------------------------------------- |
+| **Admin**              | System administrator | Adapters, hosts, RAM/CPU, scripts, aliases, userdata, maintenance score, diagnosis |
+| **User / Family**      | Everyday users       | Rooms, devices, automations, connected systems — plain language                    |
+| **Onboarding / Guest** | Visitors             | Welcome, tips, capabilities overview, rooms, what runs automatically, QR code      |
 
 ---
 
 ## Features
 
 ### Documentation generation
+
 - **Automatic discovery** — adapter instances, hosts, rooms, functions, scripts, states, `0_userdata.0`, `alias.0.*`, system config
 - **Three HTML files per run** — `autodoc-admin.html`, `autodoc-user.html`, `autodoc-onboarding.html` (+ timestamped copies)
 - **Generate Now** — adapter settings or state `action.generate` / `sendTo('autodoc.0', 'generate', …)`
 - **Triggers** — startup, interval (hours), adapter change (30 s debounce), template change (`RENDERER_VERSION` → auto-regenerate)
 
 ### Content (Admin highlights)
+
 - **Rooms & functions** — `enum.rooms` / `enum.functions`, devices resolved with icons and categories (`roleMapper`)
 - **Scripts** — status, folder, trigger, **cron schedule** (human-readable), optional **blue row accent** when scheduled
 - **Aliases** — all `alias.0.*` targets, grouped by folder, filterable
@@ -45,12 +49,14 @@ Three documentation profiles are always generated in one run:
 - **Changelog & troubleshooting** — theme-aware colours (light/dark)
 
 ### Manual documentation
+
 - **Tabbed Admin UI** — Basic, My documentation, Advanced, Notifications, AI
 - **Project description, contact, notes** — shown **early** in Admin and User profiles when set
 - **Per-adapter and per-room notes** — in all profiles; **gold** visual cues (row border, arrow, card edge) where a manual note exists
 - **Hide lists** — separate for **User** and **Onboarding** (rooms/adapters)
 
 ### HTML viewer
+
 - **Search** — full-text in sidebar; hint text always visible under search box
 - **Dark mode** — toggle in nav footer, `localStorage`
 - **Mobile** — hamburger menu, overlay nav (≤ 700 px width)
@@ -58,6 +64,7 @@ Three documentation profiles are always generated in one run:
 - **Onboarding** — QR code + copy link fallback, “What can this smart home?” capability cards, ⏱ for cron scripts, stale-docs banner, relative timestamps
 
 ### Exports & integrations
+
 - Markdown + JSON + HTML; **states** `info.htmlUrlAdmin`, `info.htmlUrlUser`, `info.htmlUrlOnboarding`
 - Notifications; **AI** (opt-in: Ollama, Mistral, Groq, Anthropic) with privacy notice
 - **Languages** — EN, DE, FR
@@ -86,24 +93,24 @@ ioBroker caches the downloaded tarball by **package version**. After pulling new
 
 ## Configuration (short)
 
-| Area | What |
-|---|---|
-| **Project name & language** | Shown in titles and exports |
-| **Base URL** | For `info.htmlUrl*` links (host:port) |
-| **Generate on start / interval / on adapter change** | As needed |
-| **My documentation** | Description, contact, notes, per-adapter and per-room tables, hide lists |
-| **AI** | Provider, model, keys — optional |
+| Area                                                 | What                                                                     |
+| ---------------------------------------------------- | ------------------------------------------------------------------------ |
+| **Project name & language**                          | Shown in titles and exports                                              |
+| **Base URL**                                         | For `info.htmlUrl*` links (host:port)                                    |
+| **Generate on start / interval / on adapter change** | As needed                                                                |
+| **My documentation**                                 | Description, contact, notes, per-adapter and per-room tables, hide lists |
+| **AI**                                               | Provider, model, keys — optional                                         |
 
 ---
 
 ## States (selection)
 
-| State | Role |
-|---|---|
-| `action.generate` | Trigger generation |
-| `info.lastGeneration` / `info.nextGeneration` | Timestamps |
-| `info.templateVersion` | Last HTML renderer id (auto-regenerate if code newer) |
-| `info.htmlUrlAdmin` / `User` / `Onboarding` | Direct links to latest HTML |
+| State                                         | Role                                                  |
+| --------------------------------------------- | ----------------------------------------------------- |
+| `action.generate`                             | Trigger generation                                    |
+| `info.lastGeneration` / `info.nextGeneration` | Timestamps                                            |
+| `info.templateVersion`                        | Last HTML renderer id (auto-regenerate if code newer) |
+| `info.htmlUrlAdmin` / `User` / `Onboarding`   | Direct links to latest HTML                           |
 
 ---
 
@@ -120,17 +127,23 @@ HTML is standalone; Onboarding may load QR library from CDN (optional).
 
 ## Roadmap
 
-| Milestone | Status |
-|---|---|
-| **0.9.x** | Release candidate — feature-complete for forum testing |
+| Milestone | Status                                                                                            |
+| --------- | ------------------------------------------------------------------------------------------------- |
+| **0.9.x** | Release candidate — feature-complete for forum testing                                            |
 | **1.0.0** | After [Adapter Checker](https://adapter-check.iobroker.in/) green → npm + `ioBroker.repositories` |
-| **1.x** | PDF export, backup integration, custom templates (optional) |
+| **1.x**   | PDF export, backup integration, custom templates (optional)                                       |
 
 ---
 
 ## Changelog
 
-See [CHANGELOG.md](CHANGELOG.md).
+Full history and detail: [CHANGELOG.md](CHANGELOG.md).
+
+**0.9.2** — Admin aliases chapter, total adapter RAM when host RAM missing, documentation score explanation, filter bars for userdata/aliases, manual notes higher in layout, onboarding capability cards, HTML visual cues (gold/orange/blue), dark-mode changelog/collapsible fixes, RAM cell HTML fix.
+
+**0.9.1** — Dark mode for collapsibles and changelog; search hint always visible; admin **Functions** heading; i18n keys.
+
+**0.9.0** — Mobile nav, RAM/CPU/uptime, script cron display, `0_userdata.0`, repository badge, auto-regenerate on template change (`RENDERER_VERSION`), stale-docs banner, QR/onboarding polish.
 
 ---
 

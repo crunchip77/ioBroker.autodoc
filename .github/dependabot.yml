@@ -1,24 +1,24 @@
 version: 2
 updates:
-  - package-ecosystem: npm
-    directory: "/"
-    schedule:
-      interval: monthly
-      day: 7
-      time: "00:05"
-      timezone: Europe/Berlin
-    open-pull-requests-limit: 5
-    assignees:
-      - crunchip77
-    versioning-strategy: increase
+    - package-ecosystem: npm
+      directory: '/'
+      schedule:
+          interval: monthly
+          time: '00:05'
+          timezone: Europe/Berlin
+      open-pull-requests-limit: 15
+      cooldown:
+          default-days: 7
+      assignees:
+          - crunchip77
+      versioning-strategy: increase
 
-  - package-ecosystem: github-actions
-    directory: "/"
-    schedule:
-      interval: monthly
-      day: 7
-      time: "00:05"
-      timezone: Europe/Berlin
-    open-pull-requests-limit: 5
-    assignees:
-      - crunchip77
+    - package-ecosystem: github-actions
+      directory: '/'
+      schedule:
+          interval: monthly
+          time: '00:05'
+          timezone: Europe/Berlin
+      open-pull-requests-limit: 15
+      assignees:
+          - crunchip77

@@ -1,6 +1,7 @@
 # AutoDoc Adapter — TODO-Liste
 
 ## Wichtige Referenzen
+
 - [ioBroker AI Developer Guide](https://github.com/Jey-Cee/iobroker-ai-developer-guide)
 - [Adapter Creator](https://github.com/ioBroker/create-adapter)
 - [Adapter Checker](https://adapter-check.iobroker.in/)
@@ -43,34 +44,42 @@
 ## Phase 4 — Profile-Redesign ✅ ABGESCHLOSSEN
 
 ### 4.1 Discovery-Erweiterungen ✅
+
 - [x] `system.config` auslesen: Stadt, Land, Systemsprache → `rawData.systemConfig`
 - [x] Geräte-Namen-Auflösung: Raum-Mitglieder → Device-Objekte via `getForeignObjectAsync`
 - [x] Opt-in Live-States: Schlüssel-Rollen (`level.temperature`, `sensor.door`, `sensor.window`, `alarm`) lesen
 - [x] Neue Config-Option `readLiveStates` in `jsonConfig.json5` + i18n
 
 ### 4.2 Role Mapper ✅
+
 - [x] `lib/roleMapper.js` — 29 Patterns → 14 Kategorien + Icons
 - [x] i18n-Keys für Kategorie-Labels (EN/DE/FR)
 
 ### 4.3 DocumentModel-Erweiterungen ✅
+
 - [x] `buildSystemConfig(rawData)` → `docModel.systemConfig`
 - [x] `buildRooms()`: `rooms[].devices[]` mit `{ id, deviceName, category, icon, currentValue, unit }`
 
 ### 4.4 Renderer-Architektur: Dispatcher ✅
+
 - [x] `renderHtml()` als Dispatcher → `renderAdminHtml()` / `renderUserHtml()` / `renderOnboardingHtml()`
 
 ### 4.5 Onboarding-Profil ✅
+
 - [x] Stadt-bewusster Willkommenstext, Räume mit Device-Grid + Icons + Live-Values
 - [x] "Was läuft automatisch?" als plain sentences, Adapter-Cards (freundlich)
 - [x] AI-Box prominent, Hint wenn kein manualContext
 
 ### 4.6 User/Familie-Profil ✅
+
 - [x] Räume mit Device-Cards, Skripte name+desc only, Adapter title-only
 
 ### 4.7 Admin-Profil ✅
+
 - [x] Device-Hierarchie-Tabelle pro Raum mit OIDs
 
 ### 4.x Bugfixes & UI-Verbesserungen ✅
+
 - [x] `room.members` → `room.devices` (DocumentModel ↔ Renderer Alignment)
 - [x] Onboarding: Adapter-Abschnitt fehlte (renderAdaptersChapter nicht aufgerufen)
 - [x] markdownRenderer: gleicher room.devices Bug → UNCAUGHT_EXCEPTION im Admin-Profil
@@ -80,6 +89,7 @@
 - [x] Diagnose-Sektion neu aufgebaut: Erfassungsstatus, Wo nachschauen (alive/connected), Befunde
 
 ### 4.x UI-Verbesserungen Session 2 ✅
+
 - [x] Adapter-Tabelle: deaktivierte Instanzen eingeklappt (`<details>`), lokaler Filter-Input mit Hinweistext
 - [x] Node.js-Version aus `host.native` (via `getForeignObjectAsync`) + Badge grün/rot (LTS ≥ v20)
 - [x] OS-Info (Kernel, Architektur) im System-Kapitel und Hosts-Tabelle
@@ -87,6 +97,7 @@
 - [x] Script-Ordner-Labels: `null` → Root-Verzeichnis, `common` → Allgemeine Skripte, `global` → Globale Skripte
 
 ### 4.x Abschluss
+
 - [x] i18n: alle neuen Keys (EN/DE/FR)
 - [x] Lint sauber (0 Errors)
 - [x] README.md + CHANGELOG.md + TODO.md + PLAN.md aktualisiert (Abschluss RC 0.9.x)
@@ -117,10 +128,12 @@
 > Solange der Adapter nicht auf npm und nicht in `ioBroker.repositories` eingetragen ist, haben Tags und GitHub Releases **keine Wirkung** auf Update-Erkennung oder Installation im ioBroker Admin.
 
 ### Voraussetzungen
+
 - [ ] [Adapter Checker](https://adapter-check.iobroker.in/) vollständig grün
 - [ ] npm-Account vorhanden, `iobroker.autodoc` als Paketname verfügbar
 
 ### Schritte
+
 1. [ ] Versionsnummer in `package.json` + `io-package.json` auf **1.0.0** synchron setzen
 2. [ ] News-Eintrag in `io-package.json` (EN + DE minimum)
 3. [x] `CHANGELOG.md` + README Kurzüberblick gepflegt

@@ -5,15 +5,42 @@
         "news": {
             "0.9.2": {
                 "en": "Fix: RAM HTML rendering, filter bars for custom variables and aliases, documentation score explanation, manual notes moved to top of admin profile",
-                "de": "Fix: RAM HTML-Darstellung, Filterleisten für eigene Variablen und Aliase, Dokumentations-Score-Erklärung, manuelle Hinweise im Admin-Profil nach oben"
+                "de": "Fix: RAM HTML-Darstellung, Filterleisten für eigene Variablen und Aliase, Dokumentations-Score-Erklärung, manuelle Hinweise im Admin-Profil nach oben",
+                "ru": "Исправление: HTML RAM, полосы фильтра для пользовательских переменных и алиасов, пояснение score документации, ручные заметки вверху профиля администратора",
+                "pt": "Correção: renderização HTML da RAM, barras de filtro para variáveis e aliases personalizados, explicação do score de documentação, notas manuais no topo do perfil de admin",
+                "nl": "Fix: RAM HTML-weergave, filterbalken voor eigen variabelen en aliassen, uitleg documentatiescore, handmatige notities bovenaan het adminprofiel",
+                "fr": "Correctif : rendu HTML RAM, barres de filtre pour variables et alias personnalisés, explication du score de documentation, notes manuelles en haut du profil admin",
+                "it": "Correzione: rendering HTML RAM, barre filtro per variabili e alias personalizzati, spiegazione punteggio documentazione, note manuali in cima al profilo admin",
+                "es": "Corrección: renderizado HTML de RAM, barras de filtro para variables y alias propios, explicación del score de documentación, notas manuales arriba en el perfil de admin",
+                "pl": "Poprawa: renderowanie HTML RAM, paski filtrów dla własnych zmiennych i aliasów, wyjaśnienie wyniku dokumentacji, notatki ręczne na górze profilu admina",
+                "uk": "Виправлення: HTML RAM, смуги фільтрів для власних змінних і аліасів, пояснення score документації, ручні нотатки зверху профілю адміна",
+                "zh-cn": "修复：RAM HTML 渲染、自定义变量与别名的筛选条、文档评分说明、管理员配置中手动备注置顶"
             },
             "0.9.1": {
                 "en": "Fix: dark mode colors for collapsibles and changelog, search hint always visible, alias chapter, functions heading in admin profile",
-                "de": "Fix: Dark-Mode-Farben für Aufklappmenüs und Änderungsprotokoll, Suchhinweis immer sichtbar, Alias-Kapitel, Funktionen-Überschrift im Admin-Profil"
+                "de": "Fix: Dark-Mode-Farben für Aufklappmenüs und Änderungsprotokoll, Suchhinweis immer sichtbar, Alias-Kapitel, Funktionen-Überschrift im Admin-Profil",
+                "ru": "Исправление: цвета тёмной темы для раскрывающихся блоков и changelog, подсказка поиска всегда видна, глава про алиасы, заголовок функций в профиле администратора",
+                "pt": "Correção: cores do modo escuro para recolhíveis e changelog, dica de pesquisa sempre visível, capítulo de aliases, título de funções no perfil de admin",
+                "nl": "Fix: donkere modus-kleuren voor inklapbare secties en changelog, zoekhint altijd zichtbaar, alias-hoofdstuk, functiekop in adminprofiel",
+                "fr": "Correctif : couleurs mode sombre pour repliables et journal des modifications, aide recherche toujours visible, chapitre alias, titre fonctions dans le profil admin",
+                "it": "Correzione: colori dark mode per sezioni espandibili e changelog, suggerimento ricerca sempre visibile, capitolo alias, intestazione funzioni nel profilo admin",
+                "es": "Corrección: colores de modo oscuro para desplegables y changelog, pista de búsqueda siempre visible, capítulo de alias, encabezado de funciones en el perfil de admin",
+                "pl": "Poprawa: kolory trybu ciemnego dla rozwijanych sekcji i changelog, podpowiedź wyszukiwania zawsze widoczna, rozdział aliasów, nagłówek funkcji w profilu admina",
+                "uk": "Виправлення: кольори темної теми для згортання та changelog, підказка пошуку завжди видима, розділ аліасів, заголовок функцій у профілі адміна",
+                "zh-cn": "修复：折叠与变更日志的深色模式配色、搜索提示始终可见、别名章节、管理员配置中的功能标题"
             },
             "0.9.0": {
                 "en": "Release candidate: mobile layout, search hints, RAM/CPU stats, script schedules, custom variables, repository badge, auto-regenerate on template change",
-                "de": "Release-Kandidat: Mobile-Layout, Suche-Hinweise, RAM/CPU-Statistiken, Script-Zeitpläne, eigene Variablen, Repository-Badge, Auto-Regenerierung bei Template-Änderung"
+                "de": "Release-Kandidat: Mobile-Layout, Suche-Hinweise, RAM/CPU-Statistiken, Script-Zeitpläne, eigene Variablen, Repository-Badge, Auto-Regenerierung bei Template-Änderung",
+                "ru": "Кандидат в релиз: мобильная вёрстка, подсказки поиска, RAM/CPU, расписания скриптов, пользовательские переменные, бейдж репозитория, авто-регенерация при смене шаблона",
+                "pt": "Candidato a release: layout mobile, dicas de pesquisa, estatísticas RAM/CPU, agendamentos de scripts, variáveis personalizadas, badge do repositório, auto-regenerar ao mudar template",
+                "nl": "Release candidate: mobiel layout, zoekhints, RAM/CPU-statistieken, scriptschema's, eigen variabelen, repository-badge, automatisch opnieuw genereren bij template-wijziging",
+                "fr": "Candidat release : mise en page mobile, aides recherche, stats RAM/CPU, planifications scripts, variables personnalisées, badge dépôt, régénération auto si template change",
+                "it": "Release candidate: layout mobile, suggerimenti ricerca, statistiche RAM/CPU, pianificazioni script, variabili personalizzate, badge repository, rigenerazione automatica al cambio template",
+                "es": "Candidato a release: diseño móvil, pistas de búsqueda, estadísticas RAM/CPU, horarios de scripts, variables propias, insignia del repositorio, auto-regenerar al cambiar plantilla",
+                "pl": "Kandydat do wydania: układ mobilny, podpowiedzi wyszukiwania, statystyki RAM/CPU, harmonogramy skryptów, własne zmienne, odznaka repozytorium, auto-regeneracja przy zmianie szablonu",
+                "uk": "Кандидат у реліз: мобільна верстка, підказки пошуку, RAM/CPU, розклади скриптів, власні змінні, бейдж репозиторію, авто-регенерація при зміні шаблону",
+                "zh-cn": "发布候选：移动布局、搜索提示、RAM/CPU 统计、脚本计划、自定义变量、仓库徽章、模板变更时自动重新生成"
             },
             "1.0.0": {
                 "en": "Notifications, dependency analysis, AI-enhanced docs, full i18n, fixed latest HTML file and direct URL",
@@ -106,7 +133,6 @@
         "mode": "daemon",
         "type": "general",
         "compact": true,
-        "messageable": true,
         "connectionType": "local",
         "dataSource": "push",
         "adminUI": {
@@ -133,7 +159,7 @@
         ],
         "globalDependencies": [
             {
-                "admin": ">=7.0.23"
+                "admin": ">=7.6.20"
             }
         ]
     },
@@ -149,10 +175,15 @@
         "userHideRooms": [],
         "userHideAdapters": [],
         "targetSystem": "ioBroker",
+        "language": "en",
         "autoGenerateOnStart": false,
+        "autoGenerateOnEvents": false,
+        "autoGenerateInterval": 0,
         "onlyEnabledInstances": false,
         "hideInstanceDetailsInMarkdown": false,
-        "maxDocumentedInstances": 0
+        "maxDocumentedInstances": 0,
+        "maxStoredFiles": 5,
+        "baseUrl": ""
     },
     "objects": [],
     "instanceObjects": [
