@@ -139,11 +139,17 @@ HTML is standalone; Onboarding may load QR library from CDN (optional).
 
 Full history and detail: [CHANGELOG.md](CHANGELOG.md).
 
-**0.9.2** — Admin aliases chapter, total adapter RAM when host RAM missing, documentation score explanation, filter bars for userdata/aliases, manual notes higher in layout, onboarding capability cards, HTML visual cues (gold/orange/blue), dark-mode changelog/collapsible fixes, RAM cell HTML fix.
+### 0.9.2
 
-**0.9.1** — Dark mode for collapsibles and changelog; search hint always visible; admin **Functions** heading; i18n keys.
+Admin aliases chapter, total adapter RAM when host RAM missing, documentation score explanation, filter bars for userdata/aliases, manual notes higher in layout, onboarding capability cards, HTML visual cues (gold/orange/blue), dark-mode changelog/collapsible fixes, RAM cell HTML fix.
 
-**0.9.0** — Mobile nav, RAM/CPU/uptime, script cron display, `0_userdata.0`, repository badge, auto-regenerate on template change (`RENDERER_VERSION`), stale-docs banner, QR/onboarding polish.
+### 0.9.1
+
+Dark mode for collapsibles and changelog; search hint always visible; admin **Functions** heading; i18n keys.
+
+### 0.9.0
+
+Mobile nav, RAM/CPU/uptime, script cron display, `0_userdata.0`, repository badge, auto-regenerate on template change (`RENDERER_VERSION`), stale-docs banner, QR/onboarding polish.
 
 ---
 
