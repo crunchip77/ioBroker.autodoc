@@ -2,20 +2,22 @@
 
 # ioBroker.autodoc
 
-**Adapter version 0.9.2** (release candidate). Release notes: [CHANGELOG.md](CHANGELOG.md).
+**Adapter version 0.9.3** — **release candidate** for **community testing** (forum).  
+After positive feedback and bugfixes, the plan is: **Adapter Checker green → PR to [ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories) → npm**.
 
-[![NPM version](https://img.shields.io/npm/v/iobroker.autodoc.svg)](https://www.npmjs.com/package/iobroker.autodoc)
-[![Downloads](https://img.shields.io/npm/dm/iobroker.autodoc.svg)](https://www.npmjs.com/package/iobroker.autodoc)
-![Number of Installations](https://iobroker.live/badges/autodoc-installed.svg)
-![Current version in stable repository](https://iobroker.live/badges/autodoc-stable.svg)
+| | |
+| --- | --- |
+| **npm** | Not published yet — install via **GitHub tarball** (see [Installation](#installation)). |
+| **Official adapter list** | Not included yet — intended **after** forum testing. |
+| **Feedback** | Please report issues and wishes in the forum thread or [GitHub Issues](https://github.com/crunchip77/ioBroker.autodoc/issues). |
 
 **Tests:** ![Test and Release](https://github.com/crunchip77/ioBroker.autodoc/workflows/Test%20and%20Release/badge.svg)
 
-**Current branch build:** `0.9.x` (release candidate) — install from GitHub custom URL until published to npm.
+_NPM and “stable repository” badges will be added once the adapter is published and listed._
 
 ## Description
 
-Current adapter version: **0.9.2**. **ioBroker.autodoc** automatically generates structured, human-readable documentation for your ioBroker installation. With a single button press — or fully automatically — the adapter scans your system and produces standalone HTML and Markdown files.
+**ioBroker.autodoc** (0.9.3) automatically generates structured, human-readable documentation for your ioBroker installation. With a single button press — or fully automatically — the adapter scans your system and produces standalone HTML and Markdown files.
 
 Three documentation profiles are always generated in one run:
 
@@ -73,7 +75,13 @@ Three documentation profiles are always generated in one run:
 
 ## Installation
 
-Until the adapter is on npm, use **Adapters → Custom URL**:
+**Adapters →** install from **Custom URL** (until npm is available):
+
+**Stable branch (recommended for forum testers):**
+
+```
+https://github.com/crunchip77/ioBroker.autodoc/tarball/main
+```
 
 **Development / latest features:**
 
@@ -81,13 +89,13 @@ Until the adapter is on npm, use **Adapters → Custom URL**:
 https://github.com/crunchip77/ioBroker.autodoc/tarball/dev
 ```
 
-**Stable branch:**
+**Important — Custom URL cache:** ioBroker caches the GitHub tarball by **`version` in `package.json`**. If you reinstall the **same version** (e.g. still `0.9.2`), the controller may **not** replace the adapter files, so you keep an **old `lib/`** and bugs persist. After pulling fixes from Git, either install a **new adapter version** (e.g. `0.9.3`) or remove the old copy under `node_modules/iobroker.autodoc` / use the controller’s reinstall path, then **restart** the adapter instance.
 
-```
-https://github.com/crunchip77/ioBroker.autodoc/tarball/main
-```
+HTML template changes also bump `RENDERER_VERSION` in `lib/htmlRenderer.js`; on start, a mismatch forces **regeneration** of the HTML files (if auto-generate on start is enabled or you trigger **Generate now**).
 
-ioBroker caches the downloaded tarball by **package version**. After pulling new code, bump `package.json` / `io-package.json` version or reinstall; HTML template changes also bump `RENDERER_VERSION` in `lib/htmlRenderer.js` for automatic regeneration.
+**Verify in browser:** open the generated HTML → **View source** → in `<head>` you should see `<!-- autodoc-renderer:2026.04.07.13 -->` (or newer). If that line is missing or older, the running adapter code is not updated.
+
+**Repository:** [github.com/crunchip77/ioBroker.autodoc](https://github.com/crunchip77/ioBroker.autodoc)
 
 ---
 
@@ -127,29 +135,99 @@ HTML is standalone; Onboarding may load QR library from CDN (optional).
 
 ## Roadmap
 
-| Milestone | Status                                                                                            |
-| --------- | ------------------------------------------------------------------------------------------------- |
-| **0.9.x** | Release candidate — feature-complete for forum testing                                            |
-| **1.0.0** | After [Adapter Checker](https://adapter-check.iobroker.in/) green → npm + `ioBroker.repositories` |
-| **1.x**   | PDF export, backup integration, custom templates (optional)                                       |
+| Milestone | Status |
+| --------- | ------ |
+| **0.9.x** | Release candidate — **forum testing**, feedback, bugfixes |
+| **Next** | [Adapter Checker](https://adapter-check.iobroker.in/) clean → **ioBroker.repositories** PR + **npm** |
+| **1.x** | PDF export, backup integration, custom templates (optional) |
 
 ---
 
 ## Changelog
 
-Full history and detail: [CHANGELOG.md](CHANGELOG.md).
+Notable changes are recorded here (adapter version: `package.json` / `io-package.json`; HTML template iterations: `RENDERER_VERSION` in `lib/htmlRenderer.js`).
 
-### 0.9.2
+### [0.9.3] — 2026-04
 
-Admin aliases chapter, total adapter RAM when host RAM missing, documentation score explanation, filter bars for userdata/aliases, manual notes higher in layout, onboarding capability cards, HTML visual cues (gold/orange/blue), dark-mode changelog/collapsible fixes, RAM cell HTML fix.
+#### Fixed
 
-### 0.9.1
+- **HTML viewer** — same fixes as below, but **adapter version bumped** so ioBroker **Custom URL installs** actually replace `node_modules` (same `0.9.x` version was often **cached**, leaving broken HTML renderer on disk).
+- **Diagnostics** — HTML pages include `<!-- autodoc-renderer:… -->` in `<head>` so you can confirm which renderer build generated the file.
 
-Dark mode for collapsibles and changelog; search hint always visible; admin **Functions** heading; i18n keys.
+---
 
-### 0.9.0
+### [0.9.2] — 2026-04
 
-Mobile nav, RAM/CPU/uptime, script cron display, `0_userdata.0`, repository badge, auto-regenerate on template change (`RENDERER_VERSION`), stale-docs banner, QR/onboarding polish.
+**Release candidate (forum / pre-npm).**
+
+#### Added
+
+- **Aliases chapter (Admin)** — reads `alias.0.*`, shows read/write targets, grouped by folder, with search filter
+- **RAM: total ioBroker memory** — sums `system.adapter.*.*.memRss` when host system RAM is unavailable (Docker); label **(alle Adapter)**; js-controller-only fallback labelled **(js-controller)**
+- **Documentation score** — short explanation text above the score bar (what 0–100 % means)
+- **User-defined variables & aliases** — search filter bars + open-all-groups on search
+- **Manual notes position** — project/contact/notes block moved **up** in Admin and User profiles (right after header)
+- **Onboarding** — “What can this smart home?” capability cards from functions/categories; tips section **always** shown (fallback text if no notes); admin hint when no manual content; **⏱** next to scheduled scripts
+- **Visual cues (HTML)** — gold: manual notes (room arrow, table row, adapter card, disabled-adapter group when any note); orange: maintenance / disabled scripts groups; blue: script rows with cron schedule; Onboarding clock mark for schedules
+- **Navigation** — TOC order matches manual-notes-first where applicable
+
+#### Changed
+
+- **Repository badge** — moved from “Location” to **Diagnosis** section
+- **Changelog cards** — colours use CSS variables (readable in dark mode)
+- **Collapsible summaries** — `var(--text)` instead of hardcoded greys for dark mode
+
+#### Fixed
+
+- **RAM cell** — escaped HTML showed raw `<small>` tags; `esc()` removed for composed RAM cell
+- **Host RAM** — `memRss` values are already in MB in js-controller (no double division)
+- **Search hint** — always visible; colour uses theme variables
+- **HTML viewer** — embedded chapter scripts closed with real `</script>`; client search `escRe` regex injected via `JSON.stringify` (fixes blank white main content in all profiles)
+- **CI (GitHub Actions)** — `check-and-lint`: ESLint for inlined client script in `wrapPage`, `npm run check` / `StateCommon` cast, LF line endings (`.gitattributes`)
+- **Adapter checker / packaging** — `io-package` / `package.json` (admin dep, native fields, keywords, news i18n), single `jsonConfig.json`, Dependabot + automerge workflow
+- **Git tags** — release tag **`v0.9.2`** marks this RC; misleading **`v1.0.0`** tag removed on GitHub (adapter stays on **0.9.x** until a real **1.0.0** release)
+
+---
+
+### [0.9.1] — 2026-04
+
+#### Added
+
+- Dark mode fixes for collapsibles and changelog; search hint visibility
+- Admin: **Funktionen** as proper `<h3>` before collapsible list
+- Various i18n keys (repo, score, aliases, …)
+
+#### Fixed
+
+- jsonConfig / admin UI validation issues (previous iterations)
+
+---
+
+### [0.9.0] — 2026-04-07
+
+#### Added
+
+- Mobile layout (hamburger, overlay nav); stale-docs banner; health badge; relative timestamps
+- QR code + copy fallback on Onboarding; search hints in nav
+- Host RAM/CPU/uptime; location & timezone; script cron schedules as badges
+- User-defined variables (`0_userdata.0`); pending updates; BackItUp last backup
+- `info.templateVersion` + `RENDERER_VERSION` auto-regenerate on template change
+- `info.nextGeneration` state
+
+#### Changed
+
+- Onboarding order: tips before stat cards; function chips after rooms
+- Version aligned to `0.9.x` pre-1.0 convention
+
+#### Fixed
+
+- Docker RAM display; clipboard on HTTP; numerous dark-mode contrast issues
+
+---
+
+### Earlier history
+
+See git history for **0.1.0–0.8**: profile redesign, AI providers, notifications, three-profile HTML, initial architecture (`discovery.js`, `documentModel.js`, `htmlRenderer.js`, `markdownRenderer.js`, `versionTracker.js`, `i18n.js`, jsonConfig admin UI).
 
 ---
 

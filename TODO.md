@@ -100,7 +100,7 @@
 
 - [x] i18n: alle neuen Keys (EN/DE/FR)
 - [x] Lint sauber (0 Errors)
-- [x] README.md + CHANGELOG.md + TODO.md + PLAN.md aktualisiert (Abschluss RC 0.9.x)
+- [x] README.md (inkl. Changelog) + TODO.md + PLAN.md aktualisiert (Abschluss RC 0.9.x)
 - [ ] `dev` → nach Test + Adapter-Checker → Merge nach `main`
 
 ---
@@ -136,7 +136,7 @@
 
 1. [ ] Versionsnummer in `package.json` + `io-package.json` auf **1.0.0** synchron setzen
 2. [ ] News-Eintrag in `io-package.json` (EN + DE minimum)
-3. [x] `CHANGELOG.md` + README Kurzüberblick gepflegt
+3. [x] README inkl. Abschnitt **Changelog** gepflegt (`CHANGELOG.md` entfernt — eine Quelle)
 4. [ ] `dev` → Merge nach `main`
 5. [ ] `npm publish` (veröffentlicht auf npmjs.com)
 6. [ ] GitHub Release aus Tag erstellen (dann erst sinnvoll)

@@ -225,6 +225,6 @@ Echte Zielgruppen-Dokus statt "mehr oder weniger Detail vom selben Template".
 | Version    | Inhalt                                                                                                                   | Status     | Anmerkung                                                 |
 | ---------- | ------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------------------------------------------------- |
 | **v0.x**   | Basis: Adapter-Inventar, Export, Profile, Versionierung                                                                  | ✅ main    | interner Meilenstein                                      |
-| **v0.9.x** | RC: drei Profile, Aliase, UX-Akzente, RAM-Summe, Onboarding-Capabilities, Filter, Doku-Score-Erklärung, README/CHANGELOG | ✅ dev     | Merge `main` + Forum „Adapter in testing“ wenn Checker OK |
+| **v0.9.x** | RC: drei Profile, Aliase, UX-Akzente, RAM-Summe, Onboarding-Capabilities, Filter, Doku-Score-Erklärung, README (Changelog) | ✅ dev     | Merge `main` + Forum „Adapter in testing“ wenn Checker OK |
 | **v1.0.0** | Erster offizieller Release nach Adapter-Checker grün                                                                     | ⬜ geplant | npm publish + ioBroker.repositories PR                    |
 | **v1.x**   | Phase 5: PDF, Backup-Integration, Custom Templates                                                                       | ⬜ geplant |                                                           |
