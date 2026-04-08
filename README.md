@@ -2,7 +2,7 @@
 
 # ioBroker.autodoc
 
-**Adapter version:** `0.9.2` (release candidate). Release notes: [CHANGELOG.md](CHANGELOG.md).
+**Adapter version 0.9.2** (release candidate). Release notes: [CHANGELOG.md](CHANGELOG.md).
 
 [![NPM version](https://img.shields.io/npm/v/iobroker.autodoc.svg)](https://www.npmjs.com/package/iobroker.autodoc)
 [![Downloads](https://img.shields.io/npm/dm/iobroker.autodoc.svg)](https://www.npmjs.com/package/iobroker.autodoc)
@@ -15,7 +15,7 @@
 
 ## Description
 
-**ioBroker.autodoc** automatically generates structured, human-readable documentation for your ioBroker installation. With a single button press — or fully automatically — the adapter scans your system and produces standalone HTML and Markdown files.
+Current adapter version: **0.9.2**. **ioBroker.autodoc** automatically generates structured, human-readable documentation for your ioBroker installation. With a single button press — or fully automatically — the adapter scans your system and produces standalone HTML and Markdown files.
 
 Three documentation profiles are always generated in one run:
 
