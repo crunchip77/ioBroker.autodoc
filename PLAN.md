@@ -25,14 +25,27 @@ Drei echte Zielgruppen mit komplett unterschiedlicher Sprache:
 
 - **IDE**: Visual Studio Code auf Windows
 - **Testsystem**: ioBroker auf Unraid-Server (separat vom Produktivsystem)
-- **Deployment**: `dev`-Branch → GitHub Push → manuelle Installation auf Testserver via URL
-- **Release-Strategie**: `dev` → Test → Merge nach `main` → Tag
+- **Deployment**: `dev`-Branch → GitHub Push → Installation auf Testserver via ioBroker Admin → **Benutzerdefinierte URL** → `https://github.com/crunchip77/ioBroker.autodoc/tarball/dev` (oder `/tarball/main` nach Merge)
+- **Release-Strategie**: `dev` testen → bei grünem Adapter-Checker Merge nach `main`; **npm** erst mit echtem **1.0.0**-Release
 
 ## Branch-Strategie
 
-- `main` = stabiler Stand, aktuell getaggt als v0.1.0
+- `main` = stabiler Stand nach Merge aus `dev` (Release-Kandidat **0.9.x**, bis **1.0.0** npm)
 - `dev` = aktive Entwicklung; Commits immer auf `dev`
-- Kein direkter Push auf `main` außer für Releases
+- Kein direkter Push auf `main` außer für Merges nach Test
+
+## Release-Prozess (echter ioBroker-Release)
+
+Solange der Adapter **nicht auf npm** und **nicht in `ioBroker.repositories`** eingetragen ist, haben Git-Tags und GitHub Releases keine Wirkung auf Update-Erkennung oder Installation im ioBroker Admin. URL-Installation lädt immer `main` HEAD.
+
+**Reihenfolge für einen echten Release:**
+1. `package.json` + `io-package.json` Version synchron bumpen
+2. News-Eintrag in `io-package.json` (EN + DE minimum)
+3. `dev` → Merge nach `main`
+4. `npm publish` → Paket auf npmjs.com
+5. Git-Tag + GitHub Release erstellen (erst jetzt sinnvoll)
+6. PR zu [ioBroker/ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories) für Beta-Eintrag (`sources-dist.json`)
+7. Voraussetzung: [Adapter Checker](https://adapter-check.iobroker.in/) vollständig grün
 
 ## Wichtige Referenzen
 
@@ -88,9 +101,11 @@ Der Sprung von "Adapter-Inventar" zu echter "System-Dokumentation".
 - HTML: Unterabschnitt "State References" + "Shared States" (Admin-only)
 
 ### 3.3 AI-Enhanced Documentation ✅
-- `lib/aiEnhancer.js`: Anthropic Messages API, opt-in
-- Modelle: claude-haiku-4-5 (Standard) + claude-sonnet-4-6
-- Narrative Zusammenfassung + Maintenance-Empfehlungen
+- `lib/aiEnhancer.js`: pluggable Provider-Architektur, opt-in
+- Provider: `anthropic` (Claude Haiku/Sonnet, paid), `groq` (Llama 3.3 70B, Free Tier), `ollama` (lokal, kein Datenschutzproblem)
+- Groq + Ollama nutzen OpenAI-kompatible API — minimaler Overhead
+- Admin-Profil wird automatisch übersprungen (alle Daten bereits faktisch vorhanden)
+- Narrative Zusammenfassung + Maintenance-Empfehlungen (nur user/onboarding)
 - HTML: hervorgehobene AI-Box; Markdown: Blockquote
 - Fehler → stille Warnung, Doku wird trotzdem generiert
 
@@ -98,9 +113,15 @@ Der Sprung von "Adapter-Inventar" zu echter "System-Dokumentation".
 - Alle hardcodierten englischen Strings in htmlRenderer.js durch i18n-Schlüssel ersetzt
 - EN, DE, FR vollständig
 
+### 3.x Adapter-Metadaten & manualContext ✅
+- `discovery.js`: liest `connectionType`, `dataSource`, `tier` aus `common.*` je Instanz
+- `discovery.js`: `filterNative()` entfernt sensitive Felder (password/token/key/secret/...) per Regex, behält nur skalare Werte → sicheres Admin-Detail
+- `documentModel.js`: `parseManualContext()` normalisiert manualContext (JSON-String oder Objekt), gibt immer `{description, contact, notes, adapters:{}, rooms:{}}` zurück
+- `htmlRenderer.js`: Admin-Tabelle zeigt Badges (🔌/☁️ connectionType, Push/Poll dataSource, Tier); manualContext-Notiz pro Adapter in allen Profilen
+
 ---
 
-## Phase 4 — Profile-Redesign ← AKTUELL
+## Phase 4 — Profile-Redesign ✅ ABGESCHLOSSEN
 
 Echte Zielgruppen-Dokus statt "mehr oder weniger Detail vom selben Template".
 
@@ -160,7 +181,8 @@ Echte Zielgruppen-Dokus statt "mehr oder weniger Detail vom selben Template".
 - PDF-Export
 - Backup-Adapter Integration (Doku mit Backup speichern)
 - Custom Templates
-- QR-Code für Onboarding-Profil (externe Lib nötig)
+
+**Erledigt (ehemals Phase 5-Idee):** QR-Code Onboarding (CDN qrcodejs + Link kopieren).
 
 ---
 
@@ -180,10 +202,9 @@ Echte Zielgruppen-Dokus statt "mehr oder weniger Detail vom selben Template".
 
 ## Ausbaustufen Zusammenfassung
 
-| Version | Inhalt | Status |
-|---|---|---|
-| **v0.x** | Basis: Adapter-Inventar, Export, Profile, Versionierung | ✅ |
-| **v1.0** | Phase 2: Räume, Skripte, Wartungshinweise, Suche im HTML | ✅ dev |
-| **v1.x** | Phase 3: Notifications, Dependency-Analyse, AI, i18n-Fix | ✅ dev |
-| **v1.5** | Phase 4: Profile-Redesign (echte Zielgruppen-Dokus) | ⬜ in Arbeit |
-| **v2.x** | Phase 5: PDF, Backup-Integration, Custom Templates | ⬜ geplant |
+| Version | Inhalt | Status | Anmerkung |
+|---|---|---|---|
+| **v0.x** | Basis: Adapter-Inventar, Export, Profile, Versionierung | ✅ main | interner Meilenstein |
+| **v0.9.x** | RC: drei Profile, Aliase, UX-Akzente, RAM-Summe, Onboarding-Capabilities, Filter, Doku-Score-Erklärung, README/CHANGELOG | ✅ dev | Merge `main` + Forum „Adapter in testing“ wenn Checker OK |
+| **v1.0.0** | Erster offizieller Release nach Adapter-Checker grün | ⬜ geplant | npm publish + ioBroker.repositories PR |
+| **v1.x** | Phase 5: PDF, Backup-Integration, Custom Templates | ⬜ geplant | |

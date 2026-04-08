@@ -1,60 +1,71 @@
-# CHANGELOG
+# Changelog
 
-## 0.1.0 (2026-04-04)
+All notable changes to this project are documented here. The adapter version is in `package.json` / `io-package.json`; HTML template iterations use `RENDERER_VERSION` in `lib/htmlRenderer.js`.
 
-Phase 1 complete — adapter is fully functional with modular architecture,
-three documentation profiles, HTML export, version tracking, and i18n support.
+## [0.9.2] — 2026-04
 
-### Features
-- Modular architecture: `lib/discovery.js`, `lib/documentModel.js`, `lib/markdownRenderer.js`, `lib/htmlRenderer.js`, `lib/versionTracker.js`, `lib/i18n.js`
-- File-based export: Markdown, HTML, and JSON to `/files/autodoc.0/`
-- Three documentation profiles: Admin, User, Onboarding — each with profile-aware content and detail level
-- HTML export with sidebar navigation, stat cards, and adapter cards
-- Adapter descriptions and titles from ioBroker metadata (`common.desc`, `common.titleLang`)
-- Version tracking with semantic versioning and changelog generation
-- Automatic documentation generation: on startup, on timer (configurable interval), event-based with 30s debounce
-- i18n support with translations for English, German, and French
-- Local timestamps for generated file names
-- Admin UI via `jsonConfig.json5` with full i18n (EN, DE)
+**Release candidate (forum / pre-npm).**
 
-### Fixes
-- Use local time instead of UTC for documentation file names
-- Lint-clean codebase (prettier + eslint)
+### Added
+- **Aliases chapter (Admin)** — reads `alias.0.*`, shows read/write targets, grouped by folder, with search filter
+- **RAM: total ioBroker memory** — sums `system.adapter.*.*.memRss` when host system RAM is unavailable (Docker); label **(alle Adapter)**; js-controller-only fallback labelled **(js-controller)**
+- **Documentation score** — short explanation text above the score bar (what 0–100 % means)
+- **User-defined variables & aliases** — search filter bars + open-all-groups on search
+- **Manual notes position** — project/contact/notes block moved **up** in Admin and User profiles (right after header)
+- **Onboarding** — “What can this smart home?” capability cards from functions/categories; tips section **always** shown (fallback text if no notes); admin hint when no manual content; **⏱** next to scheduled scripts
+- **Visual cues (HTML)** — gold: manual notes (room arrow, table row, adapter card, disabled-adapter group when any note); orange: maintenance / disabled scripts groups; blue: script rows with cron schedule; Onboarding clock mark for schedules
+- **Navigation** — TOC order matches manual-notes-first where applicable
+
+### Changed
+- **Repository badge** — moved from “Location” to **Diagnosis** section
+- **Changelog cards** — colours use CSS variables (readable in dark mode)
+- **Collapsible summaries** — `var(--text)` instead of hardcoded greys for dark mode
+
+### Fixed
+- **RAM cell** — escaped HTML showed raw `<small>` tags; `esc()` removed for composed RAM cell
+- **Host RAM** — `memRss` values are already in MB in js-controller (no double division)
+- **Search hint** — always visible; colour uses theme variables
 
 ---
 
-## 0.0.1 (2026-04-01)
+## [0.9.1] — 2026-04
 
-Initial adapter scaffold.
+### Added
+- Dark mode fixes for collapsibles and changelog; search hint visibility
+- Admin: **Funktionen** as proper `<h3>` before collapsible list
+- Various i18n keys (repo, score, aliases, …)
 
-### Features
-- Generate markdown documentation from adapter configuration
-- Generate JSON documentation from adapter configuration
-- Read basic ioBroker system information from `system.config`
-- Read host information of the current adapter instance
-- Detect adapter instances including host, enabled state, title and version
-- Build enabled and disabled instance summaries
-- Build per-host instance summaries
-- Support optional filtering to enabled instances only
-- Support optional compact markdown output without full instance details
-- Support optional limit for documented instances
-- Include applied filter metadata in markdown and JSON output
-- Support automatic generation on adapter start
-- Support manual generation via `action.generate`
+### Fixed
+- jsonConfig / admin UI validation issues (previous iterations)
 
-### States
-- Add `info.connection`
-- Add `info.lastGeneration`
-- Add `info.lastTrigger`
-- Add `info.summary`
-- Add `info.systemLanguage`
-- Add `info.instanceCount`
-- Add `info.enabledInstanceCount`
-- Add `info.disabledInstanceCount`
-- Add `info.instanceHosts`
-- Add `info.hostName`
-- Add `info.hostPlatform`
-- Add `info.hostVersion`
-- Add `documentation.markdown`
-- Add `documentation.json`
-- Add `action.generate`
+---
+
+## [0.9.0] — 2026-04-07
+
+### Added
+- Mobile layout (hamburger, overlay nav); stale-docs banner; health badge; relative timestamps
+- QR code + copy fallback on Onboarding; search hints in nav
+- Host RAM/CPU/uptime; location & timezone; script cron schedules as badges
+- User-defined variables (`0_userdata.0`); pending updates; BackItUp last backup
+- `info.templateVersion` + `RENDERER_VERSION` auto-regenerate on template change
+- `info.nextGeneration` state
+
+### Changed
+- Onboarding order: tips before stat cards; function chips after rooms
+- Version aligned to `0.9.x` pre-1.0 convention
+
+### Fixed
+- Docker RAM display; clipboard on HTTP; numerous dark-mode contrast issues
+
+---
+
+## Earlier history
+
+See git history and previous README sections for 0.1.0–0.8, profile redesign, AI providers, notifications, three-profile HTML, etc.
+
+---
+
+## [0.1.0] — initial architecture
+
+- `discovery.js`, `documentModel.js`, `htmlRenderer.js`, `markdownRenderer.js`, `versionTracker.js`, `i18n.js`
+- Three profiles, file export, version tracking, jsonConfig admin UI
