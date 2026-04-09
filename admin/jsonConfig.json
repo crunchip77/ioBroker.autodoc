@@ -9,7 +9,7 @@
 				"profile": {
 					"type": "select",
 					"label": "Documentation profile",
-					"help": "Target audience for the generated documentation",
+					"help": "Target audience for Markdown export and default focus. HTML always includes all three profiles (admin, user, onboarding). AI text for User/Onboarding HTML runs whenever a KI provider is set, regardless of this selection.",
 					"options": [
 						{ "label": "Admin", "value": "admin" },
 						{ "label": "User/Family", "value": "user" },
