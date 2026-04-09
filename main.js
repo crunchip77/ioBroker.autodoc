@@ -97,8 +97,12 @@ class Autodoc extends utils.Adapter {
 			);
 		}
 
+		// Run first generation in the background so slow steps (e.g. two Ollama calls) do not block
+		// onReady — otherwise info.connection stays false and the instance stays red for minutes or forever on error.
 		if (this.config.autoGenerateOnStart || templateChanged) {
-			await this.generateDocumentation('startup');
+			this.generateDocumentation('startup').catch(error => {
+				this.log.error(`Startup documentation generation failed: ${error.message}`);
+			});
 		}
 
 		// Setup periodic auto-generation if interval is configured
