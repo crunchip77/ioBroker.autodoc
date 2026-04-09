@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "autodoc",
-        "version": "0.9.3",
+        "version": "0.9.4",
         "news": {
+            "0.9.4": {
+                "en": "AI: guest onboarding uses lighter facts + optional system role; German prompts and DE system messages for more natural wording (Sie-form, less Denglish)",
+                "de": "KI: Gäste-Onboarding mit schlankeren Fakten + Systemrolle; deutsche Stilregeln und DE-Systemtexte für natürlichere Formulierung (Sie-Form, weniger Denglish)",
+                "ru": "AI: гостевой onboarding — легче факты + system role; правила немецкого и DE system для естественной речи",
+                "pt": "IA: onboarding para convidados com dados mais leves + papel de sistema; regras DE e mensagens DE para texto mais natural",
+                "nl": "AI: gast-onboarding met lichtere feiten + systeemrol; Duitse stijlregels en DE-systeemteksten voor natuurlijker taalgebruik",
+                "fr": "IA : onboarding invités avec faits allégés + rôle système ; règles allemandes et messages système DE pour un style plus naturel",
+                "it": "AI: onboarding ospiti con fatti più leggeri + ruolo di sistema; regole tedesche e messaggi di sistema DE per un linguaggio più naturale",
+                "es": "IA: onboarding para invitados con datos más ligeros + rol de sistema; reglas DE y mensajes de sistema DE para un lenguaje más natural",
+                "pl": "AI: onboarding gości z lżejszymi faktami + rola systemowa; reguły DE i komunikaty systemowe DE dla naturalniejszego języka",
+                "uk": "AI: гостьовий onboarding з легшими фактами + system role; німецькі правила та DE system для природнішої мови",
+                "zh-cn": "AI：访客引导使用更轻量事实与系统角色；德语风格与德语系统提示，措辞更自然"
+            },
             "0.9.3": {
                 "en": "Fix: blank HTML main area (script closing + search regex); reinstall needs new version or cache clear — see README",
                 "de": "Fix: leerer HTML-Hauptbereich (Script-Enden + Such-Regex); nach Git-Update neue Version oder Cache leeren — siehe README",

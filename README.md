@@ -2,7 +2,7 @@
 
 # ioBroker.autodoc
 
-**Adapter version 0.9.3** — **release candidate** for **community testing** (forum).  
+**Adapter version 0.9.4** — **release candidate** for **community testing** (forum).  
 After positive feedback and bugfixes, the plan is: **Adapter Checker green → PR to [ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories) → npm**.
 
 | | |
@@ -89,7 +89,7 @@ https://github.com/crunchip77/ioBroker.autodoc/tarball/main
 https://github.com/crunchip77/ioBroker.autodoc/tarball/dev
 ```
 
-**Important — Custom URL cache:** ioBroker caches the GitHub tarball by **`version` in `package.json`**. If you reinstall the **same version** (e.g. still `0.9.2`), the controller may **not** replace the adapter files, so you keep an **old `lib/`** and bugs persist. After pulling fixes from Git, either install a **new adapter version** (e.g. `0.9.3`) or remove the old copy under `node_modules/iobroker.autodoc` / use the controller’s reinstall path, then **restart** the adapter instance.
+**Important — Custom URL cache:** ioBroker caches the GitHub tarball by **`version` in `package.json`**. If you reinstall the **same version** (e.g. still `0.9.2`), the controller may **not** replace the adapter files, so you keep an **old `lib/`** and bugs persist. After pulling fixes from Git, either install a **new adapter version** (e.g. `0.9.4`) or remove the old copy under `node_modules/iobroker.autodoc` / use the controller’s reinstall path, then **restart** the adapter instance.
 
 HTML template changes also bump `RENDERER_VERSION` in `lib/htmlRenderer.js`; on start, a mismatch forces **regeneration** of the HTML files (if auto-generate on start is enabled or you trigger **Generate now**).
 
@@ -146,6 +146,15 @@ HTML is standalone; Onboarding may load QR library from CDN (optional).
 ## Changelog
 
 Notable changes are recorded here (adapter version: `package.json` / `io-package.json`; HTML template iterations: `RENDERER_VERSION` in `lib/htmlRenderer.js`).
+
+### [0.9.4] — 2026-04
+
+#### Changed
+
+- **AI (HTML)** — Onboarding prompt uses guest-oriented facts (no full adapter dump); OpenAI-compatible and Anthropic calls support an optional **system** message; onboarding gets a fixed guest-safety system prompt.
+- **AI (German)** — Extra style rules for idiomatic Hochdeutsch (natural **Sie**-forms, fewer calques / Denglish); **German system messages** for onboarding and user when `language` is `de`.
+
+---
 
 ### [0.9.3] — 2026-04
 
