@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "autodoc",
-        "version": "0.9.4",
+        "version": "0.9.5",
         "news": {
+            "0.9.5": {
+                "en": "AI onboarding: stricter guest-only facts (no adapter/script counts), stronger bans (ioBroker, maintenance-score, du-imperatives), anti-hallucination for automations",
+                "de": "KI-Gäste-Text: schlankere Fakten ohne Adapter/Skript-Zahlen, schärfere Verbote (ioBroker, maintenance-score, Du-Imperative), weniger erfundene Automatisierungs-Szenen",
+                "ru": "AI onboarding: строже гостевые факты, запреты, меньше выдуманных сцен",
+                "pt": "IA onboarding: fatos só para hóspedes, proibições mais rígidas, menos automação inventada",
+                "nl": "AI onboarding: strengere gast-feiten, verboden, minder verzonnen automatisering",
+                "fr": "IA onboarding : faits invités plus stricts, interdits renforcés, moins d’automations inventées",
+                "it": "AI onboarding: fatti ospiti più stretti, divieti rafforzati, meno automazioni inventate",
+                "es": "IA onboarding: hechos para invitados más estrictos, prohibiciones más fuertes, menos automatizaciones inventadas",
+                "pl": "AI onboarding: ściślejsze fakty dla gości, zakazy, mniej zmyślonych automatyzacji",
+                "uk": "AI onboarding: жорсткіші гостьові факти, заборони, менше вигаданих сценаріїв",
+                "zh-cn": "AI 访客引导：更严事实与禁用词，减少虚构自动化场景"
+            },
             "0.9.4": {
                 "en": "AI: guest onboarding uses lighter facts + optional system role; German prompts and DE system messages for more natural wording (Sie-form, less Denglish)",
                 "de": "KI: Gäste-Onboarding mit schlankeren Fakten + Systemrolle; deutsche Stilregeln und DE-Systemtexte für natürlichere Formulierung (Sie-Form, weniger Denglish)",
