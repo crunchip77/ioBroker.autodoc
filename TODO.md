@@ -114,6 +114,29 @@
 
 ---
 
+## Nächster Arbeitstag — KI-Zusammenfassung (Stand Feierabend, siehe Screenshots)
+
+**Kontext:** Aktueller Output mischt weiterhin **User-** und **Onboarding-Ton** bzw. klingt in beiden Profilen unnatürlich (DE).
+
+### Beobachtungen (User-Profil / langer Fließtext)
+
+- [ ] Denglish-/Fehlwörter: z. B. **„Disablete“**, **„Skriptausführe“**, **Hilfswillig** als Substantiv — Prompt oder **Nachbearbeitung** für reines Deutsch
+- [ ] Weiterhin **Marken/Produkte** im KI-Text: Shelly, **BackItUp**, **Telegram-Bot**, ggf. zu allgemein formulieren oder im User-Prompt „Markennamen nur wenn aus docModel-Liste, sonst Kategorie“
+- [ ] **Deaktivierte Adapterinstanzen** + **Skript-Doku** im Narrativ — für Bewohner evtl. ok, aber Formulierung wirkt **alarmistisch/hölzern** („… gewacht und gezwungen …“) → Ton + Länge im **User-Prompt** (`buildAudiencePrompt` audience `user`) schärfen
+
+### Beobachtungen (Onboarding / Gäste-Bullets)
+
+- [ ] **Du/Sie-Mix** in einer Liste (Lies/Frag uns vs. Wenden Sie sich) — Regeln greifen bei kleinem Modell (Ollama) nicht zuverlässig → Optionen: **zweiter Kurz-Pass** („nur auf Sie vereinheitlichen“), **stärkeres Modell**, oder **leichte serverseitige Prüfung** + erneuter Aufruf bei Treffer auf Du-Imperative
+- [ ] Grammatik: **„technischer Support“** → **„technischen“**, **„das Licht“** statt „die Licht“, Holzsätze („Verständnis im Hinterkopf“) → Stilblock verschärfen / Beispiele **gut/schlecht** im Prompt
+- [ ] Unklare Phrasen: „Besuche uns regelmäßig“, „Nimm dir unsere Zeit“ — explizit: **Ansprechpartner sind die Bewohner**, keine Meta-„besuche uns“-Formulierungen
+
+### Technisch klären
+
+- [ ] Prüfen, ob **Onboarding-HTML** wirklich `docModel.ai.onboarding` nutzt und **nicht** durch **Fallback** (User-Text) ersetzt wird — Log-Zeile `onboarding block missing — reusing user`
+- [ ] Optional: **getrennte** `max_tokens` / **Temperature** User vs. Onboarding testen
+
+---
+
 ## Phase 5 — Erweiterungen (Nice-to-Have)
 
 - [ ] PDF-Export
