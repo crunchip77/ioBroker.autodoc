@@ -542,6 +542,27 @@
 					"md": 4,
 					"lg": 4,
 					"xl": 4
+				},
+				"aiTemperatureUser": {
+					"type": "text",
+					"label": "AI temperature — user profile (optional)",
+					"help": "Sampling temperature for resident-facing AI text. Leave empty for the provider default. Typical range 0–2 (Ollama, Groq, Mistral); Anthropic accepts 0–1 (values above 1 are clamped). Lower ≈ steadier wording; higher ≈ more variation — tune after testing.",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 6,
+					"lg": 6,
+					"xl": 6
+				},
+				"aiTemperatureOnboarding": {
+					"type": "text",
+					"label": "AI temperature — onboarding (optional)",
+					"help": "Sampling temperature for guest/onboarding AI text. Same rules as user profile. The German Sie polish pass uses a fixed low temperature and ignores this field.",
+					"xs": 12,
+					"sm": 12,
+					"md": 6,
+					"lg": 6,
+					"xl": 6
 				}
 			}
 		}

@@ -94,5 +94,9 @@
 	"API key": "API key",
 	"Mistral: console.mistral.ai | Groq: starts with gsk_... | Anthropic: starts with sk-ant-... | Ollama: leave empty": "Mistral: console.mistral.ai | Groq: starts with gsk_... | Anthropic: starts with sk-ant-... | Ollama: leave empty",
 	"Ollama base URL": "Ollama base URL",
-	"Only for Ollama. Default: http://localhost:11434": "Only for Ollama. Default: http://localhost:11434"
+	"Only for Ollama. Default: http://localhost:11434": "Only for Ollama. Default: http://localhost:11434",
+	"AI temperature — user profile (optional)": "AI temperature — user profile (optional)",
+	"Sampling temperature for resident-facing AI text. Leave empty for the provider default. Typical range 0–2 (Ollama, Groq, Mistral); Anthropic accepts 0–1 (values above 1 are clamped). Lower ≈ steadier wording; higher ≈ more variation — tune after testing.": "Sampling temperature for resident-facing AI text. Leave empty for the provider default. Typical range 0–2 (Ollama, Groq, Mistral); Anthropic accepts 0–1 (values above 1 are clamped). Lower ≈ steadier wording; higher ≈ more variation — tune after testing.",
+	"AI temperature — onboarding (optional)": "AI temperature — onboarding (optional)",
+	"Sampling temperature for guest/onboarding AI text. Same rules as user profile. The German Sie polish pass uses a fixed low temperature and ignores this field.": "Sampling temperature for guest/onboarding AI text. Same rules as user profile. The German Sie polish pass uses a fixed low temperature and ignores this field."
 }
