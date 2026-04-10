@@ -2,8 +2,8 @@
 
 # ioBroker.autodoc
 
-**Adapter version 0.9.6** — **release candidate** for **community testing** (forum).  
-After positive feedback and bugfixes, the plan is: **Adapter Checker green → PR to [ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories) → npm**.
+**Adapter version 0.9.7** — **release candidate** for **community testing** (forum).  
+`main` and `dev` are aligned for this RC. After feedback and bugfixes: **Adapter Checker green → PR to [ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories) → npm**.
 
 | | |
 | --- | --- |
@@ -17,7 +17,7 @@ _NPM and “stable repository” badges will be added once the adapter is publis
 
 ## Description
 
-**ioBroker.autodoc** (0.9.6) automatically generates structured, human-readable documentation for your ioBroker installation. With a single button press — or fully automatically — the adapter scans your system and produces standalone HTML and Markdown files.
+**ioBroker.autodoc** (0.9.7) automatically generates structured, human-readable documentation for your ioBroker installation. With a single button press — or fully automatically — the adapter scans your system and produces standalone HTML and Markdown files.
 
 Three documentation profiles are always generated in one run:
 
@@ -68,7 +68,7 @@ Three documentation profiles are always generated in one run:
 ### Exports & integrations
 
 - Markdown + JSON + HTML; **states** `info.htmlUrlAdmin`, `info.htmlUrlUser`, `info.htmlUrlOnboarding`
-- Notifications; **AI** (opt-in: Ollama, Mistral, Groq, Anthropic) with privacy notice
+- Notifications; **AI** (opt-in: Ollama, Mistral, Groq, Anthropic) — optional **HTTP timeout** and **sampling temperature** per profile (admin); **room + category grounding** in prompts; German **guest vs resident** rules (second onboarding pass for consistent **Sie** when needed). HTML comment before the KI box shows **primary vs fallback** source (see [Changelog](#changelog)).
 - **Languages** — EN, DE, FR
 
 ---
@@ -89,11 +89,11 @@ https://github.com/crunchip77/ioBroker.autodoc/tarball/main
 https://github.com/crunchip77/ioBroker.autodoc/tarball/dev
 ```
 
-**Important — Custom URL cache:** ioBroker caches the GitHub tarball by **`version` in `package.json`**. If you reinstall the **same version** (e.g. still `0.9.2`), the controller may **not** replace the adapter files, so you keep an **old `lib/`** and bugs persist. After pulling fixes from Git, either install a **new adapter version** (e.g. `0.9.6`) or remove the old copy under `node_modules/iobroker.autodoc` / use the controller’s reinstall path, then **restart** the adapter instance.
+**Important — Custom URL cache:** ioBroker caches the GitHub tarball by **`version` in `package.json`**. If you reinstall the **same version**, the controller may **not** replace the adapter files, so you keep an **old `lib/`** and bugs persist. After pulling fixes from Git, either install a **new adapter version** (e.g. bump to `0.9.7` or newer) or remove the old copy under `node_modules/iobroker.autodoc` / use the controller’s reinstall path, then **restart** the adapter instance.
 
 HTML template changes also bump `RENDERER_VERSION` in `lib/htmlRenderer.js`; on start, a mismatch forces **regeneration** of the HTML files (if auto-generate on start is enabled or you trigger **Generate now**).
 
-**Verify in browser:** open the generated HTML → **View source** → in `<head>` you should see `<!-- autodoc-renderer:2026.04.07.13 -->` (or newer). If that line is missing or older, the running adapter code is not updated.
+**Verify in browser:** open the generated HTML → **View source** → in `<head>` you should see `<!-- autodoc-renderer:2026.04.10.2 -->` (or newer). If that line is missing or older, the running adapter code is not updated.
 
 **Repository:** [github.com/crunchip77/ioBroker.autodoc](https://github.com/crunchip77/ioBroker.autodoc)
 
@@ -107,7 +107,7 @@ HTML template changes also bump `RENDERER_VERSION` in `lib/htmlRenderer.js`; on 
 | **Base URL**                                         | For `info.htmlUrl*` links (host:port)                                    |
 | **Generate on start / interval / on adapter change** | As needed                                                                |
 | **My documentation**                                 | Description, contact, notes, per-adapter and per-room tables, hide lists |
-| **AI**                                               | Provider, model, keys — optional                                         |
+| **AI**                                               | Provider, model, API key, base URL; optional **timeout (s)**, **temperature** (user vs onboarding), hardware hint |
 
 ---
 
@@ -146,6 +146,22 @@ HTML is standalone; Onboarding may load QR library from CDN (optional).
 ## Changelog
 
 Notable changes are recorded here (adapter version: `package.json` / `io-package.json`; HTML template iterations: `RENDERER_VERSION` in `lib/htmlRenderer.js`).
+
+### [0.9.7] — 2026-04
+
+#### Added
+
+- **AI admin options** — Configurable **HTTP request timeout** (default suited to slow local models, e.g. Ollama on CPU/NAS); optional **sampling temperature** for **user** vs **onboarding** (empty = provider default).
+- **Grounding** — Prompts include a **rooms + device categories** block derived from roles to reduce invention off-topic devices or scenes.
+- **Onboarding safety** — If guest AI looks like a technical dump or would copy user admin tone, a **neutral guest placeholder** is used (with log); HTML comment `fallback-neutral` vs `primary`.
+
+#### Changed
+
+- **AI parsing** — More tolerant splitting of `NARRATIVE:` / `RECOMMENDATIONS:` (markdown / German headers / inline `Empfehlungen:`); strips echoed labels, loose `**` wrappers, common sign-offs; drops empty or marker-only bullet lines (HTML list).
+- **German prompts** — Stronger guest vs resident rules (e.g. no **Vorgesetzte** in a private home; blinds wording **Jalousien/Rollläden** not “Blinde”); user profile discourages useless “ioBroker is only a program” bullets; optional **Sie** polish pass triggers expanded.
+- **Version clarity** — Removed misleading **`1.0.0`** entry from `io-package.json` **news** (never shipped). Exported JSON **`meta.schemaVersion`** is now **`autodoc-json-1`** (document shape id, not adapter semver); **`meta.version`** falls back to **`0.0.0`** if missing.
+
+---
 
 ### [0.9.6] — 2026-04
 
@@ -216,7 +232,7 @@ Notable changes are recorded here (adapter version: `package.json` / `io-package
 - **HTML viewer** — embedded chapter scripts closed with real `</script>`; client search `escRe` regex injected via `JSON.stringify` (fixes blank white main content in all profiles)
 - **CI (GitHub Actions)** — `check-and-lint`: ESLint for inlined client script in `wrapPage`, `npm run check` / `StateCommon` cast, LF line endings (`.gitattributes`)
 - **Adapter checker / packaging** — `io-package` / `package.json` (admin dep, native fields, keywords, news i18n), single `jsonConfig.json`, Dependabot + automerge workflow
-- **Git tags** — release tag **`v0.9.2`** marks this RC; misleading **`v1.0.0`** tag removed on GitHub (adapter stays on **0.9.x** until a real **1.0.0** release)
+- **Git tags** — release tag **`v0.9.2`** marks this RC; misleading **`v1.0.0`** Git tag removed on GitHub. **`io-package.json` news** no longer contains a phantom **`1.0.0`** entry (it implied a release that never shipped). Adapter stays **0.9.x** RC until a deliberate **npm/registry** release.
 
 ---
 

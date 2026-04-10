@@ -101,7 +101,7 @@
 - [x] i18n: alle neuen Keys (EN/DE/FR)
 - [x] Lint sauber (0 Errors)
 - [x] README.md (inkl. Changelog) + TODO.md + PLAN.md aktualisiert (Abschluss RC 0.9.x)
-- [ ] `dev` → nach Test + Adapter-Checker → Merge nach `main`
+- [x] `dev` → Merge nach `main` (RC-Stand für Forum; weiteres Testing + Adapter-Checker vor npm)
 
 ---
 
@@ -114,26 +114,12 @@
 
 ---
 
-## Nächster Arbeitstag — KI-Zusammenfassung (Stand Feierabend, siehe Screenshots)
+## KI-Zusammenfassung (Stand 0.9.7)
 
-**Kontext:** Aktueller Output mischt weiterhin **User-** und **Onboarding-Ton** bzw. klingt in beiden Profilen unnatürlich (DE).
+Viele Punkte aus der Testrunde sind umgesetzt (Grounding, Parser-Bereinigung, Timeout/Temperaturen optional im Admin, DE-Prompts, Lektor-Pass, Fallbacks). **Sprachqualität** mit kleinen lokalen Modellen (z. B. Ollama 8B) bleibt iterativ — Feedback im Forum oder als Issues willkommen.
 
-### Beobachtungen (User-Profil / langer Fließtext)
-
-- [x] Denglish-/Fehlwörter: z. B. **„Disablete“**, **„Skriptausführe“**, **Hilfswillig** als Substantiv — `buildGermanUserResidentBlock()` + erweitertes `USER_SYSTEM_MESSAGE_DE`
-- [x] **Marken/Produkte** im KI-Text — User-Prompt: nur nennen, wenn im Systemdaten-Adaptertitel; sonst Gattungsbegriffe
-- [x] **Alarmistischer Wartungston** — User-Prompt: sachlich, keine dramatischen Metaphern
-
-### Beobachtungen (Onboarding / Gäste-Bullets)
-
-- [x] **Du/Sie-Mix** — bei `language=de` und Heuristik (du, „Lies“, du-Imperative, „Frag uns“): **zweiter LLM-Pass** `polishGermanOnboardingSie` (Lektor-Prompt)
-- [x] Grammatik / Holzsätze — im Lektor-Pass adressiert (technischen Support, das Licht, Bewohner statt „besuche uns“)
-- [x] Unklare Phrasen — im Lektor-Prompt explizit verboten
-
-### Technisch klären
-
-- [x] **Fallback sichtbar:** `docModel.ai.meta` + HTML-Kommentar `<!-- autodoc-ai:onboarding source=fallback-user -->` bzw. `user source=fallback-onboarding` — Log-Hinweis ergänzt
-- [ ] Optional: **getrennte** `max_tokens` / **Temperature** User vs. Onboarding testen
+- [x] Optionale **Temperaturen** User vs. Onboarding (`jsonConfig`); leer = Anbieter-Default
+- [x] **HTTP-Timeout** pro Request konfigurierbar (Default für langsame lokale Modelle)
 
 ---
 
@@ -157,10 +143,10 @@
 
 ### Schritte
 
-1. [ ] Versionsnummer in `package.json` + `io-package.json` auf **1.0.0** synchron setzen
+1. [ ] Für **erstes npm-/Repository-Release**: `package.json` + `io-package.json` **Version** und **news** synchron setzen (Nummer nach ioBroker-Übung — **nicht** vorher als 1.0.0 „vortäuschen“; aktuell absichtlich **0.9.x** RC)
 2. [ ] News-Eintrag in `io-package.json` (EN + DE minimum)
 3. [x] README inkl. Abschnitt **Changelog** gepflegt (`CHANGELOG.md` entfernt — eine Quelle)
-4. [ ] `dev` → Merge nach `main`
+4. [x] `dev` → Merge nach `main` (RC-Forum-Stand)
 5. [ ] `npm publish` (veröffentlicht auf npmjs.com)
 6. [ ] GitHub Release aus Tag erstellen (dann erst sinnvoll)
 7. [ ] PR zu [ioBroker/ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories) für Eintrag in Beta-Liste (`sources-dist.json`)

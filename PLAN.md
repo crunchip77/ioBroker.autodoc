@@ -27,13 +27,13 @@ Drei echte Zielgruppen mit komplett unterschiedlicher Sprache:
 - **IDE**: Visual Studio Code auf Windows
 - **Testsystem**: ioBroker auf Unraid-Server (separat vom Produktivsystem)
 - **Deployment**: `dev`-Branch → GitHub Push → Installation auf Testserver via ioBroker Admin → **Benutzerdefinierte URL** → `https://github.com/crunchip77/ioBroker.autodoc/tarball/dev` (oder `/tarball/main` nach Merge)
-- **Release-Strategie**: `dev` testen → bei grünem Adapter-Checker Merge nach `main`; **npm** erst mit echtem **1.0.0**-Release
+- **Release-Strategie**: `dev` testen → Merge nach `main` für Forum-/RC-Tester; **npm + repositories** erst wenn Adapter-Checker und PR durch sind (Versionsnummer dann bewusst wählen — **nicht** mit RC **0.9.x** verwechseln)
 
 ## Branch-Strategie
 
-- `main` = stabiler Stand nach Merge aus `dev` (Release-Kandidat **0.9.x**, bis **1.0.0** npm)
+- `main` = stabiler Stand nach Merge aus `dev` (**0.9.x** Release-Kandidat / Forum); separates **npm-Release** später mit eigener Versionspolitik
 - `dev` = aktive Entwicklung; Commits immer auf `dev`
-- Kein direkter Push auf `main` außer für Merges nach Test
+- Kein direkter Feature-Push auf `main` ohne vorherigen `dev`-Stand; Merges `dev` → `main` für getestete RC-Schnitte
 
 ## Release-Prozess (echter ioBroker-Release)
 
@@ -43,7 +43,7 @@ Solange der Adapter **nicht auf npm** und **nicht in `ioBroker.repositories`** e
 
 1. `package.json` + `io-package.json` Version synchron bumpen
 2. News-Eintrag in `io-package.json` (EN + DE minimum)
-3. `dev` → Merge nach `main`
+3. `dev` → Merge nach `main` _(für aktuellen **0.9.x**-RC / Forum umgesetzt; vor **npm** erneut Version + News setzen)_
 4. `npm publish` → Paket auf npmjs.com
 5. Git-Tag + GitHub Release erstellen (erst jetzt sinnvoll)
 6. PR zu [ioBroker/ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories) für Beta-Eintrag (`sources-dist.json`)
@@ -225,6 +225,6 @@ Echte Zielgruppen-Dokus statt "mehr oder weniger Detail vom selben Template".
 | Version    | Inhalt                                                                                                                   | Status     | Anmerkung                                                 |
 | ---------- | ------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------------------------------------------------- |
 | **v0.x**   | Basis: Adapter-Inventar, Export, Profile, Versionierung                                                                  | ✅ main    | interner Meilenstein                                      |
-| **v0.9.x** | RC: drei Profile, Aliase, UX-Akzente, RAM-Summe, Onboarding-Capabilities, Filter, Doku-Score-Erklärung, README (Changelog) | ✅ dev     | Merge `main` + Forum „Adapter in testing“ wenn Checker OK |
-| **v1.0.0** | Erster offizieller Release nach Adapter-Checker grün                                                                     | ⬜ geplant | npm publish + ioBroker.repositories PR                    |
+| **v0.9.x** | RC: drei Profile, Aliase, UX-Akzente, RAM-Summe, Onboarding-Capabilities, Filter, Doku-Score-Erklärung, README (Changelog) | ✅ main/dev | Forum / Custom-URL; vor npm mit Checker abgleichen        |
+| **npm/stable** | Erster Eintrag **npm** + **ioBroker.repositories** nach Adapter-Checker grün                                         | ⬜ geplant | Versionsnummer beim Release festlegen (nicht mit RC verwechseln) |
 | **v1.x**   | Phase 5: PDF, Backup-Integration, Custom Templates                                                                       | ⬜ geplant |                                                           |

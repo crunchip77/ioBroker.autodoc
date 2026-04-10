@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "autodoc",
-        "version": "0.9.6",
+        "version": "0.9.7",
         "news": {
+            "0.9.7": {
+                "en": "AI: configurable HTTP timeout & optional temperatures; room/category grounding; stricter DE prompts; parse cleanup; empty KI bullets; forum-ready polish. Version clarity: removed phantom news 1.0.0; export schemaVersion autodoc-json-1",
+                "de": "KI: Timeout/Temperaturen optional, Grounding, DE-Prompts, Parser, leere Bullets, Forum-Polish. Klarstellung: irreführenden news-Eintrag 1.0.0 entfernt; Export-schemaVersion autodoc-json-1",
+                "ru": "AI: таймаут HTTP и температура; grounding комнат; DE-промпты; разбор и очистка; пустые пункты; main для форума",
+                "pt": "IA: timeout HTTP e temperaturas; grounding salas; prompts DE; parsing/limpeza; bullets vazios; main para fórum",
+                "nl": "AI: HTTP-timeout en temperaturen; grounding; DE-prompts; parsing opschonen; lege bullets; main voor forum",
+                "fr": "IA : délai HTTP et températures ; ancrage pièces ; prompts DE ; parsing/nettoyage ; puces vides ; main pour forum",
+                "it": "AI: timeout HTTP e temperature; grounding stanze; prompt DE; pulizia parsing; bullet vuoti; main per forum",
+                "es": "IA: tiempo HTTP y temperaturas; grounding habitaciones; prompts DE; limpieza parsing; viñetas vacías; main para foro",
+                "pl": "AI: timeout HTTP i temperatury; grounding pokoi; prompty DE; czyszczenie parsowania; puste punkty; main pod forum",
+                "uk": "AI: HTTP-таймаут і температура; grounding кімнат; DE-промпти; очищення розбору; порожні пункти; main для форуму",
+                "zh-cn": "AI：HTTP 超时与可选温度；房间/类别锚定；德语提示词收紧；解析清理与空列表过滤；main 便于论坛试用"
+            },
             "0.9.6": {
                 "en": "AI: HTML debug comment for KI source (primary vs user↔onboarding fallback); DE onboarding second pass for Sie consistency; DE user prompt against Denglish/brands/alarmist tone",
                 "de": "KI: HTML-Kommentar zur KI-Quelle (primary vs Fallback); DE-Onboarding Zweitpass (Sie-Form); DE-User-Prompt gegen Denglish/Marken/alarmistischen Ton",
@@ -93,19 +106,6 @@
                 "pl": "Kandydat do wydania: układ mobilny, podpowiedzi wyszukiwania, statystyki RAM/CPU, harmonogramy skryptów, własne zmienne, odznaka repozytorium, auto-regeneracja przy zmianie szablonu",
                 "uk": "Кандидат у реліз: мобільна верстка, підказки пошуку, RAM/CPU, розклади скриптів, власні змінні, бейдж репозиторію, авто-регенерація при зміні шаблону",
                 "zh-cn": "发布候选：移动布局、搜索提示、RAM/CPU 统计、脚本计划、自定义变量、仓库徽章、模板变更时自动重新生成"
-            },
-            "1.0.0": {
-                "en": "Notifications, dependency analysis, AI-enhanced docs, full i18n, fixed latest HTML file and direct URL",
-                "de": "Benachrichtigungen, Abhängigkeitsanalyse, KI-Dokumentation, vollständige i18n, feste Latest-Datei und direkte URL",
-                "ru": "Уведомления, анализ зависимостей, AI-документация, полный i18n, фиксированный HTML-файл и прямой URL",
-                "pt": "Notificações, análise de dependências, documentação AI, i18n completo, arquivo HTML fixo e URL direto",
-                "nl": "Meldingen, afhankelijkheidsanalyse, AI-documentatie, volledige i18n, vast HTML-bestand en directe URL",
-                "fr": "Notifications, analyse des dépendances, docs IA, i18n complet, fichier HTML fixe et URL direct",
-                "it": "Notifiche, analisi delle dipendenze, documentazione AI, i18n completo, file HTML fisso e URL diretto",
-                "es": "Notificaciones, análisis de dependencias, documentación IA, i18n completo, archivo HTML fijo y URL directo",
-                "pl": "Powiadomienia, analiza zależności, dokumentacja AI, pełne i18n, stały plik HTML i bezpośredni URL",
-                "uk": "Сповіщення, аналіз залежностей, AI-документація, повний i18n, фіксований HTML-файл і пряме посилання",
-                "zh-cn": "通知、依赖分析、AI文档、完整i18n、固定HTML文件和直接URL"
             },
             "0.1.0": {
                 "en": "Rooms & functions, script documentation, maintenance hints",
