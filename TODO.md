@@ -121,6 +121,10 @@ Viele Punkte aus der Testrunde sind umgesetzt (Grounding, Parser-Bereinigung, Ti
 - [x] Optionale **Temperaturen** User vs. Onboarding (`jsonConfig`); leer = Anbieter-Default
 - [x] **HTTP-Timeout** pro Request konfigurierbar (Default für langsame lokale Modelle)
 
+### KI — Backlog (noch nicht umgesetzt)
+
+- [ ] **Bewohner-Stichpunkte für die KI (v. a. Onboarding)** — Optionales Admin-Feld (oder gezielte Anbindung bestehender Texte wie Projektbeschreibung / Zusatznotizen **nur für den LLM-Prompt**): stichpunktartige „Wahrheit“ zum Zuhause (Was läuft automatisch? Worauf achten Gäste?). Das Modell soll daraus **sinnvolle Gästesätze** formulieren statt aus dünnen Objektdaten zu raten. Datenschutz: Text wandert nur zum gewählten KI-Anbieter.
+
 ---
 
 ## Phase 5 — Erweiterungen (Nice-to-Have)
