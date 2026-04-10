@@ -492,6 +492,16 @@
 					"lg": 12,
 					"xl": 12
 				},
+				"_aiHardwareHint": {
+					"type": "staticText",
+					"text": "AI hardware hint",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
 				"aiProvider": {
 					"type": "select",
 					"label": "AI provider",
@@ -542,6 +552,17 @@
 					"md": 4,
 					"lg": 4,
 					"xl": 4
+				},
+				"aiRequestTimeoutSeconds": {
+					"type": "text",
+					"label": "AI request timeout seconds (optional)",
+					"help": "Maximum wait for one LLM HTTP request. Default 300. Each generation uses several calls (user, onboarding, sometimes a German polish pass). Increase for slow local models on CPU (e.g. 480 or 600 for llama3.1:8b on NAS). Range 30–900.",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 6,
+					"lg": 6,
+					"xl": 6
 				},
 				"aiTemperatureUser": {
 					"type": "text",
