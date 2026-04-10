@@ -2,7 +2,7 @@
 
 # ioBroker.autodoc
 
-**Adapter version 0.9.5** — **release candidate** for **community testing** (forum).  
+**Adapter version 0.9.6** — **release candidate** for **community testing** (forum).  
 After positive feedback and bugfixes, the plan is: **Adapter Checker green → PR to [ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories) → npm**.
 
 | | |
@@ -17,7 +17,7 @@ _NPM and “stable repository” badges will be added once the adapter is publis
 
 ## Description
 
-**ioBroker.autodoc** (0.9.5) automatically generates structured, human-readable documentation for your ioBroker installation. With a single button press — or fully automatically — the adapter scans your system and produces standalone HTML and Markdown files.
+**ioBroker.autodoc** (0.9.6) automatically generates structured, human-readable documentation for your ioBroker installation. With a single button press — or fully automatically — the adapter scans your system and produces standalone HTML and Markdown files.
 
 Three documentation profiles are always generated in one run:
 
@@ -89,7 +89,7 @@ https://github.com/crunchip77/ioBroker.autodoc/tarball/main
 https://github.com/crunchip77/ioBroker.autodoc/tarball/dev
 ```
 
-**Important — Custom URL cache:** ioBroker caches the GitHub tarball by **`version` in `package.json`**. If you reinstall the **same version** (e.g. still `0.9.2`), the controller may **not** replace the adapter files, so you keep an **old `lib/`** and bugs persist. After pulling fixes from Git, either install a **new adapter version** (e.g. `0.9.5`) or remove the old copy under `node_modules/iobroker.autodoc` / use the controller’s reinstall path, then **restart** the adapter instance.
+**Important — Custom URL cache:** ioBroker caches the GitHub tarball by **`version` in `package.json`**. If you reinstall the **same version** (e.g. still `0.9.2`), the controller may **not** replace the adapter files, so you keep an **old `lib/`** and bugs persist. After pulling fixes from Git, either install a **new adapter version** (e.g. `0.9.6`) or remove the old copy under `node_modules/iobroker.autodoc` / use the controller’s reinstall path, then **restart** the adapter instance.
 
 HTML template changes also bump `RENDERER_VERSION` in `lib/htmlRenderer.js`; on start, a mismatch forces **regeneration** of the HTML files (if auto-generate on start is enabled or you trigger **Generate now**).
 
@@ -146,6 +146,20 @@ HTML is standalone; Onboarding may load QR library from CDN (optional).
 ## Changelog
 
 Notable changes are recorded here (adapter version: `package.json` / `io-package.json`; HTML template iterations: `RENDERER_VERSION` in `lib/htmlRenderer.js`).
+
+### [0.9.6] — 2026-04
+
+#### Added
+
+- **AI debug in HTML** — Comment before the KI box: `<!-- autodoc-ai:user source=primary|fallback-onboarding -->` / `<!-- autodoc-ai:onboarding source=primary|fallback-user -->` so you can see whether onboarding text is the guest model output or a copy of the user block.
+- **German onboarding** — Optional **second LLM pass** when the first output looks like a du/Sie mix (heuristic); lektor-style prompt for consistent **Sie**, grammar, and “ask the residents” wording.
+- **`docModel.ai.meta`** — `{ onboardingFromUserFallback, userFromOnboardingFallback }` (also in exported JSON).
+
+#### Changed
+
+- **German user AI** — Extra prompt block: avoid Denglish hybrids (“Disablete”, mangled compounds), prefer generic terms over brands unless the adapter title appears in system data, calmer tone for maintenance notes.
+
+---
 
 ### [0.9.5] — 2026-04
 

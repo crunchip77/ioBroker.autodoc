@@ -120,19 +120,19 @@
 
 ### Beobachtungen (User-Profil / langer Fließtext)
 
-- [ ] Denglish-/Fehlwörter: z. B. **„Disablete“**, **„Skriptausführe“**, **Hilfswillig** als Substantiv — Prompt oder **Nachbearbeitung** für reines Deutsch
-- [ ] Weiterhin **Marken/Produkte** im KI-Text: Shelly, **BackItUp**, **Telegram-Bot**, ggf. zu allgemein formulieren oder im User-Prompt „Markennamen nur wenn aus docModel-Liste, sonst Kategorie“
-- [ ] **Deaktivierte Adapterinstanzen** + **Skript-Doku** im Narrativ — für Bewohner evtl. ok, aber Formulierung wirkt **alarmistisch/hölzern** („… gewacht und gezwungen …“) → Ton + Länge im **User-Prompt** (`buildAudiencePrompt` audience `user`) schärfen
+- [x] Denglish-/Fehlwörter: z. B. **„Disablete“**, **„Skriptausführe“**, **Hilfswillig** als Substantiv — `buildGermanUserResidentBlock()` + erweitertes `USER_SYSTEM_MESSAGE_DE`
+- [x] **Marken/Produkte** im KI-Text — User-Prompt: nur nennen, wenn im Systemdaten-Adaptertitel; sonst Gattungsbegriffe
+- [x] **Alarmistischer Wartungston** — User-Prompt: sachlich, keine dramatischen Metaphern
 
 ### Beobachtungen (Onboarding / Gäste-Bullets)
 
-- [ ] **Du/Sie-Mix** in einer Liste (Lies/Frag uns vs. Wenden Sie sich) — Regeln greifen bei kleinem Modell (Ollama) nicht zuverlässig → Optionen: **zweiter Kurz-Pass** („nur auf Sie vereinheitlichen“), **stärkeres Modell**, oder **leichte serverseitige Prüfung** + erneuter Aufruf bei Treffer auf Du-Imperative
-- [ ] Grammatik: **„technischer Support“** → **„technischen“**, **„das Licht“** statt „die Licht“, Holzsätze („Verständnis im Hinterkopf“) → Stilblock verschärfen / Beispiele **gut/schlecht** im Prompt
-- [ ] Unklare Phrasen: „Besuche uns regelmäßig“, „Nimm dir unsere Zeit“ — explizit: **Ansprechpartner sind die Bewohner**, keine Meta-„besuche uns“-Formulierungen
+- [x] **Du/Sie-Mix** — bei `language=de` und Heuristik (du, „Lies“, du-Imperative, „Frag uns“): **zweiter LLM-Pass** `polishGermanOnboardingSie` (Lektor-Prompt)
+- [x] Grammatik / Holzsätze — im Lektor-Pass adressiert (technischen Support, das Licht, Bewohner statt „besuche uns“)
+- [x] Unklare Phrasen — im Lektor-Prompt explizit verboten
 
 ### Technisch klären
 
-- [ ] Prüfen, ob **Onboarding-HTML** wirklich `docModel.ai.onboarding` nutzt und **nicht** durch **Fallback** (User-Text) ersetzt wird — Log-Zeile `onboarding block missing — reusing user`
+- [x] **Fallback sichtbar:** `docModel.ai.meta` + HTML-Kommentar `<!-- autodoc-ai:onboarding source=fallback-user -->` bzw. `user source=fallback-onboarding` — Log-Hinweis ergänzt
 - [ ] Optional: **getrennte** `max_tokens` / **Temperature** User vs. Onboarding testen
 
 ---

@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "autodoc",
-        "version": "0.9.5",
+        "version": "0.9.6",
         "news": {
+            "0.9.6": {
+                "en": "AI: HTML debug comment for KI source (primary vs user↔onboarding fallback); DE onboarding second pass for Sie consistency; DE user prompt against Denglish/brands/alarmist tone",
+                "de": "KI: HTML-Kommentar zur KI-Quelle (primary vs Fallback); DE-Onboarding Zweitpass (Sie-Form); DE-User-Prompt gegen Denglish/Marken/alarmistischen Ton",
+                "ru": "AI: HTML-комментарий источника KI; DE onboarding второй проход; DE user промпт",
+                "pt": "IA: comentário HTML da fonte KI; segundo passe DE onboarding; prompt DE user",
+                "nl": "AI: HTML-commentaar KI-bron; DE onboarding tweede pass; DE user-prompt",
+                "fr": "IA : commentaire HTML source KI ; 2e passe DE onboarding ; prompt user DE",
+                "it": "AI: commento HTML fonte KI; secondo pass DE onboarding; prompt user DE",
+                "es": "IA: comentario HTML fuente KI; segundo pase DE onboarding; prompt user DE",
+                "pl": "AI: komentarz HTML źródła KI; drugi przejazd DE onboarding; prompt user DE",
+                "uk": "AI: HTML-коментар джерела KI; другий прохід DE onboarding; prompt user DE",
+                "zh-cn": "AI：HTML 注释标记 KI 来源；德语访客二次润色；德语住户提示词优化"
+            },
             "0.9.5": {
                 "en": "AI onboarding: stricter guest-only facts (no adapter/script counts), stronger bans (ioBroker, maintenance-score, du-imperatives), anti-hallucination for automations",
                 "de": "KI-Gäste-Text: schlankere Fakten ohne Adapter/Skript-Zahlen, schärfere Verbote (ioBroker, maintenance-score, Du-Imperative), weniger erfundene Automatisierungs-Szenen",
