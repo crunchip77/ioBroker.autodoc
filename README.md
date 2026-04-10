@@ -151,7 +151,7 @@ Notable changes are recorded here (adapter version: `package.json` / `io-package
 
 #### Added
 
-- **AI debug in HTML** — Comment before the KI box: `<!-- autodoc-ai:user source=primary|fallback-onboarding -->` / `<!-- autodoc-ai:onboarding source=primary|fallback-user -->` so you can see whether onboarding text is the guest model output or a copy of the user block.
+- **AI debug in HTML** — Comment before the KI box: `<!-- autodoc-ai:user source=primary|fallback-onboarding -->` / `<!-- autodoc-ai:onboarding source=primary|fallback-neutral -->` so you can see whether onboarding text is the guest model output or a neutral guest placeholder (user-profile KI text is never copied to guests).
 - **German onboarding** — Optional **second LLM pass** when the first output looks like a du/Sie mix (heuristic); lektor-style prompt for consistent **Sie**, grammar, and “ask the residents” wording.
 - **`docModel.ai.meta`** — `{ onboardingFromUserFallback, userFromOnboardingFallback }` (also in exported JSON).
 
