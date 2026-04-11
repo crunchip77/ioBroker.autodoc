@@ -137,6 +137,15 @@ HTML is standalone; Onboarding may load QR library from CDN (optional).
 
 - Forum RC feedback; npm + `ioBroker.repositories` entry after [Adapter Checker](https://adapter-check.iobroker.in/) stays green.
 
+**Since 0.9.7 (GitHub `dev` / `main` — for forum testers, not yet on npm):**
+
+- (crunchip77) Documentation generation: **mutex** if a run is already in progress (warn + skip duplicate trigger; avoids silent overlap when Ollama needs many minutes).
+- (crunchip77) **Progress logs:** phases **1/5–5/5** in `main.js`; AI **before/after** each LLM request in `aiEnhancer.js` (user profile → onboarding second call visible in the log).
+- (crunchip77) **OpenAI-compatible HTTP** (Ollama, Groq, Mistral): up to **4 attempts** with backoff on **429 / 500 / 502 / 503**, request **timeout**, and **ECONNRESET**; clearer rejection when the error body is not JSON.
+- (crunchip77) **HTML export:** wider **main** column on desktop (**`max-width: 1160px`**, previously 900px); **`@media (max-width: 700px)`** unchanged for phones. `RENDERER_VERSION` → `2026.04.12.0`.
+
+**Kurztext Forum (DE), Stand nach 0.9.7 npm:** Parallelstarts der Doku-Generierung werden erkannt (Warnung, kein stiller Doppel-Lauf). Im Log sieht man jetzt **1/5–5/5** und pro KI-Aufruf Start/Ende — bei Ollama wirkt es sonst „hängend“. Bei **500/Timeout** usw.: **automatische Wiederholungen mit Pause** (OpenAI-kompatible APIs). **HTML:** etwas **breiter auf dem Monitor**, Handy-Layout unverändert. Install: Branch **`dev`** / GitHub **`main`** (noch nicht im npm-Release).
+
 ### 0.9.7 (2026-04-11)
 
 - (crunchip77) AI: configurable HTTP request timeout; optional sampling temperature for user vs onboarding profiles (empty = provider default).
