@@ -13,7 +13,7 @@
 	"Additional notes": "Notes supplémentaires",
 	"Optional notes, devices, adapters or special requirements": "Notes optionnelles, appareils, adaptateurs ou exigences particulières",
 	"Generate documentation on adapter start": "Générer la documentation au démarrage de l'adaptateur",
-	"If enabled, a first documentation draft is created when the adapter starts": "Si activé, un premier brouillon de documentation est créé au démarrage de l'adaptateur",
+	"If enabled, documentation is queued each time the adapter starts (runs in the background; the instance can show green before it finishes). If disabled, a run still happens once after an update when the built-in HTML renderer version no longer matches info.templateVersion. Check the log for \"Documentation generated via startup\" and state info.lastTrigger.": "Si activé, la génération est lancée à chaque démarrage (en arrière-plan ; l’instance peut déjà être verte avant la fin). Si désactivé, une exécution a encore lieu une fois après mise à jour lorsque la version du moteur HTML intégré ne correspond plus à info.templateVersion. Vérifiez le journal pour « Documentation generated via startup » et l’état info.lastTrigger.",
 	"Generate documentation on adapter changes": "Générer la documentation lors des modifications d'adaptateur",
 	"If enabled, documentation is regenerated automatically when adapters are installed, removed, or enabled/disabled (30 second debounce)": "Si activé, la documentation est régénérée automatiquement lorsque des adaptateurs sont installés, supprimés ou activés/désactivés (délai de 30 secondes)",
 	"Read live state values (opt-in)": "Lire les valeurs d'état en direct (opt-in)",

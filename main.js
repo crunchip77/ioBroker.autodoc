@@ -100,9 +100,21 @@ class Autodoc extends utils.Adapter {
 		// Run first generation in the background so slow steps (e.g. two Ollama calls) do not block
 		// onReady — otherwise info.connection stays false and the instance stays red for minutes or forever on error.
 		if (this.config.autoGenerateOnStart || templateChanged) {
+			const reasons = [];
+			if (this.config.autoGenerateOnStart) {
+				reasons.push('autoGenerateOnStart');
+			}
+			if (templateChanged) {
+				reasons.push('renderer/template version mismatch');
+			}
+			this.log.info(`Queuing documentation generation on startup (${reasons.join(', ')}) — runs in background; watch for "Documentation generated via startup"`);
 			this.generateDocumentation('startup').catch(error => {
 				this.log.error(`Startup documentation generation failed: ${error.message}`);
 			});
+		} else {
+			this.log.info(
+				'Skipping startup documentation: autoGenerateOnStart is false and info.templateVersion already matches the current HTML renderer — HTML files are unchanged until you enable startup generation, trigger manual generate, or install an adapter version with a new renderer',
+			);
 		}
 
 		// Setup periodic auto-generation if interval is configured

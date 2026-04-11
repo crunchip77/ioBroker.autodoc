@@ -42,7 +42,8 @@
 				"autoGenerateOnStart": {
 					"type": "checkbox",
 					"label": "Generate documentation on adapter start",
-					"help": "If enabled, a first documentation draft is created when the adapter starts",
+					"default": true,
+					"help": "If enabled, documentation is queued each time the adapter starts (runs in the background; the instance can show green before it finishes). If disabled, a run still happens once after an update when the built-in HTML renderer version no longer matches info.templateVersion. Check the log for \"Documentation generated via startup\" and state info.lastTrigger.",
 					"newLine": true,
 					"xs": 12,
 					"sm": 12,

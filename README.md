@@ -135,8 +135,7 @@ HTML is standalone; Onboarding may load QR library from CDN (optional).
 
 ### Work in progress
 
-- Maintenance documentation score counts disabled adapter instances only; scripts without `common.desc` stay as an optional list. AI system summary lists documented active scripts and no longer treats missing descriptions as an issue.
-- German **onboarding** (guest KI): stricter “real home” rules (no personified rooms, natural phrasing for WC/Fragen/Licht, expanded Sie-polish heuristics, cleaner recommendation bullets).
+- Forum RC feedback; npm + `ioBroker.repositories` entry after [Adapter Checker](https://adapter-check.iobroker.in/) stays green.
 
 ### 0.9.7 (2026-04-11)
 
@@ -146,6 +145,10 @@ HTML is standalone; Onboarding may load QR library from CDN (optional).
 - (crunchip77) AI parsing: more tolerant `NARRATIVE:` / `RECOMMENDATIONS:` splitting; strips echoed labels and empty list items.
 - (crunchip77) German prompts: stronger guest vs resident rules and wording fixes (e.g. blinds: Jalousien/Rollläden).
 - (crunchip77) Export: `meta.schemaVersion` set to `autodoc-json-1`; `meta.version` falls back to `0.0.0` if missing; removed misleading `1.0.0` news entry from `io-package.json`.
+- (crunchip77) Startup generation: **info** logs when documentation is queued vs skipped (and why); admin **help** text (EN/DE/FR) for “generate on start” (async run, `info.templateVersion`, log hint).
+- (crunchip77) **autoGenerateOnStart** default **on** in `io-package.json` native defaults and jsonConfig default (existing instances keep their saved checkbox value).
+- (crunchip77) HTML: userdata + alias filters run from **end-of-page** script (works when viewers drop inline `<main>` scripts); folder `<details>` **closed** on load when search is empty; `pageshow` refresh for BF-cache; `RENDERER_VERSION` bump.
+- (crunchip77) AI (Ollama): conservative **default temperature** when admin leaves temperature empty; stricter DE system + lektor prompts; **quality gate** after polish (short factual resident summary or neutral guest block); extra noise stripping; **iroBroker**-style typos caught in onboarding technical-dump detection.
 
 ### 0.9.6 (2026-04-10)
 

@@ -4,8 +4,8 @@
         "version": "0.9.7",
         "news": {
             "0.9.7": {
-                "en": "AI: configurable HTTP timeout & optional temperatures; room/category grounding; stricter DE prompts; parse cleanup; empty KI bullets; forum-ready polish. Version clarity: removed phantom news 1.0.0; export schemaVersion autodoc-json-1",
-                "de": "KI: Timeout/Temperaturen optional, Grounding, DE-Prompts, Parser, leere Bullets, Forum-Polish. Klarstellung: irreführenden news-Eintrag 1.0.0 entfernt; Export-schemaVersion autodoc-json-1",
+                "en": "AI: HTTP timeout & temperatures; grounding; stricter DE prompts; parse cleanup; Ollama default temp; quality fallback; onboarding dump + iroBroker typo detection. Startup logs; default gen-on-start; HTML userdata/alias collapse fix (end-of-script). Export schemaVersion autodoc-json-1; removed phantom 1.0.0 news",
+                "de": "KI: Timeout/Temperaturen, Grounding, DE-Prompts, Parser; Ollama-Standardtemp; Qualitäts-Fallback; technischer Dump + Tippfehler-Erkennung. Start-Logs; Standard „Doku beim Start“; HTML userdata/Alias-Zuklappen (Skript am Seitenende). schemaVersion autodoc-json-1; news 1.0.0 entfernt",
                 "ru": "AI: таймаут HTTP и температура; grounding комнат; DE-промпты; разбор и очистка; пустые пункты; main для форума",
                 "pt": "IA: timeout HTTP e temperaturas; grounding salas; prompts DE; parsing/limpeza; bullets vazios; main para fórum",
                 "nl": "AI: HTTP-timeout en temperaturen; grounding; DE-prompts; parsing opschonen; lege bullets; main voor forum",
@@ -190,7 +190,7 @@
         "userHideAdapters": [],
         "targetSystem": "ioBroker",
         "language": "en",
-        "autoGenerateOnStart": false,
+        "autoGenerateOnStart": true,
         "autoGenerateOnEvents": false,
         "autoGenerateInterval": 0,
         "onlyEnabledInstances": false,
