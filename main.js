@@ -41,6 +41,9 @@ class Autodoc extends utils.Adapter {
 		// Debounce timer for event-based generation
 		this.eventGenerateDebounce = null;
 
+		/** Prevents overlapping runs (startup + manual + sendTo would otherwise fight Ollama and file writes). */
+		this._documentationGenerationInProgress = false;
+
 		this.on('ready', this.onReady.bind(this));
 		this.on('stateChange', this.onStateChange.bind(this));
 		this.on('objectChange', this.onObjectChange.bind(this));
@@ -720,53 +723,56 @@ class Autodoc extends utils.Adapter {
 	 * @param {string} trigger Generation trigger source.
 	 */
 	async generateDocumentation(trigger) {
+		if (this._documentationGenerationInProgress) {
+			this.log.warn(
+				`Documentation generation is already running — ignoring duplicate trigger "${trigger}". With Ollama, one run can take many minutes (two model calls + optional German polish). Wait for "Documentation generated via …" before starting another.`,
+			);
+			return;
+		}
+		this._documentationGenerationInProgress = true;
 		try {
-			// Use modular discovery
+			this.log.info(
+				`Documentation generation (${trigger}): 1/5 — discovery (scanning system, may take a bit on large installs)…`,
+			);
 			const rawData = await this.discovery.collectRawData();
 
-			// Use modular document model building
+			this.log.info(`Documentation generation (${trigger}): 2/5 — building document model…`);
 			const docModel = await this.documentModel.buildDocumentModel(rawData, trigger);
 
-			// Generate version for this documentation
 			const version = this.versionTracker.generateVersion();
 			docModel.meta.version = version;
 
-			// Version tracking: Compare with previous version
 			const previousDocModel = await this.versionTracker.getPreviousVersion();
 			const changeData = this.versionTracker.compareVersions(docModel, previousDocModel);
 
-			// Attach changelog to docModel so the renderer can include it
 			docModel.changelog = await this.versionTracker.getChangelog();
 
-			// AI enhancement (opt-in, non-blocking — failure does not abort generation)
+			this.log.info(
+				`Documentation generation (${trigger}): 3/5 — AI enhancement (disabled=instant; else two LLM calls — local Ollama often several minutes each)…`,
+			);
 			docModel.ai = await this.aiEnhancer.enhance(docModel);
 
-			// Use modular markdown rendering
+			this.log.info(`Documentation generation (${trigger}): 4/5 — rendering Markdown and HTML…`);
 			const markdown = this.markdownRenderer.renderMarkdown(docModel);
-
-			// Render all three profiles simultaneously
 			const htmlAll = this.htmlRenderer.renderAllHtml(docModel);
-
-			// Create JSON representation
 			const json = JSON.stringify(docModel, null, 2);
 
-			// Persist documentation (saves to files directly)
+			this.log.info(`Documentation generation (${trigger}): 5/5 — writing files and updating states…`);
 			await this.persistDocumentation(docModel, markdown, htmlAll, json);
 
-			// Store current version for next comparison
 			await this.versionTracker.storeCurrentVersion(docModel);
 
-			// Add changelog entry
 			const changelogEntry = this.versionTracker.buildChangelogEntry(version, changeData);
 			await this.versionTracker.appendChangelog(changelogEntry);
 
-			// Send notification if configured
 			await this.notifier.send(docModel, changeData);
 
 			this.log.info(`Documentation generated via ${trigger} (v${version}) - ${changeData.summary}`);
 		} catch (error) {
 			this.log.error(`Error generating documentation: ${error.message}`);
 			throw error;
+		} finally {
+			this._documentationGenerationInProgress = false;
 		}
 	}
 
