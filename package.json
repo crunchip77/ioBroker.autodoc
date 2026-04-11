@@ -52,6 +52,7 @@
     "lib/",
     "www/",
     "io-package.json",
+    "CHANGELOG.md",
     "LICENSE",
     "main.js"
   ],

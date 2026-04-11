@@ -56,17 +56,17 @@
                 "zh-cn": "AI：访客引导使用更轻量事实与系统角色；德语风格与德语系统提示，措辞更自然"
             },
             "0.9.3": {
-                "en": "Fix: blank HTML main area (script closing + search regex); reinstall needs new version or cache clear — see README",
-                "de": "Fix: leerer HTML-Hauptbereich (Script-Enden + Such-Regex); nach Git-Update neue Version oder Cache leeren — siehe README",
-                "ru": "Fix: blank HTML main area — reinstall with new version or clear cache (README)",
-                "pt": "Fix: blank HTML main area — reinstall with new version or clear cache (README)",
-                "nl": "Fix: blank HTML main area — reinstall with new version or clear cache (README)",
-                "fr": "Fix: zone HTML vide — réinstallez avec nouvelle version ou videz le cache (README)",
-                "it": "Fix: area HTML vuota — reinstallare con nuova versione o svuotare cache (README)",
-                "es": "Fix: HTML principal vacío — reinstalar con nueva versión o vaciar caché (README)",
-                "pl": "Fix: pusty HTML — przeinstaluj z nową wersją lub wyczyść cache (README)",
-                "uk": "Fix: порожній HTML — перевстановіть з новою версією або очистіть кеш (README)",
-                "zh-cn": "修复：HTML 主区域空白；请升级版本或清理缓存后重装（见 README）"
+                "en": "Fix: blank HTML main area (script closing + search regex); reinstall with a new adapter version or clear install cache if files stay stale",
+                "de": "Fix: leerer HTML-Hauptbereich (Script-Enden + Such-Regex); bei hängenden Dateien neue Adapter-Version installieren oder Installations-Cache leeren",
+                "ru": "Fix: blank HTML main area — reinstall with new version or clear install cache if needed",
+                "pt": "Fix: blank HTML main area — reinstale com nova versão ou limpe o cache de instalação se necessário",
+                "nl": "Fix: blank HTML main area — herinstalleer met nieuwe versie of leeg installatiecache indien nodig",
+                "fr": "Fix: zone HTML vide — réinstallez avec une nouvelle version ou videz le cache d’installation si besoin",
+                "it": "Fix: area HTML vuota — reinstallare con nuova versione o svuotare la cache di installazione se necessario",
+                "es": "Fix: HTML principal vacío — reinstalar con nueva versión o vaciar caché de instalación si hace falta",
+                "pl": "Fix: pusty HTML — przeinstaluj z nową wersją lub wyczyść cache instalacji w razie potrzeby",
+                "uk": "Fix: порожній HTML — перевстановіть з новою версією або очистіть кеш установки за потреби",
+                "zh-cn": "修复：HTML 主区域空白；若文件未更新请升级版本或清理安装缓存"
             },
             "0.9.2": {
                 "en": "Fix: RAM HTML rendering, filter bars for custom variables and aliases, documentation score explanation, manual notes moved to top of admin profile",
@@ -93,45 +93,6 @@
                 "pl": "Poprawa: kolory trybu ciemnego dla rozwijanych sekcji i changelog, podpowiedź wyszukiwania zawsze widoczna, rozdział aliasów, nagłówek funkcji w profilu admina",
                 "uk": "Виправлення: кольори темної теми для згортання та changelog, підказка пошуку завжди видима, розділ аліасів, заголовок функцій у профілі адміна",
                 "zh-cn": "修复：折叠与变更日志的深色模式配色、搜索提示始终可见、别名章节、管理员配置中的功能标题"
-            },
-            "0.9.0": {
-                "en": "Release candidate: mobile layout, search hints, RAM/CPU stats, script schedules, custom variables, repository badge, auto-regenerate on template change",
-                "de": "Release-Kandidat: Mobile-Layout, Suche-Hinweise, RAM/CPU-Statistiken, Script-Zeitpläne, eigene Variablen, Repository-Badge, Auto-Regenerierung bei Template-Änderung",
-                "ru": "Кандидат в релиз: мобильная вёрстка, подсказки поиска, RAM/CPU, расписания скриптов, пользовательские переменные, бейдж репозитория, авто-регенерация при смене шаблона",
-                "pt": "Candidato a release: layout mobile, dicas de pesquisa, estatísticas RAM/CPU, agendamentos de scripts, variáveis personalizadas, badge do repositório, auto-regenerar ao mudar template",
-                "nl": "Release candidate: mobiel layout, zoekhints, RAM/CPU-statistieken, scriptschema's, eigen variabelen, repository-badge, automatisch opnieuw genereren bij template-wijziging",
-                "fr": "Candidat release : mise en page mobile, aides recherche, stats RAM/CPU, planifications scripts, variables personnalisées, badge dépôt, régénération auto si template change",
-                "it": "Release candidate: layout mobile, suggerimenti ricerca, statistiche RAM/CPU, pianificazioni script, variabili personalizzate, badge repository, rigenerazione automatica al cambio template",
-                "es": "Candidato a release: diseño móvil, pistas de búsqueda, estadísticas RAM/CPU, horarios de scripts, variables propias, insignia del repositorio, auto-regenerar al cambiar plantilla",
-                "pl": "Kandydat do wydania: układ mobilny, podpowiedzi wyszukiwania, statystyki RAM/CPU, harmonogramy skryptów, własne zmienne, odznaka repozytorium, auto-regeneracja przy zmianie szablonu",
-                "uk": "Кандидат у реліз: мобільна верстка, підказки пошуку, RAM/CPU, розклади скриптів, власні змінні, бейдж репозиторію, авто-регенерація при зміні шаблону",
-                "zh-cn": "发布候选：移动布局、搜索提示、RAM/CPU 统计、脚本计划、自定义变量、仓库徽章、模板变更时自动重新生成"
-            },
-            "0.1.0": {
-                "en": "Rooms & functions, script documentation, maintenance hints",
-                "de": "Räume & Funktionen, Skript-Dokumentation, Wartungshinweise",
-                "ru": "Комнаты и функции, документация скриптов, советы по обслуживанию",
-                "pt": "Quartos e funções, documentação de scripts, dicas de manutenção",
-                "nl": "Kamers en functies, scriptdocumentatie, onderhoudstips",
-                "fr": "Pièces et fonctions, documentation des scripts, conseils de maintenance",
-                "it": "Stanze e funzioni, documentazione degli script, suggerimenti di manutenzione",
-                "es": "Habitaciones y funciones, documentación de scripts, consejos de mantenimiento",
-                "pl": "Pokoje i funkcje, dokumentacja skryptów, wskazówki dotyczące konserwacji",
-                "uk": "Кімнати та функції, документація скриптів, поради з обслуговування",
-                "zh-cn": "房间和功能、脚本文档、维护提示"
-            },
-            "0.0.1": {
-                "en": "initial release",
-                "de": "Erstveröffentlichung",
-                "ru": "Начальная версия",
-                "pt": "lançamento inicial",
-                "nl": "Eerste uitgave",
-                "fr": "Première version",
-                "it": "Versione iniziale",
-                "es": "Versión inicial",
-                "pl": "Pierwsze wydanie",
-                "uk": "Початкова версія",
-                "zh-cn": "首次出版"
             }
         },
         "titleLang": {
