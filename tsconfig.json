@@ -7,6 +7,9 @@
 		// do not compile anything, this file is just to configure type checking
 		"noEmit": true,
 
+		// Explicitly load Node (and Mocha for *.test.js) — required with TS 6 + @types/node 25 in checkJs mode
+		"types": ["node", "mocha"],
+
 		// check JS files
 		"allowJs": true,
 		"checkJs": true,
