@@ -107,7 +107,9 @@ class Autodoc extends utils.Adapter {
 			if (templateChanged) {
 				reasons.push('renderer/template version mismatch');
 			}
-			this.log.info(`Queuing documentation generation on startup (${reasons.join(', ')}) — runs in background; watch for "Documentation generated via startup"`);
+			this.log.info(
+				`Queuing documentation generation on startup (${reasons.join(', ')}) — runs in background; watch for "Documentation generated via startup"`,
+			);
 			this.generateDocumentation('startup').catch(error => {
 				this.log.error(`Startup documentation generation failed: ${error.message}`);
 			});
@@ -493,7 +495,7 @@ class Autodoc extends utils.Adapter {
 		for (const [id, common] of Object.entries(definitions)) {
 			await this.setObjectNotExistsAsync(id, {
 				type: 'state',
-				common: /** @type {ioBroker.StateCommon} */ (common),
+				common: common,
 				native: {},
 			});
 		}
