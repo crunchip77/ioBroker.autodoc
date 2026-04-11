@@ -10,6 +10,7 @@
 | **npm** | Not published yet — will be installable like any other adapter via ioBroker Admin once listed (see [ioBroker documentation](https://www.iobroker.net/#en/documentation)). |
 | **Official adapter list** | Not included yet — intended **after** forum testing. |
 | **Changelog** | [**CHANGELOG.md**](CHANGELOG.md) |
+| **Repository** | [github.com/crunchip77/ioBroker.autodoc](https://github.com/crunchip77/ioBroker.autodoc) |
 | **Feedback** | Please report issues and wishes in the forum thread or [GitHub Issues](https://github.com/crunchip77/ioBroker.autodoc/issues). |
 
 **Tests:** ![Test and Release](https://github.com/crunchip77/ioBroker.autodoc/workflows/Test%20and%20Release/badge.svg)
@@ -27,17 +28,6 @@ Three documentation profiles are always generated in one run:
 | **Admin**              | System administrator | Adapters, hosts, RAM/CPU, scripts, aliases, userdata, maintenance score, diagnosis |
 | **User / Family**      | Everyday users       | Rooms, devices, automations, connected systems — plain language                    |
 | **Onboarding / Guest** | Visitors             | Welcome, tips, capabilities overview, rooms, what runs automatically, QR code      |
-
----
-
-## Documentation
-
-- **Release notes (adapter versions):** [**CHANGELOG.md**](CHANGELOG.md) — same bullet style as many ioBroker adapters (`* (author) …`), but kept in a **separate file** so **[@alcalzone/release-script](https://github.com/AlCalzone/release-script)** and the **repository checker** stay happy (see [issue #8](https://github.com/crunchip77/ioBroker.autodoc/issues/8)).
-- **Bug reports & feature requests:** [GitHub Issues](https://github.com/crunchip77/ioBroker.autodoc/issues).
-- **Installing adapters:** use the normal ioBroker procedure (Admin, adapter list, npm / custom sources as appropriate). **This readme does not repeat generic installation steps** and does not document unofficial install sources — see the [ioBroker documentation](https://www.iobroker.net/#en/documentation).
-- **Source repository:** [github.com/crunchip77/ioBroker.autodoc](https://github.com/crunchip77/ioBroker.autodoc)
-
-*Many popular adapters (e.g. [ioBroker.javascript](https://github.com/ioBroker/ioBroker.javascript), [ioBroker.shelly](https://github.com/iobroker-community-adapters/ioBroker.shelly)) still paste the full **`## Changelog`** with all versions **into README** — that is fine for them; **ioBroker.autodoc** keeps **`CHANGELOG.md` as the single source** to avoid duplicating long history in the readme and to match release tooling expectations.*
 
 ---
 
@@ -132,7 +122,7 @@ HTML is standalone; Onboarding may load QR library from CDN (optional).
 
 ## Changelog
 
-**Do not** paste full version history here — maintain **[CHANGELOG.md](CHANGELOG.md)** only (see [Documentation](#documentation)).
+Version history belongs in **[CHANGELOG.md](CHANGELOG.md)** only (not duplicated in this readme).
 
 **Release checklist:** new section in **CHANGELOG.md** → bump **`package.json`** / **`io-package.json`** → update **`common.news`**.
 
