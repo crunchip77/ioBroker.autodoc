@@ -2,6 +2,8 @@
 
 ## **WORK IN PROGRESS**
 
+-   Maintenance documentation score counts disabled adapter instances only; scripts without `common.desc` stay as an optional list. AI system summary lists documented active scripts and no longer treats missing descriptions as an issue.
+
 ## 0.9.7 (2026-04-11)
 
 -   (crunchip77) AI: configurable HTTP request timeout; optional sampling temperature for user vs onboarding profiles (empty = provider default).
