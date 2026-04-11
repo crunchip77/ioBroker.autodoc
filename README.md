@@ -136,6 +136,7 @@ HTML is standalone; Onboarding may load QR library from CDN (optional).
 ### Work in progress
 
 - Maintenance documentation score counts disabled adapter instances only; scripts without `common.desc` stay as an optional list. AI system summary lists documented active scripts and no longer treats missing descriptions as an issue.
+- German **onboarding** (guest KI): stricter “real home” rules (no personified rooms, natural phrasing for WC/Fragen/Licht, expanded Sie-polish heuristics, cleaner recommendation bullets).
 
 ### 0.9.7 (2026-04-11)
 
