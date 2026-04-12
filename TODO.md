@@ -5,6 +5,7 @@
 - [ioBroker AI Developer Guide](https://github.com/Jey-Cee/iobroker-ai-developer-guide)
 - [Adapter Creator](https://github.com/ioBroker/create-adapter)
 - [Adapter Checker](https://adapter-check.iobroker.in/)
+- Mitwirkung, lokale Checks, Release-Hinweise: [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ---
 
