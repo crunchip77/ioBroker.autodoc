@@ -369,6 +369,16 @@
 			"type": "panel",
 			"label": "Advanced",
 			"items": {
+				"_exportScriptsHint": {
+					"type": "staticText",
+					"text": "Admin export scripts hint",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
 				"onlyEnabledInstances": {
 					"type": "checkbox",
 					"label": "Only document enabled instances",
