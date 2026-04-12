@@ -14,6 +14,8 @@ Drei echte Zielgruppen mit komplett unterschiedlicher Sprache:
 - **User / Familie**: "Wie funktioniert unser Zuhause?" — verständlich, kein JSON
 - **Onboarding / Gäste**: "Wie benutze ich dieses Haus?" — null Technik, reine Alltagssprache
 
+Langfristige inhaltliche Richtung (Zusammenhänge, Auto vs. Pflege, Forum-Feedback): siehe Abschnitt **„Zukunftsvision — Zusammenhänge & Kontext (Brainstorming)“** weiter unten.
+
 ## Technische Grundlagen
 
 - **Sprache**: JavaScript (ioBroker Creator Standard)
@@ -206,11 +208,67 @@ Echte Zielgruppen-Dokus statt "mehr oder weniger Detail vom selben Template".
 
 ---
 
+## Zukunftsvision — Zusammenhänge & Kontext (Brainstorming)
+
+> **Status:** Sammelplatte für Ideen — keine feste Roadmap. Soll verhindern, dass Diskussionen (Forum, intern) verloren gehen.
+
+### Auslöser
+
+- **Ziel des Adapters:** aus der Installation **automatisch** aktuelle, gut lesbare Doku — ohne Pflicht zur manuellen Pflege.
+- **Forum** ([Test Adapter autodoc](https://forum.iobroker.net/topic/84267/test-adapter-autodoc/)): Nutzer **UlliJ** lobt AutoDoc und wünscht sich die **Kombination** mit manuell erstellter Doku, die **Zusammenhänge** verständlich macht (z. B. Topologie-Skizzen: Proxmox, LXC, ioBroker, Influx, Grafana, Funk-Ökosysteme). Verlinkung **von** externer Doku **zu** AutoDoc wurde praktisch gezeigt („quick & dirty“).
+- **Abgrenzung zu „Bilder in Notizen“:** Bilder/Grafiken können *ein* Baustein sein; der Kernfeedback ist breiter: **Beziehungen** zwischen Teilen des Systems sichtbar machen — für **Onboarding** (Gäste), **User** (Alltag) und **Admin** (Aufbau, Abhängigkeiten, Sonderfälle, Wiederanlauf).
+
+### Spannungsfeld
+
+- Je **mehr** Nutzer einpflegen müssen, desto eher wird es **nicht** genutzt („zu faul“ / kein Zeitbudget) — **Auto-Charakter** leidet.
+- **Lösungsrichtung:** starke **auto-Basisschicht** aus Objekten/Metadaten/Analyse (bereits z. B. Inventar, Skript-Übersicht, Dependency-/Referenz-Ideen) + **optionale, dünne** Schicht für Dinge, die ioBroker **nicht** weiß (Umgebung, Absicht, Notfall-Infos, externe Doku-Links).
+
+### Admin-Profil — „Wie ist das System aufgebaut?“
+
+**Möglichst ohne Zusatzpflege:**
+
+- Inventar: Hosts, Controller/Node, Instanzen, Adapter-Metadaten, Diagnose, Repos — Landkarte des **Ist-Zustands**.
+- **Abhängigkeiten / Querbezüge:** aus vorhandener Analyse (z. B. `stateRefs`, Skript↔Objekt, Instanzübersicht) — echte **Auto-Doku**.
+- Skript-Landkarte (Trigger, Zeitpläne, Ordner) als Grundlage für **„was läuft wie automatisch“** und für **Recovery-Listen** (was muss nach Neuaufbau wieder existieren), ohne Romane.
+
+**Nur wo nötig (opt-in, wenig Felder):**
+
+- Kurzes Kapitel **„Umgebung & Wiederanlauf“** mit festen Unterpunkten; Auto-Befüllung wo möglich, **Lücken** optional vom Nutzer (einmalig oder selten).
+- **Externe Quelle:** prominente Links (Wiki, BookStack, Markdown-Repo) statt alles in den Adapter zu duplizieren.
+- Optional später: **Mermaid** oder **Bilder** nur für diesen Kontext — siehe auch „Bewusst weggelassen“ (Mermaid dort bewusst zurückgestellt; hier **Neuabwägung** möglich).
+
+### User-Profil
+
+- **Gleiche Schichtung**, andere **Tiefe und Sprache:** Alltag („Räume, Geräte, was passiert von selbst“), **kein** technisches Recovery-Kapitel wie im Admin.
+- **Auto-first** noch strenger: kurze Texte, Karten, wenig Pflege-Fläche; optionale **Hausnotizen** bleiben knapp.
+
+### Onboarding-Profil
+
+- **Orientierung** und **„was läuft automatisch“** in groben, vertrauenswürdigen Worten; strikt **faktenbasiert** wo KI genutzt wird (Guards, Fallbacks — bestehende Philosophie fortsetzen).
+- **Zusammenhänge** als sehr kurzer Block + ggf. **eine** visuelle oder verlinkte Ebene — kein Architektur-Wälzer für Gäste.
+
+### Umsetzungs-Ideen (nicht priorisiert)
+
+| Richtung | Idee |
+| -------- | ---- |
+| **A — Auto** | Aus `documentModel` generierte Kurztexte/Kacheln „Zusammenspiel“; **automatische** Mermaid-Graphen *nur* wo Daten tragfähig sind (z. B. kleine Hierarchien). |
+| **B — Semi-auto** | Ein konfigurierbares Markdown-Feld „System & Zusammenhänge“ mit optionalen Mermaid-Blöcken (wenig Pflege, hoher Effekt). |
+| **C — Verknüpfung** | Felder für **URLs** externer Doku; AutoDoc bleibt **Quelle der Wahrheit** für Installationsstand, externe Doku für **Absicht/Kontext**. |
+| **D — Medien** | Bild-Upload oder Ablage unter `files/…` + Verweise — höherer Aufwand (Größe, Dark Mode, Rotation). |
+
+### Leitplanken (Merksätze)
+
+- Standard-Nutzung muss **ohne** Extra-Pflege **lohnen**.
+- Manuelles ist **opt-in**, begrenzt (Länge/Anzahl), und soll **nicht** bei jedem Export ungültig werden, wenn sich nur die Installation ändert.
+- **Gemeinsame Datenbasis** für alle drei Profile, **unterschiedliche Darstellung** (sachlich Admin / alltagsnah User / gästetauglich Onboarding).
+
+---
+
 ## Bewusst weggelassen
 
 | Feature                                       | Grund                                       |
 | --------------------------------------------- | ------------------------------------------- |
-| Mermaid-Diagramme / Graphen                   | Zu komplex, andere Tools besser geeignet    |
+| Mermaid-Diagramme / Graphen                   | Für v1.0 zurückgestellt (Komplexität); **Neuabwägung** möglich unter „Zukunftsvision — Zusammenhänge & Kontext“ (optional, auto- oder kuratiert) |
 | Vollständiges Code-Parsing für Abhängigkeiten | Fehleranfällig, unverhältnismäßiger Aufwand |
 | REST-API / Webhooks                           | Wer JSON hat, kann selbst damit arbeiten    |
 | Alexa/Google Home Integration                 | Kein Bezug zur Dokumentation                |

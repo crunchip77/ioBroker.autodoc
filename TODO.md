@@ -6,6 +6,7 @@
 - [Adapter Creator](https://github.com/ioBroker/create-adapter)
 - [Adapter Checker](https://adapter-check.iobroker.in/)
 - Mitwirkung, lokale Checks, Release-Hinweise: [CONTRIBUTING.md](CONTRIBUTING.md)
+- Zukunftsvision / Brainstorming (Zusammenhänge, Kontext, Forum-Feedback): [PLAN.md](PLAN.md) → Abschnitt **„Zukunftsvision — Zusammenhänge & Kontext (Brainstorming)“**
 
 ---
 
