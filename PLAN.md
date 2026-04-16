@@ -418,6 +418,8 @@ Ein optionaler, konfigurierbarer **realer Ausgabepfad** ermöglicht Zugriff auf 
 
 In ioBroker-Multihost-Setups (z.B. 2–3 Raspberry Pis):
 
+> Dev-Meeting 2026-04-15: kein definitives Ergebnis zu neuen Ansätzen — die bekannten Probleme wurden bestätigt. Einziger konkreter Vorschlag: **2x generieren** — einmal für den Admin-Aufruf (`/files/`), einmal für direkten Dateisystem-Zugriff. Das deckt sich mit dem hier dokumentierten Dual-Output-Ansatz (→ „Optionaler Filesystem-Export").
+
 #### Was bereits funktioniert (kein Handlungsbedarf)
 
 - `getObjectViewAsync('system', 'host', {})` → liest **alle** Hosts aus der zentralen DB ✅
