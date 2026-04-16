@@ -116,6 +116,19 @@
 
 ---
 
+### Admin-UI: Bedingte Sichtbarkeit im KI-Tab (Forum-Feedback)
+
+> Forum-Feedback (arteck) — valider UX-Hinweis, noch nicht umgesetzt.
+
+Im KI-DOKUMENTATION-Tab sind alle Felder (API-Schlüssel, Ollama Basis-URL, Temperaturen, Timeout) sichtbar, auch wenn der Anbieter auf „Deaktiviert" steht. `jsonConfig` unterstützt `showCondition` — damit wäre provider-abhängige Sichtbarkeit möglich:
+
+- [ ] Anbieter = `disabled` → alle weiteren KI-Felder ausblenden
+- [ ] Anbieter = `ollama` → API-Schlüssel ausblenden, Basis-URL einblenden
+- [ ] Anbieter = `anthropic` / `groq` / `mistral` → API-Schlüssel einblenden, Basis-URL ausblenden
+- [ ] Temperaturen + Timeout nur sichtbar wenn Anbieter ≠ `disabled`
+
+---
+
 ## KI-Zusammenfassung (Stand 0.9.7)
 
 Viele Punkte aus der Testrunde sind umgesetzt (Grounding, Parser-Bereinigung, Timeout/Temperaturen optional im Admin, DE-Prompts, Lektor-Pass, Fallbacks). **Sprachqualität** mit kleinen lokalen Modellen (z. B. Ollama 8B) bleibt iterativ — Feedback im Forum oder als Issues willkommen.
@@ -133,8 +146,27 @@ Viele Punkte aus der Testrunde sind umgesetzt (Grounding, Parser-Bereinigung, Ti
 
 - [ ] PDF-Export
 - [ ] Backup-Adapter Integration
-- [ ] Custom Templates
+- [ ] Custom Templates (Ebene 1 + 3: Kapitel-Auswahl + freie Zusatz-Sektionen) — Details: [PLAN.md → „Custom Templates"](PLAN.md)
 - [x] QR-Code für Onboarding (qrcodejs CDN + Fallback)
+
+### System-Visitenkarte / „Für Forum kopieren" (Brainstorming / ungeklärt)
+
+> Forum-Wunsch (sigi234) — noch nicht entschieden. Details und Abwägung: [PLAN.md → „System-Visitenkarte"](PLAN.md)
+
+Kompakte, teilbare Kurzübersicht der wichtigsten Systemdaten — damit helfende Forum-Nutzer nicht immer nachfragen müssen.
+
+- [ ] **Option A — Button im Admin-UI:** „Für Forum kopieren" legt vorgefertigten Textblock in die Zwischenablage (js-controller, Node.js, RAM, CPU, Instanzen, Repository)
+- [ ] **Option B — System-Card als separates Export-Format:** Mini-HTML oder Plaintext, eigenständig teilbar
+- [ ] Zusammenhang zu Custom Templates (Ebene 1) prüfen — könnte dort aufgehen
+
+### KI-gestützte Smarthome-Beschreibung aus Skript-Quellcode (Brainstorming / ungeklärt)
+
+> Noch unentschieden — Form und Tiefe offen. Details und Abwägung: [PLAN.md → „Skript-Quellcode-Analyse & Smarthome-Beschreibung durch KI"](PLAN.md)
+
+Grundgedanke: Skript-Quellcode (`common.source`) durch KI analysieren, um automatisch zu beschreiben, was das Smarthome **tatsächlich tut** — Inhaltsverzeichnis der Automatisierungen, „was steuert was", „wie reagiert das System auf X".
+
+- [ ] **Variante A — Deep Script Analysis (live):** `common.source` per opt-in einlesen, KI-Pass pro Skript/Batch, globaler Automations-Überblick (Erweiterung `aiEnhancer.js` + `discovery.js`)
+- [ ] **Variante B — Backup-basiert (offline):** ioBroker-Backup (`backitup`) parsen → Doku ohne live System, ggf. kombiniert mit Variante A (Erweiterung Phase-5 Backup-Integration)
 
 ---
 

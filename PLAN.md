@@ -256,11 +256,181 @@ Echte Zielgruppen-Dokus statt "mehr oder weniger Detail vom selben Template".
 | **C — Verknüpfung** | Felder für **URLs** externer Doku; AutoDoc bleibt **Quelle der Wahrheit** für Installationsstand, externe Doku für **Absicht/Kontext**. |
 | **D — Medien** | Bild-Upload oder Ablage unter `files/…` + Verweise — höherer Aufwand (Größe, Dark Mode, Rotation). |
 
+### Skript-Quellcode-Analyse & Smarthome-Beschreibung durch KI (Brainstorming)
+
+> **Status:** Noch unentschieden — zwei Varianten denkbar, Form und Tiefe offen. Zu gegebenem Anlass näher erörtern.
+
+**Grundgedanke:** Nicht nur Metadaten (Name, Trigger, Status) der Skripte auslesen, sondern den eigentlichen Quellcode durch KI analysieren lassen — um automatisch zu beschreiben, was das Smarthome **tatsächlich tut**: Inhaltsverzeichnis der Automatisierungen, „was steuert was", „wie reagiert das System auf X".
+
+#### Variante A — Deep Script Analysis (Erweiterung von Phase 3.3 / live)
+
+- `discovery.js` liest `common.source` (JS-Quellcode) pro Skript ein (opt-in, neues Config-Flag)
+- Neuer KI-Pass in `aiEnhancer.js`: Skripte (oder Batches) werden an den gewählten Provider gesendet
+- KI erklärt pro Skript in 2–4 Sätzen, was es tut und wie es steuert
+- Globaler Automations-Überblick: KI fasst alle Skripte zusammen → „Was läuft in diesem Zuhause automatisch?"
+- Mögliche Kapitelstruktur: Licht, Heizung, Sicherheit, Benachrichtigungen — aus echtem Code abgeleitet
+- **Herausforderungen:** Token-Limits (Batching/Truncation nötig), Datenschutz (Code kann Credentials enthalten → Opt-in + Hinweis; ggf. analog zu `filterNative()`)
+
+#### Variante B — Backup-basierte Dokumentation (Erweiterung Phase 5)
+
+- ioBroker-Backups (`backitup`) enthalten `iobroker-objects.json` mit allen Skripten inkl. Quellcode
+- AutoDoc könnte Backups **offline** parsen → Doku ohne live laufendes System (z. B. vor Migration, nach Crash, für zweite Instanz)
+- Gleiche Discovery/DocumentModel/Renderer-Pipeline, nur andere Datenquelle
+- Kombinierbar mit Variante A: KI analysiert Skript-Code direkt aus dem Backup
+- **Herausforderungen:** ZIP/tar.gz-Parsing, große JSON-Dateien, Versions-Kompatibilität der Backup-Formate
+
+#### Offene Fragen (noch nicht entschieden)
+
+- Welche Variante (A, B oder beide kombiniert) hat mehr praktischen Nutzen?
+- Wie tief soll die Analyse gehen — pro Skript oder nur globale Zusammenfassung?
+- Wo wird das Ergebnis angezeigt — neues Kapitel, Ergänzung der bestehenden Skript-Tabelle, oder eigenes Profil?
+- Datenschutz-Handling bei Code mit eingebetteten Credentials klar regeln
+
+---
+
+### System-Visitenkarte / „Für Forum kopieren" (Forum-Feedback)
+
+> **Status:** Forum-Wunsch (sigi234) — noch nicht entschieden, zu gegebenem Anlass weiter ausarbeiten.
+
+**Grundgedanke:** Eine kompakte, teilbare System-Kurzübersicht — damit helfende Forum-Nutzer die wichtigsten Systemdaten auf einen Blick sehen, ohne immer nachfragen zu müssen. Die Kerndaten (js-controller-Version, Node.js, RAM, CPU, Instanzen-Anzahl, Repository) sind im Admin-Profil bereits vorhanden, aber als Teil der vollen Doku — kein schnelles Teilen möglich.
+
+**Mögliche Umsetzung:**
+- „Für Forum kopieren"-Button im Admin-UI → legt vorgefertigten Textblock in die Zwischenablage
+- Alternativ: kompakte eigenständige „System-Card" als separates Mini-HTML / Plaintext-Export
+- Inhalt: js-controller, Node.js-Version + LTS-Status, RAM, CPU, Laufzeit, Instanzen-Anzahl, Repository-Kanal
+- Kein Extra-Aufwand für den Nutzer — Daten werden ohnehin bereits erfasst
+
+**Offene Fragen:**
+- Button im Admin-UI (jsonConfig) oder in der generierten HTML-Seite (oder beides)?
+- Plaintext (Forum-freundlich) oder formatierter HTML-Snippet?
+- Zusammenhang zu Custom Templates (Ebene 1) prüfen — könnte dort aufgehen
+
+---
+
+### Custom Templates (Phase 5 — Ausarbeitung)
+
+> **Status:** In Phase 5 als Stichpunkt vorhanden — hier konkretisiert, noch nicht priorisiert. Zu gegebenem Anlass weiter ausarbeiten.
+
+Custom Templates kann vieles bedeuten. Sinnvolle Scope-Abgrenzung nach Aufwand und realem Nutzen:
+
+| Ebene | Beschreibung | Aufwand | Empfehlung |
+| ----- | ------------ | ------- | ---------- |
+| **1 — Kapitel-Auswahl** | Nutzer wählt welche Kapitel erscheinen (Checkboxen), Reihenfolge anpassbar | Gering | ✅ sinnvoll |
+| **2 — Layout / Styling** | Eigenes CSS-Theme, Logo, Farben — z. B. für Weitergabe an Familie/Hausverwaltung | Mittel | ✅ sinnvoll |
+| **3 — Freie Zusatz-Sektionen** | Nutzer definiert eigene Kapitel mit Markdown-Freitext (Notfallkontakte, WLAN, etc.) — Ergänzung zu `manualContext`, aber strukturierter | Mittel | ✅ sinnvoll |
+| **4 — Eigene Daten-Abfragen** | Nutzer definiert welche States/Objekte zusätzlich abgefragt werden, eigene Tabellen | Hoch | ⚠️ Grenzwertig |
+| **5 — Vollständiges Template-Replacement** | Nutzer liefert eigene Handlebars/Jinja-Vorlage, volle HTML-Kontrolle | Sehr hoch | ❌ Over-Engineering |
+
+**Empfehlung:** Ebene 1 + 3 als Kombination — Kapitel-Auswahl und freie Zusatz-Sektionen. Löst 90% der realen Wünsche ohne Template-Engine. Ebene 4–5 widerspricht dem Kern-Versprechen „automatisch ohne Pflege".
+
+**Verbindung zur System-Visitenkarte:** Ebene 1 (Kapitel-Auswahl) könnte den Forum-Wunsch abdecken — ein fokussiertes Template das nur Kerndaten zeigt.
+
+---
+
 ### Leitplanken (Merksätze)
 
 - Standard-Nutzung muss **ohne** Extra-Pflege **lohnen**.
 - Manuelles ist **opt-in**, begrenzt (Länge/Anzahl), und soll **nicht** bei jedem Export ungültig werden, wenn sich nur die Installation ändert.
 - **Gemeinsame Datenbasis** für alle drei Profile, **unterschiedliche Darstellung** (sachlich Admin / alltagsnah User / gästetauglich Onboarding).
+
+---
+
+## Architektur-Grenzen & Lösungsrichtungen (Brainstorming / noch nicht entschieden)
+
+> **Status:** Diskutiert im Dev-Meeting 2026-04-15 und in Folge-Sessions. Probleme und Lösungsrichtungen dokumentiert — finale Entscheidung offen.
+
+### Ausgangsproblem: ioBroker-Abhängigkeit
+
+Alles was AutoDoc erzeugt, landet in `/files/autodoc.0/` — ioBrokers **virtueller Dateischicht**. Der Zugriff darauf setzt einen laufenden ioBroker voraus (Web-Adapter oder Admin-UI). Fällt ioBroker aus, ist die Dokumentation nicht mehr erreichbar.
+
+Zusätzliche Dimension: **nicht jeder Nutzer hat einen Web-Adapter** installiert — und das ist bewusst so, denn nicht jeder braucht einen. Mail/Notification ist ebenfalls kein universelles Fallback (nicht jeder hat es integriert oder möchte es nutzen).
+
+### Wie ioBroker Dateien intern speichert
+
+| Backend | `writeFileAsync()` schreibt nach... | Binärdaten (Bilder) |
+|---------|-------------------------------------|---------------------|
+| **jsonl** (Default) | `iobroker-data/files/` als echte OS-Dateien auf Disk | ⚠️ Disk wächst, jsonl-DB selbst bleibt sauber |
+| **redis** | In Redis als binäre Blobs (RAM/Memory) | ❌ Redis bläht bei Bildern massiv auf |
+
+### Der kleinste gemeinsame Nenner: Admin-UI
+
+Der **ioBroker Admin** (Port 8081) ist die einzige Komponente, die **jede Installation** hat — auch Multihost-Raspberry-Pi-Setups ohne Web-Adapter, ohne VIS, ohne NAS. Der Admin:
+- Kann Dateien aus `/files/` anzeigen (eingebaut, kein Web-Adapter nötig)
+- Kann HTML inline rendern (Datei-Browser)
+- Läuft auf praktisch jedem Host
+
+**Konsequenz:** `/files/autodoc.0/` bleibt der primäre Ausgabeort. Admin ist der universelle Viewer. Web-Adapter ist optional, kein Pflichtbestandteil.
+
+### Problem: Bilder und DB-Bloat
+
+Wenn Bilder (Grundrisse, Topologie-Skizzen, Screenshots) in `/files/autodoc.0/` gespeichert werden:
+- **jsonl-Backend:** Disk wächst, aber jsonl-DB selbst bleibt sauber — vertretbar bei kleinen Dateien
+- **Redis-Backend:** Bilder im RAM/Speicher → inakzeptabel bei echten Fotos oder mehreren Assets
+
+### Saubere Trennung (Lösungsrichtung)
+
+```
+/files/autodoc.0/           ← ioBroker-Datenbank (virtual filesystem)
+  ├── admin.html             → immer überschrieben bei Regenerierung
+  ├── user.html              → immer überschrieben
+  ├── onboarding.html        → immer überschrieben
+  └── doc.json               → immer überschrieben
+                             → KEIN Anwachsen, nur Latest-Stand
+
+Realer Dateisystem-Pfad:    ← AUSSERHALB der ioBroker-Datenbank (opt-in)
+  iobroker-data/autodoc-export/
+  ├── smarthome.html         → portable, selbst-enthaltende HTML-Kopie
+  └── assets/
+      └── grundriss.svg      → User-Assets, NICHT in jsonl/redis
+```
+
+**Generierter Content** → immer in `/files/`, immer überschrieben, keine Akkumulation, kein Bloat.
+
+**User-Assets (Bilder)** → NICHT in ioBroker-Datenbank, sondern in einem echten Dateisystempfad außerhalb von jsonl/redis (noch zu klären: wer verwaltet diesen Pfad, wie kommt Admin daran?).
+
+### Optionaler Filesystem-Export (ioBroker-unabhängiger Zugriff)
+
+Ein optionaler, konfigurierbarer **realer Ausgabepfad** ermöglicht Zugriff auf die Doku auch wenn ioBroker down ist:
+
+- Nutzer konfiguriert z.B. `/mnt/nas/autodoc/`, `D:\Docs\smarthome\` oder einen lokalen Pfad
+- AutoDoc schreibt die fertige HTML **zusätzlich** dorthin (kein Ersetzen der ioBroker-Ausgabe)
+- Browser öffnet `smarthome.html` direkt via `file://` — **kein Webserver nötig**
+- Wer einen Webserver hat: Pfad ins Webroot → immer online erreichbar
+- Wer keinen hat: Pfad auf NAS, lokaler Disk, USB-Mount — direkt per Browser öffenbar
+- Wer es nicht braucht: Feld leer lassen
+
+**Voraussetzung:** HTML muss wirklich selbst-enthaltend sein (kein CDN). Aktuell wird `qrcodejs` noch über CDN geladen (mit Fallback) — das wäre zu bereinigen.
+
+### Assets/Bilder: Lösungsoptionen (noch nicht entschieden)
+
+| Option | Beschreibung | DB-Bloat | Admin-Zugriff | Offline |
+|--------|-------------|----------|--------------|---------|
+| **A — Externe URLs only** | Nutzer referenziert URLs (NAS-HTTP, Cloud, intern) | Null | ✅ wenn erreichbar | ⚠️ nur wenn URL erreichbar |
+| **B — SVG/Text in `/files/`** | Nur Text-basierte Grafiken (SVG, Mermaid) in DB; Fotos → externe URL | Minimal (SVG klein) | ✅ via Admin/Web | ✅ SVG immer inline möglich |
+| **C — Assets außerhalb DB** | Bilder in realem Filesystem-Pfad; Adapter serviert via eigenem HTTP-Endpunkt | Null in DB | ✅ erfordert Web-Adapter | ✅ wenn Pfad erreichbar |
+| **D — Inline Base64** | Bilder direkt in HTML eingebettet | N/A (kein File-Store) | ✅ immer | ✅ immer | ❌ Dateigröße ×3–5 bei Fotos |
+
+**Tendenz:** Option B als Basis (SVG/Mermaid-Diagramme in `/files/`, klein und sauber) + Option A für Fotos (externe URLs, kein Storage-Problem). Option D nur für sehr kleine Icons vertretbar.
+
+**Für Redis-Nutzer:** Explizit dokumentieren: nur externe URLs oder SVGs empfohlen — keine Binär-Uploads in `/files/`.
+
+### Multihost
+
+> Details aus Dev-Meeting 2026-04-15 — noch einzuarbeiten sobald geklärt.
+
+In ioBroker-Multihost-Setups (z.B. 2–3 Raspberry Pis):
+- Alle Objekte sind über ioBrokers Objektspeicher vom Master aus erreichbar → Discovery funktioniert bereits host-agnostisch
+- `/files/autodoc.0/` liegt nur auf dem Host wo AutoDoc läuft (Master)
+- AutoDoc sollte auf dem Master laufen (dort wo auch Admin/Web-Adapter ist, oder zumindest der primäre Admin-Zugriffspunkt)
+- Offene Fragen aus Meeting: noch zu dokumentieren
+
+### Offene Fragen (noch nicht entschieden)
+
+- Wie bekommen User-Assets (Bilder außerhalb DB) ihren Weg in die HTML wenn sie via Admin aufgerufen wird — eigener HTTP-Handler im Adapter? Eigener `/files/`-Subordner mit strikten Größenlimits?
+- Wie sieht ein Upload-UI für Assets aus (Admin-Dateimanager reicht? Eigenes Tab?)
+- Multihost: was genau wurde im Dev-Meeting besprochen? → Nacharbeiten
+- Größenlimit für Assets: welcher Wert ist sinnvoll?
+- Soll der Filesystem-Export-Pfad ein Pflichtfeld für bestimmte Setups sein oder immer opt-in?
 
 ---
 
