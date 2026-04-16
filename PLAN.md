@@ -414,21 +414,65 @@ Ein optionaler, konfigurierbarer **realer Ausgabepfad** ermöglicht Zugriff auf 
 
 **Für Redis-Nutzer:** Explizit dokumentieren: nur externe URLs oder SVGs empfohlen — keine Binär-Uploads in `/files/`.
 
-### Multihost
-
-> Details aus Dev-Meeting 2026-04-15 — noch einzuarbeiten sobald geklärt.
+### Multihost — Analyse & Entscheidungen
 
 In ioBroker-Multihost-Setups (z.B. 2–3 Raspberry Pis):
-- Alle Objekte sind über ioBrokers Objektspeicher vom Master aus erreichbar → Discovery funktioniert bereits host-agnostisch
-- `/files/autodoc.0/` liegt nur auf dem Host wo AutoDoc läuft (Master)
-- AutoDoc sollte auf dem Master laufen (dort wo auch Admin/Web-Adapter ist, oder zumindest der primäre Admin-Zugriffspunkt)
-- Offene Fragen aus Meeting: noch zu dokumentieren
+
+#### Was bereits funktioniert (kein Handlungsbedarf)
+
+- `getObjectViewAsync('system', 'host', {})` → liest **alle** Hosts aus der zentralen DB ✅
+- `getForeignObjectAsync(host._id)` → holt vollständige native-Daten (Node.js, OS) für **jeden** Host ✅
+- `instance.common.host` → welcher Adapter auf welchem Host läuft, bereits in `rawData` ✅
+- `getForeignStateAsync('system.host.{hostId}.*')` → RAM/CPU für alle Hosts ✅
+- `host.common.npmVersion` aus zentraler DB → npm-Version für alle Hosts, kein Problem ✅
+- `writeFileAsync('autodoc.0', ...)` → geht durch ioBrokers zentrales File-API → landet immer auf Master ✅
+
+#### Wo AutoDoc laufen soll: Master
+
+AutoDoc **muss auf dem Master** laufen. Gründe:
+- `execSync('npm -v')` als lokaler Fallback läuft nur auf dem eigenen Host — auf Master sinnvoll, auf Slave irreführend
+- Realer Filesystem-Export schreibt auf das lokale Filesystem — auf Master gewollt, auf Slave nicht
+- Der Master ist der primäre Admin-Zugriffspunkt
+
+**Umsetzung:** Log-Warnung wenn AutoDoc auf einem Host läuft, aber mehrere Hosts im System erkannt werden und der eigene Host nicht der erste/einzige ist. Kein hartes Blockieren — nur informativer Hinweis.
+
+#### Was fehlt: Host-Zugehörigkeit in der Dokumentation
+
+`instance.common.host` ist bereits erfasst, wird aber nicht gerendert. Im Admin-Profil fehlt damit die wichtigste Multihost-Information: welcher Adapter läuft auf welchem Pi.
+
+**Entscheidung: Adapter-Gruppierung nach Host** (statt nur einer Spalte):
+- Nur aktiv wenn > 1 Host im System erkannt → kein Layout-Overhead bei Single-Host
+- Admin-Profil: Adapter-Tabelle nach Host gruppiert mit Host-Header (Name, Node.js, OS)
+- Klare Lastverteilung auf einen Blick: welcher Pi trägt welche Last
+
+```
+┌─ Host: raspi-master ──────────────────────────┐
+│  admin.0 · javascript.0 · autodoc.0 · ...     │
+└───────────────────────────────────────────────┘
+┌─ Host: raspi-slave1 ──────────────────────────┐
+│  zigbee.0 · hm-rpc.0 · ...                    │
+└───────────────────────────────────────────────┘
+```
+
+#### Filesystem-Export in Multihost
+
+- AutoDoc läuft auf Master → Export-Pfad auf Master-Filesystem → korrekt
+- Empfehlung für Multihost-Nutzer: **NAS-Mount als Export-Pfad** — löst gleichzeitig das ioBroker-Unabhängigkeits-Problem (NAS läuft auch wenn alle Pis down)
+- Kein Zwang — wer keinen NAS hat, lässt das Feld leer
+
+#### Mermaid-Topologie (Phase 5+)
+
+Automatisch generierter Topologie-Graph aus vorhandenen Daten — inhaltlich tragfähig da alle Daten (welcher Adapter auf welchem Host) bereits vorhanden. Zurückgestellt für Phase 5.
+
+```
+Master → Slave1 (zigbee.0, hm-rpc.0)
+       → Slave2 (sonos.0, unifi.0)
+```
 
 ### Offene Fragen (noch nicht entschieden)
 
 - Wie bekommen User-Assets (Bilder außerhalb DB) ihren Weg in die HTML wenn sie via Admin aufgerufen wird — eigener HTTP-Handler im Adapter? Eigener `/files/`-Subordner mit strikten Größenlimits?
 - Wie sieht ein Upload-UI für Assets aus (Admin-Dateimanager reicht? Eigenes Tab?)
-- Multihost: was genau wurde im Dev-Meeting besprochen? → Nacharbeiten
 - Größenlimit für Assets: welcher Wert ist sinnvoll?
 - Soll der Filesystem-Export-Pfad ein Pflichtfeld für bestimmte Setups sein oder immer opt-in?
 

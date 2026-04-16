@@ -142,6 +142,37 @@ Viele Punkte aus der Testrunde sind umgesetzt (Grounding, Parser-Bereinigung, Ti
 
 ---
 
+## Multihost-Unterstützung (Architektur-Entscheidungen umsetzen)
+
+> Analyse und Entscheidungen: [PLAN.md → „Multihost — Analyse & Entscheidungen"](PLAN.md)
+
+### Renderer: Adapter-Gruppierung nach Host
+
+- [ ] Admin-Profil: Adapter-Tabelle nach `common.host` gruppieren, wenn > 1 Host im System erkannt
+- [ ] Host-Header pro Gruppe (Hostname, Node.js-Version, OS) als visuelle Trennung
+- [ ] Bei Single-Host: bisheriges Layout unverändert (kein Overhead)
+
+### Laufzeit-Warnung bei Slave-Installation
+
+- [ ] Beim Start: wenn mehrere Hosts erkannt und AutoDoc nicht auf dem primären Host läuft → `adapter.log.warn(...)` mit Hinweis "AutoDoc sollte auf dem Master laufen"
+- [ ] Kein hartes Blockieren — nur informativer Log-Eintrag
+
+### Optionaler Filesystem-Export (ioBroker-unabhängiger Zugriff)
+
+> Löst gleichzeitig: ioBroker-Abhängigkeit, Multihost-Zugriff, kein Webserver nötig
+
+- [ ] Neues optionales Config-Feld `exportPath` (Textfeld, leer = deaktiviert)
+- [ ] Nach Generierung: `fs.writeFile(exportPath, htmlContent)` zusätzlich zu `writeFileAsync`
+- [ ] Alle drei Profile exportieren (admin.html, user.html, onboarding.html)
+- [ ] Fehler beim Schreiben → `log.warn`, kein Abbruch der normalen Generierung
+- [ ] i18n-Label + Hinweistext: "Optionaler Pfad für ioBroker-unabhängigen Zugriff (z.B. NAS-Mount)"
+
+### Self-contained HTML (Voraussetzung für portablen Export)
+
+- [ ] `qrcodejs`-Bibliothek vollständig inline einbetten (aktuell CDN mit Fallback) → kein externer Aufruf mehr
+
+---
+
 ## Phase 5 — Erweiterungen (Nice-to-Have)
 
 - [ ] PDF-Export
