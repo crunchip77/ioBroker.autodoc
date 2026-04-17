@@ -1,4 +1,4 @@
-# AutoDoc Adapter — TODO-Liste
+﻿# AutoDoc Adapter — TODO-Liste
 
 ## Wichtige Referenzen
 
@@ -123,9 +123,39 @@ Viele Punkte aus der Testrunde sind umgesetzt (Grounding, Parser-Bereinigung, Ti
 - [x] Optionale **Temperaturen** User vs. Onboarding (`jsonConfig`); leer = Anbieter-Default
 - [x] **HTTP-Timeout** pro Request konfigurierbar (Default für langsame lokale Modelle)
 
-### KI — Backlog (noch nicht umgesetzt)
+### KI — Backlog
 
-- [ ] **Bewohner-Stichpunkte für die KI (v. a. Onboarding)** — Optionales Admin-Feld (oder gezielte Anbindung bestehender Texte wie Projektbeschreibung / Zusatznotizen **nur für den LLM-Prompt**): stichpunktartige „Wahrheit“ zum Zuhause (Was läuft automatisch? Worauf achten Gäste?). Das Modell soll daraus **sinnvolle Gästesätze** formulieren statt aus dünnen Objektdaten zu raten. Datenschutz: Text wandert nur zum gewählten KI-Anbieter.
+- [x] **Bewohner-Stichpunkte für die KI** — Optionales Admin-Feld (oder gezielte Anbindung bestehender Texte wie Projektbeschreibung / Zusatznotizen **nur für den LLM-Prompt**): stichpunktartige „Wahrheit“ zum Zuhause (Was läuft automatisch? Worauf achten Gäste?). Das Modell soll daraus **sinnvolle Gästesätze** formulieren statt aus dünnen Objektdaten zu raten. Datenschutz: Text wandert nur zum gewählten KI-Anbieter.
+
+---
+
+## Multihost-Unterstützung (Architektur-Entscheidungen umsetzen)
+
+> Analyse und Entscheidungen: [PLAN.md → „Multihost — Analyse & Entscheidungen"](PLAN.md)
+
+### Renderer: Adapter-Gruppierung nach Host
+
+- [x] Admin-Profil: Host-Distribution-Sektion (Karten pro Host mit Instanz-Badges) über der Adapter-Tabelle, nur wenn > 1 Host erkannt
+- [x] Bei Single-Host: bisheriges Layout unverändert (kein Overhead)
+
+### Laufzeit-Warnung bei Slave-Installation
+
+- [x] Beim Start: wenn mehrere Hosts erkannt und AutoDoc nicht auf dem primären Host läuft → `adapter.log.warn(...)` mit Hinweis und Host-Liste
+- [x] Kein hartes Blockieren — nur informativer Log-Eintrag
+
+### Optionaler Filesystem-Export (ioBroker-unabhängiger Zugriff)
+
+> Löst gleichzeitig: ioBroker-Abhängigkeit, Multihost-Zugriff, kein Webserver nötig
+
+- [x] Neues optionales Config-Feld `exportPath` (Textfeld, leer = deaktiviert)
+- [x] Nach Generierung: `fs.promises.writeFile(exportPath, ...)` zusätzlich zu `writeFileAsync` (Methode `exportToFilesystem`)
+- [x] Alle drei Profile exportieren (autodoc-admin.html, autodoc-user.html, autodoc-onboarding.html)
+- [x] Fehler beim Schreiben → `log.warn`, kein Abbruch der normalen Generierung
+- [x] i18n-Label + Hinweistext: EN + DE vollständig, andere Sprachen englischer Fallback
+
+### Self-contained HTML (Voraussetzung für portablen Export)
+
+- [x] `qrcodejs`-Bibliothek vollständig inline einbetten → server-seitige SVG-Generierung via `qrcode` npm-Paket; kein CDN, kein Client-JS für QR-Code mehr
 
 ---
 

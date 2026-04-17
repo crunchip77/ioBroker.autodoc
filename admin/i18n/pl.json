@@ -1,3 +1,5 @@
 {
-	"autodoc adapter settings": "Ustawienia adaptera dla autodoc"
+	"autodoc adapter settings": "Ustawienia adaptera dla autodoc",
+	"Filesystem export path (optional)": "Filesystem export path (optional)",
+	"Export path hint": "Optional: additional export to a real filesystem path outside ioBroker's database. Leave empty to disable. Examples: /mnt/nas/autodoc. All three profiles are written as HTML files."
 }
