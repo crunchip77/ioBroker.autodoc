@@ -79,7 +79,7 @@
 				"readLiveStates": {
 					"type": "checkbox",
 					"label": "Read live state values (opt-in)",
-					"help": "If enabled, current values for key states (temperature, blinds/shutters level.blind, humidity, door/window/contact, motion, alarm) are read and shown in User and Onboarding room cards (and Admin device table). Room members may be channels or devices: child states with these roles are found automatically.",
+					"help": "If enabled, current values for selected state roles are read and shown in User/Onboarding room cards and the Admin device table (badges next to device names). Includes e.g. temperature, blinds (level.blind), dimmers, lights (switch.light), outlets (switch/plug), humidity, power metrics, locks, door/window/contact, motion, alarm. Room members may be channels or devices — matching child states are found automatically. Very custom or empty roles are skipped.",
 					"newLine": true,
 					"xs": 12,
 					"sm": 12,
