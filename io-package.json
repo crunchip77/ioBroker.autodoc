@@ -197,7 +197,9 @@
         "hideInstanceDetailsInMarkdown": false,
         "maxDocumentedInstances": 0,
         "maxStoredFiles": 5,
-        "baseUrl": ""
+        "baseUrl": "",
+        "exportPath": "",
+        "aiOwnerHints": ""
     },
     "objects": [],
     "instanceObjects": [
