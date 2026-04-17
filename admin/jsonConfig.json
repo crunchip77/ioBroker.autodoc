@@ -79,7 +79,7 @@
 				"readLiveStates": {
 					"type": "checkbox",
 					"label": "Read live state values (opt-in)",
-					"help": "If enabled, current values for key states (temperature, humidity, door/window/contact, motion, alarm) are read and shown in the Onboarding profile. Room members may be channels or devices: child states with these roles are found automatically.",
+					"help": "If enabled, current values for key states (temperature, blinds/shutters level.blind, humidity, door/window/contact, motion, alarm) are read and shown in User and Onboarding room cards (and Admin device table). Room members may be channels or devices: child states with these roles are found automatically.",
 					"newLine": true,
 					"xs": 12,
 					"sm": 12,
