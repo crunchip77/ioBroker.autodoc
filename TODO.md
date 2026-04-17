@@ -178,6 +178,47 @@ Viele Punkte aus der Testrunde sind umgesetzt (Grounding, Parser-Bereinigung, Ti
 - [ ] Backup-Adapter Integration
 - [ ] Custom Templates (Ebene 1 + 3: Kapitel-Auswahl + freie Zusatz-Sektionen) — Details: [PLAN.md → „Custom Templates"](PLAN.md)
 
+### Phase 5.x — Onboarding / User / Visualisierung (priorisiert)
+
+> **Reihenfolge:** 1 → 2 → 3 (schneller Nutzen zuerst; Mermaid gestaffelt). Detail: [PLAN.md — Phase 5.x](PLAN.md#phase-5x--onboarding--troubleshooting--mermaid-gestaffelt)
+
+#### 5.x.1 Notfall & Troubleshooting für Laien (Hybrid)
+
+**MVP**
+
+- [ ] Eigener Abschnitt in **Onboarding** (optional **User**): Alltagssprache, keine Technik-IDs
+- [ ] Inhalt **primär manuell**: Kontakt / wer hilft / wo Sicherungen / was bei Totalausfall — neue Felder oder Erweiterung `manualContext` (keine erfundenen Diagnosen)
+- [ ] **Sichere Auto-Anteile** (optional): nur aus bereits bekannten Fakten (z. B. konfigurierte ioBroker-Basis-URL, Projektname), klar von „euren Notizen“ getrennt
+
+**Später**
+
+- [ ] Kurze Checklisten nur, wenn die Diagnose **konkrete** Befunde liefert (z. B. Instanz offline — mit Hinweis „nur Momentaufnahme“)
+
+#### 5.x.2 Quick Start & Raumguides (strukturierter)
+
+**MVP**
+
+- [ ] `documentModel`: feste Blöcke z. B. **Top 3–5 Aktionen** (systemweit) + pro Raum **2–3 Highlights** (Gerät/Funktion in Kurzform)
+- [ ] Renderer (**Onboarding**, optional **User**): Kacheln/Listen aus diesen Blöcken — weniger „eine Wand aus Text“
+- [ ] KI nur zur **Formulierung** der Sätze, nicht als einzige Quelle der Struktur (Grounding bleibt)
+
+**Später**
+
+- [ ] Relevanz/Sortierung (z. B. nach Kategorie aus `roleMapper` / `enum.functions`)
+- [ ] Unterschiedliche Länge Onboarding (kürzer) vs. User (etwas mehr)
+
+#### 5.x.3 Mermaid / kleine Graphen (gestaffelt)
+
+**Stufe 1 — MVP (kuratiert, wenig Risiko)**
+
+- [ ] Mermaid aus **manuell gepflegtem** Inhalt (z. B. eigenes Config- oder `manualContext`-Feld „Diagramm / Zusammenhänge“ mit Mermaid-Code)
+- [ ] Ausgabe mindestens im **Markdown**-Export; **HTML**: technische Variante festlegen (z. B. Codeblock + Hinweis, oder später Client-Render — Abwägung Bundle/Offline)
+
+**Stufe 2 — Später (klein & automatisch)**
+
+- [ ] Optional: **begrenzter** Auto-Graph aus vorhandenen Daten (z. B. Multihost: Host → Instanzen, **hartes Knotenlimit**)
+- [ ] Nicht Ziel: vollständiger Skript-/State-Graph für große Installationen ohne Filter
+
 ### Zukunftsvision / spätere Themen (noch offen)
 
 > Siehe [PLAN.md](PLAN.md) → „Zukunftsvision — Zusammenhänge & Kontext“. Kein aktueller Umsetzungsauftrag; dient Abstimmung (z. B. externe Doku-Links, ggf. Diagramme, tieferer Kontext).
@@ -228,7 +269,7 @@ Grundgedanke: Skript-Quellcode (`common.source`) durch KI analysieren, um automa
 
 ## Bewusst weggelassen
 
-- ❌ Mermaid-Diagramme / Graphen
+- ❌ Ungefilterte „Komplett-Graphen“ (z. B. Skript-/State für große Installationen ohne Knotenlimit) — **gestaffelte Mermaid-Umsetzung:** Phase 5.x
 - ❌ Vollständiges Code-Parsing für Abhängigkeiten
 - ❌ REST-API / Webhooks
 - ❌ Alexa/Google Home Integration

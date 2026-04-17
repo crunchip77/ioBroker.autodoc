@@ -206,6 +206,19 @@ Echte Zielgruppen-Dokus statt "mehr oder weniger Detail vom selben Template".
 
 **Erledigt (ehemals Phase 5-Idee):** QR-Code und teilbarer Link für das Onboarding-Profil — **serverseitig** als eingebettetes SVG (npm-Paket `qrcode`), **ohne CDN** und ohne zusätzliches Client-Skript für die QR-Erzeugung. „Link kopieren“ nutzt dieselbe öffentliche `/files/…`-URL wie der QR-Code (Voraussetzung: sinnvoll gesetzte **ioBroker base URL** in den Adapter-Einstellungen; siehe README).
 
+### Phase 5.x — Onboarding / Troubleshooting / Mermaid (gestaffelt)
+
+> Abgestimmt für die nächste Ausbaustufe. Checkboxen: [TODO.md — Phase 5.x](TODO.md). **Priorität:** 1 → 2 → 3.
+
+**1. Notfall & Troubleshooting für Laien (Hybrid)**  
+MVP: eigener Onboarding-Abschnitt (optional User), Inhalt primär **manuell** (Kontakte, Totalausfall, wo Hilfe) — keine erfundenen Diagnosen; optional **sichere** Auto-Snippets nur aus bekannten Config-Fakten (z. B. Basis-URL). Später: kurze Checklisten nur bei **konkreten** Diagnose-Befunden (Momentaufnahme).
+
+**2. Quick Start & Raumguides (strukturierter)**  
+MVP: im `documentModel` feste, kurze Blöcke (systemweit Top 3–5 Aktionen; pro Raum 2–3 Highlights); Renderer zeigt Kacheln/Listen statt nur Fließtext; KI höchstens zur Formulierung. Später: Sortierung/Relevanz (Kategorien/Funktionen), unterschiedliche Länge Onboarding vs. User.
+
+**3. Mermaid / kleine Graphen**  
+**Stufe 1 (MVP):** Mermaid aus **kuratiertem** Inhalt (eigenes Feld / `manualContext`); Ausgabe mindestens in Markdown, HTML-Darstellung bewusst wählen (Codeblock vs. Client-Render). **Stufe 2:** optional kleiner **begrenzter** Auto-Graph (z. B. Multihost Host → Instanzen mit Knotenlimit). **Nicht Ziel:** vollständiger Skript-/State-Graph großer Installationen ohne Filter.
+
 ---
 
 ## Zukunftsvision — Zusammenhänge & Kontext (Brainstorming)
@@ -235,7 +248,7 @@ Echte Zielgruppen-Dokus statt "mehr oder weniger Detail vom selben Template".
 
 - Kurzes Kapitel **„Umgebung & Wiederanlauf“** mit festen Unterpunkten; Auto-Befüllung wo möglich, **Lücken** optional vom Nutzer (einmalig oder selten).
 - **Externe Quelle:** prominente Links (Wiki, BookStack, Markdown-Repo) statt alles in den Adapter zu duplizieren.
-- Optional später: **Mermaid** oder **Bilder** nur für diesen Kontext — siehe auch „Bewusst weggelassen“ (Mermaid dort bewusst zurückgestellt; hier **Neuabwägung** möglich).
+- Optional später: **Mermaid** oder **Bilder** nur für diesen Kontext — **Umsetzung Mermaid:** [Phase 5.x](TODO.md) (gestaffelt: kuratiert → klein & auto); Bilder weiterhin separat zu klären.
 
 ### User-Profil
 
@@ -484,7 +497,7 @@ Master → Slave1 (zigbee.0, hm-rpc.0)
 
 | Feature                                       | Grund                                       |
 | --------------------------------------------- | ------------------------------------------- |
-| Mermaid-Diagramme / Graphen                   | Für v1.0 zurückgestellt (Komplexität); **Neuabwägung** möglich unter „Zukunftsvision — Zusammenhänge & Kontext“ (optional, auto- oder kuratiert) |
+| Ungefilterte Groß-Graphen (Skript/State ohne Limit) | Bewusst nicht als „Komplett-Graph“; **Mermaid gestaffelt** siehe [Phase 5.x](TODO.md) (kuratiert → klein & auto) |
 | Vollständiges Code-Parsing für Abhängigkeiten | Fehleranfällig, unverhältnismäßiger Aufwand |
 | REST-API / Webhooks                           | Wer JSON hat, kann selbst damit arbeiten    |
 | Alexa/Google Home Integration                 | Kein Bezug zur Dokumentation                |
@@ -501,4 +514,4 @@ Master → Slave1 (zigbee.0, hm-rpc.0)
 | **v0.x**   | Basis: Adapter-Inventar, Export, Profile, Versionierung                                                                  | ✅ main    | interner Meilenstein                                      |
 | **v0.9.x** | RC: drei Profile, Aliase, UX-Akzente, RAM-Summe, Onboarding-Capabilities, Filter, Doku-Score-Erklärung, README (Changelog) | ✅ main/dev | Forum / Custom-URL; vor npm mit Checker abgleichen        |
 | **npm/stable** | Erster Eintrag **npm** + **ioBroker.repositories** nach Adapter-Checker grün                                         | ⬜ geplant | Versionsnummer beim Release festlegen (nicht mit RC verwechseln) |
-| **v1.x**   | Phase 5: PDF, Backup-Integration, Custom Templates                                                                       | ⬜ geplant |                                                           |
+| **v1.x**   | Phase 5: PDF, Backup-Integration, Custom Templates; Phase 5.x: Troubleshooting (Hybrid), Quick Start/Raumguides, Mermaid (gestaffelt)                                                                       | ⬜ geplant | Reihenfolge 5.x: [TODO.md](TODO.md) |
