@@ -36,6 +36,21 @@ Configure the instance in **ioBroker Admin** (tabs for basics, manual notes, adv
 
 Useful **states** (selection): `action.generate`; `info.lastGeneration` / `info.nextGeneration`; `info.htmlUrlAdmin` / `info.htmlUrlUser` / `info.htmlUrlOnboarding`; `info.templateVersion` (HTML template / renderer alignment).
 
+### Public base URL (QR code and “Copy link”)
+
+The **Onboarding** HTML includes a QR code and a **Copy link** control. Both use the same target: the onboarding file under `/files/autodoc.<instance>/autodoc-onboarding.html`, prefixed with the **ioBroker base URL** from the adapter settings (**Advanced** tab: *ioBroker base URL (optional)*).
+
+- Set the base URL to what you use in the browser to reach ioBroker (scheme, host, port if needed), **without** a trailing slash. Examples: `https://home.example.com:8081`, `http://192.168.1.10:8081`.
+- If it is **empty or wrong**, guests scanning the QR code or using the copied link from another device may get a broken or internal-only URL. After changing it, run documentation generation again so the HTML is rebuilt.
+
+### Optional filesystem export (Docker / NAS)
+
+**Filesystem export path** writes the three HTML profiles to a real directory (in addition to ioBroker’s `/files/…` storage). In **Docker**, map a host folder into the container and set **export path** to the **container-side** path (not the Unraid/host path). See the field help in Admin for a short reminder.
+
+### AI context hints (guest vs resident)
+
+**AI context hints** are injected only into the LLM prompt; they are **not** printed in the documentation. For **guest onboarding**, prefer everyday facts. Heavy IT or project wording (adapters, repos, …) can cause the model to leak jargon into guest text; a **safety step** then replaces that AI block with neutral guest wording. That is intentional. The **resident / family** profile does not use the same guest-only restriction. Full wording appears in the Admin UI hint next to the field.
+
 ## Features (overview)
 
 - Discovery across instances, hosts, enums, scripts, aliases, userdata, system config
@@ -50,6 +65,12 @@ For **roadmap, phases, and detailed internal notes**, see [`TODO.md`](TODO.md) a
 **Contributing / releases:** see [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 ## Changelog
+
+### Documentation & i18n (dev; README / TODO / PLAN)
+
+- README: **Public base URL** (QR code + copy link), **filesystem export** (Docker/container path), **AI context hints** (guest safety filter vs resident profile).
+- `TODO.md` / `PLAN.md`: Phase 5 QR-Beschreibung an serverseitiges SVG (`qrcode`-Paket, kein CDN) angeglichen; Zukunftsvision als nicht bindend gekennzeichnet.
+- Admin: erweiterte Hilfetexte zu **KI-Kontexthinweisen** (DE/EN/FR).
 
 ### 0.9.7 (2026-04-11)
 

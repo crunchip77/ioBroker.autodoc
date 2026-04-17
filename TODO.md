@@ -161,10 +161,15 @@ Viele Punkte aus der Testrunde sind umgesetzt (Grounding, Parser-Bereinigung, Ti
 
 ## Phase 5 — Erweiterungen (Nice-to-Have)
 
+> **Hinweis:** QR-Code und teilbarer Link im Onboarding-Profil sind **bereits umgesetzt** (serverseitiges SVG via npm-Paket `qrcode`, kein CDN; „Link kopieren“ = gleiche URL wie der QR-Code). Die frühere Checkbox „qrcodejs CDN“ war veraltet und wurde entfernt.
+
 - [ ] PDF-Export
 - [ ] Backup-Adapter Integration
 - [ ] Custom Templates
-- [x] QR-Code für Onboarding (qrcodejs CDN + Fallback)
+
+### Zukunftsvision / spätere Themen (noch offen)
+
+> Siehe [PLAN.md](PLAN.md) → „Zukunftsvision — Zusammenhänge & Kontext“. Kein aktueller Umsetzungsauftrag; dient Abstimmung (z. B. externe Doku-Links, ggf. Diagramme, tieferer Kontext).
 
 ---
 

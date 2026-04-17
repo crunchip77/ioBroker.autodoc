@@ -106,6 +106,10 @@
 	"French": "Français",
 	"User/Family": "Utilisateur/Famille",
 	"Onboarding": "Onboarding",
+	"AI context hints": "Indices de contexte IA",
+	"AI context hints (owner notes)": "Indices de contexte IA (notes opérateur)",
+	"AI context hints hint": "Faits optionnels sur le logement pour l'IA — uniquement dans l'invite au modèle, jamais dans la documentation exportée. Exemple : « - Lumières salon éteintes à 22 h ». **Onboarding invités :** préférez un langage courant (« nous finissons l'installation »). Du jargon IT/projet (« adapter », « repository »…) peut être recopié par le modèle ; un **filtre de sécurité** remplace alors le bloc IA invités par un texte neutre — comportement voulu. Le profil **résidents** n'a pas cette contrainte.",
+	"AI context hints help": "Points courts vus par l'IA seulement — pas dans la doc exportée. Confidentialité : envoyé au fournisseur IA. **Profil invités :** voir l'indication détaillée ci-dessus.",
 	"Filesystem export path (optional)": "Filesystem export path (optional)",
 	"Export path hint": "Optional: additional export to a real filesystem path outside ioBroker's database. Leave empty to disable. Examples: /mnt/nas/autodoc. All three profiles are written as HTML files."
 }
