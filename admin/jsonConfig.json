@@ -210,10 +210,11 @@
 				"xl": 12
 			},
 			"aiOwnerHints": {
-				"type": "textarea",
+				"type": "text",
 				"label": "AI context hints (owner notes)",
 				"help": "AI context hints help",
-				"rows": 6,
+				"minRows": 6,
+				"maxRows": 18,
 				"newLine": true,
 				"xs": 12,
 				"sm": 12,
