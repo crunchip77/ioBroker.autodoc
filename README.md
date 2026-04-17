@@ -4,7 +4,7 @@
 
 Automatically generates structured documentation (HTML, Markdown, JSON) for your ioBroker installation — on demand, on a schedule, or when the system changes.
 
-**Version:** 0.9.7
+**Version:** 0.9.8
 
 | | |
 | --- | --- |
@@ -66,11 +66,16 @@ For **roadmap, phases, and detailed internal notes**, see [`TODO.md`](TODO.md) a
 
 ## Changelog
 
-### Documentation & i18n (dev; README / TODO / PLAN)
+### 0.9.8 (2026-04-17)
 
-- README: **Public base URL** (QR code + copy link), **filesystem export** (Docker/container path), **AI context hints** (guest safety filter vs resident profile).
-- `TODO.md` / `PLAN.md`: Phase 5 QR-Beschreibung an serverseitiges SVG (`qrcode`-Paket, kein CDN) angeglichen; Zukunftsvision als nicht bindend gekennzeichnet.
-- Admin: erweiterte Hilfetexte zu **KI-Kontexthinweisen** (DE/EN/FR).
+- HTML: QR code server-side SVG (`qrcode` package, offline-safe); **Copy link** = same public URL as QR (`baseUrl` + `/files/…`)
+- Config: optional **filesystem export** (`exportPath`); **AI context hints** multiline textarea; `aiOwnerHints` / `exportPath` in `io-package` native defaults
+- Multihost: host distribution block (admin); warning when AutoDoc runs on a non-primary host
+- AI: guest vs resident handling for context hints (safety replace + Admin help text DE/EN/FR)
+- Diagnosis: RAM/CPU (primary host), **copy for forum** snippet
+- Changelog: fewer stored entries / fewer expanded rows in HTML
+- Admin: AI tab fields use `hidden` (valid jsonConfig); discovery: npm probe when single host
+- Docs: README (**base URL**, Docker export, AI hints); `TODO.md` / `PLAN.md` aligned with current QR implementation
 
 ### 0.9.7 (2026-04-11)
 

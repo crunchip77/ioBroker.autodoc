@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "autodoc",
-        "version": "0.9.7",
+        "version": "0.9.8",
         "news": {
+            "0.9.8": {
+                "en": "QR code as embedded SVG (npm qrcode, no CDN); optional filesystem export (exportPath); multihost host overview + non-primary host warning; AI context hints (textarea) with guest-safe prompting; copy link uses same URL as QR; diagnosis RAM/CPU + copy-for-forum; shorter changelog storage; jsonConfig visibility via hidden; npm version probe on single-host Docker; README base URL & export notes; native exportPath/aiOwnerHints; RENDERER_VERSION bumps",
+                "de": "QR-Code als eingebettetes SVG (npm qrcode, kein CDN); optionaler Filesystem-Export (exportPath); Multihost-Übersicht + Warnung auf Nicht-Master-Host; KI-Kontexthinweise (Textarea) mit gasttauglichem Prompt; Kopierlink = QR-URL; Diagnose RAM/CPU + Forum kopieren; kürzeres Änderungsprotokoll; jsonConfig Sichtbarkeit über hidden; npm-Erkennung bei Single-Host-Docker; README Basis-URL & Export; native exportPath/aiOwnerHints; RENDERER_VERSION",
+                "ru": "QR SVG (qrcode); exportPath; multihost; KI hints; Diagnose; jsonConfig; npm; docs",
+                "pt": "QR SVG (qrcode); exportPath; multihost; AI hints; diagnosis; jsonConfig; npm; docs",
+                "nl": "QR SVG (qrcode); exportPath; multihost; AI-hints; diagnose; jsonConfig; npm; docs",
+                "fr": "QR SVG (qrcode) ; exportPath ; multihost ; indices IA ; diagnostic ; jsonConfig ; npm ; docs",
+                "it": "QR SVG (qrcode); exportPath; multihost; AI hints; diagnostica; jsonConfig; npm; docs",
+                "es": "QR SVG (qrcode); exportPath; multihost; IA hints; diagnóstico; jsonConfig; npm; docs",
+                "pl": "QR SVG (qrcode); exportPath; multihost; AI hints; diagnostyka; jsonConfig; npm; docs",
+                "uk": "QR SVG (qrcode); exportPath; multihost; KI hints; діагностика; jsonConfig; npm; docs",
+                "zh-cn": "QR 内嵌 SVG（qrcode）；可选 exportPath；多主机；AI 上下文提示；诊断；jsonConfig；npm；文档"
+            },
             "0.9.7": {
                 "en": "AI: HTTP timeout & temperatures; grounding; stricter DE prompts; parse cleanup; Ollama default temp; quality fallback; onboarding dump + iroBroker typo detection. Startup logs; default gen-on-start; HTML userdata/alias collapse fix (end-of-script). Export schemaVersion autodoc-json-1; removed phantom 1.0.0 news",
                 "de": "KI: Timeout/Temperaturen, Grounding, DE-Prompts, Parser; Ollama-Standardtemp; Qualitäts-Fallback; technischer Dump + Tippfehler-Erkennung. Start-Logs; Standard „Doku beim Start“; HTML userdata/Alias-Zuklappen (Skript am Seitenende). schemaVersion autodoc-json-1; news 1.0.0 entfernt",
