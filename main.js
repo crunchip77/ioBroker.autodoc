@@ -71,9 +71,9 @@ class Autodoc extends utils.Adapter {
 
 		await this.setStateAsync('info.connection', { val: false, ack: true });
 
-	this.log.info('AutoDoc adapter starting');
-	await this.checkMultihostPlacement();
-	this.log.debug(`config projectName: ${this.config.projectName || ''}`);
+		this.log.info('AutoDoc adapter starting');
+		await this.checkMultihostPlacement();
+		this.log.debug(`config projectName: ${this.config.projectName || ''}`);
 		this.log.debug(`config targetSystem: ${this.config.targetSystem || ''}`);
 		this.log.debug(`config autoGenerateOnStart: ${this.config.autoGenerateOnStart}`);
 		this.log.debug(`config onlyEnabledInstances: ${this.config.onlyEnabledInstances}`);
@@ -583,14 +583,16 @@ class Autodoc extends utils.Adapter {
 				.map(r => r.id)
 				.filter(Boolean)
 				.sort();
-			if (hostIds.length <= 1) return;
+			if (hostIds.length <= 1) {
+				return;
+			}
 
 			const currentHostId = `system.host.${this.host}`;
 			if (hostIds[0] !== currentHostId) {
 				this.log.warn(
 					`Multihost setup detected (${hostIds.length} hosts). AutoDoc is running on "${this.host}" which may not be the master host. ` +
-					`For correct filesystem export and npm access, AutoDoc should run on the master. ` +
-					`Detected hosts: ${hostIds.map(h => h.replace('system.host.', '')).join(', ')}`,
+						`For correct filesystem export and npm access, AutoDoc should run on the master. ` +
+						`Detected hosts: ${hostIds.map(h => h.replace('system.host.', '')).join(', ')}`,
 				);
 			}
 		} catch (e) {
@@ -675,16 +677,16 @@ class Autodoc extends utils.Adapter {
 			// Keep autodoc-latest.html pointing to the admin profile for backward compat
 			await this.writeFileAsync(basePath, 'autodoc-latest.html', htmlAll.admin);
 
-		// Rotate old timestamped files
-		const maxFiles = this.config.maxStoredFiles > 0 ? this.config.maxStoredFiles : 5;
-		await this.rotateFiles(basePath, maxFiles);
+			// Rotate old timestamped files
+			const maxFiles = this.config.maxStoredFiles > 0 ? this.config.maxStoredFiles : 5;
+			await this.rotateFiles(basePath, maxFiles);
 
-		// Optional filesystem export — write HTML files to a real OS path outside ioBroker's DB
-		await this.exportToFilesystem(htmlAll);
+			// Optional filesystem export — write HTML files to a real OS path outside ioBroker's DB
+			await this.exportToFilesystem(htmlAll);
 
-		// Build and store profile URLs (use pre-built URL from generateDocumentation if available)
-		const baseUrl = prebuiltBaseUrl !== undefined ? prebuiltBaseUrl : await this.buildBaseUrl();
-		const filePath = profile => `/files/${this.namespace}.files/autodoc-${profile}.html`;
+			// Build and store profile URLs (use pre-built URL from generateDocumentation if available)
+			const baseUrl = prebuiltBaseUrl !== undefined ? prebuiltBaseUrl : await this.buildBaseUrl();
+			const filePath = profile => `/files/${this.namespace}.files/autodoc-${profile}.html`;
 			await this.setStateAsync('info.htmlUrlAdmin', { val: `${baseUrl}${filePath('admin')}`, ack: true });
 			await this.setStateAsync('info.htmlUrlUser', { val: `${baseUrl}${filePath('user')}`, ack: true });
 			await this.setStateAsync('info.htmlUrlOnboarding', {
@@ -762,14 +764,18 @@ class Autodoc extends utils.Adapter {
 	 */
 	async exportToFilesystem(htmlAll) {
 		const exportPath = (this.config.exportPath || '').trim();
-		if (!exportPath) return;
+		if (!exportPath) {
+			return;
+		}
 
 		try {
 			await fs.promises.mkdir(exportPath, { recursive: true });
-			const profiles = /** @type {const} */ (['admin', 'user', 'onboarding']);
+			const profiles = ['admin', 'user', 'onboarding'];
 			for (const profile of profiles) {
 				const content = htmlAll[profile];
-				if (!content) continue;
+				if (!content) {
+					continue;
+				}
 				const dest = path.join(exportPath, `autodoc-${profile}.html`);
 				await fs.promises.writeFile(dest, content, 'utf8');
 			}
@@ -814,34 +820,34 @@ class Autodoc extends utils.Adapter {
 			);
 			docModel.ai = await this.aiEnhancer.enhance(docModel);
 
-		this.log.info(`Documentation generation (${trigger}): 4/5 — rendering Markdown and HTML…`);
-		const markdown = this.markdownRenderer.renderMarkdown(docModel);
+			this.log.info(`Documentation generation (${trigger}): 4/5 — rendering Markdown and HTML…`);
+			const markdown = this.markdownRenderer.renderMarkdown(docModel);
 
-		// Pre-build URLs and QR code SVGs so HTML is fully self-contained (no CDN)
-		const baseUrl = await this.buildBaseUrl();
-		const profileFilePath = profile => `/files/${this.namespace}.files/autodoc-${profile}.html`;
-		const renderUrls = {
-			admin: baseUrl ? `${baseUrl}${profileFilePath('admin')}` : '',
-			user: baseUrl ? `${baseUrl}${profileFilePath('user')}` : '',
-			onboarding: baseUrl ? `${baseUrl}${profileFilePath('onboarding')}` : '',
-		};
-		const renderQrSvgs = {};
-		for (const [profile, url] of Object.entries(renderUrls)) {
-			if (url) {
-				try {
-					renderQrSvgs[profile] = await QRCode.toString(url, { type: 'svg', margin: 1, width: 120 });
-				} catch (e) {
-					this.log.debug(`QR code generation skipped for ${profile}: ${e.message}`);
+			// Pre-build URLs and QR code SVGs so HTML is fully self-contained (no CDN)
+			const baseUrl = await this.buildBaseUrl();
+			const profileFilePath = profile => `/files/${this.namespace}.files/autodoc-${profile}.html`;
+			const renderUrls = {
+				admin: baseUrl ? `${baseUrl}${profileFilePath('admin')}` : '',
+				user: baseUrl ? `${baseUrl}${profileFilePath('user')}` : '',
+				onboarding: baseUrl ? `${baseUrl}${profileFilePath('onboarding')}` : '',
+			};
+			const renderQrSvgs = {};
+			for (const [profile, url] of Object.entries(renderUrls)) {
+				if (url) {
+					try {
+						renderQrSvgs[profile] = await QRCode.toString(url, { type: 'svg', margin: 1, width: 120 });
+					} catch (e) {
+						this.log.debug(`QR code generation skipped for ${profile}: ${e.message}`);
+					}
 				}
 			}
-		}
-		const renderOptions = { urls: renderUrls, qrSvgs: renderQrSvgs };
+			const renderOptions = { urls: renderUrls, qrSvgs: renderQrSvgs };
 
-		const htmlAll = this.htmlRenderer.renderAllHtml(docModel, renderOptions);
-		const json = JSON.stringify(docModel, null, 2);
+			const htmlAll = this.htmlRenderer.renderAllHtml(docModel, renderOptions);
+			const json = JSON.stringify(docModel, null, 2);
 
-		this.log.info(`Documentation generation (${trigger}): 5/5 — writing files and updating states…`);
-		await this.persistDocumentation(docModel, markdown, htmlAll, json, baseUrl);
+			this.log.info(`Documentation generation (${trigger}): 5/5 — writing files and updating states…`);
+			await this.persistDocumentation(docModel, markdown, htmlAll, json, baseUrl);
 
 			await this.versionTracker.storeCurrentVersion(docModel);
 
