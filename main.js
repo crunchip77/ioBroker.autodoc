@@ -3,7 +3,10 @@
  * Created with @iobroker/create-adapter v3.1.2
  */
 
+const fs = require('fs');
+const path = require('path');
 const utils = require('@iobroker/adapter-core');
+const QRCode = require('qrcode');
 
 // Import modular components
 const Discovery = require('./lib/discovery');
@@ -68,8 +71,9 @@ class Autodoc extends utils.Adapter {
 
 		await this.setStateAsync('info.connection', { val: false, ack: true });
 
-		this.log.info('AutoDoc adapter starting');
-		this.log.debug(`config projectName: ${this.config.projectName || ''}`);
+	this.log.info('AutoDoc adapter starting');
+	await this.checkMultihostPlacement();
+	this.log.debug(`config projectName: ${this.config.projectName || ''}`);
 		this.log.debug(`config targetSystem: ${this.config.targetSystem || ''}`);
 		this.log.debug(`config autoGenerateOnStart: ${this.config.autoGenerateOnStart}`);
 		this.log.debug(`config onlyEnabledInstances: ${this.config.onlyEnabledInstances}`);
@@ -567,6 +571,34 @@ class Autodoc extends utils.Adapter {
 	}
 
 	/**
+	 * Warn if AutoDoc is running on a non-primary host in a multihost setup.
+	 * AutoDoc should run on the master to ensure correct filesystem export and npm access.
+	 *
+	 * @returns {Promise<void>}
+	 */
+	async checkMultihostPlacement() {
+		try {
+			const hostsView = await this.getObjectViewAsync('system', 'host', {});
+			const hostIds = (hostsView && hostsView.rows ? hostsView.rows : [])
+				.map(r => r.id)
+				.filter(Boolean)
+				.sort();
+			if (hostIds.length <= 1) return;
+
+			const currentHostId = `system.host.${this.host}`;
+			if (hostIds[0] !== currentHostId) {
+				this.log.warn(
+					`Multihost setup detected (${hostIds.length} hosts). AutoDoc is running on "${this.host}" which may not be the master host. ` +
+					`For correct filesystem export and npm access, AutoDoc should run on the master. ` +
+					`Detected hosts: ${hostIds.map(h => h.replace('system.host.', '')).join(', ')}`,
+				);
+			}
+		} catch (e) {
+			this.log.debug(`Multihost check skipped: ${e.message}`);
+		}
+	}
+
+	/**
 	 * Build a direct URL to autodoc-latest.html via the web or admin adapter.
 	 *
 	 * @returns {Promise<string>} URL string or empty string if not determinable.
@@ -605,9 +637,10 @@ class Autodoc extends utils.Adapter {
 	 * @param {string} markdown Markdown output.
 	 * @param {{ admin: string, user: string, onboarding: string }} htmlAll HTML per profile.
 	 * @param {string} json JSON output.
+	 * @param {string} [prebuiltBaseUrl] Pre-built base URL (avoids a second buildBaseUrl() call).
 	 * @returns {Promise<void>} Promise that resolves when states are written.
 	 */
-	async persistDocumentation(docModel, markdown, htmlAll, json) {
+	async persistDocumentation(docModel, markdown, htmlAll, json, prebuiltBaseUrl) {
 		try {
 			const now = new Date();
 			const pad = n => String(n).padStart(2, '0');
@@ -642,13 +675,16 @@ class Autodoc extends utils.Adapter {
 			// Keep autodoc-latest.html pointing to the admin profile for backward compat
 			await this.writeFileAsync(basePath, 'autodoc-latest.html', htmlAll.admin);
 
-			// Rotate old timestamped files
-			const maxFiles = this.config.maxStoredFiles > 0 ? this.config.maxStoredFiles : 5;
-			await this.rotateFiles(basePath, maxFiles);
+		// Rotate old timestamped files
+		const maxFiles = this.config.maxStoredFiles > 0 ? this.config.maxStoredFiles : 5;
+		await this.rotateFiles(basePath, maxFiles);
 
-			// Build and store profile URLs
-			const baseUrl = await this.buildBaseUrl();
-			const filePath = profile => `/files/${this.namespace}.files/autodoc-${profile}.html`;
+		// Optional filesystem export — write HTML files to a real OS path outside ioBroker's DB
+		await this.exportToFilesystem(htmlAll);
+
+		// Build and store profile URLs (use pre-built URL from generateDocumentation if available)
+		const baseUrl = prebuiltBaseUrl !== undefined ? prebuiltBaseUrl : await this.buildBaseUrl();
+		const filePath = profile => `/files/${this.namespace}.files/autodoc-${profile}.html`;
 			await this.setStateAsync('info.htmlUrlAdmin', { val: `${baseUrl}${filePath('admin')}`, ack: true });
 			await this.setStateAsync('info.htmlUrlUser', { val: `${baseUrl}${filePath('user')}`, ack: true });
 			await this.setStateAsync('info.htmlUrlOnboarding', {
@@ -718,6 +754,32 @@ class Autodoc extends utils.Adapter {
 	}
 
 	/**
+	 * Export HTML profiles to a real filesystem path (opt-in via config.exportPath).
+	 * Runs after the ioBroker file write — failures produce a warning but do not abort generation.
+	 *
+	 * @param {{ admin: string, user: string, onboarding: string }} htmlAll HTML per profile.
+	 * @returns {Promise<void>}
+	 */
+	async exportToFilesystem(htmlAll) {
+		const exportPath = (this.config.exportPath || '').trim();
+		if (!exportPath) return;
+
+		try {
+			await fs.promises.mkdir(exportPath, { recursive: true });
+			const profiles = /** @type {const} */ (['admin', 'user', 'onboarding']);
+			for (const profile of profiles) {
+				const content = htmlAll[profile];
+				if (!content) continue;
+				const dest = path.join(exportPath, `autodoc-${profile}.html`);
+				await fs.promises.writeFile(dest, content, 'utf8');
+			}
+			this.log.info(`Filesystem export written to: ${exportPath}`);
+		} catch (e) {
+			this.log.warn(`Filesystem export failed (${exportPath}): ${e.message} — ioBroker output unaffected`);
+		}
+	}
+
+	/**
 	 * Generate and store documentation.
 	 *
 	 * @param {string} trigger Generation trigger source.
@@ -752,13 +814,34 @@ class Autodoc extends utils.Adapter {
 			);
 			docModel.ai = await this.aiEnhancer.enhance(docModel);
 
-			this.log.info(`Documentation generation (${trigger}): 4/5 — rendering Markdown and HTML…`);
-			const markdown = this.markdownRenderer.renderMarkdown(docModel);
-			const htmlAll = this.htmlRenderer.renderAllHtml(docModel);
-			const json = JSON.stringify(docModel, null, 2);
+		this.log.info(`Documentation generation (${trigger}): 4/5 — rendering Markdown and HTML…`);
+		const markdown = this.markdownRenderer.renderMarkdown(docModel);
 
-			this.log.info(`Documentation generation (${trigger}): 5/5 — writing files and updating states…`);
-			await this.persistDocumentation(docModel, markdown, htmlAll, json);
+		// Pre-build URLs and QR code SVGs so HTML is fully self-contained (no CDN)
+		const baseUrl = await this.buildBaseUrl();
+		const profileFilePath = profile => `/files/${this.namespace}.files/autodoc-${profile}.html`;
+		const renderUrls = {
+			admin: baseUrl ? `${baseUrl}${profileFilePath('admin')}` : '',
+			user: baseUrl ? `${baseUrl}${profileFilePath('user')}` : '',
+			onboarding: baseUrl ? `${baseUrl}${profileFilePath('onboarding')}` : '',
+		};
+		const renderQrSvgs = {};
+		for (const [profile, url] of Object.entries(renderUrls)) {
+			if (url) {
+				try {
+					renderQrSvgs[profile] = await QRCode.toString(url, { type: 'svg', margin: 1, width: 120 });
+				} catch (e) {
+					this.log.debug(`QR code generation skipped for ${profile}: ${e.message}`);
+				}
+			}
+		}
+		const renderOptions = { urls: renderUrls, qrSvgs: renderQrSvgs };
+
+		const htmlAll = this.htmlRenderer.renderAllHtml(docModel, renderOptions);
+		const json = JSON.stringify(docModel, null, 2);
+
+		this.log.info(`Documentation generation (${trigger}): 5/5 — writing files and updating states…`);
+		await this.persistDocumentation(docModel, markdown, htmlAll, json, baseUrl);
 
 			await this.versionTracker.storeCurrentVersion(docModel);
 

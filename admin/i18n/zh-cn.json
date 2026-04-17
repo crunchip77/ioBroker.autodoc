@@ -1,3 +1,5 @@
 {
-	"autodoc adapter settings": "autodoc的适配器设置"
+	"autodoc adapter settings": "autodoc的适配器设置",
+	"Filesystem export path (optional)": "Filesystem export path (optional)",
+	"Export path hint": "Optional: additional export to a real filesystem path outside ioBroker's database. Leave empty to disable. Examples: /mnt/nas/autodoc. All three profiles are written as HTML files."
 }

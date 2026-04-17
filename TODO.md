@@ -1,4 +1,4 @@
-# AutoDoc Adapter — TODO-Liste
+﻿# AutoDoc Adapter — TODO-Liste
 
 ## Wichtige Referenzen
 
@@ -118,27 +118,25 @@
 
 ### Admin-UI: Bedingte Sichtbarkeit im KI-Tab (Forum-Feedback)
 
-> Forum-Feedback (arteck) — valider UX-Hinweis, noch nicht umgesetzt.
+> Forum-Feedback (arteck) — umgesetzt mit `jsonConfig`-Eigenschaft **`hidden`** (kein `showCondition`; Admin-Schema). Anbieter „Deaktiviert“ blendet KI-Felder aus.
 
-Im KI-DOKUMENTATION-Tab sind alle Felder (API-Schlüssel, Ollama Basis-URL, Temperaturen, Timeout) sichtbar, auch wenn der Anbieter auf „Deaktiviert" steht. `jsonConfig` unterstützt `showCondition` — damit wäre provider-abhängige Sichtbarkeit möglich:
-
-- [ ] Anbieter = `disabled` → alle weiteren KI-Felder ausblenden
-- [ ] Anbieter = `ollama` → API-Schlüssel ausblenden, Basis-URL einblenden
-- [ ] Anbieter = `anthropic` / `groq` / `mistral` → API-Schlüssel einblenden, Basis-URL ausblenden
-- [ ] Temperaturen + Timeout nur sichtbar wenn Anbieter ≠ `disabled`
+- [x] Anbieter = `none` / deaktiviert → KI-Felder ausgeblendet
+- [x] Anbieter = `ollama` → API-Schlüssel ausgeblendet, Basis-URL sichtbar
+- [x] Anbieter = `anthropic` / `groq` / `mistral` → API-Schlüssel sichtbar, Basis-URL je nach Feld
+- [x] Temperaturen + Timeout nur sichtbar wenn Anbieter aktiv
 
 ---
 
-## KI-Zusammenfassung (Stand 0.9.7)
+## KI-Zusammenfassung (Stand 0.9.8)
 
 Viele Punkte aus der Testrunde sind umgesetzt (Grounding, Parser-Bereinigung, Timeout/Temperaturen optional im Admin, DE-Prompts, Lektor-Pass, Fallbacks). **Sprachqualität** mit kleinen lokalen Modellen (z. B. Ollama 8B) bleibt iterativ — Feedback im Forum oder als Issues willkommen.
 
 - [x] Optionale **Temperaturen** User vs. Onboarding (`jsonConfig`); leer = Anbieter-Default
 - [x] **HTTP-Timeout** pro Request konfigurierbar (Default für langsame lokale Modelle)
 
-### KI — Backlog (noch nicht umgesetzt)
+### KI — Backlog
 
-- [ ] **Bewohner-Stichpunkte für die KI (v. a. Onboarding)** — Optionales Admin-Feld (oder gezielte Anbindung bestehender Texte wie Projektbeschreibung / Zusatznotizen **nur für den LLM-Prompt**): stichpunktartige „Wahrheit“ zum Zuhause (Was läuft automatisch? Worauf achten Gäste?). Das Modell soll daraus **sinnvolle Gästesätze** formulieren statt aus dünnen Objektdaten zu raten. Datenschutz: Text wandert nur zum gewählten KI-Anbieter.
+- [x] **Bewohner-Stichpunkte für die KI** — Optionales Admin-Feld (oder gezielte Anbindung bestehender Texte wie Projektbeschreibung / Zusatznotizen **nur für den LLM-Prompt**): stichpunktartige „Wahrheit“ zum Zuhause (Was läuft automatisch? Worauf achten Gäste?). Das Modell soll daraus **sinnvolle Gästesätze** formulieren statt aus dünnen Objektdaten zu raten. Datenschutz: Text wandert nur zum gewählten KI-Anbieter.
 
 ---
 
@@ -148,45 +146,51 @@ Viele Punkte aus der Testrunde sind umgesetzt (Grounding, Parser-Bereinigung, Ti
 
 ### Renderer: Adapter-Gruppierung nach Host
 
-- [ ] Admin-Profil: Adapter-Tabelle nach `common.host` gruppieren, wenn > 1 Host im System erkannt
-- [ ] Host-Header pro Gruppe (Hostname, Node.js-Version, OS) als visuelle Trennung
-- [ ] Bei Single-Host: bisheriges Layout unverändert (kein Overhead)
+- [x] Admin-Profil: Host-Distribution-Sektion (Karten pro Host mit Instanz-Badges) über der Adapter-Tabelle, nur wenn > 1 Host erkannt
+- [x] Bei Single-Host: bisheriges Layout unverändert (kein Overhead)
 
 ### Laufzeit-Warnung bei Slave-Installation
 
-- [ ] Beim Start: wenn mehrere Hosts erkannt und AutoDoc nicht auf dem primären Host läuft → `adapter.log.warn(...)` mit Hinweis "AutoDoc sollte auf dem Master laufen"
-- [ ] Kein hartes Blockieren — nur informativer Log-Eintrag
+- [x] Beim Start: wenn mehrere Hosts erkannt und AutoDoc nicht auf dem primären Host läuft → `adapter.log.warn(...)` mit Hinweis und Host-Liste
+- [x] Kein hartes Blockieren — nur informativer Log-Eintrag
 
 ### Optionaler Filesystem-Export (ioBroker-unabhängiger Zugriff)
 
 > Löst gleichzeitig: ioBroker-Abhängigkeit, Multihost-Zugriff, kein Webserver nötig
 
-- [ ] Neues optionales Config-Feld `exportPath` (Textfeld, leer = deaktiviert)
-- [ ] Nach Generierung: `fs.writeFile(exportPath, htmlContent)` zusätzlich zu `writeFileAsync`
-- [ ] Alle drei Profile exportieren (admin.html, user.html, onboarding.html)
-- [ ] Fehler beim Schreiben → `log.warn`, kein Abbruch der normalen Generierung
-- [ ] i18n-Label + Hinweistext: "Optionaler Pfad für ioBroker-unabhängigen Zugriff (z.B. NAS-Mount)"
+- [x] Neues optionales Config-Feld `exportPath` (Textfeld, leer = deaktiviert)
+- [x] Nach Generierung: `fs.promises.writeFile(exportPath, ...)` zusätzlich zu `writeFileAsync` (Methode `exportToFilesystem`)
+- [x] Alle drei Profile exportieren (autodoc-admin.html, autodoc-user.html, autodoc-onboarding.html)
+- [x] Fehler beim Schreiben → `log.warn`, kein Abbruch der normalen Generierung
+- [x] i18n-Label + Hinweistext: EN + DE vollständig, andere Sprachen englischer Fallback
 
 ### Self-contained HTML (Voraussetzung für portablen Export)
 
-- [ ] `qrcodejs`-Bibliothek vollständig inline einbetten (aktuell CDN mit Fallback) → kein externer Aufruf mehr
+- [x] `qrcodejs`-Bibliothek vollständig inline einbetten → server-seitige SVG-Generierung via `qrcode` npm-Paket; kein CDN, kein Client-JS für QR-Code mehr
 
 ---
 
 ## Phase 5 — Erweiterungen (Nice-to-Have)
 
+> **Hinweis:** QR-Code und teilbarer Link im Onboarding-Profil sind **bereits umgesetzt** (serverseitiges SVG via npm-Paket `qrcode`, kein CDN; „Link kopieren“ = gleiche URL wie der QR-Code). Die frühere Checkbox „qrcodejs CDN“ war veraltet und wurde entfernt.
+
 - [ ] PDF-Export
 - [ ] Backup-Adapter Integration
 - [ ] Custom Templates (Ebene 1 + 3: Kapitel-Auswahl + freie Zusatz-Sektionen) — Details: [PLAN.md → „Custom Templates"](PLAN.md)
-- [x] QR-Code für Onboarding (qrcodejs CDN + Fallback)
+
+### Zukunftsvision / spätere Themen (noch offen)
+
+> Siehe [PLAN.md](PLAN.md) → „Zukunftsvision — Zusammenhänge & Kontext“. Kein aktueller Umsetzungsauftrag; dient Abstimmung (z. B. externe Doku-Links, ggf. Diagramme, tieferer Kontext).
 
 ### System-Visitenkarte / „Für Forum kopieren" (Brainstorming / ungeklärt)
 
 > Forum-Wunsch (sigi234) — noch nicht entschieden. Details und Abwägung: [PLAN.md → „System-Visitenkarte"](PLAN.md)
 
+> **Stand 0.9.8:** Im generierten **Admin-HTML** (Diagnose) gibt es „Für Forum kopieren“ mit kompakten Systemdaten — Teilmenge dieser Idee; separater Admin-Adapter-Button o. Ä. weiterhin offen.
+
 Kompakte, teilbare Kurzübersicht der wichtigsten Systemdaten — damit helfende Forum-Nutzer nicht immer nachfragen müssen.
 
-- [ ] **Option A — Button im Admin-UI:** „Für Forum kopieren" legt vorgefertigten Textblock in die Zwischenablage (js-controller, Node.js, RAM, CPU, Instanzen, Repository)
+- [ ] **Option A — Button im Admin-UI (Adapter-Instanz):** „Für Forum kopieren" in der ioBroker-Admin-Maske (nicht nur in der HTML-Doku)
 - [ ] **Option B — System-Card als separates Export-Format:** Mini-HTML oder Plaintext, eigenständig teilbar
 - [ ] Zusammenhang zu Custom Templates (Ebene 1) prüfen — könnte dort aufgehen
 

@@ -182,18 +182,46 @@
 					"lg": 6,
 					"xl": 6
 				},
-				"additionalNotes": {
-					"type": "text",
-					"label": "General notes",
-					"help": "Anything that doesn't fit elsewhere: e.g. 'Backup runs every Sunday, server is in the basement'",
-					"newLine": true,
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12
-				},
-				"_adapterNotesHeader": {
+			"additionalNotes": {
+				"type": "text",
+				"label": "General notes",
+				"help": "Anything that doesn't fit elsewhere: e.g. 'Backup runs every Sunday, server is in the basement'",
+				"newLine": true,
+				"xs": 12,
+				"sm": 12,
+				"md": 12,
+				"lg": 12,
+				"xl": 12
+			},
+			"_aiHintsHeader": {
+				"type": "header",
+				"text": "AI context hints",
+				"size": 4,
+				"newLine": true
+			},
+			"_aiHintsHint": {
+				"type": "staticText",
+				"text": "AI context hints hint",
+				"newLine": true,
+				"xs": 12,
+				"sm": 12,
+				"md": 12,
+				"lg": 12,
+				"xl": 12
+			},
+			"aiOwnerHints": {
+				"type": "textarea",
+				"label": "AI context hints (owner notes)",
+				"help": "AI context hints help",
+				"rows": 6,
+				"newLine": true,
+				"xs": 12,
+				"sm": 12,
+				"md": 12,
+				"lg": 12,
+				"xl": 12
+			},
+			"_adapterNotesHeader": {
 					"type": "header",
 					"text": "Per-adapter notes",
 					"size": 4,
@@ -427,17 +455,32 @@
 					"lg": 6,
 					"xl": 6
 				},
-				"baseUrl": {
-					"type": "text",
-					"label": "ioBroker base URL (optional)",
-					"help": "Used for the info.htmlUrl state. Include port, e.g. 192.168.1.100:8081 or http://myserver:8082. Protocol is optional. Leave empty for auto-detection (may fail in Docker).",
-					"newLine": true,
-					"xs": 12,
-					"sm": 12,
-					"md": 8,
-					"lg": 8,
-					"xl": 8
-				}
+			"baseUrl": {
+				"type": "text",
+				"label": "ioBroker base URL (optional)",
+				"help": "Used for the info.htmlUrl state. Include port, e.g. 192.168.1.100:8081 or http://myserver:8082. Protocol is optional. Leave empty for auto-detection (may fail in Docker).",
+				"newLine": true,
+				"xs": 12,
+				"sm": 12,
+				"md": 8,
+				"lg": 8,
+				"xl": 8
+			},
+			"_exportPathDivider": {
+				"type": "divider",
+				"newLine": true
+			},
+			"exportPath": {
+				"type": "text",
+				"label": "Filesystem export path (optional)",
+				"help": "Export path hint",
+				"newLine": true,
+				"xs": 12,
+				"sm": 12,
+				"md": 12,
+				"lg": 12,
+				"xl": 12
+			}
 			}
 		},
 		"tabNotify": {
@@ -532,70 +575,77 @@
 					"lg": 8,
 					"xl": 8
 				},
-				"aiModel": {
-					"type": "text",
-					"label": "AI model (optional)",
-					"help": "Leave empty for default. Ollama: llama3.2 / gemma3. Mistral: mistral-small-latest. Groq: llama-3.3-70b-versatile. Anthropic: claude-haiku-4-5-20251001",
-					"newLine": true,
-					"xs": 12,
-					"sm": 12,
-					"md": 6,
-					"lg": 6,
-					"xl": 6
-				},
-				"aiApiKey": {
-					"type": "password",
-					"label": "API key",
-					"help": "Mistral: console.mistral.ai | Groq: starts with gsk_... | Anthropic: starts with sk-ant-... | Ollama: leave empty",
-					"newLine": true,
-					"xs": 12,
-					"sm": 12,
-					"md": 8,
-					"lg": 8,
-					"xl": 8
-				},
-				"aiBaseUrl": {
-					"type": "text",
-					"label": "Ollama base URL",
-					"help": "Only for Ollama. Default: http://localhost:11434",
-					"xs": 12,
-					"sm": 12,
-					"md": 4,
-					"lg": 4,
-					"xl": 4
-				},
-				"aiRequestTimeoutSeconds": {
-					"type": "text",
-					"label": "AI request timeout seconds (optional)",
-					"help": "Maximum wait for one LLM HTTP request. Default 300. Each generation uses several calls (user, onboarding, sometimes a German polish pass). Increase for slow local models on CPU (e.g. 480 or 600 for llama3.1:8b on NAS). Range 30–900.",
-					"newLine": true,
-					"xs": 12,
-					"sm": 12,
-					"md": 6,
-					"lg": 6,
-					"xl": 6
-				},
-				"aiTemperatureUser": {
-					"type": "text",
-					"label": "AI temperature — user profile (optional)",
-					"help": "Sampling temperature for resident-facing AI text. Leave empty for the provider default. Typical range 0–2 (Ollama, Groq, Mistral); Anthropic accepts 0–1 (values above 1 are clamped). Lower ≈ steadier wording; higher ≈ more variation — tune after testing.",
-					"newLine": true,
-					"xs": 12,
-					"sm": 12,
-					"md": 6,
-					"lg": 6,
-					"xl": 6
-				},
-				"aiTemperatureOnboarding": {
-					"type": "text",
-					"label": "AI temperature — onboarding (optional)",
-					"help": "Sampling temperature for guest/onboarding AI text. Same rules as user profile. The German Sie polish pass uses a fixed low temperature and ignores this field.",
-					"xs": 12,
-					"sm": 12,
-					"md": 6,
-					"lg": 6,
-					"xl": 6
-				}
+			"aiModel": {
+				"type": "text",
+				"label": "AI model (optional)",
+				"help": "Leave empty for default. Ollama: llama3.2 / gemma3. Mistral: mistral-small-latest. Groq: llama-3.3-70b-versatile. Anthropic: claude-haiku-4-5-20251001",
+				"hidden": "data.aiProvider === 'none'",
+				"newLine": true,
+				"xs": 12,
+				"sm": 12,
+				"md": 6,
+				"lg": 6,
+				"xl": 6
+			},
+			"aiApiKey": {
+				"type": "password",
+				"label": "API key",
+				"help": "Mistral: console.mistral.ai | Groq: starts with gsk_... | Anthropic: starts with sk-ant-... | Ollama: leave empty",
+				"hidden": "data.aiProvider === 'none' || data.aiProvider === 'ollama'",
+				"newLine": true,
+				"xs": 12,
+				"sm": 12,
+				"md": 8,
+				"lg": 8,
+				"xl": 8
+			},
+			"aiBaseUrl": {
+				"type": "text",
+				"label": "Ollama base URL",
+				"help": "Only for Ollama. Default: http://localhost:11434",
+				"hidden": "data.aiProvider !== 'ollama'",
+				"newLine": true,
+				"xs": 12,
+				"sm": 12,
+				"md": 6,
+				"lg": 6,
+				"xl": 6
+			},
+			"aiRequestTimeoutSeconds": {
+				"type": "text",
+				"label": "AI request timeout seconds (optional)",
+				"help": "Maximum wait for one LLM HTTP request. Default 300. Each generation uses several calls (user, onboarding, sometimes a German polish pass). Increase for slow local models on CPU (e.g. 480 or 600 for llama3.1:8b on NAS). Range 30–900.",
+				"hidden": "data.aiProvider === 'none'",
+				"newLine": true,
+				"xs": 12,
+				"sm": 12,
+				"md": 6,
+				"lg": 6,
+				"xl": 6
+			},
+			"aiTemperatureUser": {
+				"type": "text",
+				"label": "AI temperature — user profile (optional)",
+				"help": "Sampling temperature for resident-facing AI text. Leave empty for the provider default. Typical range 0–2 (Ollama, Groq, Mistral); Anthropic accepts 0–1 (values above 1 are clamped). Lower ≈ steadier wording; higher ≈ more variation — tune after testing.",
+				"hidden": "data.aiProvider === 'none'",
+				"newLine": true,
+				"xs": 12,
+				"sm": 12,
+				"md": 6,
+				"lg": 6,
+				"xl": 6
+			},
+			"aiTemperatureOnboarding": {
+				"type": "text",
+				"label": "AI temperature — onboarding (optional)",
+				"help": "Sampling temperature for guest/onboarding AI text. Same rules as user profile. The German Sie polish pass uses a fixed low temperature and ignores this field.",
+				"hidden": "data.aiProvider === 'none'",
+				"xs": 12,
+				"sm": 12,
+				"md": 6,
+				"lg": 6,
+				"xl": 6
+			}
 			}
 		}
 	}

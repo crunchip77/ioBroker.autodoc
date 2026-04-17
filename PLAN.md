@@ -204,13 +204,13 @@ Echte Zielgruppen-Dokus statt "mehr oder weniger Detail vom selben Template".
 - Backup-Adapter Integration (Doku mit Backup speichern)
 - Custom Templates
 
-**Erledigt (ehemals Phase 5-Idee):** QR-Code Onboarding (CDN qrcodejs + Link kopieren).
+**Erledigt (ehemals Phase 5-Idee):** QR-Code und teilbarer Link für das Onboarding-Profil — **serverseitig** als eingebettetes SVG (npm-Paket `qrcode`), **ohne CDN** und ohne zusätzliches Client-Skript für die QR-Erzeugung. „Link kopieren“ nutzt dieselbe öffentliche `/files/…`-URL wie der QR-Code (Voraussetzung: sinnvoll gesetzte **ioBroker base URL** in den Adapter-Einstellungen; siehe README).
 
 ---
 
 ## Zukunftsvision — Zusammenhänge & Kontext (Brainstorming)
 
-> **Status:** Sammelplatte für Ideen — keine feste Roadmap. Soll verhindern, dass Diskussionen (Forum, intern) verloren gehen.
+> **Status:** Sammelplatte für Ideen — **keine feste Roadmap**, derzeit **kein aktiver Umsetzungsplan**. PDF, Backup-Integration, Custom Templates und die Ideen in der Tabelle unten bleiben bewusst **zur späteren Abstimmung** (Phase 5 + diese Vision). Soll verhindern, dass Diskussionen (Forum, intern) verloren gehen.
 
 ### Auslöser
 
