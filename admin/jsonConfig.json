@@ -558,29 +558,53 @@
 					"lg": 12,
 					"xl": 12
 				},
-				"htmlFontStack": {
-					"type": "text",
-					"label": "Font stack (CSS)",
-					"help": "Font stack help",
+				"_advancedHtmlStyling": {
+					"type": "panel",
+					"label": "Advanced HTML styling (optional)",
+					"collapsable": true,
+					"color": "secondary",
 					"newLine": true,
 					"xs": 12,
 					"sm": 12,
 					"md": 12,
 					"lg": 12,
-					"xl": 12
-				},
-				"htmlExtraCss": {
-					"type": "text",
-					"label": "Extra CSS",
-					"help": "Extra CSS help",
-					"minRows": 3,
-					"maxRows": 16,
-					"newLine": true,
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12
+					"xl": 12,
+					"items": {
+						"_advancedStylingHint": {
+							"type": "staticText",
+							"text": "Advanced HTML styling hint",
+							"newLine": true,
+							"xs": 12,
+							"sm": 12,
+							"md": 12,
+							"lg": 12,
+							"xl": 12
+						},
+						"htmlFontStack": {
+							"type": "text",
+							"label": "Font stack (CSS)",
+							"help": "Font stack help",
+							"newLine": true,
+							"xs": 12,
+							"sm": 12,
+							"md": 12,
+							"lg": 12,
+							"xl": 12
+						},
+						"htmlExtraCss": {
+							"type": "text",
+							"label": "Extra CSS",
+							"help": "Extra CSS help",
+							"minRows": 3,
+							"maxRows": 16,
+							"newLine": true,
+							"xs": 12,
+							"sm": 12,
+							"md": 12,
+							"lg": 12,
+							"xl": 12
+						}
+					}
 				},
 				"_adminChaptersHeader": {
 					"type": "header",
