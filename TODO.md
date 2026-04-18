@@ -176,7 +176,7 @@ Viele Punkte aus der Testrunde sind umgesetzt (Grounding, Parser-Bereinigung, Ti
 
 - [ ] PDF-Export
 - [ ] Backup-Adapter Integration
-- [ ] Custom Templates (Ebene 1 + 3: Kapitel-Auswahl + freie Zusatz-Sektionen) — Details: [PLAN.md → „Custom Templates"](PLAN.md)
+- [ ] Custom Templates — **teilweise:** [PLAN.md → „Custom Templates" / Umsetzungsstand](PLAN.md) (Admin/User/Onboarding Kapitel per JSON; eigene Markdown-Sektionen; HTML Theme/Logo/Schrift/Extra-CSS; Admin `custom` ausblendbar). Offen: Reihenfolge, Presets ohne Roh-CSS
 
 ### Phase 5.x — Onboarding / User / Visualisierung (priorisiert)
 

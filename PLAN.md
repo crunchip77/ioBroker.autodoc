@@ -329,14 +329,22 @@ Custom Templates kann vieles bedeuten. Sinnvolle Scope-Abgrenzung nach Aufwand u
 | Ebene | Beschreibung | Aufwand | Empfehlung |
 | ----- | ------------ | ------- | ---------- |
 | **1 — Kapitel-Auswahl** | Nutzer wählt welche Kapitel erscheinen (Checkboxen), Reihenfolge anpassbar | Gering | ✅ sinnvoll |
-| **2 — Layout / Styling** | Eigenes CSS-Theme, Logo, Farben — z. B. für Weitergabe an Familie/Hausverwaltung | Mittel | ✅ sinnvoll |
-| **3 — Freie Zusatz-Sektionen** | Nutzer definiert eigene Kapitel mit Markdown-Freitext (Notfallkontakte, WLAN, etc.) — Ergänzung zu `manualContext`, aber strukturierter | Mittel | ✅ sinnvoll |
+| **2 — Layout / Styling** | Eigenes CSS-Theme, Logo, Farben, **Schriftart** (`font-family`), **Hell/Dunkel fest vorgeben oder Auto mit Umschalter**, ggf. **Header-Bild/Logo-URL** — z. B. für Weitergabe an Familie/Hausverwaltung | Mittel | ✅ sinnvoll |
+| **3 — Freie Zusatz-Sektionen** | Nutzer definiert eigene Kapitel mit Markdown-Freitext (Notfallkontakte, WLAN, etc.) — Ergänzung zu `manualContext`, aber strukturierter; optional **pro Profil** (`admin` / `user` / `onboarding`) | Mittel | ✅ sinnvoll |
 | **4 — Eigene Daten-Abfragen** | Nutzer definiert welche States/Objekte zusätzlich abgefragt werden, eigene Tabellen | Hoch | ⚠️ Grenzwertig |
 | **5 — Vollständiges Template-Replacement** | Nutzer liefert eigene Handlebars/Jinja-Vorlage, volle HTML-Kontrolle | Sehr hoch | ❌ Over-Engineering |
 
 **Empfehlung:** Ebene 1 + 3 als Kombination — Kapitel-Auswahl und freie Zusatz-Sektionen. Löst 90% der realen Wünsche ohne Template-Engine. Ebene 4–5 widerspricht dem Kern-Versprechen „automatisch ohne Pflege".
 
 **Verbindung zur System-Visitenkarte:** Ebene 1 (Kapitel-Auswahl) könnte den Forum-Wunsch abdecken — ein fokussiertes Template das nur Kerndaten zeigt.
+
+**Umsetzungsstand (Adapter-Code, laufend erweiterbar):**
+
+- **Ebene 3 (MVP):** JSON `customDocSectionsJson` — Liste `{ title, body[, profiles] }`, Markdown → **alle drei HTML-Profile** + **Markdown-Export**; Nav-Einträge; KI-Owner-Context nennt die Kapitelüberschriften.
+- **Ebene 2 (Teil):** `htmlColorScheme` (auto / light / dark), `htmlHeaderLogoUrl` (https oder `/…`), `htmlFontStack`, `htmlExtraCss` — nur **exportiertes HTML**, nicht Markdown.
+- **Ebene 1 (Teil):** `adminHiddenChaptersJson` — Kapitel im **Admin-HTML** ausblenden (und im **Markdown**, wenn Dokumentationsprofil Admin); optional **`custom`** für eigene Markdown-Kapitel. Zusätzlich **`userHiddenChaptersJson`** / **`onboardingHiddenChaptersJson`** — Kapitel im **User-** bzw. **Onboarding-HTML** und im passenden **Markdown-Profil**; **keine** freie Reihenfolge (nur an/aus).
+
+**Noch offen (bewusst):** Drag-and-drop-Reihenfolge der Kapitel, vollständiges Theme-Preset ohne rohes CSS, PDF, Ebene 4–5.
 
 ---
 

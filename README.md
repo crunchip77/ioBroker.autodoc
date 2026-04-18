@@ -4,7 +4,7 @@
 
 Automatically generates structured documentation (HTML, Markdown, JSON) for your ioBroker installation — on demand, on a schedule, or when the system changes.
 
-**Version:** 0.9.8
+**Version:** 0.9.9
 
 | | |
 | --- | --- |
@@ -65,6 +65,12 @@ For **roadmap, phases, and detailed internal notes**, see [`TODO.md`](TODO.md) a
 **Contributing / releases:** see [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 ## Changelog
+
+### 0.9.9 (2026-04-18)
+
+- **My documentation:** optional **Help & emergencies** and **Routines in your own words** (`guestHelpNote`, `homeRoutinesNote`) — plain-language blocks in **Onboarding** and **User** HTML (with sidebar links when filled), Admin manual chapter, Markdown export, and **AI owner context** grounding.
+- **Discovery (admin detail):** adapter instance `schedule` / `restartSchedule` CRON (with fallback state `.schedule`); optional **schedule-type objects** view; JavaScript scripts include **`common.engine`**.
+- Admin UI: new fields + i18n (EN/DE/FR); `RENDERER_VERSION` bump.
 
 ### 0.9.8 (2026-04-17)
 

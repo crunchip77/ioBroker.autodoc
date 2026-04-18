@@ -193,6 +193,38 @@
 				"lg": 12,
 				"xl": 12
 			},
+			"_guestFamilyPlainHeader": {
+				"type": "header",
+				"text": "Guest & family (plain language)",
+				"size": 4,
+				"newLine": true
+			},
+			"guestHelpNote": {
+				"type": "text",
+				"label": "Help & emergencies (guests/family)",
+				"help": "Who to call, what to try if something fails, where the fuse box is — your words only; nothing is invented automatically.",
+				"minRows": 4,
+				"maxRows": 16,
+				"newLine": true,
+				"xs": 12,
+				"sm": 12,
+				"md": 12,
+				"lg": 12,
+				"xl": 12
+			},
+			"homeRoutinesNote": {
+				"type": "text",
+				"label": "Routines & automations (your words)",
+				"help": "Describe in everyday language what often runs by itself (lights, heating, blinds). Shown near the script list; complements technical script names.",
+				"minRows": 4,
+				"maxRows": 18,
+				"newLine": true,
+				"xs": 12,
+				"sm": 12,
+				"md": 12,
+				"lg": 12,
+				"xl": 12
+			},
 			"_aiHintsHeader": {
 				"type": "header",
 				"text": "AI context hints",
@@ -482,6 +514,190 @@
 				"lg": 12,
 				"xl": 12
 			}
+			}
+		},
+		"tabDocLayout": {
+			"type": "panel",
+			"label": "HTML export & extra sections",
+			"items": {
+				"_docLayoutIntro": {
+					"type": "staticText",
+					"text": "Doc layout intro",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"htmlColorScheme": {
+					"type": "select",
+					"label": "HTML color scheme",
+					"help": "HTML color scheme help",
+					"options": [
+						{ "label": "Auto (viewer toggle + saved preference)", "value": "auto" },
+						{ "label": "Light only", "value": "light" },
+						{ "label": "Dark only", "value": "dark" }
+					],
+					"default": "auto",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 6,
+					"lg": 6,
+					"xl": 6
+				},
+				"htmlHeaderLogoUrl": {
+					"type": "text",
+					"label": "Sidebar logo URL",
+					"help": "Sidebar logo URL help",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"htmlFontStack": {
+					"type": "text",
+					"label": "Font stack (CSS)",
+					"help": "Font stack help",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"htmlExtraCss": {
+					"type": "text",
+					"label": "Extra CSS",
+					"help": "Extra CSS help",
+					"minRows": 3,
+					"maxRows": 16,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"_adminChaptersHeader": {
+					"type": "header",
+					"text": "Admin HTML — hide chapters",
+					"size": 4,
+					"newLine": true
+				},
+				"_adminChaptersHint": {
+					"type": "staticText",
+					"text": "Admin hidden chapters hint",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"adminHiddenChaptersJson": {
+					"type": "text",
+					"label": "Hidden chapter IDs (JSON array)",
+					"help": "Admin hidden chapters JSON help",
+					"minRows": 3,
+					"maxRows": 8,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"_userChaptersHeader": {
+					"type": "header",
+					"text": "User/Family HTML — hide chapters",
+					"size": 4,
+					"newLine": true
+				},
+				"_userChaptersHint": {
+					"type": "staticText",
+					"text": "User hidden chapters hint",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"userHiddenChaptersJson": {
+					"type": "text",
+					"label": "User profile — hidden chapter IDs (JSON)",
+					"help": "User hidden chapters JSON help",
+					"minRows": 3,
+					"maxRows": 8,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"_onboardingChaptersHeader": {
+					"type": "header",
+					"text": "Onboarding HTML — hide chapters",
+					"size": 4,
+					"newLine": true
+				},
+				"_onboardingChaptersHint": {
+					"type": "staticText",
+					"text": "Onboarding hidden chapters hint",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"onboardingHiddenChaptersJson": {
+					"type": "text",
+					"label": "Onboarding profile — hidden chapter IDs (JSON)",
+					"help": "Onboarding hidden chapters JSON help",
+					"minRows": 3,
+					"maxRows": 8,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"_customSectionsHeader": {
+					"type": "header",
+					"text": "Custom Markdown sections",
+					"size": 4,
+					"newLine": true
+				},
+				"_customSectionsHint": {
+					"type": "staticText",
+					"text": "Custom sections JSON hint",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"customDocSectionsJson": {
+					"type": "text",
+					"label": "Custom sections (JSON)",
+					"help": "Custom sections JSON help",
+					"minRows": 8,
+					"maxRows": 24,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				}
 			}
 		},
 		"tabNotify": {

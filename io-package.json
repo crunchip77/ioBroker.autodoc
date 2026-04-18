@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "autodoc",
-        "version": "0.9.8",
+        "version": "0.9.9",
         "news": {
+            "0.9.9": {
+                "en": "My documentation: Help & emergencies + Routines in your own words (guest/family HTML sections, TOC, Markdown, AI owner context); Admin manual subsections. Discovery: adapter instance schedule/restart CRON, optional getObjectView(system,schedule), script common.engine; RENDERER_VERSION bump",
+                "de": "Meine Dokumentation: Hilfe & Notfall + Abläufe in eigenen Worten (HTML Onboarding/User, Inhaltsverzeichnis, Markdown, KI-Kontext); Admin-Unterkapitel. Discovery: Instanz-CRON (schedule/Neustart), optional getObjectView(system,schedule), Skript common.engine; RENDERER_VERSION",
+                "ru": "0.9.9: manual guest/routines; discovery schedule/engine; RENDERER",
+                "pt": "0.9.9: manual convidado/rotinas; discovery schedule/engine; RENDERER",
+                "nl": "0.9.9: manual gast/routines; discovery schedule/engine; RENDERER",
+                "fr": "0.9.9 : aide invités / routines ; discovery schedule/engine ; RENDERER",
+                "it": "0.9.9: manuale ospiti/routine; discovery schedule/engine; RENDERER",
+                "es": "0.9.9: manual invitados/rutinas; discovery schedule/engine; RENDERER",
+                "pl": "0.9.9: manual gość/rutyny; discovery schedule/engine; RENDERER",
+                "uk": "0.9.9: manual гості/рутини; discovery schedule/engine; RENDERER",
+                "zh-cn": "0.9.9：访客帮助与日常说明；发现层 schedule/engine；RENDERER"
+            },
             "0.9.8": {
                 "en": "QR code as embedded SVG (npm qrcode, no CDN); optional filesystem export (exportPath); multihost host overview + non-primary host warning; AI context hints (textarea) with guest-safe prompting; copy link uses same URL as QR; diagnosis RAM/CPU + copy-for-forum; shorter changelog storage; jsonConfig visibility via hidden; npm version probe on single-host Docker; README base URL & export notes; native exportPath/aiOwnerHints; RENDERER_VERSION bumps",
                 "de": "QR-Code als eingebettetes SVG (npm qrcode, kein CDN); optionaler Filesystem-Export (exportPath); Multihost-Übersicht + Warnung auf Nicht-Master-Host; KI-Kontexthinweise (Textarea) mit gasttauglichem Prompt; Kopierlink = QR-URL; Diagnose RAM/CPU + Forum kopieren; kürzeres Änderungsprotokoll; jsonConfig Sichtbarkeit über hidden; npm-Erkennung bei Single-Host-Docker; README Basis-URL & Export; native exportPath/aiOwnerHints; RENDERER_VERSION",
@@ -195,6 +208,8 @@
         "projectDescription": "",
         "manualContact": "",
         "additionalNotes": "",
+        "guestHelpNote": "",
+        "homeRoutinesNote": "",
         "adapterNotes": [],
         "roomNotes": [],
         "onboardingHideRooms": [],
@@ -212,7 +227,15 @@
         "maxStoredFiles": 5,
         "baseUrl": "",
         "exportPath": "",
-        "aiOwnerHints": ""
+        "aiOwnerHints": "",
+        "htmlColorScheme": "auto",
+        "htmlHeaderLogoUrl": "",
+        "htmlFontStack": "",
+        "htmlExtraCss": "",
+        "customDocSectionsJson": "[]",
+        "adminHiddenChaptersJson": "[]",
+        "userHiddenChaptersJson": "[]",
+        "onboardingHiddenChaptersJson": "[]"
     },
     "objects": [],
     "instanceObjects": [
