@@ -4,7 +4,7 @@
 
 Automatically generates structured documentation (HTML, Markdown, JSON) for your ioBroker installation — on demand, on a schedule, or when the system changes.
 
-**Version:** 0.9.9
+**Version:** 0.9.10
 
 | | |
 | --- | --- |
@@ -65,6 +65,16 @@ For **roadmap, phases, and detailed internal notes**, see [`TODO.md`](TODO.md) a
 **Contributing / releases:** see [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 ## Changelog
+
+### 0.9.10 (2026-04-19)
+
+- **Admin — HTML export & extra sections:** optional **color scheme** (auto / light / dark), **logo URL**, **font stack** and **extra CSS** in a **collapsible “advanced” block** (jsonConfig schema-safe for ioBroker.admin).
+- **Chapter visibility:** JSON lists to hide chapters per profile (**admin** / **user** / **onboarding**); optional **`custom`** id hides the custom-sections block.
+- **Custom Markdown chapters:** `customDocSectionsJson` — `title`, `body` (Markdown), optional **`profiles`** (`admin` / `user` / `onboarding`); rendered with **markdown-it** in HTML; **Markdown export** uses the same sections and respects hiding.
+- **Discovery:** probe **`_design/system`** before **`getObjectView(system, schedule)`** so installs without that view no longer log a controller error.
+- **Admin i18n:** German strings completed for jsonConfig **help** and **select** labels (less mixed DE/EN in the UI).
+- **Onboarding copy:** “What runs automatically” clarifies **enabled JavaScript (script engine) scripts**; other rule engines are not listed yet.
+- **Custom chapter cards:** less empty space above the title; leading newlines in `body` trimmed before render.
 
 ### 0.9.9 (2026-04-18)
 

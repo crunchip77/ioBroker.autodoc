@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "autodoc",
-        "version": "0.9.9",
+        "version": "0.9.10",
         "news": {
+            "0.9.10": {
+                "en": "HTML export: color scheme, logo URL, collapsible advanced block (font + extra CSS); per-profile chapter hiding (JSON); custom Markdown sections (JSON, optional profiles). Markdown uses markdown-it for custom sections + profile-aware hiding. Discovery: no getObjectView(system,schedule) when design lacks it (cleaner logs). Admin DE i18n completed for jsonConfig. Onboarding: “automations” = enabled JavaScript scripts only. Custom chapter layout spacing; jsonConfig schema fix (nested panel).",
+                "de": "HTML-Export: Farbschema, Logo-URL, einklappbarer Fortgeschrittenen-Block (Schrift + CSS); Kapitel pro Profil ausblenden (JSON); eigene Markdown-Kapitel (JSON, profiles optional). Markdown: markdown-it für Zusatzkapitel + profilbezogenes Ausblenden. Discovery: kein schedule-View-Aufruf wenn Design fehlt (ruhigeres Log). Admin: deutsche jsonConfig-Hilfen vervollständigt. Onboarding: Automatisierungen = aktive JS-Skripte. Abstände eigene Kapitel; jsonConfig-Schema (verschachteltes Panel).",
+                "ru": "0.9.10: HTML export, chapters, custom MD, discovery schedule, i18n, layout",
+                "pt": "0.9.10: export HTML, capítulos, MD custom, discovery schedule, i18n, layout",
+                "nl": "0.9.10: HTML-export, hoofdstukken, custom MD, discovery schedule, i18n, layout",
+                "fr": "0.9.10 : export HTML, chapitres, MD perso, discovery schedule, i18n, mise en page",
+                "it": "0.9.10: export HTML, capitoli, MD custom, discovery schedule, i18n, layout",
+                "es": "0.9.10: export HTML, capítulos, MD custom, discovery schedule, i18n, layout",
+                "pl": "0.9.10: eksport HTML, rozdziały, własny MD, discovery schedule, i18n, layout",
+                "uk": "0.9.10: HTML експорт, розділи, custom MD, discovery schedule, i18n, верстка",
+                "zh-cn": "0.9.10：HTML 导出、章节隐藏、自定义 Markdown、schedule 探测、德文管理界面、版式"
+            },
             "0.9.9": {
                 "en": "My documentation: Help & emergencies + Routines in your own words (guest/family HTML sections, TOC, Markdown, AI owner context); Admin manual subsections. Discovery: adapter instance schedule/restart CRON, optional getObjectView(system,schedule), script common.engine; RENDERER_VERSION bump",
                 "de": "Meine Dokumentation: Hilfe & Notfall + Abläufe in eigenen Worten (HTML Onboarding/User, Inhaltsverzeichnis, Markdown, KI-Kontext); Admin-Unterkapitel. Discovery: Instanz-CRON (schedule/Neustart), optional getObjectView(system,schedule), Skript common.engine; RENDERER_VERSION",
