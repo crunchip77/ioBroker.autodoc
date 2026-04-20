@@ -409,6 +409,12 @@ Realer Dateisystem-Pfad:    ← AUSSERHALB der ioBroker-Datenbank (opt-in)
 
 **User-Assets (Bilder)** → NICHT in ioBroker-Datenbank, sondern in einem echten Dateisystempfad außerhalb von jsonl/redis (noch zu klären: wer verwaltet diesen Pfad, wie kommt Admin daran?).
 
+### Doppelte Ablage: States `documentation.*` vs. `/files/`
+
+AutoDoc legt die großen Dokumentationsinhalte aktuell **zusätzlich** in States ab (u. a. `documentation.markdown`, `documentation.html`, `documentation.json`). Das **verdoppelt** die Nutzlast in der Objekt-/State-Welt gegenüber den **bereits geschriebenen Dateien** im Adapter-Dateibaum — besonders relevant für **Redis**.
+
+**Geplanter Umbau:** kanonische Ablage nur unter **`/files/`**; States nur Metadaten — siehe [TODO.md — Architektur-Backlog States](TODO.md#architektur-backlog--states-entlasten-doku-in-files-states-nur-metadaten).
+
 ### Optionaler Filesystem-Export (ioBroker-unabhängiger Zugriff)
 
 Ein optionaler, konfigurierbarer **realer Ausgabepfad** ermöglicht Zugriff auf die Doku auch wenn ioBroker down ist:
@@ -420,7 +426,7 @@ Ein optionaler, konfigurierbarer **realer Ausgabepfad** ermöglicht Zugriff auf 
 - Wer keinen hat: Pfad auf NAS, lokaler Disk, USB-Mount — direkt per Browser öffenbar
 - Wer es nicht braucht: Feld leer lassen
 
-**Voraussetzung:** HTML muss wirklich selbst-enthaltend sein (kein CDN). Aktuell wird `qrcodejs` noch über CDN geladen (mit Fallback) — das wäre zu bereinigen.
+**Voraussetzung:** HTML sollte für portablen Export wirklich selbst-enthaltend sein (kein CDN). **Stand 0.9.x:** QR-Code wird serverseitig per npm-Paket `qrcode` als SVG erzeugt — kein CDN mehr.
 
 ### Assets/Bilder: Lösungsoptionen (noch nicht entschieden)
 
@@ -439,7 +445,7 @@ Ein optionaler, konfigurierbarer **realer Ausgabepfad** ermöglicht Zugriff auf 
 
 In ioBroker-Multihost-Setups (z.B. 2–3 Raspberry Pis):
 
-> Dev-Meeting 2026-04-15: kein definitives Ergebnis zu neuen Ansätzen — die bekannten Probleme wurden bestätigt. Einziger konkreter Vorschlag: **2x generieren** — einmal für den Admin-Aufruf (`/files/`), einmal für direkten Dateisystem-Zugriff. Das deckt sich mit dem hier dokumentierten Dual-Output-Ansatz (→ „Optionaler Filesystem-Export").
+> **Stand Umsetzung:** Host-Warnung, Host-Verteilung im Admin-HTML, optionaler Filesystem-Export und selbst-enthaltendes HTML sind umgesetzt (siehe [TODO.md — Multihost](TODO.md)). Historisch (Dev-Meeting 2026-04-15): **Dual-Output** — einmal für den Admin-Zugriff auf `/files/`, einmal optional für direkten Dateisystem-Zugriff (`exportPath`) — genau dieser Ansatz ist aktiv.
 
 #### Was bereits funktioniert (kein Handlungsbedarf)
 
@@ -459,14 +465,11 @@ AutoDoc **muss auf dem Master** laufen. Gründe:
 
 **Umsetzung:** Log-Warnung wenn AutoDoc auf einem Host läuft, aber mehrere Hosts im System erkannt werden und der eigene Host nicht der erste/einzige ist. Kein hartes Blockieren — nur informativer Hinweis.
 
-#### Was fehlt: Host-Zugehörigkeit in der Dokumentation
+#### Host-Zugehörigkeit in der Dokumentation
 
-`instance.common.host` ist bereits erfasst, wird aber nicht gerendert. Im Admin-Profil fehlt damit die wichtigste Multihost-Information: welcher Adapter läuft auf welchem Pi.
+**Umgesetzt:** `instance.common.host` wird ausgewertet; im **Admin-Profil** erscheint bei **mehr als einem Host** eine **Host-Distribution** (Karten pro Host mit Instanz-Badges) über der Adapter-Tabelle; bei **Single-Host** bleibt das Layout ohne diesen Block.
 
-**Entscheidung: Adapter-Gruppierung nach Host** (statt nur einer Spalte):
-- Nur aktiv wenn > 1 Host im System erkannt → kein Layout-Overhead bei Single-Host
-- Admin-Profil: Adapter-Tabelle nach Host gruppiert mit Host-Header (Name, Node.js, OS)
-- Klare Lastverteilung auf einen Blick: welcher Pi trägt welche Last
+**Entscheidung (implementiert):** Gruppierung nach Host statt nur einer zusätzlichen Tabellenspalte — klare Lastverteilung, kein Overhead bei nur einem Host.
 
 ```
 ┌─ Host: raspi-master ──────────────────────────┐

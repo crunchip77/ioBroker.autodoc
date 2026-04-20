@@ -140,9 +140,9 @@ Viele Punkte aus der Testrunde sind umgesetzt (Grounding, Parser-Bereinigung, Ti
 
 ---
 
-## Multihost-Unterstützung (Architektur-Entscheidungen umsetzen)
+## Multihost-Unterstützung ✅ ABGESCHLOSSEN
 
-> Analyse und Entscheidungen: [PLAN.md → „Multihost — Analyse & Entscheidungen"](PLAN.md)
+> Hintergrund und Architektur: [PLAN.md → „Multihost — Analyse & Entscheidungen"](PLAN.md#multihost--analyse--entscheidungen) (Abschnitt enthält auch den Verweis auf **Mermaid-Topologie** als spätere Phase-5.x-Erweiterung, nicht Teil dieses Milestones).
 
 ### Renderer: Adapter-Gruppierung nach Host
 
@@ -167,6 +167,33 @@ Viele Punkte aus der Testrunde sind umgesetzt (Grounding, Parser-Bereinigung, Ti
 ### Self-contained HTML (Voraussetzung für portablen Export)
 
 - [x] `qrcodejs`-Bibliothek vollständig inline einbetten → server-seitige SVG-Generierung via `qrcode` npm-Paket; kein CDN, kein Client-JS für QR-Code mehr
+
+---
+
+## Architektur-Backlog — States entlasten (Doku in Files, States nur Metadaten)
+
+**Problem:** Nach jeder Generierung liegen Markdown, Admin-HTML, JSON und State-Summary **vollständig** in States (`documentation.*`) **und** parallel als Dateien unter `…files`. Das **verdoppelt** die Nutzlast in der ioBroker-Objekt-/State-Welt (jsonl, **Redis**) ohne funktionalen Mehrwert gegenüber den Dateien.
+
+**Ziel:** Kanonische Ablage der großen Inhalte nur in **`/files/…`** (und optional `exportPath`). States nur noch **Metadaten**: z. B. feste Dateinamen/Referenz, Zeitstempel der Generierung, optional **Hash(es)** pro Datei zur Änderungserkennung — **keine** Megabyte-Strings in States.
+
+**Vorteile:** kleinere interne Datenbank; klarere Datenhaltung; besser vereinbar mit **Redis** und mit **Phase 5** (Assets/Bilder bewusst **nicht** in der DB).
+
+**Nachteile / Breaking:** Skripte, VIS oder externe Integrationen, die **`documentation.markdown` / `.html` / `.json`** als **Volltext** lesen, müssen auf **`readFile`** über den Dateibaum oder auf die **HTTP-URL** unter `/files/…` umgestellt werden. Im Objektbaum entfällt die direkte Anzeige des kompletten HTML-Strings im State.
+
+**Nicht betroffen:** Snapshot der „Livedaten“ in der **exportierten** Doku (beim Generieren eingefroren); **kleine** `info.*`-States; Generierung, Rotation, **exportPath**, Multihost-Logik.
+
+**Machbarkeit:** mittel im Code; Hauptaufwand **Kompatibilität + Doku + ggf. Übergangs-Config**.
+
+**Konkreter Ansatz (Entwurf):**
+
+1. Option in der Konfiguration (z. B. Modus **legacy-dual** vs. **files-only**), Default zunächst legacy bis zur Freigabe.
+2. `persistDocumentation`: bei **files-only** keine großen Strings mehr in `documentation.*`; stattdessen Metadaten + optional Hashes.
+3. Aktionen wie „Download“: Inhalt aus **Datei** lesen, nicht aus State.
+4. README + News-Eintrag bei Default-Wechsel.
+
+**Nicht Ziel dieses Pakets:** echte **Live-Aktualisierung** der Doku im Browser ohne Neu-Generierung (bleibt separates Thema).
+
+- [ ] Offen — Entscheidung, ob als nächstes Meilenstein vor weiterer Phase-5-Ausarbeitung
 
 ---
 
