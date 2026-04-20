@@ -413,7 +413,7 @@ Realer Dateisystem-Pfad:    ← AUSSERHALB der ioBroker-Datenbank (opt-in)
 
 AutoDoc legt die großen Dokumentationsinhalte aktuell **zusätzlich** in States ab (u. a. `documentation.markdown`, `documentation.html`, `documentation.json`). Das **verdoppelt** die Nutzlast in der Objekt-/State-Welt gegenüber den **bereits geschriebenen Dateien** im Adapter-Dateibaum — besonders relevant für **Redis**.
 
-**Geplanter Umbau:** kanonische Ablage nur unter **`/files/`**; States nur Metadaten — siehe [TODO.md — Architektur-Backlog States](TODO.md#architektur-backlog--states-entlasten-doku-in-files-states-nur-metadaten).
+**Geplanter / umgesetzter Umbau:** kanonische Ablage unter **`/files/`**; optional **keine** Duplikation der großen Strings in States — Admin-Option **`documentationStatesMode`** (`full` = bisheriges Verhalten, `metadata` = nur Platzhalter in States). Details: [TODO.md — Architektur-Backlog States](TODO.md#architektur-backlog--states-entlasten-doku-in-files-states-nur-metadaten).
 
 ### Optionaler Filesystem-Export (ioBroker-unabhängiger Zugriff)
 

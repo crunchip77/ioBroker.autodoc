@@ -488,6 +488,22 @@
 					"lg": 6,
 					"xl": 6
 				},
+				"documentationStatesMode": {
+					"type": "select",
+					"label": "Documentation states storage",
+					"help": "Documentation states storage help",
+					"options": [
+						{ "label": "Doc states mode full", "value": "full" },
+						{ "label": "Doc states mode metadata", "value": "metadata" }
+					],
+					"default": "full",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
 			"baseUrl": {
 				"type": "text",
 				"label": "ioBroker base URL (optional)",

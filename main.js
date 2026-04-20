@@ -5,6 +5,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { createHash } = require('node:crypto');
 const utils = require('@iobroker/adapter-core');
 const QRCode = require('qrcode');
 
@@ -17,6 +18,23 @@ const I18n = require('./lib/i18n');
 const VersionTracker = require('./lib/versionTracker');
 const Notifier = require('./lib/notifier');
 const AiEnhancer = require('./lib/aiEnhancer');
+
+/** When `documentationStatesMode` is metadata — full exports live only under adapter /files. */
+const DOCS_STATE_METADATA_PLACEHOLDER =
+	'[AutoDoc] Full content is stored only in adapter files (autodoc-latest.md, autodoc-latest.json, autodoc-admin.html). Open Files in Admin or use info.htmlUrl*.';
+/** Valid minimal JSON for `documentation.json` state when not duplicating the full export. */
+const DOCS_JSON_METADATA_PLACEHOLDER =
+	'{"_autodoc":"Full document model is in autodoc-latest.json under adapter files — not duplicated in states."}';
+
+/**
+ * SHA-256 hex digest of a UTF-8 string (for export identity without storing large payloads).
+ *
+ * @param {string} s
+ * @returns {string}
+ */
+function sha256HexUtf8(s) {
+	return createHash('sha256').update(String(s), 'utf8').digest('hex');
+}
 
 class Autodoc extends utils.Adapter {
 	/**
@@ -299,6 +317,14 @@ class Autodoc extends utils.Adapter {
 			},
 			'documentation.stateSummary': {
 				name: 'State objects summary (JSON)',
+				type: 'string',
+				role: 'json',
+				read: true,
+				write: false,
+				def: '{}',
+			},
+			'documentation.exportHashes': {
+				name: 'SHA-256 of latest MD / JSON / Admin HTML exports (hex)',
 				type: 'string',
 				role: 'json',
 				read: true,
@@ -601,6 +627,36 @@ class Autodoc extends utils.Adapter {
 	}
 
 	/**
+	 * @returns {boolean} True when large documentation strings are not stored in object states.
+	 */
+	isDocumentationStatesMetadataOnly() {
+		const m = String(this.config.documentationStatesMode || 'full').toLowerCase();
+		return m === 'metadata' || m === 'metadata_only' || m === 'files_only';
+	}
+
+	/**
+	 * Read a UTF-8 file from this adapter's ioBroker file namespace.
+	 *
+	 * @param {string} basePath e.g. `autodoc.0.files`
+	 * @param {string} filename File name under that namespace
+	 * @returns {Promise<string>}
+	 */
+	async readAdapterFileUtf8(basePath, filename) {
+		const res = await this.readFileAsync(basePath, filename);
+		if (res == null) {
+			return '';
+		}
+		const raw = res.file !== undefined ? res.file : res;
+		if (Buffer.isBuffer(raw)) {
+			return raw.toString('utf8');
+		}
+		if (typeof raw === 'string') {
+			return raw;
+		}
+		return String(raw);
+	}
+
+	/**
 	 * Build a direct URL to autodoc-latest.html via the web or admin adapter.
 	 *
 	 * @returns {Promise<string>} URL string or empty string if not determinable.
@@ -708,9 +764,31 @@ class Autodoc extends utils.Adapter {
 				ack: true,
 			});
 			await this.setStateAsync('documentation.lastJsonFile', { val: jsonFilename, ack: true });
-			await this.setStateAsync('documentation.markdown', { val: markdown, ack: true });
-			await this.setStateAsync('documentation.html', { val: htmlAll.admin, ack: true });
-			await this.setStateAsync('documentation.json', { val: json, ack: true });
+
+			const metadataOnly = this.isDocumentationStatesMetadataOnly();
+			if (metadataOnly) {
+				this.log.info(
+					'Documentation states: metadata-only mode — markdown/HTML/JSON are not duplicated in object states (see /files autodoc-latest.*).',
+				);
+				await this.setStateAsync('documentation.markdown', { val: DOCS_STATE_METADATA_PLACEHOLDER, ack: true });
+				await this.setStateAsync('documentation.html', { val: DOCS_STATE_METADATA_PLACEHOLDER, ack: true });
+				await this.setStateAsync('documentation.json', { val: DOCS_JSON_METADATA_PLACEHOLDER, ack: true });
+			} else {
+				await this.setStateAsync('documentation.markdown', { val: markdown, ack: true });
+				await this.setStateAsync('documentation.html', { val: htmlAll.admin, ack: true });
+				await this.setStateAsync('documentation.json', { val: json, ack: true });
+			}
+
+			const exportHashes = {
+				'autodoc-latest.md': sha256HexUtf8(markdown),
+				'autodoc-latest.json': sha256HexUtf8(json),
+				'autodoc-admin.html': sha256HexUtf8(htmlAll.admin),
+			};
+			await this.setStateAsync('documentation.exportHashes', {
+				val: JSON.stringify(exportHashes),
+				ack: true,
+			});
+
 			await this.setStateAsync('documentation.stateSummary', { val: stateSummaryJson, ack: true });
 
 			await this.setStateAsync('info.summary', { val: summary, ack: true });
@@ -866,21 +944,47 @@ class Autodoc extends utils.Adapter {
 	}
 
 	/**
-	 * Write file content to the ioBroker file storage.
+	 * Copy latest documentation from adapter files to a fixed filename (e.g. autodoc.md).
+	 * Prefers content from `autodoc-latest.*` files; falls back to legacy full state only if not a metadata placeholder.
 	 *
-	 * @param {string} stateId State ID containing the content.
-	 * @param {string} filename Target filename.
+	 * @param {string} stateId State id suffix e.g. `documentation.markdown` (no namespace).
+	 * @param {string} filename Target filename under the adapter file namespace.
 	 */
 	async downloadFile(stateId, filename) {
+		const basePath = `${this.namespace}.files`;
+		const sourceMap = {
+			'documentation.markdown': 'autodoc-latest.md',
+			'documentation.json': 'autodoc-latest.json',
+			'documentation.html': 'autodoc-admin.html',
+		};
+		const sourceName = sourceMap[stateId];
+		if (!sourceName) {
+			this.log.warn(`Download: unknown state mapping for ${stateId}`);
+			return;
+		}
 		try {
-			const state = await this.getStateAsync(stateId);
-
-			if (!state || state.val === null || state.val === undefined || state.val === '') {
-				this.log.warn(`No content available for download from state ${stateId}`);
+			let content = '';
+			try {
+				content = await this.readAdapterFileUtf8(basePath, sourceName);
+			} catch (e) {
+				this.log.debug(`readAdapterFileUtf8(${sourceName}): ${e.message}`);
+			}
+			if (!String(content || '').trim()) {
+				const state = await this.getStateAsync(stateId);
+				const sv = state && state.val != null ? String(state.val) : '';
+				if (sv.startsWith('[AutoDoc]')) {
+					// metadata-only placeholder
+				} else if (stateId === 'documentation.json' && sv === DOCS_JSON_METADATA_PLACEHOLDER) {
+					// metadata-only JSON placeholder
+				} else if (sv) {
+					content = sv;
+				}
+			}
+			if (!String(content || '').trim()) {
+				this.log.warn(`No content for download (${sourceName}). Generate documentation first.`);
 				return;
 			}
-
-			await this.writeFileAsync(`${this.namespace}.files`, filename, String(state.val));
+			await this.writeFileAsync(basePath, filename, String(content));
 			this.log.info(`File ${filename} written to /files/${this.namespace}/${filename}`);
 		} catch (error) {
 			this.log.error(`Download failed for ${filename}: ${error.message}`);

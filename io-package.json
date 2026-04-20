@@ -238,6 +238,7 @@
         "hideInstanceDetailsInMarkdown": false,
         "maxDocumentedInstances": 0,
         "maxStoredFiles": 5,
+        "documentationStatesMode": "full",
         "baseUrl": "",
         "exportPath": "",
         "aiOwnerHints": "",

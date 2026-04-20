@@ -193,7 +193,14 @@ Viele Punkte aus der Testrunde sind umgesetzt (Grounding, Parser-Bereinigung, Ti
 
 **Nicht Ziel dieses Pakets:** echte **Live-Aktualisierung** der Doku im Browser ohne Neu-Generierung (bleibt separates Thema).
 
-- [ ] Offen — Entscheidung, ob als nächstes Meilenstein vor weiterer Phase-5-Ausarbeitung
+**Umsetzungsstand:**
+
+- [x] Admin: **`documentationStatesMode`** (`full` \| `metadata`), Default **`full`** — io-package + `jsonConfig` + EN/DE/FR
+- [x] `persistDocumentation`: bei **`metadata`** Platzhalter in `documentation.markdown` / `.html` / `.json`; `documentation.stateSummary` unverändert (kompakt genug)
+- [x] Download-Aktionen: Quelle **`autodoc-latest.*`** / **`autodoc-admin.html`**, Fallback nur noch Legacy-Volltext im State (kein Platzhalter)
+- [x] **SHA-256** der drei „latest“-Exporte in State **`documentation.exportHashes`** (JSON, hex) — gilt für beide Modi; Skripte können Änderungen erkennen ohne Volltext
+- [x] **README**-Kurzzeile zu States-Modus + `exportHashes`
+- [ ] **News** bei späterem Default-Wechsel auf `metadata` (nach npm/Repository; aktuell Git-only → optional)
 
 ---
 
