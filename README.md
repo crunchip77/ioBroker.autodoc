@@ -4,7 +4,7 @@
 
 Automatically generates structured documentation (HTML, Markdown, JSON) for your ioBroker installation — on demand, on a schedule, or when the system changes.
 
-**Version:** 0.9.10
+**Version:** 0.9.11
 
 | | |
 | --- | --- |
@@ -67,6 +67,14 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 **Contributing / releases:** see [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 ## Changelog
+
+### 0.9.11 (2026-04-20)
+
+- **Advanced — Documentation states storage:** **`full`** (default: last MD / Admin HTML / JSON also in `documentation.*` states, as before) or **`metadata`** (full exports only under `/files` as `autodoc-latest.*` / profile HTML; large `documentation.*` states hold short placeholders — less load on object DB / **Redis**). Scripts that read `documentation.*` as full text must use **`/files/`** or **`info.htmlUrl*`** when using metadata mode.
+- **State `documentation.exportHashes`:** JSON with **SHA-256 (hex)** for `autodoc-latest.md`, `autodoc-latest.json`, `autodoc-admin.html` (change detection without loading large payloads).
+- **Download actions** (`autodoc.md` / `.json` / `.html`): content is read preferentially from the latest adapter files; legacy full-state fallback only if needed.
+- **HTML changelog:** lines for **adapter instance version** changes; **i18n** strings for changelog types (including EN / DE / FR).
+- **Docs:** `README` / `TODO.md` / `PLAN.md` reorganized for open vs. completed work (no functional change).
 
 ### 0.9.10 (2026-04-19)
 

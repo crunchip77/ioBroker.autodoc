@@ -107,7 +107,7 @@ Noch offen (größere Ausbaustufe als reiner Freitext):
 ### 1.4 Kleine Nachzüge / Trigger
 
 - [ ] **`io-package` news**, wenn **Default** `documentationStatesMode` auf **`metadata`** geändert wird (sinnvoll beim npm-Release; bei reiner Git-Installation optional)
-- [ ] **README-Changelog** beim nächsten Version-Bump um **States/Hashes** ergänzen (Feature liegt im Code; Eintrag ggf. noch nicht in 0.9.10-Changelog)
+- [x] **README-Changelog** + Version **0.9.11** um States/Hashes/Changelog-i18n ergänzt
 
 ### 1.5 Brainstorming — umgesetzt in Teilen, Entscheid offen
 

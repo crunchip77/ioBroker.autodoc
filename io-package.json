@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "autodoc",
-        "version": "0.9.10",
+        "version": "0.9.11",
         "news": {
+            "0.9.11": {
+                "en": "Advanced: Documentation states storage — full (default, duplicate large strings in states) or metadata (large payloads only in /files autodoc-latest.*; placeholders in states; easier on Redis). State documentation.exportHashes: SHA-256 hex of latest MD/JSON/Admin HTML. Download actions still write autodoc.md/.json/.html from latest files. HTML changelog: adapter instance version changes + i18n labels. README/TODO/PLAN planning docs updated.",
+                "de": "Erweitert: Documentation states storage — vollständig (Standard, große Strings in States) oder nur Metadaten (Volltext nur unter /files autodoc-latest.*; Platzhalter in States; schont Redis). State documentation.exportHashes: SHA-256 (hex) der letzten MD/JSON/Admin-HTML-Exporte. Download-Aktionen schreiben autodoc.md/.json/.html weiter aus den neuesten Dateien. HTML-Änderungsprotokoll: Adapter-Instanz-Versionswechsel + i18n. README/TODO/PLAN angepasst.",
+                "ru": "0.9.11: states storage full/metadata; exportHashes; downloads; changelog adapter versions; docs",
+                "pt": "0.9.11: armazenamento states full/metadata; exportHashes; downloads; changelog versões adapter; docs",
+                "nl": "0.9.11: states storage full/metadata; exportHashes; downloads; changelog adapterversies; docs",
+                "fr": "0.9.11 : stockage states complet/métadonnées ; exportHashes ; téléchargements ; changelog versions adaptateurs ; docs",
+                "it": "0.9.11: states storage full/metadata; exportHashes; download; changelog versioni adapter; docs",
+                "es": "0.9.11: almacenamiento states full/metadata; exportHashes; descargas; changelog versiones adaptador; docs",
+                "pl": "0.9.11: stany full/metadata; exportHashes; pobieranie; changelog wersje adapterów; docs",
+                "uk": "0.9.11: states full/metadata; exportHashes; завантаження; changelog версії адаптерів; docs",
+                "zh-cn": "0.9.11：States 存储 full/metadata；exportHashes；下载；changelog 适配器版本；文档"
+            },
             "0.9.10": {
                 "en": "HTML export: color scheme, logo URL, collapsible advanced block (font + extra CSS); per-profile chapter hiding (JSON); custom Markdown sections (JSON, optional profiles). Markdown uses markdown-it for custom sections + profile-aware hiding. Discovery: no getObjectView(system,schedule) when design lacks it (cleaner logs). Admin DE i18n completed for jsonConfig. Onboarding: “automations” = enabled JavaScript scripts only. Custom chapter layout spacing; jsonConfig schema fix (nested panel).",
                 "de": "HTML-Export: Farbschema, Logo-URL, einklappbarer Fortgeschrittenen-Block (Schrift + CSS); Kapitel pro Profil ausblenden (JSON); eigene Markdown-Kapitel (JSON, profiles optional). Markdown: markdown-it für Zusatzkapitel + profilbezogenes Ausblenden. Discovery: kein schedule-View-Aufruf wenn Design fehlt (ruhigeres Log). Admin: deutsche jsonConfig-Hilfen vervollständigt. Onboarding: Automatisierungen = aktive JS-Skripte. Abstände eigene Kapitel; jsonConfig-Schema (verschachteltes Panel).",
