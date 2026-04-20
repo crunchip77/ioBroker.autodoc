@@ -62,7 +62,7 @@ The **Onboarding** HTML includes a QR code and a **Copy link** control. Both use
 - Multilingual Admin UI strings (e.g. EN / DE / FR); generated copy follows your configured project language where applicable
 - Optional AI providers (e.g. Ollama, Groq, Anthropic) with strict opt-in
 
-For **roadmap, phases, and detailed internal notes**, see [`TODO.md`](TODO.md) and [`PLAN.md`](PLAN.md).
+For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full completed checklists in the appendix) and [`PLAN.md`](PLAN.md) (vision, rationale, architecture brainstorming).
 
 **Contributing / releases:** see [`CONTRIBUTING.md`](CONTRIBUTING.md).
 

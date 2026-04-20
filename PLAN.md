@@ -16,6 +16,25 @@ Drei echte Zielgruppen mit komplett unterschiedlicher Sprache:
 
 Langfristige inhaltliche Richtung (Zusammenhänge, Auto vs. Pflege, Forum-Feedback): siehe Abschnitt **„Zukunftsvision — Zusammenhänge & Kontext (Brainstorming)“** weiter unten.
 
+## Rollen der Dokumente
+
+| Datei | Zweck |
+| ----- | ----- |
+| **[TODO.md](TODO.md)** | **Offene** Punkte und **Klärungen** oben; **erledigte** Meilensteine im **Anhang** (vollständige Checklisten — nichts verloren) |
+| **PLAN.md** (hier) | Vision, technische und inhaltliche **Begründungen**, Architektur-/Forum-Brainstorming, **noch zu entscheidende** Fragen |
+| **[README.md](README.md)** | Nutzer-Dokumentation und **Changelog** (Release-Notizen) |
+
+### Überblick — was umgesetzt ist vs. was noch offen ist
+
+| Bereich | Kurz |
+| ------- | ---- |
+| Phasen 1–4, 0.9.x RC, Multihost, KI-Basis, Custom-Template-**Teile**, States-Modus **`full`/`metadata`**, **`documentation.exportHashes`**, Downloads aus `/files` | ✅ siehe [TODO.md — Übersichtstabelle](TODO.md#stand-uebersicht) |
+| Phase 5 (PDF, Backup, Custom-Templates-Rest), Phase **5.x.2/5.x.3**, npm-Release | ⬜ |
+| Phase **5.x.1** „Hybrid-Troubleshooting“ | 🟡 Freitext-Felder (`guestHelpNote` u. a.) ✅ — strukturierte/Auto-Anteile ⬜ |
+| System-Visitenkarte, KI+Skriptquellcode, User-Assets | ❓ in diesem Dokument ausgeführt |
+
+Detaillierte **Checkboxen**: immer **[TODO.md](TODO.md)** zuerst; dieser PLAN liefert **Warum** und **Kontext**.
+
 ## Technische Grundlagen
 
 - **Sprache**: JavaScript (ioBroker Creator Standard)
@@ -60,6 +79,8 @@ Solange der Adapter **nicht auf npm** und **nicht in `ioBroker.repositories`** e
 ---
 
 ## Phase 1 — Basis ✅ ABGESCHLOSSEN (v0.1.0)
+
+> Vollständige, zeilenweise Checklisten aller Phasen: [TODO.md — Anhang A](TODO.md#anhang-a-erledigt).
 
 - Modularisierung: `lib/discovery.js`, `lib/documentModel.js`, `lib/markdownRenderer.js`, `lib/htmlRenderer.js`, `lib/versionTracker.js`, `lib/i18n.js`
 - Dateibasierter Export: Markdown, HTML, JSON nach `/files/autodoc.0/`
@@ -200,18 +221,23 @@ Echte Zielgruppen-Dokus statt "mehr oder weniger Detail vom selben Template".
 
 ## Phase 5 — Erweiterungen (Nice-to-Have)
 
+> **Offene Arbeit** (Checkboxen): [TODO.md — § 1](TODO.md#offene-arbeit).
+
 - PDF-Export
 - Backup-Adapter Integration (Doku mit Backup speichern)
-- Custom Templates
+- Custom Templates (Teile bereits umgesetzt — siehe unten „Custom Templates“ und [TODO.md — Übersicht](TODO.md#stand-uebersicht))
 
 **Erledigt (ehemals Phase 5-Idee):** QR-Code und teilbarer Link für das Onboarding-Profil — **serverseitig** als eingebettetes SVG (npm-Paket `qrcode`), **ohne CDN** und ohne zusätzliches Client-Skript für die QR-Erzeugung. „Link kopieren“ nutzt dieselbe öffentliche `/files/…`-URL wie der QR-Code (Voraussetzung: sinnvoll gesetzte **ioBroker base URL** in den Adapter-Einstellungen; siehe README).
 
+<a id="phase-5x-plan"></a>
+
 ### Phase 5.x — Onboarding / Troubleshooting / Mermaid (gestaffelt)
 
-> Abgestimmt für die nächste Ausbaustufe. Checkboxen: [TODO.md — Phase 5.x](TODO.md). **Priorität:** 1 → 2 → 3.
+> Abgestimmt für die nächste Ausbaustufe. Checkboxen: [TODO.md — § 1.3](TODO.md#phase-5x). **Priorität:** 1 → 2 → 3.
 
 **1. Notfall & Troubleshooting für Laien (Hybrid)**  
-MVP: eigener Onboarding-Abschnitt (optional User), Inhalt primär **manuell** (Kontakte, Totalausfall, wo Hilfe) — keine erfundenen Diagnosen; optional **sichere** Auto-Snippets nur aus bekannten Config-Fakten (z. B. Basis-URL). Später: kurze Checklisten nur bei **konkreten** Diagnose-Befunden (Momentaufnahme).
+**Bereits vorhanden (Abgrenzung):** Manuelle Felder z. B. **Help & emergencies** / **Routines** (`guestHelpNote`, `homeRoutinesNote`, u. a. mit 0.9.9) — Freitext, kein erfundenes Auto-„Notfallwissen“.  
+**Noch offen (größere Ausbaustufe):** klar strukturierter eigener Abschnitt, ggf. **sichere** Auto-Snippets nur aus bekannten Config-Fakten (z. B. Basis-URL); später kurze Checklisten nur bei **konkreten** Diagnose-Befunden (Momentaufnahme).
 
 **2. Quick Start & Raumguides (strukturierter)**  
 MVP: im `documentModel` feste, kurze Blöcke (systemweit Top 3–5 Aktionen; pro Raum 2–3 Highlights); Renderer zeigt Kacheln/Listen statt nur Fließtext; KI höchstens zur Formulierung. Später: Sortierung/Relevanz (Kategorien/Funktionen), unterschiedliche Länge Onboarding vs. User.
@@ -220,6 +246,8 @@ MVP: im `documentModel` feste, kurze Blöcke (systemweit Top 3–5 Aktionen; pro
 **Stufe 1 (MVP):** Mermaid aus **kuratiertem** Inhalt (eigenes Feld / `manualContext`); Ausgabe mindestens in Markdown, HTML-Darstellung bewusst wählen (Codeblock vs. Client-Render). **Stufe 2:** optional kleiner **begrenzter** Auto-Graph (z. B. Multihost Host → Instanzen mit Knotenlimit). **Nicht Ziel:** vollständiger Skript-/State-Graph großer Installationen ohne Filter.
 
 ---
+
+<a id="zukunftsvision"></a>
 
 ## Zukunftsvision — Zusammenhänge & Kontext (Brainstorming)
 
@@ -320,6 +348,8 @@ MVP: im `documentModel` feste, kurze Blöcke (systemweit Top 3–5 Aktionen; pro
 
 ---
 
+<a id="custom-templates-detail"></a>
+
 ### Custom Templates (Phase 5 — Ausarbeitung)
 
 > **Status:** In Phase 5 als Stichpunkt vorhanden — hier konkretisiert, noch nicht priorisiert. Zu gegebenem Anlass weiter ausarbeiten.
@@ -355,6 +385,8 @@ Custom Templates kann vieles bedeuten. Sinnvolle Scope-Abgrenzung nach Aufwand u
 - **Gemeinsame Datenbasis** für alle drei Profile, **unterschiedliche Darstellung** (sachlich Admin / alltagsnah User / gästetauglich Onboarding).
 
 ---
+
+<a id="architektur-grenzen"></a>
 
 ## Architektur-Grenzen & Lösungsrichtungen (Brainstorming / noch nicht entschieden)
 
@@ -409,11 +441,13 @@ Realer Dateisystem-Pfad:    ← AUSSERHALB der ioBroker-Datenbank (opt-in)
 
 **User-Assets (Bilder)** → NICHT in ioBroker-Datenbank, sondern in einem echten Dateisystempfad außerhalb von jsonl/redis (noch zu klären: wer verwaltet diesen Pfad, wie kommt Admin daran?).
 
+<a id="doppelte-ablage-states"></a>
+
 ### Doppelte Ablage: States `documentation.*` vs. `/files/`
 
-AutoDoc legt die großen Dokumentationsinhalte aktuell **zusätzlich** in States ab (u. a. `documentation.markdown`, `documentation.html`, `documentation.json`). Das **verdoppelt** die Nutzlast in der Objekt-/State-Welt gegenüber den **bereits geschriebenen Dateien** im Adapter-Dateibaum — besonders relevant für **Redis**.
+Historisches **Problem:** Große Dokumentationsinhalte lagen parallel in **States** und unter **`/files/`** — doppelte Nutzlast (u. a. Redis).
 
-**Geplanter / umgesetzter Umbau:** kanonische Ablage unter **`/files/`**; optional **keine** Duplikation der großen Strings in States — Admin-Option **`documentationStatesMode`** (`full` = bisheriges Verhalten, `metadata` = nur Platzhalter in States). Details: [TODO.md — Architektur-Backlog States](TODO.md#architektur-backlog--states-entlasten-doku-in-files-states-nur-metadaten).
+**Umsetzung (Stand Code):** Kanonische Dateien bleiben unter **`/files/`**. Konfiguration **`documentationStatesMode`**: **`full`** (Default, bisheriges Verhalten mit Volltext in States) oder **`metadata`** (Platzhalter in großen `documentation.*`-States). Download-Aktionen lesen aus Dateien (`autodoc-latest.*` …), mit Fallback für alte Installationen. Zusätzlich State **`documentation.exportHashes`** (SHA-256 hex der drei „latest“-Exporte) für Änderungserkennung **in beiden Modi**. Details und Checkboxen: [TODO.md — Anhang A](TODO.md#anhang-a-erledigt). **Optional später:** `news`, wenn der Default von `full` auf `metadata` gewechselt wird (siehe [TODO.md § 1.4](TODO.md#nachzuege)).
 
 ### Optionaler Filesystem-Export (ioBroker-unabhängiger Zugriff)
 
@@ -441,11 +475,13 @@ Ein optionaler, konfigurierbarer **realer Ausgabepfad** ermöglicht Zugriff auf 
 
 **Für Redis-Nutzer:** Explizit dokumentieren: nur externe URLs oder SVGs empfohlen — keine Binär-Uploads in `/files/`.
 
+<a id="multihost-plan"></a>
+
 ### Multihost — Analyse & Entscheidungen
 
 In ioBroker-Multihost-Setups (z.B. 2–3 Raspberry Pis):
 
-> **Stand Umsetzung:** Host-Warnung, Host-Verteilung im Admin-HTML, optionaler Filesystem-Export und selbst-enthaltendes HTML sind umgesetzt (siehe [TODO.md — Multihost](TODO.md)). Historisch (Dev-Meeting 2026-04-15): **Dual-Output** — einmal für den Admin-Zugriff auf `/files/`, einmal optional für direkten Dateisystem-Zugriff (`exportPath`) — genau dieser Ansatz ist aktiv.
+> **Stand Umsetzung:** Host-Warnung, Host-Verteilung im Admin-HTML, optionaler Filesystem-Export und selbst-enthaltendes HTML sind umgesetzt (siehe [TODO.md — Anhang / Multihost](TODO.md#multihost-done)). Historisch (Dev-Meeting 2026-04-15): **Dual-Output** — einmal für den Admin-Zugriff auf `/files/`, einmal optional für direkten Dateisystem-Zugriff (`exportPath`) — genau dieser Ansatz ist aktiv.
 
 #### Was bereits funktioniert (kein Handlungsbedarf)
 
@@ -523,6 +559,6 @@ Master → Slave1 (zigbee.0, hm-rpc.0)
 | Version    | Inhalt                                                                                                                   | Status     | Anmerkung                                                 |
 | ---------- | ------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------------------------------------------------- |
 | **v0.x**   | Basis: Adapter-Inventar, Export, Profile, Versionierung                                                                  | ✅ main    | interner Meilenstein                                      |
-| **v0.9.x** | RC: drei Profile, Aliase, UX-Akzente, RAM-Summe, Onboarding-Capabilities, Filter, Doku-Score-Erklärung, README (Changelog) | ✅ main/dev | Forum / Custom-URL; vor npm mit Checker abgleichen        |
+| **v0.9.x** | RC: drei Profile, Aliase, UX-Akzente, RAM-Summe, Onboarding-Capabilities, Filter, Doku-Score-Erklärung, README (Changelog); Multihost; optional `exportPath`; States **`documentationStatesMode`** + **`documentation.exportHashes`**; Changelog u. a. `adapter_version` | ✅ main/dev | Vor **npm** mit Checker + Changelog-Zeilen für neue Features abgleichen |
 | **npm/stable** | Erster Eintrag **npm** + **ioBroker.repositories** nach Adapter-Checker grün                                         | ⬜ geplant | Versionsnummer beim Release festlegen (nicht mit RC verwechseln) |
-| **v1.x**   | Phase 5: PDF, Backup-Integration, Custom Templates; Phase 5.x: Troubleshooting (Hybrid), Quick Start/Raumguides, Mermaid (gestaffelt)                                                                       | ⬜ geplant | Reihenfolge 5.x: [TODO.md](TODO.md) |
+| **v1.x**   | Phase 5: PDF, Backup-Integration, Custom Templates (Rest); Phase 5.x: Troubleshooting (über Freitext hinaus), Quick Start/Raumguides, Mermaid (gestaffelt)                                                                       | ⬜ geplant | Reihenfolge 5.x: [TODO.md § 1.3](TODO.md#phase-5x) |

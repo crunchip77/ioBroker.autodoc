@@ -1,16 +1,145 @@
 ﻿# AutoDoc Adapter — TODO-Liste
 
+Diese Datei ist die **Arbeitsliste**: was **offen** ist steht oben; **erledigte** Meilensteine sind im **Anhang** vollständig als Referenz erhalten (nichts streichen — nur sortiert).
+
+| Dokument | Rolle |
+| -------- | ----- |
+| **TODO.md** (hier) | Checkboxen, Offenes, Anhang „Erledigt“ |
+| **[PLAN.md](PLAN.md)** | Vision, Begründungen, Architektur, Brainstorming, offene Entscheidungen |
+| **[README.md](README.md)** | Nutzer-README + **Changelog** (Release-Notizen) |
+
 ## Wichtige Referenzen
 
 - [ioBroker AI Developer Guide](https://github.com/Jey-Cee/iobroker-ai-developer-guide)
 - [Adapter Creator](https://github.com/ioBroker/create-adapter)
 - [Adapter Checker](https://adapter-check.iobroker.in/)
-- Mitwirkung, lokale Checks, Release-Hinweise: [CONTRIBUTING.md](CONTRIBUTING.md)
-- Zukunftsvision / Brainstorming (Zusammenhänge, Kontext, Forum-Feedback): [PLAN.md](PLAN.md) → Abschnitt **„Zukunftsvision — Zusammenhänge & Kontext (Brainstorming)“**
+- Mitwirkung: [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ---
 
-## Phase 1 — Basis ✅ ABGESCHLOSSEN (v0.1.0)
+## Legende
+
+| Symbol | Bedeutung |
+| ------ | ----------- |
+| ✅ | Umgesetzt (im Repo nachvollziehbar) |
+| 🟡 | Teilweise / später ausbaufähig |
+| ⬜ | Noch nicht umgesetzt |
+| ❓ | Konzept offen — Details in [PLAN.md](PLAN.md) |
+
+---
+
+<a id="stand-uebersicht"></a>
+
+## Übersicht — Umsetzung vs. Rest (Stand: siehe `package.json` / README Version)
+
+| Thema | Status | Kurz |
+| ----- | ------ | ---- |
+| Phasen **1–4** (Basis … Profile-Redesign) | ✅ | Modular, drei Profile, Discovery, Renderer, i18n EN/DE/FR, … |
+| **0.9.x** RC-Features (Aliase, Diagnose, QR/Copy, `exportPath`, …) | ✅ | Siehe README-Changelog |
+| **Multihost** (Host-Karten, Slave-Warnung, Export) | ✅ | |
+| **KI** (Provider, Tab `hidden`, Timeouts, Temperaturen, **AI context hints**, `guestHelpNote` / `homeRoutinesNote`) | ✅ | Sprachqualität kleiner Modelle bleibt iterativ |
+| **Custom Templates** (Kapitel ausblenden, Custom-Sections, Theme-Teile) | 🟡 | [PLAN.md — Custom Templates](PLAN.md#custom-templates-detail); offen: Reihenfolge, Presets ohne Roh-CSS, PDF |
+| **States entlasten** (`documentationStatesMode`, Platzhalter, Downloads aus `/files`, **`documentation.exportHashes`**) | ✅ | Default weiterhin `full`; News bei Default-Wechsel → offen |
+| **Phase 5** (PDF, Backup-Adapter, Rest Custom Templates) | ⬜ | |
+| **Phase 5.x.1** Notfall/Troubleshooting „Hybrid“ | 🟡 | **Hilfe & Notfälle** als Freitext (`guestHelpNote`, u. a. seit 0.9.9) ✓ — offen: eigene Kapitelstruktur, Auto-Checklisten aus Diagnose |
+| **Phase 5.x.2** Quick Start / Raumguides | ⬜ | Strukturierte Blöcke im Modell |
+| **Phase 5.x.3** Mermaid | ⬜ | Gestaffelt: kuratiert → klein automatisch |
+| **System-Visitenkarte** / Forum-Copy aus Admin-UI | 🟡 | „Für Forum kopieren“ in **Admin-HTML** ✓; Button in Adapter-Maske ❓ |
+| **KI + Skript-Quellcode** | ❓ | Varianten in PLAN |
+| **npm + ioBroker.repositories** | ⬜ | Nach Adapter-Checker |
+
+---
+
+<a id="offene-arbeit"></a>
+
+## 1. Offene & nächste Arbeit (priorisiert)
+
+Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PLAN.md#phase-5x-plan).
+
+### 1.1 Release / Veröffentlichung
+
+> Solange **kein npm** und **kein** Eintrag in **ioBroker.repositories**: URL-Installation nutzt u. a. `main`; Tags/Releases ändern für viele Nutzer nichts.
+
+- [ ] [Adapter Checker](https://adapter-check.iobroker.in/) vollständig grün
+- [ ] npm-Account / Paketname `iobroker.autodoc` klären
+- [ ] Erstes **npm**-Release: `package.json` + `io-package.json` **Version** und **news** synchron (Nummer nach ioBroker-Übung, nicht „1.0.0 vortäuschen“)
+- [ ] `npm publish`
+- [ ] GitHub Release (Tag) sinnvoll erst danach
+- [ ] PR [ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories) (`sources-dist.json`)
+
+Bereits erledigt in der Liste unten: README-Changelog als eine Quelle, `dev`→`main` für RC-Forum.
+
+### 1.2 Phase 5 — Features (Nice-to-Have)
+
+- [ ] PDF-Export
+- [ ] Backup-Adapter-Integration
+- [ ] Custom Templates — Rest siehe [PLAN.md — Custom Templates](PLAN.md#custom-templates-detail) (Reihenfolge, Presets ohne Roh-CSS, …)
+
+<a id="phase-5x"></a>
+
+### 1.3 Phase 5.x — Reihenfolge 1 → 2 → 3
+
+#### 5.x.1 Notfall & Troubleshooting (Hybrid)
+
+**Bereits da (abgrenzen):** manuelle Felder **„Help & emergencies“** / **„Routines in your own words“** (`guestHelpNote`, `homeRoutinesNote`, u. a. 0.9.9) — Freitext in Onboarding/User, keine erfundene Diagnose.
+
+Noch offen (größere Ausbaustufe als reiner Freitext):
+
+- [ ] Eigener, ggf. geführter Abschnitt / Struktur (optional User) — über reine Notizfelder hinaus
+- [ ] Kurze **Auto-Checklisten** nur bei **konkreten** Diagnose-Befunden (später; mit Hinweis Momentaufnahme)
+
+#### 5.x.2 Quick Start & Raumguides
+
+- [ ] `documentModel`: feste Blöcke (z. B. Top 3–5 Aktionen systemweit, 2–3 Highlights pro Raum)
+- [ ] Renderer Onboarding (optional User): Kacheln/Listen
+- [ ] KI nur Formulierung, nicht alleinige Struktur
+- [ ] Später: Sortierung/Relevanz; Länge Onboarding vs. User
+
+#### 5.x.3 Mermaid / kleine Graphen
+
+- [ ] Stufe 1: Mermaid aus **kuratiertem** Inhalt (Config / `manualContext`)
+- [ ] Ausgabe Markdown + HTML-Variante festlegen
+- [ ] Stufe 2: optional kleiner **Auto-Graph** mit **hartem Knotenlimit** (z. B. Multihost)
+- [ ] Nicht Ziel: ungefilterter Gesamtgraph
+
+<a id="nachzuege"></a>
+
+### 1.4 Kleine Nachzüge / Trigger
+
+- [ ] **`io-package` news**, wenn **Default** `documentationStatesMode` auf **`metadata`** geändert wird (sinnvoll beim npm-Release; bei reiner Git-Installation optional)
+- [ ] **README-Changelog** beim nächsten Version-Bump um **States/Hashes** ergänzen (Feature liegt im Code; Eintrag ggf. noch nicht in 0.9.10-Changelog)
+
+### 1.5 Brainstorming — umgesetzt in Teilen, Entscheid offen
+
+- [ ] **System-Visitenkarte:** Button in **Admin-Adapter-UI** oder separates Mini-Exportformat? (HTML-Doku hat bereits Snippet — siehe PLAN)
+- [ ] **KI + Skript-Quellcode:** Variante A/B — siehe [PLAN.md](PLAN.md)
+
+---
+
+## 2. Teilweise umgesetzt — kurz erklärt
+
+| Bereich | Was schon da ist | Was „Phase 5.x“ / PLAN noch meint |
+| ------- | ---------------- | ---------------------------------- |
+| Notfall / Gäste | `guestHelpNote`, `homeRoutinesNote`, KI-Owner-Context | Strukturiertes Kapitel, Diagnose-gekoppelte Checklisten |
+| Customization | `*HiddenChaptersJson`, `customDocSectionsJson`, Theme-Felder, Markdown-Export | Drag-Sort, Presets, PDF, volle Theme-Presets ohne CSS |
+| Forum-Hilfe | Diagnose-Block „für Forum kopieren“ in generierter Admin-HTML | Ein-Klick in **ioBroker-Admin-Instanz**-Maske o. ä. |
+| Doku in States | `full` / `metadata`, Platzhalter, Dateizugriff, **exportHashes** | Nur **Kommunikation** (news), wenn Default wechselt |
+
+---
+
+## 3. Zur Klärung (ohne feste Roadmap)
+
+Ausführlich: [PLAN.md — Zukunftsvision](PLAN.md#zukunftsvision), [Architektur-Grenzen](PLAN.md#architektur-grenzen), offene Fragen **User-Assets** / Bilder in Redis.
+
+---
+
+<a id="anhang-a-erledigt"></a>
+
+## Anhang A — Vollständige Checklisten: Erledigt (Referenz)
+
+Der folgende Stand ist **historisch vollständig** (✅). Bei Abweichungsfragen immer **Git / README-Changelog** prüfen.
+
+### Phase 1 — Basis ✅ (v0.1.0)
 
 - [x] Modularisierung: `lib/discovery.js`, `lib/documentModel.js`, `lib/markdownRenderer.js`, `lib/htmlRenderer.js`, `lib/versionTracker.js`, `lib/i18n.js`
 - [x] Dateibasierter Export: Markdown, HTML, JSON nach `/files/autodoc.0/`
@@ -21,18 +150,14 @@
 - [x] Automatische Generierung: Startup, Timer, Event-basiert (30s Debounce)
 - [x] HTML-Renderer mit Sidebar, Stat-Cards, Adapter-Cards je Profil
 
----
-
-## Phase 2 — Inhalt ✅ ABGESCHLOSSEN
+### Phase 2 — Inhalt ✅
 
 - [x] 2.1 `enum.rooms` + `enum.functions` auslesen und als Kapitel rendern
 - [x] 2.2 Skripte aus `script.js.*`: Name, Status, Beschreibung, Trigger-Typ
 - [x] 2.3 Wartungs-Score, Checkliste, Instanzen/Skripte ohne Beschreibung
 - [x] 2.4 Clientseitige Such-/Filterfunktion im HTML (Nav-Suchbox, Escape-Reset)
 
----
-
-## Phase 3 — Tiefe ✅ ABGESCHLOSSEN
+### Phase 3 — Tiefe ✅
 
 - [x] 3.1 Notifications: `sendTo` nach Generierung (Telegram, Email, Pushover, generic)
 - [x] 3.2 Dependency-Analyse: `lib/dependencyAnalyzer.js`, stateRefs + Cross-Reference
@@ -41,46 +166,44 @@
 - [x] 3.x Adapter-Metadaten: `connectionType`, `dataSource`, `tier` aus ioBroker-Metadaten; gefilterter `native`-Config im Admin-Profil (sensitive Keys automatisch entfernt)
 - [x] 3.x Strukturierter `manualContext`: `adapters{}` + `rooms{}` — per-Adapter/Raum-Notizen, in allen Profilen angezeigt
 
----
+### Phase 4 — Profile-Redesign ✅
 
-## Phase 4 — Profile-Redesign ✅ ABGESCHLOSSEN
-
-### 4.1 Discovery-Erweiterungen ✅
+#### 4.1 Discovery-Erweiterungen ✅
 
 - [x] `system.config` auslesen: Stadt, Land, Systemsprache → `rawData.systemConfig`
 - [x] Geräte-Namen-Auflösung: Raum-Mitglieder → Device-Objekte via `getForeignObjectAsync`
 - [x] Opt-in Live-States: Schlüssel-Rollen (`level.temperature`, `sensor.door`, `sensor.window`, `alarm`) lesen
 - [x] Neue Config-Option `readLiveStates` in `jsonConfig.json5` + i18n
 
-### 4.2 Role Mapper ✅
+#### 4.2 Role Mapper ✅
 
 - [x] `lib/roleMapper.js` — 29 Patterns → 14 Kategorien + Icons
 - [x] i18n-Keys für Kategorie-Labels (EN/DE/FR)
 
-### 4.3 DocumentModel-Erweiterungen ✅
+#### 4.3 DocumentModel-Erweiterungen ✅
 
 - [x] `buildSystemConfig(rawData)` → `docModel.systemConfig`
 - [x] `buildRooms()`: `rooms[].devices[]` mit `{ id, deviceName, category, icon, currentValue, unit }`
 
-### 4.4 Renderer-Architektur: Dispatcher ✅
+#### 4.4 Renderer-Architektur: Dispatcher ✅
 
 - [x] `renderHtml()` als Dispatcher → `renderAdminHtml()` / `renderUserHtml()` / `renderOnboardingHtml()`
 
-### 4.5 Onboarding-Profil ✅
+#### 4.5 Onboarding-Profil ✅
 
 - [x] Stadt-bewusster Willkommenstext, Räume mit Device-Grid + Icons + Live-Values
 - [x] "Was läuft automatisch?" als plain sentences, Adapter-Cards (freundlich)
 - [x] AI-Box prominent, Hint wenn kein manualContext
 
-### 4.6 User/Familie-Profil ✅
+#### 4.6 User/Familie-Profil ✅
 
 - [x] Räume mit Device-Cards, Skripte name+desc only, Adapter title-only
 
-### 4.7 Admin-Profil ✅
+#### 4.7 Admin-Profil ✅
 
 - [x] Device-Hierarchie-Tabelle pro Raum mit OIDs
 
-### 4.x Bugfixes & UI-Verbesserungen ✅
+#### 4.x Bugfixes & UI-Verbesserungen ✅
 
 - [x] `room.members` → `room.devices` (DocumentModel ↔ Renderer Alignment)
 - [x] Onboarding: Adapter-Abschnitt fehlte (renderAdaptersChapter nicht aufgerufen)
@@ -90,7 +213,7 @@
 - [x] Hosts-Tabelle: leere adapterCount-Spalte entfernt
 - [x] Diagnose-Sektion neu aufgebaut: Erfassungsstatus, Wo nachschauen (alive/connected), Befunde
 
-### 4.x UI-Verbesserungen Session 2 ✅
+#### 4.x UI-Verbesserungen Session 2 ✅
 
 - [x] Adapter-Tabelle: deaktivierte Instanzen eingeklappt (`<details>`), lokaler Filter-Input mit Hinweistext
 - [x] Node.js-Version aus `host.native` (via `getForeignObjectAsync`) + Badge grün/rot (LTS ≥ v20)
@@ -98,212 +221,79 @@
 - [x] Node.js-Warnung + OS-Update-Hinweis in Diagnose-Befunde
 - [x] Script-Ordner-Labels: `null` → Root-Verzeichnis, `common` → Allgemeine Skripte, `global` → Globale Skripte
 
-### 4.x Abschluss
+#### 4.x Abschluss
 
 - [x] i18n: alle neuen Keys (EN/DE/FR)
 - [x] Lint sauber (0 Errors)
 - [x] README.md (inkl. Changelog) + TODO.md + PLAN.md aktualisiert (Abschluss RC 0.9.x)
 - [x] `dev` → Merge nach `main` (RC-Stand für Forum; weiteres Testing + Adapter-Checker vor npm)
 
----
-
-### 4.y Release-Kandidat (0.9.x) — umgesetzt
+#### 4.y Release-Kandidat (0.9.x) — umgesetzt
 
 - [x] Aliase (`alias.0.*`), eigene Variablen mit Filter; Repository in Diagnose; RAM-Summe Adapter
 - [x] Manuelle Hinweise oben (Admin/User); Doku-Score erklärt; visuelle Akzente (Gold/Orange/Blau)
 - [x] Onboarding: Capabilities, Tipps immer sichtbar, ⏱ bei Cron-Skripten, QR + Copy
 - [x] `RENDERER_VERSION` / `info.templateVersion` für Template-Updates ohne Versions-Chaos
 
----
+#### Admin-UI: Bedingte Sichtbarkeit im KI-Tab (Forum-Feedback) ✅
 
-### Admin-UI: Bedingte Sichtbarkeit im KI-Tab (Forum-Feedback)
-
-> Forum-Feedback (arteck) — umgesetzt mit `jsonConfig`-Eigenschaft **`hidden`** (kein `showCondition`; Admin-Schema). Anbieter „Deaktiviert“ blendet KI-Felder aus.
+> Umgesetzt mit `jsonConfig`-Eigenschaft **`hidden`**. Anbieter „Deaktiviert“ blendet KI-Felder aus.
 
 - [x] Anbieter = `none` / deaktiviert → KI-Felder ausgeblendet
 - [x] Anbieter = `ollama` → API-Schlüssel ausgeblendet, Basis-URL sichtbar
 - [x] Anbieter = `anthropic` / `groq` / `mistral` → API-Schlüssel sichtbar, Basis-URL je nach Feld
 - [x] Temperaturen + Timeout nur sichtbar wenn Anbieter aktiv
 
----
-
-## KI-Zusammenfassung (Stand 0.9.8)
-
-Viele Punkte aus der Testrunde sind umgesetzt (Grounding, Parser-Bereinigung, Timeout/Temperaturen optional im Admin, DE-Prompts, Lektor-Pass, Fallbacks). **Sprachqualität** mit kleinen lokalen Modellen (z. B. Ollama 8B) bleibt iterativ — Feedback im Forum oder als Issues willkommen.
+### KI — Zusammenfassung & Backlog ✅
 
 - [x] Optionale **Temperaturen** User vs. Onboarding (`jsonConfig`); leer = Anbieter-Default
-- [x] **HTTP-Timeout** pro Request konfigurierbar (Default für langsame lokale Modelle)
+- [x] **HTTP-Timeout** pro Request konfigurierbar
+- [x] **Bewohner-Stichpunkte / AI context hints** (nur LLM-Prompt)
 
-### KI — Backlog
+<a id="multihost-done"></a>
 
-- [x] **Bewohner-Stichpunkte für die KI** — Optionales Admin-Feld (oder gezielte Anbindung bestehender Texte wie Projektbeschreibung / Zusatznotizen **nur für den LLM-Prompt**): stichpunktartige „Wahrheit“ zum Zuhause (Was läuft automatisch? Worauf achten Gäste?). Das Modell soll daraus **sinnvolle Gästesätze** formulieren statt aus dünnen Objektdaten zu raten. Datenschutz: Text wandert nur zum gewählten KI-Anbieter.
+### Multihost-Unterstützung ✅
 
----
+> Hintergrund: [PLAN.md — Multihost](PLAN.md#multihost-plan)
 
-## Multihost-Unterstützung ✅ ABGESCHLOSSEN
+- [x] Admin: Host-Distribution (nur wenn > 1 Host); Single-Host unverändert
+- [x] Warnung wenn AutoDoc nicht auf primärem Host
+- [x] Optional `exportPath`, drei HTML-Profile, Fehler nur warnen
+- [x] QR: serverseitig `qrcode`, kein CDN
 
-> Hintergrund und Architektur: [PLAN.md → „Multihost — Analyse & Entscheidungen"](PLAN.md#multihost--analyse--entscheidungen) (Abschnitt enthält auch den Verweis auf **Mermaid-Topologie** als spätere Phase-5.x-Erweiterung, nicht Teil dieses Milestones).
+### Architektur — States entlasten ✅ (Umsetzung)
 
-### Renderer: Adapter-Gruppierung nach Host
+**Problem / Ziel** wörtlich: große Inhalte kanonisch unter **`/files/`**; States nicht unnötig mit Megabyte-Strings belasten — siehe [PLAN.md — Doppelte Ablage](PLAN.md#doppelte-ablage-states).
 
-- [x] Admin-Profil: Host-Distribution-Sektion (Karten pro Host mit Instanz-Badges) über der Adapter-Tabelle, nur wenn > 1 Host erkannt
-- [x] Bei Single-Host: bisheriges Layout unverändert (kein Overhead)
-
-### Laufzeit-Warnung bei Slave-Installation
-
-- [x] Beim Start: wenn mehrere Hosts erkannt und AutoDoc nicht auf dem primären Host läuft → `adapter.log.warn(...)` mit Hinweis und Host-Liste
-- [x] Kein hartes Blockieren — nur informativer Log-Eintrag
-
-### Optionaler Filesystem-Export (ioBroker-unabhängiger Zugriff)
-
-> Löst gleichzeitig: ioBroker-Abhängigkeit, Multihost-Zugriff, kein Webserver nötig
-
-- [x] Neues optionales Config-Feld `exportPath` (Textfeld, leer = deaktiviert)
-- [x] Nach Generierung: `fs.promises.writeFile(exportPath, ...)` zusätzlich zu `writeFileAsync` (Methode `exportToFilesystem`)
-- [x] Alle drei Profile exportieren (autodoc-admin.html, autodoc-user.html, autodoc-onboarding.html)
-- [x] Fehler beim Schreiben → `log.warn`, kein Abbruch der normalen Generierung
-- [x] i18n-Label + Hinweistext: EN + DE vollständig, andere Sprachen englischer Fallback
-
-### Self-contained HTML (Voraussetzung für portablen Export)
-
-- [x] `qrcodejs`-Bibliothek vollständig inline einbetten → server-seitige SVG-Generierung via `qrcode` npm-Paket; kein CDN, kein Client-JS für QR-Code mehr
+- [x] **`documentationStatesMode`**: `full` \| `metadata`, Default `full` — io-package, `jsonConfig`, EN/DE/FR
+- [x] **`persistDocumentation`**: bei `metadata` Platzhalter in `documentation.markdown` / `.html` / `.json`; `documentation.stateSummary` unverändert
+- [x] Download-Aktionen: Quelle `autodoc-latest.*` / `autodoc-admin.html`, Fallback Legacy-State
+- [x] **`documentation.exportHashes`**: SHA-256 (hex) der drei Latest-Exporte — beide Modi
+- [x] README-Kurztext zu Modus + Hashes
 
 ---
 
-## Architektur-Backlog — States entlasten (Doku in Files, States nur Metadaten)
+## Anhang B — Release-Prozess (Detail)
 
-**Problem:** Nach jeder Generierung liegen Markdown, Admin-HTML, JSON und State-Summary **vollständig** in States (`documentation.*`) **und** parallel als Dateien unter `…files`. Das **verdoppelt** die Nutzlast in der ioBroker-Objekt-/State-Welt (jsonl, **Redis**) ohne funktionalen Mehrwert gegenüber den Dateien.
+> Oberste Priorität: **Abschnitt 1.1** oben. Diese Zeilen sind die gleiche Liste, kompakt.
 
-**Ziel:** Kanonische Ablage der großen Inhalte nur in **`/files/…`** (und optional `exportPath`). States nur noch **Metadaten**: z. B. feste Dateinamen/Referenz, Zeitstempel der Generierung, optional **Hash(es)** pro Datei zur Änderungserkennung — **keine** Megabyte-Strings in States.
+- [ ] Adapter Checker grün
+- [ ] npm-Konto / Paketname
+- [ ] Version + news (`package.json`, `io-package.json`)
+- [ ] `npm publish`
+- [ ] GitHub Release
+- [ ] PR ioBroker.repositories
 
-**Vorteile:** kleinere interne Datenbank; klarere Datenhaltung; besser vereinbar mit **Redis** und mit **Phase 5** (Assets/Bilder bewusst **nicht** in der DB).
+Bereits erledigt:
 
-**Nachteile / Breaking:** Skripte, VIS oder externe Integrationen, die **`documentation.markdown` / `.html` / `.json`** als **Volltext** lesen, müssen auf **`readFile`** über den Dateibaum oder auf die **HTTP-URL** unter `/files/…` umgestellt werden. Im Objektbaum entfällt die direkte Anzeige des kompletten HTML-Strings im State.
-
-**Nicht betroffen:** Snapshot der „Livedaten“ in der **exportierten** Doku (beim Generieren eingefroren); **kleine** `info.*`-States; Generierung, Rotation, **exportPath**, Multihost-Logik.
-
-**Machbarkeit:** mittel im Code; Hauptaufwand **Kompatibilität + Doku + ggf. Übergangs-Config**.
-
-**Konkreter Ansatz (Entwurf):**
-
-1. Option in der Konfiguration (z. B. Modus **legacy-dual** vs. **files-only**), Default zunächst legacy bis zur Freigabe.
-2. `persistDocumentation`: bei **files-only** keine großen Strings mehr in `documentation.*`; stattdessen Metadaten + optional Hashes.
-3. Aktionen wie „Download“: Inhalt aus **Datei** lesen, nicht aus State.
-4. README + News-Eintrag bei Default-Wechsel.
-
-**Nicht Ziel dieses Pakets:** echte **Live-Aktualisierung** der Doku im Browser ohne Neu-Generierung (bleibt separates Thema).
-
-**Umsetzungsstand:**
-
-- [x] Admin: **`documentationStatesMode`** (`full` \| `metadata`), Default **`full`** — io-package + `jsonConfig` + EN/DE/FR
-- [x] `persistDocumentation`: bei **`metadata`** Platzhalter in `documentation.markdown` / `.html` / `.json`; `documentation.stateSummary` unverändert (kompakt genug)
-- [x] Download-Aktionen: Quelle **`autodoc-latest.*`** / **`autodoc-admin.html`**, Fallback nur noch Legacy-Volltext im State (kein Platzhalter)
-- [x] **SHA-256** der drei „latest“-Exporte in State **`documentation.exportHashes`** (JSON, hex) — gilt für beide Modi; Skripte können Änderungen erkennen ohne Volltext
-- [x] **README**-Kurzzeile zu States-Modus + `exportHashes`
-- [ ] **News** bei späterem Default-Wechsel auf `metadata` (nach npm/Repository; aktuell Git-only → optional)
-
----
-
-## Phase 5 — Erweiterungen (Nice-to-Have)
-
-> **Hinweis:** QR-Code und teilbarer Link im Onboarding-Profil sind **bereits umgesetzt** (serverseitiges SVG via npm-Paket `qrcode`, kein CDN; „Link kopieren“ = gleiche URL wie der QR-Code). Die frühere Checkbox „qrcodejs CDN“ war veraltet und wurde entfernt.
-
-- [ ] PDF-Export
-- [ ] Backup-Adapter Integration
-- [ ] Custom Templates — **teilweise:** [PLAN.md → „Custom Templates" / Umsetzungsstand](PLAN.md) (Admin/User/Onboarding Kapitel per JSON; eigene Markdown-Sektionen; HTML Theme/Logo/Schrift/Extra-CSS; Admin `custom` ausblendbar). Offen: Reihenfolge, Presets ohne Roh-CSS
-
-### Phase 5.x — Onboarding / User / Visualisierung (priorisiert)
-
-> **Reihenfolge:** 1 → 2 → 3 (schneller Nutzen zuerst; Mermaid gestaffelt). Detail: [PLAN.md — Phase 5.x](PLAN.md#phase-5x--onboarding--troubleshooting--mermaid-gestaffelt)
-
-#### 5.x.1 Notfall & Troubleshooting für Laien (Hybrid)
-
-**MVP**
-
-- [ ] Eigener Abschnitt in **Onboarding** (optional **User**): Alltagssprache, keine Technik-IDs
-- [ ] Inhalt **primär manuell**: Kontakt / wer hilft / wo Sicherungen / was bei Totalausfall — neue Felder oder Erweiterung `manualContext` (keine erfundenen Diagnosen)
-- [ ] **Sichere Auto-Anteile** (optional): nur aus bereits bekannten Fakten (z. B. konfigurierte ioBroker-Basis-URL, Projektname), klar von „euren Notizen“ getrennt
-
-**Später**
-
-- [ ] Kurze Checklisten nur, wenn die Diagnose **konkrete** Befunde liefert (z. B. Instanz offline — mit Hinweis „nur Momentaufnahme“)
-
-#### 5.x.2 Quick Start & Raumguides (strukturierter)
-
-**MVP**
-
-- [ ] `documentModel`: feste Blöcke z. B. **Top 3–5 Aktionen** (systemweit) + pro Raum **2–3 Highlights** (Gerät/Funktion in Kurzform)
-- [ ] Renderer (**Onboarding**, optional **User**): Kacheln/Listen aus diesen Blöcken — weniger „eine Wand aus Text“
-- [ ] KI nur zur **Formulierung** der Sätze, nicht als einzige Quelle der Struktur (Grounding bleibt)
-
-**Später**
-
-- [ ] Relevanz/Sortierung (z. B. nach Kategorie aus `roleMapper` / `enum.functions`)
-- [ ] Unterschiedliche Länge Onboarding (kürzer) vs. User (etwas mehr)
-
-#### 5.x.3 Mermaid / kleine Graphen (gestaffelt)
-
-**Stufe 1 — MVP (kuratiert, wenig Risiko)**
-
-- [ ] Mermaid aus **manuell gepflegtem** Inhalt (z. B. eigenes Config- oder `manualContext`-Feld „Diagramm / Zusammenhänge“ mit Mermaid-Code)
-- [ ] Ausgabe mindestens im **Markdown**-Export; **HTML**: technische Variante festlegen (z. B. Codeblock + Hinweis, oder später Client-Render — Abwägung Bundle/Offline)
-
-**Stufe 2 — Später (klein & automatisch)**
-
-- [ ] Optional: **begrenzter** Auto-Graph aus vorhandenen Daten (z. B. Multihost: Host → Instanzen, **hartes Knotenlimit**)
-- [ ] Nicht Ziel: vollständiger Skript-/State-Graph für große Installationen ohne Filter
-
-### Zukunftsvision / spätere Themen (noch offen)
-
-> Siehe [PLAN.md](PLAN.md) → „Zukunftsvision — Zusammenhänge & Kontext“. Kein aktueller Umsetzungsauftrag; dient Abstimmung (z. B. externe Doku-Links, ggf. Diagramme, tieferer Kontext).
-
-### System-Visitenkarte / „Für Forum kopieren" (Brainstorming / ungeklärt)
-
-> Forum-Wunsch (sigi234) — noch nicht entschieden. Details und Abwägung: [PLAN.md → „System-Visitenkarte"](PLAN.md)
-
-> **Stand 0.9.8:** Im generierten **Admin-HTML** (Diagnose) gibt es „Für Forum kopieren“ mit kompakten Systemdaten — Teilmenge dieser Idee; separater Admin-Adapter-Button o. Ä. weiterhin offen.
-
-Kompakte, teilbare Kurzübersicht der wichtigsten Systemdaten — damit helfende Forum-Nutzer nicht immer nachfragen müssen.
-
-- [ ] **Option A — Button im Admin-UI (Adapter-Instanz):** „Für Forum kopieren" in der ioBroker-Admin-Maske (nicht nur in der HTML-Doku)
-- [ ] **Option B — System-Card als separates Export-Format:** Mini-HTML oder Plaintext, eigenständig teilbar
-- [ ] Zusammenhang zu Custom Templates (Ebene 1) prüfen — könnte dort aufgehen
-
-### KI-gestützte Smarthome-Beschreibung aus Skript-Quellcode (Brainstorming / ungeklärt)
-
-> Noch unentschieden — Form und Tiefe offen. Details und Abwägung: [PLAN.md → „Skript-Quellcode-Analyse & Smarthome-Beschreibung durch KI"](PLAN.md)
-
-Grundgedanke: Skript-Quellcode (`common.source`) durch KI analysieren, um automatisch zu beschreiben, was das Smarthome **tatsächlich tut** — Inhaltsverzeichnis der Automatisierungen, „was steuert was", „wie reagiert das System auf X".
-
-- [ ] **Variante A — Deep Script Analysis (live):** `common.source` per opt-in einlesen, KI-Pass pro Skript/Batch, globaler Automations-Überblick (Erweiterung `aiEnhancer.js` + `discovery.js`)
-- [ ] **Variante B — Backup-basiert (offline):** ioBroker-Backup (`backitup`) parsen → Doku ohne live System, ggf. kombiniert mit Variante A (Erweiterung Phase-5 Backup-Integration)
-
----
-
-## Release-Prozess (wenn bereit für echte Veröffentlichung)
-
-> Solange der Adapter nicht auf npm und nicht in `ioBroker.repositories` eingetragen ist, haben Tags und GitHub Releases **keine Wirkung** auf Update-Erkennung oder Installation im ioBroker Admin.
-
-### Voraussetzungen
-
-- [ ] [Adapter Checker](https://adapter-check.iobroker.in/) vollständig grün
-- [ ] npm-Account vorhanden, `iobroker.autodoc` als Paketname verfügbar
-
-### Schritte
-
-1. [ ] Für **erstes npm-/Repository-Release**: `package.json` + `io-package.json` **Version** und **news** synchron setzen (Nummer nach ioBroker-Übung — **nicht** vorher als 1.0.0 „vortäuschen“; aktuell absichtlich **0.9.x** RC)
-2. [ ] News-Eintrag in `io-package.json` (EN + DE minimum)
-3. [x] README inkl. Abschnitt **Changelog** gepflegt (`CHANGELOG.md` entfernt — eine Quelle)
-4. [x] `dev` → Merge nach `main` (RC-Forum-Stand)
-5. [ ] `npm publish` (veröffentlicht auf npmjs.com)
-6. [ ] GitHub Release aus Tag erstellen (dann erst sinnvoll)
-7. [ ] PR zu [ioBroker/ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories) für Eintrag in Beta-Liste (`sources-dist.json`)
+- [x] README inkl. **Changelog** (`CHANGELOG.md` entfernt — eine Quelle)
+- [x] `dev` → `main` (RC-Forum-Stand)
 
 ---
 
 ## Bewusst weggelassen
 
-- ❌ Ungefilterte „Komplett-Graphen“ (z. B. Skript-/State für große Installationen ohne Knotenlimit) — **gestaffelte Mermaid-Umsetzung:** Phase 5.x
+- ❌ Ungefilterte „Komplett-Graphen“ (Skript-/State ohne Knotenlimit) — gestaffelte Mermaid: Phase 5.x
 - ❌ Vollständiges Code-Parsing für Abhängigkeiten
 - ❌ REST-API / Webhooks
 - ❌ Alexa/Google Home Integration
