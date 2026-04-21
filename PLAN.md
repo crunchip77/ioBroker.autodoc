@@ -21,7 +21,7 @@ Langfristige inhaltliche Richtung (Zusammenhänge, Auto vs. Pflege, Forum-Feedba
 | Datei | Zweck |
 | ----- | ----- |
 | **[TODO.md](TODO.md)** | **Offene** Punkte und **Klärungen** oben; **erledigte** Meilensteine im **Anhang** (vollständige Checklisten — nichts verloren) |
-| **PLAN.md** (hier) | Vision, technische und inhaltliche **Begründungen**, Architektur-/Forum-Brainstorming, **noch zu entscheidende** Fragen |
+| **PLAN.md** (hier) | Vision, technische und inhaltliche **Begründungen**, **Architektur** (Ist / Leitplanken im Abschnitt [Architektur](#architektur-grenzen); [Nächste Schritte](#architektur-naechste-schritte)), Forum-Brainstorming, **Festlegungen** ([System-Visitenkarte](#system-visitenkarte-festlegung), [KI + Skriptquellcode](#ki-skript-festlegung)) |
 | **[README.md](README.md)** | Nutzer-Dokumentation und **Changelog** (Release-Notizen) |
 
 ### Überblick — was umgesetzt ist vs. was noch offen ist
@@ -29,9 +29,12 @@ Langfristige inhaltliche Richtung (Zusammenhänge, Auto vs. Pflege, Forum-Feedba
 | Bereich | Kurz |
 | ------- | ---- |
 | Phasen 1–4, 0.9.x RC, Multihost, KI-Basis, Custom-Template-**Teile**, States-Modus **`full`/`metadata`**, **`documentation.exportHashes`**, Downloads aus `/files` | ✅ siehe [TODO.md — Übersichtstabelle](TODO.md#stand-uebersicht) |
-| Phase 5 (PDF, Backup, Custom-Templates-Rest), Phase **5.x.2/5.x.3**, npm-Release | ⬜ |
+| Phase 5 (PDF, Backup-Anbindung, Custom-Templates-Rest), Phase **5.x.2 / 5.x.3** | ⬜ |
+| **npm-Release** + **ioBroker.repositories** | ⬜ — bewusst **nach** Custom Templates / 5.x / Phase 5 ([TODO — Reihenfolge](TODO.md#offene-arbeit)) |
 | Phase **5.x.1** „Hybrid-Troubleshooting“ | 🟡 Freitext-Felder (`guestHelpNote` u. a.) ✅ — strukturierte/Auto-Anteile ⬜ |
-| System-Visitenkarte, KI+Skriptquellcode, User-Assets | ❓ in diesem Dokument ausgeführt |
+| **Architektur:** Redis/jsonl, States, Medien/Grafiken ([Leitplanken](#architektur-grenzen), [Medien-MVP](#architektur-medien-mvp), [Nächste Schritte](#architektur-naechste-schritte)) | ✅ festgelegt | Umsetzung = README + Phase 5 / 5.x |
+| **System-Visitenkarte** „Forum kopieren“ | ✅ [Festlegung](#system-visitenkarte-festlegung) | ✅ **jsonConfig** `getForumCard`, State `info.forumCardPlain`, `lib/forumCard.js` + Diagnose-HTML |
+| **KI + Skriptquellcode** | ✅ [Festlegung](#ki-skript-festlegung) | **A** ✅ (`aiAnalyzeScriptSources`); **B** ⬜ an [Phase 5 Backup](TODO.md#offene-arbeit) |
 
 Detaillierte **Checkboxen**: immer **[TODO.md](TODO.md)** zuerst; dieser PLAN liefert **Warum** und **Kontext**.
 
@@ -221,10 +224,10 @@ Echte Zielgruppen-Dokus statt "mehr oder weniger Detail vom selben Template".
 
 ## Phase 5 — Erweiterungen (Nice-to-Have)
 
-> **Offene Arbeit** (Checkboxen): [TODO.md — § 1](TODO.md#offene-arbeit).
+> **Offene Arbeit** (Checkboxen): [TODO.md — § 1](TODO.md#offene-arbeit). **Abgestimmte Reihenfolge** (Custom → 5.x → Phase 5 → npm): [TODO.md — Umsetzungsreihenfolge](TODO.md#offene-arbeit).
 
 - PDF-Export
-- Backup-Adapter Integration (Doku mit Backup speichern)
+- **Backup-Anbindung** (kein vollständiges „zweites Backitup“ im Adapter): typische Archive **`.tar.gz`**, lesbarer Pfad und/oder Kopplung an [ioBroker.backitup](https://github.com/simatec/ioBroker.backitup) — Details [TODO.md — Backup / Backitup](TODO.md#backup-backitup-festlegung)
 - Custom Templates (Teile bereits umgesetzt — siehe unten „Custom Templates“ und [TODO.md — Übersicht](TODO.md#stand-uebersicht))
 
 **Erledigt (ehemals Phase 5-Idee):** QR-Code und teilbarer Link für das Onboarding-Profil — **serverseitig** als eingebettetes SVG (npm-Paket `qrcode`), **ohne CDN** und ohne zusätzliches Client-Skript für die QR-Erzeugung. „Link kopieren“ nutzt dieselbe öffentliche `/files/…`-URL wie der QR-Code (Voraussetzung: sinnvoll gesetzte **ioBroker base URL** in den Adapter-Einstellungen; siehe README).
@@ -297,54 +300,50 @@ MVP: im `documentModel` feste, kurze Blöcke (systemweit Top 3–5 Aktionen; pro
 | **C — Verknüpfung** | Felder für **URLs** externer Doku; AutoDoc bleibt **Quelle der Wahrheit** für Installationsstand, externe Doku für **Absicht/Kontext**. |
 | **D — Medien** | Bild-Upload oder Ablage unter `files/…` + Verweise — höherer Aufwand (Größe, Dark Mode, Rotation). |
 
-### Skript-Quellcode-Analyse & Smarthome-Beschreibung durch KI (Brainstorming)
+### Skript-Quellcode-Analyse & Smarthome-Beschreibung durch KI
 
-> **Status:** Noch unentschieden — zwei Varianten denkbar, Form und Tiefe offen. Zu gegebenem Anlass näher erörtern.
+**Grundgedanke:** Nicht nur Metadaten (Name, Trigger, Status) der Skripte auslesen, sondern optional den **Quelltext** per KI kurz erklären lassen — was das Zuhause **tatsächlich** automatisiert (in Alltagssprache für User/Onboarding).
 
-**Grundgedanke:** Nicht nur Metadaten (Name, Trigger, Status) der Skripte auslesen, sondern den eigentlichen Quellcode durch KI analysieren lassen — um automatisch zu beschreiben, was das Smarthome **tatsächlich tut**: Inhaltsverzeichnis der Automatisierungen, „was steuert was", „wie reagiert das System auf X".
+#### Variante A — Deep Script Analysis (live, Erweiterung Phase 3.3)
 
-#### Variante A — Deep Script Analysis (Erweiterung von Phase 3.3 / live)
+- `discovery.js` liest `common.source` nur bei **aktiviertem** Config-Flag ein.
+- Zusätzlicher KI-Pass in `aiEnhancer.js`: Batches/Truncation wegen Token-Limits.
+- Ausgabe: **pro Skript** kurze Erklärung (2–4 Sätze) + **optional ein** zusammenfassender Absatz „Automatisierung im Überblick“ (nur **User/Onboarding**, nicht redundant zum Admin-Profil).
 
-- `discovery.js` liest `common.source` (JS-Quellcode) pro Skript ein (opt-in, neues Config-Flag)
-- Neuer KI-Pass in `aiEnhancer.js`: Skripte (oder Batches) werden an den gewählten Provider gesendet
-- KI erklärt pro Skript in 2–4 Sätzen, was es tut und wie es steuert
-- Globaler Automations-Überblick: KI fasst alle Skripte zusammen → „Was läuft in diesem Zuhause automatisch?"
-- Mögliche Kapitelstruktur: Licht, Heizung, Sicherheit, Benachrichtigungen — aus echtem Code abgeleitet
-- **Herausforderungen:** Token-Limits (Batching/Truncation nötig), Datenschutz (Code kann Credentials enthalten → Opt-in + Hinweis; ggf. analog zu `filterNative()`)
+#### Variante B — Backup-basiert (Erweiterung Phase 5)
 
-#### Variante B — Backup-basierte Dokumentation (Erweiterung Phase 5)
+- Gleiche Idee, Datenquelle = **ioBroker-Backup** (Inhalt z. B. `iobroker-objects.json` o. ä.; typisch **`.tar.gz`** von [ioBroker.backitup](https://github.com/simatec/ioBroker.backitup), nicht nur **ZIP**).
+- Sinn: **Offline**/Migration — **kein** Ersatz für A, sondern **Erweiterung derselben Pipeline**, sobald [Backup-Anbindung / Festlegung](TODO.md#backup-backitup-festlegung) umgesetzt ist.
 
-- ioBroker-Backups (`backitup`) enthalten `iobroker-objects.json` mit allen Skripten inkl. Quellcode
-- AutoDoc könnte Backups **offline** parsen → Doku ohne live laufendes System (z. B. vor Migration, nach Crash, für zweite Instanz)
-- Gleiche Discovery/DocumentModel/Renderer-Pipeline, nur andere Datenquelle
-- Kombinierbar mit Variante A: KI analysiert Skript-Code direkt aus dem Backup
-- **Herausforderungen:** ZIP/tar.gz-Parsing, große JSON-Dateien, Versions-Kompatibilität der Backup-Formate
+<a id="ki-skript-festlegung"></a>
 
-#### Offene Fragen (noch nicht entschieden)
+#### Festlegung (Schicht 2)
 
-- Welche Variante (A, B oder beide kombiniert) hat mehr praktischen Nutzen?
-- Wie tief soll die Analyse gehen — pro Skript oder nur globale Zusammenfassung?
-- Wo wird das Ergebnis angezeigt — neues Kapitel, Ergänzung der bestehenden Skript-Tabelle, oder eigenes Profil?
-- Datenschutz-Handling bei Code mit eingebetteten Credentials klar regeln
+| Frage | Beschluss |
+| ----- | ---------- |
+| **A, B oder beides?** | **Zuerst A** (laufende Installation, höchster Alltagsnutzen). **B** an die **Phase-5-Backup-Integration** anbinden — gleiche KI-Logik, andere Quelle. |
+| **Tiefe** | **Pro Skript** Kurztext (Pflicht, wenn Feature an); **eine** globale KI-Zusammenfassung optional; **Admin-Profil** keine zusätzliche KI-Flut (Metadaten + ggf. bestehende Tabellen reichen). |
+| **Darstellung** | **Erweiterung** des Skript-Kapitels / der Skript-Karten bei **User & Onboarding**; Admin unverändert oder nur technische Zusatzzeile ohne Marketing-Text. |
+| **Datenschutz** | **Opt-in** + klare README-Warnung; vor dem Senden **heuristische Redaktion** von Zeilen mit typischen Secret-Mustern (analog `filterNative()`-Denke) — **kein** Vollversprechen; Rest liegt bei **verantwortungsvollem Opt-in**. |
 
 ---
 
+<a id="system-visitenkarte-festlegung"></a>
+
 ### System-Visitenkarte / „Für Forum kopieren" (Forum-Feedback)
 
-> **Status:** Forum-Wunsch (sigi234) — noch nicht entschieden, zu gegebenem Anlass weiter ausarbeiten.
+**Grundgedanke:** Kompakte **System-Kurzübersicht** für Helfer im Forum — Kerndaten (js-controller, Node.js, RAM, CPU, Instanzen, Repository, …) sind in der generierten Admin-Doku schon da, aber nicht **ein-Klick-teilbar**.
 
-**Grundgedanke:** Eine kompakte, teilbare System-Kurzübersicht — damit helfende Forum-Nutzer die wichtigsten Systemdaten auf einen Blick sehen, ohne immer nachfragen zu müssen. Die Kerndaten (js-controller-Version, Node.js, RAM, CPU, Instanzen-Anzahl, Repository) sind im Admin-Profil bereits vorhanden, aber als Teil der vollen Doku — kein schnelles Teilen möglich.
+#### Festlegung (Schicht 2)
 
-**Mögliche Umsetzung:**
-- „Für Forum kopieren"-Button im Admin-UI → legt vorgefertigten Textblock in die Zwischenablage
-- Alternativ: kompakte eigenständige „System-Card" als separates Mini-HTML / Plaintext-Export
-- Inhalt: js-controller, Node.js-Version + LTS-Status, RAM, CPU, Laufzeit, Instanzen-Anzahl, Repository-Kanal
-- Kein Extra-Aufwand für den Nutzer — Daten werden ohnehin bereits erfasst
+| Frage | Beschluss |
+| ----- | ---------- |
+| **Wo der Button?** | **Primär:** Button/Aktion in der **Adapter-Instanz** (**jsonConfig**) → kopiert in die **Zwischenablage**. Nutzer sind beim Schreiben von Forumsposts typischerweise in der **Admin-Oberfläche** — dort maximaler Nutzen. |
+| **Zusätzlich HTML?** | **Behalten:** bestehendes Snippet in der **generierten Admin-HTML** (wer nur die Doku offen hat). **Kein** muss für zwei identische Buttons; UI-Instanz ist die Hauptlösung. |
+| **Format** | **Plaintext** mit festem, gut lesbarem Layout (Überschriftenzeilen, Key: Value) — **Forum- und Markdown-freundlich**. **Kein** HTML in die Zwischenablage (vermeidet Formatierungsmüll in Foren). |
+| **Custom Templates (Ebene 1)** | **Kein** Ersatz für den Button: Kapitel-Auswahl kann später eine **„nur System“-Doku** erzeugen, ist aber **schwerer** als Copy-Paste für Foren. Visitenkarte ≠ Template-Thema. |
 
-**Offene Fragen:**
-- Button im Admin-UI (jsonConfig) oder in der generierten HTML-Seite (oder beides)?
-- Plaintext (Forum-freundlich) oder formatierter HTML-Snippet?
-- Zusammenhang zu Custom Templates (Ebene 1) prüfen — könnte dort aufgehen
+**Inhalt (Minimum):** js-controller-Version, Node.js inkl. LTS-Hinweis, Host/OS falls sinnvoll, RAM/CPU (Kurz), Instanz-Anzahl, Repository-Kanal — wie bereits in der Diagnose/System-Sparte erfasst, aber **kompakt in einem Block**.
 
 ---
 
@@ -366,7 +365,7 @@ Custom Templates kann vieles bedeuten. Sinnvolle Scope-Abgrenzung nach Aufwand u
 
 **Empfehlung:** Ebene 1 + 3 als Kombination — Kapitel-Auswahl und freie Zusatz-Sektionen. Löst 90% der realen Wünsche ohne Template-Engine. Ebene 4–5 widerspricht dem Kern-Versprechen „automatisch ohne Pflege".
 
-**Verbindung zur System-Visitenkarte:** Ebene 1 (Kapitel-Auswahl) könnte den Forum-Wunsch abdecken — ein fokussiertes Template das nur Kerndaten zeigt.
+**Verbindung zur System-Visitenkarte:** [Festlegung](#system-visitenkarte-festlegung) — der **Forum-Button** in der Instanz ist die Hauptlösung. Ebene 1 (Kapitel-Auswahl) kann **zusätzlich** eine kurze „nur System“-HTML liefern, ersetzt aber **nicht** den Ein-Klick-Kopier-Fall fürs Forum.
 
 **Umsetzungsstand (Adapter-Code, laufend erweiterbar):**
 
@@ -388,9 +387,21 @@ Custom Templates kann vieles bedeuten. Sinnvolle Scope-Abgrenzung nach Aufwand u
 
 <a id="architektur-grenzen"></a>
 
-## Architektur-Grenzen & Lösungsrichtungen (Brainstorming / noch nicht entschieden)
+## Architektur — Grenzen, Ist-Zustand und Erweiterungen
 
-> **Status:** Diskutiert im Dev-Meeting 2026-04-15 und in Folge-Sessions. Probleme und Lösungsrichtungen dokumentiert — finale Entscheidung offen.
+> **Hintergrund:** Diskutiert im Dev-Meeting 2026-04-15 und in Folge-Sessions. Hier wird die Architektur **ohne zusätzliche Markdown-Datei** in diesem Projektplan festgehalten.
+
+### Wie Architektur hier „endgültig“ dokumentiert wird
+
+Es gibt **drei Schichten** — alles in **diesem** Abschnitt von `PLAN.md` (bzw. nutzerrelevante Kurzfassungen optional im **README**, nicht als zweite Architektur-Quelle):
+
+| Schicht | Inhalt | Bindung |
+| -------- | ------ | ------- |
+| **1 — Ist** | Was der Adapter im **Code heute** tut: Ausgabeorte (`/files/`), States-Modus, Hashes, optionaler `exportPath`, Multihost-Verhalten, Admin als Viewer, … | Beschreibung des **tatsächlichen** Verhaltens; bei größeren Code-Änderungen hier **mitziehen**. |
+| **2 — Leitplanken (Soll-Richtung)** | Regeln für **zukünftige** Features, damit sie nicht gegen das Zielmodell arbeiten: z. B. generierter Inhalt nur als „Latest“ ohne Akkumulation, Redis: keine großen Binär-Assets in `/files/`, portable HTML ohne CDN. | **Verbindlich für neue Entwicklung**, solange nicht bewusst revidiert. |
+| **3 — Offen** | Was **noch** nicht entschieden ist (z. B. **optionale** spätere Erweiterungen wie HTTP-Asset-Endpunkt). **Medien/MVP**, [System-Visitenkarte](#system-visitenkarte-festlegung) und [KI + Skript](#ki-skript-festlegung) sind **festgelegt** (Umsetzung = Arbeitspakete). | Wird bei Entscheidung in **1** oder **2** überführt und TODO/Release-Notizen angepasst. |
+
+**Reihenfolge im folgenden Text:** zuerst **technischer Kontext** (warum es Grenzen gibt), dann **bereits umgesetzte** Architekturteile, dann **Richtlinien** für noch nicht gebaute Teile, zuletzt **explizit offene Fragen**.
 
 ### Ausgangsproblem: ioBroker-Abhängigkeit
 
@@ -439,7 +450,7 @@ Realer Dateisystem-Pfad:    ← AUSSERHALB der ioBroker-Datenbank (opt-in)
 
 **Generierter Content** → immer in `/files/`, immer überschrieben, keine Akkumulation, kein Bloat.
 
-**User-Assets (Bilder)** → NICHT in ioBroker-Datenbank, sondern in einem echten Dateisystempfad außerhalb von jsonl/redis (noch zu klären: wer verwaltet diesen Pfad, wie kommt Admin daran?).
+**User-Assets (Bilder)** → große Binärdateien **nicht** in der virtuellen Dateischicht ablegen; siehe **[Medien — festgelegte Arbeitsweise](#architektur-medien-mvp)** unten.
 
 <a id="doppelte-ablage-states"></a>
 
@@ -462,7 +473,7 @@ Ein optionaler, konfigurierbarer **realer Ausgabepfad** ermöglicht Zugriff auf 
 
 **Voraussetzung:** HTML sollte für portablen Export wirklich selbst-enthaltend sein (kein CDN). **Stand 0.9.x:** QR-Code wird serverseitig per npm-Paket `qrcode` als SVG erzeugt — kein CDN mehr.
 
-### Assets/Bilder: Lösungsoptionen (noch nicht entschieden)
+### Assets/Bilder: Lösungsoptionen (Vergleich — Festlegung siehe [Medien — festgelegte Arbeitsweise](#architektur-medien-mvp))
 
 | Option | Beschreibung | DB-Bloat | Admin-Zugriff | Offline |
 |--------|-------------|----------|--------------|---------|
@@ -474,6 +485,60 @@ Ein optionaler, konfigurierbarer **realer Ausgabepfad** ermöglicht Zugriff auf 
 **Tendenz:** Option B als Basis (SVG/Mermaid-Diagramme in `/files/`, klein und sauber) + Option A für Fotos (externe URLs, kein Storage-Problem). Option D nur für sehr kleine Icons vertretbar.
 
 **Für Redis-Nutzer:** Explizit dokumentieren: nur externe URLs oder SVGs empfohlen — keine Binär-Uploads in `/files/`.
+
+### Verbindliche Leitplanken (Schicht 2 — beschlossen)
+
+Die folgenden Regeln sind die **festgelegte Soll-Richtung** für neue Features; sie **widersprechen nicht** dem bestehenden Code (Schicht 1), [Phase 5.x](TODO.md#phase-5x) (Mermaid gestaffelt, kein Gesamtgraph), [TODO § 1.4](TODO.md#nachzuege) (News bei Default-Wechsel der States) oder dem README — sie **präzisieren** nur, was vorher als Tendenz/Optionen stand.
+
+| Thema | Leitplanke |
+| ----- | ----------- |
+| **Generierte Artefakte** | Immer unter `/files/autodoc.0/`, pro Lauf überschrieben, **kein** Anwachsen über Versionen. |
+| **States / Redis** | Kanonisch weiterhin Dateien unter `/files/`; langfristiges **Ziel**: Default **`documentationStatesMode` = `metadata`** (mit **`io-package` news** beim Wechsel, siehe TODO). Keine **großen Binärdateien** (Fotos, große PNG) bewusst über AutoDoc in die virtuelle Dateischicht legen — **besonders bei Redis**; jsonl ist toleranter, **einheitliche Nutzer-Empfehlung** bleibt dieselbe. |
+| **Optionaler Export** | **`exportPath` bleibt immer opt-in** (nie Pflichtfeld). Schreibt **zusätzlich** zur `/files/`-Ausgabe; Multihost: Export vom **Master** (bereits Ist). |
+| **Portable HTML (`file://` / NAS)** | **Kein CDN** für Kern-Doku; Medien, die offline funktionieren sollen: **inline SVG** (wie QR heute) oder **relative Pfade** zu Assets **im selben Exportordner**. Reine `https://`-Verweise (Logo in Custom-Template, externe Fotos) können offline fehlen — **akzeptiert** oder durch Nutzerwahl vermeidbar. |
+| **Bilder** | **B + A:** kleine **SVG**/Textgrafiken im generierten Pfad; **Fotos** über **externe URLs** und/oder Dateien **nur** im **realen Dateisystem** (z. B. neben der exportierten HTML), **nicht** als Redis-lastigen „Upload in `/files/`“. **D** nur für sehr kleine Icons. **C** (eigener Adapter-HTTP für Assets) nur falls sich ein Bedarf abzeichnet — **kein** Standard. |
+| **Graphen / Mermaid** | Wie Phase 5.x: zuerst **kuratiert**; **Auto** nur **klein** und mit **hartem Knotenlimit**. Für **exportiertes HTML** ohne externe JS-Abhängigkeit: Darstellung **bevorzugt bei der Generierung nach SVG** (oder gleichwertig eingebettet); Markdown-Export kann vorerst **Mermaid-Quelltext** behalten, bis die Pipeline einheitlich ist. |
+
+**Hinweis:** Die öffentliche **Base-URL** für QR/„Link kopieren“ bleibt ein **Online-Szenario**; wer **offline** eine Kopie braucht, nutzt `exportPath` und die Leitplanken zu selbstenthaltenden/relativen Medien — das sind **zwei gültige Nutzungsmodi**, kein Widerspruch.
+
+### ioBroker-Backup und AutoDoc (Einordnung)
+
+> **Hintergrund:** Nutzer fragen zuverlässig, ob die Doku „mit dem normalen Backup weg ist“. Kurz: **Konfiguration und generierte Dateien in ioBroker** ja — **optionaler Export nach außen** und **externe Inhalte** nur, wenn der Nutzer sie separat absichert.
+
+Ein **Standard-ioBroker-Backup** (entspricht dem, was `iobroker backup` bzw. das **Haupt-„ioBroker-Backup“** in [ioBroker.backitup](https://github.com/simatec/ioBroker.backitup) erzeugt) sichert laut js-controller/backitup-Dokumentation **Objects**, **States** und **Nutzerdateien** (virtuelles Dateisystem, u. a. VIS-Dateien und alles unter dem Datei-Adapter — damit typischerweise auch **`/files/autodoc.0/`** inkl. generierter HTML/MD/JSON).
+
+| Daten | Typisch im Standard-ioBroker-Backup? | Hinweis für AutoDoc |
+| ----- | -------------------------------------- | ------------------- |
+| Adapter-Objekte inkl. AutoDoc-**Konfiguration** (`native`, Instanz) | ✅ | Einstellungen überstehen Restore |
+| **`documentation.*`-States** (Volltext oder Metadaten je nach Modus) | ✅ | Inhalt je nach `documentationStatesMode` |
+| **`documentation.exportHashes`** | ✅ | State |
+| Dateien unter **`autodoc.0`** in `/files/` (generierte Exporte) | ✅ | „Latest“-Stand zum Backupzeitpunkt |
+| **Optionaler `exportPath`** (z. B. NAS, `D:\…`, Mount außerhalb `iobroker-data`) | ⚠️ **nur wenn** dieser Ordner **vom gleichen Backup-Job** oder einer **Host-/NAS-Sicherung** erfasst wird | Liegt **nicht automatisch** im reinen ioBroker-Archiv, wenn nur das Standard-Backup gezogen wird |
+| **Externe URLs** (Fotos, Wiki, Cloud) nur als **Verweise** in Text/Markdown | Nur der **Link/Text**, nicht die fremde Datei | Inhalte hinter der URL: **eigenes** Backup der Quelle |
+| **Historie-/Zeitreihen-DBs** (Influx, SQL, …), **Zigbee-/Coordinator-Dumps**, … | Nur wenn in **backitup** (oder anderem Tool) **extra** aktiviert | Nicht Teil des „minimalen“ ioBroker-Backups |
+
+**Architektur-Folge (Schicht 2):** AutoDoc muss **kein** eigenes Backup-Format erfinden; die kanonische Doku liegt in **`/files/`** und in den **States** — das passt zum üblichen ioBroker-Restore. **`exportPath`** ist bewusst **zusätzlich** und erfordert bei Bedarf **eine zweite Sicherungsregel** (Ordner mit ins NAS-Backup, rsync, …). Die geplante **Phase-5-Idee „Backup-Anbindung“** (Doku aus einem ioBroker-Backup-Archiv erzeugen, typisch **`.tar.gz`** / [ioBroker.backitup](https://github.com/simatec/ioBroker.backitup)) ist ein **anderes** Thema: Offline-Analyse/Migration — **kein Ersatz** für die Nutzer-Strategie „was sichere ich auf dem Host“. Siehe [TODO — Backup / Backitup](TODO.md#backup-backitup-festlegung).
+
+<a id="architektur-medien-mvp"></a>
+
+### Medien, Grafiken und externe Daten — festgelegte Arbeitsweise (MVP)
+
+> **Zielbild:** „So gut wie möglich“ innerhalb von ioBroker: **automatischer Kern** aus Objekten/Analyse + **optionale** manuelle Schicht (Texte, Links, kleine Grafiken) — **ohne** die interne DB (v. a. **Redis**) mit Fotos oder riesigen Blobs zu füllen. **Vollständige Topologie/externe Lebenswelt** bleibt über **Links** und ggf. **BookStack/Wiki** abgedeckt (wie in der Zukunftsvision) — das ist **kein** Versagen des Adapters, sondern **Scope-Grenze**.
+
+**jsonl vs. Redis — keine Wahl für den Adapter:** Das Setup des Nutzers ist gegeben. AutoDoc **vermeidet Aufblähung** durch: (1) kanonische große Inhalte unter **`/files/`**, (2) optional **`documentationStatesMode: metadata`** zur Entlastung der **`documentation.*`-States**, (3) **keine** Empfehlung, große Binärdateien in `/files/autodoc.0/` abzulegen. **Redis:** hier gilt die Leitplanke **streng**; **jsonl:** technisch toleranter, trotzdem **dieselbe** Nutzer-Empfehlung (einheitliches Verhalten, spätere Umstellung auf Redis ohne Überraschung).
+
+| Bedarf | Festgelegte Lösung (MVP) | Nicht nötig vor Phase 5 / ohne konkreten Bedarf |
+| ------ | ------------------------- | ----------------------------------------------- |
+| **Fotos, Screenshots, große PNG/JPEG** | **`https://`-URLs** in Markdown (`customDocSectionsJson`, `manualContext`, …) auf NAS/Nextcloud/statischen Webspace — **kein** Upload großer Dateien in die ioBroker-Dateischicht. | Eigener Adapter-**HTTP-Endpunkt** für Assets (**Option C**) — **nicht** Standard, nur evaluieren, wenn sich echte Nachfrage zeigt. |
+| **SVG, QR-ähnliche Grafiken, kleine Diagramme** | Von AutoDoc **generiert** (z. B. QR) oder **kurzer SVG-Text** / Mermaid-Quell in Feldern; bleibt **klein**. | — |
+| **Portable Kopie (`file://`, NAS-Ordner)** | Unter **`exportPath`** vom Nutzer einen Unterordner (z. B. `assets/`) anlegen, Dateien dort ablegen, in Markdown **relative Pfade** nutzen (sofern vom Renderer unterstützt — sonst weiterhin URLs). | — |
+| **Externe Daten / „perfekte“ Gesamtdoku** | **URLs und kurze Zusammenfassungen** im Adapter; ausführliche externe Doku **verlinken**. | Alles in einen Adapter **ziehen** — **nicht** Ziel. |
+
+**Upload-UI / „wo klickt der Nutzer?“ — beschlossen:** Es gibt **kein** separates AutoDoc-**Asset-Upload-Tab** in der nächsten Ausbauphase. Ausreichend ist: Konfigurationstextfelder (Markdown) + **`exportPath`** + ggf. **Admin-Dateizugriff** auf **`/files/`** nur für **kleine** Dateien (z. B. SVG). **Große Fotos** nicht nach `autodoc.0` legen — in README klar machen.
+
+**Größenlimits — beschlossen:** **Kein** hartes technisches Limit im Adapter-Code als nächster Schritt. **Empfehlung** in der Nutzer-Doku: alles, was unter `/files/autodoc.0/` liegt, **deutlich unter ~500 KB pro Datei** halten; bei Redis **strenger** (lieber nur URLs). Wenn Missbrauch oder Supportfälle häufen, kann später nachgerüstet werden — **blockiert** keine weitere Arbeit.
+
+**Ehemals offen (Schicht 3) — damit erledigt für die Arbeitsplanung:** eigener HTTP-Handler vs. Subordner → **MVP ohne** zusätzlichen Handler; Upload-UI → **nein**, bis auf bestehende Felder; Größenlimit → **Soft-Empfehlung**, kein Hard-Limit vorerst.
 
 <a id="multihost-plan"></a>
 
@@ -531,12 +596,22 @@ Master → Slave1 (zigbee.0, hm-rpc.0)
        → Slave2 (sonos.0, unifi.0)
 ```
 
-### Offene Fragen (noch nicht entschieden)
+### Wann ist die Architektur „komplett genug“, um weiterzumachen?
 
-- Wie bekommen User-Assets (Bilder außerhalb DB) ihren Weg in die HTML wenn sie via Admin aufgerufen wird — eigener HTTP-Handler im Adapter? Eigener `/files/`-Subordner mit strikten Größenlimits?
-- Wie sieht ein Upload-UI für Assets aus (Admin-Dateimanager reicht? Eigenes Tab?)
-- Größenlimit für Assets: welcher Wert ist sinnvoll?
-- Soll der Filesystem-Export-Pfad ein Pflichtfeld für bestimmte Setups sein oder immer opt-in?
+- **Schicht 2** (Leitplanken) + **Medien-MVP** (Abschnitt oben) sind die **verbindliche** Zielbeschreibung für alles Weitere — es fehlt **kein** weiterer Architektur-Block, bevor an **Phase 5 / 5.x** gearbeitet wird.
+- **Phase 5** ist dann **Umsetzung** (PDF, Backup-Archive / Backitup-Anbindung, Mermaid-Stufen, …) **innerhalb** dieser Leitplanken — nicht „noch mehr Architektur raten“, sondern Features bauen und ggf. README pflegen.
+- Ausnahme: **npm-/Repository-Release** ([TODO § 1.1](TODO.md#offene-arbeit)) ist **Prozess**, nicht Architektur — kann parallel oder davor liegen, je nach Priorität.
+
+<a id="architektur-naechste-schritte"></a>
+
+### Nächste Schritte (empfohlene Reihenfolge)
+
+1. ~~**Nutzer-Doku (README)** — kurzer Abschnitt **„Medien & Redis“** (Soft-Limits, Fotos per URL, `metadata`; Details in PLAN) — **erledigt**.~~
+2. ~~**Festgelegte Features** aus [TODO § 1.5](TODO.md#todo-festlegt-umsetzung): **System-Visitenkarte** und **KI + Skriptquellcode Variante A** — **erledigt** (0.9.12).~~ **Variante B** (Backup-Analyse) bleibt an **Backup-Anbindung** ([TODO — Backitup](TODO.md#backup-backitup-festlegung), [§ 1.2](TODO.md#phase-5-features)) gekoppelt.
+3. **Feature-Reihenfolge (Projekt):** [TODO — abgestimmte Umsetzungsreihenfolge](TODO.md#offene-arbeit) — zuerst **Custom Templates — Rest**, dann **5.x.1 → 5.x.2 → 5.x.3**, danach **Phase 5** (Backup, PDF, …), **npm / Adapter Checker / repositories** erst am Ende dieser Kette.
+4. **Adapter Checker** grün und **Release-Strategie** ([TODO § 1.1](TODO.md#release-veroeffentlichung)) — zeitlich mit Schritt 3 verzahnt möglich, **npm** nach Projektpriorität oft **nach** den genannten Features.
+5. Optional **Default `documentationStatesMode`** auf `metadata` **mit** `io-package` news ([TODO § 1.4](TODO.md#nachzuege)) — **Produktentscheidung**.
+6. **Optional später (nicht blockierend):** HTTP-Asset-Endpunkt, harte Limits, eigenes Asset-UI — nur bei **realem** Bedarf und dann als **Schicht-2-Erweiterung** im PLAN nachziehen.
 
 ---
 

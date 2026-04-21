@@ -5,7 +5,7 @@ Diese Datei ist die **Arbeitsliste**: was **offen** ist steht oben; **erledigte*
 | Dokument | Rolle |
 | -------- | ----- |
 | **TODO.md** (hier) | Checkboxen, Offenes, Anhang „Erledigt“ |
-| **[PLAN.md](PLAN.md)** | Vision, Begründungen, Architektur, Brainstorming, offene Entscheidungen |
+| **[PLAN.md](PLAN.md)** | Vision, Begründungen, Architektur, Festlegungen (u. a. Visitenkarte, KI+Skript), Brainstorming |
 | **[README.md](README.md)** | Nutzer-README + **Changelog** (Release-Notizen) |
 
 ## Wichtige Referenzen
@@ -44,8 +44,8 @@ Diese Datei ist die **Arbeitsliste**: was **offen** ist steht oben; **erledigte*
 | **Phase 5.x.1** Notfall/Troubleshooting „Hybrid“ | 🟡 | **Hilfe & Notfälle** als Freitext (`guestHelpNote`, u. a. seit 0.9.9) ✓ — offen: eigene Kapitelstruktur, Auto-Checklisten aus Diagnose |
 | **Phase 5.x.2** Quick Start / Raumguides | ⬜ | Strukturierte Blöcke im Modell |
 | **Phase 5.x.3** Mermaid | ⬜ | Gestaffelt: kuratiert → klein automatisch |
-| **System-Visitenkarte** / Forum-Copy aus Admin-UI | 🟡 | „Für Forum kopieren“ in **Admin-HTML** ✓; Button in Adapter-Maske ❓ |
-| **KI + Skript-Quellcode** | ❓ | Varianten in PLAN |
+| **System-Visitenkarte** / Forum-Copy | ✅ | `textSendTo` **getForumCard** + State `info.forumCardPlain`; Diagnose-HTML nutzt `forumCard.js` |
+| **KI + Skript-Quellcode** | 🟡 | **A** umgesetzt (`aiAnalyzeScriptSources`); **B** weiterhin Phase 5 Backup |
 | **npm + ioBroker.repositories** | ⬜ | Nach Adapter-Checker |
 
 ---
@@ -54,7 +54,35 @@ Diese Datei ist die **Arbeitsliste**: was **offen** ist steht oben; **erledigte*
 
 ## 1. Offene & nächste Arbeit (priorisiert)
 
-Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PLAN.md#phase-5x-plan).
+Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PLAN.md#phase-5x-plan). **Architektur** (jsonl/Redis, States, Medien): festgelegt — [PLAN — Nächste Schritte](PLAN.md#architektur-naechste-schritte).
+
+### Abgestimmte Umsetzungsreihenfolge (Konzept Stand 2026-04)
+
+> Reihenfolge **Projekt / Features** — **npm** und **ioBroker.repositories** bewusst **danach** (siehe § 1.1).
+
+| # | Thema | Verweis |
+| - | ----- | ------- |
+| 1 | **Custom Templates — Rest** (Kapitelreihenfolge, Presets ohne Roh-CSS, ggf. PDF weiter in Phase 5) | [PLAN — Custom Templates](PLAN.md#custom-templates-detail), [§ 1.2](#phase-5-features) |
+| 2 | **Phase 5.x.1** Hybrid (strukturierter Notfall-Block; später Diagnose-Checklisten) | [§ 1.3 — 5.x.1](#phase-5x) |
+| 3 | **Phase 5.x.2** Quick Start / Raumguides | [§ 1.3 — 5.x.2](#phase-5x) |
+| 4 | **Phase 5.x.3** Mermaid (gestaffelt) | [§ 1.3 — 5.x.3](#phase-5x) |
+| 5 | **Phase 5:** Backup-Anbindung, PDF, Rest Custom Templates | [§ 1.2](#phase-5-features), [Backup/Backitup](#backup-backitup-festlegung) |
+| 6 | **npm** + **Adapter Checker** + **ioBroker.repositories** | [§ 1.1](#release-veroeffentlichung) |
+
+<a id="backup-backitup-festlegung"></a>
+
+### Backup / ioBroker.backitup — Festlegung für die spätere Umsetzung
+
+> **Noch nicht implementiert** — Inhalt aus Abstimmung (Backitup-Repo, typische Nutzer-Setups). Dient als einheitliche Referenz, damit PLAN/KI-B nicht nur „ZIP“ sagen.
+
+- **Typische Archive:** [ioBroker.backitup](https://github.com/simatec/ioBroker.backitup) erzeugt u. a. **`*.tar.gz`** (z. B. `iobroker_…_backupiobroker.tar.gz`, `javascripts_…` — vgl. `lib/list.js` im Backitup-Repo). **Nicht nur ZIP** — AutoDoc-Parser/Doku müssen **tar.gz** abbilden, sobald Backup verarbeitet wird.
+- **Zugriff (ohne Cloud-Zugänge in AutoDoc zu duplizieren):**
+  - **Empfohlen:** für ioBroker **lesbarer Pfad** (NAS per **SMB/NFS/Mount**, Docker-Volume) — Zugangsdaten bleiben auf Host/Backitup.
+  - **Optional:** lose Kopplung per **`sendTo`** an eine Backitup-Instanz (`list`, `getSystemInfo` u. a., siehe Backitup `main.js`) — **keine** feste API-Garantie durch Dritte, bei Umsetzung gegen aktuelle Backitup-Version prüfen.
+- **Kurz nur lokal zwischengespeichert:** keine zuverlässige Quelle ohne **Mount**, **Kopie an stabilem Ort** oder **Trigger** direkt nach dem Backup-Lauf.
+- **KI + Skript Variante B:** gleiche KI-Pipeline wie A, Daten aus Backup-Archiv — bleibt an **Phase-5-Backup-Umsetzung** gekoppelt ([PLAN — KI + Skript](PLAN.md#ki-skript-festlegung)).
+
+<a id="release-veroeffentlichung"></a>
 
 ### 1.1 Release / Veröffentlichung
 
@@ -69,10 +97,12 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 
 Bereits erledigt in der Liste unten: README-Changelog als eine Quelle, `dev`→`main` für RC-Forum.
 
+<a id="phase-5-features"></a>
+
 ### 1.2 Phase 5 — Features (Nice-to-Have)
 
 - [ ] PDF-Export
-- [ ] Backup-Adapter-Integration
+- [ ] Backup-Anbindung (siehe [Backup / ioBroker.backitup](#backup-backitup-festlegung) — **tar.gz**, Pfad und/oder `sendTo` Backitup)
 - [ ] Custom Templates — Rest siehe [PLAN.md — Custom Templates](PLAN.md#custom-templates-detail) (Reihenfolge, Presets ohne Roh-CSS, …)
 
 <a id="phase-5x"></a>
@@ -109,10 +139,14 @@ Noch offen (größere Ausbaustufe als reiner Freitext):
 - [ ] **`io-package` news**, wenn **Default** `documentationStatesMode` auf **`metadata`** geändert wird (sinnvoll beim npm-Release; bei reiner Git-Installation optional)
 - [x] **README-Changelog** + Version **0.9.11** um States/Hashes/Changelog-i18n ergänzt
 
-### 1.5 Brainstorming — umgesetzt in Teilen, Entscheid offen
+<a id="todo-festlegt-umsetzung"></a>
 
-- [ ] **System-Visitenkarte:** Button in **Admin-Adapter-UI** oder separates Mini-Exportformat? (HTML-Doku hat bereits Snippet — siehe PLAN)
-- [ ] **KI + Skript-Quellcode:** Variante A/B — siehe [PLAN.md](PLAN.md)
+### 1.5 Festgelegt — Umsetzung (Referenz)
+
+Details: [PLAN — System-Visitenkarte](PLAN.md#system-visitenkarte-festlegung), [PLAN — KI + Skript](PLAN.md#ki-skript-festlegung).
+
+- [x] **System-Visitenkarte:** **jsonConfig** `textSendTo` `getForumCard` (+ Copy); State `info.forumCardPlain`; gemeinsame Logik `lib/forumCard.js`
+- [x] **KI + Skriptquellcode:** **Variante A** — `aiAnalyzeScriptSources`, Zeilen-Redaktion, User/Onboarding HTML + Markdown; **Variante B** → Phase 5 Backup / [Backup-Backitup](#backup-backitup-festlegung) (offen)
 
 ---
 
@@ -122,14 +156,14 @@ Noch offen (größere Ausbaustufe als reiner Freitext):
 | ------- | ---------------- | ---------------------------------- |
 | Notfall / Gäste | `guestHelpNote`, `homeRoutinesNote`, KI-Owner-Context | Strukturiertes Kapitel, Diagnose-gekoppelte Checklisten |
 | Customization | `*HiddenChaptersJson`, `customDocSectionsJson`, Theme-Felder, Markdown-Export | Drag-Sort, Presets, PDF, volle Theme-Presets ohne CSS |
-| Forum-Hilfe | Diagnose-Block „für Forum kopieren“ in generierter Admin-HTML | Ein-Klick in **ioBroker-Admin-Instanz**-Maske o. ä. |
+| Forum-Hilfe | Diagnose-Block + **`getForumCard`** / State `info.forumCardPlain` (`lib/forumCard.js`) | Optional: spätere Template-„nur System“-HTML ([PLAN](PLAN.md#system-visitenkarte-festlegung)) |
 | Doku in States | `full` / `metadata`, Platzhalter, Dateizugriff, **exportHashes** | Nur **Kommunikation** (news), wenn Default wechselt |
 
 ---
 
 ## 3. Zur Klärung (ohne feste Roadmap)
 
-Ausführlich: [PLAN.md — Zukunftsvision](PLAN.md#zukunftsvision), [Architektur-Grenzen](PLAN.md#architektur-grenzen), offene Fragen **User-Assets** / Bilder in Redis.
+Ausführlich: [PLAN.md — Zukunftsvision](PLAN.md#zukunftsvision). **Medien, Redis/jsonl, States:** Arbeitsweise und Leitplanken sind festgelegt — [PLAN — Medien-MVP](PLAN.md#architektur-medien-mvp), [Architektur](PLAN.md#architektur-grenzen).
 
 ---
 

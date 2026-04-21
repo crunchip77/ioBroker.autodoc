@@ -18,6 +18,7 @@ const I18n = require('./lib/i18n');
 const VersionTracker = require('./lib/versionTracker');
 const Notifier = require('./lib/notifier');
 const AiEnhancer = require('./lib/aiEnhancer');
+const { buildForumCard } = require('./lib/forumCard');
 
 /** When `documentationStatesMode` is metadata — full exports live only under adapter /files. */
 const DOCS_STATE_METADATA_PLACEHOLDER =
@@ -491,6 +492,14 @@ class Autodoc extends utils.Adapter {
 				write: false,
 				def: '',
 			},
+			'info.forumCardPlain': {
+				name: 'Forum system card (plaintext, last generation)',
+				type: 'string',
+				role: 'text',
+				read: true,
+				write: false,
+				def: '',
+			},
 			'versioning.lastDocumentModel': {
 				name: 'Last generated document model (JSON)',
 				type: 'string',
@@ -827,6 +836,9 @@ class Autodoc extends utils.Adapter {
 				val: docModel.appendices.stateSummary.readonly,
 				ack: true,
 			});
+
+			const forum = buildForumCard(docModel, this.i18n);
+			await this.setStateAsync('info.forumCardPlain', { val: forum.plaintext, ack: true });
 		} catch (error) {
 			this.log.error(`Error persisting documentation: ${error.message}`);
 			throw error;
@@ -896,7 +908,7 @@ class Autodoc extends utils.Adapter {
 			this.log.info(
 				`Documentation generation (${trigger}): 3/5 — AI enhancement (disabled=instant; else two LLM calls — local Ollama often several minutes each)…`,
 			);
-			docModel.ai = await this.aiEnhancer.enhance(docModel);
+			docModel.ai = await this.aiEnhancer.enhance(docModel, rawData);
 
 			this.log.info(`Documentation generation (${trigger}): 4/5 — rendering Markdown and HTML…`);
 			const markdown = this.markdownRenderer.renderMarkdown(docModel);
@@ -1083,6 +1095,22 @@ class Autodoc extends utils.Adapter {
 			} catch {
 				if (obj.callback) {
 					this.sendTo(obj.from, obj.command, 'Error reading status', obj.callback);
+				}
+			}
+			return;
+		}
+
+		if (obj.command === 'getForumCard') {
+			try {
+				const st = await this.getStateAsync('info.forumCardPlain');
+				const text = st && st.val != null ? String(st.val).trim() : '';
+				const display = text || 'Generate documentation first — no forum card yet.';
+				if (obj.callback) {
+					this.sendTo(obj.from, obj.command, display, obj.callback);
+				}
+			} catch {
+				if (obj.callback) {
+					this.sendTo(obj.from, obj.command, 'Error reading forum card', obj.callback);
 				}
 			}
 		}

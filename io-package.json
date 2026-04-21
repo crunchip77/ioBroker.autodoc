@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "autodoc",
-        "version": "0.9.11",
+        "version": "0.9.12",
         "news": {
+            "0.9.12": {
+                "en": "Admin: jsonConfig plaintext forum system card (sendTo getForumCard, copy button) + state info.forumCardPlain; diagnosis HTML uses same plaintext as i18n. Optional AI per-script explanations (aiAnalyzeScriptSources): sanitized JS sent to configured provider; User/Onboarding HTML + Markdown; optional automation overview paragraph.",
+                "de": "Admin: jsonConfig Forum-Systemkarte als Klartext (sendTo getForumCard, Kopierbutton) + State info.forumCardPlain; Diagnose-HTML nutzt dieselben i18n-Texte. Optional KI pro Skript (aiAnalyzeScriptSources): bereinigtes JS an konfigurierten Anbieter; User/Onboarding HTML + Markdown; optional Gesamtabsatz Automatisierung.",
+                "ru": "0.9.12: forum card sendTo; AI script sources opt-in",
+                "pt": "0.9.12: forum card sendTo; AI script sources opt-in",
+                "nl": "0.9.12: forumkaart sendTo; AI scriptbronnen opt-in",
+                "fr": "0.9.12 : carte forum sendTo ; IA scripts opt-in",
+                "it": "0.9.12: forum card sendTo; AI script opt-in",
+                "es": "0.9.12: tarjeta forum sendTo; IA scripts opt-in",
+                "pl": "0.9.12: forum sendTo; AI skryptów opt-in",
+                "uk": "0.9.12: forum sendTo; AI скриптів opt-in",
+                "zh-cn": "0.9.12：Forum 卡片 sendTo；脚本 AI 可选"
+            },
             "0.9.11": {
                 "en": "Advanced: Documentation states storage — full (default, duplicate large strings in states) or metadata (large payloads only in /files autodoc-latest.*; placeholders in states; easier on Redis). State documentation.exportHashes: SHA-256 hex of latest MD/JSON/Admin HTML. Download actions still write autodoc.md/.json/.html from latest files. HTML changelog: adapter instance version changes + i18n labels. README/TODO/PLAN planning docs updated.",
                 "de": "Erweitert: Documentation states storage — vollständig (Standard, große Strings in States) oder nur Metadaten (Volltext nur unter /files autodoc-latest.*; Platzhalter in States; schont Redis). State documentation.exportHashes: SHA-256 (hex) der letzten MD/JSON/Admin-HTML-Exporte. Download-Aktionen schreiben autodoc.md/.json/.html weiter aus den neuesten Dateien. HTML-Änderungsprotokoll: Adapter-Instanz-Versionswechsel + i18n. README/TODO/PLAN angepasst.",
@@ -262,7 +275,8 @@
         "customDocSectionsJson": "[]",
         "adminHiddenChaptersJson": "[]",
         "userHiddenChaptersJson": "[]",
-        "onboardingHiddenChaptersJson": "[]"
+        "onboardingHiddenChaptersJson": "[]",
+        "aiAnalyzeScriptSources": false
     },
     "objects": [],
     "instanceObjects": [

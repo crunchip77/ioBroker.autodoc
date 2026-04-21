@@ -132,6 +132,19 @@
 					"md": 12,
 					"lg": 12,
 					"xl": 12
+				},
+				"_forumCardSendTo": {
+					"type": "textSendTo",
+					"command": "getForumCard",
+					"label": "Forum system card (plaintext)",
+					"container": "div",
+					"copyToClipboard": true,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
 				}
 			}
 		},
@@ -901,6 +914,19 @@
 				"md": 6,
 				"lg": 6,
 				"xl": 6
+			},
+			"aiAnalyzeScriptSources": {
+				"type": "checkbox",
+				"label": "AI explain JavaScript scripts (opt-in)",
+				"help": "Sends sanitized script source to the same AI provider to add short plain-language explanations in User/Onboarding docs. Lines matching common secret patterns are redacted first; still review before enabling on production systems.",
+				"default": false,
+				"hidden": "data.aiProvider === 'none'",
+				"newLine": true,
+				"xs": 12,
+				"sm": 12,
+				"md": 12,
+				"lg": 12,
+				"xl": 12
 			}
 			}
 		}
