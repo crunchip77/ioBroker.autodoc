@@ -781,7 +781,7 @@ class Autodoc extends utils.Adapter {
 			await this.writeFileAsync(basePath, 'autodoc-latest.html', htmlAll.admin);
 
 			// Rotate old timestamped files
-			const maxFiles = this.config.maxStoredFiles > 0 ? this.config.maxStoredFiles : 5;
+			const maxFiles = this.config.maxStoredFiles > 0 ? this.config.maxStoredFiles : 3;
 			await this.rotateFiles(basePath, maxFiles);
 
 			// Optional filesystem export — write HTML files to a real OS path outside ioBroker's DB

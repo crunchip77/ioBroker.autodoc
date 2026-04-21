@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "autodoc",
-        "version": "0.9.15",
+        "version": "0.9.16",
         "news": {
+            "0.9.16": {
+                "en": "Default: max stored timestamped doc file sets (maxStoredFiles) is now 3 per type; 0 still means use that default (was 5).",
+                "de": "Standard: max. gespeicherte Doku-Dateisätze (maxStoredFiles) jetzt 3 pro Typ; 0 = weiterhin Standardwert (bisher 5).",
+                "ru": "0.9.16: maxStoredFiles default 3",
+                "pt": "0.9.16: maxStoredFiles default 3",
+                "nl": "0.9.16: maxStoredFiles default 3",
+                "fr": "0.9.16 : maxStoredFiles défaut 3 (ex. 5).",
+                "it": "0.9.16: maxStoredFiles default 3",
+                "es": "0.9.16: maxStoredFiles default 3",
+                "pl": "0.9.16: maxStoredFiles default 3",
+                "uk": "0.9.16: maxStoredFiles default 3",
+                "zh-cn": "0.9.16：maxStoredFiles 默认每类保留 3 套（原 5）"
+            },
             "0.9.15": {
                 "en": "Script-source AI: cancel via action.cancelScriptSourceAi, Admin (KI tab) button, or sendTo cancelScriptSourceAi; info.aiScriptSourceProgress shows cancelled when the phase ends (current HTTP request may still complete).",
                 "de": "Skript-KI: Abbruch über action.cancelScriptSourceAi, Admin-Button (KI) oder sendTo cancelScriptSourceAi; info.aiScriptSourceProgress zeigt am Ende cancelled (laufender Request kann enden).",
@@ -303,7 +316,7 @@
         "onlyEnabledInstances": false,
         "hideInstanceDetailsInMarkdown": false,
         "maxDocumentedInstances": 0,
-        "maxStoredFiles": 5,
+        "maxStoredFiles": 3,
         "documentationStatesMode": "full",
         "baseUrl": "",
         "exportPath": "",

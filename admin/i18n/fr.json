@@ -29,7 +29,7 @@
 	"ioBroker base URL (optional)": "URL de base ioBroker (optionnel)",
 	"Used for the info.htmlUrl state. Include port, e.g. 192.168.1.100:8081 or http://myserver:8082. Protocol is optional. Leave empty for auto-detection (may fail in Docker).": "Utilisé pour l'état info.htmlUrl. Inclure le port, ex. 192.168.1.100:8081. Laisser vide pour la détection automatique.",
 	"Maximum stored documentation files": "Nombre maximum de fichiers de documentation stockés",
-	"How many timestamped file sets to keep (per type: .md, .html, .json). Oldest are deleted automatically. 0 = use default (5).": "Nombre de jeux de fichiers horodatés à conserver (par type). Les plus anciens sont supprimés automatiquement. 0 = défaut (5).",
+	"How many timestamped file sets to keep (per type: .md, .html, .json). Oldest are deleted automatically. 0 = use default (3).": "Nombre de jeux de fichiers horodatés à conserver (par type). Les plus anciens sont supprimés automatiquement. 0 = défaut (3).",
 	"Documentation states storage": "Stockage des états de documentation",
 	"Documentation states storage help": "Complet : markdown, HTML et JSON dupliqués dans les états de l’adaptateur (comportement classique, base d’objets / Redis plus lourde). Métadonnées seulement : export complet uniquement sous Fichiers (autodoc-latest.*) ; les états contiennent un court texte de renvoi — réduit la taille de la base. Les scripts qui lisent documentation.* comme texte intégral doivent utiliser /files/ ou les URLs HTTP. Les actions de téléchargement écrivent toujours autodoc.md / .json / .html à partir des derniers fichiers.",
 	"Doc states mode full": "Complet (dans les états — base plus lourde)",

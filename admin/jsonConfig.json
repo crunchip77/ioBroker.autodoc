@@ -491,9 +491,9 @@
 				"maxStoredFiles": {
 					"type": "number",
 					"label": "Maximum stored documentation files",
-					"help": "How many timestamped file sets to keep (per type: .md, .html, .json). Oldest are deleted automatically. 0 = use default (5).",
+					"help": "How many timestamped file sets to keep (per type: .md, .html, .json). Oldest are deleted automatically. 0 = use default (3).",
 					"min": 0,
-					"default": 5,
+					"default": 3,
 					"newLine": true,
 					"xs": 12,
 					"sm": 12,
