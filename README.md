@@ -4,7 +4,7 @@
 
 Automatically generates structured documentation (HTML, Markdown, JSON) for your ioBroker installation — on demand, on a schedule, or when the system changes.
 
-**Version:** 0.9.12
+**Version:** 0.9.13
 
 | | |
 | --- | --- |
@@ -74,6 +74,10 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 **Contributing / releases:** see [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 ## Changelog
+
+### 0.9.13 (2026-04-21)
+
+- **Admin:** `common.messagebox: true` in `io-package.json` — required so **js-controller** delivers **jsonConfig** `textSendTo` messages (`getStatus`, `getForumCard`). Without it, the **Basic** tab fields “Last generated” / “Forum system card” may not appear or work; check the log for *messagebox not enabled*.
 
 ### 0.9.12 (2026-04-21)
 

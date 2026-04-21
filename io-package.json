@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "autodoc",
-        "version": "0.9.12",
+        "version": "0.9.13",
         "news": {
+            "0.9.13": {
+                "en": "Fix: enable common.messagebox so Admin jsonConfig textSendTo (Last generated, Forum system card / getForumCard) works with js-controller.",
+                "de": "Fix: common.messagebox aktiviert — Admin-jsonConfig textSendTo (Zuletzt erzeugt, Forum-Systemkarte / getForumCard) funktioniert mit js-controller.",
+                "ru": "0.9.13: messagebox for Admin sendTo",
+                "pt": "0.9.13: messagebox para Admin sendTo",
+                "nl": "0.9.13: messagebox voor Admin sendTo",
+                "fr": "0.9.13 : messagebox pour sendTo Admin",
+                "it": "0.9.13: messagebox per sendTo Admin",
+                "es": "0.9.13: messagebox para sendTo Admin",
+                "pl": "0.9.13: messagebox dla sendTo Admin",
+                "uk": "0.9.13: messagebox для sendTo Admin",
+                "zh-cn": "0.9.13：启用 messagebox 以支持管理端 sendTo"
+            },
             "0.9.12": {
                 "en": "Admin: jsonConfig plaintext forum system card (sendTo getForumCard, copy button) + state info.forumCardPlain; diagnosis HTML uses same plaintext as i18n. Optional AI per-script explanations (aiAnalyzeScriptSources): sanitized JS sent to configured provider; User/Onboarding HTML + Markdown; optional automation overview paragraph.",
                 "de": "Admin: jsonConfig Forum-Systemkarte als Klartext (sendTo getForumCard, Kopierbutton) + State info.forumCardPlain; Diagnose-HTML nutzt dieselben i18n-Texte. Optional KI pro Skript (aiAnalyzeScriptSources): bereinigtes JS an konfigurierten Anbieter; User/Onboarding HTML + Markdown; optional Gesamtabsatz Automatisierung.",
@@ -212,6 +225,7 @@
         "mode": "daemon",
         "type": "general",
         "compact": true,
+        "messagebox": true,
         "connectionType": "local",
         "dataSource": "push",
         "adminUI": {
