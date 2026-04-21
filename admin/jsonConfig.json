@@ -927,6 +927,51 @@
 				"md": 12,
 				"lg": 12,
 				"xl": 12
+			},
+			"aiMaxScriptCharsForAi": {
+				"type": "number",
+				"label": "Max characters of script source per KI call",
+				"help": "How many characters of each script (after redaction) are sent to the model; longer sources are truncated. Default 12000. Lower to speed up or fit small context; raise only if your model and timeout allow. Range 2000–100000. State info.aiScriptSourceProgress shows e.g. 5/12 while processing.",
+				"min": 2000,
+				"max": 100000,
+				"default": 12000,
+				"hidden": "data.aiProvider === 'none' || !data.aiAnalyzeScriptSources",
+				"newLine": true,
+				"xs": 12,
+				"sm": 12,
+				"md": 6,
+				"lg": 6,
+				"xl": 6
+			},
+			"_cancelScriptHint": {
+				"type": "staticText",
+				"text": "Cancel script KI hint",
+				"hidden": "data.aiProvider === 'none' || !data.aiAnalyzeScriptSources",
+				"newLine": true,
+				"xs": 12,
+				"sm": 12,
+				"md": 12,
+				"lg": 12,
+				"xl": 12
+			},
+			"_cancelScriptButton": {
+				"type": "setState",
+				"id": "autodoc.0.action.cancelScriptSourceAi",
+				"val": true,
+				"label": "Cancel script KI (running generation)",
+				"variant": "outlined",
+				"confirm": {
+					"title": "Cancel script KI",
+					"text": "Stop the optional per-script KI pass? The request that is already running may still finish; further scripts will not be started. (The main user/onboarding KI calls run before this phase.)",
+					"ok": "Cancel script KI",
+					"cancel": "Back"
+				},
+				"newLine": true,
+				"xs": 12,
+				"sm": 12,
+				"md": 6,
+				"lg": 4,
+				"xl": 4
 			}
 			}
 		}

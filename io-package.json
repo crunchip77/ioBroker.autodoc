@@ -1,8 +1,34 @@
 {
     "common": {
         "name": "autodoc",
-        "version": "0.9.13",
+        "version": "0.9.15",
         "news": {
+            "0.9.15": {
+                "en": "Script-source AI: cancel via action.cancelScriptSourceAi, Admin (KI tab) button, or sendTo cancelScriptSourceAi; info.aiScriptSourceProgress shows cancelled when the phase ends (current HTTP request may still complete).",
+                "de": "Skript-KI: Abbruch über action.cancelScriptSourceAi, Admin-Button (KI) oder sendTo cancelScriptSourceAi; info.aiScriptSourceProgress zeigt am Ende cancelled (laufender Request kann enden).",
+                "ru": "0.9.15: cancelScriptSourceAi; progress cancelled",
+                "pt": "0.9.15: cancelScriptSourceAi; progress cancelled",
+                "nl": "0.9.15: cancelScriptSourceAi; progress cancelled",
+                "fr": "0.9.15 : cancelScriptSourceAi ; progress cancelled",
+                "it": "0.9.15: cancelScriptSourceAi; progress cancelled",
+                "es": "0.9.15: cancelScriptSourceAi; progress cancelled",
+                "pl": "0.9.15: cancelScriptSourceAi; progress cancelled",
+                "uk": "0.9.15: cancelScriptSourceAi; progress cancelled",
+                "zh-cn": "0.9.15：cancelScriptSourceAi 中止；进度显示 cancelled"
+            },
+            "0.9.14": {
+                "en": "AI script source pass: state info.aiScriptSourceProgress (e.g. 5/12) and optional max characters per script (aiMaxScriptCharsForAi, default 12000).",
+                "de": "KI-Skriptdurchlauf: State info.aiScriptSourceProgress (z. B. 5/12) und optionale max. Zeichen pro Skript (aiMaxScriptCharsForAi, Standard 12000).",
+                "ru": "0.9.14: info.aiScriptSourceProgress, aiMaxScriptCharsForAi",
+                "pt": "0.9.14: info.aiScriptSourceProgress, aiMaxScriptCharsForAi",
+                "nl": "0.9.14: info.aiScriptSourceProgress, aiMaxScriptCharsForAi",
+                "fr": "0.9.14 : info.aiScriptSourceProgress, aiMaxScriptCharsForAi",
+                "it": "0.9.14: info.aiScriptSourceProgress, aiMaxScriptCharsForAi",
+                "es": "0.9.14: info.aiScriptSourceProgress, aiMaxScriptCharsForAi",
+                "pl": "0.9.14: info.aiScriptSourceProgress, aiMaxScriptCharsForAi",
+                "uk": "0.9.14: info.aiScriptSourceProgress, aiMaxScriptCharsForAi",
+                "zh-cn": "0.9.14：info.aiScriptSourceProgress；aiMaxScriptCharsForAi 每脚本最大字符"
+            },
             "0.9.13": {
                 "en": "Fix: enable common.messagebox so Admin jsonConfig textSendTo (Last generated, Forum system card / getForumCard) works with js-controller.",
                 "de": "Fix: common.messagebox aktiviert — Admin-jsonConfig textSendTo (Zuletzt erzeugt, Forum-Systemkarte / getForumCard) funktioniert mit js-controller.",
@@ -290,7 +316,8 @@
         "adminHiddenChaptersJson": "[]",
         "userHiddenChaptersJson": "[]",
         "onboardingHiddenChaptersJson": "[]",
-        "aiAnalyzeScriptSources": false
+        "aiAnalyzeScriptSources": false,
+        "aiMaxScriptCharsForAi": 12000
     },
     "objects": [],
     "instanceObjects": [

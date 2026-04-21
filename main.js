@@ -66,6 +66,9 @@ class Autodoc extends utils.Adapter {
 		/** Prevents overlapping runs (startup + manual + sendTo would otherwise fight Ollama and file writes). */
 		this._documentationGenerationInProgress = false;
 
+		/** Set by `action.cancelScriptSourceAi` (button/state/sendTo) — checked between script KI calls. */
+		this._cancelScriptSourceAiRequested = false;
+
 		this.on('ready', this.onReady.bind(this));
 		this.on('stateChange', this.onStateChange.bind(this));
 		this.on('objectChange', this.onObjectChange.bind(this));
@@ -100,6 +103,7 @@ class Autodoc extends utils.Adapter {
 		this.log.debug(`config maxDocumentedInstances: ${this.config.maxDocumentedInstances}`);
 
 		await this.subscribeStatesAsync('action.generate');
+		await this.subscribeStatesAsync('action.cancelScriptSourceAi');
 		await this.subscribeStatesAsync('action.download*');
 
 		// Subscribe to adapter instance object changes for event-based generation
@@ -232,6 +236,24 @@ class Autodoc extends utils.Adapter {
 	}
 
 	/**
+	 * Whether the user requested to skip the rest of the optional script-source AI phase (setState / Admin button / sendTo).
+	 *
+	 * @returns {boolean} True if cancel was requested; cleared in `clearScriptSourceAiCancelRequest` after the script phase ends.
+	 */
+	isScriptSourceAiCancelRequested() {
+		return this._cancelScriptSourceAiRequested === true;
+	}
+
+	/**
+	 * Clear the script-source cancel flag (called when starting a new script KI run so an old request does not apply).
+	 *
+	 * @returns {void}
+	 */
+	clearScriptSourceAiCancelRequest() {
+		this._cancelScriptSourceAiRequested = false;
+	}
+
+	/**
 	 * Create custom states for the adapter.
 	 */
 	async createStates() {
@@ -262,6 +284,14 @@ class Autodoc extends utils.Adapter {
 			},
 			'action.downloadHtml': {
 				name: 'Download HTML documentation',
+				type: 'boolean',
+				role: 'button',
+				read: false,
+				write: true,
+				def: false,
+			},
+			'action.cancelScriptSourceAi': {
+				name: 'Cancel AI script source explanations (running generation)',
 				type: 'boolean',
 				role: 'button',
 				read: false,
@@ -499,6 +529,14 @@ class Autodoc extends utils.Adapter {
 				read: true,
 				write: false,
 				def: '',
+			},
+			'info.aiScriptSourceProgress': {
+				name: 'AI script source progress (current/total, or —)',
+				type: 'string',
+				role: 'text',
+				read: true,
+				write: false,
+				def: '—',
 			},
 			'versioning.lastDocumentModel': {
 				name: 'Last generated document model (JSON)',
@@ -1055,6 +1093,15 @@ class Autodoc extends utils.Adapter {
 				this.log.error(`HTML download failed: ${err.message}`);
 			}
 			await this.setStateAsync('action.downloadHtml', { val: false, ack: true });
+			return;
+		}
+
+		if (id === `${this.namespace}.action.cancelScriptSourceAi` && state.ack === false && state.val === true) {
+			this._cancelScriptSourceAiRequested = true;
+			this.log.info(
+				'Cancel script-source AI: stop requested — will take effect after the current script request finishes (if any), then the rest of the script phase is skipped.',
+			);
+			await this.setStateAsync('action.cancelScriptSourceAi', { val: false, ack: true });
 		}
 	}
 	/**
@@ -1075,6 +1122,17 @@ class Autodoc extends utils.Adapter {
 			this.generateDocumentation('manual').catch(err => {
 				this.log.error(`sendTo generate failed: ${err.message}`);
 			});
+			return;
+		}
+
+		if (obj.command === 'cancelScriptSourceAi') {
+			this._cancelScriptSourceAiRequested = true;
+			this.log.info(
+				'Cancel script-source AI: stop requested (sendTo) — takes effect after the current script KI request finishes.',
+			);
+			if (obj.callback) {
+				this.sendTo(obj.from, obj.command, { result: 'ok' }, obj.callback);
+			}
 			return;
 		}
 
