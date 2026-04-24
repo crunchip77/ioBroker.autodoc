@@ -79,6 +79,7 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 
 - **Admin HTML:** Long sections are **collapsed by default** (script folders, state references, shared states, userdata, aliases) with short summary lines; page scroll is shorter until you expand.
 - **Admin HTML:** Sidebar **table of contents** lists **State references** and **Shared states** as sub-items under **Scripts** when those sections exist (jump targets `#state-references`, `#shared-states`).
+- **Markdown export (Admin profile):** Same structure where it matters: **`<details>`** blocks for script folders, state-reference table, shared-state table, **userdata**, and **aliases**; TOC sub-links under Scripts; **userdata** / **aliases** chapters (previously missing); stable anchors (`#scripts`, `#schedule-type-objects`, …). Viewers that support HTML in Markdown (e.g. GitHub) show collapsible sections.
 - **Maintenance:** Documentation **score** no longer drops because of **disabled adapter instances** (often intentional); disabled instances stay listed for inventory; diagnosis no longer flags them as findings.
 
 ### 0.9.13 (2026-04-21)
