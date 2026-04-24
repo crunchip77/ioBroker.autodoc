@@ -111,8 +111,8 @@ Der Sprung von "Adapter-Inventar" zu echter "System-Dokumentation".
 
 ### 2.3 Wartungs- und Diagnosehilfe ✅
 
-- Instanzen ohne Raum, Skripte ohne Beschreibung, deaktivierte Instanzen
-- Score + Checkliste (Admin-Profil)
+- Admin: Diagnose-Abschnitt (Scan, Befunde, Forum-Visitenkarte); Wartungs-Checkliste mit **Dokumentations-Score** nur für **offene Warnungen** (deaktivierte Adapter-Instanzen sind **Inventar**, kein Score-Abzug — bewusst deaktivierte Instanzen sind üblich)
+- Lange Admin-HTML-Blöcke (Skript-Ordner, State-Referenzen, gemeinsame States, Userdata, Aliase) standardmäßig **eingeklappt** (`<details>`), um die Seite lesbar zu halten
 
 ### 2.4 Such-/Filterfunktion im HTML ✅
 

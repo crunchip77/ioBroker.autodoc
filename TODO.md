@@ -39,6 +39,7 @@ Diese Datei ist die **Arbeitsliste**: was **offen** ist steht oben; **erledigte*
 | **Multihost** (Host-Karten, Slave-Warnung, Export) | ✅ | |
 | **KI** (Provider, Tab `hidden`, Timeouts, Temperaturen, **AI context hints**, `guestHelpNote` / `homeRoutinesNote`) | ✅ | Sprachqualität kleiner Modelle bleibt iterativ |
 | **Custom Templates** (Kapitel ausblenden, Custom-Sections, Theme-Teile) | 🟡 | [PLAN.md — Custom Templates](PLAN.md#custom-templates-detail); offen: Reihenfolge, Presets ohne Roh-CSS, PDF |
+| **Admin-HTML Lesbarkeit** (lange Listen eingeklappt; Score ohne „Strafe“ für bewusst deaktivierte Instanzen) | ✅ | Umgesetzt auf `dev` (Renderer/i18n); bei Release in README-Changelog eintragen |
 | **States entlasten** (`documentationStatesMode`, Platzhalter, Downloads aus `/files`, **`documentation.exportHashes`**) | ✅ | Default weiterhin `full`; News bei Default-Wechsel → offen |
 | **Phase 5** (PDF, Backup-Adapter, Rest Custom Templates) | ⬜ | |
 | **Phase 5.x.1** Notfall/Troubleshooting „Hybrid“ | 🟡 | **Hilfe & Notfälle** als Freitext (`guestHelpNote`, u. a. seit 0.9.9) ✓ — offen: eigene Kapitelstruktur, Auto-Checklisten aus Diagnose |
@@ -188,7 +189,7 @@ Der folgende Stand ist **historisch vollständig** (✅). Bei Abweichungsfragen 
 
 - [x] 2.1 `enum.rooms` + `enum.functions` auslesen und als Kapitel rendern
 - [x] 2.2 Skripte aus `script.js.*`: Name, Status, Beschreibung, Trigger-Typ
-- [x] 2.3 Wartungs-Score, Checkliste, Instanzen/Skripte ohne Beschreibung
+- [x] 2.3 Wartungs-Score / Checkliste (nur echte Warnungen; deaktivierte Instanzen = Inventar), Diagnose; Admin-HTML: lange Tabellen-Abschnitte optional eingeklappt
 - [x] 2.4 Clientseitige Such-/Filterfunktion im HTML (Nav-Suchbox, Escape-Reset)
 
 ### Phase 3 — Tiefe ✅

@@ -65,7 +65,7 @@ The **Onboarding** HTML includes a QR code and a **Copy link** control. Both use
 - Discovery across instances, hosts, enums, scripts, aliases, userdata, system config
 - Standalone HTML per profile with search, dark mode, responsive layout
 - Markdown + JSON export and version history (rotation configurable)
-- Maintenance-oriented hints (e.g. documentation score, scripts without description)
+- Maintenance-oriented hints (documentation score for open checklist items; disabled instances listed as inventory, not penalized)
 - Multilingual Admin UI strings (e.g. EN / DE / FR); generated copy follows your configured project language where applicable
 - Optional AI providers (e.g. Ollama, Groq, Anthropic) with strict opt-in
 
@@ -74,6 +74,12 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 **Contributing / releases:** see [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 ## Changelog
+
+### Unreleased (dev branch)
+
+- **Admin HTML:** Long sections are **collapsed by default** (script folders, state references, shared states, userdata, aliases) with short summary lines; page scroll is shorter until you expand.
+- **Admin HTML:** Sidebar **table of contents** lists **State references** and **Shared states** as sub-items under **Scripts** when those sections exist (jump targets `#state-references`, `#shared-states`).
+- **Maintenance:** Documentation **score** no longer drops because of **disabled adapter instances** (often intentional); disabled instances stay listed for inventory; diagnosis no longer flags them as findings.
 
 ### 0.9.13 (2026-04-21)
 
