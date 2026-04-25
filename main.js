@@ -451,7 +451,15 @@ class Autodoc extends utils.Adapter {
 				def: '',
 			},
 			'info.hostPlatform': {
-				name: 'Host platform',
+				name: 'ioBroker host platform (e.g. Javascript/Node.js)',
+				type: 'string',
+				role: 'text',
+				read: true,
+				write: false,
+				def: '',
+			},
+			'info.hostOperatingSystem': {
+				name: 'Host operating system (from js-controller, native.os)',
 				type: 'string',
 				role: 'text',
 				read: true,
@@ -861,6 +869,10 @@ class Autodoc extends utils.Adapter {
 			await this.setStateAsync('info.instanceHosts', { val: hostSummaryJson, ack: true });
 			await this.setStateAsync('info.hostName', { val: docModel.system.primaryHost.name, ack: true });
 			await this.setStateAsync('info.hostPlatform', { val: docModel.system.primaryHost.platform, ack: true });
+			await this.setStateAsync('info.hostOperatingSystem', {
+				val: docModel.system.primaryHost.operatingSystem || '',
+				ack: true,
+			});
 			await this.setStateAsync('info.hostVersion', { val: docModel.system.primaryHost.version, ack: true });
 			await this.setStateAsync('info.totalStateObjects', {
 				val: docModel.appendices.stateSummary.total,
