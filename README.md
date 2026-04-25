@@ -80,6 +80,7 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 - **HTML export:** **Color presets** (`htmlThemePreset`: default, high contrast, warm, slate) — built-in **CSS variable** palettes for light/dark without writing base CSS; optional **font** / **extra CSS** unchanged.
 - **Admin — chapter order:** optional JSON `adminChapterOrderJson` (merged with the default id list) — **Admin** HTML **sidebar and chapter body** follow the order; **Admin profile Markdown** **table of contents and body** match. **Hiding** chapters unchanged (`adminHiddenChaptersJson`).
 - **io-package** / **jsonConfig** / **i18n** (EN, DE, FR) for the new fields; `RENDERER_VERSION` updated.
+- **Admin i18n:** **Full list of valid admin chapter ids** in the help for chapter order and hide fields (EN/DE/FR); **DE** preset label for slate is **Slate** (technical id: `slate`).
 
 **Also on `dev` before this release (documented here in one place):**
 
@@ -87,6 +88,18 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 - **Admin HTML:** Sidebar **table of contents** lists **State references** and **Shared states** as sub-items under **Scripts** when those sections exist (jump targets `#state-references`, `#shared-states`).
 - **Markdown export (Admin profile):** **`<details>`** blocks for script folders, state-reference table, shared-state table, **userdata**, and **aliases**; TOC sub-links under Scripts; **userdata** / **aliases** chapters; stable anchors. Viewers that support HTML in Markdown (e.g. GitHub) show collapsible sections.
 - **Maintenance:** Documentation **score** no longer drops because of **disabled adapter instances**; disabled instances stay listed; diagnosis no longer flags them as findings.
+
+<a id="forum-kurztext-changelog"></a>
+
+### Forum short text (copy & paste)
+
+Use or adapt for [ioBroker forum](https://forum.iobroker.net/) threads / adapter announcements (no npm build yet; **Git** `main`).
+
+**Deutsch (Kurz):**  
+*AutoDoc **0.9.17** liegt auf **main** (Git: [ioBroker.autodoc](https://github.com/crunchip77/ioBroker.autodoc)). Neu: **HTML-Farb-Presets** ohne CSS-Basteln, **Reihenfolge der Admin-Kapitel** per JSON — Markdown (Profil Admin) und Seitenleiste folgen. In den Hilfetexten (DE/EN/FR) stehen **alle Kapitel-Ids** zum Kopieren. Install weiter per **eigener URL / Git**, **npm** kommt wie geplant nach Adapter-Checker. Details: README → Changelog 0.9.17.*
+
+**English (short):**  
+*AutoDoc **0.9.17** is on **main** ([repo](https://github.com/crunchip77/ioBroker.autodoc)). New: **HTML color presets**, optional **admin chapter order** JSON; Admin **Markdown** matches. i18n help lists **all chapter ids**. Install from **Git** (no **npm** yet). See README → Changelog 0.9.17.*
 
 ### 0.9.13 (2026-04-21)
 

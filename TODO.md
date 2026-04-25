@@ -30,7 +30,7 @@ Diese Datei ist die **Arbeitsliste**: was **offen** ist steht oben; **erledigte*
 
 <a id="stand-uebersicht"></a>
 
-## Übersicht — Umsetzung vs. Rest (Stand: siehe `package.json` / README Version)
+## Übersicht — Umsetzung vs. Rest (Stand: `package.json` / README, Branch **`main`**, 2026-04)
 
 | Thema | Status | Kurz |
 | ----- | ------ | ---- |
@@ -63,7 +63,7 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 
 | # | Thema | Verweis |
 | - | ----- | ------- |
-| 1 | **Custom Templates — Rest (Stand 0.9.17):** erledigt: **Admin**-Kapitelreihenfolge (`adminChapterOrderJson`), **HTML-Farb-Presets** (`htmlThemePreset`); weiter in Phase 5: **PDF**, optional Reihenfolge andere Profile, DnD | [PLAN — Custom Templates](PLAN.md#custom-templates-detail), [§ 1.2](#phase-5-features) |
+| 1 | **Custom Templates — Rest (0.9.17 / `main`)** | Erledigt: `adminChapterOrderJson`, `htmlThemePreset` — weiter: **Phase 5** (PDF, User/Onboarding, DnD) — [PLAN](PLAN.md#custom-templates-detail), [§ 1.2](#phase-5-features) |
 | 2 | **Phase 5.x.1** Hybrid (strukturierter Notfall-Block; später Diagnose-Checklisten) | [§ 1.3 — 5.x.1](#phase-5x) |
 | 3 | **Phase 5.x.2** Quick Start / Raumguides | [§ 1.3 — 5.x.2](#phase-5x) |
 | 4 | **Phase 5.x.3** Mermaid (gestaffelt) | [§ 1.3 — 5.x.3](#phase-5x) |
@@ -96,7 +96,9 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 - [ ] GitHub Release (Tag) sinnvoll erst danach
 - [ ] PR [ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories) (`sources-dist.json`)
 
-Bereits erledigt in der Liste unten: README-Changelog als eine Quelle, `dev`→`main` für RC-Forum.
+- [x] **`dev` → `main`** (Fast-forward, **0.9.17** inkl. Presets, Kapitelreihenfolge, i18n-Id-Listen)
+- [x] **README-Forum** kurzer Copy-Text: [README — Forum (Kurztext)](README.md#forum-kurztext-changelog) — ergänze bei Bedarf Link/Version im Forenbeitrag
+- [x] README-Changelog + diese TODO-Zeilen als Quelle für Tester (Git-URL-Installation)
 
 <a id="phase-5-features"></a>
 
