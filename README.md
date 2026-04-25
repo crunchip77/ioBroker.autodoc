@@ -28,7 +28,11 @@ Exports are written under `/files/autodoc.<instance>/` (latest HTML + rotated ti
 
 ## Requirements
 
-- **Node.js** ≥ 22 (see `package.json` `engines`)
+- **Node.js** ≥ 22 (see `package.json` → `engines`)
+- **ioBroker.js-controller** ≥ 6.0.11 (declared in `io-package.json` → `common.dependencies`)
+- **ioBroker Admin** ≥ 7.6.20 (declared in `io-package.json` → `common.globalDependencies`) — needed for the **json** configuration UI and `jsonConfig` features (e.g. `textSendTo`, collapsible panels)
+
+No other adapters are **required** for AutoDoc itself. Optional: a **web server** adapter if you want to open generated files from outside the Admin file browser; exports are always available under `/files/autodoc.<instance>/`.
 
 ## Configuration
 
