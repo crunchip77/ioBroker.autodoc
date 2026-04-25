@@ -97,7 +97,7 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 - [ ] PR [ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories) (`sources-dist.json`)
 
 - [x] **`dev` → `main`** (Fast-forward, **0.9.17** inkl. Presets, Kapitelreihenfolge, i18n-Id-Listen)
-- [x] **README-Forum** kurzer Copy-Text: [README — Forum (Kurztext)](README.md#forum-kurztext-changelog) — ergänze bei Bedarf Link/Version im Forenbeitrag
+- [x] **Foren-Ankündigung** 0.9.17 (Kurztext wahlweise im Chat/Notiz, nicht im README)
 - [x] README-Changelog + diese TODO-Zeilen als Quelle für Tester (Git-URL-Installation)
 
 <a id="phase-5-features"></a>
