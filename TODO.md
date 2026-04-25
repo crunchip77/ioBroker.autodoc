@@ -38,8 +38,8 @@ Diese Datei ist die **Arbeitsliste**: was **offen** ist steht oben; **erledigte*
 | **0.9.x** RC-Features (Aliase, Diagnose, QR/Copy, `exportPath`, …) | ✅ | Siehe README-Changelog |
 | **Multihost** (Host-Karten, Slave-Warnung, Export) | ✅ | |
 | **KI** (Provider, Tab `hidden`, Timeouts, Temperaturen, **AI context hints**, `guestHelpNote` / `homeRoutinesNote`) | ✅ | Sprachqualität kleiner Modelle bleibt iterativ |
-| **Custom Templates** (Kapitel ausblenden, Custom-Sections, Theme-Teile) | 🟡 | [PLAN.md — Custom Templates](PLAN.md#custom-templates-detail); offen: Reihenfolge, Presets ohne Roh-CSS, PDF |
-| **Admin-HTML Lesbarkeit** (lange Listen eingeklappt; Score ohne „Strafe“ für bewusst deaktivierte Instanzen) | ✅ | Umgesetzt auf `dev` (Renderer/i18n); bei Release in README-Changelog eintragen |
+| **Custom Templates** (Kapitel ausblenden, Custom-Sections, Theme-Teile) | 🟡 | [PLAN.md — Custom Templates](PLAN.md#custom-templates-detail); **0.9.17:** Admin-Reihenfolge + **Farb-Presets** (ohne Roh-CSS); offen: **PDF**, ggf. Reihenfolge User/Onboarding, DnD |
+| **Admin-HTML Lesbarkeit** (lange Listen eingeklappt; Score ohne „Strafe“ für bewusst deaktivierte Instanzen) | ✅ | In **0.9.17** README-Changelog (block „Also on `dev`…“) + Feature-Bullets oben drunter |
 | **States entlasten** (`documentationStatesMode`, Platzhalter, Downloads aus `/files`, **`documentation.exportHashes`**) | ✅ | Default weiterhin `full`; News bei Default-Wechsel → offen |
 | **Phase 5** (PDF, Backup-Adapter, Rest Custom Templates) | ⬜ | |
 | **Phase 5.x.1** Notfall/Troubleshooting „Hybrid“ | 🟡 | **Hilfe & Notfälle** als Freitext (`guestHelpNote`, u. a. seit 0.9.9) ✓ — offen: eigene Kapitelstruktur, Auto-Checklisten aus Diagnose |
@@ -63,7 +63,7 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 
 | # | Thema | Verweis |
 | - | ----- | ------- |
-| 1 | **Custom Templates — Rest** (Kapitelreihenfolge, Presets ohne Roh-CSS, ggf. PDF weiter in Phase 5) | [PLAN — Custom Templates](PLAN.md#custom-templates-detail), [§ 1.2](#phase-5-features) |
+| 1 | **Custom Templates — Rest (Stand 0.9.17):** erledigt: **Admin**-Kapitelreihenfolge (`adminChapterOrderJson`), **HTML-Farb-Presets** (`htmlThemePreset`); weiter in Phase 5: **PDF**, optional Reihenfolge andere Profile, DnD | [PLAN — Custom Templates](PLAN.md#custom-templates-detail), [§ 1.2](#phase-5-features) |
 | 2 | **Phase 5.x.1** Hybrid (strukturierter Notfall-Block; später Diagnose-Checklisten) | [§ 1.3 — 5.x.1](#phase-5x) |
 | 3 | **Phase 5.x.2** Quick Start / Raumguides | [§ 1.3 — 5.x.2](#phase-5x) |
 | 4 | **Phase 5.x.3** Mermaid (gestaffelt) | [§ 1.3 — 5.x.3](#phase-5x) |
@@ -104,7 +104,7 @@ Bereits erledigt in der Liste unten: README-Changelog als eine Quelle, `dev`→`
 
 - [ ] PDF-Export
 - [ ] Backup-Anbindung (siehe [Backup / ioBroker.backitup](#backup-backitup-festlegung) — **tar.gz**, Pfad und/oder `sendTo` Backitup)
-- [ ] Custom Templates — Rest siehe [PLAN.md — Custom Templates](PLAN.md#custom-templates-detail) (Reihenfolge, Presets ohne Roh-CSS, …)
+- [ ] Custom Templates — **Rest** (nach 0.9.17): ggf. **PDF**, Reihenfolge **User/Onboarding**, Drag-and-Drop — [PLAN.md — Custom Templates](PLAN.md#custom-templates-detail)
 
 <a id="phase-5x"></a>
 
@@ -156,7 +156,7 @@ Details: [PLAN — System-Visitenkarte](PLAN.md#system-visitenkarte-festlegung),
 | Bereich | Was schon da ist | Was „Phase 5.x“ / PLAN noch meint |
 | ------- | ---------------- | ---------------------------------- |
 | Notfall / Gäste | `guestHelpNote`, `homeRoutinesNote`, KI-Owner-Context | Strukturiertes Kapitel, Diagnose-gekoppelte Checklisten |
-| Customization | `*HiddenChaptersJson`, `customDocSectionsJson`, Theme-Felder, Markdown-Export | Drag-Sort, Presets, PDF, volle Theme-Presets ohne CSS |
+| Customization | `*HiddenChaptersJson`, `customDocSectionsJson`, `htmlThemePreset`, `adminChapterOrderJson` (Admin), Theme-Felder, Markdown-Export | Drag-Sort, PDF, ggf. Presets/Order für **User/Onboarding** |
 | Forum-Hilfe | Diagnose-Block + **`getForumCard`** / State `info.forumCardPlain` (`lib/forumCard.js`) | Optional: spätere Template-„nur System“-HTML ([PLAN](PLAN.md#system-visitenkarte-festlegung)) |
 | Doku in States | `full` / `metadata`, Platzhalter, Dateizugriff, **exportHashes** | Nur **Kommunikation** (news), wenn Default wechselt |
 
@@ -173,6 +173,12 @@ Ausführlich: [PLAN.md — Zukunftsvision](PLAN.md#zukunftsvision). **Medien, Re
 ## Anhang A — Vollständige Checklisten: Erledigt (Referenz)
 
 Der folgende Stand ist **historisch vollständig** (✅). Bei Abweichungsfragen immer **Git / README-Changelog** prüfen.
+
+### Release 0.9.17 — Custom Templates (Rest, Teil) ✅
+
+- [x] **Admin**-Kapitelreihenfolge: `adminChapterOrderJson` → `documentModel.adminChapterOrder`; **HTML**-Seitenleiste + Kapitel; **Markdown** (Profil Admin) TOC + Inhalt in gleicher Reihenfolge
+- [x] **HTML**-Farb-**Presets** ohne Roh-CSS: `htmlThemePreset`, `lib/htmlThemePresets.js` (CSS-Variablen, Hell/Dunkel)
+- [x] `io-package` native, `jsonConfig`, **i18n** EN/DE/FR; **News**; `RENDERER_VERSION` angehoben
 
 ### Phase 1 — Basis ✅ (v0.1.0)
 

@@ -576,6 +576,24 @@
 					"lg": 6,
 					"xl": 6
 				},
+				"htmlThemePreset": {
+					"type": "select",
+					"label": "HTML theme preset",
+					"help": "HTML theme preset help",
+					"options": [
+						{ "label": "HTML theme preset default", "value": "default" },
+						{ "label": "HTML theme preset high contrast", "value": "highContrast" },
+						{ "label": "HTML theme preset warm", "value": "warm" },
+						{ "label": "HTML theme preset slate", "value": "slate" }
+					],
+					"default": "default",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 6,
+					"lg": 6,
+					"xl": 6
+				},
 				"htmlHeaderLogoUrl": {
 					"type": "text",
 					"label": "Sidebar logo URL",
@@ -643,6 +661,29 @@
 				"_adminChaptersHint": {
 					"type": "staticText",
 					"text": "Admin hidden chapters hint",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"_adminChapterOrderHint": {
+					"type": "staticText",
+					"text": "Admin chapter order hint",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"adminChapterOrderJson": {
+					"type": "text",
+					"label": "Admin chapter order (JSON array)",
+					"help": "Admin chapter order JSON help",
+					"minRows": 2,
+					"maxRows": 8,
 					"newLine": true,
 					"xs": 12,
 					"sm": 12,

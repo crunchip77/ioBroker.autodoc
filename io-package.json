@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "autodoc",
-        "version": "0.9.16",
+        "version": "0.9.17",
         "news": {
+            "0.9.17": {
+                "en": "HTML export: color presets (default, high contrast, warm, slate) via config — no manual CSS for the base palette. Optional JSON **admin chapter order**; Admin **Markdown** table of contents follows that order. New Admin settings: htmlThemePreset, adminChapterOrderJson.",
+                "de": "HTML-Export: **Farb-Presets** (Standard, hoher Kontrast, warm, Schiefer) in der Konfiguration — kein manuelles CSS für die Basispalette. Optional **Kapitelreihenfolge Admin** (JSON); **Markdown**-Inhaltsverzeichnis (Profil Admin) folgt. Neue Felder: htmlThemePreset, adminChapterOrderJson.",
+                "ru": "0.9.17: htmlThemePreset; admin chapter order; MD TOC",
+                "pt": "0.9.17: htmlThemePreset; ordem capítulos admin; TOC MD",
+                "nl": "0.9.17: htmlThemePreset; admin chapter order; MD TOC",
+                "fr": "0.9.17 : préréglages couleur HTML, ordre chapitres admin (JSON), sommaire Markdown aligné, htmlThemePreset, adminChapterOrderJson.",
+                "it": "0.9.17: preset colore HTML; ordine capitoli admin; TOC Markdown",
+                "es": "0.9.17: htmlThemePreset; orden capítulos admin; TOC MD",
+                "pl": "0.9.17: htmlThemePreset; kolejność rozdziałów; spis treści MD",
+                "uk": "0.9.17: htmlThemePreset; порядок розділів admin; зміст MD",
+                "zh-cn": "0.9.17：HTML 配色预设、Admin 章节顺序、Markdown 目录一致"
+            },
             "0.9.16": {
                 "en": "Default: max stored timestamped doc file sets (maxStoredFiles) is now 3 per type; 0 still means use that default (was 5).",
                 "de": "Standard: max. gespeicherte Doku-Dateisätze (maxStoredFiles) jetzt 3 pro Typ; 0 = weiterhin Standardwert (bisher 5).",
@@ -322,10 +335,12 @@
         "exportPath": "",
         "aiOwnerHints": "",
         "htmlColorScheme": "auto",
+        "htmlThemePreset": "default",
         "htmlHeaderLogoUrl": "",
         "htmlFontStack": "",
         "htmlExtraCss": "",
         "customDocSectionsJson": "[]",
+        "adminChapterOrderJson": "[]",
         "adminHiddenChaptersJson": "[]",
         "userHiddenChaptersJson": "[]",
         "onboardingHiddenChaptersJson": "[]",
