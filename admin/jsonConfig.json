@@ -6,6 +6,12 @@
 			"type": "panel",
 			"label": "Basic settings",
 			"items": {
+				"_basicSectionProfile": {
+					"type": "header",
+					"text": "Basic section profile",
+					"size": 4,
+					"newLine": true
+				},
 				"profile": {
 					"type": "select",
 					"label": "Documentation profile",
@@ -38,6 +44,12 @@
 					"md": 6,
 					"lg": 6,
 					"xl": 6
+				},
+				"_basicSectionTriggers": {
+					"type": "header",
+					"text": "Basic section triggers",
+					"size": 4,
+					"newLine": true
 				},
 				"autoGenerateOnStart": {
 					"type": "checkbox",
@@ -76,6 +88,12 @@
 					"lg": 6,
 					"xl": 6
 				},
+				"_basicSectionDiscovery": {
+					"type": "header",
+					"text": "Basic section discovery",
+					"size": 4,
+					"newLine": true
+				},
 				"readLiveStates": {
 					"type": "checkbox",
 					"label": "Read live state values (opt-in)",
@@ -87,8 +105,10 @@
 					"lg": 12,
 					"xl": 12
 				},
-				"_generateDivider": {
-					"type": "divider",
+				"_basicSectionManual": {
+					"type": "header",
+					"text": "Basic section manual",
+					"size": 4,
 					"newLine": true
 				},
 				"_generateHint": {
@@ -162,6 +182,12 @@
 					"lg": 12,
 					"xl": 12
 				},
+				"_manualSectionProject": {
+					"type": "header",
+					"text": "Manual section project",
+					"size": 4,
+					"newLine": true
+				},
 				"projectName": {
 					"type": "text",
 					"label": "Project name",
@@ -195,139 +221,139 @@
 					"lg": 6,
 					"xl": 6
 				},
-			"additionalNotes": {
-				"type": "text",
-				"label": "General notes",
-				"help": "Anything that doesn't fit elsewhere: e.g. 'Backup runs every Sunday, server is in the basement'",
-				"newLine": true,
-				"xs": 12,
-				"sm": 12,
-				"md": 12,
-				"lg": 12,
-				"xl": 12
-			},
-			"_guestFamilyPlainHeader": {
-				"type": "header",
-				"text": "Guest & family (plain language)",
-				"size": 4,
-				"newLine": true
-			},
-			"guestHelpNote": {
-				"type": "text",
-				"label": "Help & emergencies (guests/family)",
-				"help": "Who to call, what to try if something fails, where the fuse box is — your words only; nothing is invented automatically.",
-				"minRows": 4,
-				"maxRows": 16,
-				"newLine": true,
-				"xs": 12,
-				"sm": 12,
-				"md": 12,
-				"lg": 12,
-				"xl": 12
-			},
-			"homeRoutinesNote": {
-				"type": "text",
-				"label": "Routines & automations (your words)",
-				"help": "Describe in everyday language what often runs by itself (lights, heating, blinds). Shown near the script list; complements technical script names.",
-				"minRows": 4,
-				"maxRows": 18,
-				"newLine": true,
-				"xs": 12,
-				"sm": 12,
-				"md": 12,
-				"lg": 12,
-				"xl": 12
-			},
-			"_troubleshootQuickHeader": {
-				"type": "header",
-				"text": "Troubleshooting — quick lines (optional)",
-				"size": 4,
-				"newLine": true
-			},
-			"_troubleshootQuickHint": {
-				"type": "staticText",
-				"text": "Troubleshooting quick lines hint",
-				"newLine": true,
-				"xs": 12,
-				"sm": 12,
-				"md": 12,
-				"lg": 12,
-				"xl": 12
-			},
-			"troubleshootWifiHint": {
-				"type": "text",
-				"label": "Quick: Wi-Fi / network",
-				"help": "One line, e.g. guest Wi-Fi name or where a repeater is — optional.",
-				"newLine": true,
-				"xs": 12,
-				"sm": 12,
-				"md": 6,
-				"lg": 6,
-				"xl": 6
-			},
-			"troubleshootPowerHint": {
-				"type": "text",
-				"label": "Quick: power / fuses",
-				"help": "One line, e.g. where the electrical panel is — optional.",
-				"newLine": true,
-				"xs": 12,
-				"sm": 12,
-				"md": 6,
-				"lg": 6,
-				"xl": 6
-			},
-			"troubleshootWaterHint": {
-				"type": "text",
-				"label": "Quick: water shutoff",
-				"help": "One line, e.g. where to turn off main water — optional.",
-				"newLine": true,
-				"xs": 12,
-				"sm": 12,
-				"md": 6,
-				"lg": 6,
-				"xl": 6
-			},
-			"troubleshootExtraHint": {
-				"type": "text",
-				"label": "Quick: other",
-				"help": "One more short line (alarm code location, key box, etc.) — optional.",
-				"newLine": true,
-				"xs": 12,
-				"sm": 12,
-				"md": 6,
-				"lg": 6,
-				"xl": 6
-			},
-			"_aiHintsHeader": {
-				"type": "header",
-				"text": "AI context hints",
-				"size": 4,
-				"newLine": true
-			},
-			"_aiHintsHint": {
-				"type": "staticText",
-				"text": "AI context hints hint",
-				"newLine": true,
-				"xs": 12,
-				"sm": 12,
-				"md": 12,
-				"lg": 12,
-				"xl": 12
-			},
-			"aiOwnerHints": {
-				"type": "text",
-				"label": "AI context hints (owner notes)",
-				"help": "AI context hints help",
-				"minRows": 6,
-				"maxRows": 18,
-				"newLine": true,
-				"xs": 12,
-				"sm": 12,
-				"md": 12,
-				"lg": 12,
-				"xl": 12
-			},
-			"_adapterNotesHeader": {
+				"additionalNotes": {
+					"type": "text",
+					"label": "General notes",
+					"help": "Anything that doesn't fit elsewhere: e.g. 'Backup runs every Sunday, server is in the basement'",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"_guestFamilyPlainHeader": {
+					"type": "header",
+					"text": "Guest & family (plain language)",
+					"size": 4,
+					"newLine": true
+				},
+				"guestHelpNote": {
+					"type": "text",
+					"label": "Help & emergencies (guests/family)",
+					"help": "Who to call, what to try if something fails, where the fuse box is — your words only; nothing is invented automatically.",
+					"minRows": 4,
+					"maxRows": 16,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"homeRoutinesNote": {
+					"type": "text",
+					"label": "Routines & automations (your words)",
+					"help": "Describe in everyday language what often runs by itself (lights, heating, blinds). Shown near the script list; complements technical script names.",
+					"minRows": 4,
+					"maxRows": 18,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"_troubleshootQuickHeader": {
+					"type": "header",
+					"text": "Troubleshooting — quick lines (optional)",
+					"size": 4,
+					"newLine": true
+				},
+				"_troubleshootQuickHint": {
+					"type": "staticText",
+					"text": "Troubleshooting quick lines hint",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"troubleshootWifiHint": {
+					"type": "text",
+					"label": "Quick: Wi-Fi / network",
+					"help": "One line, e.g. guest Wi-Fi name or where a repeater is — optional.",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 6,
+					"lg": 6,
+					"xl": 6
+				},
+				"troubleshootPowerHint": {
+					"type": "text",
+					"label": "Quick: power / fuses",
+					"help": "One line, e.g. where the electrical panel is — optional.",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 6,
+					"lg": 6,
+					"xl": 6
+				},
+				"troubleshootWaterHint": {
+					"type": "text",
+					"label": "Quick: water shutoff",
+					"help": "One line, e.g. where to turn off main water — optional.",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 6,
+					"lg": 6,
+					"xl": 6
+				},
+				"troubleshootExtraHint": {
+					"type": "text",
+					"label": "Quick: other",
+					"help": "One more short line (alarm code location, key box, etc.) — optional.",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 6,
+					"lg": 6,
+					"xl": 6
+				},
+				"_aiHintsHeader": {
+					"type": "header",
+					"text": "AI context hints",
+					"size": 4,
+					"newLine": true
+				},
+				"_aiHintsHint": {
+					"type": "staticText",
+					"text": "AI context hints hint",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"aiOwnerHints": {
+					"type": "text",
+					"label": "AI context hints (owner notes)",
+					"help": "AI context hints help",
+					"minRows": 6,
+					"maxRows": 18,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"_adapterNotesHeader": {
 					"type": "header",
 					"text": "Per-adapter notes",
 					"size": 4,
@@ -633,6 +659,12 @@
 					"lg": 12,
 					"xl": 12
 				},
+				"_docSectionAppearance": {
+					"type": "header",
+					"text": "Doc section appearance",
+					"size": 4,
+					"newLine": true
+				},
 				"htmlColorScheme": {
 					"type": "select",
 					"label": "HTML color scheme",
@@ -725,6 +757,12 @@
 							"xl": 12
 						}
 					}
+				},
+				"_docSectionChapters": {
+					"type": "header",
+					"text": "Doc section chapters",
+					"size": 4,
+					"newLine": true
 				},
 				"_adminChaptersHeader": {
 					"type": "header",
@@ -871,6 +909,12 @@
 			"type": "panel",
 			"label": "Notifications",
 			"items": {
+				"_notifySection": {
+					"type": "header",
+					"text": "Notify section",
+					"size": 4,
+					"newLine": true
+				},
 				"notifyEnabled": {
 					"type": "checkbox",
 					"label": "Send notification after documentation generation",
@@ -940,6 +984,12 @@
 					"lg": 12,
 					"xl": 12
 				},
+				"_aiSectionProvider": {
+					"type": "header",
+					"text": "AI section provider",
+					"size": 4,
+					"newLine": true
+				},
 				"aiProvider": {
 					"type": "select",
 					"label": "AI provider",
@@ -1007,6 +1057,12 @@
 				"lg": 6,
 				"xl": 6
 			},
+			"_aiSectionTuning": {
+				"type": "header",
+				"text": "AI section tuning",
+				"size": 4,
+				"newLine": true
+			},
 			"aiTemperatureUser": {
 				"type": "text",
 				"label": "AI temperature — user profile (optional)",
@@ -1029,6 +1085,12 @@
 				"md": 6,
 				"lg": 6,
 				"xl": 6
+			},
+			"_aiSectionScripts": {
+				"type": "header",
+				"text": "AI section scripts",
+				"size": 4,
+				"newLine": true
 			},
 			"aiAnalyzeScriptSources": {
 				"type": "checkbox",
