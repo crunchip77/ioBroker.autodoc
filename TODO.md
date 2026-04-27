@@ -128,6 +128,10 @@ Noch offen (größere Ausbaustufe als reiner Freitext):
 - [x] KI nur Formulierung, nicht alleinige Struktur (unverändert: keine KI-Strukturierung)
 - [ ] Später: Sortierung/Relevanz; Länge Onboarding vs. User
 
+**Hinweis (Abschnittsreihenfolge):** **User-HTML** und **User-Markdown** nutzen dieselben Inhalte, aber **nicht** dieselbe Kapitelreihenfolge (z. B. manuelles Kapitel und Hilfe im HTML oben, im Markdown-Export erst nach System/Adaptern/Räumen/Skripten) — beabsichtigt, kein Fehler.
+
+**Hinweis (Admin-UI-Sprache):** Ausführliche Hilfetexte (u. a. versteckte Kapitel-Ids inkl. `atAGlance`) stehen in **EN / DE / FR**; die übrigen Admin-Sprachdateien sind minimal und fallen auf **Englisch** zurück.
+
 #### 5.x.3 Mermaid / kleine Graphen
 
 - [ ] Stufe 1: Mermaid aus **kuratiertem** Inhalt (Config / `manualContext`)
