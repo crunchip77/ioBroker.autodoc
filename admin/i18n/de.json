@@ -119,6 +119,8 @@
 	"Room name (exact)": "Raumname (exakt)",
 	"Hidden adapters (Onboarding)": "Versteckte Adapter (Onboarding)",
 	"Onboarding hidden adapters help": "Adapternamen ohne Instanznummer eingeben (z.B. backitup, simple-api)",
+	"Onboarding guest view — list internal JavaScript file names": "Gäste-Onboarding: interne JavaScript-Dateinamen anzeigen",
+	"onboarding guest script names help": "Aus (Standard): Gäste-Onboarding nennt nur die **Anzahl** aktiver JavaScript-Automatisierungen — **keine** internen Skript-Dateinamen, und im Schnellstart **keine** Skript-Zeilen (ioBroker-**common.desc** ist kein belastbares Gäste-Label). An: bisherig — bis zu fünf Namen bei „Was läuft automatisch?“ plus Kurzzeile; Schnellstart darf Namen+**common.desc** wie früher zeigen. Vollständig: **Admin**-Doku.",
 	"Adapter name (e.g. backitup)": "Adaptername (z.B. backitup)",
 	"Manual context (JSON, legacy)": "Manueller Kontext (JSON, Legacy)",
 	"Legacy JSON field. Use the 'My documentation' tab instead. Only needed for migration.": "Legacy-JSON-Feld. Stattdessen den Tab 'Meine Dokumentation' verwenden. Nur für Migration nötig.",

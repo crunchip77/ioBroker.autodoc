@@ -111,6 +111,8 @@
 	"Room name (exact)": "Nom de la pièce (exact)",
 	"Hidden adapters (Onboarding)": "Adaptateurs masqués (Onboarding)",
 	"Onboarding hidden adapters help": "Entrer le nom de l'adaptateur sans numéro d'instance (ex. backitup, simple-api)",
+	"Onboarding guest view — list internal JavaScript file names": "Vue invité Onboarding : afficher les noms de fichiers JavaScript",
+	"onboarding guest script names help": "Désactivé (défaut) : l’onboarding invité n’affiche que le nombre d’automatisations JS actives — pas de noms de fichiers internes, et pas de lignes par script au démarrage rapide (le champ **common.desc** d’ioBroker n’est pas un libellé fiable côté invité). Activé : comportement hérité — jusqu’à cinq noms dans « Ce qui s’exécute automatiquement ? » plus une ligne courte ; le démarrage rapide peut encore lister nom + **common.desc** comme auparavant. Détails complets dans le profil documentation « admin ».",
 	"Adapter name (e.g. backitup)": "Nom de l'adaptateur (ex. backitup)",
 	"Manual context (JSON, legacy)": "Contexte manuel (JSON, héritage)",
 	"Legacy JSON field. Use the 'My documentation' tab instead. Only needed for migration.": "Champ JSON hérité. Utiliser l'onglet 'Ma documentation' à la place. Uniquement nécessaire pour la migration.",

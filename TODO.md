@@ -48,6 +48,7 @@ Diese Datei ist die **Arbeitsliste**: was **offen** ist steht oben; **erledigte*
 | **System-Visitenkarte** / Forum-Copy | ✅ | `textSendTo` **getForumCard** + State `info.forumCardPlain`; Diagnose-HTML nutzt `forumCard.js` |
 | **KI + Skript-Quellcode** | 🟡 | **A** umgesetzt (`aiAnalyzeScriptSources`); **B** weiterhin Phase 5 Backup |
 | **npm + ioBroker.repositories** | ⬜ | Nach Adapter-Checker |
+| **Dokumentations-Score** (Wartung — Checkliste mit echten Kriterien) | ⬜ | Aktuell leere `checklist` in `buildMaintenance` → immer 100 %; Konzept & Implementierung, siehe [§ 1.6](#dokumentations-score-checkliste) |
 
 ---
 
@@ -151,6 +152,7 @@ Noch offen (größere Ausbaustufe als reiner Freitext):
 
 ### 1.4 Kleine Nachzüge / Trigger
 
+- [ ] **README-Changelog** + **io-package `news`:** Gäste-Onboarding **Skript-Datenschutz** (`onboardingGuestShowScriptNames`, `lib/guestScriptPrivacy.js`) und Schnellstart-Logik (**kein** Ersatz aus `common.desc`, wenn Skriptnamen in der Gäste-Ansicht verborgen sind) + ggf. **RENDERER_VERSION**-Zeile — eintragen, sobald die nächste **Versionsnummer** (z. B. 0.9.21) für ein Release feststeht; auf `dev` liegt die Umsetzung schon.
 - [ ] **`io-package` news**, wenn **Default** `documentationStatesMode` auf **`metadata`** geändert wird (sinnvoll beim npm-Release; bei reiner Git-Installation optional)
 - [x] **README-Changelog** + Version **0.9.11** um States/Hashes/Changelog-i18n ergänzt
 
@@ -162,6 +164,22 @@ Details: [PLAN — System-Visitenkarte](PLAN.md#system-visitenkarte-festlegung),
 
 - [x] **System-Visitenkarte:** **jsonConfig** `textSendTo` `getForumCard` (+ Copy); State `info.forumCardPlain`; gemeinsame Logik `lib/forumCard.js`
 - [x] **KI + Skriptquellcode:** **Variante A** — `aiAnalyzeScriptSources`, Zeilen-Redaktion, User/Onboarding HTML + Markdown; **Variante B** → Phase 5 Backup / [Backup-Backitup](#backup-backitup-festlegung) (offen)
+
+<a id="dokumentations-score-checkliste"></a>
+
+### 1.6 Dokumentations-Score (Wartung) — Checkliste ausbauen
+
+> **Problem:** In `lib/documentModel.js` — `buildMaintenance` ist `checklist` faktisch **leer** → `score` fällt immer auf **100 %**; der Balken liefert wenig praktische Aussage, solange keine echten Kriterien befüllt werden.
+
+- [ ] **Zielbild festlegen:** Soll der Score **„Doku-Setup (Meta)“** messen (Projekt-Felder, Struktur) oder eher **inhaltliche Doku-Qualität** (Skripte, Räume) — oder beides in **klar getrennten** Regeln? Namensgebung in Admin/i18n ggf. anpassen, wenn die Semantik breiter wird.
+- [ ] **Kandidaten sichten (Signale liegen im Modell oder erweiterbar):**
+  - **„Meine Dokumentation“** — `projectDescription` / ggf. `manualContact` leer oder nur Minimaltext (`parseManualContext` / Config).
+  - **Instanzen ohne Raum** — `rooms.unassignedCount` aus `buildRooms` (Vorsicht: oft bewusst; eher **Schwelle** oder weicher Hinweis als 0 %-Keule).
+  - **Aktive Skripte ohne `common.desc`** — zählen aus `buildScripts` (bisher: explizit **kein** Score-Bestandteil in Texten; falls aufgenommen: **optional**, gewichtet oder getrennt von „harten“ Checks).
+  - **Basis-URL fehlt** — wenn Doku-Links/QR/Bookmark-Flows sinnvoll nutzbar wären (`buildBaseUrl` / `publicDocUrls`); eher **Nutzbarkeits**-Hinweis, nicht „Adapter defekt“.
+- [ ] **Explizit nicht** in denselben Score: **deaktivierte Instanzen** (Inventar, kein Abzug — Stand [README / 0.9.11+](README.md)). **Laufzeit/Diagnose** (Node, Redis, …) primär in **Admin-Diagnose** belassen; Doppelung in der Doku-Checkliste vermeidet, außer Produkt bewusst anders definiert.
+- [ ] **UI/Logik-Optionen:** nur **Hinweisliste** ohne Prozent, oder Prozent **erst** wenn mindestens ein Kriterium aktiv; jsonConfig-Optionen zum **Abschalten** einzelner Checks (Nervfaktor/False Positives).
+- [ ] **Umsetzung:** `buildMaintenance` braucht dann Zugriff auf **Instanzen + Räume + Skripte + `manualContext`** (oder Checkliste in `buildDocumentModel` nachziehen, sobald alles da ist). Renderer: `renderMaintenanceChapter` in `lib/htmlRenderer.js` / `lib/markdownRenderer.js` — Keys in `lib/i18n.js` (`scoreDesc`, ggf. neue Check-Labels) und ggf. **jsonConfig**-Schema ergänzen.
 
 ---
 

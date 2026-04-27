@@ -118,6 +118,8 @@
 	"Room name (exact)": "Room name (exact)",
 	"Hidden adapters (Onboarding)": "Hidden adapters (Onboarding)",
 	"Onboarding hidden adapters help": "Enter the adapter name without instance number (e.g. backitup, simple-api)",
+	"Onboarding guest view — list internal JavaScript file names": "Onboarding guest view — list internal JavaScript file names",
+	"onboarding guest script names help": "Off (default): guest Onboarding shows only how many JavaScript automations are active — no internal script file names, and no per-script lines in Quick Start (ioBroker **common.desc** is not a reliable guest-facing “description”). On: legacy — up to five script names in “What runs automatically?” plus a short “more running” line; Quick Start may still list scripts with name + **common.desc** as today. Full detail stays in the Admin profile.",
 	"Adapter name (e.g. backitup)": "Adapter name (e.g. backitup)",
 	"Manual context (JSON, legacy)": "Manual context (JSON, legacy)",
 	"Legacy JSON field. Use the 'My documentation' tab instead. Only needed for migration.": "Legacy JSON field. Use the 'My documentation' tab instead. Only needed for migration.",

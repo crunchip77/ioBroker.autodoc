@@ -469,6 +469,17 @@
 						}
 					]
 				},
+				"onboardingGuestShowScriptNames": {
+					"type": "checkbox",
+					"label": "Onboarding guest view — list internal JavaScript file names",
+					"help": "onboarding guest script names help",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
 				"_userHideHeader": {
 					"type": "header",
 					"text": "User/Family - hide from family",

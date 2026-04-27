@@ -362,6 +362,7 @@
         "roomNotes": [],
         "onboardingHideRooms": [],
         "onboardingHideAdapters": [],
+        "onboardingGuestShowScriptNames": false,
         "userHideRooms": [],
         "userHideAdapters": [],
         "targetSystem": "ioBroker",
