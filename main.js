@@ -30,8 +30,8 @@ const DOCS_JSON_METADATA_PLACEHOLDER =
 /**
  * SHA-256 hex digest of a UTF-8 string (for export identity without storing large payloads).
  *
- * @param {string} s
- * @returns {string}
+ * @param {string} s - UTF-8 text to hash
+ * @returns {string} 64 hex chars
  */
 function sha256HexUtf8(s) {
 	return createHash('sha256').update(String(s), 'utf8').digest('hex');
@@ -694,7 +694,7 @@ class Autodoc extends utils.Adapter {
 	 *
 	 * @param {string} basePath e.g. `autodoc.0.files`
 	 * @param {string} filename File name under that namespace
-	 * @returns {Promise<string>}
+	 * @returns {Promise<string>} file body as UTF-8 or empty if missing
 	 */
 	async readAdapterFileUtf8(basePath, filename) {
 		const res = await this.readFileAsync(basePath, filename);

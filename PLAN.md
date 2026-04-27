@@ -29,9 +29,11 @@ Langfristige inhaltliche Richtung (Zusammenhänge, Auto vs. Pflege, Forum-Feedba
 | Bereich | Kurz |
 | ------- | ---- |
 | Phasen 1–4, 0.9.x RC, Multihost, KI-Basis, Custom-Template-**Teile**, States-Modus **`full`/`metadata`**, **`documentation.exportHashes`**, Downloads aus `/files` | ✅ siehe [TODO.md — Übersichtstabelle](TODO.md#stand-uebersicht) |
-| Phase 5 (PDF, Backup-Anbindung, Custom-Templates-Rest), Phase **5.x.2 / 5.x.3** | ⬜ |
+| Phase 5 (PDF, Backup-Anbindung, Custom-Templates-Rest) | ⬜ |
+| Phase **5.x.2** Quick Start / Raumguides | 🟡 (Kern in 0.9.20, Fein-Sortierung/Länge offen — [TODO § 5.x.2](TODO.md#phase-5x)) |
+| Phase **5.x.3** Mermaid | ⬜ |
 | **npm-Release** + **ioBroker.repositories** | ⬜ — bewusst **nach** Custom Templates / 5.x / Phase 5 ([TODO — Reihenfolge](TODO.md#offene-arbeit)) |
-| Phase **5.x.1** „Hybrid-Troubleshooting“ | 🟡 Freitext-Felder (`guestHelpNote` u. a.) ✅ — strukturierte/Auto-Anteile ⬜ |
+| Phase **5.x.1** „Hybrid-Troubleshooting“ | 🟡 **Kern in 0.9.18 / 0.9.19:** Freitext (`guestHelpNote` u. a.) ✅, **Kurzzeilen** + Doku-Links (Bookmark-URLs) ✅, **Node.js**-Checkliste + Snapshot-Hinweis (`lib/diagnosisSnapshot.js`) ✅; **später** weitere Befund-Typen o. ä. — [TODO § 5.x.1](TODO.md#phase-5x) |
 | **Architektur:** Redis/jsonl, States, Medien/Grafiken ([Leitplanken](#architektur-grenzen), [Medien-MVP](#architektur-medien-mvp), [Nächste Schritte](#architektur-naechste-schritte)) | ✅ festgelegt | Umsetzung = README + Phase 5 / 5.x |
 | **System-Visitenkarte** „Forum kopieren“ | ✅ [Festlegung](#system-visitenkarte-festlegung) | ✅ **jsonConfig** `getForumCard`, State `info.forumCardPlain`, `lib/forumCard.js` + Diagnose-HTML |
 | **KI + Skriptquellcode** | ✅ [Festlegung](#ki-skript-festlegung) | **A** ✅ (`aiAnalyzeScriptSources`); **B** ⬜ an [Phase 5 Backup](TODO.md#offene-arbeit) |
@@ -239,8 +241,13 @@ Echte Zielgruppen-Dokus statt "mehr oder weniger Detail vom selben Template".
 > Abgestimmt für die nächste Ausbaustufe. Checkboxen: [TODO.md — § 1.3](TODO.md#phase-5x). **Priorität:** 1 → 2 → 3.
 
 **1. Notfall & Troubleshooting für Laien (Hybrid)**  
-**Bereits vorhanden (Abgrenzung):** Manuelle Felder z. B. **Help & emergencies** / **Routines** (`guestHelpNote`, `homeRoutinesNote`, u. a. mit 0.9.9) — Freitext, kein erfundenes Auto-„Notfallwissen“.  
-**Noch offen (größere Ausbaustufe):** klar strukturierter eigener Abschnitt, ggf. **sichere** Auto-Snippets nur aus bekannten Config-Fakten (z. B. Basis-URL); später kurze Checklisten nur bei **konkreten** Diagnose-Befunden (Momentaufnahme).
+**Bereits vorhanden (Abgrenzung):** Manuelle Felder z. B. **Help & emergencies** / **Routines** (`guestHelpNote`, `homeRoutinesNote`, u. a. ab 0.9.9) — Freitext, kein erfundenes Auto-„Notfallwissen“.
+
+**Umgesetzt (fester MVP laut [TODO — 5.x.1](TODO.md#phase-5x)):**  
+- **0.9.18:** **Kurzzeilen** (WLAN, Strom, Wasser, Sonstiges) + **Lesezeichen-Links** zu generiertem **User-**, **Onboarding-** und **Admin**-HTML (gleiche Ziele wie QR / `info.htmlUrl*`, sinnvoll nur mit gesetzter **ioBroker base URL**).  
+- **0.9.19:** In **User/Onboarding**-Exporten kurze **Auto-Checklisten** nur bei **konkretem** Befund (derzeit: **Node.js**-Regel wie in **Admin → Diagnosis**) plus **Hinweis auf Momentaufnahme**; gemeinsame Logik: `lib/diagnosisSnapshot.js` — kein doppelter Diagnose-Block im **Admin**-HTML (dort vollwertiges Diagnose-Kapitel).  
+
+**Später ausbaufähig (nicht blockierend):** weitere Diagnose-Signal-Typen in dieselbe **„nur bei Befund“**-Logik, falls Daten tragfähig; keine Pflicht, den Hybrid um „KI-Notfallwissen“ zu erweitern.
 
 **2. Quick Start & Raumguides (strukturierter)**  
 MVP: im `documentModel` feste, kurze Blöcke (systemweit Top 3–5 Aktionen; pro Raum 2–3 Highlights); Renderer zeigt Kacheln/Listen statt nur Fließtext; KI höchstens zur Formulierung. Später: Sortierung/Relevanz (Kategorien/Funktionen), unterschiedliche Länge Onboarding vs. User.
@@ -608,7 +615,7 @@ Master → Slave1 (zigbee.0, hm-rpc.0)
 
 1. ~~**Nutzer-Doku (README)** — kurzer Abschnitt **„Medien & Redis“** (Soft-Limits, Fotos per URL, `metadata`; Details in PLAN) — **erledigt**.~~
 2. ~~**Festgelegte Features** aus [TODO § 1.5](TODO.md#todo-festlegt-umsetzung): **System-Visitenkarte** und **KI + Skriptquellcode Variante A** — **erledigt** (0.9.12).~~ **Variante B** (Backup-Analyse) bleibt an **Backup-Anbindung** ([TODO — Backitup](TODO.md#backup-backitup-festlegung), [§ 1.2](TODO.md#phase-5-features)) gekoppelt.
-3. **Feature-Reihenfolge (Projekt):** [TODO — abgestimmte Umsetzungsreihenfolge](TODO.md#offene-arbeit) — ~~**Custom Templates — Rest** (Admin chapter order, HTML presets — **0.9.17** auf `main`)~~; **nächster Fokus:** **5.x.1 → 5.x.2 → 5.x.3**, danach **Phase 5** (Backup, PDF, …), **npm / Adapter Checker / repositories** am Ende der Kette.
+3. **Feature-Reihenfolge (Projekt):** [TODO — abgestimmte Umsetzungsreihenfolge](TODO.md#offene-arbeit) — ~~**Custom Templates — Rest** (Admin chapter order, HTML presets — **0.9.17** auf `main`)~~; ~~**5.x.1** (Hybrid)~~, ~~**5.x.2** (Kern)~~; **nächster Fokus:** **5.x.3 (Mermaid)**, danach **Phase 5** (Backup, PDF, …), **npm / Adapter Checker / repositories** am Ende der Kette.
 4. **Adapter Checker** grün und **Release-Strategie** ([TODO § 1.1](TODO.md#release-veroeffentlichung)) — zeitlich mit Schritt 3 verzahnt möglich, **npm** nach Projektpriorität oft **nach** den genannten Features.
 5. Optional **Default `documentationStatesMode`** auf `metadata` **mit** `io-package` news ([TODO § 1.4](TODO.md#nachzuege)) — **Produktentscheidung**.
 6. **Optional später (nicht blockierend):** HTTP-Asset-Endpunkt, harte Limits, eigenes Asset-UI — nur bei **realem** Bedarf und dann als **Schicht-2-Erweiterung** im PLAN nachziehen.
@@ -634,6 +641,6 @@ Master → Slave1 (zigbee.0, hm-rpc.0)
 | Version    | Inhalt                                                                                                                   | Status     | Anmerkung                                                 |
 | ---------- | ------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------------------------------------------------- |
 | **v0.x**   | Basis: Adapter-Inventar, Export, Profile, Versionierung                                                                  | ✅ main    | interner Meilenstein                                      |
-| **v0.9.x** | RC: drei Profile, Aliase, UX-Akzente, RAM-Summe, Onboarding-Capabilities, Filter, Doku-Score-Erklärung, README (Changelog); Multihost; optional `exportPath`; States **`documentationStatesMode`** + **`documentation.exportHashes`**; Changelog u. a. `adapter_version`; ab **0.9.17** auf **`main`:** `htmlThemePreset`, `adminChapterOrderJson` (nur **Admin**-HTML/MD), i18n mit **vollständiger Kapitel-Id-Liste** | ✅ `main` (= `dev`, Fast-forward) | Vor **npm** mit Checker + README-Changelog abgleichen |
+| **v0.9.x** | RC: drei Profile, Aliase, UX-Akzente, RAM-Summe, Onboarding-Capabilities, Filter, Doku-Score-Erklärung, README (Changelog); Multihost; optional `exportPath`; States **`documentationStatesMode`** + **`documentation.exportHashes`**; Changelog u. a. `adapter_version`; ab **0.9.17** auf **`main`:** `htmlThemePreset`, `adminChapterOrderJson` (nur **Admin**-HTML/MD), i18n mit **vollständiger Kapitel-Id-Liste**; ab **0.9.18/0.9.19:** **5.x.1** Hybrid-Notfall (Kurzzeilen, Lesezeichen-Links, Node-Snapshot); ab **0.9.20:** **5.x.2** Quick Start / `atAGlance` | ✅ `main` (= `dev`, Fast-forward) | Vor **npm** mit Checker + README-Changelog abgleichen |
 | **npm/stable** | Erster Eintrag **npm** + **ioBroker.repositories** nach Adapter-Checker grün                                         | ⬜ geplant | Versionsnummer beim Release festlegen (nicht mit RC verwechseln) |
-| **v1.x**   | Phase 5: PDF, Backup-Integration, Custom Templates (Rest); Phase 5.x: Troubleshooting (über Freitext hinaus), Quick Start/Raumguides, Mermaid (gestaffelt)                                                                       | ⬜ geplant | Reihenfolge 5.x: [TODO.md § 1.3](TODO.md#phase-5x) |
+| **v1.x**   | Phase 5: PDF, Backup, Custom Templates (Rest); Phase 5.x **Rest:** Mermaid (5.x.3), Feintuning 5.x.1/5.x.2, weitere Diagnose-Signale … | ⬜ geplant | 5.x.1/5.x.2 **Kern** bereits in **v0.9.18–0.9.20**; [TODO § 1.3](TODO.md#phase-5x) |

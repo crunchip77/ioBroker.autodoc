@@ -30,7 +30,7 @@ Diese Datei ist die **Arbeitsliste**: was **offen** ist steht oben; **erledigte*
 
 <a id="stand-uebersicht"></a>
 
-## Übersicht — Umsetzung vs. Rest (Stand: `package.json` / README, Branch **`main`**, 2026-04)
+## Übersicht — Umsetzung vs. Rest (Stand: `package.json` / README, 2026-04-27; Branch je nach Arbeitskopie, z. B. `main` / `dev`)
 
 | Thema | Status | Kurz |
 | ----- | ------ | ---- |
@@ -43,7 +43,7 @@ Diese Datei ist die **Arbeitsliste**: was **offen** ist steht oben; **erledigte*
 | **States entlasten** (`documentationStatesMode`, Platzhalter, Downloads aus `/files`, **`documentation.exportHashes`**) | ✅ | Default weiterhin `full`; News bei Default-Wechsel → offen |
 | **Phase 5** (PDF, Backup-Adapter, Rest Custom Templates) | ⬜ | |
 | **Phase 5.x.1** Notfall/Troubleshooting „Hybrid“ | ✅ | Kurzzeilen, Doku-Links (0.9.18), **Auto-Checklisten** bei Node-Befund + Disclaimer (0.9.19) |
-| **Phase 5.x.2** Quick Start / Raumguides | ⬜ | Strukturierte Blöcke im Modell |
+| **Phase 5.x.2** Quick Start / Raumguides | 🟡 | Kern in **0.9.20** (Modell, Renderer, `atAGlance`); fein: Sortierung/Länge & Admin-Übersetzungsqualität, siehe [§ 1.3 — 5.x.2](#phase-5x) |
 | **Phase 5.x.3** Mermaid | ⬜ | Gestaffelt: kuratiert → klein automatisch |
 | **System-Visitenkarte** / Forum-Copy | ✅ | `textSendTo` **getForumCard** + State `info.forumCardPlain`; Diagnose-HTML nutzt `forumCard.js` |
 | **KI + Skript-Quellcode** | 🟡 | **A** umgesetzt (`aiAnalyzeScriptSources`); **B** weiterhin Phase 5 Backup |
@@ -65,7 +65,7 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 | - | ----- | ------- |
 | 1 | **Custom Templates — Rest (0.9.17 / `main`)** | Erledigt: `adminChapterOrderJson`, `htmlThemePreset` — weiter: **Phase 5** (PDF, User/Onboarding, DnD) — [PLAN](PLAN.md#custom-templates-detail), [§ 1.2](#phase-5-features) |
 | 2 | **Phase 5.x.1** Hybrid (Notfall-Block + Diagnose-Snapshot) | ✅ 0.9.18 / 0.9.19 — [§ 1.3 — 5.x.1](#phase-5x) |
-| 3 | **Phase 5.x.2** Quick Start / Raumguides | [§ 1.3 — 5.x.2](#phase-5x) |
+| 3 | **Phase 5.x.2** Quick Start / Raumguides | 🟡 Kern in **0.9.20**; Fein: [§ 1.3 — 5.x.2](#phase-5x) |
 | 4 | **Phase 5.x.3** Mermaid (gestaffelt) | [§ 1.3 — 5.x.3](#phase-5x) |
 | 5 | **Phase 5:** Backup-Anbindung, PDF, Rest Custom Templates | [§ 1.2](#phase-5-features), [Backup/Backitup](#backup-backitup-festlegung) |
 | 6 | **npm** + **Adapter Checker** + **ioBroker.repositories** | [§ 1.1](#release-veroeffentlichung) |
@@ -126,11 +126,19 @@ Noch offen (größere Ausbaustufe als reiner Freitext):
 - [x] `documentModel`: feste Blöcke (`docModel.quickStart` / `lib/quickStartGuide.js`)
 - [x] Renderer Onboarding + User: strukturierte Listen + Raumkacheln (HTML) / übersichtliche Abschnitte (MD)
 - [x] KI nur Formulierung, nicht alleinige Struktur (unverändert: keine KI-Strukturierung)
-- [ ] Später: Sortierung/Relevanz; Länge Onboarding vs. User
+- [ ] Später (Feintuning, optional): siehe Tabelle
+
+**5.x.2 — Später (noch offen, kein Muss):**
+
+| Thema | Mögliche Arbeit |
+| ----- | --------------- |
+| **Sortierung / Relevanz** | In `quickStartGuide` / Render: statt fixer Obergrenzen (z. B. Räume, Funktionen) ggf. **andere Gewichtung** (z. B. bevorzugte Räume, Kriterien für „Top“-Scripte), **Konfig-Optionen** in Admin nur wenn nötig. |
+| **Länge Onboarding vs. User** | Klarere Trennung: **Gäste** kürzer / weniger technisch, **User** etwas ausführlicher **ohne** Duplizierung der gleichen Fakten — ggf. separate Caps oder anderes Layout pro Profil. |
+| **Konsistenz** | Doppelte Infos (Quick Start vs. nachfolgende Kapitel) reduzieren, Verweise statt Wiederholung. |
 
 **Hinweis (Abschnittsreihenfolge):** **User-HTML** und **User-Markdown** nutzen dieselben Inhalte, aber **nicht** dieselbe Kapitelreihenfolge (z. B. manuelles Kapitel und Hilfe im HTML oben, im Markdown-Export erst nach System/Adaptern/Räumen/Skripten) — beabsichtigt, kein Fehler.
 
-**Hinweis (Admin-UI-Sprache):** Ausführliche Hilfetexte (u. a. versteckte Kapitel-Ids inkl. `atAGlance`) stehen in **EN / DE / FR**; die übrigen Admin-Sprachdateien sind minimal und fallen auf **Englisch** zurück.
+**Hinweis (Admin-UI-Sprache):** **Voll geprüft** (inhaltlich): **EN / DE / FR**. Für **es, it, nl, pl, pt, ru, uk, zh-cn** sind **alle** `jsonConfig`-Keys mit Text aus **`en.json`** hinterlegt, bis Muttersprachler nachziehen; falsche „Übersetzungen“ so vermeidbar. Beiträge: [`CONTRIBUTING.md` — Admin UI i18n](CONTRIBUTING.md#admin-ui-translations-i18n).
 
 #### 5.x.3 Mermaid / kleine Graphen
 

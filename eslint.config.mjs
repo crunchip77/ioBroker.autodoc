@@ -32,4 +32,13 @@ export default [
 			// 'jsdoc/require-returns-check': 'off',
 		},
 	},
+	// Very large files: param/return *descriptions* would be hundreds of one-liners; types stay in JSDoc.
+	// Smaller modules keep full descriptions. Prefer expanding docs here over blanket lib/ relax.
+	{
+		files: ['lib/aiEnhancer.js', 'lib/htmlRenderer.js', 'lib/markdownRenderer.js'],
+		rules: {
+			'jsdoc/require-param-description': 'off',
+			'jsdoc/require-returns-description': 'off',
+		},
+	},
 ];
