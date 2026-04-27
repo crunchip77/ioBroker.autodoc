@@ -945,7 +945,14 @@ class Autodoc extends utils.Adapter {
 			const rawData = await this.discovery.collectRawData();
 
 			this.log.info(`Documentation generation (${trigger}): 2/5 — building document model…`);
-			const docModel = await this.documentModel.buildDocumentModel(rawData, trigger);
+			const baseUrl = await this.buildBaseUrl();
+			const profileFilePath = profile => `/files/${this.namespace}.files/autodoc-${profile}.html`;
+			const publicDocUrls = {
+				admin: baseUrl ? `${baseUrl}${profileFilePath('admin')}` : '',
+				user: baseUrl ? `${baseUrl}${profileFilePath('user')}` : '',
+				onboarding: baseUrl ? `${baseUrl}${profileFilePath('onboarding')}` : '',
+			};
+			const docModel = await this.documentModel.buildDocumentModel(rawData, trigger, { publicDocUrls });
 
 			const version = this.versionTracker.generateVersion();
 			docModel.meta.version = version;
@@ -964,13 +971,7 @@ class Autodoc extends utils.Adapter {
 			const markdown = this.markdownRenderer.renderMarkdown(docModel);
 
 			// Pre-build URLs and QR code SVGs so HTML is fully self-contained (no CDN)
-			const baseUrl = await this.buildBaseUrl();
-			const profileFilePath = profile => `/files/${this.namespace}.files/autodoc-${profile}.html`;
-			const renderUrls = {
-				admin: baseUrl ? `${baseUrl}${profileFilePath('admin')}` : '',
-				user: baseUrl ? `${baseUrl}${profileFilePath('user')}` : '',
-				onboarding: baseUrl ? `${baseUrl}${profileFilePath('onboarding')}` : '',
-			};
+			const renderUrls = publicDocUrls;
 			const renderQrSvgs = {};
 			for (const [profile, url] of Object.entries(renderUrls)) {
 				if (url) {

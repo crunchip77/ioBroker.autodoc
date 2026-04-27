@@ -4,7 +4,7 @@
 
 Automatically generates structured documentation (HTML, Markdown, JSON) for your ioBroker installation — on demand, on a schedule, or when the system changes.
 
-**Version:** 0.9.17
+**Version:** 0.9.20
 
 | | |
 | --- | --- |
@@ -78,6 +78,20 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 **Contributing / releases:** see [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 ## Changelog
+
+### 0.9.20 (2026-04-27)
+
+- **Phase 5.x.2 — Quick Start & room highlights:** **Onboarding** HTML and **Markdown** include a structured **Quick Start** from discovery (`lib/quickStartGuide.js` → `docModel.quickStart`): top function areas, scripts with descriptions, and up to eight **room guide** cards with device highlights. **User** profile: **Quick overview** chapter (same data, compact) in HTML; **Markdown** adds a **Quick overview** section (anchor `at-a-glance`) after the table of contents. New User hidden chapter id **`atAGlance`**. i18n EN/DE/FR; `RENDERER_VERSION` bump.
+
+### 0.9.19 (2026-04-27)
+
+- **Phase 5.x.1 — diagnosis snapshot checklists:** In **User** and **Onboarding** HTML (and matching **Markdown** export), the **Help & emergencies** chapter can show a short **numbered checklist** when the same **Node.js** rule as **Admin → Diagnosis** would flag the runtime (non-LTS or &lt; 20). Includes a **snapshot disclaimer** (moment in time when documentation was generated). Implemented via `lib/diagnosisSnapshot.js` (shared with Admin logic). No duplicate block in **Admin** HTML (full Diagnosis chapter remains the technical source).
+
+### 0.9.18 (2026-04-27)
+
+- **Phase 5.x.1 (hybrid Help & emergencies):** optional **quick facts** (one line each: Wi‑Fi / network, power / fuses, water, other) plus **bookmark links** to the generated **User**, **Onboarding**, and (in Admin) **Admin** HTML — same URLs as the QR / `info.htmlUrl*` states; requires a correct **ioBroker base URL** in **Advanced** settings.
+- **Output:** **User** and **Onboarding** HTML, **Admin** manual section, **Markdown** export, **AI owner context** (quick facts as labeled facts in the prompt).
+- **Config:** new native fields `troubleshootWifiHint`, `troubleshootPowerHint`, `troubleshootWaterHint`, `troubleshootExtraHint`; `jsonConfig` + **i18n** EN/DE/FR; `RENDERER_VERSION` bump.
 
 ### 0.9.17 (2026-04-25)
 

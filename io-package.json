@@ -1,8 +1,47 @@
 {
     "common": {
         "name": "autodoc",
-        "version": "0.9.17",
+        "version": "0.9.20",
         "news": {
+            "0.9.20": {
+                "en": "Phase **5.x.2**: structured **Quick Start** (Onboarding) and **Quick overview / at a glance** (User) from discovery — `docModel.quickStart` via `lib/quickStartGuide.js`; system list + per-room highlights; i18n EN/DE/FR; Onboarding + User **Markdown** aligned; new hide id `atAGlance` (User). `RENDERER_VERSION` bump.",
+                "de": "Phase **5.x.2**: **Schnellstart** (Onboarding) und **Kurzüberblick** (User) aus Discovery — `docModel.quickStart` (`lib/quickStartGuide.js`); Systemliste + Raum-Highlights; i18n; **Markdown** Onboarding/User; neues Ausblenden `atAGlance` (User). `RENDERER_VERSION`.",
+                "ru": "0.9.20: quick start; room highlights; RENDERER_VERSION",
+                "pt": "0.9.20: quick start; destaques por divisão; RENDERER_VERSION",
+                "nl": "0.9.20: quick start; kamerhighlights; RENDERER_VERSION",
+                "fr": "0.9.20 : démarrage rapide, aperçu pièces, RENDERER_VERSION",
+                "it": "0.9.20: quick start; stanze; RENDERER_VERSION",
+                "es": "0.9.20: inicio rápido; salas; RENDERER_VERSION",
+                "pl": "0.9.20: szybki start; pomieszczenia; RENDERER_VERSION",
+                "uk": "0.9.20: quick start; кімнати; RENDERER_VERSION",
+                "zh-cn": "0.9.20：快速开始、房间、RENDERER_VERSION"
+            },
+            "0.9.19": {
+                "en": "Phase 5.x.1: **Auto-checklists** in User/Onboarding **Help & emergencies** when the scan flags **Node.js** (same rule as Admin diagnosis) — with **snapshot disclaimer**. Shared helper `lib/diagnosisSnapshot.js`; Markdown (User/Onboarding export); RENDERER_VERSION bump. Not in Admin profile HTML (full Diagnosis there).",
+                "de": "Phase 5.x.1: **Auto-Checklisten** in User/Onboarding **Hilfe & Notfall** bei **Node.js**-Hinweis (wie Admin-Diagnose) + **Momentaufnahme-Hinweis**. `lib/diagnosisSnapshot.js`; Markdown; RENDERER_VERSION. Nicht im Admin-HTML (Diagnose bleibt dort).",
+                "ru": "0.9.19: autodoc checklists; Node snapshot; diagnosisSnapshot",
+                "pt": "0.9.19: listas; Node; diagnosisSnapshot",
+                "nl": "0.9.19: checklists; Node; diagnosisSnapshot",
+                "fr": "0.9.19 : listes auto ; Node ; diagnosisSnapshot",
+                "it": "0.9.19: checklist; Node; diagnosisSnapshot",
+                "es": "0.9.19: listas; Node; diagnosisSnapshot",
+                "pl": "0.9.19: listy; Node; diagnosisSnapshot",
+                "uk": "0.9.19: чеклист; Node; diagnosisSnapshot",
+                "zh-cn": "0.9.19：Node 快照清单、diagnosisSnapshot"
+            },
+            "0.9.18": {
+                "en": "Phase 5.x.1 hybrid **Help & emergencies**: optional one-line **quick facts** (Wi‑Fi, power, water, other); **bookmark links** to User/Onboarding/Admin HTML (same URLs as QR; needs **Base URL**). Shown in User, Onboarding, Admin manual chapter, Markdown, AI owner context. New native fields + jsonConfig + i18n; RENDERER_VERSION bump.",
+                "de": "Phase 5.x.1 hybrid **Hilfe & Notfall**: optionale **Kurzzeilen** (WLAN, Strom, Wasser, Sonstiges); **Lesezeichen-Links** zu User/Onboarding/Admin-HTML (wie QR, **Basis-URL** nötig). In User, Onboarding, Admin-Manual, Markdown, KI-Kontext. Neue Felder + RENDERER_VERSION.",
+                "ru": "0.9.18: hybrid help; quick lines; doc links; RENDERER_VERSION",
+                "pt": "0.9.18: hybrid help; quick facts; doc links; RENDERER_VERSION",
+                "nl": "0.9.18: hybrid help; snelle regels; doc-links; RENDERER_VERSION",
+                "fr": "0.9.18 : aide hybride ; lignes courtes ; liens doc ; RENDERER_VERSION",
+                "it": "0.9.18: help ibrido; fatti rapidi; link doc; RENDERER_VERSION",
+                "es": "0.9.18: ayuda híbrida; líneas; enlaces; RENDERER_VERSION",
+                "pl": "0.9.18: hybryda pomocy; szybkie; linki; RENDERER_VERSION",
+                "uk": "0.9.18: гібрид help; рядки; посилання; RENDERER_VERSION",
+                "zh-cn": "0.9.18：混合帮助、快捷行、文档链接、RENDERER_VERSION"
+            },
             "0.9.17": {
                 "en": "HTML export: color presets (default, high contrast, warm, slate) via config — no manual CSS for the base palette. Optional JSON **admin chapter order**; Admin **Markdown** table of contents follows that order. New Admin settings: htmlThemePreset, adminChapterOrderJson.",
                 "de": "HTML-Export: **Farb-Presets** (Standard, hoher Kontrast, warm, Schiefer) in der Konfiguration — kein manuelles CSS für die Basispalette. Optional **Kapitelreihenfolge Admin** (JSON); **Markdown**-Inhaltsverzeichnis (Profil Admin) folgt. Neue Felder: htmlThemePreset, adminChapterOrderJson.",
@@ -315,6 +354,10 @@
         "additionalNotes": "",
         "guestHelpNote": "",
         "homeRoutinesNote": "",
+        "troubleshootWifiHint": "",
+        "troubleshootPowerHint": "",
+        "troubleshootWaterHint": "",
+        "troubleshootExtraHint": "",
         "adapterNotes": [],
         "roomNotes": [],
         "onboardingHideRooms": [],

@@ -42,7 +42,7 @@ Diese Datei ist die **Arbeitsliste**: was **offen** ist steht oben; **erledigte*
 | **Admin-HTML Lesbarkeit** (lange Listen eingeklappt; Score ohne „Strafe“ für bewusst deaktivierte Instanzen) | ✅ | In **0.9.17** README-Changelog (block „Also on `dev`…“) + Feature-Bullets oben drunter |
 | **States entlasten** (`documentationStatesMode`, Platzhalter, Downloads aus `/files`, **`documentation.exportHashes`**) | ✅ | Default weiterhin `full`; News bei Default-Wechsel → offen |
 | **Phase 5** (PDF, Backup-Adapter, Rest Custom Templates) | ⬜ | |
-| **Phase 5.x.1** Notfall/Troubleshooting „Hybrid“ | 🟡 | **Hilfe & Notfälle** als Freitext (`guestHelpNote`, u. a. seit 0.9.9) ✓ — offen: eigene Kapitelstruktur, Auto-Checklisten aus Diagnose |
+| **Phase 5.x.1** Notfall/Troubleshooting „Hybrid“ | ✅ | Kurzzeilen, Doku-Links (0.9.18), **Auto-Checklisten** bei Node-Befund + Disclaimer (0.9.19) |
 | **Phase 5.x.2** Quick Start / Raumguides | ⬜ | Strukturierte Blöcke im Modell |
 | **Phase 5.x.3** Mermaid | ⬜ | Gestaffelt: kuratiert → klein automatisch |
 | **System-Visitenkarte** / Forum-Copy | ✅ | `textSendTo` **getForumCard** + State `info.forumCardPlain`; Diagnose-HTML nutzt `forumCard.js` |
@@ -64,7 +64,7 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 | # | Thema | Verweis |
 | - | ----- | ------- |
 | 1 | **Custom Templates — Rest (0.9.17 / `main`)** | Erledigt: `adminChapterOrderJson`, `htmlThemePreset` — weiter: **Phase 5** (PDF, User/Onboarding, DnD) — [PLAN](PLAN.md#custom-templates-detail), [§ 1.2](#phase-5-features) |
-| 2 | **Phase 5.x.1** Hybrid (strukturierter Notfall-Block; später Diagnose-Checklisten) | [§ 1.3 — 5.x.1](#phase-5x) |
+| 2 | **Phase 5.x.1** Hybrid (Notfall-Block + Diagnose-Snapshot) | ✅ 0.9.18 / 0.9.19 — [§ 1.3 — 5.x.1](#phase-5x) |
 | 3 | **Phase 5.x.2** Quick Start / Raumguides | [§ 1.3 — 5.x.2](#phase-5x) |
 | 4 | **Phase 5.x.3** Mermaid (gestaffelt) | [§ 1.3 — 5.x.3](#phase-5x) |
 | 5 | **Phase 5:** Backup-Anbindung, PDF, Rest Custom Templates | [§ 1.2](#phase-5-features), [Backup/Backitup](#backup-backitup-festlegung) |
@@ -118,14 +118,14 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 
 Noch offen (größere Ausbaustufe als reiner Freitext):
 
-- [ ] Eigener, ggf. geführter Abschnitt / Struktur (optional User) — über reine Notizfelder hinaus
-- [ ] Kurze **Auto-Checklisten** nur bei **konkreten** Diagnose-Befunden (später; mit Hinweis Momentaufnahme)
+- [x] Strukturierter Block **über** reine Notizfelder hinaus: **Kurzzeilen** (WLAN/Strom/Wasser/Sonstiges) + **automatische Doku-Links** (User/Onboarding/Admin, gleiche Logik wie QR — **0.9.18**)
+- [x] Kurze **Auto-Checklisten** nur bei **konkreten** Diagnose-Befunden (aktuell: **Node.js** wie Admin-Diagnose) + **Momentaufnahme-Hinweis** — **0.9.19** (`lib/diagnosisSnapshot.js`)
 
 #### 5.x.2 Quick Start & Raumguides
 
-- [ ] `documentModel`: feste Blöcke (z. B. Top 3–5 Aktionen systemweit, 2–3 Highlights pro Raum)
-- [ ] Renderer Onboarding (optional User): Kacheln/Listen
-- [ ] KI nur Formulierung, nicht alleinige Struktur
+- [x] `documentModel`: feste Blöcke (`docModel.quickStart` / `lib/quickStartGuide.js`)
+- [x] Renderer Onboarding + User: strukturierte Listen + Raumkacheln (HTML) / übersichtliche Abschnitte (MD)
+- [x] KI nur Formulierung, nicht alleinige Struktur (unverändert: keine KI-Strukturierung)
 - [ ] Später: Sortierung/Relevanz; Länge Onboarding vs. User
 
 #### 5.x.3 Mermaid / kleine Graphen
@@ -157,7 +157,7 @@ Details: [PLAN — System-Visitenkarte](PLAN.md#system-visitenkarte-festlegung),
 
 | Bereich | Was schon da ist | Was „Phase 5.x“ / PLAN noch meint |
 | ------- | ---------------- | ---------------------------------- |
-| Notfall / Gäste | `guestHelpNote`, `homeRoutinesNote`, KI-Owner-Context | Strukturiertes Kapitel, Diagnose-gekoppelte Checklisten |
+| Notfall / Gäste | wie oben + Diagnose-Snapshot (Node) | Weitere Befund-Typen nur bei tragfähigen Daten |
 | Customization | `*HiddenChaptersJson`, `customDocSectionsJson`, `htmlThemePreset`, `adminChapterOrderJson` (Admin), Theme-Felder, Markdown-Export | Drag-Sort, PDF, ggf. Presets/Order für **User/Onboarding** |
 | Forum-Hilfe | Diagnose-Block + **`getForumCard`** / State `info.forumCardPlain` (`lib/forumCard.js`) | Optional: spätere Template-„nur System“-HTML ([PLAN](PLAN.md#system-visitenkarte-festlegung)) |
 | Doku in States | `full` / `metadata`, Platzhalter, Dateizugriff, **exportHashes** | Nur **Kommunikation** (news), wenn Default wechselt |

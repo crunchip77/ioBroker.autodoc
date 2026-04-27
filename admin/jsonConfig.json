@@ -238,6 +238,66 @@
 				"lg": 12,
 				"xl": 12
 			},
+			"_troubleshootQuickHeader": {
+				"type": "header",
+				"text": "Troubleshooting — quick lines (optional)",
+				"size": 4,
+				"newLine": true
+			},
+			"_troubleshootQuickHint": {
+				"type": "staticText",
+				"text": "Troubleshooting quick lines hint",
+				"newLine": true,
+				"xs": 12,
+				"sm": 12,
+				"md": 12,
+				"lg": 12,
+				"xl": 12
+			},
+			"troubleshootWifiHint": {
+				"type": "text",
+				"label": "Quick: Wi-Fi / network",
+				"help": "One line, e.g. guest Wi-Fi name or where a repeater is — optional.",
+				"newLine": true,
+				"xs": 12,
+				"sm": 12,
+				"md": 6,
+				"lg": 6,
+				"xl": 6
+			},
+			"troubleshootPowerHint": {
+				"type": "text",
+				"label": "Quick: power / fuses",
+				"help": "One line, e.g. where the electrical panel is — optional.",
+				"newLine": true,
+				"xs": 12,
+				"sm": 12,
+				"md": 6,
+				"lg": 6,
+				"xl": 6
+			},
+			"troubleshootWaterHint": {
+				"type": "text",
+				"label": "Quick: water shutoff",
+				"help": "One line, e.g. where to turn off main water — optional.",
+				"newLine": true,
+				"xs": 12,
+				"sm": 12,
+				"md": 6,
+				"lg": 6,
+				"xl": 6
+			},
+			"troubleshootExtraHint": {
+				"type": "text",
+				"label": "Quick: other",
+				"help": "One more short line (alarm code location, key box, etc.) — optional.",
+				"newLine": true,
+				"xs": 12,
+				"sm": 12,
+				"md": 6,
+				"lg": 6,
+				"xl": 6
+			},
 			"_aiHintsHeader": {
 				"type": "header",
 				"text": "AI context hints",
