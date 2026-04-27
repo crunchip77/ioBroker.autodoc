@@ -82,6 +82,7 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 ### 0.9.20 (2026-04-27)
 
 - **Phase 5.x.2 — Quick Start & room highlights:** **Onboarding** HTML and **Markdown** include a structured **Quick Start** from discovery (`lib/quickStartGuide.js` → `docModel.quickStart`): top function areas, scripts with descriptions, and up to eight **room guide** cards with device highlights. **User** profile: **Quick overview** chapter (same data, compact) in HTML; **Markdown** adds a **Quick overview** section (anchor `at-a-glance`) after the table of contents. New User hidden chapter id **`atAGlance`**. i18n **EN / DE / FR** reviewed; **es, it, nl, pl, pt, ru, uk, zh-cn** ship with the **same English strings** as `en.json` until contributors translate (see [CONTRIBUTING — Admin i18n](CONTRIBUTING.md#admin-ui-translations-i18n)). `RENDERER_VERSION` bump.
+- **Onboarding (same release, follow-up):** **Next steps** copy tuned for guests (EN/DE/FR); **What runs automatically** lists at most five script names, then a short line for the remainder; self-links in Admin HTML and guest help cleaned up. `RENDERER_VERSION` **2026.04.27.9**.
 - **Tooling / DX:** JSDoc param and return **descriptions** completed for smaller `lib` helpers and `main.js`; the three very large files `lib/aiEnhancer.js`, `lib/htmlRenderer.js`, and `lib/markdownRenderer.js` keep type tags but relax **description**-required rules in `eslint.config.mjs` to avoid hundreds of one-line noise comments.
 
 ### 0.9.19 (2026-04-27)
