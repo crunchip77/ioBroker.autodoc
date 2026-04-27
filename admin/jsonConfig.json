@@ -513,6 +513,12 @@
 					"lg": 12,
 					"xl": 12
 				},
+				"_advancedSectionContent": {
+					"type": "header",
+					"text": "Advanced section content",
+					"size": 4,
+					"newLine": true
+				},
 				"onlyEnabledInstances": {
 					"type": "checkbox",
 					"label": "Only document enabled instances",
@@ -561,6 +567,12 @@
 					"lg": 6,
 					"xl": 6
 				},
+				"_advancedSectionStates": {
+					"type": "header",
+					"text": "Advanced section states",
+					"size": 4,
+					"newLine": true
+				},
 				"documentationStatesMode": {
 					"type": "select",
 					"label": "Documentation states storage",
@@ -577,32 +589,34 @@
 					"lg": 12,
 					"xl": 12
 				},
-			"baseUrl": {
-				"type": "text",
-				"label": "ioBroker base URL (optional)",
-				"help": "Used for the info.htmlUrl state. Include port, e.g. 192.168.1.100:8081 or http://myserver:8082. Protocol is optional. Leave empty for auto-detection (may fail in Docker).",
-				"newLine": true,
-				"xs": 12,
-				"sm": 12,
-				"md": 8,
-				"lg": 8,
-				"xl": 8
-			},
-			"_exportPathDivider": {
-				"type": "divider",
-				"newLine": true
-			},
-			"exportPath": {
-				"type": "text",
-				"label": "Filesystem export path (optional)",
-				"help": "Export path hint",
-				"newLine": true,
-				"xs": 12,
-				"sm": 12,
-				"md": 12,
-				"lg": 12,
-				"xl": 12
-			}
+				"baseUrl": {
+					"type": "text",
+					"label": "ioBroker base URL (optional)",
+					"help": "Used for the info.htmlUrl state. Include port, e.g. 192.168.1.100:8081 or http://myserver:8082. Protocol is optional. Leave empty for auto-detection (may fail in Docker).",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 8,
+					"lg": 8,
+					"xl": 8
+				},
+				"_advancedSectionFilesystem": {
+					"type": "header",
+					"text": "Advanced section filesystem",
+					"size": 4,
+					"newLine": true
+				},
+				"exportPath": {
+					"type": "text",
+					"label": "Filesystem export path (optional)",
+					"help": "Export path hint",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				}
 			}
 		},
 		"tabDocLayout": {
