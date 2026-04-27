@@ -711,53 +711,6 @@
 					"lg": 12,
 					"xl": 12
 				},
-				"_advancedHtmlStyling": {
-					"type": "panel",
-					"label": "Advanced HTML styling (optional)",
-					"collapsable": true,
-					"newLine": true,
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12,
-					"items": {
-						"_advancedStylingHint": {
-							"type": "staticText",
-							"text": "Advanced HTML styling hint",
-							"newLine": true,
-							"xs": 12,
-							"sm": 12,
-							"md": 12,
-							"lg": 12,
-							"xl": 12
-						},
-						"htmlFontStack": {
-							"type": "text",
-							"label": "Font stack (CSS)",
-							"help": "Font stack help",
-							"newLine": true,
-							"xs": 12,
-							"sm": 12,
-							"md": 12,
-							"lg": 12,
-							"xl": 12
-						},
-						"htmlExtraCss": {
-							"type": "text",
-							"label": "Extra CSS",
-							"help": "Extra CSS help",
-							"minRows": 3,
-							"maxRows": 16,
-							"newLine": true,
-							"xs": 12,
-							"sm": 12,
-							"md": 12,
-							"lg": 12,
-							"xl": 12
-						}
-					}
-				},
 				"_docSectionChapters": {
 					"type": "header",
 					"text": "Doc section chapters",
@@ -896,6 +849,56 @@
 					"help": "Custom sections JSON help",
 					"minRows": 8,
 					"maxRows": 24,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"_docSectionExpertStyling": {
+					"type": "header",
+					"text": "Doc section expert styling",
+					"size": 4,
+					"newLine": true
+				},
+				"_advancedStylingOpenHint": {
+					"type": "staticText",
+					"text": "Advanced styling open hint",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"_advancedStylingHint": {
+					"type": "staticText",
+					"text": "Advanced HTML styling hint",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"htmlFontStack": {
+					"type": "text",
+					"label": "Font stack (CSS)",
+					"help": "Font stack help",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"htmlExtraCss": {
+					"type": "text",
+					"label": "Extra CSS",
+					"help": "Extra CSS help",
+					"minRows": 3,
+					"maxRows": 16,
 					"newLine": true,
 					"xs": 12,
 					"sm": 12,
