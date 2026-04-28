@@ -4,7 +4,7 @@
 
 Automatically generates structured documentation (HTML, Markdown, JSON) for your ioBroker installation — on demand, on a schedule, or when the system changes.
 
-**Version:** 0.9.24
+**Version:** 0.9.25
 
 | | |
 | --- | --- |
@@ -78,6 +78,10 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 **Contributing / releases:** see [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 ## Changelog
+
+### 0.9.25 (2026-04-28)
+
+- **My documentation — playbook:** optional **`ownerPlaybookNote`** (household procedures: order, must-dos, do-not rules in plain language). Shown in Admin manual, separate **User** / **Onboarding** HTML chapter (`#owner-playbook`) with nav when filled, **Markdown** (User/Onboarding profile) under **Manual information**, and **AI owner context**. Hide with chapter id **`ownerPlaybook`** on tab **HTML export & extra sections** (not *Advanced*). Export/renderer: `RENDERER_VERSION` **2026.04.28.5**. Admin UI copy EN/DE/FR; **Doc layout intro** clarifies Admin vs User/Onboarding hide lists.
 
 ### 0.9.24 (2026-04-28)
 
@@ -158,7 +162,7 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 
 ### 0.9.9 (2026-04-18)
 
-- **My documentation:** optional **Help & emergencies** and **Routines in your own words** (`guestHelpNote`, `homeRoutinesNote`) — plain-language blocks in **Onboarding** and **User** HTML (with sidebar links when filled), Admin manual chapter, Markdown export, and **AI owner context** grounding.
+- **My documentation:** optional **Help & emergencies**, **Routines in your own words**, and **Playbook** (`guestHelpNote`, `homeRoutinesNote`, `ownerPlaybookNote` since 0.9.25) — plain-language blocks in **Onboarding** and **User** HTML (with sidebar links when filled), Admin manual chapter, Markdown export, and **AI owner context** grounding.
 - **Discovery (admin detail):** adapter instance `schedule` / `restartSchedule` CRON (with fallback state `.schedule`); optional **schedule-type objects** view; JavaScript scripts include **`common.engine`**.
 - Admin UI: new fields + i18n (EN/DE/FR); `RENDERER_VERSION` bump.
 

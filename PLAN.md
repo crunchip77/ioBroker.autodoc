@@ -241,7 +241,7 @@ Echte Zielgruppen-Dokus statt "mehr oder weniger Detail vom selben Template".
 > Abgestimmt für die nächste Ausbaustufe. Checkboxen: [TODO.md — § 1.3](TODO.md#phase-5x). **Priorität:** 1 → 2 → 3.
 
 **1. Notfall & Troubleshooting für Laien (Hybrid)**  
-**Bereits vorhanden (Abgrenzung):** Manuelle Felder z. B. **Help & emergencies** / **Routines** (`guestHelpNote`, `homeRoutinesNote`, u. a. ab 0.9.9) — Freitext, kein erfundenes Auto-„Notfallwissen“.
+**Bereits vorhanden (Abgrenzung):** Manuelle Felder z. B. **Help & emergencies** / **Routines** / **Playbook** (`guestHelpNote`, `homeRoutinesNote`, `ownerPlaybookNote`, u. a. ab 0.9.9 / 0.9.25) — Freitext, kein erfundenes Auto-„Notfallwissen“.
 
 **Umgesetzt (fester MVP laut [TODO — 5.x.1](TODO.md#phase-5x)):**  
 - **0.9.18:** **Kurzzeilen** (WLAN, Strom, Wasser, Sonstiges) + **Lesezeichen-Links** zu generiertem **User-**, **Onboarding-** und **Admin**-HTML (gleiche Ziele wie QR / `info.htmlUrl*`, sinnvoll nur mit gesetzter **ioBroker base URL**).  
