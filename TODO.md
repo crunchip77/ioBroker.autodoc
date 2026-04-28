@@ -44,8 +44,8 @@ Diese Datei ist die **Arbeitsliste**: was **offen** ist steht oben; **erledigte*
 | **States entlasten** (`documentationStatesMode`, Platzhalter, Downloads aus `/files`, **`documentation.exportHashes`**) | ✅ | Default weiterhin `full`; News bei Default-Wechsel → offen |
 | **Phase 5** (PDF, Backup-Adapter, Rest Custom Templates) | ⬜ | |
 | **Phase 5.x.1** Notfall/Troubleshooting „Hybrid“ | ✅ | Kurzzeilen, Doku-Links (0.9.18), **Auto-Checklisten** bei Node-Befund + Disclaimer (0.9.19) |
-| **Phase 5.x.2** Quick Start / Raumguides | 🟡 | Kern in **0.9.20** (Modell, Renderer, `atAGlance`); fein: Sortierung/Länge & Admin-Übersetzungsqualität, siehe [§ 1.3 — 5.x.2](#phase-5x) |
-| **Phase 5.x.3** Mermaid | ⬜ | Gestaffelt: kuratiert → klein automatisch |
+| **Phase 5.x.2** Quick Start / Raumguides | 🟡 | Kern in **0.9.20**; **0.9.26:** Gäste-Schnellstart kürzer (`sliceQuickStartForOnboarding`), User-Kurzüberblick mit Raum-Kapitel-Link; Fein: weitere Sortierung/Übersetzung, siehe [§ 1.3 — 5.x.2](#phase-5x) |
+| **Phase 5.x.3** Mermaid | 🟡 | **0.9.27:** Stufe 1 — `manualMermaidDiagram` → HTML (jsDelivr Mermaid) + Markdown ```mermaid`; Hide-Id `mermaid`. **Offen:** Auto-Graph mit Limit ([§ 1.3 — 5.x.3](#phase-5x)) |
 | **System-Visitenkarte** / Forum-Copy | ✅ | `textSendTo` **getForumCard** + State `info.forumCardPlain`; Diagnose-HTML nutzt `forumCard.js` |
 | **KI + Skript-Quellcode** | 🟡 | **A** umgesetzt (`aiAnalyzeScriptSources`); **B** weiterhin Phase 5 Backup |
 | **npm + ioBroker.repositories** | ⬜ | Nach Adapter-Checker |
@@ -68,8 +68,8 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 | - | ----- | ------- |
 | 1 | **Custom Templates — Rest (0.9.17 / `main`)** | Erledigt: `adminChapterOrderJson`, `htmlThemePreset` — weiter: **Phase 5** (PDF, User/Onboarding, DnD) — [PLAN](PLAN.md#custom-templates-detail), [§ 1.2](#phase-5-features) |
 | 2 | **Phase 5.x.1** Hybrid (Notfall-Block + Diagnose-Snapshot) | ✅ 0.9.18 / 0.9.19 — [§ 1.3 — 5.x.1](#phase-5x) |
-| 3 | **Phase 5.x.2** Quick Start / Raumguides | 🟡 Kern in **0.9.20**; Fein: [§ 1.3 — 5.x.2](#phase-5x) |
-| 4 | **Phase 5.x.3** Mermaid (gestaffelt) | [§ 1.3 — 5.x.3](#phase-5x) |
+| 3 | **Phase 5.x.2** Quick Start / Raumguides | 🟡 Kern in **0.9.20**; **0.9.26** Feintuning Gäste kürzer + User-Link zum Räume-Kapitel; optional mehr: [§ 1.3 — 5.x.2](#phase-5x) |
+| 4 | **Phase 5.x.3** Mermaid (gestaffelt) | 🟡 **Stufe 1** in **0.9.27** (`manualMermaidDiagram`); Stufe 2 Auto-Graph: [§ 1.3 — 5.x.3](#phase-5x) |
 | 5 | **Phase 5:** Backup-Anbindung, PDF, Rest Custom Templates | [§ 1.2](#phase-5-features), [Backup/Backitup](#backup-backitup-festlegung) |
 | 6 | **npm** + **Adapter Checker** + **ioBroker.repositories** | [§ 1.1](#release-veroeffentlichung) |
 
@@ -129,15 +129,15 @@ Noch offen (größere Ausbaustufe als reiner Freitext):
 - [x] `documentModel`: feste Blöcke (`docModel.quickStart` / `lib/quickStartGuide.js`)
 - [x] Renderer Onboarding + User: strukturierte Listen + Raumkacheln (HTML) / übersichtliche Abschnitte (MD)
 - [x] KI nur Formulierung, nicht alleinige Struktur (unverändert: keine KI-Strukturierung)
-- [ ] Später (Feintuning, optional): siehe Tabelle
+- [x] **0.9.26 (Feintuning):** „Gäste“ Onboarding: kürzerer Quick-Start-Schnitt (`sliceQuickStartForOnboarding`); User: Text + Link zum Räume-Kapitel (HTML + MD); weiteres optional laut Tabelle
 
 **5.x.2 — Später (noch offen, kein Muss):**
 
 | Thema | Mögliche Arbeit |
 | ----- | --------------- |
 | **Sortierung / Relevanz** | **0.9.23:** Schnellstart-Raumkarten nach **absteigender Gerätezahl**; Funktionsbereiche weiter nach Mitgliederzahl. **Optional später:** andere Gewichtung, Top-Skript-Kriterien, Admin-Caps. |
-| **Länge Onboarding vs. User** | Klarere Trennung: **Gäste** kürzer / weniger technisch, **User** etwas ausführlicher **ohne** Duplizierung der gleichen Fakten — ggf. separate Caps oder anderes Layout pro Profil. |
-| **Konsistenz** | Doppelte Infos (Quick Start vs. nachfolgende Kapitel) reduzieren, Verweise statt Wiederholung. |
+| **Länge Onboarding vs. User** | **0.9.26:** Gäste kürzer (Schnitt im Renderer); User volle Tiefe. Optional: weitere Caps oder Layout pro Profil. |
+| **Konsistenz** | **0.9.26:** Link vom Kurzüberblick zum Räume-Kapitel (User). Optional: weitere doppelte Infos reduzieren. |
 
 **Hinweis (Abschnittsreihenfolge):** **User-HTML** und **User-Markdown** nutzen dieselben Inhalte, aber **nicht** dieselbe Kapitelreihenfolge (z. B. manuelles Kapitel und Hilfe im HTML oben, im Markdown-Export erst nach System/Adaptern/Räumen/Skripten) — beabsichtigt, kein Fehler.
 
@@ -145,8 +145,8 @@ Noch offen (größere Ausbaustufe als reiner Freitext):
 
 #### 5.x.3 Mermaid / kleine Graphen
 
-- [ ] Stufe 1: Mermaid aus **kuratiertem** Inhalt (Config / `manualContext`)
-- [ ] Ausgabe Markdown + HTML-Variante festlegen
+- [x] Stufe 1: Mermaid aus **kuratiertem** Inhalt (`manualMermaidDiagram` → `manualContext.mermaidDiagram`, **0.9.27**)
+- [x] Ausgabe **Markdown** (`mermaid` fence) + **HTML** (pre.mermaid + Mermaid **10.9.1** von jsDelivr wenn Diagramm vorhanden)
 - [ ] Stufe 2: optional kleiner **Auto-Graph** mit **hartem Knotenlimit** (z. B. Multihost)
 - [ ] Nicht Ziel: ungefilterter Gesamtgraph
 

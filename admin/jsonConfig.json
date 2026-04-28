@@ -277,6 +277,19 @@
 					"lg": 12,
 					"xl": 12
 				},
+				"manualMermaidDiagram": {
+					"type": "text",
+					"label": "Mermaid diagram (optional)",
+					"help": "Optional Mermaid diagram you write yourself (flowchart, sequence, …). Shown in HTML exports (interactive render via Mermaid script; offline file preview needs network once) and as a ```mermaid fenced block in Markdown exports. Hide in User/Onboarding with chapter id `mermaid`. Very long input is truncated.",
+					"minRows": 4,
+					"maxRows": 28,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
 				"_troubleshootQuickHeader": {
 					"type": "header",
 					"text": "Troubleshooting — quick lines (optional)",

@@ -1,8 +1,34 @@
 {
         "common": {
         "name": "autodoc",
-        "version": "0.9.25",
+        "version": "0.9.27",
         "news": {
+            "0.9.27": {
+                "en": "Phase **5.x.3 (step 1):** optional **`manualMermaidDiagram`** in **My documentation** — owner-written Mermaid source. **HTML** exports load Mermaid **10.9.1** from jsDelivr when the page contains a diagram; **Markdown** adds a fenced **`mermaid`** block. Hide with chapter id **`mermaid`** (User/Onboarding hide lists). Clamped to **12 000** characters in `parseManualContext`. `RENDERER_VERSION` **2026.04.28.8**.",
+                "de": "Phase **5.x.3 (Stufe 1):** optionales **`manualMermaidDiagram`** unter **Meine Dokumentation** — selbst geschriebener Mermaid-Quelltext. **HTML**-Exporte laden Mermaid **10.9.1** von jsDelivr, wenn ein Diagramm vorkommt; **Markdown** erhält einen **`mermaid`**-Codeblock. Ausblenden mit Kapitel-Id **`mermaid`** (User/Onboarding). In `parseManualContext` auf **12 000** Zeichen begrenzt. `RENDERER_VERSION` **2026.04.28.8**.",
+                "ru": "0.9.27: Mermaid manualMermaidDiagram; HTML+MD; RENDERER_VERSION",
+                "pt": "0.9.27: Mermaid manualMermaidDiagram; HTML+MD; RENDERER_VERSION",
+                "nl": "0.9.27: Mermaid manualMermaidDiagram; HTML+MD; RENDERER_VERSION",
+                "fr": "0.9.27 : Mermaid manualMermaidDiagram ; HTML + MD ; RENDERER_VERSION",
+                "it": "0.9.27: Mermaid manualMermaidDiagram; HTML+MD; RENDERER_VERSION",
+                "es": "0.9.27: Mermaid manualMermaidDiagram; HTML+MD; RENDERER_VERSION",
+                "pl": "0.9.27: Mermaid manualMermaidDiagram; HTML+MD; RENDERER_VERSION",
+                "uk": "0.9.27: Mermaid manualMermaidDiagram; HTML+MD; RENDERER_VERSION",
+                "zh-cn": "0.9.27：手动 Mermaid 图；HTML/MD；RENDERER_VERSION"
+            },
+            "0.9.26": {
+                "en": "**Phase 5.x.2 (tuning):** Onboarding **Quick Start** uses a **shorter** slice of `docModel.quickStart` (fewer system lines, room cards, highlights per room). **User** quick overview unchanged in depth; intro copy and a **link to the Rooms chapter** (HTML + User Markdown) reduce duplication. `sliceQuickStartForOnboarding` in `lib/quickStartGuide.js`. `RENDERER_VERSION` **2026.04.28.6**.",
+                "de": "**Phase 5.x.2 (Feintuning):** Onboarding-**Schnellstart** nutzt eine **kürzere** Auswahl aus `docModel.quickStart` (weniger Systemzeilen, Raumkarten, Highlights pro Raum). **User**-Kurzüberblick in der Tiefe unverändert; angepasster Text plus **Link zum Räume-Kapitel** (HTML + User-Markdown). `sliceQuickStartForOnboarding` in `lib/quickStartGuide.js`. `RENDERER_VERSION` **2026.04.28.6**.",
+                "ru": "0.9.26: Quick Start guest slice; rooms cross-link; RENDERER_VERSION",
+                "pt": "0.9.26: Quick Start convidado mais curto; link salas; RENDERER_VERSION",
+                "nl": "0.9.26: kortere Quick Start gast; link kamers; RENDERER_VERSION",
+                "fr": "0.9.26 : Quick Start invité raccourci ; lien pièces ; RENDERER_VERSION",
+                "it": "0.9.26: Quick Start ospite più corto; link stanze; RENDERER_VERSION",
+                "es": "0.9.26: Quick Start invitado más corto; enlace habitaciones; RENDERER_VERSION",
+                "pl": "0.9.26: krótszy Quick Start gościa; link pokoje; RENDERER_VERSION",
+                "uk": "0.9.26: коротший Quick Start для гостя; посилання кімнати; RENDERER_VERSION",
+                "zh-cn": "0.9.26：访客快速开始缩短；房间章节链接；RENDERER_VERSION"
+            },
             "0.9.25": {
                 "en": "**My documentation:** new **playbook** field (`ownerPlaybookNote`) — step order, must-dos, and “do not” rules in your own words. Shown in Admin manual, User/Onboarding HTML (own section + TOC when enabled), Markdown export, and **AI owner context**. Hide via chapter id **`ownerPlaybook`**. `RENDERER_VERSION` **2026.04.28.5**.",
                 "de": "**Meine Dokumentation:** neues **Ablauf-/Playbook**-Feld (`ownerPlaybookNote`) — Reihenfolge, Muss und „bitte nicht“ in eigenen Worten. Im Admin-Handbuch, User-/Onboarding-HTML (eigenes Kapitel + Navigation), Markdown-Export und **KI-Eigentümerkontext**. Ausblenden mit Kapitel-Id **`ownerPlaybook`**. `RENDERER_VERSION` **2026.04.28.5**.",
@@ -236,32 +262,6 @@
                 "pl": "QR SVG (qrcode); exportPath; multihost; AI hints; diagnostyka; jsonConfig; npm; docs",
                 "uk": "QR SVG (qrcode); exportPath; multihost; KI hints; діагностика; jsonConfig; npm; docs",
                 "zh-cn": "QR 内嵌 SVG（qrcode）；可选 exportPath；多主机；AI 上下文提示；诊断；jsonConfig；npm；文档"
-            },
-            "0.9.7": {
-                "en": "AI: HTTP timeout & temperatures; grounding; stricter DE prompts; parse cleanup; Ollama default temp; quality fallback; onboarding dump + iroBroker typo detection. Startup logs; default gen-on-start; HTML userdata/alias collapse fix (end-of-script). Export schemaVersion autodoc-json-1; removed phantom 1.0.0 news",
-                "de": "KI: Timeout/Temperaturen, Grounding, DE-Prompts, Parser; Ollama-Standardtemp; Qualitäts-Fallback; technischer Dump + Tippfehler-Erkennung. Start-Logs; Standard „Doku beim Start“; HTML userdata/Alias-Zuklappen (Skript am Seitenende). schemaVersion autodoc-json-1; news 1.0.0 entfernt",
-                "ru": "AI: таймаут HTTP и температура; grounding комнат; DE-промпты; разбор и очистка; пустые пункты; main для форума",
-                "pt": "IA: timeout HTTP e temperaturas; grounding salas; prompts DE; parsing/limpeza; bullets vazios; main para fórum",
-                "nl": "AI: HTTP-timeout en temperaturen; grounding; DE-prompts; parsing opschonen; lege bullets; main voor forum",
-                "fr": "IA : délai HTTP et températures ; ancrage pièces ; prompts DE ; parsing/nettoyage ; puces vides ; main pour forum",
-                "it": "AI: timeout HTTP e temperature; grounding stanze; prompt DE; pulizia parsing; bullet vuoti; main per forum",
-                "es": "IA: tiempo HTTP y temperaturas; grounding habitaciones; prompts DE; limpieza parsing; viñetas vacías; main para foro",
-                "pl": "AI: timeout HTTP i temperatury; grounding pokoi; prompty DE; czyszczenie parsowania; puste punkty; main pod forum",
-                "uk": "AI: HTTP-таймаут і температура; grounding кімнат; DE-промпти; очищення розбору; порожні пункти; main для форуму",
-                "zh-cn": "AI：HTTP 超时与可选温度；房间/类别锚定；德语提示词收紧；解析清理与空列表过滤；main 便于论坛试用"
-            },
-            "0.9.6": {
-                "en": "AI: HTML debug comment for KI source (primary vs user↔onboarding fallback); DE onboarding second pass for Sie consistency; DE user prompt against Denglish/brands/alarmist tone",
-                "de": "KI: HTML-Kommentar zur KI-Quelle (primary vs Fallback); DE-Onboarding Zweitpass (Sie-Form); DE-User-Prompt gegen Denglish/Marken/alarmistischen Ton",
-                "ru": "AI: HTML-комментарий источника KI; DE onboarding второй проход; DE user промпт",
-                "pt": "IA: comentário HTML da fonte KI; segundo passe DE onboarding; prompt DE user",
-                "nl": "AI: HTML-commentaar KI-bron; DE onboarding tweede pass; DE user-prompt",
-                "fr": "IA : commentaire HTML source KI ; 2e passe DE onboarding ; prompt user DE",
-                "it": "AI: commento HTML fonte KI; secondo pass DE onboarding; prompt user DE",
-                "es": "IA: comentario HTML fuente KI; segundo pase DE onboarding; prompt user DE",
-                "pl": "AI: komentarz HTML źródła KI; drugi przejazd DE onboarding; prompt user DE",
-                "uk": "AI: HTML-коментар джерела KI; другий прохід DE onboarding; prompt user DE",
-                "zh-cn": "AI：HTML 注释标记 KI 来源；德语访客二次润色；德语住户提示词优化"
             }
         },
         "titleLang": {
@@ -355,6 +355,7 @@
         "guestHelpNote": "",
         "homeRoutinesNote": "",
         "ownerPlaybookNote": "",
+        "manualMermaidDiagram": "",
         "troubleshootWifiHint": "",
         "troubleshootPowerHint": "",
         "troubleshootWaterHint": "",
