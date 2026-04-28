@@ -264,6 +264,19 @@
 					"lg": 12,
 					"xl": 12
 				},
+				"ownerPlaybookNote": {
+					"type": "text",
+					"label": "How we run this home (your playbook)",
+					"help": "Step-by-step or bullet notes only you maintain: typical order of doing things, what must be done, what guests or family must not change (your words; nothing is invented automatically). Shown as its own section in family and guest docs.",
+					"minRows": 4,
+					"maxRows": 22,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
 				"_troubleshootQuickHeader": {
 					"type": "header",
 					"text": "Troubleshooting — quick lines (optional)",

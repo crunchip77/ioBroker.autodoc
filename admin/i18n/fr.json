@@ -201,11 +201,11 @@
 	"Custom sections (JSON)": "Sections personnalisées (JSON)",
 	"Custom sections JSON help": "Voir l'aide ci-dessus. Relancer **Générer la documentation** après modification.",
 	"User/Family HTML — hide chapters": "HTML utilisateur/famille — masquer des chapitres",
-	"User hidden chapters hint": "Tableau JSON d'ids pour le HTML **utilisateur/famille** et le **Markdown** (profil utilisateur). Ex. `[\"scripts\"]`. Ids : `manual`, `ai`, `guestHelp`, `atAGlance` (aperçu rapide d’après la découverte ; HTML + Markdown utilisateur), `rooms`, `scripts`, `routines`, `adapters`, `custom`, `system`, `troubleshooting`.",
+	"User hidden chapters hint": "Tableau JSON d'ids pour le HTML **utilisateur/famille** et le **Markdown** (profil utilisateur). Ex. `[\"scripts\"]`. Ids : `manual`, `ai`, `guestHelp`, `atAGlance` (aperçu rapide d’après la découverte ; HTML + Markdown utilisateur), `rooms`, `scripts`, `routines`, `ownerPlaybook`, `adapters`, `custom`, `system`, `troubleshooting`.",
 	"User profile — hidden chapter IDs (JSON)": "Profil utilisateur — chapitres masqués (JSON)",
 	"User hidden chapters JSON help": "Tableau JSON de chaînes. `[]` = tout afficher.",
 	"Onboarding HTML — hide chapters": "HTML onboarding — masquer des chapitres",
-	"Onboarding hidden chapters hint": "Masquer des blocs dans l'HTML **onboarding** et le **Markdown** (profil onboarding). Ids : `welcome`, `tips`, `guestHelp`, `stats`, `ai`, `capabilities`, `rooms`, `routines`, `automations`, `adapters`, `custom`, `hint`, plus pour le Markdown `quickstart`, `system`, `manual`.",
+	"Onboarding hidden chapters hint": "Masquer des blocs dans l'HTML **onboarding** et le **Markdown** (profil onboarding). Ids : `welcome`, `tips`, `guestHelp`, `stats`, `ai`, `capabilities`, `rooms`, `routines`, `ownerPlaybook`, `automations`, `adapters`, `custom`, `hint`, plus pour le Markdown `quickstart`, `system`, `manual`.",
 	"Onboarding profile — hidden chapter IDs (JSON)": "Profil onboarding — chapitres masqués (JSON)",
 	"Onboarding hidden chapters JSON help": "Tableau JSON de chaînes. `[]` = tout afficher."
 }

@@ -1,8 +1,21 @@
 {
         "common": {
         "name": "autodoc",
-        "version": "0.9.24",
+        "version": "0.9.25",
         "news": {
+            "0.9.25": {
+                "en": "**My documentation:** new **playbook** field (`ownerPlaybookNote`) — step order, must-dos, and “do not” rules in your own words. Shown in Admin manual, User/Onboarding HTML (own section + TOC when enabled), Markdown export, and **AI owner context**. Hide via chapter id **`ownerPlaybook`**. `RENDERER_VERSION` **2026.04.28.5**.",
+                "de": "**Meine Dokumentation:** neues **Ablauf-/Playbook**-Feld (`ownerPlaybookNote`) — Reihenfolge, Muss und „bitte nicht“ in eigenen Worten. Im Admin-Handbuch, User-/Onboarding-HTML (eigenes Kapitel + Navigation), Markdown-Export und **KI-Eigentümerkontext**. Ausblenden mit Kapitel-Id **`ownerPlaybook`**. `RENDERER_VERSION` **2026.04.28.5**.",
+                "ru": "0.9.25: owner playbook note; exports; RENDERER_VERSION",
+                "pt": "0.9.25: owner playbook note; exports; RENDERER_VERSION",
+                "nl": "0.9.25: owner playbook note; exports; RENDERER_VERSION",
+                "fr": "0.9.25 : note « playbook » propriétaire ; exports ; RENDERER_VERSION",
+                "it": "0.9.25: owner playbook note; exports; RENDERER_VERSION",
+                "es": "0.9.25: owner playbook note; exports; RENDERER_VERSION",
+                "pl": "0.9.25: owner playbook note; exports; RENDERER_VERSION",
+                "uk": "0.9.25: owner playbook note; exports; RENDERER_VERSION",
+                "zh-cn": "0.9.25：维护人操作流程文本；导出；RENDERER_VERSION"
+            },
             "0.9.24": {
                 "en": "**Clarity:** Admin chapter **Maintenance & documentation setup** (technical **Diagnosis** stays separate). Exports use **documentation setup score**; Admin **Advanced** labels updated (EN/DE/FR + EN fallbacks). All checklist checks off → explicit note in HTML/Markdown. **Quick Start:** rooms with equal device counts sorted by name. `RENDERER_VERSION` **2026.04.28.4**.",
                 "de": "**Klarstellung:** Admin-Kapitel **Wartung & Dokumentations-Setup** (technische **Diagnose** bleibt eigenes Kapitel). **Doku-Setup-Score** in Texten; **Erweitert**-Hilfen angepasst. Alle Checks aus → Hinweis im Export. **Schnellstart:** bei gleicher Gerätezahl Sortierung nach Raumname. `RENDERER_VERSION` **2026.04.28.4**.",
@@ -249,19 +262,6 @@
                 "pl": "AI: komentarz HTML źródła KI; drugi przejazd DE onboarding; prompt user DE",
                 "uk": "AI: HTML-коментар джерела KI; другий прохід DE onboarding; prompt user DE",
                 "zh-cn": "AI：HTML 注释标记 KI 来源；德语访客二次润色；德语住户提示词优化"
-            },
-            "0.9.5": {
-                "en": "AI onboarding: stricter guest-only facts (no adapter/script counts), stronger bans (ioBroker, maintenance-score, du-imperatives), anti-hallucination for automations",
-                "de": "KI-Gäste-Text: schlankere Fakten ohne Adapter/Skript-Zahlen, schärfere Verbote (ioBroker, maintenance-score, Du-Imperative), weniger erfundene Automatisierungs-Szenen",
-                "ru": "AI onboarding: строже гостевые факты, запреты, меньше выдуманных сцен",
-                "pt": "IA onboarding: fatos só para hóspedes, proibições mais rígidas, menos automação inventada",
-                "nl": "AI onboarding: strengere gast-feiten, verboden, minder verzonnen automatisering",
-                "fr": "IA onboarding : faits invités plus stricts, interdits renforcés, moins d’automations inventées",
-                "it": "AI onboarding: fatti ospiti più stretti, divieti rafforzati, meno automazioni inventate",
-                "es": "IA onboarding: hechos para invitados más estrictos, prohibiciones más fuertes, menos automatizaciones inventadas",
-                "pl": "AI onboarding: ściślejsze fakty dla gości, zakazy, mniej zmyślonych automatyzacji",
-                "uk": "AI onboarding: жорсткіші гостьові факти, заборони, менше вигаданих сценаріїв",
-                "zh-cn": "AI 访客引导：更严事实与禁用词，减少虚构自动化场景"
             }
         },
         "titleLang": {
@@ -354,6 +354,7 @@
         "additionalNotes": "",
         "guestHelpNote": "",
         "homeRoutinesNote": "",
+        "ownerPlaybookNote": "",
         "troubleshootWifiHint": "",
         "troubleshootPowerHint": "",
         "troubleshootWaterHint": "",

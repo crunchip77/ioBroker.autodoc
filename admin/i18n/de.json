@@ -210,11 +210,11 @@
 	"Custom sections (JSON)": "Eigene Kapitel (JSON)",
 	"Custom sections JSON help": "Siehe Hinweis oben. Nach Änderung **Dokumentation generieren** ausführen.",
 	"User/Family HTML — hide chapters": "User/Familie-HTML — Kapitel ausblenden",
-	"User hidden chapters hint": "JSON-Array von Kapitel-Ids für **User/Familie**-HTML und **Markdown** (Profil User). Beispiel: `[\"scripts\"]`. Erlaubt: `manual` (nur Beschreibung/Kontakt/Notizen), `ai`, `guestHelp`, `atAGlance` (Kurzüberblick aus Discovery; User-HTML + User-Markdown), `rooms`, `scripts`, `routines`, `adapters`, `custom`, `system`, `troubleshooting`.",
+	"User hidden chapters hint": "JSON-Array von Kapitel-Ids für **User/Familie**-HTML und **Markdown** (Profil User). Beispiel: `[\"scripts\"]`. Erlaubt: `manual` (nur Beschreibung/Kontakt/Notizen), `ai`, `guestHelp`, `atAGlance` (Kurzüberblick aus Discovery; User-HTML + User-Markdown), `rooms`, `scripts`, `routines`, `ownerPlaybook`, `adapters`, `custom`, `system`, `troubleshooting`.",
 	"User profile — hidden chapter IDs (JSON)": "User-Profil — ausgeblendete Kapitel (JSON)",
 	"User hidden chapters JSON help": "JSON-Array aus Strings. Leer `[]` = alles anzeigen.",
 	"Onboarding HTML — hide chapters": "Onboarding-HTML — Kapitel ausblenden",
-	"Onboarding hidden chapters hint": "Blöcke im **Onboarding**-HTML und passende Teile im **Markdown** (Profil Onboarding) ausblenden. Ids: `welcome`, `tips`, `guestHelp`, `stats`, `ai`, `capabilities`, `rooms`, `routines`, `automations`, `adapters`, `custom`, `hint`, zusätzlich für Markdown `quickstart`, `system`, `manual`.",
+	"Onboarding hidden chapters hint": "Blöcke im **Onboarding**-HTML und passende Teile im **Markdown** (Profil Onboarding) ausblenden. Ids: `welcome`, `tips`, `guestHelp`, `stats`, `ai`, `capabilities`, `rooms`, `routines`, `ownerPlaybook`, `automations`, `adapters`, `custom`, `hint`, zusätzlich für Markdown `quickstart`, `system`, `manual`.",
 	"Onboarding profile — hidden chapter IDs (JSON)": "Onboarding-Profil — ausgeblendete Kapitel (JSON)",
 	"Onboarding hidden chapters JSON help": "JSON-Array aus Strings. Leer `[]` = alles anzeigen.",
 	"copyForForum": "Für Forum kopieren"

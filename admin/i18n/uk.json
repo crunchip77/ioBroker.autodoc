@@ -209,11 +209,11 @@
 	"Custom sections (JSON)": "Custom sections (JSON)",
 	"Custom sections JSON help": "See the hint above. After editing, run **Generate documentation** again.",
 	"User/Family HTML — hide chapters": "User/Family HTML — hide chapters",
-	"User hidden chapters hint": "JSON array of chapter ids to hide in **User/Family** HTML and in **Markdown** when the documentation profile is User. Example: `[\"scripts\",\"adapters\"]`. Valid ids: `manual` (project description/contact/notes only), `ai`, `guestHelp`, `atAGlance` (Quick overview from discovery; User HTML + User Markdown), `rooms`, `scripts`, `routines`, `adapters`, `custom`, `system`, `troubleshooting`.",
+	"User hidden chapters hint": "JSON array of chapter ids to hide in **User/Family** HTML and in **Markdown** when the documentation profile is User. Example: `[\"scripts\",\"adapters\"]`. Valid ids: `manual` (project description/contact/notes only), `ai`, `guestHelp`, `atAGlance` (Quick overview from discovery; User HTML + User Markdown), `rooms`, `scripts`, `routines`, `ownerPlaybook`, `adapters`, `custom`, `system`, `troubleshooting`.",
 	"User profile — hidden chapter IDs (JSON)": "User profile — hidden chapter IDs (JSON)",
 	"User hidden chapters JSON help": "JSON array of strings. Empty `[]` shows all.",
 	"Onboarding HTML — hide chapters": "Onboarding HTML — hide chapters",
-	"Onboarding hidden chapters hint": "Hide blocks in **Onboarding** HTML and matching parts of **Markdown** (profile Onboarding). Valid ids: `welcome`, `tips`, `guestHelp`, `stats`, `ai`, `capabilities`, `rooms`, `routines`, `automations`, `adapters`, `custom`, `hint`, plus for Markdown also `quickstart`, `system`, `manual` (project description/contact in welcome + manual chapter subsections).",
+	"Onboarding hidden chapters hint": "Hide blocks in **Onboarding** HTML and matching parts of **Markdown** (profile Onboarding). Valid ids: `welcome`, `tips`, `guestHelp`, `stats`, `ai`, `capabilities`, `rooms`, `routines`, `ownerPlaybook`, `automations`, `adapters`, `custom`, `hint`, plus for Markdown also `quickstart`, `system`, `manual` (project description/contact in welcome + manual chapter subsections).",
 	"Onboarding profile — hidden chapter IDs (JSON)": "Onboarding profile — hidden chapter IDs (JSON)",
 	"Onboarding hidden chapters JSON help": "JSON array of strings. Empty `[]` shows all.",
 	"copyForForum": "Copy for Forum"
