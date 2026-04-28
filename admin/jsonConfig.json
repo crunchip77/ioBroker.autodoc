@@ -637,6 +637,86 @@
 					"lg": 8,
 					"xl": 8
 				},
+				"_advancedSetupScoreIntro": {
+					"type": "staticText",
+					"text": "Advanced setup score intro",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"_advancedSectionMaintenanceScore": {
+					"type": "header",
+					"text": "Advanced section maintenance score",
+					"size": 4,
+					"newLine": true
+				},
+				"maintenanceScoreCheckDescription": {
+					"type": "checkbox",
+					"label": "Maintenance score include description check",
+					"help": "Maintenance score description check help",
+					"default": true,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"maintenanceScoreCheckBaseUrl": {
+					"type": "checkbox",
+					"label": "Maintenance score include base URL check",
+					"help": "Maintenance score base URL check help",
+					"default": true,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"maintenanceScoreCheckUnassigned": {
+					"type": "checkbox",
+					"label": "Maintenance score include unassigned check",
+					"help": "Maintenance score unassigned check help",
+					"default": true,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"maintenanceScoreMinDescriptionChars": {
+					"type": "number",
+					"label": "Maintenance score min description length",
+					"help": "Maintenance score min description length help",
+					"min": 5,
+					"max": 2000,
+					"default": 40,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 6,
+					"lg": 6,
+					"xl": 6
+				},
+				"maintenanceScoreUnassignedWarnAt": {
+					"type": "number",
+					"label": "Maintenance score unassigned warn at",
+					"help": "Maintenance score unassigned warn at help",
+					"min": 1,
+					"max": 500,
+					"default": 10,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 6,
+					"lg": 6,
+					"xl": 6
+				},
 				"_advancedSectionFilesystem": {
 					"type": "header",
 					"text": "Advanced section filesystem",

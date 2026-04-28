@@ -1,8 +1,60 @@
 {
-    "common": {
+        "common": {
         "name": "autodoc",
-        "version": "0.9.20",
+        "version": "0.9.24",
         "news": {
+            "0.9.24": {
+                "en": "**Clarity:** Admin chapter **Maintenance & documentation setup** (technical **Diagnosis** stays separate). Exports use **documentation setup score**; Admin **Advanced** labels updated (EN/DE/FR + EN fallbacks). All checklist checks off → explicit note in HTML/Markdown. **Quick Start:** rooms with equal device counts sorted by name. `RENDERER_VERSION` **2026.04.28.4**.",
+                "de": "**Klarstellung:** Admin-Kapitel **Wartung & Dokumentations-Setup** (technische **Diagnose** bleibt eigenes Kapitel). **Doku-Setup-Score** in Texten; **Erweitert**-Hilfen angepasst. Alle Checks aus → Hinweis im Export. **Schnellstart:** bei gleicher Gerätezahl Sortierung nach Raumname. `RENDERER_VERSION` **2026.04.28.4**.",
+                "ru": "0.9.24: naming; setup score; quick start tie-break; RENDERER_VERSION",
+                "pt": "0.9.24: naming; setup score; quick start; RENDERER_VERSION",
+                "nl": "0.9.24: naming; setup score; quick start; RENDERER_VERSION",
+                "fr": "0.9.24 : libellés, score mise en place doc, Quick Start ; RENDERER_VERSION",
+                "it": "0.9.24: naming; setup score; quick start; RENDERER_VERSION",
+                "es": "0.9.24: naming; setup score; quick start; RENDERER_VERSION",
+                "pl": "0.9.24: naming; setup score; quick start; RENDERER_VERSION",
+                "uk": "0.9.24: naming; setup score; quick start; RENDERER_VERSION",
+                "zh-cn": "0.9.24：命名与文档Setup分；快速开始同设备数按房间名；RENDERER_VERSION"
+            },
+            "0.9.23": {
+                "en": "**Maintenance score** (Admin checklist): optional **per-check toggles** and numeric **thresholds** in Advanced settings (`maintenanceScoreCheck*`, min description length, unassigned-instance warn level). Score counts **only enabled** checks. **Quick Start** room cards prefer rooms with **more devices** first. Doc export `scoreDesc` clarifies **setup/meta** vs. content. `RENDERER_VERSION` **2026.04.28.3**.",
+                "de": "**Doku-Score** (Admin-Checkliste): in **Erweitert** pro Check **ein/aus** plus **Schwellen** (Mindestlänge Beschreibung, Warnstufe „Instanzen ohne Raum“). Prozent zählt nur **aktive** Checks. **Schnellstart**: Raumkarten bevorzugen Räume mit **mehr Geräten**. `scoreDesc` präzisiert **Setup/Meta** vs. Inhalt. `RENDERER_VERSION` **2026.04.28.3**.",
+                "ru": "0.9.23: maintenance score options; quick start room order; RENDERER_VERSION",
+                "pt": "0.9.23: maintenance score options; quick start room order; RENDERER_VERSION",
+                "nl": "0.9.23: maintenance score options; quick start room order; RENDERER_VERSION",
+                "fr": "0.9.23 : score maintenance (options), Quick Start pièces ; RENDERER_VERSION",
+                "it": "0.9.23: maintenance score options; quick start room order; RENDERER_VERSION",
+                "es": "0.9.23: maintenance score options; quick start room order; RENDERER_VERSION",
+                "pl": "0.9.23: maintenance score options; quick start room order; RENDERER_VERSION",
+                "uk": "0.9.23: maintenance score options; quick start room order; RENDERER_VERSION",
+                "zh-cn": "0.9.23：维护评分可配置；快速开始房间排序；RENDERER_VERSION"
+            },
+            "0.9.22": {
+                "en": "**Maintenance — documentation setup score:** checklist (project description length, **ioBroker base URL**, unassigned instances when count ≥10). **`scriptsWithoutDescription`** in the model for info/exports — still **not** scored. `buildMaintenance` uses rooms + manual context. `RENDERER_VERSION` bump.",
+                "de": "**Wartung — Doku-Setup-Score:** Checkliste (Projektbeschreibung, **Basis-URL**, ≥10 Instanzen ohne Raum). **`scriptsWithoutDescription`** nur informativ — **kein** Score. `buildMaintenance` mit Räumen + manuellem Kontext. `RENDERER_VERSION`.",
+                "ru": "0.9.22: maintenance checklist; score; RENDERER_VERSION",
+                "pt": "0.9.22: maintenance checklist; score; RENDERER_VERSION",
+                "nl": "0.9.22: maintenance checklist; score; RENDERER_VERSION",
+                "fr": "0.9.22 : checklist maintenance, score, RENDERER_VERSION",
+                "it": "0.9.22: maintenance checklist; score; RENDERER_VERSION",
+                "es": "0.9.22: checklist mantenimiento; score; RENDERER_VERSION",
+                "pl": "0.9.22: maintenance checklist; score; RENDERER_VERSION",
+                "uk": "0.9.22: maintenance checklist; score; RENDERER_VERSION",
+                "zh-cn": "0.9.22：维护清单、评分、RENDERER_VERSION"
+            },
+            "0.9.21": {
+                "en": "Onboarding **guest script privacy**: optional **`onboardingGuestShowScriptNames`** (default **off**) — **Quick Start** does not show script rows that would expose internal file names (no stand-in text from `common.desc` alone); **What runs automatically** stays a count-only summary unless you opt in. Shared helper `lib/guestScriptPrivacy.js`; **Onboarding** HTML + **Markdown**; `RENDERER_VERSION` bump.",
+                "de": "Gäste-Onboarding **Skript-Datenschutz**: optional **`onboardingGuestShowScriptNames`** (Standard **aus**) — **Schnellstart** zeigt keine Skriptzeilen mit internen Dateinamen (kein Ersatz allein aus `common.desc`); **Was automatisch läuft** bleibt nur Zähler-Zusammenfassung ohne Opt-in. `lib/guestScriptPrivacy.js`; Onboarding **HTML** + **Markdown**; `RENDERER_VERSION`.",
+                "ru": "0.9.21: guest script privacy; Quick Start; guestScriptPrivacy",
+                "pt": "0.9.21: privacidade scripts convidado; Quick Start",
+                "nl": "0.9.21: gast script-privacy; Quick Start",
+                "fr": "0.9.21 : confidentialité scripts invité ; Quick Start ; guestScriptPrivacy",
+                "it": "0.9.21: privacy script ospiti; Quick Start",
+                "es": "0.9.21: privacidad scripts invitado; Quick Start",
+                "pl": "0.9.21: prywatność skryptów gościa; Quick Start",
+                "uk": "0.9.21: приватність скриптів для гостей; Quick Start",
+                "zh-cn": "0.9.21：访客脚本隐私、快速开始、guestScriptPrivacy"
+            },
             "0.9.20": {
                 "en": "Phase **5.x.2**: structured **Quick Start** (Onboarding) and **Quick overview / at a glance** (User) from discovery — `docModel.quickStart` via `lib/quickStartGuide.js`; system list + per-room highlights; i18n EN/DE/FR; Onboarding + User **Markdown** aligned; new hide id `atAGlance` (User). `RENDERER_VERSION` bump.",
                 "de": "Phase **5.x.2**: **Schnellstart** (Onboarding) und **Kurzüberblick** (User) aus Discovery — `docModel.quickStart` (`lib/quickStartGuide.js`); Systemliste + Raum-Highlights; i18n; **Markdown** Onboarding/User; neues Ausblenden `atAGlance` (User). `RENDERER_VERSION`.",
@@ -210,58 +262,6 @@
                 "pl": "AI onboarding: ściślejsze fakty dla gości, zakazy, mniej zmyślonych automatyzacji",
                 "uk": "AI onboarding: жорсткіші гостьові факти, заборони, менше вигаданих сценаріїв",
                 "zh-cn": "AI 访客引导：更严事实与禁用词，减少虚构自动化场景"
-            },
-            "0.9.4": {
-                "en": "AI: guest onboarding uses lighter facts + optional system role; German prompts and DE system messages for more natural wording (Sie-form, less Denglish)",
-                "de": "KI: Gäste-Onboarding mit schlankeren Fakten + Systemrolle; deutsche Stilregeln und DE-Systemtexte für natürlichere Formulierung (Sie-Form, weniger Denglish)",
-                "ru": "AI: гостевой onboarding — легче факты + system role; правила немецкого и DE system для естественной речи",
-                "pt": "IA: onboarding para convidados com dados mais leves + papel de sistema; regras DE e mensagens DE para texto mais natural",
-                "nl": "AI: gast-onboarding met lichtere feiten + systeemrol; Duitse stijlregels en DE-systeemteksten voor natuurlijker taalgebruik",
-                "fr": "IA : onboarding invités avec faits allégés + rôle système ; règles allemandes et messages système DE pour un style plus naturel",
-                "it": "AI: onboarding ospiti con fatti più leggeri + ruolo di sistema; regole tedesche e messaggi di sistema DE per un linguaggio più naturale",
-                "es": "IA: onboarding para invitados con datos más ligeros + rol de sistema; reglas DE y mensajes de sistema DE para un lenguaje más natural",
-                "pl": "AI: onboarding gości z lżejszymi faktami + rola systemowa; reguły DE i komunikaty systemowe DE dla naturalniejszego języka",
-                "uk": "AI: гостьовий onboarding з легшими фактами + system role; німецькі правила та DE system для природнішої мови",
-                "zh-cn": "AI：访客引导使用更轻量事实与系统角色；德语风格与德语系统提示，措辞更自然"
-            },
-            "0.9.3": {
-                "en": "Fix: blank HTML main area (script closing + search regex); reinstall with a new adapter version or clear install cache if files stay stale",
-                "de": "Fix: leerer HTML-Hauptbereich (Script-Enden + Such-Regex); bei hängenden Dateien neue Adapter-Version installieren oder Installations-Cache leeren",
-                "ru": "Fix: blank HTML main area — reinstall with new version or clear install cache if needed",
-                "pt": "Fix: blank HTML main area — reinstale com nova versão ou limpe o cache de instalação se necessário",
-                "nl": "Fix: blank HTML main area — herinstalleer met nieuwe versie of leeg installatiecache indien nodig",
-                "fr": "Fix: zone HTML vide — réinstallez avec une nouvelle version ou videz le cache d’installation si besoin",
-                "it": "Fix: area HTML vuota — reinstallare con nuova versione o svuotare la cache di installazione se necessario",
-                "es": "Fix: HTML principal vacío — reinstalar con nueva versión o vaciar caché de instalación si hace falta",
-                "pl": "Fix: pusty HTML — przeinstaluj z nową wersją lub wyczyść cache instalacji w razie potrzeby",
-                "uk": "Fix: порожній HTML — перевстановіть з новою версією або очистіть кеш установки за потреби",
-                "zh-cn": "修复：HTML 主区域空白；若文件未更新请升级版本或清理安装缓存"
-            },
-            "0.9.2": {
-                "en": "Fix: RAM HTML rendering, filter bars for custom variables and aliases, documentation score explanation, manual notes moved to top of admin profile",
-                "de": "Fix: RAM HTML-Darstellung, Filterleisten für eigene Variablen und Aliase, Dokumentations-Score-Erklärung, manuelle Hinweise im Admin-Profil nach oben",
-                "ru": "Исправление: HTML RAM, полосы фильтра для пользовательских переменных и алиасов, пояснение score документации, ручные заметки вверху профиля администратора",
-                "pt": "Correção: renderização HTML da RAM, barras de filtro para variáveis e aliases personalizados, explicação do score de documentação, notas manuais no topo do perfil de admin",
-                "nl": "Fix: RAM HTML-weergave, filterbalken voor eigen variabelen en aliassen, uitleg documentatiescore, handmatige notities bovenaan het adminprofiel",
-                "fr": "Correctif : rendu HTML RAM, barres de filtre pour variables et alias personnalisés, explication du score de documentation, notes manuelles en haut du profil admin",
-                "it": "Correzione: rendering HTML RAM, barre filtro per variabili e alias personalizzati, spiegazione punteggio documentazione, note manuali in cima al profilo admin",
-                "es": "Corrección: renderizado HTML de RAM, barras de filtro para variables y alias propios, explicación del score de documentación, notas manuales arriba en el perfil de admin",
-                "pl": "Poprawa: renderowanie HTML RAM, paski filtrów dla własnych zmiennych i aliasów, wyjaśnienie wyniku dokumentacji, notatki ręczne na górze profilu admina",
-                "uk": "Виправлення: HTML RAM, смуги фільтрів для власних змінних і аліасів, пояснення score документації, ручні нотатки зверху профілю адміна",
-                "zh-cn": "修复：RAM HTML 渲染、自定义变量与别名的筛选条、文档评分说明、管理员配置中手动备注置顶"
-            },
-            "0.9.1": {
-                "en": "Fix: dark mode colors for collapsibles and changelog, search hint always visible, alias chapter, functions heading in admin profile",
-                "de": "Fix: Dark-Mode-Farben für Aufklappmenüs und Änderungsprotokoll, Suchhinweis immer sichtbar, Alias-Kapitel, Funktionen-Überschrift im Admin-Profil",
-                "ru": "Исправление: цвета тёмной темы для раскрывающихся блоков и changelog, подсказка поиска всегда видна, глава про алиасы, заголовок функций в профиле администратора",
-                "pt": "Correção: cores do modo escuro para recolhíveis e changelog, dica de pesquisa sempre visível, capítulo de aliases, título de funções no perfil de admin",
-                "nl": "Fix: donkere modus-kleuren voor inklapbare secties en changelog, zoekhint altijd zichtbaar, alias-hoofdstuk, functiekop in adminprofiel",
-                "fr": "Correctif : couleurs mode sombre pour repliables et journal des modifications, aide recherche toujours visible, chapitre alias, titre fonctions dans le profil admin",
-                "it": "Correzione: colori dark mode per sezioni espandibili e changelog, suggerimento ricerca sempre visibile, capitolo alias, intestazione funzioni nel profilo admin",
-                "es": "Corrección: colores de modo oscuro para desplegables y changelog, pista de búsqueda siempre visible, capítulo de alias, encabezado de funciones en el perfil de admin",
-                "pl": "Poprawa: kolory trybu ciemnego dla rozwijanych sekcji i changelog, podpowiedź wyszukiwania zawsze widoczna, rozdział aliasów, nagłówek funkcji w profilu admina",
-                "uk": "Виправлення: кольори темної теми для згортання та changelog, підказка пошуку завжди видима, розділ аліасів, заголовок функцій у профілі адміна",
-                "zh-cn": "修复：折叠与变更日志的深色模式配色、搜索提示始终可见、别名章节、管理员配置中的功能标题"
             }
         },
         "titleLang": {
@@ -376,6 +376,11 @@
         "maxStoredFiles": 3,
         "documentationStatesMode": "full",
         "baseUrl": "",
+        "maintenanceScoreCheckDescription": true,
+        "maintenanceScoreCheckBaseUrl": true,
+        "maintenanceScoreCheckUnassigned": true,
+        "maintenanceScoreMinDescriptionChars": 40,
+        "maintenanceScoreUnassignedWarnAt": 10,
         "exportPath": "",
         "aiOwnerHints": "",
         "htmlColorScheme": "auto",

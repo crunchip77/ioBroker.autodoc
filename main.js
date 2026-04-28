@@ -257,6 +257,8 @@ class Autodoc extends utils.Adapter {
 	 * Create custom states for the adapter.
 	 */
 	async createStates() {
+		/* eslint-disable-next-line jsdoc/check-tag-names -- JSDoc Record for checkJs/tsc */
+		/** @type {Record<string, ioBroker.StateCommon>} */
 		const definitions = {
 			'action.generate': {
 				name: 'Generate documentation',
@@ -583,7 +585,7 @@ class Autodoc extends utils.Adapter {
 		for (const [id, common] of Object.entries(definitions)) {
 			await this.setObjectNotExistsAsync(id, {
 				type: 'state',
-				common: common,
+				common,
 				native: {},
 			});
 		}

@@ -33,12 +33,19 @@ Optional: `npm run dev-server` for a local Admin/dev loop (see `@iobroker/dev-se
 - Add a dated `### x.y.z` section under **Changelog** in [`README.md`](README.md) (expected for ioBroker adapter listings).
 - Keep **`version`** in `package.json` and `io-package.json` consistent with the documented release (Adapter Checker may flag mismatches, e.g. **E6006** — follow the checker output for the current ruleset).
 - Bump **`version`** in `package.json` and `io-package.json` together.
-- Update **`common.news`** in `io-package.json` (max **7** entries).
+- Update **`common.news`** in `io-package.json` (max **20** entries in this project — `@iobroker/testing` enforces the limit; drop the oldest key if you add another).
 - Before proposing inclusion in the stable/beta repository set, run the **[Adapter Checker](https://adapter-check.iobroker.in/)** against the package and fix reported issues.
 
 ### npm version vs HTML renderer build
 
 The published **adapter semver** (`package.json` / `io-package.json`) is independent of the **HTML renderer build** string `RENDERER_VERSION` in `lib/htmlRenderer.js`. Generated pages may contain `<!-- autodoc-renderer:… -->` in `<head>` for debugging template drift — do not confuse that marker with the npm package version.
+
+**When to bump `RENDERER_VERSION` (in `lib/htmlRenderer.js`, format `YYYY.MM.DD.NN`):**
+
+- **Do bump** when anything users should receive in **exported** docs changes: HTML shell/layout/CSS, chapter body rendering, **Markdown** export wording or structure from `lib/markdownRenderer.js`, Quick Start / guest sections, or other pipeline output written under `/files/`. On adapter start, `main.js` compares this string to `info.templateVersion` and **queues a full documentation run** on mismatch—so installs with **Generate on start** disabled still refresh once after an update.
+- **Skip the bump** for changes that do not affect generated HTML/Markdown/JSON **content or structure** (e.g. refactors only touching Admin config UI, logging, or unused code paths).
+- Increment the trailing **`.NN`** for a second or third change on the same calendar day.
+- For a numbered release, note the new `RENDERER_VERSION` in the **README** changelog when it matters for support or upgrade notes (optional for purely internal tweaks).
 
 <a id="admin-ui-translations-i18n"></a>
 

@@ -25,12 +25,13 @@ Diese Datei ist die **Arbeitsliste**: was **offen** ist steht oben; **erledigte*
 | 🟡 | Teilweise / später ausbaufähig |
 | ⬜ | Noch nicht umgesetzt |
 | ❓ | Konzept offen — Details in [PLAN.md](PLAN.md) |
+| *optional* | Bewusster **Backlog** / Nice-to-have — nicht priorisiert, bei Bedarf nachziehen |
 
 ---
 
 <a id="stand-uebersicht"></a>
 
-## Übersicht — Umsetzung vs. Rest (Stand: `package.json` / README, 2026-04-27; Branch je nach Arbeitskopie, z. B. `main` / `dev`)
+## Übersicht — Umsetzung vs. Rest (Stand: `package.json` / README, 2026-04-28; Branch je nach Arbeitskopie, z. B. `main` / `dev`)
 
 | Thema | Status | Kurz |
 | ----- | ------ | ---- |
@@ -48,7 +49,8 @@ Diese Datei ist die **Arbeitsliste**: was **offen** ist steht oben; **erledigte*
 | **System-Visitenkarte** / Forum-Copy | ✅ | `textSendTo` **getForumCard** + State `info.forumCardPlain`; Diagnose-HTML nutzt `forumCard.js` |
 | **KI + Skript-Quellcode** | 🟡 | **A** umgesetzt (`aiAnalyzeScriptSources`); **B** weiterhin Phase 5 Backup |
 | **npm + ioBroker.repositories** | ⬜ | Nach Adapter-Checker |
-| **Dokumentations-Score** (Wartung — Checkliste mit echten Kriterien) | ⬜ | Aktuell leere `checklist` in `buildMaintenance` → immer 100 %; Konzept & Implementierung, siehe [§ 1.6](#dokumentations-score-checkliste) |
+| **Dokumentations-Score** (Wartung — Checkliste mit echten Kriterien) | 🟡 | **0.9.22–0.9.23:** Setup-Checks + Konfig. **0.9.24:** einheitliche Benennung **Doku-Setup / documentation setup score**, Kapitel **Wartung & Dokumentations-Setup** vs. technische **Diagnose**; Hinweis wenn alle Checks aus; Quick-Start-Sortierung stabil. Skripte ohne `desc` nur Hinweis — [§ 1.6](#dokumentations-score-checkliste) |
+| **Admin-Markdown: Diagnose-Kapitel** (inhaltliche Parität zu Admin-HTML) | *optional* | Heute kein Kapitel im `.md`-Export (`lib/markdownRenderer.js` → `case 'diagnosis': return ''`). **Optional** nachziehen: gleiche Befunde wie `lib/htmlRenderer.js` `renderDiagnosis` (z. B. Node, **Skripte ohne `desc`**, OS-Hinweis …), inkl. TOC wenn nicht versteckt — Details [§ 1.6](#admin-markdown-diagnose-optional) |
 
 ---
 
@@ -133,7 +135,7 @@ Noch offen (größere Ausbaustufe als reiner Freitext):
 
 | Thema | Mögliche Arbeit |
 | ----- | --------------- |
-| **Sortierung / Relevanz** | In `quickStartGuide` / Render: statt fixer Obergrenzen (z. B. Räume, Funktionen) ggf. **andere Gewichtung** (z. B. bevorzugte Räume, Kriterien für „Top“-Scripte), **Konfig-Optionen** in Admin nur wenn nötig. |
+| **Sortierung / Relevanz** | **0.9.23:** Schnellstart-Raumkarten nach **absteigender Gerätezahl**; Funktionsbereiche weiter nach Mitgliederzahl. **Optional später:** andere Gewichtung, Top-Skript-Kriterien, Admin-Caps. |
 | **Länge Onboarding vs. User** | Klarere Trennung: **Gäste** kürzer / weniger technisch, **User** etwas ausführlicher **ohne** Duplizierung der gleichen Fakten — ggf. separate Caps oder anderes Layout pro Profil. |
 | **Konsistenz** | Doppelte Infos (Quick Start vs. nachfolgende Kapitel) reduzieren, Verweise statt Wiederholung. |
 
@@ -152,7 +154,7 @@ Noch offen (größere Ausbaustufe als reiner Freitext):
 
 ### 1.4 Kleine Nachzüge / Trigger
 
-- [ ] **README-Changelog** + **io-package `news`:** Gäste-Onboarding **Skript-Datenschutz** (`onboardingGuestShowScriptNames`, `lib/guestScriptPrivacy.js`) und Schnellstart-Logik (**kein** Ersatz aus `common.desc`, wenn Skriptnamen in der Gäste-Ansicht verborgen sind) + ggf. **RENDERER_VERSION**-Zeile — eintragen, sobald die nächste **Versionsnummer** (z. B. 0.9.21) für ein Release feststeht; auf `dev` liegt die Umsetzung schon.
+- [x] **README-Changelog** + **io-package `news`:** Gäste-Onboarding **Skript-Datenschutz** (`onboardingGuestShowScriptNames`, `lib/guestScriptPrivacy.js`) und Schnellstart-Logik (**kein** Ersatz aus `common.desc`, wenn Skriptnamen in der Gäste-Ansicht verborgen sind) + **RENDERER_VERSION** — in **0.9.21** nachgezogen.
 - [ ] **`io-package` news**, wenn **Default** `documentationStatesMode` auf **`metadata`** geändert wird (sinnvoll beim npm-Release; bei reiner Git-Installation optional)
 - [x] **README-Changelog** + Version **0.9.11** um States/Hashes/Changelog-i18n ergänzt
 
@@ -169,17 +171,19 @@ Details: [PLAN — System-Visitenkarte](PLAN.md#system-visitenkarte-festlegung),
 
 ### 1.6 Dokumentations-Score (Wartung) — Checkliste ausbauen
 
-> **Problem:** In `lib/documentModel.js` — `buildMaintenance` ist `checklist` faktisch **leer** → `score` fällt immer auf **100 %**; der Balken liefert wenig praktische Aussage, solange keine echten Kriterien befüllt werden.
+> **Stand 0.9.24:** Benennung und Erläuterungen auf **Doku-Setup (Meta)** ausgerichtet (Export + Admin); separates Kapitel **Diagnose** unverändert.
 
-- [ ] **Zielbild festlegen:** Soll der Score **„Doku-Setup (Meta)“** messen (Projekt-Felder, Struktur) oder eher **inhaltliche Doku-Qualität** (Skripte, Räume) — oder beides in **klar getrennten** Regeln? Namensgebung in Admin/i18n ggf. anpassen, wenn die Semantik breiter wird.
-- [ ] **Kandidaten sichten (Signale liegen im Modell oder erweiterbar):**
-  - **„Meine Dokumentation“** — `projectDescription` / ggf. `manualContact` leer oder nur Minimaltext (`parseManualContext` / Config).
-  - **Instanzen ohne Raum** — `rooms.unassignedCount` aus `buildRooms` (Vorsicht: oft bewusst; eher **Schwelle** oder weicher Hinweis als 0 %-Keule).
-  - **Aktive Skripte ohne `common.desc`** — zählen aus `buildScripts` (bisher: explizit **kein** Score-Bestandteil in Texten; falls aufgenommen: **optional**, gewichtet oder getrennt von „harten“ Checks).
-  - **Basis-URL fehlt** — wenn Doku-Links/QR/Bookmark-Flows sinnvoll nutzbar wären (`buildBaseUrl` / `publicDocUrls`); eher **Nutzbarkeits**-Hinweis, nicht „Adapter defekt“.
-- [ ] **Explizit nicht** in denselben Score: **deaktivierte Instanzen** (Inventar, kein Abzug — Stand [README / 0.9.11+](README.md)). **Laufzeit/Diagnose** (Node, Redis, …) primär in **Admin-Diagnose** belassen; Doppelung in der Doku-Checkliste vermeidet, außer Produkt bewusst anders definiert.
-- [ ] **UI/Logik-Optionen:** nur **Hinweisliste** ohne Prozent, oder Prozent **erst** wenn mindestens ein Kriterium aktiv; jsonConfig-Optionen zum **Abschalten** einzelner Checks (Nervfaktor/False Positives).
-- [ ] **Umsetzung:** `buildMaintenance` braucht dann Zugriff auf **Instanzen + Räume + Skripte + `manualContext`** (oder Checkliste in `buildDocumentModel` nachziehen, sobald alles da ist). Renderer: `renderMaintenanceChapter` in `lib/htmlRenderer.js` / `lib/markdownRenderer.js` — Keys in `lib/i18n.js` (`scoreDesc`, ggf. neue Check-Labels) und ggf. **jsonConfig**-Schema ergänzen.
+- [ ] **Zielbild festlegen (Feinarbeit):** Produkt-/Admin-Bezeichnung ggf. „Doku-Setup-Score“ o. ä., sobald der Fokus **Meta** für alle klar ist — fachlich vorerst durch **`scoreDesc`** (EN/DE/FR) und Checklisten-Logik abgedeckt.
+- [x] **Umgesetzt (0.9.22) — Score-Kriterien:** Projektbeschreibung (Manual) **≥ 40** Zeichen; **Basis-URL** (Advanced) nicht leer; **Instanzen ohne Raum** mit Schwelle **&lt; 10** (`rooms.unassignedCount`). Renderer HTML + Markdown; i18n EN/DE/FR.
+- [x] **Erweiterung 0.9.23:** Pro Check **`maintenanceScoreCheck*`** (Default an), **`maintenanceScoreMinDescriptionChars`**, **`maintenanceScoreUnassignedWarnAt`**; Prozent nur über **aktive** Zeilen.
+- [x] **Klarstellung 0.9.24:** Kapitel-/Label-Texte **Wartung & Dokumentations-Setup** vs. **Diagnose**; **`maintenanceChecklistDisabled`** wenn alle Checks aus; Quick-Start **Raum-Sortierung** bei Gleichstand; KI-Owner-Kontext **`Documentation setup score`**.
+- [x] **Umgesetzt — ohne Score:** Liste **`scriptsWithoutDescription`** (nur Info); **Admin-Diagnose** HTML erwähnt die Anzahl.
+- [x] **Explizit nicht** im Score: **deaktivierte Instanzen** (weiter Inventar-only). **`common.desc`** / fehlende Skript-Beschreibung nie score-wirksam.
+- [x] **UI/Logik (Kern):** jsonConfig + `native` für Abschalten/Schwellen — siehe **Erweitert** im Admin.
+
+<a id="admin-markdown-diagnose-optional"></a>
+
+- [ ] *(optional — Backlog, nicht priorisiert)* **Admin-Markdown: Diagnose-Kapitel** analog zu **Admin-HTML** ausgeben. Aktuell: **`case 'diagnosis': return ''`** in `lib/markdownRenderer.js` — das Kapitel erscheint **nicht** in der `.md`. **Wenn** gewünscht: z. B. `renderDiagnosisMarkdown(docModel)` mit inhaltlicher **Parität** zu `lib/htmlRenderer.js` `renderDiagnosis` (Scan-Status, Node-Befund, Hinweis **aktive Skripte ohne `common.desc`**, OS-Hinweis, Forum-Karte o. ä.) und **TOC**-Zeile ergänzen, solange das Kapitel nicht per Admin versteckt ist.
 
 ---
 

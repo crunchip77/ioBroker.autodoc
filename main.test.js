@@ -1,29 +1,19 @@
 'use strict';
 
-/**
- * This is a dummy TypeScript test file using chai and mocha
- *
- * It's automatically excluded from npm and its build output is excluded from both git and npm.
- * It is advised to test all your modules with accompanying *.test.js-files
- */
-
-// tslint:disable:no-unused-expression
-
 const { expect } = require('chai');
-// import { functionToTest } from "./moduleToTest";
+const { onboardingGuestShowsScriptNames } = require('./lib/guestScriptPrivacy');
 
-describe('module to test => function to test', () => {
-	// initializing logic
-	const expected = 5;
-
-	it(`should return ${expected}`, () => {
-		const result = 5;
-		// assign result a value from functionToTest
-		expect(result).to.equal(expected);
-		// or using the should() syntax
-		result.should.equal(expected);
+describe('guestScriptPrivacy', () => {
+	it('treats missing, null config and non-true values as hide script names', () => {
+		expect(onboardingGuestShowsScriptNames(null)).to.equal(false);
+		expect(onboardingGuestShowsScriptNames(undefined)).to.equal(false);
+		expect(onboardingGuestShowsScriptNames({})).to.equal(false);
+		expect(onboardingGuestShowsScriptNames({ onboardingGuestShowScriptNames: false })).to.equal(false);
+		expect(onboardingGuestShowsScriptNames({ onboardingGuestShowScriptNames: '' })).to.equal(false);
+		expect(onboardingGuestShowsScriptNames({ onboardingGuestShowScriptNames: 1 })).to.equal(false);
 	});
-	// ... more tests => it
-});
 
-// ... more test suites => describe
+	it('lists script names in guest exports only when the flag is strictly true', () => {
+		expect(onboardingGuestShowsScriptNames({ onboardingGuestShowScriptNames: true })).to.equal(true);
+	});
+});
