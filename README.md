@@ -79,6 +79,10 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 
 ## Changelog
 
+### 0.9.28 (2026-04-28)
+
+- **Phase 5.x.3 (step 2 — auto host topology):** Optional **`autoMermaidHostGraph`** and **`autoMermaidHostGraphMaxNodes`** (8–80, default **40**) under **My documentation**. Generates `manualContext.autoHostTopologyMermaid` via **`lib/autoHostTopologyMermaid.js`**: **Mermaid** `flowchart TB` with one **subgraph per ioBroker host** and **instance** nodes (`system.adapter.*` shortened, disabled instances suffixed `(off)`). When there are more instances than the limit, **round-robin** selection across hosts applies; a **`%%`** comment notes **`shown / total`**. Renders in HTML after the owner diagram (`#mermaid-diagram-auto`), in Onboarding **welcome** after the curated diagram, and as a second **`mermaid`** fenced block in Markdown. Same hide chapter id **`mermaid`** as the owner diagram. Export strings **`mermaidAutoTopologyTitle`** / **`mermaidAutoTopologyIntro`** (EN/DE/FR). `RENDERER_VERSION` **2026.04.28.9**.
+
 ### 0.9.27 (2026-04-28)
 
 - **Phase 5.x.3 (step 1 — curated Mermaid):** New optional field **`manualMermaidDiagram`** under **My documentation** (native + Admin UI). Parsed into `manualContext.mermaidDiagram` (max **12 000** characters). **HTML** profiles load **Mermaid 10.9.1** from jsDelivr when the export contains `pre.mermaid` and render client-side (`securityLevel: 'strict'`, theme follows dark toggle on first paint). **Markdown** adds a fenced **`mermaid`** block under **Manual information**. **Hide** the block with chapter id **`mermaid`** in User/Onboarding hide lists (`docTemplateConfig` whitelist updated). Onboarding HTML shows the diagram in the **welcome** area; Admin/User manual chapter uses subsection `#mermaid-diagram`. Export copy: `mermaidDiagramTitle` / `mermaidDiagramIntro` in **EN / DE / FR** (`lib/i18n.js`). `RENDERER_VERSION` **2026.04.28.8**.

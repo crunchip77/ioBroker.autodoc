@@ -45,7 +45,7 @@ Diese Datei ist die **Arbeitsliste**: was **offen** ist steht oben; **erledigte*
 | **Phase 5** (PDF, Backup-Adapter, Rest Custom Templates) | ⬜ | |
 | **Phase 5.x.1** Notfall/Troubleshooting „Hybrid“ | ✅ | Kurzzeilen, Doku-Links (0.9.18), **Auto-Checklisten** bei Node-Befund + Disclaimer (0.9.19) |
 | **Phase 5.x.2** Quick Start / Raumguides | 🟡 | Kern in **0.9.20**; **0.9.26:** Gäste-Schnellstart kürzer (`sliceQuickStartForOnboarding`), User-Kurzüberblick mit Raum-Kapitel-Link; Fein: weitere Sortierung/Übersetzung, siehe [§ 1.3 — 5.x.2](#phase-5x) |
-| **Phase 5.x.3** Mermaid | 🟡 | **0.9.27:** Stufe 1 — `manualMermaidDiagram` → HTML (jsDelivr Mermaid) + Markdown ```mermaid`; Hide-Id `mermaid`. **Offen:** Auto-Graph mit Limit ([§ 1.3 — 5.x.3](#phase-5x)) |
+| **Phase 5.x.3** Mermaid | ✅ | **0.9.27:** Stufe 1 — `manualMermaidDiagram`; **0.9.28:** Stufe 2 — `autoMermaidHostGraph` (Host→Instanzen, Knotenlimit) |
 | **System-Visitenkarte** / Forum-Copy | ✅ | `textSendTo` **getForumCard** + State `info.forumCardPlain`; Diagnose-HTML nutzt `forumCard.js` |
 | **KI + Skript-Quellcode** | 🟡 | **A** umgesetzt (`aiAnalyzeScriptSources`); **B** weiterhin Phase 5 Backup |
 | **npm + ioBroker.repositories** | ⬜ | Nach Adapter-Checker |
@@ -69,7 +69,7 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 | 1 | **Custom Templates — Rest (0.9.17 / `main`)** | Erledigt: `adminChapterOrderJson`, `htmlThemePreset` — weiter: **Phase 5** (PDF, User/Onboarding, DnD) — [PLAN](PLAN.md#custom-templates-detail), [§ 1.2](#phase-5-features) |
 | 2 | **Phase 5.x.1** Hybrid (Notfall-Block + Diagnose-Snapshot) | ✅ 0.9.18 / 0.9.19 — [§ 1.3 — 5.x.1](#phase-5x) |
 | 3 | **Phase 5.x.2** Quick Start / Raumguides | 🟡 Kern in **0.9.20**; **0.9.26** Feintuning Gäste kürzer + User-Link zum Räume-Kapitel; optional mehr: [§ 1.3 — 5.x.2](#phase-5x) |
-| 4 | **Phase 5.x.3** Mermaid (gestaffelt) | 🟡 **Stufe 1** in **0.9.27** (`manualMermaidDiagram`); Stufe 2 Auto-Graph: [§ 1.3 — 5.x.3](#phase-5x) |
+| 4 | **Phase 5.x.3** Mermaid (gestaffelt) | ✅ **Stufe 1** **0.9.27**; **Stufe 2** **0.9.28** (`autoMermaidHostGraph`): [§ 1.3 — 5.x.3](#phase-5x) |
 | 5 | **Phase 5:** Backup-Anbindung, PDF, Rest Custom Templates | [§ 1.2](#phase-5-features), [Backup/Backitup](#backup-backitup-festlegung) |
 | 6 | **npm** + **Adapter Checker** + **ioBroker.repositories** | [§ 1.1](#release-veroeffentlichung) |
 
@@ -147,7 +147,7 @@ Noch offen (größere Ausbaustufe als reiner Freitext):
 
 - [x] Stufe 1: Mermaid aus **kuratiertem** Inhalt (`manualMermaidDiagram` → `manualContext.mermaidDiagram`, **0.9.27**)
 - [x] Ausgabe **Markdown** (`mermaid` fence) + **HTML** (pre.mermaid + Mermaid **10.9.1** von jsDelivr wenn Diagramm vorhanden)
-- [ ] Stufe 2: optional kleiner **Auto-Graph** mit **hartem Knotenlimit** (z. B. Multihost)
+- [x] Stufe 2: optional kleiner **Auto-Graph** mit **hartem Knotenlimit** (Multihost Host → Instanzen, **0.9.28** `autoMermaidHostGraph` / `lib/autoHostTopologyMermaid.js`)
 - [ ] Nicht Ziel: ungefilterter Gesamtgraph
 
 <a id="nachzuege"></a>

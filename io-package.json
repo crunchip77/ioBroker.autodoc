@@ -1,8 +1,21 @@
 {
         "common": {
         "name": "autodoc",
-        "version": "0.9.27",
+        "version": "0.9.28",
         "news": {
+            "0.9.28": {
+                "en": "Phase **5.x.3 (step 2):** optional **`autoMermaidHostGraph`** — small **auto-generated Mermaid** diagram of adapter instances **by ioBroker host** (`lib/autoHostTopologyMermaid.js`), with **hard instance-node limit** (8–80, default **40**, round-robin across hosts). Shown after the owner diagram in manual/HTML welcome + Markdown; hide with chapter id **`mermaid`**. Native **`autoMermaidHostGraphMaxNodes`**. `RENDERER_VERSION` **2026.04.28.9**.",
+                "de": "Phase **5.x.3 (Stufe 2):** optional **`autoMermaidHostGraph`** — kleines **automatisches Mermaid**-Diagramm der Adapter-Instanzen **pro ioBroker-Host** (`lib/autoHostTopologyMermaid.js`), mit **fester Instanz-Knotenzahl** (8–80, Standard **40**, Round-Robin über Hosts). Erscheint nach dem eigenen Diagramm im Handbuch/HTML-Begrüßung + Markdown; Ausblenden mit **`mermaid`**. Native **`autoMermaidHostGraphMaxNodes`**. `RENDERER_VERSION` **2026.04.28.9**.",
+                "ru": "0.9.28: autoMermaidHostGraph; host topology Mermaid; RENDERER_VERSION",
+                "pt": "0.9.28: autoMermaidHostGraph; topologia Mermaid; RENDERER_VERSION",
+                "nl": "0.9.28: autoMermaidHostGraph; host-topologie Mermaid; RENDERER_VERSION",
+                "fr": "0.9.28 : autoMermaidHostGraph ; topologie hôtes Mermaid ; RENDERER_VERSION",
+                "it": "0.9.28: autoMermaidHostGraph; topologia host Mermaid; RENDERER_VERSION",
+                "es": "0.9.28: autoMermaidHostGraph; topología Mermaid; RENDERER_VERSION",
+                "pl": "0.9.28: autoMermaidHostGraph; topologia Mermaid; RENDERER_VERSION",
+                "uk": "0.9.28: autoMermaidHostGraph; топологія хостів Mermaid; RENDERER_VERSION",
+                "zh-cn": "0.9.28：autoMermaidHostGraph；按主机实例 Mermaid 图；RENDERER_VERSION"
+            },
             "0.9.27": {
                 "en": "Phase **5.x.3 (step 1):** optional **`manualMermaidDiagram`** in **My documentation** — owner-written Mermaid source. **HTML** exports load Mermaid **10.9.1** from jsDelivr when the page contains a diagram; **Markdown** adds a fenced **`mermaid`** block. Hide with chapter id **`mermaid`** (User/Onboarding hide lists). Clamped to **12 000** characters in `parseManualContext`. `RENDERER_VERSION` **2026.04.28.8**.",
                 "de": "Phase **5.x.3 (Stufe 1):** optionales **`manualMermaidDiagram`** unter **Meine Dokumentation** — selbst geschriebener Mermaid-Quelltext. **HTML**-Exporte laden Mermaid **10.9.1** von jsDelivr, wenn ein Diagramm vorkommt; **Markdown** erhält einen **`mermaid`**-Codeblock. Ausblenden mit Kapitel-Id **`mermaid`** (User/Onboarding). In `parseManualContext` auf **12 000** Zeichen begrenzt. `RENDERER_VERSION` **2026.04.28.8**.",
@@ -249,19 +262,6 @@
                 "pl": "0.9.9: manual gość/rutyny; discovery schedule/engine; RENDERER",
                 "uk": "0.9.9: manual гості/рутини; discovery schedule/engine; RENDERER",
                 "zh-cn": "0.9.9：访客帮助与日常说明；发现层 schedule/engine；RENDERER"
-            },
-            "0.9.8": {
-                "en": "QR code as embedded SVG (npm qrcode, no CDN); optional filesystem export (exportPath); multihost host overview + non-primary host warning; AI context hints (textarea) with guest-safe prompting; copy link uses same URL as QR; diagnosis RAM/CPU + copy-for-forum; shorter changelog storage; jsonConfig visibility via hidden; npm version probe on single-host Docker; README base URL & export notes; native exportPath/aiOwnerHints; RENDERER_VERSION bumps",
-                "de": "QR-Code als eingebettetes SVG (npm qrcode, kein CDN); optionaler Filesystem-Export (exportPath); Multihost-Übersicht + Warnung auf Nicht-Master-Host; KI-Kontexthinweise (Textarea) mit gasttauglichem Prompt; Kopierlink = QR-URL; Diagnose RAM/CPU + Forum kopieren; kürzeres Änderungsprotokoll; jsonConfig Sichtbarkeit über hidden; npm-Erkennung bei Single-Host-Docker; README Basis-URL & Export; native exportPath/aiOwnerHints; RENDERER_VERSION",
-                "ru": "QR SVG (qrcode); exportPath; multihost; KI hints; Diagnose; jsonConfig; npm; docs",
-                "pt": "QR SVG (qrcode); exportPath; multihost; AI hints; diagnosis; jsonConfig; npm; docs",
-                "nl": "QR SVG (qrcode); exportPath; multihost; AI-hints; diagnose; jsonConfig; npm; docs",
-                "fr": "QR SVG (qrcode) ; exportPath ; multihost ; indices IA ; diagnostic ; jsonConfig ; npm ; docs",
-                "it": "QR SVG (qrcode); exportPath; multihost; AI hints; diagnostica; jsonConfig; npm; docs",
-                "es": "QR SVG (qrcode); exportPath; multihost; IA hints; diagnóstico; jsonConfig; npm; docs",
-                "pl": "QR SVG (qrcode); exportPath; multihost; AI hints; diagnostyka; jsonConfig; npm; docs",
-                "uk": "QR SVG (qrcode); exportPath; multihost; KI hints; діагностика; jsonConfig; npm; docs",
-                "zh-cn": "QR 内嵌 SVG（qrcode）；可选 exportPath；多主机；AI 上下文提示；诊断；jsonConfig；npm；文档"
             }
         },
         "titleLang": {
@@ -356,6 +356,8 @@
         "homeRoutinesNote": "",
         "ownerPlaybookNote": "",
         "manualMermaidDiagram": "",
+        "autoMermaidHostGraph": false,
+        "autoMermaidHostGraphMaxNodes": 40,
         "troubleshootWifiHint": "",
         "troubleshootPowerHint": "",
         "troubleshootWaterHint": "",

@@ -290,6 +290,32 @@
 					"lg": 12,
 					"xl": 12
 				},
+				"autoMermaidHostGraph": {
+					"type": "checkbox",
+					"label": "Auto host topology diagram (Mermaid)",
+					"help": "When enabled, adds a second Mermaid block: adapter instances grouped by ioBroker host. Useful for multihost setups. Hard-capped number of instance nodes (see next setting). Not a full wiring graph. Same hide chapter id `mermaid` as your own diagram.",
+					"default": false,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"autoMermaidHostGraphMaxNodes": {
+					"type": "number",
+					"label": "Max instances in auto topology diagram",
+					"help": "Maximum adapter **instance** nodes in the auto-generated diagram (8–80, default 40). Hosts are still shown; instances are chosen round-robin across hosts when there are more than this limit.",
+					"min": 8,
+					"max": 80,
+					"default": 40,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 6,
+					"lg": 6,
+					"xl": 6
+				},
 				"_troubleshootQuickHeader": {
 					"type": "header",
 					"text": "Troubleshooting — quick lines (optional)",
