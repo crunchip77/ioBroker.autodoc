@@ -42,7 +42,7 @@ Diese Datei ist die **Arbeitsliste**: was **offen** ist steht oben; **erledigte*
 | **Custom Templates** (Kapitel ausblenden, Custom-Sections, Theme-Teile) | 🟡 | [PLAN.md — Custom Templates](PLAN.md#custom-templates-detail); **0.9.17:** Admin-Reihenfolge + **Farb-Presets** (ohne Roh-CSS); offen: **PDF**, ggf. Reihenfolge User/Onboarding, DnD |
 | **Admin-HTML Lesbarkeit** (lange Listen eingeklappt; Score ohne „Strafe“ für bewusst deaktivierte Instanzen) | ✅ | In **0.9.17** README-Changelog (block „Also on `dev`…“) + Feature-Bullets oben drunter |
 | **States entlasten** (`documentationStatesMode`, Platzhalter, Downloads aus `/files`, **`documentation.exportHashes`**) | ✅ | Default weiterhin `full`; News bei Default-Wechsel → offen |
-| **Phase 5** (PDF, Backup-Adapter, Rest Custom Templates) | ⬜ | |
+| **Phase 5** (PDF, Backup-Adapter, Rest Custom Templates) | ⬜ | PDF‑Merker: [§ 1.2a](#phase-5-pdf-offline-mermaid) (Offline/Druck/Mermaid vs. CDN) |
 | **Phase 5.x.1** Notfall/Troubleshooting „Hybrid“ | ✅ | Kurzzeilen, Doku-Links (0.9.18), **Auto-Checklisten** bei Node-Befund + Disclaimer (0.9.19) |
 | **Phase 5.x.2** Quick Start / Raumguides | 🟡 | Kern in **0.9.20**; **0.9.26:** Gäste-Schnellstart kürzer (`sliceQuickStartForOnboarding`), User-Kurzüberblick mit Raum-Kapitel-Link; Fein: weitere Sortierung/Übersetzung, siehe [§ 1.3 — 5.x.2](#phase-5x) |
 | **Phase 5.x.3** Mermaid | ✅ | **0.9.27:** Stufe 1 — `manualMermaidDiagram`; **0.9.28:** Stufe 2 — `autoMermaidHostGraph` (Host→Instanzen, Knotenlimit) |
@@ -51,6 +51,7 @@ Diese Datei ist die **Arbeitsliste**: was **offen** ist steht oben; **erledigte*
 | **npm + ioBroker.repositories** | ⬜ | Nach Adapter-Checker |
 | **Dokumentations-Score** (Wartung — Checkliste mit echten Kriterien) | 🟡 | **0.9.22–0.9.23:** Setup-Checks + Konfig. **0.9.24:** einheitliche Benennung **Doku-Setup / documentation setup score**, Kapitel **Wartung & Dokumentations-Setup** vs. technische **Diagnose**; Hinweis wenn alle Checks aus; Quick-Start-Sortierung stabil. Skripte ohne `desc` nur Hinweis — [§ 1.6](#dokumentations-score-checkliste) |
 | **Admin-Markdown: Diagnose-Kapitel** (inhaltliche Parität zu Admin-HTML) | *optional* | Heute kein Kapitel im `.md`-Export (`lib/markdownRenderer.js` → `case 'diagnosis': return ''`). **Optional** nachziehen: gleiche Befunde wie `lib/htmlRenderer.js` `renderDiagnosis` (z. B. Node, **Skripte ohne `desc`**, OS-Hinweis …), inkl. TOC wenn nicht versteckt — Details [§ 1.6](#admin-markdown-diagnose-optional) |
+| **Admin-Konfig — Hilfen / Mini-Beispiele** (`manualMermaidDiagram`, JSON-Felder …) | *optional* | Entscheidung offen — [§ 1.7](#admin-config-hilfen-beispiele) |
 
 ---
 
@@ -107,9 +108,17 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 
 ### 1.2 Phase 5 — Features (Nice-to-Have)
 
-- [ ] PDF-Export
+- [ ] PDF-Export — Merker bei Umsetzung: [§ 1.2a](#phase-5-pdf-offline-mermaid)
 - [ ] Backup-Anbindung (siehe [Backup / ioBroker.backitup](#backup-backitup-festlegung) — **tar.gz**, Pfad und/oder `sendTo` Backitup)
 - [ ] Custom Templates — **Rest** (nach 0.9.17): ggf. **PDF**, Reihenfolge **User/Onboarding**, Drag-and-Drop — [PLAN.md — Custom Templates](PLAN.md#custom-templates-detail)
+
+<a id="phase-5-pdf-offline-mermaid"></a>
+
+#### 1.2a Merker: PDF, Druck, Offline & Mermaid *(Phase 5 — noch nicht umgesetzt)*
+
+> Bei **PDF** und **Hilfe ohne laufenden ioBroker / ohne CDN** zusammen mit dem heutigen HTML-Verhalten abstimmen (Mermaid lädt aktuell **jsDelivr**; **Ausdruck** aus dem Browser erst nach erfolgreichem Render; **Kopie** z. B. auf NAS/USB oft **ohne** Diagramm ohne Netz).
+
+- [ ] **Entscheiden / abbilden:** **Einbettung** der Diagramme **zur Generierungszeit** (z. B. **SVG** im Export) bzw. **PDF-Pipeline** (Headless-Druck o. Ä.) so, dass **kein** zwingendes **externes** Mermaid-Skript für „fertige“ Artefakte nötig ist; **Markdown** kann vorerst **Mermaid-Quelltext** behalten, bis die Pipeline einheitlich ist — **Leitplanken** in [PLAN.md](PLAN.md) im Abschnitt **„Verbindliche Leitplanken (Schicht 2)**“ — Tabellenzeilen **Portable HTML** und **Graphen / Mermaid**.
 
 <a id="phase-5x"></a>
 
@@ -184,6 +193,16 @@ Details: [PLAN — System-Visitenkarte](PLAN.md#system-visitenkarte-festlegung),
 <a id="admin-markdown-diagnose-optional"></a>
 
 - [ ] *(optional — Backlog, nicht priorisiert)* **Admin-Markdown: Diagnose-Kapitel** analog zu **Admin-HTML** ausgeben. Aktuell: **`case 'diagnosis': return ''`** in `lib/markdownRenderer.js` — das Kapitel erscheint **nicht** in der `.md`. **Wenn** gewünscht: z. B. `renderDiagnosisMarkdown(docModel)` mit inhaltlicher **Parität** zu `lib/htmlRenderer.js` `renderDiagnosis` (Scan-Status, Node-Befund, Hinweis **aktive Skripte ohne `common.desc`**, OS-Hinweis, Forum-Karte o. ä.) und **TOC**-Zeile ergänzen, solange das Kapitel nicht per Admin versteckt ist.
+
+<a id="admin-config-hilfen-beispiele"></a>
+
+### 1.7 Admin-Konfig — Hilfen / Mini-Beispiele *(optional)*
+
+> **Merker:** Bessere Orientierung bei komplexeren Feldern, **ohne** Demo-Inhalt in Exporten durch `native`-**`default`** (der wäre echter gespeicherter Text).
+
+- [ ] Abwägen und ggf. umsetzen:
+  - **Mermaid** (`manualMermaidDiagram`): ergänzend zu `help` ggf. **UI-`placeholder`** (falls jsonConfig/Textfeld in Admin unterstützt) oder gekürzte **Beispielzeilen** nur in Hilfe-/Panel-Text (**EN/DE/FR**),
+  - **JSON-Konfig** (`customDocSectionsJson`, versteckte Kapitel, Kapitelreihenfolge, …): Mini-Schema oder Link auf README-/Doku-Stelle — **nicht** ein großes Array als **`default`** in `io-package` `native`, das ungeprüft exportiert wirkt.
 
 ---
 
