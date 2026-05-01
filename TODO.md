@@ -143,12 +143,14 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 4. **Offline / `file://`:** gespeicherte HTML-Datei **ohne Internet** öffnen — Diagramm sollte **sichtbar** bleiben (statisches SVG), sobald es eingebettet wurde.
 5. **`htmlColorScheme`:** **dark** vs. **light**/**auto** — Darstellung des Diagramms an **mmdc-Theme** **dark** vs. **default** prüfen.
 
-**Linux / Container: Chromium startet nicht (`libnss3.so` u. a.):**
+**Linux / Container: Chromium startet nicht**
 
-- **Symptom im Log:** `Mermaid SVG (mmdc) failed — keeping source block` mit `Failed to launch the browser process` und z. B. **`libnss3.so: cannot open shared object file`** — der Adapter **ruft mmdc korrekt** auf; das **bundled Chromium** von Puppeteer braucht aber **Zusatz-Bibliotheken** des Betriebssystems (häufig bei **schlanken Servern**, **LXC**, **Docker** ohne Chrome-Stack).
-- **Folge:** betroffene Diagramme bleiben als **`<pre class="mermaid">`**; **jsDelivr** rendert im Browser weiterhin, **Offline/PDF ohne Netz** für diese Blöcke nicht.
-- **Abhilfe (Distro-abhängig):** fehlende Pakete nachinstallieren — unter **Debian/Ubuntu** typisch u. a. `libnss3`, `libatk1.0-0`, `libatk-bridge2.0-0`, `libcups2`, `libdrm2`, `libgbm1`, `libasound2`, `libxkbcommon0`, `libxcomposite1`, `libxdamage1`, `libxfixes3`, `libxrandr2` (vgl. [Puppeteer — Chrome läuft auf Linux](https://pptr.dev/troubleshooting)); **Alpine** o. ä. andere Paketnamen/`chromium`-Ansatz.
-- **Verifikation:** nach Installation erneut Doku generieren — **keine** mmdc-Warnung mehr; im HTML **`mermaid-svg-embedded`** wie in der Testcheckliste oben.
+- **Symptom A — fehlende Bibliotheken:** `Failed to launch the browser process` und z. B. **`libnss3.so: cannot open shared object file`** — **bundled Chromium** braucht **Distro-Pakete** (häufig bei schlanken Images).
+- **Symptom B — Docker / Unraid / LXC:** **`No usable sandbox`** / **SUID sandbox** — der Kernel/Namespace erlaubt die **Chrome-Standard-Sandbox** oft nicht.
+- **Umsetzung im Adapter (ab aktueller `dev`):** mmdc wird mit **`-p`** und **Puppeteer-JSON** aufgerufen: **`--no-sandbox`**, **`--disable-setuid-sandbox`**, **`--disable-dev-shm-usage`** (`lib/mermaidServerSvg.js`, `writeMmdcPuppeteerConfigFile`). Behebt typisch **Symptom B**; **Symptom A** weiterhin durch **PACKAGES** / apt (siehe unten).
+- **Folge bei Fehler:** Diagramme bleiben **`<pre class="mermaid">`**; **jsDelivr** im Browser mit Netz; **Offline** ohne eingebettetes SVG.
+- **Abhilfe Pakete (Distro):** u. a. `libnss3`, `libatk1.0-0`, `libatk-bridge2.0-0`, `libcups2`, `libdrm2`, `libgbm1`, `libasound2`, `libxkbcommon0`, `libxcomposite1`, `libxdamage1`, `libxfixes3`, `libxrandr2` — [Puppeteer Linux](https://pptr.dev/troubleshooting); **buanet-Image:** Umgebungsvariable **`PACKAGES`**.
+- **Verifikation:** Doku neu generieren — **keine** mmdc-Warnung; im HTML **`mermaid-svg-embedded`**.
 
 **Multi-Plattform (Pi, Docker, LXC, VM, nativ) — kein „Zwang“ zum OS-Paketbau:**
 
