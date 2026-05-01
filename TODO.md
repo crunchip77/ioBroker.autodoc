@@ -114,11 +114,22 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 
 <a id="phase-5-pdf-offline-mermaid"></a>
 
-#### 1.2a Merker: PDF, Druck, Offline & Mermaid *(Phase 5 — noch nicht umgesetzt)*
+#### 1.2a Merker: PDF, Druck, Offline & Mermaid *(Phase 5 — Festlegung getroffen, Umsetzung offen)*
 
-> Bei **PDF** und **Hilfe ohne laufenden ioBroker / ohne CDN** zusammen mit dem heutigen HTML-Verhalten abstimmen (Mermaid lädt aktuell **jsDelivr**; **Ausdruck** aus dem Browser erst nach erfolgreichem Render; **Kopie** z. B. auf NAS/USB oft **ohne** Diagramm ohne Netz).
+> **Kontext:** Heute lädt **HTML** Mermaid **10.9.1** von **jsDelivr**, wenn ein Diagramm im Export liegt — **PDF**, **Druck** und **Offline-Kopien** ohne Netz zeigen dann **kein** gerendertes Diagramm, solange nur der Quelltext bzw. Client-Skript fehlt.
 
-- [ ] **Entscheiden / abbilden:** **Einbettung** der Diagramme **zur Generierungszeit** (z. B. **SVG** im Export) bzw. **PDF-Pipeline** (Headless-Druck o. Ä.) so, dass **kein** zwingendes **externes** Mermaid-Skript für „fertige“ Artefakte nötig ist; **Markdown** kann vorerst **Mermaid-Quelltext** behalten, bis die Pipeline einheitlich ist — **Leitplanken** in [PLAN.md](PLAN.md) im Abschnitt **„Verbindliche Leitplanken (Schicht 2)**“ — Tabellenzeilen **Portable HTML** und **Graphen / Mermaid**.
+**Festlegung (abgestimmt mit [PLAN.md — Verbindliche Leitplanken (Schicht 2)](PLAN.md#verbindliche-leitplanken-schicht-2--beschlossen), Tabelle *Graphen / Mermaid*):**
+
+- [x] **Einheitliche Pipeline für „fertige“ HTML-Artefakte:** Mermaid-Blöcke (kuratiert + Auto-Topologie) werden **bei der Generierung serverseitig in SVG** überführt und **ins HTML eingebettet** — **ohne** zwingende **externe** Mermaid-JS-Laufzeit für die Darstellung (vergleichbar QR: eingebettetes SVG). Damit sind **Druck**, **PDF aus demselben HTML** und **`file://`/NAS**-Kopien konsistent abbildbar.
+- [x] **PDF:** Primär **aus dem generierten HTML** (nach SVG-Einbettung), z. B. **Headless-Browser** `page.pdf()` (Puppeteer/Playwright) oder dokumentierter **Browser-Workflow** „Drucken → PDF“. **Keine** separate, nur-PDF-eigene Mermaid-Render-Kette nötig.
+- [x] **Markdown-Export:** vorerst **unverändert** **Mermaid-Quelltext** in Fences; optional später angleichen — wie in den Leitplanken beschrieben.
+
+**Umsetzung (noch offen):**
+
+- [ ] **SVG-Rendering** im Adapter (Tooling: z. B. `@mermaid-js/mermaid-cli` / `mmdc`, oder `@mermaid-js/mermaid` in Node) — Aufruf aus der HTML-Pipeline für jede `pre.mermaid` / bekannte Diagrammquelle aus `manualContext`.
+- [ ] Bestehendes **Client-Mermaid** (jsDelivr) **ersetzen oder entfernen**, sobald SVG eingebettet ist (oder nur noch als opt-in Fallback klären).
+- [ ] **PDF:** Admin-Aktion und/oder Dateiausgabe `*.pdf` unter `/files/` bzw. `exportPath` — nach Festlegung oben.
+- [ ] README + ggf. **io-package**-Hilfe: Abhängigkeit (Chromium?), RAM, Hinweis **Offline/PDF** gemäß dieser Festlegung.
 
 <a id="phase-5x"></a>
 

@@ -31,8 +31,8 @@ Langfristige inhaltliche Richtung (Zusammenhänge, Auto vs. Pflege, Forum-Feedba
 | Phasen 1–4, 0.9.x RC, Multihost, KI-Basis, Custom-Template-**Teile**, States-Modus **`full`/`metadata`**, **`documentation.exportHashes`**, Downloads aus `/files` | ✅ siehe [TODO.md — Übersichtstabelle](TODO.md#stand-uebersicht) |
 | Phase 5 (PDF, Backup-Anbindung, Custom-Templates-Rest) | ⬜ |
 | Phase **5.x.2** Quick Start / Raumguides | 🟡 (Kern in 0.9.20, Fein-Sortierung/Länge offen — [TODO § 5.x.2](TODO.md#phase-5x)) |
-| Phase **5.x.3** Mermaid | ⬜ |
-| **npm-Release** + **ioBroker.repositories** | ⬜ — bewusst **nach** Custom Templates / 5.x / Phase 5 ([TODO — Reihenfolge](TODO.md#offene-arbeit)) |
+| Phase **5.x.3** Mermaid | ✅ Stufe 1 **0.9.27**, Stufe 2 **0.9.28** — [TODO § 5.x.3](TODO.md#phase-5x) |
+| **npm-Release** + **ioBroker.repositories** | ⬜ — bewusst **nach** Phase‑5‑Features / Feinschliff ([TODO — Reihenfolge](TODO.md#offene-arbeit)) |
 | Phase **5.x.1** „Hybrid-Troubleshooting“ | 🟡 **Kern in 0.9.18 / 0.9.19:** Freitext (`guestHelpNote` u. a.) ✅, **Kurzzeilen** + Doku-Links (Bookmark-URLs) ✅, **Node.js**-Checkliste + Snapshot-Hinweis (`lib/diagnosisSnapshot.js`) ✅; **später** weitere Befund-Typen o. ä. — [TODO § 5.x.1](TODO.md#phase-5x) |
 | **Architektur:** Redis/jsonl, States, Medien/Grafiken ([Leitplanken](#architektur-grenzen), [Medien-MVP](#architektur-medien-mvp), [Nächste Schritte](#architektur-naechste-schritte)) | ✅ festgelegt | Umsetzung = README + Phase 5 / 5.x |
 | **System-Visitenkarte** „Forum kopieren“ | ✅ [Festlegung](#system-visitenkarte-festlegung) | ✅ **jsonConfig** `getForumCard`, State `info.forumCardPlain`, `lib/forumCard.js` + Diagnose-HTML |
@@ -255,13 +255,15 @@ MVP: im `documentModel` feste, kurze Blöcke (systemweit Top 3–5 Aktionen; pro
 **3. Mermaid / kleine Graphen**  
 **Stufe 1 (MVP):** Mermaid aus **kuratiertem** Inhalt (eigenes Feld / `manualContext`); Ausgabe mindestens in Markdown, HTML-Darstellung bewusst wählen (Codeblock vs. Client-Render). **Stufe 2:** optional kleiner **begrenzter** Auto-Graph (z. B. Multihost Host → Instanzen mit Knotenlimit). **Nicht Ziel:** vollständiger Skript-/State-Graph großer Installationen ohne Filter.
 
+**Umgesetzt:** **0.9.27** (`manualMermaidDiagram`, HTML + Client-Mermaid jsDelivr; Markdown-Fence); **0.9.28** (`autoMermaidHostGraph`, Knotenlimit). **Offen** (Phase 5 / portable Artefakte): serverseitig **SVG statt** oder **zusätzlich zu** Client-Render — siehe [TODO § 1.2a](TODO.md#phase-5-pdf-offline-mermaid) und Leitplanke **Graphen / Mermaid** unten.
+
 ---
 
 <a id="zukunftsvision"></a>
 
 ## Zukunftsvision — Zusammenhänge & Kontext (Brainstorming)
 
-> **Status:** Sammelplatte für Ideen — **keine feste Roadmap**, derzeit **kein aktiver Umsetzungsplan**. PDF, Backup-Integration, Custom Templates und die Ideen in der Tabelle unten bleiben bewusst **zur späteren Abstimmung** (Phase 5 + diese Vision). Soll verhindern, dass Diskussionen (Forum, intern) verloren gehen.
+> **Status:** Sammelplatte für Ideen — **keine feste Roadmap** für alles in der Tabelle unten. **5.x.3 (Mermaid)** ist umgesetzt; **Phase 5** (u. a. PDF, Backup-Anbindung) und weiteres Feintuning bleiben **Umsetzung / Produktentscheid** mit [TODO.md — Phase 5](TODO.md#phase-5-features). Dieser Abschnitt soll verhindern, dass Diskussionen (Forum, intern) verloren gehen.
 
 ### Auslöser
 
@@ -606,7 +608,7 @@ Master → Slave1 (zigbee.0, hm-rpc.0)
 ### Wann ist die Architektur „komplett genug“, um weiterzumachen?
 
 - **Schicht 2** (Leitplanken) + **Medien-MVP** (Abschnitt oben) sind die **verbindliche** Zielbeschreibung für alles Weitere — es fehlt **kein** weiterer Architektur-Block, bevor an **Phase 5 / 5.x** gearbeitet wird.
-- **Phase 5** ist dann **Umsetzung** (PDF, Backup-Archive / Backitup-Anbindung, Mermaid-Stufen, …) **innerhalb** dieser Leitplanken — nicht „noch mehr Architektur raten“, sondern Features bauen und ggf. README pflegen.
+- **Phase 5** ist dann **Umsetzung** (PDF, Backup-Archive / Backitup-Anbindung, Rest Custom Templates; **Mermaid-Stufen** ✅) **innerhalb** dieser Leitplanken — nicht „noch mehr Architektur raten“, sondern Features bauen und ggf. README pflegen.
 - Ausnahme: **npm-/Repository-Release** ([TODO § 1.1](TODO.md#offene-arbeit)) ist **Prozess**, nicht Architektur — kann parallel oder davor liegen, je nach Priorität.
 
 <a id="architektur-naechste-schritte"></a>
@@ -615,7 +617,7 @@ Master → Slave1 (zigbee.0, hm-rpc.0)
 
 1. ~~**Nutzer-Doku (README)** — kurzer Abschnitt **„Medien & Redis“** (Soft-Limits, Fotos per URL, `metadata`; Details in PLAN) — **erledigt**.~~
 2. ~~**Festgelegte Features** aus [TODO § 1.5](TODO.md#todo-festlegt-umsetzung): **System-Visitenkarte** und **KI + Skriptquellcode Variante A** — **erledigt** (0.9.12).~~ **Variante B** (Backup-Analyse) bleibt an **Backup-Anbindung** ([TODO — Backitup](TODO.md#backup-backitup-festlegung), [§ 1.2](TODO.md#phase-5-features)) gekoppelt.
-3. **Feature-Reihenfolge (Projekt):** [TODO — abgestimmte Umsetzungsreihenfolge](TODO.md#offene-arbeit) — ~~**Custom Templates — Rest** (Admin chapter order, HTML presets — **0.9.17** auf `main`)~~; ~~**5.x.1** (Hybrid)~~, ~~**5.x.2** (Kern)~~; **nächster Fokus:** **5.x.3 (Mermaid)**, danach **Phase 5** (Backup, PDF, …), **npm / Adapter Checker / repositories** am Ende der Kette.
+3. **Feature-Reihenfolge (Projekt):** [TODO — abgestimmte Umsetzungsreihenfolge](TODO.md#offene-arbeit) — ~~**Custom Templates — Rest** (Admin chapter order, HTML presets — **0.9.17** auf `main`)~~; ~~**5.x.1** (Hybrid)~~, ~~**5.x.2** (Kern)~~, ~~**5.x.3** (Mermaid **0.9.27** / **0.9.28**)~~; **nächster Fokus:** **Phase 5** (u. a. **PDF** mit [Festlegung TODO § 1.2a](TODO.md#phase-5-pdf-offline-mermaid), **Backup** / Backitup), danach **npm / ioBroker.repositories** ([TODO § 1.1](TODO.md#release-veroeffentlichung)). **Adapter Checker** parallel möglich.
 4. **Adapter Checker** grün und **Release-Strategie** ([TODO § 1.1](TODO.md#release-veroeffentlichung)) — zeitlich mit Schritt 3 verzahnt möglich, **npm** nach Projektpriorität oft **nach** den genannten Features.
 5. Optional **Default `documentationStatesMode`** auf `metadata` **mit** `io-package` news ([TODO § 1.4](TODO.md#nachzuege)) — **Produktentscheidung**.
 6. **Optional später (nicht blockierend):** HTTP-Asset-Endpunkt, harte Limits, eigenes Asset-UI — nur bei **realem** Bedarf und dann als **Schicht-2-Erweiterung** im PLAN nachziehen.
@@ -643,4 +645,4 @@ Master → Slave1 (zigbee.0, hm-rpc.0)
 | **v0.x**   | Basis: Adapter-Inventar, Export, Profile, Versionierung                                                                  | ✅ main    | interner Meilenstein                                      |
 | **v0.9.x** | RC: drei Profile, Aliase, UX-Akzente, RAM-Summe, Onboarding-Capabilities, Filter, Doku-Score-Erklärung, README (Changelog); Multihost; optional `exportPath`; States **`documentationStatesMode`** + **`documentation.exportHashes`**; Changelog u. a. `adapter_version`; ab **0.9.17** auf **`main`:** `htmlThemePreset`, `adminChapterOrderJson` (nur **Admin**-HTML/MD), i18n mit **vollständiger Kapitel-Id-Liste**; ab **0.9.18/0.9.19:** **5.x.1** Hybrid-Notfall (Kurzzeilen, Lesezeichen-Links, Node-Snapshot); ab **0.9.20:** **5.x.2** Quick Start / `atAGlance` | ✅ `main` (= `dev`, Fast-forward) | Vor **npm** mit Checker + README-Changelog abgleichen |
 | **npm/stable** | Erster Eintrag **npm** + **ioBroker.repositories** nach Adapter-Checker grün                                         | ⬜ geplant | Versionsnummer beim Release festlegen (nicht mit RC verwechseln) |
-| **v1.x**   | Phase 5: PDF, Backup, Custom Templates (Rest); Phase 5.x **Rest:** Mermaid (5.x.3), Feintuning 5.x.1/5.x.2, weitere Diagnose-Signale … | ⬜ geplant | 5.x.1/5.x.2 **Kern** bereits in **v0.9.18–0.9.20**; [TODO § 1.3](TODO.md#phase-5x) |
+| **v1.x**   | Phase 5: PDF, Backup, Custom Templates (Rest); Phase 5.x **Rest:** Feintuning 5.x.2, ggf. weitere Diagnose-Signale; **5.x.3** ✅ in **0.9.27–0.9.28** | ⬜ geplant | [TODO § 1.3](TODO.md#phase-5x) |
