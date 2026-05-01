@@ -149,6 +149,12 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 - **Abhilfe (Distro-abhängig):** fehlende Pakete nachinstallieren — unter **Debian/Ubuntu** typisch u. a. `libnss3`, `libatk1.0-0`, `libatk-bridge2.0-0`, `libcups2`, `libdrm2`, `libgbm1`, `libasound2`, `libxkbcommon0`, `libxcomposite1`, `libxdamage1`, `libxfixes3`, `libxrandr2` (vgl. [Puppeteer — Chrome läuft auf Linux](https://pptr.dev/troubleshooting)); **Alpine** o. ä. andere Paketnamen/`chromium`-Ansatz.
 - **Verifikation:** nach Installation erneut Doku generieren — **keine** mmdc-Warnung mehr; im HTML **`mermaid-svg-embedded`** wie in der Testcheckliste oben.
 
+**Multi-Plattform (Pi, Docker, LXC, VM, nativ) — kein „Zwang“ zum OS-Paketbau:**
+
+- **ioBroker** läuft auf sehr unterschiedlichen Umgebungen; der Adapter **darf** nirgends **hart** voraussetzen, dass Headless-Chromium samt Distro-Libs funktioniert.
+- **Serverseitiges SVG (mmdc)** ist deshalb **Best Effort**: wenn CLI **und** OS-Stack passen → eingebettetes SVG, **Offline/PDF-tauglicher** Pfad; wenn nicht → **`<pre class="mermaid">`** + **jsDelivr** bei **Online-Browser** — **Kernfunktion** (Doku erzeugen, im Browser lesen) bleibt.
+- **Spätere Grafiken** in Freitext-/Beschreibungs-Kontexten (Fotos, Pläne, Screenshots) sollten **primär** über Wege laufen, die **ohne** Puppeteer auskommen — siehe [PLAN.md — Medien / User-Assets](PLAN.md#architektur-medien-mvp) (z. B. **externe URL**, **kleine SVG** in **`/files/`**, Größenlimits); **Mermaid** bleibt der Spezialfall für **relationale Diagramme**. Rastergrafiken serverseitig „rendert“ AutoDoc **nicht** pauschal voraus; das hält **Docker/LXC/Minimal-Images** tragfähig.
+
 - [ ] Bestehendes **Client-Mermaid** (jsDelivr) **entfernen oder nur noch Fallback**, wenn überall eingebettetes SVG genügt.
 - [ ] **PDF:** Admin-Aktion und/oder Dateiausgabe `*.pdf` unter `/files/` bzw. `exportPath` — nach Festlegung oben.
 - [ ] README + ggf. **io-package**-Hilfe: Abhängigkeit (Chromium?), RAM, Hinweis **Offline/PDF** gemäß dieser Festlegung.
