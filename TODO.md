@@ -127,6 +127,21 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 **Umsetzung (noch offen):**
 
 - [x] **SVG-Rendering** bei Generierung über **`@mermaid-js/mermaid-cli`** (`lib/mermaidServerSvg.js`, optionalDependency) — pro `<pre class="mermaid">` in den drei HTML-Profilen; **light/dark** aus `htmlColorScheme` (**auto** → Default-Theme); ohne Paket bleibt **jsDelivr**-Mermaid wie bisher.
+
+**Festgehalten (Installation / Laufzeit — 2026-05):**
+
+- **`iobroker url …/tarball/dev`:** Erfolgreicher Lauf **Exit 0**; **`@mermaid-js/mermaid-cli`** zieht **transitives Puppeteer** nach — im npm-Log ggf. **Deprecation-Warnungen** (`puppeteer`, `uuid`): **normal**, kommt von der CLI, nicht von eigenen Adapter-`dependencies`. Aufräumen erst sinnvoll bei **Upgrade/Fork** der CLI oder gemeinsamer PDF-Puppeteer-Linie.
+- **Chromium-Download** (z. B. unter **`…/.cache/puppeteer`**) beim ersten Install oder ersten mmdc-Lauf: **erwartet**; bestätigt, dass Headless für **SVG-Einbettung** verfügbar ist.
+- **Node `package.exports`:** `require.resolve('@mermaid-js/mermaid-cli/package.json')` **scheitert** an den Exporten der CLI — der Adapter löst **`src/cli.js`** per **`node_modules`**-Pfad ab Adapter-Root (und Elternverzeichnissen bei Hoisting), siehe `resolveMmdcCliJs` in `lib/mermaidServerSvg.js`.
+
+**Manuell testen (nach dev-Installation, mit installierter optionaler CLI):**
+
+1. **Admin:** unter „Meine Dokumentation“ **`manualMermaidDiagram`** z. B. `flowchart LR\n  A-->B` eintragen; optional **`autoMermaidHostGraph`** aktivieren.
+2. **Doku generieren** wie gewohnt (Button / Trigger im Adapter).
+3. **Export-HTML** (Admin/User/Onboarding nach Bedarf) öffnen — **Quelltext:** bei funktionierendem mmdc **`<div class="mermaid-wrap mermaid-svg-embedded">`** mit eingebettetem **`<svg` …**; das ursprüngliche **`<pre class="mermaid">`** für diesen Inhalt **entfällt** (bleibt nur bei leerem Block, mmdc-Fehler oder wenn die CLI fehlt → jsDelivr-Fallback).
+4. **Offline / `file://`:** gespeicherte HTML-Datei **ohne Internet** öffnen — Diagramm sollte **sichtbar** bleiben (statisches SVG), sobald es eingebettet wurde.
+5. **`htmlColorScheme`:** **dark** vs. **light**/**auto** — Darstellung des Diagramms an **mmdc-Theme** **dark** vs. **default** prüfen.
+
 - [ ] Bestehendes **Client-Mermaid** (jsDelivr) **entfernen oder nur noch Fallback**, wenn überall eingebettetes SVG genügt.
 - [ ] **PDF:** Admin-Aktion und/oder Dateiausgabe `*.pdf` unter `/files/` bzw. `exportPath` — nach Festlegung oben.
 - [ ] README + ggf. **io-package**-Hilfe: Abhängigkeit (Chromium?), RAM, Hinweis **Offline/PDF** gemäß dieser Festlegung.
@@ -166,7 +181,7 @@ Noch offen (größere Ausbaustufe als reiner Freitext):
 #### 5.x.3 Mermaid / kleine Graphen
 
 - [x] Stufe 1: Mermaid aus **kuratiertem** Inhalt (`manualMermaidDiagram` → `manualContext.mermaidDiagram`, **0.9.27**)
-- [x] Ausgabe **Markdown** (`mermaid` fence) + **HTML** (pre.mermaid + Mermaid **10.9.1** von jsDelivr wenn Diagramm vorhanden)
+- [x] Ausgabe **Markdown** (`mermaid` fence) + **HTML:** bei installierter CLI **eingebettetes SVG** (`mermaid-svg-embedded`); sonst **pre.mermaid** + Mermaid **10.9.1** von jsDelivr wenn Diagramm vorhanden
 - [x] Stufe 2: optional kleiner **Auto-Graph** mit **hartem Knotenlimit** (Multihost Host → Instanzen, **0.9.28** `autoMermaidHostGraph` / `lib/autoHostTopologyMermaid.js`)
 - [ ] Nicht Ziel: ungefilterter Gesamtgraph
 
