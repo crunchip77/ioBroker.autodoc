@@ -126,8 +126,8 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 
 **Umsetzung (noch offen):**
 
-- [ ] **SVG-Rendering** im Adapter (Tooling: z. B. `@mermaid-js/mermaid-cli` / `mmdc`, oder `@mermaid-js/mermaid` in Node) — Aufruf aus der HTML-Pipeline für jede `pre.mermaid` / bekannte Diagrammquelle aus `manualContext`.
-- [ ] Bestehendes **Client-Mermaid** (jsDelivr) **ersetzen oder entfernen**, sobald SVG eingebettet ist (oder nur noch als opt-in Fallback klären).
+- [x] **SVG-Rendering** bei Generierung über **`@mermaid-js/mermaid-cli`** (`lib/mermaidServerSvg.js`, optionalDependency) — pro `<pre class="mermaid">` in den drei HTML-Profilen; **light/dark** aus `htmlColorScheme` (**auto** → Default-Theme); ohne Paket bleibt **jsDelivr**-Mermaid wie bisher.
+- [ ] Bestehendes **Client-Mermaid** (jsDelivr) **entfernen oder nur noch Fallback**, wenn überall eingebettetes SVG genügt.
 - [ ] **PDF:** Admin-Aktion und/oder Dateiausgabe `*.pdf` unter `/files/` bzw. `exportPath` — nach Festlegung oben.
 - [ ] README + ggf. **io-package**-Hilfe: Abhängigkeit (Chromium?), RAM, Hinweis **Offline/PDF** gemäß dieser Festlegung.
 

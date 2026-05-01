@@ -986,7 +986,7 @@ class Autodoc extends utils.Adapter {
 			}
 			const renderOptions = { urls: renderUrls, qrSvgs: renderQrSvgs };
 
-			const htmlAll = this.htmlRenderer.renderAllHtml(docModel, renderOptions);
+			const htmlAll = await this.htmlRenderer.renderAllHtml(docModel, renderOptions);
 			const json = JSON.stringify(docModel, null, 2);
 
 			this.log.info(`Documentation generation (${trigger}): 5/5 — writing files and updating states…`);
