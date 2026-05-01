@@ -1,419 +1,250 @@
 {
-        "common": {
-        "name": "autodoc",
-        "version": "0.9.28",
-        "news": {
-            "0.9.28": {
-                "en": "Phase **5.x.3 (step 2):** optional **`autoMermaidHostGraph`** — small **auto-generated Mermaid** diagram of adapter instances **by ioBroker host** (`lib/autoHostTopologyMermaid.js`), with **hard instance-node limit** (8–80, default **40**, round-robin across hosts). Shown after the owner diagram in manual/HTML welcome + Markdown; hide with chapter id **`mermaid`**. Native **`autoMermaidHostGraphMaxNodes`**. `RENDERER_VERSION` **2026.04.28.9**.",
-                "de": "Phase **5.x.3 (Stufe 2):** optional **`autoMermaidHostGraph`** — kleines **automatisches Mermaid**-Diagramm der Adapter-Instanzen **pro ioBroker-Host** (`lib/autoHostTopologyMermaid.js`), mit **fester Instanz-Knotenzahl** (8–80, Standard **40**, Round-Robin über Hosts). Erscheint nach dem eigenen Diagramm im Handbuch/HTML-Begrüßung + Markdown; Ausblenden mit **`mermaid`**. Native **`autoMermaidHostGraphMaxNodes`**. `RENDERER_VERSION` **2026.04.28.9**.",
-                "ru": "0.9.28: autoMermaidHostGraph; host topology Mermaid; RENDERER_VERSION",
-                "pt": "0.9.28: autoMermaidHostGraph; topologia Mermaid; RENDERER_VERSION",
-                "nl": "0.9.28: autoMermaidHostGraph; host-topologie Mermaid; RENDERER_VERSION",
-                "fr": "0.9.28 : autoMermaidHostGraph ; topologie hôtes Mermaid ; RENDERER_VERSION",
-                "it": "0.9.28: autoMermaidHostGraph; topologia host Mermaid; RENDERER_VERSION",
-                "es": "0.9.28: autoMermaidHostGraph; topología Mermaid; RENDERER_VERSION",
-                "pl": "0.9.28: autoMermaidHostGraph; topologia Mermaid; RENDERER_VERSION",
-                "uk": "0.9.28: autoMermaidHostGraph; топологія хостів Mermaid; RENDERER_VERSION",
-                "zh-cn": "0.9.28：autoMermaidHostGraph；按主机实例 Mermaid 图；RENDERER_VERSION"
-            },
-            "0.9.27": {
-                "en": "Phase **5.x.3 (step 1):** optional **`manualMermaidDiagram`** in **My documentation** — owner-written Mermaid source. **HTML** exports load Mermaid **10.9.1** from jsDelivr when the page contains a diagram; **Markdown** adds a fenced **`mermaid`** block. Hide with chapter id **`mermaid`** (User/Onboarding hide lists). Clamped to **12 000** characters in `parseManualContext`. `RENDERER_VERSION` **2026.04.28.8**.",
-                "de": "Phase **5.x.3 (Stufe 1):** optionales **`manualMermaidDiagram`** unter **Meine Dokumentation** — selbst geschriebener Mermaid-Quelltext. **HTML**-Exporte laden Mermaid **10.9.1** von jsDelivr, wenn ein Diagramm vorkommt; **Markdown** erhält einen **`mermaid`**-Codeblock. Ausblenden mit Kapitel-Id **`mermaid`** (User/Onboarding). In `parseManualContext` auf **12 000** Zeichen begrenzt. `RENDERER_VERSION` **2026.04.28.8**.",
-                "ru": "0.9.27: Mermaid manualMermaidDiagram; HTML+MD; RENDERER_VERSION",
-                "pt": "0.9.27: Mermaid manualMermaidDiagram; HTML+MD; RENDERER_VERSION",
-                "nl": "0.9.27: Mermaid manualMermaidDiagram; HTML+MD; RENDERER_VERSION",
-                "fr": "0.9.27 : Mermaid manualMermaidDiagram ; HTML + MD ; RENDERER_VERSION",
-                "it": "0.9.27: Mermaid manualMermaidDiagram; HTML+MD; RENDERER_VERSION",
-                "es": "0.9.27: Mermaid manualMermaidDiagram; HTML+MD; RENDERER_VERSION",
-                "pl": "0.9.27: Mermaid manualMermaidDiagram; HTML+MD; RENDERER_VERSION",
-                "uk": "0.9.27: Mermaid manualMermaidDiagram; HTML+MD; RENDERER_VERSION",
-                "zh-cn": "0.9.27：手动 Mermaid 图；HTML/MD；RENDERER_VERSION"
-            },
-            "0.9.26": {
-                "en": "**Phase 5.x.2 (tuning):** Onboarding **Quick Start** uses a **shorter** slice of `docModel.quickStart` (fewer system lines, room cards, highlights per room). **User** quick overview unchanged in depth; intro copy and a **link to the Rooms chapter** (HTML + User Markdown) reduce duplication. `sliceQuickStartForOnboarding` in `lib/quickStartGuide.js`. `RENDERER_VERSION` **2026.04.28.6**.",
-                "de": "**Phase 5.x.2 (Feintuning):** Onboarding-**Schnellstart** nutzt eine **kürzere** Auswahl aus `docModel.quickStart` (weniger Systemzeilen, Raumkarten, Highlights pro Raum). **User**-Kurzüberblick in der Tiefe unverändert; angepasster Text plus **Link zum Räume-Kapitel** (HTML + User-Markdown). `sliceQuickStartForOnboarding` in `lib/quickStartGuide.js`. `RENDERER_VERSION` **2026.04.28.6**.",
-                "ru": "0.9.26: Quick Start guest slice; rooms cross-link; RENDERER_VERSION",
-                "pt": "0.9.26: Quick Start convidado mais curto; link salas; RENDERER_VERSION",
-                "nl": "0.9.26: kortere Quick Start gast; link kamers; RENDERER_VERSION",
-                "fr": "0.9.26 : Quick Start invité raccourci ; lien pièces ; RENDERER_VERSION",
-                "it": "0.9.26: Quick Start ospite più corto; link stanze; RENDERER_VERSION",
-                "es": "0.9.26: Quick Start invitado más corto; enlace habitaciones; RENDERER_VERSION",
-                "pl": "0.9.26: krótszy Quick Start gościa; link pokoje; RENDERER_VERSION",
-                "uk": "0.9.26: коротший Quick Start для гостя; посилання кімнати; RENDERER_VERSION",
-                "zh-cn": "0.9.26：访客快速开始缩短；房间章节链接；RENDERER_VERSION"
-            },
-            "0.9.25": {
-                "en": "**My documentation:** new **playbook** field (`ownerPlaybookNote`) — step order, must-dos, and “do not” rules in your own words. Shown in Admin manual, User/Onboarding HTML (own section + TOC when enabled), Markdown export, and **AI owner context**. Hide via chapter id **`ownerPlaybook`**. `RENDERER_VERSION` **2026.04.28.5**.",
-                "de": "**Meine Dokumentation:** neues **Ablauf-/Playbook**-Feld (`ownerPlaybookNote`) — Reihenfolge, Muss und „bitte nicht“ in eigenen Worten. Im Admin-Handbuch, User-/Onboarding-HTML (eigenes Kapitel + Navigation), Markdown-Export und **KI-Eigentümerkontext**. Ausblenden mit Kapitel-Id **`ownerPlaybook`**. `RENDERER_VERSION` **2026.04.28.5**.",
-                "ru": "0.9.25: owner playbook note; exports; RENDERER_VERSION",
-                "pt": "0.9.25: owner playbook note; exports; RENDERER_VERSION",
-                "nl": "0.9.25: owner playbook note; exports; RENDERER_VERSION",
-                "fr": "0.9.25 : note « playbook » propriétaire ; exports ; RENDERER_VERSION",
-                "it": "0.9.25: owner playbook note; exports; RENDERER_VERSION",
-                "es": "0.9.25: owner playbook note; exports; RENDERER_VERSION",
-                "pl": "0.9.25: owner playbook note; exports; RENDERER_VERSION",
-                "uk": "0.9.25: owner playbook note; exports; RENDERER_VERSION",
-                "zh-cn": "0.9.25：维护人操作流程文本；导出；RENDERER_VERSION"
-            },
-            "0.9.24": {
-                "en": "**Clarity:** Admin chapter **Maintenance & documentation setup** (technical **Diagnosis** stays separate). Exports use **documentation setup score**; Admin **Advanced** labels updated (EN/DE/FR + EN fallbacks). All checklist checks off → explicit note in HTML/Markdown. **Quick Start:** rooms with equal device counts sorted by name. `RENDERER_VERSION` **2026.04.28.4**.",
-                "de": "**Klarstellung:** Admin-Kapitel **Wartung & Dokumentations-Setup** (technische **Diagnose** bleibt eigenes Kapitel). **Doku-Setup-Score** in Texten; **Erweitert**-Hilfen angepasst. Alle Checks aus → Hinweis im Export. **Schnellstart:** bei gleicher Gerätezahl Sortierung nach Raumname. `RENDERER_VERSION` **2026.04.28.4**.",
-                "ru": "0.9.24: naming; setup score; quick start tie-break; RENDERER_VERSION",
-                "pt": "0.9.24: naming; setup score; quick start; RENDERER_VERSION",
-                "nl": "0.9.24: naming; setup score; quick start; RENDERER_VERSION",
-                "fr": "0.9.24 : libellés, score mise en place doc, Quick Start ; RENDERER_VERSION",
-                "it": "0.9.24: naming; setup score; quick start; RENDERER_VERSION",
-                "es": "0.9.24: naming; setup score; quick start; RENDERER_VERSION",
-                "pl": "0.9.24: naming; setup score; quick start; RENDERER_VERSION",
-                "uk": "0.9.24: naming; setup score; quick start; RENDERER_VERSION",
-                "zh-cn": "0.9.24：命名与文档Setup分；快速开始同设备数按房间名；RENDERER_VERSION"
-            },
-            "0.9.23": {
-                "en": "**Maintenance score** (Admin checklist): optional **per-check toggles** and numeric **thresholds** in Advanced settings (`maintenanceScoreCheck*`, min description length, unassigned-instance warn level). Score counts **only enabled** checks. **Quick Start** room cards prefer rooms with **more devices** first. Doc export `scoreDesc` clarifies **setup/meta** vs. content. `RENDERER_VERSION` **2026.04.28.3**.",
-                "de": "**Doku-Score** (Admin-Checkliste): in **Erweitert** pro Check **ein/aus** plus **Schwellen** (Mindestlänge Beschreibung, Warnstufe „Instanzen ohne Raum“). Prozent zählt nur **aktive** Checks. **Schnellstart**: Raumkarten bevorzugen Räume mit **mehr Geräten**. `scoreDesc` präzisiert **Setup/Meta** vs. Inhalt. `RENDERER_VERSION` **2026.04.28.3**.",
-                "ru": "0.9.23: maintenance score options; quick start room order; RENDERER_VERSION",
-                "pt": "0.9.23: maintenance score options; quick start room order; RENDERER_VERSION",
-                "nl": "0.9.23: maintenance score options; quick start room order; RENDERER_VERSION",
-                "fr": "0.9.23 : score maintenance (options), Quick Start pièces ; RENDERER_VERSION",
-                "it": "0.9.23: maintenance score options; quick start room order; RENDERER_VERSION",
-                "es": "0.9.23: maintenance score options; quick start room order; RENDERER_VERSION",
-                "pl": "0.9.23: maintenance score options; quick start room order; RENDERER_VERSION",
-                "uk": "0.9.23: maintenance score options; quick start room order; RENDERER_VERSION",
-                "zh-cn": "0.9.23：维护评分可配置；快速开始房间排序；RENDERER_VERSION"
-            },
-            "0.9.22": {
-                "en": "**Maintenance — documentation setup score:** checklist (project description length, **ioBroker base URL**, unassigned instances when count ≥10). **`scriptsWithoutDescription`** in the model for info/exports — still **not** scored. `buildMaintenance` uses rooms + manual context. `RENDERER_VERSION` bump.",
-                "de": "**Wartung — Doku-Setup-Score:** Checkliste (Projektbeschreibung, **Basis-URL**, ≥10 Instanzen ohne Raum). **`scriptsWithoutDescription`** nur informativ — **kein** Score. `buildMaintenance` mit Räumen + manuellem Kontext. `RENDERER_VERSION`.",
-                "ru": "0.9.22: maintenance checklist; score; RENDERER_VERSION",
-                "pt": "0.9.22: maintenance checklist; score; RENDERER_VERSION",
-                "nl": "0.9.22: maintenance checklist; score; RENDERER_VERSION",
-                "fr": "0.9.22 : checklist maintenance, score, RENDERER_VERSION",
-                "it": "0.9.22: maintenance checklist; score; RENDERER_VERSION",
-                "es": "0.9.22: checklist mantenimiento; score; RENDERER_VERSION",
-                "pl": "0.9.22: maintenance checklist; score; RENDERER_VERSION",
-                "uk": "0.9.22: maintenance checklist; score; RENDERER_VERSION",
-                "zh-cn": "0.9.22：维护清单、评分、RENDERER_VERSION"
-            },
-            "0.9.21": {
-                "en": "Onboarding **guest script privacy**: optional **`onboardingGuestShowScriptNames`** (default **off**) — **Quick Start** does not show script rows that would expose internal file names (no stand-in text from `common.desc` alone); **What runs automatically** stays a count-only summary unless you opt in. Shared helper `lib/guestScriptPrivacy.js`; **Onboarding** HTML + **Markdown**; `RENDERER_VERSION` bump.",
-                "de": "Gäste-Onboarding **Skript-Datenschutz**: optional **`onboardingGuestShowScriptNames`** (Standard **aus**) — **Schnellstart** zeigt keine Skriptzeilen mit internen Dateinamen (kein Ersatz allein aus `common.desc`); **Was automatisch läuft** bleibt nur Zähler-Zusammenfassung ohne Opt-in. `lib/guestScriptPrivacy.js`; Onboarding **HTML** + **Markdown**; `RENDERER_VERSION`.",
-                "ru": "0.9.21: guest script privacy; Quick Start; guestScriptPrivacy",
-                "pt": "0.9.21: privacidade scripts convidado; Quick Start",
-                "nl": "0.9.21: gast script-privacy; Quick Start",
-                "fr": "0.9.21 : confidentialité scripts invité ; Quick Start ; guestScriptPrivacy",
-                "it": "0.9.21: privacy script ospiti; Quick Start",
-                "es": "0.9.21: privacidad scripts invitado; Quick Start",
-                "pl": "0.9.21: prywatność skryptów gościa; Quick Start",
-                "uk": "0.9.21: приватність скриптів для гостей; Quick Start",
-                "zh-cn": "0.9.21：访客脚本隐私、快速开始、guestScriptPrivacy"
-            },
-            "0.9.20": {
-                "en": "Phase **5.x.2**: structured **Quick Start** (Onboarding) and **Quick overview / at a glance** (User) from discovery — `docModel.quickStart` via `lib/quickStartGuide.js`; system list + per-room highlights; i18n EN/DE/FR; Onboarding + User **Markdown** aligned; new hide id `atAGlance` (User). `RENDERER_VERSION` bump.",
-                "de": "Phase **5.x.2**: **Schnellstart** (Onboarding) und **Kurzüberblick** (User) aus Discovery — `docModel.quickStart` (`lib/quickStartGuide.js`); Systemliste + Raum-Highlights; i18n; **Markdown** Onboarding/User; neues Ausblenden `atAGlance` (User). `RENDERER_VERSION`.",
-                "ru": "0.9.20: quick start; room highlights; RENDERER_VERSION",
-                "pt": "0.9.20: quick start; destaques por divisão; RENDERER_VERSION",
-                "nl": "0.9.20: quick start; kamerhighlights; RENDERER_VERSION",
-                "fr": "0.9.20 : démarrage rapide, aperçu pièces, RENDERER_VERSION",
-                "it": "0.9.20: quick start; stanze; RENDERER_VERSION",
-                "es": "0.9.20: inicio rápido; salas; RENDERER_VERSION",
-                "pl": "0.9.20: szybki start; pomieszczenia; RENDERER_VERSION",
-                "uk": "0.9.20: quick start; кімнати; RENDERER_VERSION",
-                "zh-cn": "0.9.20：快速开始、房间、RENDERER_VERSION"
-            },
-            "0.9.19": {
-                "en": "Phase 5.x.1: **Auto-checklists** in User/Onboarding **Help & emergencies** when the scan flags **Node.js** (same rule as Admin diagnosis) — with **snapshot disclaimer**. Shared helper `lib/diagnosisSnapshot.js`; Markdown (User/Onboarding export); RENDERER_VERSION bump. Not in Admin profile HTML (full Diagnosis there).",
-                "de": "Phase 5.x.1: **Auto-Checklisten** in User/Onboarding **Hilfe & Notfall** bei **Node.js**-Hinweis (wie Admin-Diagnose) + **Momentaufnahme-Hinweis**. `lib/diagnosisSnapshot.js`; Markdown; RENDERER_VERSION. Nicht im Admin-HTML (Diagnose bleibt dort).",
-                "ru": "0.9.19: autodoc checklists; Node snapshot; diagnosisSnapshot",
-                "pt": "0.9.19: listas; Node; diagnosisSnapshot",
-                "nl": "0.9.19: checklists; Node; diagnosisSnapshot",
-                "fr": "0.9.19 : listes auto ; Node ; diagnosisSnapshot",
-                "it": "0.9.19: checklist; Node; diagnosisSnapshot",
-                "es": "0.9.19: listas; Node; diagnosisSnapshot",
-                "pl": "0.9.19: listy; Node; diagnosisSnapshot",
-                "uk": "0.9.19: чеклист; Node; diagnosisSnapshot",
-                "zh-cn": "0.9.19：Node 快照清单、diagnosisSnapshot"
-            },
-            "0.9.18": {
-                "en": "Phase 5.x.1 hybrid **Help & emergencies**: optional one-line **quick facts** (Wi‑Fi, power, water, other); **bookmark links** to User/Onboarding/Admin HTML (same URLs as QR; needs **Base URL**). Shown in User, Onboarding, Admin manual chapter, Markdown, AI owner context. New native fields + jsonConfig + i18n; RENDERER_VERSION bump.",
-                "de": "Phase 5.x.1 hybrid **Hilfe & Notfall**: optionale **Kurzzeilen** (WLAN, Strom, Wasser, Sonstiges); **Lesezeichen-Links** zu User/Onboarding/Admin-HTML (wie QR, **Basis-URL** nötig). In User, Onboarding, Admin-Manual, Markdown, KI-Kontext. Neue Felder + RENDERER_VERSION.",
-                "ru": "0.9.18: hybrid help; quick lines; doc links; RENDERER_VERSION",
-                "pt": "0.9.18: hybrid help; quick facts; doc links; RENDERER_VERSION",
-                "nl": "0.9.18: hybrid help; snelle regels; doc-links; RENDERER_VERSION",
-                "fr": "0.9.18 : aide hybride ; lignes courtes ; liens doc ; RENDERER_VERSION",
-                "it": "0.9.18: help ibrido; fatti rapidi; link doc; RENDERER_VERSION",
-                "es": "0.9.18: ayuda híbrida; líneas; enlaces; RENDERER_VERSION",
-                "pl": "0.9.18: hybryda pomocy; szybkie; linki; RENDERER_VERSION",
-                "uk": "0.9.18: гібрид help; рядки; посилання; RENDERER_VERSION",
-                "zh-cn": "0.9.18：混合帮助、快捷行、文档链接、RENDERER_VERSION"
-            },
-            "0.9.17": {
-                "en": "HTML export: color presets (default, high contrast, warm, slate) via config — no manual CSS for the base palette. Optional JSON **admin chapter order**; Admin **Markdown** table of contents follows that order. New Admin settings: htmlThemePreset, adminChapterOrderJson.",
-                "de": "HTML-Export: **Farb-Presets** (Standard, hoher Kontrast, warm, Schiefer) in der Konfiguration — kein manuelles CSS für die Basispalette. Optional **Kapitelreihenfolge Admin** (JSON); **Markdown**-Inhaltsverzeichnis (Profil Admin) folgt. Neue Felder: htmlThemePreset, adminChapterOrderJson.",
-                "ru": "0.9.17: htmlThemePreset; admin chapter order; MD TOC",
-                "pt": "0.9.17: htmlThemePreset; ordem capítulos admin; TOC MD",
-                "nl": "0.9.17: htmlThemePreset; admin chapter order; MD TOC",
-                "fr": "0.9.17 : préréglages couleur HTML, ordre chapitres admin (JSON), sommaire Markdown aligné, htmlThemePreset, adminChapterOrderJson.",
-                "it": "0.9.17: preset colore HTML; ordine capitoli admin; TOC Markdown",
-                "es": "0.9.17: htmlThemePreset; orden capítulos admin; TOC MD",
-                "pl": "0.9.17: htmlThemePreset; kolejność rozdziałów; spis treści MD",
-                "uk": "0.9.17: htmlThemePreset; порядок розділів admin; зміст MD",
-                "zh-cn": "0.9.17：HTML 配色预设、Admin 章节顺序、Markdown 目录一致"
-            },
-            "0.9.16": {
-                "en": "Default: max stored timestamped doc file sets (maxStoredFiles) is now 3 per type; 0 still means use that default (was 5).",
-                "de": "Standard: max. gespeicherte Doku-Dateisätze (maxStoredFiles) jetzt 3 pro Typ; 0 = weiterhin Standardwert (bisher 5).",
-                "ru": "0.9.16: maxStoredFiles default 3",
-                "pt": "0.9.16: maxStoredFiles default 3",
-                "nl": "0.9.16: maxStoredFiles default 3",
-                "fr": "0.9.16 : maxStoredFiles défaut 3 (ex. 5).",
-                "it": "0.9.16: maxStoredFiles default 3",
-                "es": "0.9.16: maxStoredFiles default 3",
-                "pl": "0.9.16: maxStoredFiles default 3",
-                "uk": "0.9.16: maxStoredFiles default 3",
-                "zh-cn": "0.9.16：maxStoredFiles 默认每类保留 3 套（原 5）"
-            },
-            "0.9.15": {
-                "en": "Script-source AI: cancel via action.cancelScriptSourceAi, Admin (KI tab) button, or sendTo cancelScriptSourceAi; info.aiScriptSourceProgress shows cancelled when the phase ends (current HTTP request may still complete).",
-                "de": "Skript-KI: Abbruch über action.cancelScriptSourceAi, Admin-Button (KI) oder sendTo cancelScriptSourceAi; info.aiScriptSourceProgress zeigt am Ende cancelled (laufender Request kann enden).",
-                "ru": "0.9.15: cancelScriptSourceAi; progress cancelled",
-                "pt": "0.9.15: cancelScriptSourceAi; progress cancelled",
-                "nl": "0.9.15: cancelScriptSourceAi; progress cancelled",
-                "fr": "0.9.15 : cancelScriptSourceAi ; progress cancelled",
-                "it": "0.9.15: cancelScriptSourceAi; progress cancelled",
-                "es": "0.9.15: cancelScriptSourceAi; progress cancelled",
-                "pl": "0.9.15: cancelScriptSourceAi; progress cancelled",
-                "uk": "0.9.15: cancelScriptSourceAi; progress cancelled",
-                "zh-cn": "0.9.15：cancelScriptSourceAi 中止；进度显示 cancelled"
-            },
-            "0.9.14": {
-                "en": "AI script source pass: state info.aiScriptSourceProgress (e.g. 5/12) and optional max characters per script (aiMaxScriptCharsForAi, default 12000).",
-                "de": "KI-Skriptdurchlauf: State info.aiScriptSourceProgress (z. B. 5/12) und optionale max. Zeichen pro Skript (aiMaxScriptCharsForAi, Standard 12000).",
-                "ru": "0.9.14: info.aiScriptSourceProgress, aiMaxScriptCharsForAi",
-                "pt": "0.9.14: info.aiScriptSourceProgress, aiMaxScriptCharsForAi",
-                "nl": "0.9.14: info.aiScriptSourceProgress, aiMaxScriptCharsForAi",
-                "fr": "0.9.14 : info.aiScriptSourceProgress, aiMaxScriptCharsForAi",
-                "it": "0.9.14: info.aiScriptSourceProgress, aiMaxScriptCharsForAi",
-                "es": "0.9.14: info.aiScriptSourceProgress, aiMaxScriptCharsForAi",
-                "pl": "0.9.14: info.aiScriptSourceProgress, aiMaxScriptCharsForAi",
-                "uk": "0.9.14: info.aiScriptSourceProgress, aiMaxScriptCharsForAi",
-                "zh-cn": "0.9.14：info.aiScriptSourceProgress；aiMaxScriptCharsForAi 每脚本最大字符"
-            },
-            "0.9.13": {
-                "en": "Fix: enable common.messagebox so Admin jsonConfig textSendTo (Last generated, Forum system card / getForumCard) works with js-controller.",
-                "de": "Fix: common.messagebox aktiviert — Admin-jsonConfig textSendTo (Zuletzt erzeugt, Forum-Systemkarte / getForumCard) funktioniert mit js-controller.",
-                "ru": "0.9.13: messagebox for Admin sendTo",
-                "pt": "0.9.13: messagebox para Admin sendTo",
-                "nl": "0.9.13: messagebox voor Admin sendTo",
-                "fr": "0.9.13 : messagebox pour sendTo Admin",
-                "it": "0.9.13: messagebox per sendTo Admin",
-                "es": "0.9.13: messagebox para sendTo Admin",
-                "pl": "0.9.13: messagebox dla sendTo Admin",
-                "uk": "0.9.13: messagebox для sendTo Admin",
-                "zh-cn": "0.9.13：启用 messagebox 以支持管理端 sendTo"
-            },
-            "0.9.12": {
-                "en": "Admin: jsonConfig plaintext forum system card (sendTo getForumCard, copy button) + state info.forumCardPlain; diagnosis HTML uses same plaintext as i18n. Optional AI per-script explanations (aiAnalyzeScriptSources): sanitized JS sent to configured provider; User/Onboarding HTML + Markdown; optional automation overview paragraph.",
-                "de": "Admin: jsonConfig Forum-Systemkarte als Klartext (sendTo getForumCard, Kopierbutton) + State info.forumCardPlain; Diagnose-HTML nutzt dieselben i18n-Texte. Optional KI pro Skript (aiAnalyzeScriptSources): bereinigtes JS an konfigurierten Anbieter; User/Onboarding HTML + Markdown; optional Gesamtabsatz Automatisierung.",
-                "ru": "0.9.12: forum card sendTo; AI script sources opt-in",
-                "pt": "0.9.12: forum card sendTo; AI script sources opt-in",
-                "nl": "0.9.12: forumkaart sendTo; AI scriptbronnen opt-in",
-                "fr": "0.9.12 : carte forum sendTo ; IA scripts opt-in",
-                "it": "0.9.12: forum card sendTo; AI script opt-in",
-                "es": "0.9.12: tarjeta forum sendTo; IA scripts opt-in",
-                "pl": "0.9.12: forum sendTo; AI skryptów opt-in",
-                "uk": "0.9.12: forum sendTo; AI скриптів opt-in",
-                "zh-cn": "0.9.12：Forum 卡片 sendTo；脚本 AI 可选"
-            },
-            "0.9.11": {
-                "en": "Advanced: Documentation states storage — full (default, duplicate large strings in states) or metadata (large payloads only in /files autodoc-latest.*; placeholders in states; easier on Redis). State documentation.exportHashes: SHA-256 hex of latest MD/JSON/Admin HTML. Download actions still write autodoc.md/.json/.html from latest files. HTML changelog: adapter instance version changes + i18n labels. README/TODO/PLAN planning docs updated.",
-                "de": "Erweitert: Documentation states storage — vollständig (Standard, große Strings in States) oder nur Metadaten (Volltext nur unter /files autodoc-latest.*; Platzhalter in States; schont Redis). State documentation.exportHashes: SHA-256 (hex) der letzten MD/JSON/Admin-HTML-Exporte. Download-Aktionen schreiben autodoc.md/.json/.html weiter aus den neuesten Dateien. HTML-Änderungsprotokoll: Adapter-Instanz-Versionswechsel + i18n. README/TODO/PLAN angepasst.",
-                "ru": "0.9.11: states storage full/metadata; exportHashes; downloads; changelog adapter versions; docs",
-                "pt": "0.9.11: armazenamento states full/metadata; exportHashes; downloads; changelog versões adapter; docs",
-                "nl": "0.9.11: states storage full/metadata; exportHashes; downloads; changelog adapterversies; docs",
-                "fr": "0.9.11 : stockage states complet/métadonnées ; exportHashes ; téléchargements ; changelog versions adaptateurs ; docs",
-                "it": "0.9.11: states storage full/metadata; exportHashes; download; changelog versioni adapter; docs",
-                "es": "0.9.11: almacenamiento states full/metadata; exportHashes; descargas; changelog versiones adaptador; docs",
-                "pl": "0.9.11: stany full/metadata; exportHashes; pobieranie; changelog wersje adapterów; docs",
-                "uk": "0.9.11: states full/metadata; exportHashes; завантаження; changelog версії адаптерів; docs",
-                "zh-cn": "0.9.11：States 存储 full/metadata；exportHashes；下载；changelog 适配器版本；文档"
-            },
-            "0.9.10": {
-                "en": "HTML export: color scheme, logo URL, collapsible advanced block (font + extra CSS); per-profile chapter hiding (JSON); custom Markdown sections (JSON, optional profiles). Markdown uses markdown-it for custom sections + profile-aware hiding. Discovery: no getObjectView(system,schedule) when design lacks it (cleaner logs). Admin DE i18n completed for jsonConfig. Onboarding: “automations” = enabled JavaScript scripts only. Custom chapter layout spacing; jsonConfig schema fix (nested panel).",
-                "de": "HTML-Export: Farbschema, Logo-URL, einklappbarer Fortgeschrittenen-Block (Schrift + CSS); Kapitel pro Profil ausblenden (JSON); eigene Markdown-Kapitel (JSON, profiles optional). Markdown: markdown-it für Zusatzkapitel + profilbezogenes Ausblenden. Discovery: kein schedule-View-Aufruf wenn Design fehlt (ruhigeres Log). Admin: deutsche jsonConfig-Hilfen vervollständigt. Onboarding: Automatisierungen = aktive JS-Skripte. Abstände eigene Kapitel; jsonConfig-Schema (verschachteltes Panel).",
-                "ru": "0.9.10: HTML export, chapters, custom MD, discovery schedule, i18n, layout",
-                "pt": "0.9.10: export HTML, capítulos, MD custom, discovery schedule, i18n, layout",
-                "nl": "0.9.10: HTML-export, hoofdstukken, custom MD, discovery schedule, i18n, layout",
-                "fr": "0.9.10 : export HTML, chapitres, MD perso, discovery schedule, i18n, mise en page",
-                "it": "0.9.10: export HTML, capitoli, MD custom, discovery schedule, i18n, layout",
-                "es": "0.9.10: export HTML, capítulos, MD custom, discovery schedule, i18n, layout",
-                "pl": "0.9.10: eksport HTML, rozdziały, własny MD, discovery schedule, i18n, layout",
-                "uk": "0.9.10: HTML експорт, розділи, custom MD, discovery schedule, i18n, верстка",
-                "zh-cn": "0.9.10：HTML 导出、章节隐藏、自定义 Markdown、schedule 探测、德文管理界面、版式"
-            },
-            "0.9.9": {
-                "en": "My documentation: Help & emergencies + Routines in your own words (guest/family HTML sections, TOC, Markdown, AI owner context); Admin manual subsections. Discovery: adapter instance schedule/restart CRON, optional getObjectView(system,schedule), script common.engine; RENDERER_VERSION bump",
-                "de": "Meine Dokumentation: Hilfe & Notfall + Abläufe in eigenen Worten (HTML Onboarding/User, Inhaltsverzeichnis, Markdown, KI-Kontext); Admin-Unterkapitel. Discovery: Instanz-CRON (schedule/Neustart), optional getObjectView(system,schedule), Skript common.engine; RENDERER_VERSION",
-                "ru": "0.9.9: manual guest/routines; discovery schedule/engine; RENDERER",
-                "pt": "0.9.9: manual convidado/rotinas; discovery schedule/engine; RENDERER",
-                "nl": "0.9.9: manual gast/routines; discovery schedule/engine; RENDERER",
-                "fr": "0.9.9 : aide invités / routines ; discovery schedule/engine ; RENDERER",
-                "it": "0.9.9: manuale ospiti/routine; discovery schedule/engine; RENDERER",
-                "es": "0.9.9: manual invitados/rutinas; discovery schedule/engine; RENDERER",
-                "pl": "0.9.9: manual gość/rutyny; discovery schedule/engine; RENDERER",
-                "uk": "0.9.9: manual гості/рутини; discovery schedule/engine; RENDERER",
-                "zh-cn": "0.9.9：访客帮助与日常说明；发现层 schedule/engine；RENDERER"
-            }
-        },
-        "titleLang": {
-            "en": "AutoDoc",
-            "de": "AutoDoc",
-            "ru": "АвтоДок",
-            "pt": "AutoDoc",
-            "nl": "AutoDoc",
-            "fr": "AutoDoc",
-            "it": "AutoDoc",
-            "es": "AutoDoc",
-            "pl": "AutoDoc",
-            "uk": "АвтоДок",
-            "zh-cn": "自动文档"
-        },
-        "desc": {
-            "en": "Creates structured documentation for ioBroker projects from user-defined input",
-            "de": "Erzeugt strukturierte Dokumentation für ioBroker-Projekte aus Benutzereingaben",
-            "ru": "Создает структурированную документацию для проектов ioBroker на основе пользовательского ввода",
-            "pt": "Cria documentação estruturada para projetos ioBroker a partir da entrada do usuário",
-            "nl": "Maakt gestructureerde documentatie voor ioBroker-projecten op basis van gebruikersinvoer",
-            "fr": "Crée une documentation structurée pour les projets ioBroker à partir des saisies utilisateur",
-            "it": "Crea documentazione strutturata per progetti ioBroker a partire dall'input dell'utente",
-            "es": "Crea documentación estructurada para proyectos ioBroker a partir de la entrada del usuario",
-            "pl": "Tworzy uporządkowaną dokumentację projektów ioBroker na podstawie danych użytkownika",
-            "uk": "Створює структуровану документацію для проєктів ioBroker на основі введених користувачем даних",
-            "zh-cn": "根据用户输入为 ioBroker 项目生成结构化文档"
-        },
-        "authors": [
-            "crunchip77 <41550245+crunchip77@users.noreply.github.com>"
-        ],
-        "keywords": [
-            "autodoc",
-            "documentation",
-            "markdown",
-            "export",
-            "project",
-            "automation"
-        ],
-        "licenseInformation": {
-            "type": "free",
-            "license": "MIT"
-        },
-        "platform": "Javascript/Node.js",
-        "icon": "autodoc.png",
-        "enabled": true,
-        "extIcon": "https://raw.githubusercontent.com/crunchip77/ioBroker.autodoc/main/admin/autodoc.png",
-        "readme": "https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md",
-        "loglevel": "info",
-        "tier": 3,
-        "dataFolder": "files",
-        "mode": "daemon",
-        "type": "general",
-        "compact": true,
-        "messagebox": true,
-        "connectionType": "local",
-        "dataSource": "push",
-        "adminUI": {
-            "config": "json"
-        },
-        "localLinks": {
-            "_default": {
-                "link": "/files/autodoc.0.files/autodoc-admin.html",
-                "name": "Admin Docs"
-            },
-            "user": {
-                "link": "/files/autodoc.0.files/autodoc-user.html",
-                "name": "User / Family"
-            },
-            "onboarding": {
-                "link": "/files/autodoc.0.files/autodoc-onboarding.html",
-                "name": "Onboarding"
-            }
-        },
-        "dependencies": [
-            {
-                "js-controller": ">=6.0.11"
-            }
-        ],
-        "globalDependencies": [
-            {
-                "admin": ">=7.6.20"
-            }
-        ]
-    },
-    "native": {
-        "projectName": "",
-        "projectDescription": "",
-        "manualContact": "",
-        "additionalNotes": "",
-        "guestHelpNote": "",
-        "homeRoutinesNote": "",
-        "ownerPlaybookNote": "",
-        "manualMermaidDiagram": "",
-        "autoMermaidHostGraph": false,
-        "autoMermaidHostGraphMaxNodes": 40,
-        "troubleshootWifiHint": "",
-        "troubleshootPowerHint": "",
-        "troubleshootWaterHint": "",
-        "troubleshootExtraHint": "",
-        "adapterNotes": [],
-        "roomNotes": [],
-        "onboardingHideRooms": [],
-        "onboardingHideAdapters": [],
-        "onboardingGuestShowScriptNames": false,
-        "userHideRooms": [],
-        "userHideAdapters": [],
-        "targetSystem": "ioBroker",
-        "language": "en",
-        "autoGenerateOnStart": true,
-        "autoGenerateOnEvents": false,
-        "autoGenerateInterval": 0,
-        "onlyEnabledInstances": false,
-        "hideInstanceDetailsInMarkdown": false,
-        "maxDocumentedInstances": 0,
-        "maxStoredFiles": 3,
-        "documentationStatesMode": "full",
-        "baseUrl": "",
-        "maintenanceScoreCheckDescription": true,
-        "maintenanceScoreCheckBaseUrl": true,
-        "maintenanceScoreCheckUnassigned": true,
-        "maintenanceScoreMinDescriptionChars": 40,
-        "maintenanceScoreUnassignedWarnAt": 10,
-        "exportPath": "",
-        "aiOwnerHints": "",
-        "htmlColorScheme": "auto",
-        "htmlThemePreset": "default",
-        "htmlHeaderLogoUrl": "",
-        "htmlFontStack": "",
-        "htmlExtraCss": "",
-        "customDocSectionsJson": "[]",
-        "adminChapterOrderJson": "[]",
-        "adminHiddenChaptersJson": "[]",
-        "userHiddenChaptersJson": "[]",
-        "onboardingHiddenChaptersJson": "[]",
-        "aiAnalyzeScriptSources": false,
-        "aiMaxScriptCharsForAi": 12000
-    },
-    "objects": [],
-    "instanceObjects": [
-        {
-            "_id": "info.connection",
-            "type": "state",
-            "common": {
-                "name": "If connected to service",
-                "type": "boolean",
-                "role": "indicator.connected",
-                "read": true,
-                "write": false,
-                "def": false
-            },
-            "native": {}
-        }
-    ]
+	"common": {
+		"name": "autodoc",
+		"version": "0.9.28",
+		"news": {
+			"0.9.28": {
+				"en": "Phase **5.x.3 (step 2):** optional **`autoMermaidHostGraph`** — small **auto-generated Mermaid** diagram of adapter instances **by ioBroker host** (`lib/autoHostTopologyMermaid.js`), with **hard instance-node limit** (8–80, default **40**, round-robin across hosts). Shown after the owner diagram in manual/HTML welcome + Markdown; hide with chapter id **`mermaid`**. Native **`autoMermaidHostGraphMaxNodes`**. `RENDERER_VERSION` **2026.04.28.9**.",
+				"de": "Phase **5.x.3 (Stufe 2):** optional **`autoMermaidHostGraph`** — kleines **automatisches Mermaid**-Diagramm der Adapter-Instanzen **pro ioBroker-Host** (`lib/autoHostTopologyMermaid.js`), mit **fester Instanz-Knotenzahl** (8–80, Standard **40**, Round-Robin über Hosts). Erscheint nach dem eigenen Diagramm im Handbuch/HTML-Begrüßung + Markdown; Ausblenden mit **`mermaid`**. Native **`autoMermaidHostGraphMaxNodes`**. `RENDERER_VERSION` **2026.04.28.9**.",
+				"ru": "0.9.28: autoMermaidHostGraph; host topology Mermaid; RENDERER_VERSION",
+				"pt": "0.9.28: autoMermaidHostGraph; topologia Mermaid; RENDERER_VERSION",
+				"nl": "0.9.28: autoMermaidHostGraph; host-topologie Mermaid; RENDERER_VERSION",
+				"fr": "0.9.28 : autoMermaidHostGraph ; topologie hôtes Mermaid ; RENDERER_VERSION",
+				"it": "0.9.28: autoMermaidHostGraph; topologia host Mermaid; RENDERER_VERSION",
+				"es": "0.9.28: autoMermaidHostGraph; topología Mermaid; RENDERER_VERSION",
+				"pl": "0.9.28: autoMermaidHostGraph; topologia Mermaid; RENDERER_VERSION",
+				"uk": "0.9.28: autoMermaidHostGraph; топологія хостів Mermaid; RENDERER_VERSION",
+				"zh-cn": "0.9.28：autoMermaidHostGraph；按主机实例 Mermaid 图；RENDERER_VERSION"
+			},
+			"0.9.27": {
+				"en": "Phase **5.x.3 (step 1):** optional **`manualMermaidDiagram`** in **My documentation** — owner-written Mermaid source. **HTML** exports load Mermaid **10.9.1** from jsDelivr when the page contains a diagram; **Markdown** adds a fenced **`mermaid`** block. Hide with chapter id **`mermaid`** (User/Onboarding hide lists). Clamped to **12 000** characters in `parseManualContext`. `RENDERER_VERSION` **2026.04.28.8**.",
+				"de": "Phase **5.x.3 (Stufe 1):** optionales **`manualMermaidDiagram`** unter **Meine Dokumentation** — selbst geschriebener Mermaid-Quelltext. **HTML**-Exporte laden Mermaid **10.9.1** von jsDelivr, wenn ein Diagramm vorkommt; **Markdown** erhält einen **`mermaid`**-Codeblock. Ausblenden mit Kapitel-Id **`mermaid`** (User/Onboarding). In `parseManualContext` auf **12 000** Zeichen begrenzt. `RENDERER_VERSION` **2026.04.28.8**.",
+				"ru": "0.9.27: Mermaid manualMermaidDiagram; HTML+MD; RENDERER_VERSION",
+				"pt": "0.9.27: Mermaid manualMermaidDiagram; HTML+MD; RENDERER_VERSION",
+				"nl": "0.9.27: Mermaid manualMermaidDiagram; HTML+MD; RENDERER_VERSION",
+				"fr": "0.9.27 : Mermaid manualMermaidDiagram ; HTML + MD ; RENDERER_VERSION",
+				"it": "0.9.27: Mermaid manualMermaidDiagram; HTML+MD; RENDERER_VERSION",
+				"es": "0.9.27: Mermaid manualMermaidDiagram; HTML+MD; RENDERER_VERSION",
+				"pl": "0.9.27: Mermaid manualMermaidDiagram; HTML+MD; RENDERER_VERSION",
+				"uk": "0.9.27: Mermaid manualMermaidDiagram; HTML+MD; RENDERER_VERSION",
+				"zh-cn": "0.9.27：手动 Mermaid 图；HTML/MD；RENDERER_VERSION"
+			},
+			"0.9.26": {
+				"en": "**Phase 5.x.2 (tuning):** Onboarding **Quick Start** uses a **shorter** slice of `docModel.quickStart` (fewer system lines, room cards, highlights per room). **User** quick overview unchanged in depth; intro copy and a **link to the Rooms chapter** (HTML + User Markdown) reduce duplication. `sliceQuickStartForOnboarding` in `lib/quickStartGuide.js`. `RENDERER_VERSION` **2026.04.28.6**.",
+				"de": "**Phase 5.x.2 (Feintuning):** Onboarding-**Schnellstart** nutzt eine **kürzere** Auswahl aus `docModel.quickStart` (weniger Systemzeilen, Raumkarten, Highlights pro Raum). **User**-Kurzüberblick in der Tiefe unverändert; angepasster Text plus **Link zum Räume-Kapitel** (HTML + User-Markdown). `sliceQuickStartForOnboarding` in `lib/quickStartGuide.js`. `RENDERER_VERSION` **2026.04.28.6**.",
+				"ru": "0.9.26: Quick Start guest slice; rooms cross-link; RENDERER_VERSION",
+				"pt": "0.9.26: Quick Start convidado mais curto; link salas; RENDERER_VERSION",
+				"nl": "0.9.26: kortere Quick Start gast; link kamers; RENDERER_VERSION",
+				"fr": "0.9.26 : Quick Start invité raccourci ; lien pièces ; RENDERER_VERSION",
+				"it": "0.9.26: Quick Start ospite più corto; link stanze; RENDERER_VERSION",
+				"es": "0.9.26: Quick Start invitado más corto; enlace habitaciones; RENDERER_VERSION",
+				"pl": "0.9.26: krótszy Quick Start gościa; link pokoje; RENDERER_VERSION",
+				"uk": "0.9.26: коротший Quick Start для гостя; посилання кімнати; RENDERER_VERSION",
+				"zh-cn": "0.9.26：访客快速开始缩短；房间章节链接；RENDERER_VERSION"
+			},
+			"0.9.25": {
+				"en": "**My documentation:** new **playbook** field (`ownerPlaybookNote`) — step order, must-dos, and “do not” rules in your own words. Shown in Admin manual, User/Onboarding HTML (own section + TOC when enabled), Markdown export, and **AI owner context**. Hide via chapter id **`ownerPlaybook`**. `RENDERER_VERSION` **2026.04.28.5**.",
+				"de": "**Meine Dokumentation:** neues **Ablauf-/Playbook**-Feld (`ownerPlaybookNote`) — Reihenfolge, Muss und „bitte nicht“ in eigenen Worten. Im Admin-Handbuch, User-/Onboarding-HTML (eigenes Kapitel + Navigation), Markdown-Export und **KI-Eigentümerkontext**. Ausblenden mit Kapitel-Id **`ownerPlaybook`**. `RENDERER_VERSION` **2026.04.28.5**.",
+				"ru": "0.9.25: owner playbook note; exports; RENDERER_VERSION",
+				"pt": "0.9.25: owner playbook note; exports; RENDERER_VERSION",
+				"nl": "0.9.25: owner playbook note; exports; RENDERER_VERSION",
+				"fr": "0.9.25 : note « playbook » propriétaire ; exports ; RENDERER_VERSION",
+				"it": "0.9.25: owner playbook note; exports; RENDERER_VERSION",
+				"es": "0.9.25: owner playbook note; exports; RENDERER_VERSION",
+				"pl": "0.9.25: owner playbook note; exports; RENDERER_VERSION",
+				"uk": "0.9.25: owner playbook note; exports; RENDERER_VERSION",
+				"zh-cn": "0.9.25：维护人操作流程文本；导出；RENDERER_VERSION"
+			},
+			"0.9.24": {
+				"en": "**Clarity:** Admin chapter **Maintenance & documentation setup** (technical **Diagnosis** stays separate). Exports use **documentation setup score**; Admin **Advanced** labels updated (EN/DE/FR + EN fallbacks). All checklist checks off → explicit note in HTML/Markdown. **Quick Start:** rooms with equal device counts sorted by name. `RENDERER_VERSION` **2026.04.28.4**.",
+				"de": "**Klarstellung:** Admin-Kapitel **Wartung & Dokumentations-Setup** (technische **Diagnose** bleibt eigenes Kapitel). **Doku-Setup-Score** in Texten; **Erweitert**-Hilfen angepasst. Alle Checks aus → Hinweis im Export. **Schnellstart:** bei gleicher Gerätezahl Sortierung nach Raumname. `RENDERER_VERSION` **2026.04.28.4**.",
+				"ru": "0.9.24: naming; setup score; quick start tie-break; RENDERER_VERSION",
+				"pt": "0.9.24: naming; setup score; quick start; RENDERER_VERSION",
+				"nl": "0.9.24: naming; setup score; quick start; RENDERER_VERSION",
+				"fr": "0.9.24 : libellés, score mise en place doc, Quick Start ; RENDERER_VERSION",
+				"it": "0.9.24: naming; setup score; quick start; RENDERER_VERSION",
+				"es": "0.9.24: naming; setup score; quick start; RENDERER_VERSION",
+				"pl": "0.9.24: naming; setup score; quick start; RENDERER_VERSION",
+				"uk": "0.9.24: naming; setup score; quick start; RENDERER_VERSION",
+				"zh-cn": "0.9.24：命名与文档Setup分；快速开始同设备数按房间名；RENDERER_VERSION"
+			},
+			"0.9.23": {
+				"en": "**Maintenance score** (Admin checklist): optional **per-check toggles** and numeric **thresholds** in Advanced settings (`maintenanceScoreCheck*`, min description length, unassigned-instance warn level). Score counts **only enabled** checks. **Quick Start** room cards prefer rooms with **more devices** first. Doc export `scoreDesc` clarifies **setup/meta** vs. content. `RENDERER_VERSION` **2026.04.28.3**.",
+				"de": "**Doku-Score** (Admin-Checkliste): in **Erweitert** pro Check **ein/aus** plus **Schwellen** (Mindestlänge Beschreibung, Warnstufe „Instanzen ohne Raum“). Prozent zählt nur **aktive** Checks. **Schnellstart**: Raumkarten bevorzugen Räume mit **mehr Geräten**. `scoreDesc` präzisiert **Setup/Meta** vs. Inhalt. `RENDERER_VERSION` **2026.04.28.3**.",
+				"ru": "0.9.23: maintenance score options; quick start room order; RENDERER_VERSION",
+				"pt": "0.9.23: maintenance score options; quick start room order; RENDERER_VERSION",
+				"nl": "0.9.23: maintenance score options; quick start room order; RENDERER_VERSION",
+				"fr": "0.9.23 : score maintenance (options), Quick Start pièces ; RENDERER_VERSION",
+				"it": "0.9.23: maintenance score options; quick start room order; RENDERER_VERSION",
+				"es": "0.9.23: maintenance score options; quick start room order; RENDERER_VERSION",
+				"pl": "0.9.23: maintenance score options; quick start room order; RENDERER_VERSION",
+				"uk": "0.9.23: maintenance score options; quick start room order; RENDERER_VERSION",
+				"zh-cn": "0.9.23：维护评分可配置；快速开始房间排序；RENDERER_VERSION"
+			},
+			"0.9.22": {
+				"en": "**Maintenance — documentation setup score:** checklist (project description length, **ioBroker base URL**, unassigned instances when count ≥10). **`scriptsWithoutDescription`** in the model for info/exports — still **not** scored. `buildMaintenance` uses rooms + manual context. `RENDERER_VERSION` bump.",
+				"de": "**Wartung — Doku-Setup-Score:** Checkliste (Projektbeschreibung, **Basis-URL**, ≥10 Instanzen ohne Raum). **`scriptsWithoutDescription`** nur informativ — **kein** Score. `buildMaintenance` mit Räumen + manuellem Kontext. `RENDERER_VERSION`.",
+				"ru": "0.9.22: maintenance checklist; score; RENDERER_VERSION",
+				"pt": "0.9.22: maintenance checklist; score; RENDERER_VERSION",
+				"nl": "0.9.22: maintenance checklist; score; RENDERER_VERSION",
+				"fr": "0.9.22 : checklist maintenance, score, RENDERER_VERSION",
+				"it": "0.9.22: maintenance checklist; score; RENDERER_VERSION",
+				"es": "0.9.22: checklist mantenimiento; score; RENDERER_VERSION",
+				"pl": "0.9.22: maintenance checklist; score; RENDERER_VERSION",
+				"uk": "0.9.22: maintenance checklist; score; RENDERER_VERSION",
+				"zh-cn": "0.9.22：维护清单、评分、RENDERER_VERSION"
+			}
+		},
+		"titleLang": {
+			"en": "AutoDoc",
+			"de": "AutoDoc",
+			"ru": "АвтоДок",
+			"pt": "AutoDoc",
+			"nl": "AutoDoc",
+			"fr": "AutoDoc",
+			"it": "AutoDoc",
+			"es": "AutoDoc",
+			"pl": "AutoDoc",
+			"uk": "АвтоДок",
+			"zh-cn": "自动文档"
+		},
+		"desc": {
+			"en": "Creates structured documentation for ioBroker projects from user-defined input",
+			"de": "Erzeugt strukturierte Dokumentation für ioBroker-Projekte aus Benutzereingaben",
+			"ru": "Создает структурированную документацию для проектов ioBroker на основе пользовательского ввода",
+			"pt": "Cria documentação estruturada para projetos ioBroker a partir da entrada do usuário",
+			"nl": "Maakt gestructureerde documentatie voor ioBroker-projecten op basis van gebruikersinvoer",
+			"fr": "Crée une documentation structurée pour les projets ioBroker à partir des saisies utilisateur",
+			"it": "Crea documentazione strutturata per progetti ioBroker a partire dall'input dell'utente",
+			"es": "Crea documentación estructurada para proyectos ioBroker a partir de la entrada del usuario",
+			"pl": "Tworzy uporządkowaną dokumentację projektów ioBroker na podstawie danych użytkownika",
+			"uk": "Створює структуровану документацію для проєктів ioBroker на основі введених користувачем даних",
+			"zh-cn": "根据用户输入为 ioBroker 项目生成结构化文档"
+		},
+		"authors": [
+			"crunchip77 <41550245+crunchip77@users.noreply.github.com>"
+		],
+		"keywords": [
+			"autodoc",
+			"documentation",
+			"markdown",
+			"export",
+			"project",
+			"automation"
+		],
+		"licenseInformation": {
+			"type": "free",
+			"license": "MIT"
+		},
+		"platform": "Javascript/Node.js",
+		"icon": "autodoc.png",
+		"enabled": true,
+		"extIcon": "https://raw.githubusercontent.com/crunchip77/ioBroker.autodoc/main/admin/autodoc.png",
+		"readme": "https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md",
+		"loglevel": "info",
+		"tier": 3,
+		"dataFolder": "files",
+		"mode": "daemon",
+		"type": "general",
+		"compact": true,
+		"messagebox": true,
+		"connectionType": "local",
+		"dataSource": "push",
+		"adminUI": {
+			"config": "json"
+		},
+		"localLinks": {
+			"_default": {
+				"link": "/files/autodoc.0.files/autodoc-admin.html",
+				"name": "Admin Docs"
+			},
+			"user": {
+				"link": "/files/autodoc.0.files/autodoc-user.html",
+				"name": "User / Family"
+			},
+			"onboarding": {
+				"link": "/files/autodoc.0.files/autodoc-onboarding.html",
+				"name": "Onboarding"
+			}
+		},
+		"dependencies": [
+			{
+				"js-controller": ">=6.0.11"
+			}
+		],
+		"globalDependencies": [
+			{
+				"admin": ">=7.6.20"
+			}
+		]
+	},
+	"native": {
+		"projectName": "",
+		"projectDescription": "",
+		"manualContact": "",
+		"additionalNotes": "",
+		"guestHelpNote": "",
+		"homeRoutinesNote": "",
+		"ownerPlaybookNote": "",
+		"manualMermaidDiagram": "",
+		"autoMermaidHostGraph": false,
+		"autoMermaidHostGraphMaxNodes": 40,
+		"troubleshootWifiHint": "",
+		"troubleshootPowerHint": "",
+		"troubleshootWaterHint": "",
+		"troubleshootExtraHint": "",
+		"adapterNotes": [],
+		"roomNotes": [],
+		"onboardingHideRooms": [],
+		"onboardingHideAdapters": [],
+		"onboardingGuestShowScriptNames": false,
+		"userHideRooms": [],
+		"userHideAdapters": [],
+		"targetSystem": "ioBroker",
+		"language": "en",
+		"autoGenerateOnStart": true,
+		"autoGenerateOnEvents": false,
+		"autoGenerateInterval": 0,
+		"onlyEnabledInstances": false,
+		"hideInstanceDetailsInMarkdown": false,
+		"maxDocumentedInstances": 0,
+		"maxStoredFiles": 3,
+		"documentationStatesMode": "full",
+		"baseUrl": "",
+		"maintenanceScoreCheckDescription": true,
+		"maintenanceScoreCheckBaseUrl": true,
+		"maintenanceScoreCheckUnassigned": true,
+		"maintenanceScoreMinDescriptionChars": 40,
+		"maintenanceScoreUnassignedWarnAt": 10,
+		"exportPath": "",
+		"aiOwnerHints": "",
+		"htmlColorScheme": "auto",
+		"htmlThemePreset": "default",
+		"htmlHeaderLogoUrl": "",
+		"htmlFontStack": "",
+		"htmlExtraCss": "",
+		"customDocSectionsJson": "[]",
+		"adminChapterOrderJson": "[]",
+		"adminHiddenChaptersJson": "[]",
+		"userHiddenChaptersJson": "[]",
+		"onboardingHiddenChaptersJson": "[]",
+		"aiAnalyzeScriptSources": false,
+		"aiMaxScriptCharsForAi": 12000
+	},
+	"objects": [],
+	"instanceObjects": [
+		{
+			"_id": "info.connection",
+			"type": "state",
+			"common": {
+				"name": "If connected to service",
+				"type": "boolean",
+				"role": "indicator.connected",
+				"read": true,
+				"write": false,
+				"def": false
+			},
+			"native": {}
+		}
+	]
 }

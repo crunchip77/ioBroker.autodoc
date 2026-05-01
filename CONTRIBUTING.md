@@ -33,7 +33,7 @@ Optional: `npm run dev-server` for a local Admin/dev loop (see `@iobroker/dev-se
 - Add a dated `### x.y.z` section under **Changelog** in [`README.md`](README.md) (expected for ioBroker adapter listings).
 - Keep **`version`** in `package.json` and `io-package.json` consistent with the documented release (Adapter Checker may flag mismatches, e.g. **E6006** — follow the checker output for the current ruleset).
 - Bump **`version`** in `package.json` and `io-package.json` together.
-- Update **`common.news`** in `io-package.json` (max **20** entries in this project — `@iobroker/testing` enforces the limit; drop the oldest key if you add another).
+- Update **`common.news`** in `io-package.json` (max **7** entries for [Adapter Checker](https://adapter-check.iobroker.in/) / repository listings — drop the oldest key when you add a release; longer prose history: [`CHANGELOG_OLD.md`](CHANGELOG_OLD.md)).
 - Before proposing inclusion in the stable/beta repository set, run the **[Adapter Checker](https://adapter-check.iobroker.in/)** against the package and fix reported issues.
 
 ### npm version vs HTML renderer build

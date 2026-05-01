@@ -3,8 +3,8 @@
  * Created with @iobroker/create-adapter v3.1.2
  */
 
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
 const { createHash } = require('node:crypto');
 const utils = require('@iobroker/adapter-core');
 const QRCode = require('qrcode');
