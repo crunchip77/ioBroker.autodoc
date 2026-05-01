@@ -155,6 +155,12 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 - **Serverseitiges SVG (mmdc)** ist deshalb **Best Effort**: wenn CLI **und** OS-Stack passen → eingebettetes SVG, **Offline/PDF-tauglicher** Pfad; wenn nicht → **`<pre class="mermaid">`** + **jsDelivr** bei **Online-Browser** — **Kernfunktion** (Doku erzeugen, im Browser lesen) bleibt.
 - **Spätere Grafiken** in Freitext-/Beschreibungs-Kontexten (Fotos, Pläne, Screenshots) sollten **primär** über Wege laufen, die **ohne** Puppeteer auskommen — siehe [PLAN.md — Medien / User-Assets](PLAN.md#architektur-medien-mvp) (z. B. **externe URL**, **kleine SVG** in **`/files/`**, Größenlimits); **Mermaid** bleibt der Spezialfall für **relationale Diagramme**. Rastergrafiken serverseitig „rendert“ AutoDoc **nicht** pauschal voraus; das hält **Docker/LXC/Minimal-Images** tragfähig.
 
+**Datenbank, Offline ohne ioBroker, Neuinstallation:**
+
+- **DB darf nicht „mit der Doku mitwachsen“:** keine großen **User-Medien** in States oder der **virtuellen Dateischicht** wie bei Redis — das ist in [PLAN.md — Medien / User-Assets](PLAN.md#architektur-medien-mvp) begründet (Blob-Bloat vermeiden). Konfig bleibt schlank; **schwere** Inhalte liegen bewusst in **echten Dateien** (`/files/…`, `exportPath`) oder **extern**.
+- **„Alles offline“** im Sinne **Notfall / ioBroker aus / Neuaufbau:** die **maßgeblichen Artefakte** sind die **mit Export geschriebenen** Dateien (HTML, MD, ggf. später PDF) — die man auf **NAS, USB, Mail-Anhang** legt. Sie sollen **möglichst ohne laufenden ioBroker** und **ohne Internet** in einem Browser nutzbar sein (bereits: **QR als SVG**; **Ziel:** **Mermaid als eingebettetes SVG** sobald mmdc auf dem Generator-Host klappt — sonst Lücke bis Netz oder OS-Fix).
+- **Kopie für Neuinstallation:** Nutzer sichern den **Export-Ordner** (plus später Backitup-Strang aus Phase 5). Doku dient dann als **Referenz beim Wiederaufbau**, unabhängig vom alten Laufzeit-System.
+
 - [ ] Bestehendes **Client-Mermaid** (jsDelivr) **entfernen oder nur noch Fallback**, wenn überall eingebettetes SVG genügt.
 - [ ] **PDF:** Admin-Aktion und/oder Dateiausgabe `*.pdf` unter `/files/` bzw. `exportPath` — nach Festlegung oben.
 - [ ] README + ggf. **io-package**-Hilfe: Abhängigkeit (Chromium?), RAM, Hinweis **Offline/PDF** gemäß dieser Festlegung.
