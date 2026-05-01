@@ -52,6 +52,7 @@ Diese Datei ist die **Arbeitsliste**: was **offen** ist steht oben; **erledigte*
 | **Dokumentations-Score** (Wartung — Checkliste mit echten Kriterien) | 🟡 | **0.9.22–0.9.23:** Setup-Checks + Konfig. **0.9.24:** einheitliche Benennung **Doku-Setup / documentation setup score**, Kapitel **Wartung & Dokumentations-Setup** vs. technische **Diagnose**; Hinweis wenn alle Checks aus; Quick-Start-Sortierung stabil. Skripte ohne `desc` nur Hinweis — [§ 1.6](#dokumentations-score-checkliste) |
 | **Admin-Markdown: Diagnose-Kapitel** (inhaltliche Parität zu Admin-HTML) | *optional* | Heute kein Kapitel im `.md`-Export (`lib/markdownRenderer.js` → `case 'diagnosis': return ''`). **Optional** nachziehen: gleiche Befunde wie `lib/htmlRenderer.js` `renderDiagnosis` (z. B. Node, **Skripte ohne `desc`**, OS-Hinweis …), inkl. TOC wenn nicht versteckt — Details [§ 1.6](#admin-markdown-diagnose-optional) |
 | **Admin-Konfig — Hilfen / Mini-Beispiele** (`manualMermaidDiagram`, JSON-Felder …) | *optional* | Entscheidung offen — [§ 1.7](#admin-config-hilfen-beispiele) |
+| **Admin-UI React** (statt/nur wo nötig neben `jsonConfig`) | *optional* | Nur wenn jsonConfig für geplante Features zu eng — [§ 1.8](#admin-react-optional) |
 
 ---
 
@@ -248,6 +249,14 @@ Details: [PLAN — System-Visitenkarte](PLAN.md#system-visitenkarte-festlegung),
 - [ ] Abwägen und ggf. umsetzen:
   - **Mermaid** (`manualMermaidDiagram`): ergänzend zu `help` ggf. **UI-`placeholder`** (falls jsonConfig/Textfeld in Admin unterstützt) oder gekürzte **Beispielzeilen** nur in Hilfe-/Panel-Text (**EN/DE/FR**),
   - **JSON-Konfig** (`customDocSectionsJson`, versteckte Kapitel, Kapitelreihenfolge, …): Mini-Schema oder Link auf README-/Doku-Stelle — **nicht** ein großes Array als **`default`** in `io-package` `native`, das ungeprüft exportiert wirkt.
+
+<a id="admin-react-optional"></a>
+
+### 1.8 Admin-UI — React statt / neben `jsonConfig`? *(optional — Zukunft)*
+
+- [ ] *optional / nicht priorisiert* **Prüfen**, ob eine **React-basierte** Admin-Oberfläche (eigener Tab oder Teilersetzung) **je nach Bedarf** sinnvoll wird — z. B. wenn **jsonConfig** für geplante Features **systematisch** zu eng ist (schweres **DnD** für Kapitelreihenfolge, **Live-Preview** für Mermaid, **Medien-Galerie**/Upload-UI).
+- **Bis dahin:** bei **`jsonConfig.json` + `admin/i18n`** bleiben — weniger Build-/Wartungslast, idiomatisch für viele ioBroker-Adapter.
+- **Nicht** als kurzfristiges Ziel: Umstellung **ohne** konkrete UI-Anforderung, die sich mit jsonConfig nicht mehr sinnvoll abbilden lässt.
 
 ---
 
