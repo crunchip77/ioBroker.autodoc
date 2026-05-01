@@ -142,6 +142,13 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 4. **Offline / `file://`:** gespeicherte HTML-Datei **ohne Internet** öffnen — Diagramm sollte **sichtbar** bleiben (statisches SVG), sobald es eingebettet wurde.
 5. **`htmlColorScheme`:** **dark** vs. **light**/**auto** — Darstellung des Diagramms an **mmdc-Theme** **dark** vs. **default** prüfen.
 
+**Linux / Container: Chromium startet nicht (`libnss3.so` u. a.):**
+
+- **Symptom im Log:** `Mermaid SVG (mmdc) failed — keeping source block` mit `Failed to launch the browser process` und z. B. **`libnss3.so: cannot open shared object file`** — der Adapter **ruft mmdc korrekt** auf; das **bundled Chromium** von Puppeteer braucht aber **Zusatz-Bibliotheken** des Betriebssystems (häufig bei **schlanken Servern**, **LXC**, **Docker** ohne Chrome-Stack).
+- **Folge:** betroffene Diagramme bleiben als **`<pre class="mermaid">`**; **jsDelivr** rendert im Browser weiterhin, **Offline/PDF ohne Netz** für diese Blöcke nicht.
+- **Abhilfe (Distro-abhängig):** fehlende Pakete nachinstallieren — unter **Debian/Ubuntu** typisch u. a. `libnss3`, `libatk1.0-0`, `libatk-bridge2.0-0`, `libcups2`, `libdrm2`, `libgbm1`, `libasound2`, `libxkbcommon0`, `libxcomposite1`, `libxdamage1`, `libxfixes3`, `libxrandr2` (vgl. [Puppeteer — Chrome läuft auf Linux](https://pptr.dev/troubleshooting)); **Alpine** o. ä. andere Paketnamen/`chromium`-Ansatz.
+- **Verifikation:** nach Installation erneut Doku generieren — **keine** mmdc-Warnung mehr; im HTML **`mermaid-svg-embedded`** wie in der Testcheckliste oben.
+
 - [ ] Bestehendes **Client-Mermaid** (jsDelivr) **entfernen oder nur noch Fallback**, wenn überall eingebettetes SVG genügt.
 - [ ] **PDF:** Admin-Aktion und/oder Dateiausgabe `*.pdf` unter `/files/` bzw. `exportPath` — nach Festlegung oben.
 - [ ] README + ggf. **io-package**-Hilfe: Abhängigkeit (Chromium?), RAM, Hinweis **Offline/PDF** gemäß dieser Festlegung.
