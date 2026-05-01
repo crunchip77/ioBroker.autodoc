@@ -39,6 +39,19 @@ describe('mermaidServerSvg', () => {
 				expect(j.theme).to.equal('base');
 				expect(j.themeVariables.darkMode).to.equal(true);
 				expect(j.themeVariables.clusterBkg).to.equal('#262a3f');
+				expect(j.themeVariables.arrowheadColor).to.equal('#d0d5e0');
+			} finally {
+				await fs.promises.rm(tmp, { recursive: true, force: true });
+			}
+		});
+
+		it('uses slate preset cluster when htmlThemePreset is slate', async () => {
+			const tmp = await fs.promises.mkdtemp(path.join(os.tmpdir(), 'autodoc-mmdcfg-'));
+			try {
+				const p = await writeMmdcMermaidConfigFile(tmp, 'dark', 'slate');
+				const j = JSON.parse(await fs.promises.readFile(p, 'utf8'));
+				expect(j.themeVariables.clusterBkg).to.equal('#242b38');
+				expect(j.themeVariables.lineColor).to.equal('#9aa8bc');
 			} finally {
 				await fs.promises.rm(tmp, { recursive: true, force: true });
 			}
@@ -85,8 +98,21 @@ describe('mermaidServerSvg', () => {
 			const diagram = 'flowchart TB\n  subgraph h["Host: x"]\n    A-->B\n  end';
 			const escaped = diagram.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 			const h = `<!DOCTYPE html><html><body><pre class="mermaid">${escaped}</pre></body></html>`;
-			const out = await embedMermaidDiagramsInHtml(h, { colorScheme: 'dark' });
+			const out = await embedMermaidDiagramsInHtml(h, { colorScheme: 'dark', themePreset: 'default' });
 			expect(out).to.match(/262a3f/i);
+			expect(out).to.not.match(/ffffde/i);
+		});
+
+		it('embeds slate dark subgraph with preset cluster color', async function () {
+			if (!cliJs) {
+				this.skip();
+			}
+			this.timeout(150000);
+			const diagram = 'flowchart TB\n  subgraph h["Host: x"]\n    A-->B\n  end';
+			const escaped = diagram.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+			const h = `<!DOCTYPE html><html><body><pre class="mermaid">${escaped}</pre></body></html>`;
+			const out = await embedMermaidDiagramsInHtml(h, { colorScheme: 'dark', themePreset: 'slate' });
+			expect(out).to.match(/242b38/i);
 			expect(out).to.not.match(/ffffde/i);
 		});
 

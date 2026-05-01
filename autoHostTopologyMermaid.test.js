@@ -23,7 +23,7 @@ describe('autoHostTopologyMermaid', () => {
 			h2: [{ id: 'system.adapter.zigbee.0', enabled: true }],
 		};
 		const out = buildAutoHostTopologyMermaid(hosts, { enabled: true, maxNodes: 40 });
-		assert.ok(out.includes('flowchart TB'));
+		assert.ok(out.includes('flowchart LR'));
 		assert.ok(out.includes('Host: h1'));
 		assert.ok(out.includes('admin.0'));
 		assert.ok(out.includes('javascript.0 (off)'));
