@@ -14,7 +14,7 @@ describe('autoHostTopologyMermaid', () => {
 		);
 	});
 
-	it('renders subgraph per host with instance short ids', () => {
+	it('uses LR with direction TB per subgraph for multiple hosts', () => {
 		const hosts = {
 			h1: [
 				{ id: 'system.adapter.admin.0', enabled: true },
@@ -30,6 +30,20 @@ describe('autoHostTopologyMermaid', () => {
 		assert.ok(out.includes('javascript.0 (off)'));
 		assert.ok(out.includes('Host: h2'));
 		assert.ok(out.includes('zigbee.0'));
+	});
+
+	it('uses TB (no direction keyword) for single host', () => {
+		const hosts = {
+			solo: [
+				{ id: 'system.adapter.admin.0', enabled: true },
+				{ id: 'system.adapter.backitup.0', enabled: true },
+			],
+		};
+		const out = buildAutoHostTopologyMermaid(hosts, { enabled: true, maxNodes: 40 });
+		assert.ok(out.includes('flowchart TB'));
+		assert.ok(!out.includes('direction TB'));
+		assert.ok(out.includes('Host: solo'));
+		assert.ok(out.includes('admin.0'));
 	});
 
 	it('annotates truncation when over instance limit', () => {
