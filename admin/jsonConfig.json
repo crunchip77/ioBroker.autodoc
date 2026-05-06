@@ -305,9 +305,9 @@
 				"autoMermaidHostGraphMaxNodes": {
 					"type": "number",
 					"label": "Max instances in auto topology diagram",
-					"help": "Maximum adapter **instance** nodes in the auto-generated diagram (8–80, default 40). Hosts are still shown; instances are chosen round-robin across hosts when there are more than this limit.",
+					"help": "Maximum adapter **instance** nodes in the auto-generated diagram (8–200, default 40). Hosts are still shown; instances are chosen round-robin across hosts when there are more than this limit.",
 					"min": 8,
-					"max": 80,
+					"max": 200,
 					"default": 40,
 					"newLine": true,
 					"xs": 12,
