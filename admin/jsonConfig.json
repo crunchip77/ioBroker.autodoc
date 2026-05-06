@@ -280,7 +280,7 @@
 				"manualMermaidDiagram": {
 					"type": "text",
 					"label": "Mermaid diagram (optional)",
-					"help": "Optional Mermaid diagram you write yourself (flowchart, sequence, …). Shown in HTML exports (interactive render via Mermaid script; offline file preview needs network once) and as a ```mermaid fenced block in Markdown exports. Hide in User/Onboarding with chapter id `mermaid`. Very long input is truncated.",
+					"help": "Optional Mermaid diagram you write yourself (flowchart, sequence, …). Shown in HTML exports (interactive render via Mermaid script; offline file preview needs network once) and as a ```mermaid fenced block in Markdown exports. Hide in User/Onboarding with chapter id `mermaid`. Very long input is truncated. Tip: start with `flowchart LR` for a left-to-right layout (uses page width); `flowchart TB` (default) grows top-to-bottom.",
 					"minRows": 4,
 					"maxRows": 28,
 					"newLine": true,
