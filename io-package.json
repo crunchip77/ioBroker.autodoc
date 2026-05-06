@@ -227,7 +227,9 @@
 		"adminChapterOrderJson": "[]",
 		"adminHiddenChaptersJson": "[]",
 		"userHiddenChaptersJson": "[]",
+		"userChapterOrderJson": "[]",
 		"onboardingHiddenChaptersJson": "[]",
+		"onboardingChapterOrderJson": "[]",
 		"aiAnalyzeScriptSources": false,
 		"aiMaxScriptCharsForAi": 12000
 	},

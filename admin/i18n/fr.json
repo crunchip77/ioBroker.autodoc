@@ -215,5 +215,11 @@
 	"Onboarding HTML — hide chapters": "HTML onboarding — masquer des chapitres",
 	"Onboarding hidden chapters hint": "Masquer des blocs dans l'HTML **onboarding** et le **Markdown** (profil onboarding). Ids : `welcome`, `tips`, `guestHelp`, `stats`, `ai`, `capabilities`, `mermaid` (diagramme dans l’accueil), `rooms`, `routines`, `ownerPlaybook`, `automations`, `adapters`, `custom`, `hint`, plus pour le Markdown `quickstart`, `system`, `manual`.",
 	"Onboarding profile — hidden chapter IDs (JSON)": "Profil onboarding — chapitres masqués (JSON)",
-	"Onboarding hidden chapters JSON help": "Tableau JSON de chaînes. `[]` = tout afficher."
+	"Onboarding hidden chapters JSON help": "Tableau JSON de chaînes. `[]` = tout afficher.",
+	"User chapter order hint": "Optionnel : reordonner les chapitres du HTML **utilisateur** et du **Markdown** (profil utilisateur). Ids valides : `manual`, `ai`, `guestHelp`, `atAGlance`, `rooms`, `scripts`, `routines`, `ownerPlaybook`, `mermaid`, `adapters`, `custom`, `system`, `troubleshooting`.",
+	"User chapter order (JSON array)": "Ordre des chapitres utilisateur (tableau JSON)",
+	"User chapter order JSON help": "Tableau JSON, ex. `[\"atAGlance\",\"rooms\",\"manual\"]`. Ids : `manual`, `ai`, `guestHelp`, `atAGlance`, `rooms`, `scripts`, `routines`, `ownerPlaybook`, `mermaid`, `adapters`, `custom`, `system`, `troubleshooting`. `[]` = ordre par defaut.",
+	"Onboarding chapter order hint": "Optionnel : reordonner les chapitres du HTML **onboarding** et du **Markdown** (profil onboarding). Ids valides : `welcome`, `quickstart`, `tips`, `guestHelp`, `stats`, `ai`, `capabilities`, `mermaid`, `rooms`, `routines`, `ownerPlaybook`, `automations`, `adapters`, `custom`, `hint`, `system`, `manual`.",
+	"Onboarding chapter order (JSON array)": "Ordre des chapitres onboarding (tableau JSON)",
+	"Onboarding chapter order JSON help": "Tableau JSON, ex. `[\"quickstart\",\"tips\",\"rooms\"]`. Ids : `welcome`, `quickstart`, `tips`, `guestHelp`, `stats`, `ai`, `capabilities`, `mermaid`, `rooms`, `routines`, `ownerPlaybook`, `automations`, `adapters`, `custom`, `hint`, `system`, `manual`. `[]` = ordre par defaut."
 }

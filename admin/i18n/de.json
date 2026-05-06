@@ -221,9 +221,15 @@
 	"User hidden chapters hint": "JSON-Array von Kapitel-Ids für **User/Familie**-HTML und **Markdown** (Profil User). Beispiel: `[\"scripts\"]`. Erlaubt: `manual` (nur Beschreibung/Kontakt/Notizen), `ai`, `guestHelp`, `atAGlance` (Kurzüberblick aus Discovery; User-HTML + User-Markdown), `rooms`, `scripts`, `routines`, `ownerPlaybook`, `mermaid` (Mermaid-Diagramm unter „Manuelle Informationen“), `adapters`, `custom`, `system`, `troubleshooting`.",
 	"User profile — hidden chapter IDs (JSON)": "User-Profil — ausgeblendete Kapitel (JSON)",
 	"User hidden chapters JSON help": "JSON-Array aus Strings. Leer `[]` = alles anzeigen.",
+	"User chapter order hint": "Optional: Reihenfolge der **User/Familie**-HTML-Kapitel und des **User**-Markdowns anpassen. **Gültige Ids:** `manual`, `ai`, `guestHelp`, `atAGlance`, `rooms`, `scripts`, `routines`, `ownerPlaybook`, `mermaid`, `adapters`, `custom`, `system`, `troubleshooting` – ungenannte Ids werden in Standardreihenfolge angehängt. Leer `[]` = Standardreihenfolge.",
+	"User chapter order (JSON array)": "Reihenfolge User-Kapitel (JSON-Array)",
+	"User chapter order JSON help": "JSON-Array mit Zeichenketten, z. B. `[\"atAGlance\",\"rooms\",\"manual\",\"adapters\"]`. **Gültige Ids:** `manual`, `ai`, `guestHelp`, `atAGlance`, `rooms`, `scripts`, `routines`, `ownerPlaybook`, `mermaid`, `adapters`, `custom`, `system`, `troubleshooting`. Unbekannte Ids ignoriert; fehlende Ids am Ende in Standardreihenfolge. `[]` = eingebaute Reihenfolge.",
 	"Onboarding HTML — hide chapters": "Onboarding-HTML — Kapitel ausblenden",
 	"Onboarding hidden chapters hint": "Blöcke im **Onboarding**-HTML und passende Teile im **Markdown** (Profil Onboarding) ausblenden. Ids: `welcome`, `tips`, `guestHelp`, `stats`, `ai`, `capabilities`, `mermaid` (Diagramm im Begrüßungsbereich), `rooms`, `routines`, `ownerPlaybook`, `automations`, `adapters`, `custom`, `hint`, zusätzlich für Markdown `quickstart`, `system`, `manual`.",
 	"Onboarding profile — hidden chapter IDs (JSON)": "Onboarding-Profil — ausgeblendete Kapitel (JSON)",
 	"Onboarding hidden chapters JSON help": "JSON-Array aus Strings. Leer `[]` = alles anzeigen.",
+	"Onboarding chapter order hint": "Optional: Reihenfolge der **Onboarding/Gast**-HTML-Kapitel und des **Onboarding**-Markdowns anpassen. **Gültige Ids:** `welcome`, `quickstart`, `tips`, `guestHelp`, `stats`, `ai`, `capabilities`, `mermaid`, `rooms`, `routines`, `ownerPlaybook`, `automations`, `adapters`, `custom`, `hint`, `system`, `manual` – ungenannte Ids werden angehängt. Leer `[]` = Standardreihenfolge.",
+	"Onboarding chapter order (JSON array)": "Reihenfolge Onboarding-Kapitel (JSON-Array)",
+	"Onboarding chapter order JSON help": "JSON-Array mit Zeichenketten, z. B. `[\"quickstart\",\"tips\",\"rooms\",\"adapters\"]`. **Gültige Ids:** `welcome`, `quickstart`, `tips`, `guestHelp`, `stats`, `ai`, `capabilities`, `mermaid`, `rooms`, `routines`, `ownerPlaybook`, `automations`, `adapters`, `custom`, `hint`, `system`, `manual`. Unbekannte Ids ignoriert; fehlende Ids am Ende. `[]` = eingebaute Reihenfolge.",
 	"copyForForum": "Für Forum kopieren"
 }

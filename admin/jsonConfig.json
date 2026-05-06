@@ -941,6 +941,29 @@
 					"lg": 12,
 					"xl": 12
 				},
+				"_userChapterOrderHint": {
+					"type": "staticText",
+					"text": "User chapter order hint",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"userChapterOrderJson": {
+					"type": "text",
+					"label": "User chapter order (JSON array)",
+					"help": "User chapter order JSON help",
+					"minRows": 2,
+					"maxRows": 8,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
 				"_onboardingChaptersHeader": {
 					"type": "header",
 					"text": "Onboarding HTML — hide chapters",
@@ -962,6 +985,29 @@
 					"label": "Onboarding profile — hidden chapter IDs (JSON)",
 					"help": "Onboarding hidden chapters JSON help",
 					"minRows": 3,
+					"maxRows": 8,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"_onboardingChapterOrderHint": {
+					"type": "staticText",
+					"text": "Onboarding chapter order hint",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"onboardingChapterOrderJson": {
+					"type": "text",
+					"label": "Onboarding chapter order (JSON array)",
+					"help": "Onboarding chapter order JSON help",
+					"minRows": 2,
 					"maxRows": 8,
 					"newLine": true,
 					"xs": 12,
