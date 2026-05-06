@@ -39,18 +39,18 @@ Diese Datei ist die **Arbeitsliste**: was **offen** ist steht oben; **erledigte*
 | **0.9.x** RC-Features (Aliase, Diagnose, QR/Copy, `exportPath`, …) | ✅ | Siehe README-Changelog |
 | **Multihost** (Host-Karten, Slave-Warnung, Export) | ✅ | |
 | **KI** (Provider, Tab `hidden`, Timeouts, Temperaturen, **AI context hints**, `guestHelpNote` / `homeRoutinesNote` / `ownerPlaybookNote`) | ✅ | Sprachqualität kleiner Modelle bleibt iterativ |
-| **Custom Templates** (Kapitel ausblenden, Custom-Sections, Theme-Teile) | 🟡 | [PLAN.md — Custom Templates](PLAN.md#custom-templates-detail); **0.9.17:** Admin-Reihenfolge + **Farb-Presets** (ohne Roh-CSS); offen: **PDF**, ggf. Reihenfolge User/Onboarding, DnD |
+| **Custom Templates** (Kapitel ausblenden, Custom-Sections, Theme-Teile) | 🟡 | [PLAN.md — Custom Templates](PLAN.md#custom-templates-detail); **0.9.17:** Admin-Reihenfolge + **Farb-Presets** (ohne Roh-CSS); **dev:** Reihenfolge **User/Onboarding** (`userChapterOrderJson`, `onboardingChapterOrderJson`); offen: **PDF**, DnD |
 | **Admin-HTML Lesbarkeit** (lange Listen eingeklappt; Score ohne „Strafe“ für bewusst deaktivierte Instanzen) | ✅ | In **0.9.17** README-Changelog (block „Also on `dev`…“) + Feature-Bullets oben drunter |
 | **States entlasten** (`documentationStatesMode`, Platzhalter, Downloads aus `/files`, **`documentation.exportHashes`**) | ✅ | Default weiterhin `full`; News bei Default-Wechsel → offen |
 | **Phase 5** (PDF, Backup-Adapter, Rest Custom Templates) | ⬜ | PDF‑Merker: [§ 1.2a](#phase-5-pdf-offline-mermaid) (Offline/Druck/Mermaid vs. CDN) |
 | **Phase 5.x.1** Notfall/Troubleshooting „Hybrid“ | ✅ | Kurzzeilen, Doku-Links (0.9.18), **Auto-Checklisten** bei Node-Befund + Disclaimer (0.9.19) |
 | **Phase 5.x.2** Quick Start / Raumguides | 🟡 | Kern in **0.9.20**; **0.9.26:** Gäste-Schnellstart kürzer (`sliceQuickStartForOnboarding`), User-Kurzüberblick mit Raum-Kapitel-Link; Fein: weitere Sortierung/Übersetzung, siehe [§ 1.3 — 5.x.2](#phase-5x) |
-| **Phase 5.x.3** Mermaid | ✅ | **0.9.27:** Stufe 1 — `manualMermaidDiagram`; **0.9.28:** Stufe 2 — `autoMermaidHostGraph` (Host→Instanzen, Knotenlimit) |
+| **Phase 5.x.3** Mermaid | ✅ | **0.9.27:** Stufe 1 — `manualMermaidDiagram`; **0.9.28:** Stufe 2 — `autoMermaidHostGraph`; **dev:** `mermaidAuto` als eigene Chapter-ID (Auto-Topologie immer versteckt im Onboarding) |
 | **System-Visitenkarte** / Forum-Copy | ✅ | `textSendTo` **getForumCard** + State `info.forumCardPlain`; Diagnose-HTML nutzt `forumCard.js` |
 | **KI + Skript-Quellcode** | 🟡 | **A** umgesetzt (`aiAnalyzeScriptSources`); **B** weiterhin Phase 5 Backup |
 | **npm + ioBroker.repositories** | ⬜ | Nach Adapter-Checker |
 | **Dokumentations-Score** (Wartung — Checkliste mit echten Kriterien) | 🟡 | **0.9.22–0.9.23:** Setup-Checks + Konfig. **0.9.24:** einheitliche Benennung **Doku-Setup / documentation setup score**, Kapitel **Wartung & Dokumentations-Setup** vs. technische **Diagnose**; Hinweis wenn alle Checks aus; Quick-Start-Sortierung stabil. Skripte ohne `desc` nur Hinweis — [§ 1.6](#dokumentations-score-checkliste) |
-| **Admin-Markdown: Diagnose-Kapitel** (inhaltliche Parität zu Admin-HTML) | *optional* | Heute kein Kapitel im `.md`-Export (`lib/markdownRenderer.js` → `case 'diagnosis': return ''`). **Optional** nachziehen: gleiche Befunde wie `lib/htmlRenderer.js` `renderDiagnosis` (z. B. Node, **Skripte ohne `desc`**, OS-Hinweis …), inkl. TOC wenn nicht versteckt — Details [§ 1.6](#admin-markdown-diagnose-optional) |
+| **Admin-Markdown: Diagnose-Kapitel** ✅ (inhaltliche Parität zu Admin-HTML) | *optional* | Heute kein Kapitel im `.md`-Export (`lib/markdownRenderer.js` → `case 'diagnosis': return ''`). **Optional** nachziehen: gleiche Befunde wie `lib/htmlRenderer.js` `renderDiagnosis` (z. B. Node, **Skripte ohne `desc`**, OS-Hinweis …), inkl. TOC wenn nicht versteckt — Details [§ 1.6](#admin-markdown-diagnose-optional) |
 | **Admin-Konfig — Hilfen / Mini-Beispiele** (`manualMermaidDiagram`, JSON-Felder …) | *optional* | Entscheidung offen — [§ 1.7](#admin-config-hilfen-beispiele) |
 | **Admin-UI React** (statt/nur wo nötig neben `jsonConfig`) | *optional* | Nur wenn jsonConfig für geplante Features zu eng — [§ 1.8](#admin-react-optional) |
 
@@ -111,7 +111,8 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 
 - [ ] PDF-Export — Merker bei Umsetzung: [§ 1.2a](#phase-5-pdf-offline-mermaid)
 - [ ] Backup-Anbindung (siehe [Backup / ioBroker.backitup](#backup-backitup-festlegung) — **tar.gz**, Pfad und/oder `sendTo` Backitup)
-- [ ] Custom Templates — **Rest** (nach 0.9.17): ggf. **PDF**, Reihenfolge **User/Onboarding**, Drag-and-Drop — [PLAN.md — Custom Templates](PLAN.md#custom-templates-detail)
+- [x] Custom Templates — **Reihenfolge User/Onboarding** (`userChapterOrderJson`, `onboardingChapterOrderJson`) — [PLAN.md — Custom Templates](PLAN.md#custom-templates-detail)
+- [ ] Custom Templates — **Rest**: ggf. **PDF**, Drag-and-Drop — [PLAN.md — Custom Templates](PLAN.md#custom-templates-detail)
 
 <a id="phase-5-pdf-offline-mermaid"></a>
 
@@ -240,7 +241,7 @@ Details: [PLAN — System-Visitenkarte](PLAN.md#system-visitenkarte-festlegung),
 
 <a id="admin-markdown-diagnose-optional"></a>
 
-- [ ] *(optional — Backlog, nicht priorisiert)* **Admin-Markdown: Diagnose-Kapitel** analog zu **Admin-HTML** ausgeben. Aktuell: **`case 'diagnosis': return ''`** in `lib/markdownRenderer.js` — das Kapitel erscheint **nicht** in der `.md`. **Wenn** gewünscht: z. B. `renderDiagnosisMarkdown(docModel)` mit inhaltlicher **Parität** zu `lib/htmlRenderer.js` `renderDiagnosis` (Scan-Status, Node-Befund, Hinweis **aktive Skripte ohne `common.desc`**, OS-Hinweis, Forum-Karte o. ä.) und **TOC**-Zeile ergänzen, solange das Kapitel nicht per Admin versteckt ist.
+- [x] *(umgesetzt)* **Admin-Markdown: Diagnose-Kapitel** analog zu **Admin-HTML** ausgeben. Aktuell: **`case 'diagnosis': return ''`** in `lib/markdownRenderer.js` — das Kapitel erscheint **nicht** in der `.md`. **Wenn** gewünscht: z. B. `renderDiagnosisMarkdown(docModel)` mit inhaltlicher **Parität** zu `lib/htmlRenderer.js` `renderDiagnosis` (Scan-Status, Node-Befund, Hinweis **aktive Skripte ohne `common.desc`**, OS-Hinweis, Forum-Karte o. ä.) und **TOC**-Zeile ergänzen, solange das Kapitel nicht per Admin versteckt ist.
 
 <a id="admin-config-hilfen-beispiele"></a>
 
@@ -284,6 +285,14 @@ Ausführlich: [PLAN.md — Zukunftsvision](PLAN.md#zukunftsvision). **Medien, Re
 ## Anhang A — Vollständige Checklisten: Erledigt (Referenz)
 
 Der folgende Stand ist **historisch vollständig** (✅). Bei Abweichungsfragen immer **Git / README-Changelog** prüfen.
+
+### Dev (nach 0.9.28) — Adapter-Ansicht, Chapter-Reihenfolge, mermaidAuto ✅
+
+- [x] **Adapter-Details Admin-HTML:** Tabelle → zugeklappter `<details>`-Block + responsives **Karten-Grid** (auto-fill, min. 300 px); Instanz-Details per Klick ausklappbar; JS-Filter auf Cards umgestellt; `enabledShort` i18n (EN/DE/FR)
+- [x] **Adapter-Details Admin-Markdown:** kompakte Übersichtstabelle (Name, Beschreibung, Badges, Aktiv/Gesamt) + Instanz-Details je aktivem Adapter + deaktivierte Adapter in `<details>`-Block
+- [x] **User/Onboarding Kapitelreihenfolge:** `userChapterOrderJson` + `onboardingChapterOrderJson` (analog `adminChapterOrderJson`); `parseUserChapterOrder` / `parseOnboardingChapterOrder` in `lib/docTemplateConfig.js`; `docModel.userChapterOrder` / `.onboardingChapterOrder`; HTML + Markdown Dispatcher; i18n EN/DE/FR
+- [x] **mermaidAuto:** separate Chapter-ID für auto-generierte Host-Topologie (immer versteckt im Onboarding-Profil); `mermaid` = manuell, `mermaidAuto` = auto-Topologie; `EXTRA_HIDDEN_CHAPTER_IDS`; i18n Hinweistexte aktualisiert
+- [x] **Admin-Markdown: Diagnose-Kapitel** — `renderDiagnosisMarkdown` in `lib/markdownRenderer.js`; Parität zu Admin-HTML; TOC-Zeile
 
 ### Release 0.9.17 — Custom Templates (Rest, Teil) ✅
 

@@ -380,9 +380,9 @@ Custom Templates kann vieles bedeuten. Sinnvolle Scope-Abgrenzung nach Aufwand u
 
 - **Ebene 3 (MVP):** JSON `customDocSectionsJson` — Liste `{ title, body[, profiles] }`, Markdown → **alle drei HTML-Profile** + **Markdown-Export**; Nav-Einträge; KI-Owner-Context nennt die Kapitelüberschriften.
 - **Ebene 2 (Teil):** `htmlColorScheme` (auto / light / dark), `htmlHeaderLogoUrl` (https oder `/…`), `htmlFontStack`, `htmlExtraCss` — nur **exportiertes HTML**, nicht Markdown. **0.9.17:** `htmlThemePreset` — feste **Paletten** (default, high contrast, warm, slate) als CSS-Variablen, ohne dass Nutzer Roh-CSS schreiben müssen (ergänzt, ersetzt nicht `htmlExtraCss`).
-- **Ebene 1 (Teil):** `adminHiddenChaptersJson` — Kapitel im **Admin-HTML** ausblenden (und im **Markdown**, wenn Dokumentationsprofil Admin); optional **`custom`** für eigene Markdown-Kapitel. Zusätzlich **`userHiddenChaptersJson`** / **`onboardingHiddenChaptersJson`** — Kapitel im **User-** bzw. **Onboarding-HTML** und im passenden **Markdown-Profil**; **keine** freie Reihenfolge (nur an/aus). **0.9.17:** `adminChapterOrderJson` — **Reihenfolge** der **Admin**-Kapitel (JSON-Liste, unbekannte/fehlende Ids: Merge mit Default); **User/Onboarding**-Reihenfolge unverändert zukünftig/Phase 5.
+- **Ebene 1 (Teil):** `adminHiddenChaptersJson` — Kapitel im **Admin-HTML** ausblenden (und im **Markdown**, wenn Dokumentationsprofil Admin); optional **`custom`** für eigene Markdown-Kapitel. Zusätzlich **`userHiddenChaptersJson`** / **`onboardingHiddenChaptersJson`**; **`mermaidAuto`** als eigene Chapter-ID (auto-Topologie, immer versteckt im Onboarding). **0.9.17:** `adminChapterOrderJson` — **Reihenfolge** der **Admin**-Kapitel; **dev:** `userChapterOrderJson` / `onboardingChapterOrderJson` — Reihenfolge **User/Onboarding**-Kapitel (JSON-Liste, Merge mit Default).
 
-**Noch offen (bewusst):** Drag-and-drop, freie **User/Onboarding**-Kapitelreihenfolge, **PDF**, beliebig viele / editierbare **eigene** Presets, Ebene 4–5.
+**Noch offen (bewusst):** Drag-and-drop, **PDF**, beliebig viele / editierbare **eigene** Presets, Ebene 4–5.
 
 ---
 
