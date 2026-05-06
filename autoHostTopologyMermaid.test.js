@@ -14,7 +14,7 @@ describe('autoHostTopologyMermaid', () => {
 		);
 	});
 
-	it('uses LR with direction TB per subgraph for multiple hosts', () => {
+	it('renders subgraph per host with instance short ids', () => {
 		const hosts = {
 			h1: [
 				{ id: 'system.adapter.admin.0', enabled: true },
@@ -32,18 +32,17 @@ describe('autoHostTopologyMermaid', () => {
 		assert.ok(out.includes('zigbee.0'));
 	});
 
-	it('uses TB (no direction keyword) for single host', () => {
+	it('uses invisible links (~~~) to chain nodes in grid columns', () => {
 		const hosts = {
-			solo: [
-				{ id: 'system.adapter.admin.0', enabled: true },
-				{ id: 'system.adapter.backitup.0', enabled: true },
-			],
+			solo: Array.from({ length: 9 }, (_, i) => ({
+				id: `system.adapter.adp${i}.0`,
+				enabled: true,
+			})),
 		};
 		const out = buildAutoHostTopologyMermaid(hosts, { enabled: true, maxNodes: 40 });
-		assert.ok(out.includes('flowchart TB'));
-		assert.ok(!out.includes('direction TB'));
-		assert.ok(out.includes('Host: solo'));
-		assert.ok(out.includes('admin.0'));
+		assert.ok(out.includes('flowchart LR'));
+		assert.ok(out.includes('direction TB'));
+		assert.ok(out.includes('~~~'), 'should contain invisible column chains');
 	});
 
 	it('annotates truncation when over instance limit', () => {
