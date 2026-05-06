@@ -215,7 +215,7 @@
 	"Custom sections (JSON)": "Custom sections (JSON)",
 	"Custom sections JSON help": "See the hint above. After editing, run **Generate documentation** again.",
 	"User/Family HTML — hide chapters": "User/Family HTML — hide chapters",
-	"User hidden chapters hint": "JSON array of chapter ids to hide in **User/Family** HTML and in **Markdown** when the documentation profile is User. Example: `[\"scripts\",\"adapters\"]`. Valid ids: `manual` (project description/contact/notes only), `ai`, `guestHelp`, `atAGlance` (Quick overview from discovery; User HTML + User Markdown), `rooms`, `scripts`, `routines`, `ownerPlaybook`, `mermaid` (owner Mermaid diagram under manual information), `adapters`, `custom`, `system`, `troubleshooting`.",
+	"User hidden chapters hint": "JSON array of chapter ids to hide in **User/Family** HTML and in **Markdown** when the documentation profile is User. Example: `[\"scripts\",\"adapters\"]`. Valid ids: `manual`, `ai`, `guestHelp`, `atAGlance`, `rooms`, `scripts`, `routines`, `ownerPlaybook`, `mermaid` (user-defined Mermaid diagram), `mermaidAuto` (auto-generated host topology — not shown in Onboarding), `adapters`, `custom`, `system`, `troubleshooting`.",
 	"User profile — hidden chapter IDs (JSON)": "User profile — hidden chapter IDs (JSON)",
 	"User hidden chapters JSON help": "JSON array of strings. Empty `[]` shows all.",
 	"User chapter order hint": "Optional: reorder **User/Family** HTML and **User** Markdown chapters. Enter **chapter ids** below in the desired order. **Valid ids:** `manual`, `ai`, `guestHelp`, `atAGlance`, `rooms`, `scripts`, `routines`, `ownerPlaybook`, `mermaid`, `adapters`, `custom`, `system`, `troubleshooting` — any id you omit is appended in the default order. Empty `[]` = default order.",

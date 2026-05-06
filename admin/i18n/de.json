@@ -218,7 +218,7 @@
 	"Custom sections (JSON)": "Eigene Kapitel (JSON)",
 	"Custom sections JSON help": "Siehe Hinweis oben. Nach Änderung **Dokumentation generieren** ausführen.",
 	"User/Family HTML — hide chapters": "User/Familie-HTML — Kapitel ausblenden",
-	"User hidden chapters hint": "JSON-Array von Kapitel-Ids für **User/Familie**-HTML und **Markdown** (Profil User). Beispiel: `[\"scripts\"]`. Erlaubt: `manual` (nur Beschreibung/Kontakt/Notizen), `ai`, `guestHelp`, `atAGlance` (Kurzüberblick aus Discovery; User-HTML + User-Markdown), `rooms`, `scripts`, `routines`, `ownerPlaybook`, `mermaid` (Mermaid-Diagramm unter „Manuelle Informationen“), `adapters`, `custom`, `system`, `troubleshooting`.",
+	"User hidden chapters hint": "JSON-Array von Kapitel-Ids für **User/Familie**-HTML und **Markdown** (Profil User). Erlaubt: `manual`, `ai`, `guestHelp`, `atAGlance`, `rooms`, `scripts`, `routines`, `ownerPlaybook`, `mermaid` (manuelles Mermaid-Diagramm), `mermaidAuto` (automatisches Host-Topologie-Diagramm — im Onboarding nie sichtbar), `adapters`, `custom`, `system`, `troubleshooting`.",
 	"User profile — hidden chapter IDs (JSON)": "User-Profil — ausgeblendete Kapitel (JSON)",
 	"User hidden chapters JSON help": "JSON-Array aus Strings. Leer `[]` = alles anzeigen.",
 	"User chapter order hint": "Optional: Reihenfolge der **User/Familie**-HTML-Kapitel und des **User**-Markdowns anpassen. **Gültige Ids:** `manual`, `ai`, `guestHelp`, `atAGlance`, `rooms`, `scripts`, `routines`, `ownerPlaybook`, `mermaid`, `adapters`, `custom`, `system`, `troubleshooting` – ungenannte Ids werden in Standardreihenfolge angehängt. Leer `[]` = Standardreihenfolge.",
