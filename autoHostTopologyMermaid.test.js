@@ -45,6 +45,19 @@ describe('autoHostTopologyMermaid', () => {
 		assert.ok(out.includes('~~~'), 'should contain invisible column chains');
 	});
 
+	it('marks disabled instances with offNode class', () => {
+		const hosts = {
+			h: [
+				{ id: 'system.adapter.admin.0', enabled: true },
+				{ id: 'system.adapter.backup.0', enabled: false },
+			],
+		};
+		const out = buildAutoHostTopologyMermaid(hosts, { enabled: true, maxNodes: 40 });
+		assert.ok(out.includes('classDef offNode'), 'should define offNode style');
+		assert.ok(out.includes(':::offNode'), 'disabled instance should have offNode class');
+		assert.ok(!out.includes('"admin.0":::offNode'), 'enabled instance must not have offNode class');
+	});
+
 	it('annotates truncation when over instance limit', () => {
 		const hosts = {
 			a: [
