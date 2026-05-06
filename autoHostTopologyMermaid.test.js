@@ -24,6 +24,7 @@ describe('autoHostTopologyMermaid', () => {
 		};
 		const out = buildAutoHostTopologyMermaid(hosts, { enabled: true, maxNodes: 40 });
 		assert.ok(out.includes('flowchart LR'));
+		assert.ok(out.includes('direction TB'));
 		assert.ok(out.includes('Host: h1'));
 		assert.ok(out.includes('admin.0'));
 		assert.ok(out.includes('javascript.0 (off)'));
