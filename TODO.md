@@ -289,7 +289,7 @@ Der folgende Stand ist **historisch vollständig** (✅). Bei Abweichungsfragen 
 ### Dev (nach 0.9.28) — Adapter-Ansicht, Chapter-Reihenfolge, mermaidAuto ✅
 
 - [x] **Adapter-Details Admin-HTML:** Tabelle → zugeklappter `<details>`-Block + responsives **Karten-Grid** (auto-fill, min. 300 px); Instanz-Details per Klick ausklappbar; JS-Filter auf Cards umgestellt; `enabledShort` i18n (EN/DE/FR)
-- [x] **Adapter-Details Admin-Markdown:** kompakte Übersichtstabelle (Name, Beschreibung, Badges, Aktiv/Gesamt) + Instanz-Details je aktivem Adapter + deaktivierte Adapter in `<details>`-Block
+- [x] **Adapter-Details Admin-Markdown:** kompakte Übersichtstabelle (Name, Beschreibung, Badges, Aktiv/Gesamt) + Instanz-Details je aktivem Adapter + deaktivierte Adapter in `<details>`-Block; gesamter Abschnitt in `<details>` zugeklappt (alle drei Profile); `mermaidAutoTopologyMdHint` i18n statt rohem Code-Block
 - [x] **User/Onboarding Kapitelreihenfolge:** `userChapterOrderJson` + `onboardingChapterOrderJson` (analog `adminChapterOrderJson`); `parseUserChapterOrder` / `parseOnboardingChapterOrder` in `lib/docTemplateConfig.js`; `docModel.userChapterOrder` / `.onboardingChapterOrder`; HTML + Markdown Dispatcher; i18n EN/DE/FR
 - [x] **mermaidAuto:** separate Chapter-ID für auto-generierte Host-Topologie (immer versteckt im Onboarding-Profil); `mermaid` = manuell, `mermaidAuto` = auto-Topologie; `EXTRA_HIDDEN_CHAPTER_IDS`; i18n Hinweistexte aktualisiert
 - [x] **Admin-Markdown: Diagnose-Kapitel** — `renderDiagnosisMarkdown` in `lib/markdownRenderer.js`; Parität zu Admin-HTML; TOC-Zeile
