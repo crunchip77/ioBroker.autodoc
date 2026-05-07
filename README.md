@@ -79,6 +79,8 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 
 ## Changelog
 
+The **seven** sections below match **`common.news`** in `io-package.json` (ioBroker repository builder keeps only the latest **7** news entries). Older versions are in [`CHANGELOG_OLD.md`](CHANGELOG_OLD.md).
+
 ### 0.9.31 (2026-05-07)
 
 - **Score 3 "Dokumentationstiefe" rework:** removed the "instances without room" check entirely from all scores (caused confusion, too many legitimate exceptions). Replaced with two new checks: **"custom documentation chapter has content"** and **"AI provider configured for script enrichment"** (conditional — only shown when scripts exist, auto-passes when no scripts are present).
@@ -121,23 +123,7 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 
 - **My documentation — playbook:** optional **`ownerPlaybookNote`** (household procedures: order, must-dos, do-not rules in plain language). Shown in Admin manual, separate **User** / **Onboarding** HTML chapter (`#owner-playbook`) with nav when filled, **Markdown** (User/Onboarding profile) under **Manual information**, and **AI owner context**. Hide with chapter id **`ownerPlaybook`** on tab **HTML export & extra sections** (not *Advanced*). Export/renderer: `RENDERER_VERSION` **2026.04.28.5**. Admin UI copy EN/DE/FR; **Doc layout intro** clarifies Admin vs User/Onboarding hide lists.
 
-### 0.9.24 (2026-04-28)
-
-- **Wording — documentation setup vs. diagnosis:** Admin chapter title **Maintenance & documentation setup** (EN/DE/FR); technical **Diagnosis** stays its own chapter. Labels use **documentation setup score** where appropriate; checklist copy points to Adapter **Advanced** and configurable minimums. If **all** score checks are disabled, HTML/Markdown show a short explanation (100 % default).
-- **Quick Start:** when two rooms have the same device count, order is **stable** (locale-aware room name).
-- **Admin jsonConfig:** helper texts aligned with **documentation setup score** (EN/DE/FR; other admin locales keep English until translated). Short **intro line** between **ioBroker base URL** and the setup-score block explains the link (QR/bookmarks). `RENDERER_VERSION` **2026.04.28.4**.
-
-### 0.9.23 (2026-04-28)
-
-- **Maintenance / documentation score:** Advanced settings add **per-check toggles** and numeric **thresholds** (minimum project description length, unassigned-instance warn level). The percentage counts **only checks left enabled**. Export copy (`scoreDesc`, EN/DE/FR) states that the score reflects **setup / meta**, not script or room “content quality”.
-- **Quick Start (5.x.2):** room guide cards are ordered with **more device-rich rooms first** (`lib/quickStartGuide.js`).
-- **Admin i18n:** new Advanced block strings EN/DE/FR; other admin languages ship English until translated. `RENDERER_VERSION` **2026.04.28.3**.
-
-### 0.9.22 (2026-04-28)
-
-- **Documentation score — setup checklist:** Maintenance checklist adds **project narrative** (manual description **≥ 40** characters), **base URL unset** (Advanced base URL non‑empty), and **instances without room** (fewer than **10** unassigned instances). **`common.desc`** for scripts and **scripts without `desc`** are listed for information only and **never** affect the score. **`RENDERER_VERSION` 2026.04.28.2**.
-
-Older releases (**0.9.21** and earlier): [`CHANGELOG_OLD.md`](CHANGELOG_OLD.md).
+Older releases (**0.9.24** and earlier): [`CHANGELOG_OLD.md`](CHANGELOG_OLD.md).
 
 ## License
 

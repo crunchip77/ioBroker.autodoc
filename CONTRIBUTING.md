@@ -36,10 +36,11 @@ After changing **dependencies** or **overrides**, run **`npm install`**, commit 
 
 ## Releases and README changelog
 
-- Add a dated `### x.y.z` section under **Changelog** in [`README.md`](README.md) (expected for ioBroker adapter listings).
+- Keep the **Changelog** section in [`README.md`](README.md) aligned with **`common.news`** in `io-package.json`: list only the **same 7** newest versions; move dropped versions into [`CHANGELOG_OLD.md`](CHANGELOG_OLD.md) (see intro there).
+- Add a dated `### x.y.z` section at the **top** of that window when you ship a release (expected for ioBroker adapter listings).
 - Keep **`version`** in `package.json` and `io-package.json` consistent with the documented release (Adapter Checker may flag mismatches, e.g. **E6006** — follow the checker output for the current ruleset).
 - Bump **`version`** in `package.json` and `io-package.json` together.
-- Update **`common.news`** in `io-package.json` (max **7** entries for [Adapter Checker](https://adapter-check.iobroker.in/) / repository listings — drop the oldest key when you add a release; longer prose history: [`CHANGELOG_OLD.md`](CHANGELOG_OLD.md)).
+- Update **`common.news`** in `io-package.json` (max **7** entries for [Adapter Checker](https://adapter-check.iobroker.in/) / repository listings — drop the oldest key when you add a release; move the dropped **README** section to [`CHANGELOG_OLD.md`](CHANGELOG_OLD.md); keep longer prose history there).
 - Before proposing inclusion in the stable/beta repository set, run the **[Adapter Checker](https://adapter-check.iobroker.in/)** against the package and fix reported issues.
 
 ### npm version vs HTML renderer build
