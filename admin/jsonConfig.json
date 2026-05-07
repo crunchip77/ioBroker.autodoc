@@ -414,35 +414,6 @@
 					"lg": 6,
 					"xl": 6
 				},
-				"_aiHintsHeader": {
-					"type": "header",
-					"text": "AI context hints",
-					"size": 4,
-					"newLine": true
-				},
-				"_aiHintsHint": {
-					"type": "staticText",
-					"text": "AI context hints hint",
-					"newLine": true,
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12
-				},
-				"aiOwnerHints": {
-					"type": "text",
-					"label": "AI context hints (owner notes)",
-					"help": "AI context hints help",
-					"minRows": 6,
-					"maxRows": 18,
-					"newLine": true,
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12
-				},
 				"_adapterNotesHeader": {
 					"type": "header",
 					"text": "Per-adapter notes",
@@ -1348,6 +1319,38 @@
 					"md": 6,
 					"lg": 6,
 					"xl": 6
+				},
+				"_aiHintsHeader": {
+					"type": "header",
+					"text": "AI context hints",
+					"size": 4,
+					"newLine": true,
+					"hidden": "data.aiProvider === 'none'"
+				},
+				"_aiHintsHint": {
+					"type": "staticText",
+					"text": "AI context hints hint",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12,
+					"hidden": "data.aiProvider === 'none'"
+				},
+				"aiOwnerHints": {
+					"type": "text",
+					"label": "AI context hints (owner notes)",
+					"help": "AI context hints help",
+					"minRows": 6,
+					"maxRows": 18,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12,
+					"hidden": "data.aiProvider === 'none'"
 				},
 				"_aiSectionTuning": {
 					"type": "header",

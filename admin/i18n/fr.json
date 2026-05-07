@@ -40,7 +40,7 @@
 	"Documentation & layout": "Documentation & mise en page",
 	"Admin tab orientation AI": "Optionnel : connecter une IA pour de courts textes d’appoint dans les exports. Laissez le fournisseur sur Désactivé si vous n’en voulez pas. Ollama reste local ; les fournisseurs cloud envoient des données vers Internet — voir l’avertissement confidentialité ci‑dessous.",
 	"Admin tab orientation basic": "Onglet « Paramètres de base » : langue, régénération, valeurs live optionnelles, Générer maintenant / dernier run / carte forum. Les onglets « Ma documentation », « Avancé » et « Export HTML & sections supplémentaires » contiennent contenus et filtres. Notifications et IA en fin sont optionnels.",
-	"Admin tab orientation documentation": "Cet onglet : textes à lire. « Avancé » : filtres, détail Markdown, limites, URL de base pour liens/QR, stockage des exports, copie fichier optionnelle, score configuration. « Export HTML… » : couleur/thème, chapitres affichés et ordre, blocs Markdown personnalisés.",
+	"Admin tab orientation documentation": "Cet onglet : textes à lire. « Avancé » : filtres, détail Markdown, limites, URL de base pour liens/QR, stockage des exports, copie fichier optionnelle, score configuration. « Export HTML… » : couleur/thème, chapitres affichés et ordre, blocs Markdown personnalisés. Les **indices de contexte IA** (prompt seulement, jamais dans l’export) sont sous **Documentation IA** dès qu’un fournisseur est activé.",
 	"Admin tab orientation notify": "Optionnel : envoyer un message (ex. Telegram, e‑mail) après chaque génération. Ignorez cet onglet si vous n’en avez pas besoin.",
 	"Basic section profile": "Profil et langue",
 	"Basic section triggers": "Quand régénérer",
