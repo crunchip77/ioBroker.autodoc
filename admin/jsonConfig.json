@@ -196,9 +196,9 @@
 				}
 			}
 		},
-		"tabDocumentation": {
+		"tabManual": {
 			"type": "panel",
-			"label": "Documentation & layout",
+			"label": "My documentation",
 			"items": {
 				"_documentationOrientation": {
 					"type": "staticText",
@@ -210,966 +210,955 @@
 					"lg": 12,
 					"xl": 12
 				},
-				"docNestTabs": {
-					"type": "tabs",
-					"items": {
-						"docSubManual": {
-							"type": "panel",
-							"label": "My documentation",
-							"items": {
-								"_manualHint": {
-									"type": "staticText",
-									"text": "Manual documentation hint",
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 12,
-									"lg": 12,
-									"xl": 12
-								},
-								"_manualSectionProject": {
-									"type": "header",
-									"text": "Manual section project",
-									"size": 4,
-									"newLine": true
-								},
-								"projectName": {
-									"type": "text",
-									"label": "Project name",
-									"help": "Name of the ioBroker project or installation",
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 6,
-									"lg": 6,
-									"xl": 6
-								},
-								"projectDescription": {
-									"type": "text",
-									"label": "Project description",
-									"help": "What does this system do? e.g. 'Single-family home, heating + lighting + security on 3 floors'",
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 12,
-									"lg": 12,
-									"xl": 12
-								},
-								"manualContact": {
-									"type": "text",
-									"label": "Contact person",
-									"help": "Who manages this system? e.g. 'Max Mustermann, Telegram @max' - shown so guests and family know who to ask",
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 6,
-									"lg": 6,
-									"xl": 6
-								},
-								"additionalNotes": {
-									"type": "text",
-									"label": "General notes",
-									"help": "Anything that doesn't fit elsewhere: e.g. 'Backup runs every Sunday, server is in the basement'",
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 12,
-									"lg": 12,
-									"xl": 12
-								},
-								"_guestFamilyPlainHeader": {
-									"type": "header",
-									"text": "Guest & family (plain language)",
-									"size": 4,
-									"newLine": true
-								},
-								"guestHelpNote": {
-									"type": "text",
-									"label": "Help & emergencies (guests/family)",
-									"help": "Who to call, what to try if something fails, where the fuse box is — your words only; nothing is invented automatically.",
-									"minRows": 4,
-									"maxRows": 16,
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 12,
-									"lg": 12,
-									"xl": 12
-								},
-								"homeRoutinesNote": {
-									"type": "text",
-									"label": "Routines & automations (your words)",
-									"help": "Describe in everyday language what often runs by itself (lights, heating, blinds). Shown near the script list; complements technical script names.",
-									"minRows": 4,
-									"maxRows": 18,
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 12,
-									"lg": 12,
-									"xl": 12
-								},
-								"ownerPlaybookNote": {
-									"type": "text",
-									"label": "How we run this home (your playbook)",
-									"help": "Step-by-step or bullet notes only you maintain: typical order of doing things, what must be done, what guests or family must not change (your words; nothing is invented automatically). Shown as its own section in family and guest docs.",
-									"minRows": 4,
-									"maxRows": 22,
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 12,
-									"lg": 12,
-									"xl": 12
-								},
-								"manualMermaidDiagram": {
-									"type": "text",
-									"label": "Mermaid diagram (optional)",
-									"help": "Optional Mermaid diagram you write yourself (flowchart, sequence, …). Shown in HTML exports (interactive render via Mermaid script; offline file preview needs network once) and as a ```mermaid fenced block in Markdown exports. Hide in User/Onboarding with chapter id `mermaid`. Very long input is truncated. Tip: start with `flowchart LR` for a left-to-right layout (uses page width); `flowchart TB` (default) grows top-to-bottom.",
-									"minRows": 4,
-									"maxRows": 28,
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 12,
-									"lg": 12,
-									"xl": 12
-								},
-								"autoMermaidHostGraph": {
-									"type": "checkbox",
-									"label": "Auto host topology diagram (Mermaid)",
-									"help": "When enabled, adds a second Mermaid block: adapter instances grouped by ioBroker host. Useful for multihost setups. Hard-capped number of instance nodes (see next setting). Not a full wiring graph. Same hide chapter id `mermaid` as your own diagram.",
-									"default": false,
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 12,
-									"lg": 12,
-									"xl": 12
-								},
-								"autoMermaidHostGraphMaxNodes": {
-									"type": "number",
-									"label": "Max instances in auto topology diagram",
-									"help": "Maximum adapter **instance** nodes in the auto-generated diagram (8–200, default 40). Hosts are still shown; instances are chosen round-robin across hosts when there are more than this limit.",
-									"min": 8,
-									"max": 200,
-									"default": 40,
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 6,
-									"lg": 6,
-									"xl": 6
-								},
-								"_troubleshootQuickHeader": {
-									"type": "header",
-									"text": "Troubleshooting — quick lines (optional)",
-									"size": 4,
-									"newLine": true
-								},
-								"_troubleshootQuickHint": {
-									"type": "staticText",
-									"text": "Troubleshooting quick lines hint",
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 12,
-									"lg": 12,
-									"xl": 12
-								},
-								"troubleshootWifiHint": {
-									"type": "text",
-									"label": "Quick: Wi-Fi / network",
-									"help": "One line, e.g. guest Wi-Fi name or where a repeater is — optional.",
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 6,
-									"lg": 6,
-									"xl": 6
-								},
-								"troubleshootPowerHint": {
-									"type": "text",
-									"label": "Quick: power / fuses",
-									"help": "One line, e.g. where the electrical panel is — optional.",
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 6,
-									"lg": 6,
-									"xl": 6
-								},
-								"troubleshootWaterHint": {
-									"type": "text",
-									"label": "Quick: water shutoff",
-									"help": "One line, e.g. where to turn off main water — optional.",
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 6,
-									"lg": 6,
-									"xl": 6
-								},
-								"troubleshootExtraHint": {
-									"type": "text",
-									"label": "Quick: other",
-									"help": "One more short line (alarm code location, key box, etc.) — optional.",
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 6,
-									"lg": 6,
-									"xl": 6
-								},
-								"_aiHintsHeader": {
-									"type": "header",
-									"text": "AI context hints",
-									"size": 4,
-									"newLine": true
-								},
-								"_aiHintsHint": {
-									"type": "staticText",
-									"text": "AI context hints hint",
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 12,
-									"lg": 12,
-									"xl": 12
-								},
-								"aiOwnerHints": {
-									"type": "text",
-									"label": "AI context hints (owner notes)",
-									"help": "AI context hints help",
-									"minRows": 6,
-									"maxRows": 18,
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 12,
-									"lg": 12,
-									"xl": 12
-								},
-								"_adapterNotesHeader": {
-									"type": "header",
-									"text": "Per-adapter notes",
-									"size": 4,
-									"newLine": true
-								},
-								"adapterNotes": {
-									"type": "table",
-									"label": "Adapter notes",
-									"help": "Add a human-readable note for specific adapters (shown in all profiles)",
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 12,
-									"lg": 12,
-									"xl": 12,
-									"items": [
-										{
-											"attr": "adapter",
-											"type": "text",
-											"title": "Adapter (e.g. telegram)",
-											"width": "30%"
-										},
-										{
-											"attr": "note",
-											"type": "text",
-											"title": "Note",
-											"width": "70%"
-										}
-									]
-								},
-								"_roomNotesHeader": {
-									"type": "header",
-									"text": "Per-room notes",
-									"size": 4,
-									"newLine": true
-								},
-								"roomNotes": {
-									"type": "table",
-									"label": "Room notes",
-									"help": "Add a human-readable note for specific rooms (shown in User and Onboarding profiles)",
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 12,
-									"lg": 12,
-									"xl": 12,
-									"items": [
-										{
-											"attr": "room",
-											"type": "text",
-											"title": "Room name",
-											"width": "30%"
-										},
-										{
-											"attr": "note",
-											"type": "text",
-											"title": "Note",
-											"width": "70%"
-										}
-									]
-								},
-								"_onboardingHideHeader": {
-									"type": "header",
-									"text": "Onboarding - hide from guests",
-									"size": 4,
-									"newLine": true
-								},
-								"_onboardingHideHint": {
-									"type": "staticText",
-									"text": "Onboarding hide hint",
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 12,
-									"lg": 12,
-									"xl": 12
-								},
-								"onboardingHideRooms": {
-									"type": "table",
-									"label": "Hidden rooms (Onboarding)",
-									"help": "Onboarding hidden rooms help",
-									"newLine": true,
-									"xs": 12,
-									"sm": 6,
-									"md": 6,
-									"lg": 6,
-									"xl": 6,
-									"items": [
-										{
-											"attr": "room",
-											"type": "text",
-											"title": "Room name (exact)",
-											"width": "100%"
-										}
-									]
-								},
-								"onboardingHideAdapters": {
-									"type": "table",
-									"label": "Hidden adapters (Onboarding)",
-									"help": "Onboarding hidden adapters help",
-									"newLine": false,
-									"xs": 12,
-									"sm": 6,
-									"md": 6,
-									"lg": 6,
-									"xl": 6,
-									"items": [
-										{
-											"attr": "adapter",
-											"type": "text",
-											"title": "Adapter name (e.g. backitup)",
-											"width": "100%"
-										}
-									]
-								},
-								"onboardingGuestShowScriptNames": {
-									"type": "checkbox",
-									"label": "Onboarding guest view — list internal JavaScript file names",
-									"help": "onboarding guest script names help",
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 12,
-									"lg": 12,
-									"xl": 12
-								},
-								"_userHideHeader": {
-									"type": "header",
-									"text": "User/Family - hide from family",
-									"size": 4,
-									"newLine": true
-								},
-								"_userHideHint": {
-									"type": "staticText",
-									"text": "User hide hint",
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 12,
-									"lg": 12,
-									"xl": 12
-								},
-								"userHideRooms": {
-									"type": "table",
-									"label": "Hidden rooms (User/Family)",
-									"help": "User hidden rooms help",
-									"newLine": true,
-									"xs": 12,
-									"sm": 6,
-									"md": 6,
-									"lg": 6,
-									"xl": 6,
-									"items": [
-										{
-											"attr": "room",
-											"type": "text",
-											"title": "Room name (exact)",
-											"width": "100%"
-										}
-									]
-								},
-								"userHideAdapters": {
-									"type": "table",
-									"label": "Hidden adapters (User/Family)",
-									"help": "User hidden adapters help",
-									"newLine": false,
-									"xs": 12,
-									"sm": 6,
-									"md": 6,
-									"lg": 6,
-									"xl": 6,
-									"items": [
-										{
-											"attr": "adapter",
-											"type": "text",
-											"title": "Adapter name (e.g. backitup)",
-											"width": "100%"
-										}
-									]
-								}
-							}
+				"_manualHint": {
+					"type": "staticText",
+					"text": "Manual documentation hint",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"_manualSectionProject": {
+					"type": "header",
+					"text": "Manual section project",
+					"size": 4,
+					"newLine": true
+				},
+				"projectName": {
+					"type": "text",
+					"label": "Project name",
+					"help": "Name of the ioBroker project or installation",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 6,
+					"lg": 6,
+					"xl": 6
+				},
+				"projectDescription": {
+					"type": "text",
+					"label": "Project description",
+					"help": "What does this system do? e.g. 'Single-family home, heating + lighting + security on 3 floors'",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"manualContact": {
+					"type": "text",
+					"label": "Contact person",
+					"help": "Who manages this system? e.g. 'Max Mustermann, Telegram @max' - shown so guests and family know who to ask",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 6,
+					"lg": 6,
+					"xl": 6
+				},
+				"additionalNotes": {
+					"type": "text",
+					"label": "General notes",
+					"help": "Anything that doesn't fit elsewhere: e.g. 'Backup runs every Sunday, server is in the basement'",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"_guestFamilyPlainHeader": {
+					"type": "header",
+					"text": "Guest & family (plain language)",
+					"size": 4,
+					"newLine": true
+				},
+				"guestHelpNote": {
+					"type": "text",
+					"label": "Help & emergencies (guests/family)",
+					"help": "Who to call, what to try if something fails, where the fuse box is — your words only; nothing is invented automatically.",
+					"minRows": 4,
+					"maxRows": 16,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"homeRoutinesNote": {
+					"type": "text",
+					"label": "Routines & automations (your words)",
+					"help": "Describe in everyday language what often runs by itself (lights, heating, blinds). Shown near the script list; complements technical script names.",
+					"minRows": 4,
+					"maxRows": 18,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"ownerPlaybookNote": {
+					"type": "text",
+					"label": "How we run this home (your playbook)",
+					"help": "Step-by-step or bullet notes only you maintain: typical order of doing things, what must be done, what guests or family must not change (your words; nothing is invented automatically). Shown as its own section in family and guest docs.",
+					"minRows": 4,
+					"maxRows": 22,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"manualMermaidDiagram": {
+					"type": "text",
+					"label": "Mermaid diagram (optional)",
+					"help": "Optional Mermaid diagram you write yourself (flowchart, sequence, …). Shown in HTML exports (interactive render via Mermaid script; offline file preview needs network once) and as a ```mermaid fenced block in Markdown exports. Hide in User/Onboarding with chapter id `mermaid`. Very long input is truncated. Tip: start with `flowchart LR` for a left-to-right layout (uses page width); `flowchart TB` (default) grows top-to-bottom.",
+					"minRows": 4,
+					"maxRows": 28,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"autoMermaidHostGraph": {
+					"type": "checkbox",
+					"label": "Auto host topology diagram (Mermaid)",
+					"help": "When enabled, adds a second Mermaid block: adapter instances grouped by ioBroker host. Useful for multihost setups. Hard-capped number of instance nodes (see next setting). Not a full wiring graph. Same hide chapter id `mermaid` as your own diagram.",
+					"default": false,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"autoMermaidHostGraphMaxNodes": {
+					"type": "number",
+					"label": "Max instances in auto topology diagram",
+					"help": "Maximum adapter **instance** nodes in the auto-generated diagram (8–200, default 40). Hosts are still shown; instances are chosen round-robin across hosts when there are more than this limit.",
+					"min": 8,
+					"max": 200,
+					"default": 40,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 6,
+					"lg": 6,
+					"xl": 6
+				},
+				"_troubleshootQuickHeader": {
+					"type": "header",
+					"text": "Troubleshooting — quick lines (optional)",
+					"size": 4,
+					"newLine": true
+				},
+				"_troubleshootQuickHint": {
+					"type": "staticText",
+					"text": "Troubleshooting quick lines hint",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"troubleshootWifiHint": {
+					"type": "text",
+					"label": "Quick: Wi-Fi / network",
+					"help": "One line, e.g. guest Wi-Fi name or where a repeater is — optional.",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 6,
+					"lg": 6,
+					"xl": 6
+				},
+				"troubleshootPowerHint": {
+					"type": "text",
+					"label": "Quick: power / fuses",
+					"help": "One line, e.g. where the electrical panel is — optional.",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 6,
+					"lg": 6,
+					"xl": 6
+				},
+				"troubleshootWaterHint": {
+					"type": "text",
+					"label": "Quick: water shutoff",
+					"help": "One line, e.g. where to turn off main water — optional.",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 6,
+					"lg": 6,
+					"xl": 6
+				},
+				"troubleshootExtraHint": {
+					"type": "text",
+					"label": "Quick: other",
+					"help": "One more short line (alarm code location, key box, etc.) — optional.",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 6,
+					"lg": 6,
+					"xl": 6
+				},
+				"_aiHintsHeader": {
+					"type": "header",
+					"text": "AI context hints",
+					"size": 4,
+					"newLine": true
+				},
+				"_aiHintsHint": {
+					"type": "staticText",
+					"text": "AI context hints hint",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"aiOwnerHints": {
+					"type": "text",
+					"label": "AI context hints (owner notes)",
+					"help": "AI context hints help",
+					"minRows": 6,
+					"maxRows": 18,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"_adapterNotesHeader": {
+					"type": "header",
+					"text": "Per-adapter notes",
+					"size": 4,
+					"newLine": true
+				},
+				"adapterNotes": {
+					"type": "table",
+					"label": "Adapter notes",
+					"help": "Add a human-readable note for specific adapters (shown in all profiles)",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12,
+					"items": [
+						{
+							"attr": "adapter",
+							"type": "text",
+							"title": "Adapter (e.g. telegram)",
+							"width": "30%"
 						},
-						"docSubAdvanced": {
-							"type": "panel",
-							"label": "Advanced",
-							"items": {
-								"_exportScriptsHint": {
-									"type": "staticText",
-									"text": "Admin export scripts hint",
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 12,
-									"lg": 12,
-									"xl": 12
-								},
-								"_advancedSectionContent": {
-									"type": "header",
-									"text": "Advanced section content",
-									"size": 4,
-									"newLine": true
-								},
-								"onlyEnabledInstances": {
-									"type": "checkbox",
-									"label": "Only document enabled instances",
-									"help": "If enabled, only active adapter instances are included in the documentation",
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 12,
-									"lg": 12,
-									"xl": 12
-								},
-								"hideInstanceDetailsInMarkdown": {
-									"type": "checkbox",
-									"label": "Hide instance details in markdown",
-									"help": "If enabled, the markdown output contains only summary information without the full instance list",
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 12,
-									"lg": 12,
-									"xl": 12
-								},
-								"maxDocumentedInstances": {
-									"type": "number",
-									"label": "Maximum documented instances",
-									"help": "Limits how many adapter instances are included in the generated documentation, 0 means unlimited",
-									"min": 0,
-									"default": 0,
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 6,
-									"lg": 6,
-									"xl": 6
-								},
-								"maxStoredFiles": {
-									"type": "number",
-									"label": "Maximum stored documentation files",
-									"help": "How many timestamped file sets to keep (per type: .md, .html, .json). Oldest are deleted automatically. 0 = use default (3).",
-									"min": 0,
-									"default": 3,
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 6,
-									"lg": 6,
-									"xl": 6
-								},
-								"_advancedSectionStates": {
-									"type": "header",
-									"text": "Advanced section states",
-									"size": 4,
-									"newLine": true
-								},
-								"documentationStatesMode": {
-									"type": "select",
-									"label": "Documentation states storage",
-									"help": "Documentation states storage help",
-									"options": [
-										{
-											"label": "Doc states mode full",
-											"value": "full"
-										},
-										{
-											"label": "Doc states mode metadata",
-											"value": "metadata"
-										}
-									],
-									"default": "full",
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 12,
-									"lg": 12,
-									"xl": 12
-								},
-								"baseUrl": {
-									"type": "text",
-									"label": "ioBroker base URL (optional)",
-									"help": "Used for the info.htmlUrl state. Include port, e.g. 192.168.1.100:8081 or http://myserver:8082. Protocol is optional. Leave empty for auto-detection (may fail in Docker).",
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 8,
-									"lg": 8,
-									"xl": 8
-								},
-								"_advancedSetupScoreIntro": {
-									"type": "staticText",
-									"text": "Advanced setup score intro",
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 12,
-									"lg": 12,
-									"xl": 12
-								},
-								"_advancedSectionMaintenanceScore": {
-									"type": "header",
-									"text": "Advanced section maintenance score",
-									"size": 4,
-									"newLine": true
-								},
-								"maintenanceScoreCheckDescription": {
-									"type": "checkbox",
-									"label": "Maintenance score include description check",
-									"help": "Maintenance score description check help",
-									"default": true,
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 12,
-									"lg": 12,
-									"xl": 12
-								},
-								"maintenanceScoreCheckBaseUrl": {
-									"type": "checkbox",
-									"label": "Maintenance score include base URL check",
-									"help": "Maintenance score base URL check help",
-									"default": true,
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 12,
-									"lg": 12,
-									"xl": 12
-								},
-								"maintenanceScoreCheckUnassigned": {
-									"type": "checkbox",
-									"label": "Maintenance score include unassigned check",
-									"help": "Maintenance score unassigned check help",
-									"default": true,
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 12,
-									"lg": 12,
-									"xl": 12
-								},
-								"maintenanceScoreMinDescriptionChars": {
-									"type": "number",
-									"label": "Maintenance score min description length",
-									"help": "Maintenance score min description length help",
-									"min": 5,
-									"max": 2000,
-									"default": 40,
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 6,
-									"lg": 6,
-									"xl": 6
-								},
-								"maintenanceScoreUnassignedWarnAt": {
-									"type": "number",
-									"label": "Maintenance score unassigned warn at",
-									"help": "Maintenance score unassigned warn at help",
-									"min": 1,
-									"max": 500,
-									"default": 10,
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 6,
-									"lg": 6,
-									"xl": 6
-								},
-								"_advancedSectionFilesystem": {
-									"type": "header",
-									"text": "Advanced section filesystem",
-									"size": 4,
-									"newLine": true
-								},
-								"exportPath": {
-									"type": "text",
-									"label": "Filesystem export path (optional)",
-									"help": "Export path hint",
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 12,
-									"lg": 12,
-									"xl": 12
-								}
-							}
-						},
-						"docSubLayout": {
-							"type": "panel",
-							"label": "HTML export & extra sections",
-							"items": {
-								"_docLayoutIntro": {
-									"type": "staticText",
-									"text": "Doc layout intro",
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 12,
-									"lg": 12,
-									"xl": 12
-								},
-								"_docSectionAppearance": {
-									"type": "header",
-									"text": "Doc section appearance",
-									"size": 4,
-									"newLine": true
-								},
-								"htmlColorScheme": {
-									"type": "select",
-									"label": "HTML color scheme",
-									"help": "HTML color scheme help",
-									"options": [
-										{
-											"label": "Auto (viewer toggle + saved preference)",
-											"value": "auto"
-										},
-										{
-											"label": "Light only",
-											"value": "light"
-										},
-										{
-											"label": "Dark only",
-											"value": "dark"
-										}
-									],
-									"default": "auto",
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 6,
-									"lg": 6,
-									"xl": 6
-								},
-								"htmlThemePreset": {
-									"type": "select",
-									"label": "HTML theme preset",
-									"help": "HTML theme preset help",
-									"options": [
-										{
-											"label": "HTML theme preset default",
-											"value": "default"
-										},
-										{
-											"label": "HTML theme preset high contrast",
-											"value": "highContrast"
-										},
-										{
-											"label": "HTML theme preset warm",
-											"value": "warm"
-										},
-										{
-											"label": "HTML theme preset slate",
-											"value": "slate"
-										}
-									],
-									"default": "default",
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 6,
-									"lg": 6,
-									"xl": 6
-								},
-								"htmlHeaderLogoUrl": {
-									"type": "text",
-									"label": "Sidebar logo URL",
-									"help": "Sidebar logo URL help",
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 12,
-									"lg": 12,
-									"xl": 12
-								},
-								"_docSectionChapters": {
-									"type": "header",
-									"text": "Doc section chapters",
-									"size": 4,
-									"newLine": true
-								},
-								"_adminChaptersHeader": {
-									"type": "header",
-									"text": "Admin HTML — hide chapters",
-									"size": 4,
-									"newLine": true
-								},
-								"_adminChaptersHint": {
-									"type": "staticText",
-									"text": "Admin hidden chapters hint",
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 12,
-									"lg": 12,
-									"xl": 12
-								},
-								"_adminChapterOrderHint": {
-									"type": "staticText",
-									"text": "Admin chapter order hint",
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 12,
-									"lg": 12,
-									"xl": 12
-								},
-								"adminChapterOrderJson": {
-									"type": "text",
-									"label": "Admin chapter order (JSON array)",
-									"help": "Admin chapter order JSON help",
-									"minRows": 2,
-									"maxRows": 8,
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 12,
-									"lg": 12,
-									"xl": 12
-								},
-								"adminHiddenChaptersJson": {
-									"type": "text",
-									"label": "Hidden chapter IDs (JSON array)",
-									"help": "Admin hidden chapters JSON help",
-									"minRows": 3,
-									"maxRows": 8,
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 12,
-									"lg": 12,
-									"xl": 12
-								},
-								"_userChaptersHeader": {
-									"type": "header",
-									"text": "User/Family HTML — hide chapters",
-									"size": 4,
-									"newLine": true
-								},
-								"_userChaptersHint": {
-									"type": "staticText",
-									"text": "User hidden chapters hint",
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 12,
-									"lg": 12,
-									"xl": 12
-								},
-								"userHiddenChaptersJson": {
-									"type": "text",
-									"label": "User profile — hidden chapter IDs (JSON)",
-									"help": "User hidden chapters JSON help",
-									"minRows": 3,
-									"maxRows": 8,
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 12,
-									"lg": 12,
-									"xl": 12
-								},
-								"_userChapterOrderHint": {
-									"type": "staticText",
-									"text": "User chapter order hint",
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 12,
-									"lg": 12,
-									"xl": 12
-								},
-								"userChapterOrderJson": {
-									"type": "text",
-									"label": "User chapter order (JSON array)",
-									"help": "User chapter order JSON help",
-									"minRows": 2,
-									"maxRows": 8,
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 12,
-									"lg": 12,
-									"xl": 12
-								},
-								"_onboardingChaptersHeader": {
-									"type": "header",
-									"text": "Onboarding HTML — hide chapters",
-									"size": 4,
-									"newLine": true
-								},
-								"_onboardingChaptersHint": {
-									"type": "staticText",
-									"text": "Onboarding hidden chapters hint",
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 12,
-									"lg": 12,
-									"xl": 12
-								},
-								"onboardingHiddenChaptersJson": {
-									"type": "text",
-									"label": "Onboarding profile — hidden chapter IDs (JSON)",
-									"help": "Onboarding hidden chapters JSON help",
-									"minRows": 3,
-									"maxRows": 8,
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 12,
-									"lg": 12,
-									"xl": 12
-								},
-								"_onboardingChapterOrderHint": {
-									"type": "staticText",
-									"text": "Onboarding chapter order hint",
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 12,
-									"lg": 12,
-									"xl": 12
-								},
-								"onboardingChapterOrderJson": {
-									"type": "text",
-									"label": "Onboarding chapter order (JSON array)",
-									"help": "Onboarding chapter order JSON help",
-									"minRows": 2,
-									"maxRows": 8,
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 12,
-									"lg": 12,
-									"xl": 12
-								},
-								"_customSectionsHeader": {
-									"type": "header",
-									"text": "Custom Markdown sections",
-									"size": 4,
-									"newLine": true
-								},
-								"_customSectionsHint": {
-									"type": "staticText",
-									"text": "Custom sections JSON hint",
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 12,
-									"lg": 12,
-									"xl": 12
-								},
-								"customDocSectionsJson": {
-									"type": "text",
-									"label": "Custom sections (JSON)",
-									"help": "Custom sections JSON help",
-									"minRows": 8,
-									"maxRows": 24,
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 12,
-									"lg": 12,
-									"xl": 12
-								},
-								"_docSectionExpertStyling": {
-									"type": "header",
-									"text": "Doc section expert styling",
-									"size": 4,
-									"newLine": true
-								},
-								"_advancedStylingOpenHint": {
-									"type": "staticText",
-									"text": "Advanced styling open hint",
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 12,
-									"lg": 12,
-									"xl": 12
-								},
-								"_advancedStylingHint": {
-									"type": "staticText",
-									"text": "Advanced HTML styling hint",
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 12,
-									"lg": 12,
-									"xl": 12
-								},
-								"htmlFontStack": {
-									"type": "text",
-									"label": "Font stack (CSS)",
-									"help": "Font stack help",
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 12,
-									"lg": 12,
-									"xl": 12
-								},
-								"htmlExtraCss": {
-									"type": "text",
-									"label": "Extra CSS",
-									"help": "Extra CSS help",
-									"minRows": 3,
-									"maxRows": 16,
-									"newLine": true,
-									"xs": 12,
-									"sm": 12,
-									"md": 12,
-									"lg": 12,
-									"xl": 12
-								}
-							}
+						{
+							"attr": "note",
+							"type": "text",
+							"title": "Note",
+							"width": "70%"
 						}
-					}
+					]
+				},
+				"_roomNotesHeader": {
+					"type": "header",
+					"text": "Per-room notes",
+					"size": 4,
+					"newLine": true
+				},
+				"roomNotes": {
+					"type": "table",
+					"label": "Room notes",
+					"help": "Add a human-readable note for specific rooms (shown in User and Onboarding profiles)",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12,
+					"items": [
+						{
+							"attr": "room",
+							"type": "text",
+							"title": "Room name",
+							"width": "30%"
+						},
+						{
+							"attr": "note",
+							"type": "text",
+							"title": "Note",
+							"width": "70%"
+						}
+					]
+				},
+				"_onboardingHideHeader": {
+					"type": "header",
+					"text": "Onboarding - hide from guests",
+					"size": 4,
+					"newLine": true
+				},
+				"_onboardingHideHint": {
+					"type": "staticText",
+					"text": "Onboarding hide hint",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"onboardingHideRooms": {
+					"type": "table",
+					"label": "Hidden rooms (Onboarding)",
+					"help": "Onboarding hidden rooms help",
+					"newLine": true,
+					"xs": 12,
+					"sm": 6,
+					"md": 6,
+					"lg": 6,
+					"xl": 6,
+					"items": [
+						{
+							"attr": "room",
+							"type": "text",
+							"title": "Room name (exact)",
+							"width": "100%"
+						}
+					]
+				},
+				"onboardingHideAdapters": {
+					"type": "table",
+					"label": "Hidden adapters (Onboarding)",
+					"help": "Onboarding hidden adapters help",
+					"newLine": false,
+					"xs": 12,
+					"sm": 6,
+					"md": 6,
+					"lg": 6,
+					"xl": 6,
+					"items": [
+						{
+							"attr": "adapter",
+							"type": "text",
+							"title": "Adapter name (e.g. backitup)",
+							"width": "100%"
+						}
+					]
+				},
+				"onboardingGuestShowScriptNames": {
+					"type": "checkbox",
+					"label": "Onboarding guest view — list internal JavaScript file names",
+					"help": "onboarding guest script names help",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"_userHideHeader": {
+					"type": "header",
+					"text": "User/Family - hide from family",
+					"size": 4,
+					"newLine": true
+				},
+				"_userHideHint": {
+					"type": "staticText",
+					"text": "User hide hint",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"userHideRooms": {
+					"type": "table",
+					"label": "Hidden rooms (User/Family)",
+					"help": "User hidden rooms help",
+					"newLine": true,
+					"xs": 12,
+					"sm": 6,
+					"md": 6,
+					"lg": 6,
+					"xl": 6,
+					"items": [
+						{
+							"attr": "room",
+							"type": "text",
+							"title": "Room name (exact)",
+							"width": "100%"
+						}
+					]
+				},
+				"userHideAdapters": {
+					"type": "table",
+					"label": "Hidden adapters (User/Family)",
+					"help": "User hidden adapters help",
+					"newLine": false,
+					"xs": 12,
+					"sm": 6,
+					"md": 6,
+					"lg": 6,
+					"xl": 6,
+					"items": [
+						{
+							"attr": "adapter",
+							"type": "text",
+							"title": "Adapter name (e.g. backitup)",
+							"width": "100%"
+						}
+					]
+				}
+			}
+		},
+		"tabAdvanced": {
+			"type": "panel",
+			"label": "Advanced",
+			"items": {
+				"_exportScriptsHint": {
+					"type": "staticText",
+					"text": "Admin export scripts hint",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"_advancedSectionContent": {
+					"type": "header",
+					"text": "Advanced section content",
+					"size": 4,
+					"newLine": true
+				},
+				"onlyEnabledInstances": {
+					"type": "checkbox",
+					"label": "Only document enabled instances",
+					"help": "If enabled, only active adapter instances are included in the documentation",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"hideInstanceDetailsInMarkdown": {
+					"type": "checkbox",
+					"label": "Hide instance details in markdown",
+					"help": "If enabled, the markdown output contains only summary information without the full instance list",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"maxDocumentedInstances": {
+					"type": "number",
+					"label": "Maximum documented instances",
+					"help": "Limits how many adapter instances are included in the generated documentation, 0 means unlimited",
+					"min": 0,
+					"default": 0,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 6,
+					"lg": 6,
+					"xl": 6
+				},
+				"maxStoredFiles": {
+					"type": "number",
+					"label": "Maximum stored documentation files",
+					"help": "How many timestamped file sets to keep (per type: .md, .html, .json). Oldest are deleted automatically. 0 = use default (3).",
+					"min": 0,
+					"default": 3,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 6,
+					"lg": 6,
+					"xl": 6
+				},
+				"_advancedSectionStates": {
+					"type": "header",
+					"text": "Advanced section states",
+					"size": 4,
+					"newLine": true
+				},
+				"documentationStatesMode": {
+					"type": "select",
+					"label": "Documentation states storage",
+					"help": "Documentation states storage help",
+					"options": [
+						{
+							"label": "Doc states mode full",
+							"value": "full"
+						},
+						{
+							"label": "Doc states mode metadata",
+							"value": "metadata"
+						}
+					],
+					"default": "full",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"baseUrl": {
+					"type": "text",
+					"label": "ioBroker base URL (optional)",
+					"help": "Used for the info.htmlUrl state. Include port, e.g. 192.168.1.100:8081 or http://myserver:8082. Protocol is optional. Leave empty for auto-detection (may fail in Docker).",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 8,
+					"lg": 8,
+					"xl": 8
+				},
+				"_advancedSetupScoreIntro": {
+					"type": "staticText",
+					"text": "Advanced setup score intro",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"_advancedSectionMaintenanceScore": {
+					"type": "header",
+					"text": "Advanced section maintenance score",
+					"size": 4,
+					"newLine": true
+				},
+				"maintenanceScoreCheckDescription": {
+					"type": "checkbox",
+					"label": "Maintenance score include description check",
+					"help": "Maintenance score description check help",
+					"default": true,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"maintenanceScoreCheckBaseUrl": {
+					"type": "checkbox",
+					"label": "Maintenance score include base URL check",
+					"help": "Maintenance score base URL check help",
+					"default": true,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"maintenanceScoreCheckUnassigned": {
+					"type": "checkbox",
+					"label": "Maintenance score include unassigned check",
+					"help": "Maintenance score unassigned check help",
+					"default": true,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"maintenanceScoreMinDescriptionChars": {
+					"type": "number",
+					"label": "Maintenance score min description length",
+					"help": "Maintenance score min description length help",
+					"min": 5,
+					"max": 2000,
+					"default": 40,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 6,
+					"lg": 6,
+					"xl": 6
+				},
+				"maintenanceScoreUnassignedWarnAt": {
+					"type": "number",
+					"label": "Maintenance score unassigned warn at",
+					"help": "Maintenance score unassigned warn at help",
+					"min": 1,
+					"max": 500,
+					"default": 10,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 6,
+					"lg": 6,
+					"xl": 6
+				},
+				"_advancedSectionFilesystem": {
+					"type": "header",
+					"text": "Advanced section filesystem",
+					"size": 4,
+					"newLine": true
+				},
+				"exportPath": {
+					"type": "text",
+					"label": "Filesystem export path (optional)",
+					"help": "Export path hint",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				}
+			}
+		},
+		"tabDocLayout": {
+			"type": "panel",
+			"label": "HTML export & extra sections",
+			"items": {
+				"_docLayoutIntro": {
+					"type": "staticText",
+					"text": "Doc layout intro",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"_docSectionAppearance": {
+					"type": "header",
+					"text": "Doc section appearance",
+					"size": 4,
+					"newLine": true
+				},
+				"htmlColorScheme": {
+					"type": "select",
+					"label": "HTML color scheme",
+					"help": "HTML color scheme help",
+					"options": [
+						{
+							"label": "Auto (viewer toggle + saved preference)",
+							"value": "auto"
+						},
+						{
+							"label": "Light only",
+							"value": "light"
+						},
+						{
+							"label": "Dark only",
+							"value": "dark"
+						}
+					],
+					"default": "auto",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 6,
+					"lg": 6,
+					"xl": 6
+				},
+				"htmlThemePreset": {
+					"type": "select",
+					"label": "HTML theme preset",
+					"help": "HTML theme preset help",
+					"options": [
+						{
+							"label": "HTML theme preset default",
+							"value": "default"
+						},
+						{
+							"label": "HTML theme preset high contrast",
+							"value": "highContrast"
+						},
+						{
+							"label": "HTML theme preset warm",
+							"value": "warm"
+						},
+						{
+							"label": "HTML theme preset slate",
+							"value": "slate"
+						}
+					],
+					"default": "default",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 6,
+					"lg": 6,
+					"xl": 6
+				},
+				"htmlHeaderLogoUrl": {
+					"type": "text",
+					"label": "Sidebar logo URL",
+					"help": "Sidebar logo URL help",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"_docSectionChapters": {
+					"type": "header",
+					"text": "Doc section chapters",
+					"size": 4,
+					"newLine": true
+				},
+				"_adminChaptersHeader": {
+					"type": "header",
+					"text": "Admin HTML — hide chapters",
+					"size": 4,
+					"newLine": true
+				},
+				"_adminChaptersHint": {
+					"type": "staticText",
+					"text": "Admin hidden chapters hint",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"_adminChapterOrderHint": {
+					"type": "staticText",
+					"text": "Admin chapter order hint",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"adminChapterOrderJson": {
+					"type": "text",
+					"label": "Admin chapter order (JSON array)",
+					"help": "Admin chapter order JSON help",
+					"minRows": 2,
+					"maxRows": 8,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"adminHiddenChaptersJson": {
+					"type": "text",
+					"label": "Hidden chapter IDs (JSON array)",
+					"help": "Admin hidden chapters JSON help",
+					"minRows": 3,
+					"maxRows": 8,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"_userChaptersHeader": {
+					"type": "header",
+					"text": "User/Family HTML — hide chapters",
+					"size": 4,
+					"newLine": true
+				},
+				"_userChaptersHint": {
+					"type": "staticText",
+					"text": "User hidden chapters hint",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"userHiddenChaptersJson": {
+					"type": "text",
+					"label": "User profile — hidden chapter IDs (JSON)",
+					"help": "User hidden chapters JSON help",
+					"minRows": 3,
+					"maxRows": 8,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"_userChapterOrderHint": {
+					"type": "staticText",
+					"text": "User chapter order hint",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"userChapterOrderJson": {
+					"type": "text",
+					"label": "User chapter order (JSON array)",
+					"help": "User chapter order JSON help",
+					"minRows": 2,
+					"maxRows": 8,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"_onboardingChaptersHeader": {
+					"type": "header",
+					"text": "Onboarding HTML — hide chapters",
+					"size": 4,
+					"newLine": true
+				},
+				"_onboardingChaptersHint": {
+					"type": "staticText",
+					"text": "Onboarding hidden chapters hint",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"onboardingHiddenChaptersJson": {
+					"type": "text",
+					"label": "Onboarding profile — hidden chapter IDs (JSON)",
+					"help": "Onboarding hidden chapters JSON help",
+					"minRows": 3,
+					"maxRows": 8,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"_onboardingChapterOrderHint": {
+					"type": "staticText",
+					"text": "Onboarding chapter order hint",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"onboardingChapterOrderJson": {
+					"type": "text",
+					"label": "Onboarding chapter order (JSON array)",
+					"help": "Onboarding chapter order JSON help",
+					"minRows": 2,
+					"maxRows": 8,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"_customSectionsHeader": {
+					"type": "header",
+					"text": "Custom Markdown sections",
+					"size": 4,
+					"newLine": true
+				},
+				"_customSectionsHint": {
+					"type": "staticText",
+					"text": "Custom sections JSON hint",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"customDocSectionsJson": {
+					"type": "text",
+					"label": "Custom sections (JSON)",
+					"help": "Custom sections JSON help",
+					"minRows": 8,
+					"maxRows": 24,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"_docSectionExpertStyling": {
+					"type": "header",
+					"text": "Doc section expert styling",
+					"size": 4,
+					"newLine": true
+				},
+				"_advancedStylingOpenHint": {
+					"type": "staticText",
+					"text": "Advanced styling open hint",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"_advancedStylingHint": {
+					"type": "staticText",
+					"text": "Advanced HTML styling hint",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"htmlFontStack": {
+					"type": "text",
+					"label": "Font stack (CSS)",
+					"help": "Font stack help",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"htmlExtraCss": {
+					"type": "text",
+					"label": "Extra CSS",
+					"help": "Extra CSS help",
+					"minRows": 3,
+					"maxRows": 16,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
 				}
 			}
 		},

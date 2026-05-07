@@ -56,6 +56,10 @@ The published **adapter semver** (`package.json` / `io-package.json`) is indepen
 
 <a id="admin-ui-translations-i18n"></a>
 
+### Admin (`jsonConfig`) structure
+
+- **Do not nest** a full `"type": "tabs"` block **inside** a **`panel`** in `admin/jsonConfig.json`. ioBroker Admin has been observed to render an **empty** instance settings pane when that layout is used. Keep every main area as **its own root-level tab** under the top **`type": "tabs"`** only.
+
 ### Admin UI translations (i18n)
 
 - Source of truth for **keys** is `admin/i18n/en.json`. **DE** and **FR** are maintained alongside English for important releases.
