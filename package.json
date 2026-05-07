@@ -53,9 +53,9 @@
     "@tsconfig/node22": "^22.0.5",
     "@types/iobroker": "npm:@iobroker/types@^7.1.0",
     "@types/node": "^25.5.0",
-    "cytoscape": "3.33.3",
-    "d3-selection": "3.0.0",
-    "devtools-protocol": "0.0.1107588",
+    "cytoscape": "^3.33.3",
+    "d3-selection": "^3.0.0",
+    "devtools-protocol": "^0.0.1107588",
     "typescript": "~6.0.2"
   },
   "main": "main.js",
