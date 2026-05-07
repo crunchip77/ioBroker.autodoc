@@ -52,6 +52,7 @@ Diese Datei ist die **Arbeitsliste**: was **offen** ist steht oben; **erledigte*
 | **Dokumentations-Score** (Wartung — Checkliste mit echten Kriterien) | ✅ | **0.9.30–0.9.31:** Dreiteiliger Score (Datenerfassung / Manuelle Inhalte / Dokumentationstiefe); instancesWithoutRoom komplett raus; neue Checks: Diagramm, Räume m. Geräten, eigene Kapitel, KI-Provider — [§ 1.6](#dokumentations-score-checkliste) |
 | **Admin-Markdown: Diagnose-Kapitel** (Parität zu Admin-HTML) | ✅ | `renderDiagnosis` / `renderDiagnosisMarkdown` — TOC-Zeile, ausblendbar wie HTML; Diagnose-Befunde sind datengetrieben (z. B. Node‑Hinweis, OS‑Hinweis), **ohne** entferntes Skript‑`desc`‑Finding (0.9.29). Details [§ 1.6](#admin-markdown-diagnose-optional), Anhang A |
 | **Admin-Konfig — Hilfen / Mini-Beispiele** (`manualMermaidDiagram`, JSON-Felder …) | *optional* | Entscheidung offen — [§ 1.7](#admin-config-hilfen-beispiele) |
+| **Nutzer-Handbuch / Wiki** (Beispiele, Demo-Felder, Screenshots Admin/Exporte; z. B. `docs/user-guide/`) | *optional* | Konzept noch offen; nur **Demo-/Platzhalterdaten** (keine Produktions-IPs/QR); README-Link wenn vorhanden — [§ 1.1b](#nutzer-handbuch-wiki) |
 | **Admin-UI React** (statt/nur wo nötig neben `jsonConfig`) | *optional* | Nur wenn jsonConfig für geplante Features zu eng — [§ 1.8](#admin-react-optional) |
 
 ---
@@ -104,6 +105,17 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 - [x] **`dev` → `main`** (Fast-forward, **0.9.17** inkl. Presets, Kapitelreihenfolge, i18n-Id-Listen)
 - [x] **Foren-Ankündigung** 0.9.17 (Kurztext wahlweise im Chat/Notiz, nicht im README)
 - [x] README-Changelog + diese TODO-Zeilen als Quelle für Tester (Git-URL-Installation)
+
+<a id="nutzer-handbuch-wiki"></a>
+
+### 1.1b Nutzer-Handbuch / Wiki *(optional — Backlog)*
+
+> Später: „Wiki-artige“ Hilfe mit **Beispieltexten** und **Screenshots** (ausgefüllte Admin-Felder, ggf. Export-Ausschnitte), damit Einsteiger wissen **wo sie was einstellen**.
+
+- [ ] Ablage festlegen (`docs/user-guide/` im Repo **oder** GitHub-Wiki) + Verweis im **README**
+- [ ] Inhalte nur mit **Demo-/Platzhalterdaten** (keine echten URLs, IPs, Forum-Karten aus Produktion)
+- [ ] Screenshots mit **AutoDoc-/Admin-Versionshinweis** pflegen (UI drift vermeidbar kennzeichnen)
+- [ ] Mindeststruktur: Erste Schritte (Tabs), 1–2 Szenarien (z. B. Einfamilienhaus, Gäste), Hinweis Exporte / Forum
 
 <a id="phase-5-features"></a>
 
