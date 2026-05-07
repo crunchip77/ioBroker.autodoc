@@ -31,7 +31,7 @@ Diese Datei ist die **Arbeitsliste**: was **offen** ist steht oben; **erledigte*
 
 <a id="stand-uebersicht"></a>
 
-## Übersicht — Umsetzung vs. Rest (Stand: `package.json` / README, 2026-04-28; Branch je nach Arbeitskopie, z. B. `main` / `dev`)
+## Übersicht — Umsetzung vs. Rest (Stand: `package.json` / README, 2026-05-07; Branch je nach Arbeitskopie, z. B. `main` / `dev`)
 
 | Thema | Status | Kurz |
 | ----- | ------ | ---- |
@@ -49,7 +49,7 @@ Diese Datei ist die **Arbeitsliste**: was **offen** ist steht oben; **erledigte*
 | **System-Visitenkarte** / Forum-Copy | ✅ | `textSendTo` **getForumCard** + State `info.forumCardPlain`; Diagnose-HTML nutzt `forumCard.js` |
 | **KI + Skript-Quellcode** | 🟡 | **A** umgesetzt (`aiAnalyzeScriptSources`); **B** weiterhin Phase 5 Backup |
 | **npm + ioBroker.repositories** | ⬜ | Nach Adapter-Checker |
-| **Dokumentations-Score** (Wartung — Checkliste mit echten Kriterien) | 🟡 | **0.9.22–0.9.23:** Setup-Checks + Konfig. **0.9.24:** einheitliche Benennung **Doku-Setup / documentation setup score**, Kapitel **Wartung & Dokumentations-Setup** vs. technische **Diagnose**; Hinweis wenn alle Checks aus; Quick-Start-Sortierung stabil. Skripte ohne `desc` nur Hinweis — [§ 1.6](#dokumentations-score-checkliste) |
+| **Dokumentations-Score** (Wartung — Checkliste mit echten Kriterien) | ✅ | **0.9.30–0.9.31:** Dreiteiliger Score (Datenerfassung / Manuelle Inhalte / Dokumentationstiefe); instancesWithoutRoom komplett raus; neue Checks: Diagramm, Räume m. Geräten, eigene Kapitel, KI-Provider — [§ 1.6](#dokumentations-score-checkliste) |
 | **Admin-Markdown: Diagnose-Kapitel** ✅ (inhaltliche Parität zu Admin-HTML) | *optional* | Heute kein Kapitel im `.md`-Export (`lib/markdownRenderer.js` → `case 'diagnosis': return ''`). **Optional** nachziehen: gleiche Befunde wie `lib/htmlRenderer.js` `renderDiagnosis` (z. B. Node, **Skripte ohne `desc`**, OS-Hinweis …), inkl. TOC wenn nicht versteckt — Details [§ 1.6](#admin-markdown-diagnose-optional) |
 | **Admin-Konfig — Hilfen / Mini-Beispiele** (`manualMermaidDiagram`, JSON-Felder …) | *optional* | Entscheidung offen — [§ 1.7](#admin-config-hilfen-beispiele) |
 | **Admin-UI React** (statt/nur wo nötig neben `jsonConfig`) | *optional* | Nur wenn jsonConfig für geplante Features zu eng — [§ 1.8](#admin-react-optional) |
@@ -227,17 +227,17 @@ Details: [PLAN — System-Visitenkarte](PLAN.md#system-visitenkarte-festlegung),
 
 <a id="dokumentations-score-checkliste"></a>
 
-### 1.6 Dokumentations-Score (Wartung) — Checkliste ausbauen
+### 1.6 Dokumentations-Score (Wartung) - Checkliste
 
-> **Stand 0.9.24:** Benennung und Erläuterungen auf **Doku-Setup (Meta)** ausgerichtet (Export + Admin); separates Kapitel **Diagnose** unverändert.
+> **Stand 0.9.31:** Dreiteiliger Score komplett umgesetzt.
 
-- [ ] **Zielbild festlegen (Feinarbeit):** Produkt-/Admin-Bezeichnung ggf. „Doku-Setup-Score“ o. ä., sobald der Fokus **Meta** für alle klar ist — fachlich vorerst durch **`scoreDesc`** (EN/DE/FR) und Checklisten-Logik abgedeckt.
-- [x] **Umgesetzt (0.9.22) — Score-Kriterien:** Projektbeschreibung (Manual) **≥ 40** Zeichen; **Basis-URL** (Advanced) nicht leer; **Instanzen ohne Raum** mit Schwelle **&lt; 10** (`rooms.unassignedCount`). Renderer HTML + Markdown; i18n EN/DE/FR.
-- [x] **Erweiterung 0.9.23:** Pro Check **`maintenanceScoreCheck*`** (Default an), **`maintenanceScoreMinDescriptionChars`**, **`maintenanceScoreUnassignedWarnAt`**; Prozent nur über **aktive** Zeilen.
-- [x] **Klarstellung 0.9.24:** Kapitel-/Label-Texte **Wartung & Dokumentations-Setup** vs. **Diagnose**; **`maintenanceChecklistDisabled`** wenn alle Checks aus; Quick-Start **Raum-Sortierung** bei Gleichstand; KI-Owner-Kontext **`Documentation setup score`**.
-- [x] **Umgesetzt — ohne Score:** Liste **`scriptsWithoutDescription`** (nur Info); **Admin-Diagnose** HTML erwähnt die Anzahl.
-- [x] **Explizit nicht** im Score: **deaktivierte Instanzen** (weiter Inventar-only). **`common.desc`** / fehlende Skript-Beschreibung nie score-wirksam.
-- [x] **UI/Logik (Kern):** jsonConfig + `native` für Abschalten/Schwellen — siehe **Erweitert** im Admin.
+- [x] **Umgesetzt (0.9.22):** Projektbeschreibung >= 40 Zeichen; Basis-URL; Instanzen ohne Raum (Schwelle).
+- [x] **Erweiterung 0.9.23:** Pro Check `maintenanceScoreCheck*`, `maintenanceScoreMinDescriptionChars`, `maintenanceScoreUnassignedWarnAt`.
+- [x] **Klarstellung 0.9.24:** Kapitel-Texte Wartung vs. Diagnose; Quick-Start Raum-Sortierung; KI-Owner-Kontext.
+- [x] **UX-Korrekturen 0.9.29:** `scriptsWithoutDescription` entfernt; `unassignedCount` nur aktive Instanzen; Adapter-Grid User-View; Mermaid Dark-Mode Re-Render.
+- [x] **Dreiteiliger Score 0.9.30:** Score 1 = Datenerfassung; Score 2 = Manuelle Inhalte; Score 3 = Dokumentationstiefe. Gesamtpunktzahl = Durchschnitt. HTML + Markdown, i18n EN/DE/FR.
+- [x] **Score 3 Rework 0.9.31:** `instancesWithoutRoom` vollstaendig aus Score entfernt; ersetzt durch `checkHasCustomSections` und `checkAiConfigured` (bedingt). Admin-Config-Felder bleiben fuer Rueckwaertskompatibilitaet ohne Effekt.
+- [x] **Explizit nicht** im Score: deaktivierte Instanzen (Inventar-only); `common.desc` / Skript-Beschreibungen.
 
 <a id="admin-markdown-diagnose-optional"></a>
 
