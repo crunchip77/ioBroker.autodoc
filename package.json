@@ -28,16 +28,18 @@
   "engines": {
     "node": ">= 22"
   },
+  "overrides": {
+    "chromium-bidi": {
+      "devtools-protocol": "0.0.1107588"
+    }
+  },
   "dependencies": {
     "@iobroker/adapter-core": "^3.3.2",
     "markdown-it": "^14.1.0",
     "qrcode": "^1.5.4"
   },
   "optionalDependencies": {
-    "@mermaid-js/mermaid-cli": "10.9.1",
-    "cytoscape": "3.33.3",
-    "d3-selection": "3.0.0",
-    "devtools-protocol": "0.0.1625959"
+    "@mermaid-js/mermaid-cli": "10.9.1"
   },
   "devDependencies": {
     "@alcalzone/release-script": "^5.1.1",
@@ -51,6 +53,8 @@
     "@tsconfig/node22": "^22.0.5",
     "@types/iobroker": "npm:@iobroker/types@^7.1.0",
     "@types/node": "^25.5.0",
+    "cytoscape": "3.33.3",
+    "d3-selection": "3.0.0",
     "typescript": "~6.0.2"
   },
   "main": "main.js",
