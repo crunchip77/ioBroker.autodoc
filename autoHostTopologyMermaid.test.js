@@ -23,12 +23,39 @@ describe('autoHostTopologyMermaid', () => {
 			h2: [{ id: 'system.adapter.zigbee.0', enabled: true }],
 		};
 		const out = buildAutoHostTopologyMermaid(hosts, { enabled: true, maxNodes: 40 });
-		assert.ok(out.includes('flowchart TB'));
+		assert.ok(out.includes('flowchart LR'));
+		assert.ok(out.includes('direction TB'));
 		assert.ok(out.includes('Host: h1'));
 		assert.ok(out.includes('admin.0'));
 		assert.ok(out.includes('javascript.0 (off)'));
 		assert.ok(out.includes('Host: h2'));
 		assert.ok(out.includes('zigbee.0'));
+	});
+
+	it('uses invisible links (~~~) to chain nodes in grid columns', () => {
+		const hosts = {
+			solo: Array.from({ length: 9 }, (_, i) => ({
+				id: `system.adapter.adp${i}.0`,
+				enabled: true,
+			})),
+		};
+		const out = buildAutoHostTopologyMermaid(hosts, { enabled: true, maxNodes: 40 });
+		assert.ok(out.includes('flowchart LR'));
+		assert.ok(out.includes('direction TB'));
+		assert.ok(out.includes('~~~'), 'should contain invisible column chains');
+	});
+
+	it('marks disabled instances with offNode class', () => {
+		const hosts = {
+			h: [
+				{ id: 'system.adapter.admin.0', enabled: true },
+				{ id: 'system.adapter.backup.0', enabled: false },
+			],
+		};
+		const out = buildAutoHostTopologyMermaid(hosts, { enabled: true, maxNodes: 40 });
+		assert.ok(out.includes('classDef offNode'), 'should define offNode style');
+		assert.ok(out.includes(':::offNode'), 'disabled instance should have offNode class');
+		assert.ok(!out.includes('"admin.0":::offNode'), 'enabled instance must not have offNode class');
 	});
 
 	it('annotates truncation when over instance limit', () => {

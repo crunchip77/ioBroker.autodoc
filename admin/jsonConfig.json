@@ -280,7 +280,7 @@
 				"manualMermaidDiagram": {
 					"type": "text",
 					"label": "Mermaid diagram (optional)",
-					"help": "Optional Mermaid diagram you write yourself (flowchart, sequence, …). Shown in HTML exports (interactive render via Mermaid script; offline file preview needs network once) and as a ```mermaid fenced block in Markdown exports. Hide in User/Onboarding with chapter id `mermaid`. Very long input is truncated.",
+					"help": "Optional Mermaid diagram you write yourself (flowchart, sequence, …). Shown in HTML exports (interactive render via Mermaid script; offline file preview needs network once) and as a ```mermaid fenced block in Markdown exports. Hide in User/Onboarding with chapter id `mermaid`. Very long input is truncated. Tip: start with `flowchart LR` for a left-to-right layout (uses page width); `flowchart TB` (default) grows top-to-bottom.",
 					"minRows": 4,
 					"maxRows": 28,
 					"newLine": true,
@@ -305,9 +305,9 @@
 				"autoMermaidHostGraphMaxNodes": {
 					"type": "number",
 					"label": "Max instances in auto topology diagram",
-					"help": "Maximum adapter **instance** nodes in the auto-generated diagram (8–80, default 40). Hosts are still shown; instances are chosen round-robin across hosts when there are more than this limit.",
+					"help": "Maximum adapter **instance** nodes in the auto-generated diagram (8–200, default 40). Hosts are still shown; instances are chosen round-robin across hosts when there are more than this limit.",
 					"min": 8,
-					"max": 80,
+					"max": 200,
 					"default": 40,
 					"newLine": true,
 					"xs": 12,
@@ -941,6 +941,29 @@
 					"lg": 12,
 					"xl": 12
 				},
+				"_userChapterOrderHint": {
+					"type": "staticText",
+					"text": "User chapter order hint",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"userChapterOrderJson": {
+					"type": "text",
+					"label": "User chapter order (JSON array)",
+					"help": "User chapter order JSON help",
+					"minRows": 2,
+					"maxRows": 8,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
 				"_onboardingChaptersHeader": {
 					"type": "header",
 					"text": "Onboarding HTML — hide chapters",
@@ -962,6 +985,29 @@
 					"label": "Onboarding profile — hidden chapter IDs (JSON)",
 					"help": "Onboarding hidden chapters JSON help",
 					"minRows": 3,
+					"maxRows": 8,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"_onboardingChapterOrderHint": {
+					"type": "staticText",
+					"text": "Onboarding chapter order hint",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"onboardingChapterOrderJson": {
+					"type": "text",
+					"label": "Onboarding chapter order (JSON array)",
+					"help": "Onboarding chapter order JSON help",
+					"minRows": 2,
 					"maxRows": 8,
 					"newLine": true,
 					"xs": 12,
