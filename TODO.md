@@ -50,7 +50,7 @@ Diese Datei ist die **Arbeitsliste**: was **offen** ist steht oben; **erledigte*
 | **KI + Skript-Quellcode** | 🟡 | **A** umgesetzt (`aiAnalyzeScriptSources`); **B** weiterhin Phase 5 Backup |
 | **npm + ioBroker.repositories** | ⬜ | Nach Adapter-Checker |
 | **Dokumentations-Score** (Wartung — Checkliste mit echten Kriterien) | ✅ | **0.9.30–0.9.31:** Dreiteiliger Score (Datenerfassung / Manuelle Inhalte / Dokumentationstiefe); instancesWithoutRoom komplett raus; neue Checks: Diagramm, Räume m. Geräten, eigene Kapitel, KI-Provider — [§ 1.6](#dokumentations-score-checkliste) |
-| **Admin-Markdown: Diagnose-Kapitel** ✅ (inhaltliche Parität zu Admin-HTML) | *optional* | Heute kein Kapitel im `.md`-Export (`lib/markdownRenderer.js` → `case 'diagnosis': return ''`). **Optional** nachziehen: gleiche Befunde wie `lib/htmlRenderer.js` `renderDiagnosis` (z. B. Node, **Skripte ohne `desc`**, OS-Hinweis …), inkl. TOC wenn nicht versteckt — Details [§ 1.6](#admin-markdown-diagnose-optional) |
+| **Admin-Markdown: Diagnose-Kapitel** (Parität zu Admin-HTML) | ✅ | `renderDiagnosis` / `renderDiagnosisMarkdown` — TOC-Zeile, ausblendbar wie HTML; Diagnose-Befunde sind datengetrieben (z. B. Node‑Hinweis, OS‑Hinweis), **ohne** entferntes Skript‑`desc`‑Finding (0.9.29). Details [§ 1.6](#admin-markdown-diagnose-optional), Anhang A |
 | **Admin-Konfig — Hilfen / Mini-Beispiele** (`manualMermaidDiagram`, JSON-Felder …) | *optional* | Entscheidung offen — [§ 1.7](#admin-config-hilfen-beispiele) |
 | **Admin-UI React** (statt/nur wo nötig neben `jsonConfig`) | *optional* | Nur wenn jsonConfig für geplante Features zu eng — [§ 1.8](#admin-react-optional) |
 
@@ -239,9 +239,11 @@ Details: [PLAN — System-Visitenkarte](PLAN.md#system-visitenkarte-festlegung),
 - [x] **Score 3 Rework 0.9.31:** `instancesWithoutRoom` vollstaendig aus Score entfernt; ersetzt durch `checkHasCustomSections` und `checkAiConfigured` (bedingt). Admin-Config-Felder bleiben fuer Rueckwaertskompatibilitaet ohne Effekt.
 - [x] **Explizit nicht** im Score: deaktivierte Instanzen (Inventar-only); `common.desc` / Skript-Beschreibungen.
 
+#### Admin-Markdown: Diagnose
+
 <a id="admin-markdown-diagnose-optional"></a>
 
-- [x] *(umgesetzt)* **Admin-Markdown: Diagnose-Kapitel** analog zu **Admin-HTML** ausgeben. Aktuell: **`case 'diagnosis': return ''`** in `lib/markdownRenderer.js` — das Kapitel erscheint **nicht** in der `.md`. **Wenn** gewünscht: z. B. `renderDiagnosisMarkdown(docModel)` mit inhaltlicher **Parität** zu `lib/htmlRenderer.js` `renderDiagnosis` (Scan-Status, Node-Befund, Hinweis **aktive Skripte ohne `common.desc`**, OS-Hinweis, Forum-Karte o. ä.) und **TOC**-Zeile ergänzen, solange das Kapitel nicht per Admin versteckt ist.
+- [x] **Admin-Markdown: Diagnose-Kapitel:** `renderDiagnosisMarkdown` in `lib/markdownRenderer.js`; Parität zur Admin-HTML-`renderDiagnosis` (inkl. ausblendbar über versteckte Kapitel / TOC wie bei anderen Admin-Kapiteln). Verweis **Anhang A**.
 
 <a id="admin-config-hilfen-beispiele"></a>
 

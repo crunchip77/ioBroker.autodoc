@@ -84,6 +84,7 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 - **Score 3 "Dokumentationstiefe" rework:** removed the "instances without room" check entirely from all scores (caused confusion, too many legitimate exceptions). Replaced with two new checks: **"custom documentation chapter has content"** and **"AI provider configured for script enrichment"** (conditional — only shown when scripts exist, auto-passes when no scripts are present).
 - `DEFAULT_UNASSIGNED_INSTANCE_WARN_AT` constant removed; `maintenanceScoreCheckUnassigned` and `maintenanceScoreUnassignedWarnAt` config fields are now unused in score logic (kept in admin config for backward compatibility but have no effect).
 - i18n EN/DE/FR: new keys `checkHasCustomSections`, `checkAiConfigured`, `checkInstancesWithoutRoomInfo`.
+- **Dev / CI (npm):** optional **Mermaid CLI** toolchain + striktes `npm ci` auf Linux (Node 24) — **`package.json` → `overrides`** (`chromium-bidi` → `devtools-protocol@0.0.1107588`) und **devDependencies** `cytoscape`, `d3-selection`, `devtools-protocol`, damit `package-lock.json` vollständig bleibt. Nach Dependency-Änderungen: `npm install` und Lock mit committen (`CONTRIBUTING.md`).
 
 ### 0.9.30 (2026-05-07)
 

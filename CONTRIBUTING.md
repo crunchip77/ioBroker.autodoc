@@ -28,6 +28,12 @@ npm run check
 
 Optional: `npm run dev-server` for a local Admin/dev loop (see `@iobroker/dev-server`).
 
+### `package-lock.json` and `npm ci`
+
+CI (`ioBroker/testing-action-check`) runs **`npm ci`**. The optional **@mermaid-js/mermaid-cli** chain (Puppeteer / `chromium-bidi` / Mermaid) depends on versions that must appear as **full** `packages["node_modules/…"]` entries in the lockfile. The repo therefore uses **`overrides`** (`chromium-bidi` → pinned `devtools-protocol`) and explicit **devDependencies** (`cytoscape`, `d3-selection`, `devtools-protocol`) so Linux + Node 22/24 installs stay in sync.
+
+After changing **dependencies** or **overrides**, run **`npm install`**, commit **`package.json`** and **`package-lock.json`** together, and verify **`npm ci`** on a clean **`node_modules`** locally if you can.
+
 ## Releases and README changelog
 
 - Add a dated `### x.y.z` section under **Changelog** in [`README.md`](README.md) (expected for ioBroker adapter listings).
