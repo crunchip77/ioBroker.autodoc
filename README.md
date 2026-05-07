@@ -4,7 +4,7 @@
 
 Automatically generates structured documentation (HTML, Markdown, JSON) for your ioBroker installation — on demand, on a schedule, or when the system changes.
 
-**Version:** 0.9.30
+**Version:** 0.9.31
 
 | | |
 | --- | --- |
@@ -78,6 +78,12 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 **Contributing / releases:** see [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 ## Changelog
+
+### 0.9.31 (2026-05-07)
+
+- **Score 3 "Dokumentationstiefe" rework:** removed the "instances without room" check entirely from all scores (caused confusion, too many legitimate exceptions). Replaced with two new checks: **"custom documentation chapter has content"** and **"AI provider configured for script enrichment"** (conditional — only shown when scripts exist, auto-passes when no scripts are present).
+- `DEFAULT_UNASSIGNED_INSTANCE_WARN_AT` constant removed; `maintenanceScoreCheckUnassigned` and `maintenanceScoreUnassignedWarnAt` config fields are now unused in score logic (kept in admin config for backward compatibility but have no effect).
+- i18n EN/DE/FR: new keys `checkHasCustomSections`, `checkAiConfigured`, `checkInstancesWithoutRoomInfo`.
 
 ### 0.9.30 (2026-05-07)
 
