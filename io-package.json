@@ -93,45 +93,6 @@
 				"pl": "0.9.25: owner playbook note; exports; RENDERER_VERSION",
 				"uk": "0.9.25: owner playbook note; exports; RENDERER_VERSION",
 				"zh-cn": "0.9.25：维护人操作流程文本；导出；RENDERER_VERSION"
-			},
-			"0.9.24": {
-				"en": "**Clarity:** Admin chapter **Maintenance & documentation setup** (technical **Diagnosis** stays separate). Exports use **documentation setup score**; Admin **Advanced** labels updated (EN/DE/FR + EN fallbacks). All checklist checks off → explicit note in HTML/Markdown. **Quick Start:** rooms with equal device counts sorted by name. `RENDERER_VERSION` **2026.04.28.4**.",
-				"de": "**Klarstellung:** Admin-Kapitel **Wartung & Dokumentations-Setup** (technische **Diagnose** bleibt eigenes Kapitel). **Doku-Setup-Score** in Texten; **Erweitert**-Hilfen angepasst. Alle Checks aus → Hinweis im Export. **Schnellstart:** bei gleicher Gerätezahl Sortierung nach Raumname. `RENDERER_VERSION` **2026.04.28.4**.",
-				"ru": "0.9.24: naming; setup score; quick start tie-break; RENDERER_VERSION",
-				"pt": "0.9.24: naming; setup score; quick start; RENDERER_VERSION",
-				"nl": "0.9.24: naming; setup score; quick start; RENDERER_VERSION",
-				"fr": "0.9.24 : libellés, score mise en place doc, Quick Start ; RENDERER_VERSION",
-				"it": "0.9.24: naming; setup score; quick start; RENDERER_VERSION",
-				"es": "0.9.24: naming; setup score; quick start; RENDERER_VERSION",
-				"pl": "0.9.24: naming; setup score; quick start; RENDERER_VERSION",
-				"uk": "0.9.24: naming; setup score; quick start; RENDERER_VERSION",
-				"zh-cn": "0.9.24：命名与文档Setup分；快速开始同设备数按房间名；RENDERER_VERSION"
-			},
-			"0.9.23": {
-				"en": "**Maintenance score** (Admin checklist): optional **per-check toggles** and numeric **thresholds** in Advanced settings (`maintenanceScoreCheck*`, min description length, unassigned-instance warn level). Score counts **only enabled** checks. **Quick Start** room cards prefer rooms with **more devices** first. Doc export `scoreDesc` clarifies **setup/meta** vs. content. `RENDERER_VERSION` **2026.04.28.3**.",
-				"de": "**Doku-Score** (Admin-Checkliste): in **Erweitert** pro Check **ein/aus** plus **Schwellen** (Mindestlänge Beschreibung, Warnstufe „Instanzen ohne Raum“). Prozent zählt nur **aktive** Checks. **Schnellstart**: Raumkarten bevorzugen Räume mit **mehr Geräten**. `scoreDesc` präzisiert **Setup/Meta** vs. Inhalt. `RENDERER_VERSION` **2026.04.28.3**.",
-				"ru": "0.9.23: maintenance score options; quick start room order; RENDERER_VERSION",
-				"pt": "0.9.23: maintenance score options; quick start room order; RENDERER_VERSION",
-				"nl": "0.9.23: maintenance score options; quick start room order; RENDERER_VERSION",
-				"fr": "0.9.23 : score maintenance (options), Quick Start pièces ; RENDERER_VERSION",
-				"it": "0.9.23: maintenance score options; quick start room order; RENDERER_VERSION",
-				"es": "0.9.23: maintenance score options; quick start room order; RENDERER_VERSION",
-				"pl": "0.9.23: maintenance score options; quick start room order; RENDERER_VERSION",
-				"uk": "0.9.23: maintenance score options; quick start room order; RENDERER_VERSION",
-				"zh-cn": "0.9.23：维护评分可配置；快速开始房间排序；RENDERER_VERSION"
-			},
-			"0.9.22": {
-				"en": "**Maintenance — documentation setup score:** checklist (project description length, **ioBroker base URL**, unassigned instances when count ≥10). **`scriptsWithoutDescription`** in the model for info/exports — still **not** scored. `buildMaintenance` uses rooms + manual context. `RENDERER_VERSION` bump.",
-				"de": "**Wartung — Doku-Setup-Score:** Checkliste (Projektbeschreibung, **Basis-URL**, ≥10 Instanzen ohne Raum). **`scriptsWithoutDescription`** nur informativ — **kein** Score. `buildMaintenance` mit Räumen + manuellem Kontext. `RENDERER_VERSION`.",
-				"ru": "0.9.22: maintenance checklist; score; RENDERER_VERSION",
-				"pt": "0.9.22: maintenance checklist; score; RENDERER_VERSION",
-				"nl": "0.9.22: maintenance checklist; score; RENDERER_VERSION",
-				"fr": "0.9.22 : checklist maintenance, score, RENDERER_VERSION",
-				"it": "0.9.22: maintenance checklist; score; RENDERER_VERSION",
-				"es": "0.9.22: checklist mantenimiento; score; RENDERER_VERSION",
-				"pl": "0.9.22: maintenance checklist; score; RENDERER_VERSION",
-				"uk": "0.9.22: maintenance checklist; score; RENDERER_VERSION",
-				"zh-cn": "0.9.22：维护清单、评分、RENDERER_VERSION"
 			}
 		},
 		"titleLang": {
