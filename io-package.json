@@ -1,7 +1,7 @@
 {
 	"common": {
 		"name": "autodoc",
-		"version": "0.9.29",
+		"version": "0.9.30",
 		"news": {
 			"0.9.28": {
 				"en": "Phase **5.x.3 (step 2):** optional **`autoMermaidHostGraph`** — small **auto-generated Mermaid** diagram of adapter instances **by ioBroker host** (`lib/autoHostTopologyMermaid.js`), with **hard instance-node limit** (8–80, default **40**, round-robin across hosts). Shown after the owner diagram in manual/HTML welcome + Markdown; hide with chapter id **`mermaid`**. Native **`autoMermaidHostGraphMaxNodes`**. `RENDERER_VERSION` **2026.04.28.9**.",
@@ -215,7 +215,7 @@
 		"maintenanceScoreCheckBaseUrl": true,
 		"maintenanceScoreCheckUnassigned": true,
 		"maintenanceScoreMinDescriptionChars": 40,
-		"maintenanceScoreUnassignedWarnAt": 10,
+		"maintenanceScoreUnassignedWarnAt": 30,
 		"exportPath": "",
 		"aiOwnerHints": "",
 		"htmlColorScheme": "auto",

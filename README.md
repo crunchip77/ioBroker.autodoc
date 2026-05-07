@@ -4,7 +4,7 @@
 
 Automatically generates structured documentation (HTML, Markdown, JSON) for your ioBroker installation — on demand, on a schedule, or when the system changes.
 
-**Version:** 0.9.29
+**Version:** 0.9.30
 
 | | |
 | --- | --- |
@@ -78,6 +78,16 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 **Contributing / releases:** see [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 ## Changelog
+
+### 0.9.30 (2026-05-07)
+
+- **Three-dimensional documentation score:** The single maintenance percentage is replaced by **three independent sub-scores** — each with its own progress bar and checklist — plus an overall average:
+  - **Data collection** — did autodoc successfully read hosts, instances, and rooms?
+  - **Manual content** — has the user filled in description, base URL, contact, and custom texts?
+  - **Documentation depth** — does the result go beyond a raw data dump? (rooms assigned, diagram present, rooms with device assignments)
+- **Default unassigned-instance threshold raised** from 10 to **30** — typical installations already have 15–20 infrastructure adapters (admin, backitup, discovery …) that never need room assignments.
+- **HTML and Markdown renderers** updated to render all three score bars with labels and dimension descriptions. Overall score shown at the bottom as the average.
+- **i18n (EN/DE/FR):** added keys for all three dimension titles, descriptions, and individual checks. `documentationScore` label changed to "Overall score" / "Gesamtpunktzahl" / "Score global".
 
 ### 0.9.29 (2026-05-07)
 
