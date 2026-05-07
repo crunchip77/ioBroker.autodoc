@@ -37,6 +37,7 @@
 	"Manual context (JSON)": "Contexte manuel (JSON)",
 	"Additional manual information to include in documentation (description, contact, notes)": "Informations manuelles supplémentaires à inclure dans la documentation",
 	"Basic settings": "Paramètres de base",
+	"Documentation & layout": "Documentation & mise en page",
 	"Basic section profile": "Profil et langue",
 	"Basic section triggers": "Quand régénérer",
 	"Basic section discovery": "Valeurs en direct dans la doc",
