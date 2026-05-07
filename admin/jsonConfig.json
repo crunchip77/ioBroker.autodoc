@@ -6,6 +6,16 @@
 			"type": "panel",
 			"label": "Basic settings",
 			"items": {
+				"_basicOrientation": {
+					"type": "staticText",
+					"text": "Admin tab orientation basic",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
 				"_basicSectionProfile": {
 					"type": "header",
 					"text": "Basic section profile",
@@ -190,6 +200,16 @@
 			"type": "panel",
 			"label": "Documentation & layout",
 			"items": {
+				"_documentationOrientation": {
+					"type": "staticText",
+					"text": "Admin tab orientation documentation",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
 				"docNestTabs": {
 					"type": "tabs",
 					"items": {
@@ -1157,6 +1177,16 @@
 			"type": "panel",
 			"label": "Notifications",
 			"items": {
+				"_notifyOrientation": {
+					"type": "staticText",
+					"text": "Admin tab orientation notify",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
 				"_notifySection": {
 					"type": "header",
 					"text": "Notify section",
@@ -1212,6 +1242,16 @@
 			"type": "panel",
 			"label": "AI documentation",
 			"items": {
+				"_aiOrientation": {
+					"type": "staticText",
+					"text": "Admin tab orientation AI",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
 				"_aiPrivacyWarning": {
 					"type": "staticText",
 					"text": "AI privacy warning",
