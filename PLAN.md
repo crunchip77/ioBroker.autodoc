@@ -29,7 +29,7 @@ Langfristige inhaltliche Richtung (Zusammenhänge, Auto vs. Pflege, Forum-Feedba
 | Bereich | Kurz |
 | ------- | ---- |
 | Phasen 1–4, 0.9.x RC, Multihost, KI-Basis, Custom-Template-**Teile**, States-Modus **`full`/`metadata`**, **`documentation.exportHashes`**, Downloads aus `/files` | ✅ siehe [TODO.md — Übersichtstabelle](TODO.md#stand-uebersicht) |
-| Phase 5 (PDF, Backup-Anbindung, Custom-Templates-Rest) | ⬜ |
+| Phase 5 (PDF ✅ **0.9.33**, Backup-Anbindung, Custom-Templates-Rest) | 🟡 PDF erledigt — Backup / DnD offen ([TODO Phase 5](TODO.md#phase-5-features)) |
 | Phase **5.x.2** Quick Start / Raumguides | 🟡 (Kern in 0.9.20, Fein-Sortierung/Länge offen — [TODO § 5.x.2](TODO.md#phase-5x)) |
 | Phase **5.x.3** Mermaid | ✅ Stufe 1 **0.9.27**, Stufe 2 **0.9.28** — [TODO § 5.x.3](TODO.md#phase-5x) |
 | **npm-Release** + **ioBroker.repositories** | ⬜ — bewusst **nach** Phase‑5‑Features / Feinschliff ([TODO — Reihenfolge](TODO.md#offene-arbeit)) |

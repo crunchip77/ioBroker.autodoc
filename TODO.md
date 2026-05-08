@@ -52,7 +52,7 @@ Diese Datei ist die **Arbeitsliste**: was **offen** ist steht oben; **erledigte*
 | **Dokumentations-Score** (Wartung — Checkliste mit echten Kriterien) | ✅ | **0.9.30–0.9.31:** Dreiteiliger Score (Datenerfassung / Manuelle Inhalte / Dokumentationstiefe); instancesWithoutRoom komplett raus; neue Checks: Diagramm, Räume m. Geräten, eigene Kapitel, KI-Provider — [§ 1.6](#dokumentations-score-checkliste) |
 | **Admin-Markdown: Diagnose-Kapitel** (Parität zu Admin-HTML) | ✅ | `renderDiagnosis` / `renderDiagnosisMarkdown` — TOC-Zeile, ausblendbar wie HTML; Diagnose-Befunde sind datengetrieben (z. B. Node‑Hinweis, OS‑Hinweis), **ohne** entferntes Skript‑`desc`‑Finding (0.9.29). Details [§ 1.6](#admin-markdown-diagnose-optional), Anhang A |
 | **Admin-Konfig — Hilfen / Mini-Beispiele** (`manualMermaidDiagram`, JSON-Felder …) | 🟡 | **0.9.32:** Mermaid-/States-/Hashes-Hilfen, Platzhalter, KI-Tab — [§ 1.7](#admin-config-hilfen-beispiele); optional weiter Mini-Beispiele |
-| **Nutzer-Handbuch / Wiki** (`docs/user-guide/`) | 🟡 | **0.9.32:** EN + DE-Lauftext + SVG-Wireframes; **offen:** echte **Screenshots** — [§ 1.1b](#nutzer-handbuch-wiki) |
+| **Nutzer-Handbuch / Wiki** (`docs/user-guide/`) | 🟡 | **0.9.32:** EN + DE + SVG-Wireframes; **`main`:** echte **Screenshots** aller Konfig-Tabs + **SCREENSHOTS.md**; optional: Versionshinweise **auf** den Bildern — [§ 1.1b](#nutzer-handbuch-wiki) |
 | **Admin-UI React** (statt/nur wo nötig neben `jsonConfig`) | *optional* | Nur wenn jsonConfig für geplante Features zu eng — [§ 1.8](#admin-react-optional) |
 
 ---
@@ -110,12 +110,13 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 
 ### 1.1b Nutzer-Handbuch / Wiki *(optional — Backlog)*
 
-> Erste Ausbaustufe im Repo: **`docs/user-guide/`** (`README.md` **EN**, **`README.de.md` DE** mit Muster-Szenario) + Verweise aus **README** und Admin-Hilfe.  
-> **Noch offen / später:** Wikis mit **Screenshots** (ausgefüllte Admin-Felder, Export-Ausschnitte), **AutoDoc-/Admin-Versionshinweis** auf Bildern, weitere Sprachen.
+> **`docs/user-guide/`** (`README.md` **EN**, **`README.de.md` DE** mit Muster-Szenario) + Verweise aus **README** und Admin-Hilfe — **Screenshots sämtlicher** Admin-Konfig-Tabs und Hinweise Lesbarkeit/Datenschutz in **`assets/SCREENSHOTS.md`** (Stand **`main`**, nach **0.9.32**).  
+> **Noch optional:** **Versionshinweise** direkt auf den Bildunterschriften (AutoDoc-/Admin-Version), weitere Sprachen, feinere Texte.
 
 - [x] Ablage festlegen (`docs/user-guide/` im Repo) + Verweis im **README**
 - [x] Inhalte nur mit **Demo-/Platzhalterdaten** (keine echten URLs, IPs, Forum-Karten aus Produktion) — **Schemas** `fig-*.svg` + Anleitung **`assets/SCREENSHOTS.md`**
-- [ ] Screenshots mit **AutoDoc-/Admin-Versionshinweis** pflegen (echte PNG/WebP aus **Demo** nach `assets/SCREENSHOTS.md` ergänzen)
+- [x] Echte **PNG-Screenshots** der Konfig-Tabs in **`assets/`** und eingebunden in **README.md** / **README.de.md**
+- [ ] Screenshots mit **AutoDoc-/Admin-Versionshinweis** in der Bildunterschrift pflegen (siehe Tipps in **SCREENSHOTS.md**)
 - [x] Mindeststruktur: Erste Schritte (Tabs), 1–2 Szenarien (z. B. Einfamilienhaus, Gäste), Hinweis Exporte / Forum
 
 <a id="phase-5-features"></a>

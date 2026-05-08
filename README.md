@@ -93,7 +93,7 @@ The **seven** sections below match **`common.news`** in `io-package.json` (ioBro
 - **Mermaid / HTML:** jsDelivr **`mermaid.min.js`** is injected **only** when the page still contains **`<pre class="mermaid">`** (fully SVG-embedded exports skip the CDN). `RENDERER_VERSION` **2026.05.08.1**.
 - **Admin:** **`Doc layout pdf hint`** on tab **HTML export & extra sections**; **export-hashes** help text mentions PDF digests; **`manualMermaidDiagram`** help clarified.
 - **Quick Start:** scripts-with-description lines are ordered **by name** for stable output.
-- **`docs/user-guide`:** tab overview, **exportHashes**/Mermaid wording, **SCREENSHOTS.md** row for optional HTML-tab capture.
+- **`docs/user-guide`:** tab overview, **exportHashes**/Mermaid wording; **SCREENSHOTS.md** + eingebettete **PNG-Screenshots** für alle sechs Konfig-Tabs (neben den SVG-Wireframes), Hinweise Lesbarkeit/GitHub-Vorschau.
 
 ### 0.9.33 (2026-05-08)
 
