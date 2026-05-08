@@ -2,7 +2,7 @@
 
 Orientierung für **Betreuer**, die den Adapter über das **[GitHub-Repository](https://github.com/crunchip77/ioBroker.autodoc)** installieren. Detail-Hilfe je Feld liefert weiter die **Inline-Hilfe** in der ioBroker-Admin-Oberfläche (`jsonConfig`); technische Grundlagen im **[README (EN)](../../README.md)**.
 
-**Abbildungen:** **SVG-Schemas** und **Screenshots** der ersten vier Registerkarten (unten); **Benachrichtigungen** und **KI-Dokumentation** können bei Bedarf später mit eigenen Aufnahmen ergänzt werden. Aufnahmen/Datenschutz: [`SCREENSHOTS.md`](assets/SCREENSHOTS.md).
+**Abbildungen:** **SVG-Schemas** (wo vorhanden) und **Screenshots sämtlicher** sechs Konfig‑Tabs — inklusive der optionalen **Benachrichtigungen** und **KI-Dokumentation**. Aufnahmen/Datenschutz: [`SCREENSHOTS.md`](assets/SCREENSHOTS.md).
 
 **englische Kurzfassung:** [`README.md`](README.md).
 
@@ -90,7 +90,21 @@ Nach Änderungen: **Dokumentation generieren** (Button / Datenpunkt **`action.ge
 
 ![HTML-Export & Zusatzkapitel — Screenshot (3/3)](assets/screen-html-export-pdf-hint-admin-3.png)
 
-*Optional später:* eigene Screenshots für **Benachrichtigungen** und **KI-Dokumentation** ergänzen (Dateinamen, Einbindung, Datenschutz: **[`assets/SCREENSHOTS.md`](assets/SCREENSHOTS.md)**).
+*Echte Admin-Oberfläche — Tab **Benachrichtigungen** (optional; Tab überspringen, wenn nicht benötigt). **Instanznamen**, Empfänger und Vorlagen für **öffentliche Repos** nur mit **Platzhaltern** oder weglassen.*
+
+![Benachrichtigungen — Screenshot](assets/screen-benachrichtigungen-admin.png)
+
+*Echte Admin-Oberfläche — Tab **KI-Dokumentation**, langer Scroll; **zwei Screenshots von oben nach unten** (Demo). Die **Datenschutz-** und **Hardware-Hinweise** im UI sind Bestandteil des Adapters — Cloud‑Anbieter nur nutzen, wenn das für euch passt.*
+
+**1/2 —** Anbieter & Modell, **Ollama-Basis-URL**, Anfrage‑Timeout.
+
+![KI-Dokumentation — Screenshot (1/2)](assets/screen-ki-dokumentation-admin.png)
+
+**2/2 —** **KI-Kontexthinweise** (nur für die Anfrage); **Temperatur**; Opt-in **„KI erklärt JavaScript-Skripte“**.
+
+![KI-Dokumentation — Screenshot (2/2)](assets/screen-ki-dokumentation-admin-2.png)
+
+Dateinamen wechseln, verpixeln, Datenschutz: **[`assets/SCREENSHOTS.md`](assets/SCREENSHOTS.md)**.
 
 ---
 

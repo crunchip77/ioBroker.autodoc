@@ -4,7 +4,7 @@ Structured help for **operators** who install and run the adapter from the [GitH
 
 - **German** walkthrough — includes a fictional **„Muster‑Einfamilienhaus“** scenario: **[`README.de.md`](README.de.md)**  
 
-**Figures:** **SVG wireframes** plus **real screenshots** for the first four admin tabs below; **Notifications** and **AI documentation** screenshots can follow the same pattern when needed. Naming and privacy: **[`assets/SCREENSHOTS.md`](assets/SCREENSHOTS.md)**. Per-field tooltips in Admin (`?`) remain authoritative. Project overview: **[README](../../README.md)**.
+**Figures:** **SVG wireframes** (where shown) plus **real screenshots** for **all six** admin tabs below — optional tabs included. Naming and privacy: **[`assets/SCREENSHOTS.md`](assets/SCREENSHOTS.md)**. Per-field tooltips in Admin (`?`) remain authoritative. Project overview: **[README](../../README.md)**.
 
 ## Prerequisites
 
@@ -79,7 +79,21 @@ Until the adapter is listed on npm, installs typically use Git (see README **Ins
 
 ![HTML export & extra chapters — screenshot (3/3)](assets/screen-html-export-pdf-hint-admin-3.png)
 
-**Notifications** and **AI documentation** tabs: add screenshots later if you extend this guide (**[`assets/SCREENSHOTS.md`](assets/SCREENSHOTS.md)**). Otherwise add or swap **PNG** snapshots from your **demo** host using the same naming hints.
+*Real Admin UI (demo; **Notifications** — skip this tab entirely if you do not need post-run messaging). Keep **adapter instance IDs**, recipients, and custom templates **out of public repos** or use placeholders.*
+
+![Notifications tab — screenshot](assets/screen-benachrichtigungen-admin.png)
+
+*Real Admin UI (demo; **AI documentation** — long tab, two screenshots **top to bottom**). Inline **privacy / hardware** notices are product text. For public repos prefer **local Ollama** or **redacted** cloud fields; never publish **API keys**.*
+
+**1/2 —** Provider & model selection, **Ollama base URL**, request timeout.
+
+![AI documentation — screenshot (1/2)](assets/screen-ki-dokumentation-admin.png)
+
+**2/2 —** Optional operator **context hints** (prompt-only); **temperature**; opt-in **“AI explains JavaScript scripts”**.
+
+![AI documentation — screenshot (2/2)](assets/screen-ki-dokumentation-admin-2.png)
+
+Naming, swap-out **PNG** hints, redaction: **[`assets/SCREENSHOTS.md`](assets/SCREENSHOTS.md)**.
 
 ## Generating documentation
 
