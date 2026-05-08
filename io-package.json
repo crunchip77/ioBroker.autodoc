@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "autodoc",
-    "version": "0.9.35",
+    "version": "0.9.36",
     "news": {
+      "0.9.36": {
+        "en": "**npm metadata:** tarball **0.9.36** matches **`main`** — `common.news` lists only npm-published versions (checker **E2004** alignment). No functional adapter changes.",
+        "de": "**npm-Metadaten:** Tarball **0.9.36** entspricht **`main`** — `common.news` nur mit auf npm veröffentlichten Versionen (Abgleich Adapter Checker **E2004**). Keine funktionalen Adapter-Änderungen.",
+        "ru": "**npm:** метаданные **0.9.36** = **`main`**, `common.news` только версии npm (E2004). Без изменений поведения.",
+        "pt": "**npm:** metadados **0.9.36** alinhados a **`main`**, `common.news` só versões npm (E2004). Sem mudanças funcionais.",
+        "nl": "**npm:** tarball **0.9.36** gelijk aan **`main`**, `common.news` alleen npm-versies (E2004). Geen gedrags­wijzigingen.",
+        "fr": "**npm :** métadonnées **0.9.36** alignées avec **`main`**, `common.news` seulement les versions npm (E2004). Pas de changement fonctionnel.",
+        "it": "**npm:** metadati **0.9.36** allineati a **`main`**, `common.news` solo versioni npm (E2004). Nessun cambio funzionale.",
+        "es": "**npm:** metadatos **0.9.36** alineados con **`main`**, `common.news` solo versiones npm (E2004). Sin cambios funcionales.",
+        "pl": "**npm:** metadane **0.9.36** jak **`main`**, `common.news` tylko wersje na npm (E2004). Bez zmian funkcjonalnych.",
+        "uk": "**npm:** метадані **0.9.36** synced з **`main`**, `common.news` лише npm-версії (E2004). Без змін поведінки.",
+        "zh-cn": "**npm：** **0.9.36** 与 **`main`** 元数据一致，`common.news` 仅列出 npm 上存在的版本（E2004）。无功能改动。"
+      },
       "0.9.35": {
         "en": "First **npm** release: package **`iobroker.autodoc`** on the public registry. Earlier **0.9.x** builds were Git-only; full history is in **README** / **CHANGELOG_OLD.md**. Default adapter lists still require **ioBroker.repositories**.",
         "de": "Erstes **npm**-Release: Paket **`iobroker.autodoc`** im öffentlichen Registry. Frühere **0.9.x**-Stände nur per Git; die Historie steht in **README** / **CHANGELOG_OLD.md**. Standard-Adapterlisten weiter über **ioBroker.repositories**.",
