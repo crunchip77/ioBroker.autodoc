@@ -1356,7 +1356,8 @@
 					"type": "header",
 					"text": "AI section tuning",
 					"size": 4,
-					"newLine": true
+					"newLine": true,
+					"hidden": "data.aiProvider === 'none'"
 				},
 				"aiTemperatureUser": {
 					"type": "text",
@@ -1385,7 +1386,8 @@
 					"type": "header",
 					"text": "AI section scripts",
 					"size": 4,
-					"newLine": true
+					"newLine": true,
+					"hidden": "data.aiProvider === 'none'"
 				},
 				"aiAnalyzeScriptSources": {
 					"type": "checkbox",
@@ -1432,6 +1434,7 @@
 					"val": true,
 					"label": "Cancel script KI (running generation)",
 					"variant": "outlined",
+					"hidden": "data.aiProvider === 'none' || !data.aiAnalyzeScriptSources",
 					"confirm": {
 						"title": "Cancel script KI",
 						"text": "Stop the optional per-script KI pass? The request that is already running may still finish; further scripts will not be started. (The main user/onboarding KI calls run before this phase.)",
