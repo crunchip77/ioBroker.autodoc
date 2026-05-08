@@ -139,3 +139,27 @@ Histories for versions **no longer** in the **7-version** window shared by `comm
 ### Earlier releases
 
 Changes for **0.9.4** and older: see **`git log`** and this file’s history in Git, or archived tags.
+## 0.9.30 (2026-05-07)
+
+- **Three-dimensional documentation score:** The single maintenance percentage is replaced by **three independent sub-scores** — each with its own progress bar and checklist — plus an overall average:
+  - **Data collection** — did autodoc successfully read hosts, instances, and rooms?
+  - **Manual content** — has the user filled in description, base URL, contact, and custom texts?
+  - **Documentation depth** — does the result go beyond a raw data dump? (rooms assigned, diagram present, rooms with device assignments)
+- **Default unassigned-instance threshold raised** from 10 to **30** — typical installations already have 15–20 infrastructure adapters (admin, backitup, discovery …) that never need room assignments.
+- **HTML and Markdown renderers** updated to render all three score bars with labels and dimension descriptions. Overall score shown at the bottom as the average.
+- **i18n (EN/DE/FR):** added keys for all three dimension titles, descriptions, and individual checks. `documentationScore` label changed to "Overall score" / "Gesamtpunktzahl" / "Score global".
+
+## 0.9.29 (2026-05-07)
+
+- **Maintenance score — room assignment:** `unassignedCount` now counts only **enabled** instances (disabled ones were already tracked separately; behaviour now matches the documented "active instances" wording in EN/DE/FR help text). Label renamed to **"Active instances not assigned to any room"** in all three languages.
+- **Scan findings:** removed the `common.desc`-on-scripts finding. `common.desc` on script objects is an **optional group-purpose field** (primarily used on global scripts), not a per-script description — reporting its absence as a finding was misleading. The key and all i18n strings are removed.
+- **User view — connected systems:** adapter list switched from a single-column card stack to a **responsive multi-column grid** (`adapter-card-grid`) — same compact layout already used in the admin adapter view.
+- **Mermaid host topology:** added explicit **`activeNode`** and **`offNode`** `classDef` entries with neutral slate colours (`activeNode: #94a3b8` fill / dark text; `offNode: #475569` darker fill with muted text + dashed border). Avoids the near-white Mermaid default that looked harsh in dark mode.
+- **Mermaid dark-mode re-render:** `toggleDark()` now calls `window.rerenderMermaid()`. The Mermaid init block stores each diagram's original source in `data-mermaid-src` before first render and restores it (plus clears `data-processed`) on theme switch, so diagrams actually update their colour scheme when the user toggles dark mode.
+- **discovery:** `common.type` (adapter category) now collected per instance; pre-existing indentation inconsistency on `connectionType`/`dataSource`/`tier` corrected.
+
+## 0.9.28 (2026-04-28)
+
+- **Phase 5.x.3 (step 2 — auto host topology):** Optional **`autoMermaidHostGraph`** and **`autoMermaidHostGraphMaxNodes`** (8–80, default **40**) under **My documentation**. Generates `manualContext.autoHostTopologyMermaid` via **`lib/autoHostTopologyMermaid.js`**: **Mermaid** `flowchart TB` with one **subgraph per ioBroker host** and **instance** nodes (`system.adapter.*` shortened, disabled instances suffixed `(off)`). When there are more instances than the limit, **round-robin** selection across hosts applies; a **`%%`** comment notes **`shown / total`**. Renders in HTML after the owner diagram (`#mermaid-diagram-auto`), in Onboarding **welcome** after the curated diagram, and as a second **`mermaid`** fenced block in Markdown. Same hide chapter id **`mermaid`** as the owner diagram. Export strings **`mermaidAutoTopologyTitle`** / **`mermaidAutoTopologyIntro`** (EN/DE/FR). `RENDERER_VERSION` **2026.04.28.9**.
+
+Older releases (**0.9.27** and earlier): [`CHANGELOG_OLD.md`](CHANGELOG_OLD.md).

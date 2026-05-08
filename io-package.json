@@ -1,253 +1,253 @@
 {
-	"common": {
-		"name": "autodoc",
-		"version": "0.9.34",
-		"news": {
-			"0.9.34": {
-				"en": "**Export hashes + polish:** `documentation.exportHashes` merges **`autodoc-*.pdf`** digests after PDF runs. **HTML:** Mermaid **jsDelivr** loads only when `<pre class=\"mermaid\">` remains (full SVG embed skips CDN). Admin **HTML export** tab shows **PDF hint**; Quick Start script lines sorted **by name**; `RENDERER_VERSION` **2026.05.08.1**.",
-				"de": "**Export-Hashes & Feinschliff:** `documentation.exportHashes` enthält nach PDF-Läufen auch **`autodoc-*.pdf`**-Prüfsummen. **HTML:** Mermaid **jsDelivr** nur bei verbleibendem `<pre class=\"mermaid\">` (volles SVG-Embedding ohne CDN). Admin-Tab **HTML-Export** mit **PDF-Hinweis**; Quick-Start-Skriptzeilen **nach Namen** sortiert; `RENDERER_VERSION` **2026.05.08.1**.",
-				"ru": "0.9.34: exportHashes + PDF; Mermaid CDN nur bei pre; Admin PDF-Hinweis; RENDERER_VERSION",
-				"pt": "0.9.34: exportHashes PDF; Mermaid CDN só com pre; hint PDF; RENDERER_VERSION",
-				"nl": "0.9.34: exportHashes pdf; Mermaid CDN alleen bij pre; PDF-hint admin; RENDERER_VERSION",
-				"fr": "0.9.34 : hashes export + PDF ; Mermaid jsDelivr si `<pre>` reste ; hint PDF ; RENDERER_VERSION",
-				"it": "0.9.34: exportHashes PDF; Mermaid CDN solo con pre; hint PDF; RENDERER_VERSION",
-				"es": "0.9.34: exportHashes PDF; Mermaid CDN solo con pre; hint PDF; RENDERER_VERSION",
-				"pl": "0.9.34: exportHashes PDF; Mermaid CDN tylko przy pre; hint PDF; RENDERER_VERSION",
-				"uk": "0.9.34: exportHashes PDF; Mermaid CDN лише з pre; PDF підказка; RENDERER_VERSION",
-				"zh-cn": "0.9.34：exportHashes 含 PDF；Mermaid 按需加载；管理端 PDF 提示；RENDERER_VERSION"
-			},
-			"0.9.33": {
-				"en": "**PDF export (Phase 5):** optional **`puppeteer`** — after each run (optional) or via state **`action.exportPdf`**, writes **`autodoc-{admin,user,onboarding}.pdf`** under adapter **Files** and mirrors to **Filesystem export path** when set. Headless Chromium uses same sandbox flags as Mermaid CLI. **Best effort:** requires optional `npm install puppeteer` in adapter folder; embedded Mermaid SVG offline-friendly; jsDelivr Mermaid needs network during render.",
-				"de": "**PDF-Export (Phase 5):** optional **`puppeteer`** — nach jedem Lauf (optional) oder per State **`action.exportPdf`** werden **`autodoc-{admin,user,onboarding}.pdf`** unter Adapter-**Dateien** geschrieben und bei gesetztem **Dateisystem-Exportpfad** gespiegelt. Headless-Chromium mit denselben Sandbox-Flags wie Mermaid-CLI. **Best effort:** `npm install puppeteer` im Adapterordner nötig; eingebettetes Mermaid-SVG offline-tauglich; jsDelivr-Mermaid braucht Netz beim Rendern.",
-				"ru": "0.9.33: PDF export puppeteer; action.exportPdf; /files + exportPath",
-				"pt": "0.9.33: PDF export + puppeteer opcional; action.exportPdf",
-				"nl": "0.9.33: PDF-export (puppeteer optioneel); action.exportPdf",
-				"fr": "0.9.33 : export PDF (puppeteer optionnel) ; action.exportPdf ; fichiers + exportPath",
-				"it": "0.9.33: export PDF puppeteer opzionale; action.exportPdf",
-				"es": "0.9.33: exportación PDF con puppeteer opcional; action.exportPdf",
-				"pl": "0.9.33: eksport PDF (opcjonalny puppeteer); action.exportPdf",
-				"uk": "0.9.33: PDF (puppeteer опційно); action.exportPdf",
-				"zh-cn": "0.9.33：可选 PDF（puppeteer）；action.exportPdf"
-			},
-			"0.9.32": {
-				"en": "**Operator guides** in **`docs/user-guide/`** (EN + DE scenario). **Admin:** richer `jsonConfig` / i18n help (Mermaid modes, **export hashes** / states storage, placeholders; AI tab quieter when provider off). **`common.extIcon`** + repo links → **`main`**; refreshed **PNG** icon. **CI:** workflow **concurrency** per ioBroker template (**Adapter Checker E3009**). **Tooling:** `tsconfig.check` skips local bootstrap dirs; guide **SVG** valid on GitHub; `guestHelpContent` lint.",
-				"de": "**Betriebsanleitungen:** **`docs/user-guide/`** (EN + deutsch Muster-Szenario). **Admin:** mehr Hilfe in `jsonConfig`/i18n (Mermaid, **Export-Hashes** / States-Speicher, Platzhalter; **KI**-Tab ruhiger ohne aktiven Provider). **`common.extIcon`** und Repo-Links → **`main`**; Icon-**PNG** erneuert. **CI:** Workflow-**Concurrency** wie ioBroker-Vorlage (**E3009**). **Tooling:** `tsconfig.check` ohne lokale Bootstrap-Pfade; Guide-**SVG** GitHub‑tauglich; ESLint **`guestHelpContent`**.",
-				"ru": "0.9.32: user-guide EN/DE; Admin jsonConfig/i18n; extIcon main; CI concurrency; tooling",
-				"pt": "0.9.32: guias user-guide; Admin help; extIcon main; CI; tooling",
-				"nl": "0.9.32: user-guide handles; Admin help; extIcon main; CI; tooling",
-				"fr": "0.9.32 : guides user-guide ; aide Admin ; extIcon main ; CI ; tooling",
-				"it": "0.9.32: guide user-help; Admin; extIcon main; CI; tooling",
-				"es": "0.9.32: guías user-guide; Admin; extIcon main; CI; tooling",
-				"pl": "0.9.32: user-guide Admin; extIcon main; CI; tooling",
-				"uk": "0.9.32: user-guide та Admin; extIcon main; CI; tooling",
-				"zh-cn": "0.9.32：用户指南与管理员帮助；extIcon 指向 main；CI 与工作流并发"
-			},
-			"0.9.31": {
-				"en": "**Score 3 (documentation depth) rework:** removed **instances without room** from scoring; added **custom chapter has content** and **AI provider configured** (only when scripts exist). `maintenanceScoreCheckUnassigned` / `maintenanceScoreUnassignedWarnAt` kept in config for backward compatibility but **no longer affect** the score. i18n **EN / DE / FR** for `checkHasCustomSections`, `checkAiConfigured`. **npm / CI:** `package.json` **overrides** (`chromium-bidi` → `devtools-protocol`) plus **devDependencies** so `npm ci` stays reproducible on Linux with the optional **Mermaid CLI** stack.",
-				"de": "**Score 3 („Dokumentationstiefe“) überarbeitet:** **„Instanzen ohne Raum“** komplett aus der Bewertung entfernt; neu: **„Eigener Kapitelinhalt vorhanden“** und **„KI-Provider konfiguriert“** (nur wenn Skripte existieren). `maintenanceScoreCheckUnassigned` / `maintenanceScoreUnassignedWarnAt` bleiben in der Konfiguration (**ohne Auswirkung** auf den Score). i18n **EN / DE / FR**. **npm / CI:** `overrides` + **devDependencies** für konsistentes `npm ci` (Mermaid-Toolchain).",
-				"ru": "0.9.31: Score 3 — без комнаты убран; кастом-главы и AI; npm ci/overrides",
-				"pt": "0.9.31: Score 3; salas removidas; capítulos/IA; npm ci/overrides",
-				"nl": "0.9.31: Score 3; kamers uit score; custom/AI; npm ci/overrides",
-				"fr": "0.9.31 : score 3 refactorisé ; instances sans pièce retirées ; contenu chap. perso et IA conditionnelle ; npm ci/overrides",
-				"it": "0.9.31: Score 3 rework; stanze tolte dal punteggio; capitoli/AI; npm ci/overrides",
-				"es": "0.9.31: Score 3; habitaciones fuera del score; capítulos/IA; npm ci/overrides",
-				"pl": "0.9.31: Score 3; bez pokoi ze score; rozdz./AI; npm ci/overrides",
-				"uk": "0.9.31: Score 3; кімнати знято з оцінки; розділи/AI; npm ci/overrides",
-				"zh-cn": "0.9.31：评分3调整；移除“无房间”；自定义章节与AI；npm ci/overrides"
-			},
-			"0.9.30": {
-				"en": "**Three-dimensional documentation score** replaces the single percentage: **Data collection**, **Manual content**, **Documentation depth** — each with its own progress bar and checklist, plus **overall average** (HTML + Markdown, i18n **EN / DE / FR**). Default **unassigned-instance** threshold raised from **10** to **30**.",
-				"de": "**Dreiteiliger Dokumentations-Score** statt einer Prozentzahl: **Datenerfassung**, **Manuelle Inhalte**, **Dokumentationstiefe** — jeweils Balken und Checkliste, unten **Durchschnitt** (HTML + Markdown, i18n). Standard-Schwelle „Instanzen ohne Raum“ von **10** auf **30**.",
-				"ru": "0.9.30: трёхмерный score; три шкалы и среднее; порог без комнаты 30",
-				"pt": "0.9.30: score três dimensões; média; limite não atribuído 30",
-				"nl": "0.9.30: driedimensionale score; gemiddelde; drempel 30",
-				"fr": "0.9.30 : score doc en trois dimensions avec moyenne ; seuil non assigné à 30",
-				"it": "0.9.30: score a tre dimensioni; media; soglia senza stanza 30",
-				"es": "0.9.30: puntuación tridimensional; media; umbral sin habitación 30",
-				"pl": "0.9.30: trzy wymiary score + średnia; próg 30",
-				"uk": "0.9.30: тривимірний score; середнє; поріг без кімнати 30",
-				"zh-cn": "0.9.30：三维文档评分与平均分；未分配阈值30"
-			},
-			"0.9.29": {
-				"en": "**Maintenance score:** `unassignedCount` counts only **enabled** instances; removed misleading **`common.desc` on scripts** scan finding. **User view:** adapter list uses **responsive card grid**. **Mermaid topology:** **`activeNode` / `offNode`** slate classDefs for readable dark mode; **`rerenderMermaid()`** on dark-mode toggle restores sources. **Markdown export:** collapsible adapter details + auto-topology hints. **discovery:** **`common.type`** per instance.",
-				"de": "**Doku-Score:** `unassignedCount` nur **aktivierte** Instanzen; irreführenden **Skript-common.desc**-Befund entfernt. **User-Ansicht:** **Adapter-Karten-Raster**. **Mermaid-Topologie:** **`activeNode` / `offNode`** für dunkles Theme; **`rerenderMermaid()`** beim Umschalten. **Markdown-Export:** einklappbare Adapter + Hinweise zur Auto-Topologie. **discovery:** **`common.type`** pro Instanz.",
-				"ru": "0.9.29: unassigned только enabled; убран desc на скриптах; сетка карточек; Mermaid dark; discovery common.type",
-				"pt": "0.9.29: unassigned só ativas; grid; Mermaid tema escuro; discovery type",
-				"nl": "0.9.29: unassigned alleen enabled; kaart-rooster; Mermaid dark; discovery type",
-				"fr": "0.9.29 : instances actives uniquement pour non assignées ; grille cartes ; Mermaid dark ; common.type découverte",
-				"it": "0.9.29: unassigned solo abilitate; griglia card; Mermaid dark; discovery type",
-				"es": "0.9.29: unassigned sólo activas; rejilla tarjetas; Mermaid oscuro; discovery type",
-				"pl": "0.9.29: unassigned tylko włączone; siatka kart; Mermaid dark; discovery type",
-				"uk": "0.9.29: лише активні без кімнати; сітка карток; темний Mermaid; common.type discovery",
-				"zh-cn": "0.9.29：仅统计已启用实例；卡片网格；Mermaid深色重绘；discovery 类型"
-			},
-			"0.9.28": {
-				"en": "Phase **5.x.3 (step 2):** optional **`autoMermaidHostGraph`** — small **auto-generated Mermaid** diagram of adapter instances **by ioBroker host** (`lib/autoHostTopologyMermaid.js`), with **hard instance-node limit** (8–80, default **40**, round-robin across hosts). Shown after the owner diagram in manual/HTML welcome + Markdown; hide with chapter id **`mermaid`**. Native **`autoMermaidHostGraphMaxNodes`**. `RENDERER_VERSION` **2026.04.28.9**.",
-				"de": "Phase **5.x.3 (Stufe 2):** optional **`autoMermaidHostGraph`** — kleines **automatisches Mermaid**-Diagramm der Adapter-Instanzen **pro ioBroker-Host** (`lib/autoHostTopologyMermaid.js`), mit **fester Instanz-Knotenzahl** (8–80, Standard **40**, Round-Robin über Hosts). Erscheint nach dem eigenen Diagramm im Handbuch/HTML-Begrüßung + Markdown; Ausblenden mit **`mermaid`**. Native **`autoMermaidHostGraphMaxNodes`**. `RENDERER_VERSION` **2026.04.28.9**.",
-				"ru": "0.9.28: autoMermaidHostGraph; host topology Mermaid; RENDERER_VERSION",
-				"pt": "0.9.28: autoMermaidHostGraph; topologia Mermaid; RENDERER_VERSION",
-				"nl": "0.9.28: autoMermaidHostGraph; host-topologie Mermaid; RENDERER_VERSION",
-				"fr": "0.9.28 : autoMermaidHostGraph ; topologie hôtes Mermaid ; RENDERER_VERSION",
-				"it": "0.9.28: autoMermaidHostGraph; topologia host Mermaid; RENDERER_VERSION",
-				"es": "0.9.28: autoMermaidHostGraph; topología Mermaid; RENDERER_VERSION",
-				"pl": "0.9.28: autoMermaidHostGraph; topologia Mermaid; RENDERER_VERSION",
-				"uk": "0.9.28: autoMermaidHostGraph; топологія хостів Mermaid; RENDERER_VERSION",
-				"zh-cn": "0.9.28：autoMermaidHostGraph；按主机实例 Mermaid 图；RENDERER_VERSION"
-			}
-		},
-		"titleLang": {
-			"en": "AutoDoc",
-			"de": "AutoDoc",
-			"ru": "АвтоДок",
-			"pt": "AutoDoc",
-			"nl": "AutoDoc",
-			"fr": "AutoDoc",
-			"it": "AutoDoc",
-			"es": "AutoDoc",
-			"pl": "AutoDoc",
-			"uk": "АвтоДок",
-			"zh-cn": "自动文档"
-		},
-		"desc": {
-			"en": "Creates structured documentation for ioBroker projects from user-defined input",
-			"de": "Erzeugt strukturierte Dokumentation für ioBroker-Projekte aus Benutzereingaben",
-			"ru": "Создает структурированную документацию для проектов ioBroker на основе пользовательского ввода",
-			"pt": "Cria documentação estruturada para projetos ioBroker a partir da entrada do usuário",
-			"nl": "Maakt gestructureerde documentatie voor ioBroker-projecten op basis van gebruikersinvoer",
-			"fr": "Crée une documentation structurée pour les projets ioBroker à partir des saisies utilisateur",
-			"it": "Crea documentazione strutturata per progetti ioBroker a partire dall'input dell'utente",
-			"es": "Crea documentación estructurada para proyectos ioBroker a partir de la entrada del usuario",
-			"pl": "Tworzy uporządkowaną dokumentację projektów ioBroker na podstawie danych użytkownika",
-			"uk": "Створює структуровану документацію для проєктів ioBroker на основі введених користувачем даних",
-			"zh-cn": "根据用户输入为 ioBroker 项目生成结构化文档"
-		},
-		"authors": [
-			"crunchip77 <41550245+crunchip77@users.noreply.github.com>"
-		],
-		"keywords": [
-			"autodoc",
-			"documentation",
-			"markdown",
-			"export",
-			"project",
-			"automation"
-		],
-		"licenseInformation": {
-			"type": "free",
-			"license": "MIT"
-		},
-		"platform": "Javascript/Node.js",
-		"icon": "autodoc.png",
-		"enabled": true,
-		"extIcon": "https://raw.githubusercontent.com/crunchip77/ioBroker.autodoc/main/admin/autodoc.png",
-		"readme": "https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md",
-		"loglevel": "info",
-		"tier": 3,
-		"dataFolder": "files",
-		"mode": "daemon",
-		"type": "general",
-		"compact": true,
-		"messagebox": true,
-		"connectionType": "local",
-		"dataSource": "push",
-		"adminUI": {
-			"config": "json"
-		},
-		"localLinks": {
-			"_default": {
-				"link": "/files/autodoc.0.files/autodoc-admin.html",
-				"name": "Admin Docs"
-			},
-			"user": {
-				"link": "/files/autodoc.0.files/autodoc-user.html",
-				"name": "User / Family"
-			},
-			"onboarding": {
-				"link": "/files/autodoc.0.files/autodoc-onboarding.html",
-				"name": "Onboarding"
-			}
-		},
-		"dependencies": [
-			{
-				"js-controller": ">=6.0.11"
-			}
-		],
-		"globalDependencies": [
-			{
-				"admin": ">=7.6.20"
-			}
-		]
-	},
-	"native": {
-		"projectName": "",
-		"projectDescription": "",
-		"manualContact": "",
-		"additionalNotes": "",
-		"guestHelpNote": "",
-		"homeRoutinesNote": "",
-		"ownerPlaybookNote": "",
-		"manualMermaidDiagram": "",
-		"autoMermaidHostGraph": false,
-		"autoMermaidHostGraphMaxNodes": 40,
-		"troubleshootWifiHint": "",
-		"troubleshootPowerHint": "",
-		"troubleshootWaterHint": "",
-		"troubleshootExtraHint": "",
-		"adapterNotes": [],
-		"roomNotes": [],
-		"onboardingHideRooms": [],
-		"onboardingHideAdapters": [],
-		"onboardingGuestShowScriptNames": false,
-		"userHideRooms": [],
-		"userHideAdapters": [],
-		"targetSystem": "ioBroker",
-		"language": "en",
-		"autoGenerateOnStart": true,
-		"autoGenerateOnEvents": false,
-		"autoGenerateInterval": 0,
-		"onlyEnabledInstances": false,
-		"hideInstanceDetailsInMarkdown": false,
-		"maxDocumentedInstances": 0,
-		"maxStoredFiles": 3,
-		"documentationStatesMode": "full",
-		"baseUrl": "",
-		"maintenanceScoreCheckDescription": true,
-		"maintenanceScoreCheckBaseUrl": true,
-		"maintenanceScoreCheckUnassigned": true,
-		"maintenanceScoreMinDescriptionChars": 40,
-		"maintenanceScoreUnassignedWarnAt": 30,
-		"exportPath": "",
-		"pdfExportAfterGeneration": false,
-		"aiOwnerHints": "",
-		"htmlColorScheme": "auto",
-		"htmlThemePreset": "default",
-		"htmlHeaderLogoUrl": "",
-		"htmlFontStack": "",
-		"htmlExtraCss": "",
-		"customDocSectionsJson": "[]",
-		"adminChapterOrderJson": "[]",
-		"adminHiddenChaptersJson": "[]",
-		"userHiddenChaptersJson": "[]",
-		"userChapterOrderJson": "[]",
-		"onboardingHiddenChaptersJson": "[]",
-		"onboardingChapterOrderJson": "[]",
-		"aiAnalyzeScriptSources": false,
-		"aiMaxScriptCharsForAi": 12000
-	},
-	"objects": [],
-	"instanceObjects": [
-		{
-			"_id": "info.connection",
-			"type": "state",
-			"common": {
-				"name": "If connected to service",
-				"type": "boolean",
-				"role": "indicator.connected",
-				"read": true,
-				"write": false,
-				"def": false
-			},
-			"native": {}
-		}
-	]
+  "common": {
+    "name": "autodoc",
+    "version": "0.9.35",
+    "news": {
+      "0.9.35": {
+        "en": "**npm:** publish **`iobroker.autodoc`** on the public registry so hosts can `npm install` the adapter tarball without cloning.\n**README:** install table reflects **npm** plus Git; default-list installs still depend on **ioBroker.repositories** (unchanged process).",
+        "de": "**npm:** veröffentlichen ** `iobroker.autodoc`*** auf der öffentlichen registrierung, so dass hosts `npm install` den adapter tarball ohne klonen installieren können.\n**README:** Installationstabelle reflektiert **npm** plus Git; Standard-Liste installiert immer noch abhängig von **ioBroker.repositories** (unchanged process).",
+        "ru": "**npm: **опубликуйте** iobroker.autodoc** в публичном реестре, чтобы хосты могли «установить» tarball адаптера без клонирования. \n**Установка таблицы отражает **npm** плюс Git; установки по умолчанию по-прежнему зависят от **ioBroker.repositories** (неизменный процесс).",
+        "pt": "**npm:** publique **`iobroker.autodoc`** no registro público para que os anfitriões possam `npm instalar` o tarball adaptador sem clonagem.\n**README:** install table reflect **npm** plus Git; as installs default-list ainda dependem de **ioBroker.repositórios** (processo inalterado).",
+        "nl": "**npm:** public **                                                                                                                           .\n**README:** install table reflecteert **npm** plus Git; standaard-lijst installeert nog steeds afhankelijk van **ioBroker.repositories** (ongewijzigd proces).",
+        "fr": "**npm:** publier **`iobroker.autodoc`** sur le registre public afin que les hôtes puissent `npm installer` le tarball adaptateur sans clonage.\n**README:** table d'installation reflète **npm** plus Git; les installs par défaut dépendent toujours de **ioBroker.repositories** (processus non modifié).",
+        "it": "**npm:** pubblicare **`iobroker.autodoc`** sul registro pubblico in modo che gli host possano `npm install` il tarball adattatore senza clonazione.\n**README:** install table riflette **npm** plus Git; le installazioni di default-list dipendono ancora da **ioBroker.repositories** (processo non modificato).",
+        "es": "**npm:** publicar **`iobroker.autodoc`** en el registro público para que los anfitriones puedan `npm instalar` el tarball del adaptador sin clonar.\n**README: ** tabla de instalación refleja **npm** más Git; las instalaciones de lista predeterminada todavía dependen de **ioBroker.repositories** (proceso sin cambios).",
+        "pl": "* *npm:* * publikuje ** 'iobroker.autodoc'* * w rejestrze publicznym, aby hosty mogły zainstalować 'npm' adapter tarball bez klonowania. \n* *README:* * install table reflexs ** npm* * plus Git; default- list installs still depended on ** joBroker.repositories* * (unforced process). ",
+        "uk": "**npm:*** опублікувати **`iobroker.autodoc`*** на публічному реєстрі, тому гості можуть встановити `npm`npm` адаптер tarball без клонування.\n**README:*** встановіть таблицю відображає **npm** плюс Git; за замовчуванням-list встановлює все ще залежать від **ioBroker.repositories*** (загальнений процес).",
+        "zh-cn": "** npm:** 在公共登记处公布 o robus.autodoc`**,使主机可以`npm 安装'适配器柏油球而不克隆.\n**README:**安装表格反映**npm**+Git;默认列表安装仍然依赖于**ioBroker.repositories**(未改变的过程)."
+      },
+      "0.9.34": {
+        "en": "**Export hashes + polish:** `documentation.exportHashes` merges **`autodoc-*.pdf`** digests after PDF runs. **HTML:** Mermaid **jsDelivr** loads only when `<pre class=\"mermaid\">` remains (full SVG embed skips CDN). Admin **HTML export** tab shows **PDF hint**; Quick Start script lines sorted **by name**; `RENDERER_VERSION` **2026.05.08.1**.",
+        "de": "**Export-Hashes & Feinschliff:** `documentation.exportHashes` enthält nach PDF-Läufen auch **`autodoc-*.pdf`**-Prüfsummen. **HTML:** Mermaid **jsDelivr** nur bei verbleibendem `<pre class=\"mermaid\">` (volles SVG-Embedding ohne CDN). Admin-Tab **HTML-Export** mit **PDF-Hinweis**; Quick-Start-Skriptzeilen **nach Namen** sortiert; `RENDERER_VERSION` **2026.05.08.1**.",
+        "ru": "0.9.34: exportHashes + PDF; Mermaid CDN nur bei pre; Admin PDF-Hinweis; RENDERER_VERSION",
+        "pt": "0.9.34: exportHashes PDF; Mermaid CDN só com pre; hint PDF; RENDERER_VERSION",
+        "nl": "0.9.34: exportHashes pdf; Mermaid CDN alleen bij pre; PDF-hint admin; RENDERER_VERSION",
+        "fr": "0.9.34 : hashes export + PDF ; Mermaid jsDelivr si `<pre>` reste ; hint PDF ; RENDERER_VERSION",
+        "it": "0.9.34: exportHashes PDF; Mermaid CDN solo con pre; hint PDF; RENDERER_VERSION",
+        "es": "0.9.34: exportHashes PDF; Mermaid CDN solo con pre; hint PDF; RENDERER_VERSION",
+        "pl": "0.9.34: exportHashes PDF; Mermaid CDN tylko przy pre; hint PDF; RENDERER_VERSION",
+        "uk": "0.9.34: exportHashes PDF; Mermaid CDN лише з pre; PDF підказка; RENDERER_VERSION",
+        "zh-cn": "0.9.34：exportHashes 含 PDF；Mermaid 按需加载；管理端 PDF 提示；RENDERER_VERSION"
+      },
+      "0.9.33": {
+        "en": "**PDF export (Phase 5):** optional **`puppeteer`** — after each run (optional) or via state **`action.exportPdf`**, writes **`autodoc-{admin,user,onboarding}.pdf`** under adapter **Files** and mirrors to **Filesystem export path** when set. Headless Chromium uses same sandbox flags as Mermaid CLI. **Best effort:** requires optional `npm install puppeteer` in adapter folder; embedded Mermaid SVG offline-friendly; jsDelivr Mermaid needs network during render.",
+        "de": "**PDF-Export (Phase 5):** optional **`puppeteer`** — nach jedem Lauf (optional) oder per State **`action.exportPdf`** werden **`autodoc-{admin,user,onboarding}.pdf`** unter Adapter-**Dateien** geschrieben und bei gesetztem **Dateisystem-Exportpfad** gespiegelt. Headless-Chromium mit denselben Sandbox-Flags wie Mermaid-CLI. **Best effort:** `npm install puppeteer` im Adapterordner nötig; eingebettetes Mermaid-SVG offline-tauglich; jsDelivr-Mermaid braucht Netz beim Rendern.",
+        "ru": "0.9.33: PDF export puppeteer; action.exportPdf; /files + exportPath",
+        "pt": "0.9.33: PDF export + puppeteer opcional; action.exportPdf",
+        "nl": "0.9.33: PDF-export (puppeteer optioneel); action.exportPdf",
+        "fr": "0.9.33 : export PDF (puppeteer optionnel) ; action.exportPdf ; fichiers + exportPath",
+        "it": "0.9.33: export PDF puppeteer opzionale; action.exportPdf",
+        "es": "0.9.33: exportación PDF con puppeteer opcional; action.exportPdf",
+        "pl": "0.9.33: eksport PDF (opcjonalny puppeteer); action.exportPdf",
+        "uk": "0.9.33: PDF (puppeteer опційно); action.exportPdf",
+        "zh-cn": "0.9.33：可选 PDF（puppeteer）；action.exportPdf"
+      },
+      "0.9.32": {
+        "en": "**Operator guides** in **`docs/user-guide/`** (EN + DE scenario). **Admin:** richer `jsonConfig` / i18n help (Mermaid modes, **export hashes** / states storage, placeholders; AI tab quieter when provider off). **`common.extIcon`** + repo links → **`main`**; refreshed **PNG** icon. **CI:** workflow **concurrency** per ioBroker template (**Adapter Checker E3009**). **Tooling:** `tsconfig.check` skips local bootstrap dirs; guide **SVG** valid on GitHub; `guestHelpContent` lint.",
+        "de": "**Betriebsanleitungen:** **`docs/user-guide/`** (EN + deutsch Muster-Szenario). **Admin:** mehr Hilfe in `jsonConfig`/i18n (Mermaid, **Export-Hashes** / States-Speicher, Platzhalter; **KI**-Tab ruhiger ohne aktiven Provider). **`common.extIcon`** und Repo-Links → **`main`**; Icon-**PNG** erneuert. **CI:** Workflow-**Concurrency** wie ioBroker-Vorlage (**E3009**). **Tooling:** `tsconfig.check` ohne lokale Bootstrap-Pfade; Guide-**SVG** GitHub‑tauglich; ESLint **`guestHelpContent`**.",
+        "ru": "0.9.32: user-guide EN/DE; Admin jsonConfig/i18n; extIcon main; CI concurrency; tooling",
+        "pt": "0.9.32: guias user-guide; Admin help; extIcon main; CI; tooling",
+        "nl": "0.9.32: user-guide handles; Admin help; extIcon main; CI; tooling",
+        "fr": "0.9.32 : guides user-guide ; aide Admin ; extIcon main ; CI ; tooling",
+        "it": "0.9.32: guide user-help; Admin; extIcon main; CI; tooling",
+        "es": "0.9.32: guías user-guide; Admin; extIcon main; CI; tooling",
+        "pl": "0.9.32: user-guide Admin; extIcon main; CI; tooling",
+        "uk": "0.9.32: user-guide та Admin; extIcon main; CI; tooling",
+        "zh-cn": "0.9.32：用户指南与管理员帮助；extIcon 指向 main；CI 与工作流并发"
+      },
+      "0.9.31": {
+        "en": "**Score 3 (documentation depth) rework:** removed **instances without room** from scoring; added **custom chapter has content** and **AI provider configured** (only when scripts exist). `maintenanceScoreCheckUnassigned` / `maintenanceScoreUnassignedWarnAt` kept in config for backward compatibility but **no longer affect** the score. i18n **EN / DE / FR** for `checkHasCustomSections`, `checkAiConfigured`. **npm / CI:** `package.json` **overrides** (`chromium-bidi` → `devtools-protocol`) plus **devDependencies** so `npm ci` stays reproducible on Linux with the optional **Mermaid CLI** stack.",
+        "de": "**Score 3 („Dokumentationstiefe“) überarbeitet:** **„Instanzen ohne Raum“** komplett aus der Bewertung entfernt; neu: **„Eigener Kapitelinhalt vorhanden“** und **„KI-Provider konfiguriert“** (nur wenn Skripte existieren). `maintenanceScoreCheckUnassigned` / `maintenanceScoreUnassignedWarnAt` bleiben in der Konfiguration (**ohne Auswirkung** auf den Score). i18n **EN / DE / FR**. **npm / CI:** `overrides` + **devDependencies** für konsistentes `npm ci` (Mermaid-Toolchain).",
+        "ru": "0.9.31: Score 3 — без комнаты убран; кастом-главы и AI; npm ci/overrides",
+        "pt": "0.9.31: Score 3; salas removidas; capítulos/IA; npm ci/overrides",
+        "nl": "0.9.31: Score 3; kamers uit score; custom/AI; npm ci/overrides",
+        "fr": "0.9.31 : score 3 refactorisé ; instances sans pièce retirées ; contenu chap. perso et IA conditionnelle ; npm ci/overrides",
+        "it": "0.9.31: Score 3 rework; stanze tolte dal punteggio; capitoli/AI; npm ci/overrides",
+        "es": "0.9.31: Score 3; habitaciones fuera del score; capítulos/IA; npm ci/overrides",
+        "pl": "0.9.31: Score 3; bez pokoi ze score; rozdz./AI; npm ci/overrides",
+        "uk": "0.9.31: Score 3; кімнати знято з оцінки; розділи/AI; npm ci/overrides",
+        "zh-cn": "0.9.31：评分3调整；移除“无房间”；自定义章节与AI；npm ci/overrides"
+      },
+      "0.9.30": {
+        "en": "**Three-dimensional documentation score** replaces the single percentage: **Data collection**, **Manual content**, **Documentation depth** — each with its own progress bar and checklist, plus **overall average** (HTML + Markdown, i18n **EN / DE / FR**). Default **unassigned-instance** threshold raised from **10** to **30**.",
+        "de": "**Dreiteiliger Dokumentations-Score** statt einer Prozentzahl: **Datenerfassung**, **Manuelle Inhalte**, **Dokumentationstiefe** — jeweils Balken und Checkliste, unten **Durchschnitt** (HTML + Markdown, i18n). Standard-Schwelle „Instanzen ohne Raum“ von **10** auf **30**.",
+        "ru": "0.9.30: трёхмерный score; три шкалы и среднее; порог без комнаты 30",
+        "pt": "0.9.30: score três dimensões; média; limite não atribuído 30",
+        "nl": "0.9.30: driedimensionale score; gemiddelde; drempel 30",
+        "fr": "0.9.30 : score doc en trois dimensions avec moyenne ; seuil non assigné à 30",
+        "it": "0.9.30: score a tre dimensioni; media; soglia senza stanza 30",
+        "es": "0.9.30: puntuación tridimensional; media; umbral sin habitación 30",
+        "pl": "0.9.30: trzy wymiary score + średnia; próg 30",
+        "uk": "0.9.30: тривимірний score; середнє; поріг без кімнати 30",
+        "zh-cn": "0.9.30：三维文档评分与平均分；未分配阈值30"
+      },
+      "0.9.29": {
+        "en": "**Maintenance score:** `unassignedCount` counts only **enabled** instances; removed misleading **`common.desc` on scripts** scan finding. **User view:** adapter list uses **responsive card grid**. **Mermaid topology:** **`activeNode` / `offNode`** slate classDefs for readable dark mode; **`rerenderMermaid()`** on dark-mode toggle restores sources. **Markdown export:** collapsible adapter details + auto-topology hints. **discovery:** **`common.type`** per instance.",
+        "de": "**Doku-Score:** `unassignedCount` nur **aktivierte** Instanzen; irreführenden **Skript-common.desc**-Befund entfernt. **User-Ansicht:** **Adapter-Karten-Raster**. **Mermaid-Topologie:** **`activeNode` / `offNode`** für dunkles Theme; **`rerenderMermaid()`** beim Umschalten. **Markdown-Export:** einklappbare Adapter + Hinweise zur Auto-Topologie. **discovery:** **`common.type`** pro Instanz.",
+        "ru": "0.9.29: unassigned только enabled; убран desc на скриптах; сетка карточек; Mermaid dark; discovery common.type",
+        "pt": "0.9.29: unassigned só ativas; grid; Mermaid tema escuro; discovery type",
+        "nl": "0.9.29: unassigned alleen enabled; kaart-rooster; Mermaid dark; discovery type",
+        "fr": "0.9.29 : instances actives uniquement pour non assignées ; grille cartes ; Mermaid dark ; common.type découverte",
+        "it": "0.9.29: unassigned solo abilitate; griglia card; Mermaid dark; discovery type",
+        "es": "0.9.29: unassigned sólo activas; rejilla tarjetas; Mermaid oscuro; discovery type",
+        "pl": "0.9.29: unassigned tylko włączone; siatka kart; Mermaid dark; discovery type",
+        "uk": "0.9.29: лише активні без кімнати; сітка карток; темний Mermaid; common.type discovery",
+        "zh-cn": "0.9.29：仅统计已启用实例；卡片网格；Mermaid深色重绘；discovery 类型"
+      }
+    },
+    "titleLang": {
+      "en": "AutoDoc",
+      "de": "AutoDoc",
+      "ru": "АвтоДок",
+      "pt": "AutoDoc",
+      "nl": "AutoDoc",
+      "fr": "AutoDoc",
+      "it": "AutoDoc",
+      "es": "AutoDoc",
+      "pl": "AutoDoc",
+      "uk": "АвтоДок",
+      "zh-cn": "自动文档"
+    },
+    "desc": {
+      "en": "Creates structured documentation for ioBroker projects from user-defined input",
+      "de": "Erzeugt strukturierte Dokumentation für ioBroker-Projekte aus Benutzereingaben",
+      "ru": "Создает структурированную документацию для проектов ioBroker на основе пользовательского ввода",
+      "pt": "Cria documentação estruturada para projetos ioBroker a partir da entrada do usuário",
+      "nl": "Maakt gestructureerde documentatie voor ioBroker-projecten op basis van gebruikersinvoer",
+      "fr": "Crée une documentation structurée pour les projets ioBroker à partir des saisies utilisateur",
+      "it": "Crea documentazione strutturata per progetti ioBroker a partire dall'input dell'utente",
+      "es": "Crea documentación estructurada para proyectos ioBroker a partir de la entrada del usuario",
+      "pl": "Tworzy uporządkowaną dokumentację projektów ioBroker na podstawie danych użytkownika",
+      "uk": "Створює структуровану документацію для проєктів ioBroker на основі введених користувачем даних",
+      "zh-cn": "根据用户输入为 ioBroker 项目生成结构化文档"
+    },
+    "authors": [
+      "crunchip77 <41550245+crunchip77@users.noreply.github.com>"
+    ],
+    "keywords": [
+      "autodoc",
+      "documentation",
+      "markdown",
+      "export",
+      "project",
+      "automation"
+    ],
+    "licenseInformation": {
+      "type": "free",
+      "license": "MIT"
+    },
+    "platform": "Javascript/Node.js",
+    "icon": "autodoc.png",
+    "enabled": true,
+    "extIcon": "https://raw.githubusercontent.com/crunchip77/ioBroker.autodoc/main/admin/autodoc.png",
+    "readme": "https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md",
+    "loglevel": "info",
+    "tier": 3,
+    "dataFolder": "files",
+    "mode": "daemon",
+    "type": "general",
+    "compact": true,
+    "messagebox": true,
+    "connectionType": "local",
+    "dataSource": "push",
+    "adminUI": {
+      "config": "json"
+    },
+    "localLinks": {
+      "_default": {
+        "link": "/files/autodoc.0.files/autodoc-admin.html",
+        "name": "Admin Docs"
+      },
+      "user": {
+        "link": "/files/autodoc.0.files/autodoc-user.html",
+        "name": "User / Family"
+      },
+      "onboarding": {
+        "link": "/files/autodoc.0.files/autodoc-onboarding.html",
+        "name": "Onboarding"
+      }
+    },
+    "dependencies": [
+      {
+        "js-controller": ">=6.0.11"
+      }
+    ],
+    "globalDependencies": [
+      {
+        "admin": ">=7.6.20"
+      }
+    ]
+  },
+  "native": {
+    "projectName": "",
+    "projectDescription": "",
+    "manualContact": "",
+    "additionalNotes": "",
+    "guestHelpNote": "",
+    "homeRoutinesNote": "",
+    "ownerPlaybookNote": "",
+    "manualMermaidDiagram": "",
+    "autoMermaidHostGraph": false,
+    "autoMermaidHostGraphMaxNodes": 40,
+    "troubleshootWifiHint": "",
+    "troubleshootPowerHint": "",
+    "troubleshootWaterHint": "",
+    "troubleshootExtraHint": "",
+    "adapterNotes": [],
+    "roomNotes": [],
+    "onboardingHideRooms": [],
+    "onboardingHideAdapters": [],
+    "onboardingGuestShowScriptNames": false,
+    "userHideRooms": [],
+    "userHideAdapters": [],
+    "targetSystem": "ioBroker",
+    "language": "en",
+    "autoGenerateOnStart": true,
+    "autoGenerateOnEvents": false,
+    "autoGenerateInterval": 0,
+    "onlyEnabledInstances": false,
+    "hideInstanceDetailsInMarkdown": false,
+    "maxDocumentedInstances": 0,
+    "maxStoredFiles": 3,
+    "documentationStatesMode": "full",
+    "baseUrl": "",
+    "maintenanceScoreCheckDescription": true,
+    "maintenanceScoreCheckBaseUrl": true,
+    "maintenanceScoreCheckUnassigned": true,
+    "maintenanceScoreMinDescriptionChars": 40,
+    "maintenanceScoreUnassignedWarnAt": 30,
+    "exportPath": "",
+    "pdfExportAfterGeneration": false,
+    "aiOwnerHints": "",
+    "htmlColorScheme": "auto",
+    "htmlThemePreset": "default",
+    "htmlHeaderLogoUrl": "",
+    "htmlFontStack": "",
+    "htmlExtraCss": "",
+    "customDocSectionsJson": "[]",
+    "adminChapterOrderJson": "[]",
+    "adminHiddenChaptersJson": "[]",
+    "userHiddenChaptersJson": "[]",
+    "userChapterOrderJson": "[]",
+    "onboardingHiddenChaptersJson": "[]",
+    "onboardingChapterOrderJson": "[]",
+    "aiAnalyzeScriptSources": false,
+    "aiMaxScriptCharsForAi": 12000
+  },
+  "objects": [],
+  "instanceObjects": [
+    {
+      "_id": "info.connection",
+      "type": "state",
+      "common": {
+        "name": "If connected to service",
+        "type": "boolean",
+        "role": "indicator.connected",
+        "read": true,
+        "write": false,
+        "def": false
+      },
+      "native": {}
+    }
+  ]
 }
