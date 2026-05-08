@@ -19,8 +19,9 @@ Until the adapter is listed on npm, installs typically use Git (see README **Ins
 
 1. **Basic settings** — project name, documentation language, markdown profile preference, timers and triggers (“Generate …”).  
 2. **Manual documentation (“My documentation”)** — human text for households and guests (`guestHelpNote`, playbook, troubleshooting quick lines). Optional **Mermaid** diagrams: see field help there (embedded SVG vs. browser/CDN fallback).  
-3. **Advanced** — **`documentationStatesMode`** (`full` vs `metadata`), optional **Filesystem export path**, **`documentation.exportHashes`** usage (summarised below).  
-4. **Notifications** / **AI** — optional; opt-in only.
+3. **Advanced** — **`documentationStatesMode`** (`full` vs `metadata`), optional **Filesystem export path**, optional **PDF after each run** (needs **`puppeteer`**), **`documentation.exportHashes`** usage (summarised below).  
+4. **HTML export & extra sections** — themes, chapter visibility/order, custom sections; the intro text on that tab also points to **PDF** settings (they live under **Advanced**).  
+5. **Notifications** / **AI** — optional; opt-in only.
 
 ### Figures (wireframes — not pixel-perfect Admin UI)
 
@@ -46,7 +47,7 @@ Whether large bodies live in **`documentation.*`** states or only on disk depend
 | **full**   | Full markdown/HTML/JSON also duplicated into adapter states (legacy, larger DB). |
 | **metadata** | States hold placeholders; canonical full text stays under **`/files/`**. Scripts that used to read states for full exports should read **`/files/`** or HTTP links. |
 
-**In both modes** the adapter updates **`documentation.exportHashes`** — **SHA-256 (hex)** of the latest export blobs so integrations can cheaply detect “did the doc change?” without parsing full payloads.
+**In both modes** the adapter updates **`documentation.exportHashes`** — **SHA-256 (hex)** of the latest **Markdown**, **Admin HTML**, **JSON**, and (after a successful **PDF** run) **`autodoc-*.pdf`** files so integrations can cheaply detect “did the doc change?” without parsing full payloads.
 
 ## Onboarding QR and copied link
 
@@ -54,7 +55,7 @@ Guests need a **reachable** browser URL for the onboarding HTML file. Configure 
 
 ## Optional Mermaid CLI
 
-The optional **`@mermaid-js/mermaid-cli`** package (installed with `npm install` on the adapter host) renders diagrams to **inline SVG during HTML generation** when it works — better for offline copies. Without it, HTML falls back to live Mermaid loading in the browser; see PLAN/TODO **Phase 5** notes for Puppeteer/OS caveats.
+The optional **`@mermaid-js/mermaid-cli`** package (installed with `npm install` on the adapter host) renders diagrams to **inline SVG during HTML generation** when it works — better for offline copies and **no jsDelivr script** in the export when every diagram is embedded. If some blocks stay as `<pre class="mermaid">` (CLI missing or a diagram failed), the HTML still loads Mermaid from the CDN in the browser. See PLAN/TODO **Phase 5** for Puppeteer/OS caveats (PDF and mmdc share similar Chromium assumptions).
 
 ## Repository checks before release
 

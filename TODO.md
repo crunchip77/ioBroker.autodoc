@@ -31,7 +31,7 @@ Diese Datei ist die **Arbeitsliste**: was **offen** ist steht oben; **erledigte*
 
 <a id="stand-uebersicht"></a>
 
-## Übersicht — Umsetzung vs. Rest (Stand: `package.json` / README, **0.9.32**, 2026-05-08; Branch je nach Arbeitskopie, z. B. `main` / `dev`)
+## Übersicht — Umsetzung vs. Rest (Stand: `package.json` / README, **0.9.34**, 2026-05-08; Branch je nach Arbeitskopie, z. B. `main` / `dev`)
 
 | Thema | Status | Kurz |
 | ----- | ------ | ---- |
@@ -179,7 +179,7 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 - **„Alles offline“** im Sinne **Notfall / ioBroker aus / Neuaufbau:** die **maßgeblichen Artefakte** sind die **mit Export geschriebenen** Dateien (HTML, MD, ggf. später PDF) — die man auf **NAS, USB, Mail-Anhang** legt. Sie sollen **möglichst ohne laufenden ioBroker** und **ohne Internet** in einem Browser nutzbar sein (bereits: **QR als SVG**; **Ziel:** **Mermaid als eingebettetes SVG** sobald mmdc auf dem Generator-Host klappt — sonst Lücke bis Netz oder OS-Fix).
 - **Kopie für Neuinstallation:** Nutzer sichern den **Export-Ordner** (plus später Backitup-Strang aus Phase 5). Doku dient dann als **Referenz beim Wiederaufbau**, unabhängig vom alten Laufzeit-System.
 
-- [ ] Bestehendes **Client-Mermaid** (jsDelivr) **entfernen oder nur noch Fallback**, wenn überall eingebettetes SVG genügt.
+- [x] **Client-Mermaid (jsDelivr):** Nur noch **Fallback** im **HTML**-Export — Skript wird nur eingefügt, wenn noch **`<pre class="mermaid">`** vorkommt (**0.9.34**); vollständig eingebettetes SVG lädt kein CDN. **Markdown** unverändert Fences mit Quelltext.
 - [x] **PDF:** **`autodoc-*.pdf`** unter `/files` bzw. `exportPath` — **0.9.33** (`puppeteer` optional).
 - [x] README / **common.news** / Admin-Hilfen: Chromium optional, RAM/CPU, Offline/PDF vs. jsDelivr — siehe README **Optional PDF export** und **Advanced**-Felder.
 
@@ -444,7 +444,7 @@ Der folgende Stand ist **historisch vollständig** (✅). Bei Abweichungsfragen 
 - [x] **`documentationStatesMode`**: `full` \| `metadata`, Default `full` — io-package, `jsonConfig`, EN/DE/FR
 - [x] **`persistDocumentation`**: bei `metadata` Platzhalter in `documentation.markdown` / `.html` / `.json`; `documentation.stateSummary` unverändert
 - [x] Download-Aktionen: Quelle `autodoc-latest.*` / `autodoc-admin.html`, Fallback Legacy-State
-- [x] **`documentation.exportHashes`**: SHA-256 (hex) der drei Latest-Exporte — beide Modi
+- [x] **`documentation.exportHashes`**: SHA-256 (hex) der Latest-Exporte (**MD / JSON / Admin-HTML**); bei PDF-Lauf auch **`autodoc-*.pdf`** — beide Modi (**0.9.34** ergänzt PDF-Fingerabdrücke)
 - [x] README-Kurztext zu Modus + Hashes
 
 ---

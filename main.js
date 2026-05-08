@@ -37,6 +37,19 @@ function sha256HexUtf8(s) {
 	return createHash('sha256').update(String(s), 'utf8').digest('hex');
 }
 
+/**
+ * SHA-256 hex digest of binary data (PDF export fingerprints).
+ *
+ * @param {Buffer} buf -
+ * @returns {string} 64 hex chars, or empty string if not a Buffer
+ */
+function sha256HexBuffer(buf) {
+	if (!Buffer.isBuffer(buf)) {
+		return '';
+	}
+	return createHash('sha256').update(buf).digest('hex');
+}
+
 class Autodoc extends utils.Adapter {
 	/**
 	 * @param {object} [options] Adapter options.
@@ -845,7 +858,7 @@ class Autodoc extends utils.Adapter {
 				await this.setStateAsync('documentation.json', { val: json, ack: true });
 			}
 
-			const exportHashes = {
+			let exportHashes = {
 				'autodoc-latest.md': sha256HexUtf8(markdown),
 				'autodoc-latest.json': sha256HexUtf8(json),
 				'autodoc-admin.html': sha256HexUtf8(htmlAll.admin),
@@ -902,7 +915,14 @@ class Autodoc extends utils.Adapter {
 			await this.setStateAsync('info.forumCardPlain', { val: forum.plaintext, ack: true });
 
 			if (this.config.pdfExportAfterGeneration) {
-				await this.runPdfExport(htmlAll, `after-generation (${docModel.meta.trigger})`);
+				const pdfHashes = await this.runPdfExport(htmlAll, `after-generation (${docModel.meta.trigger})`);
+				if (pdfHashes && Object.keys(pdfHashes).length > 0) {
+					exportHashes = { ...exportHashes, ...pdfHashes };
+					await this.setStateAsync('documentation.exportHashes', {
+						val: JSON.stringify(exportHashes),
+						ack: true,
+					});
+				}
 			}
 		} catch (error) {
 			this.log.error(`Error persisting documentation: ${error.message}`);
@@ -945,9 +965,10 @@ class Autodoc extends utils.Adapter {
 	 *
 	 * @param {{ admin?: string, user?: string, onboarding?: string }} htmlAll HTML UTF-8 strings.
 	 * @param {string} contextLabel Log context (e.g. trigger name).
-	 * @returns {Promise<void>}
+	 * @returns {Promise<Record<string, string>>} Map `autodoc-*.pdf` filename → SHA-256 hex for files written under /files
 	 */
 	async runPdfExport(htmlAll, contextLabel) {
+		const pdfHashes = {};
 		try {
 			const { renderProfilesToPdfBuffers } = require('./lib/htmlToPdf');
 
@@ -961,9 +982,14 @@ class Autodoc extends utils.Adapter {
 			for (const profile of ['admin', 'user', 'onboarding']) {
 				const buf = buffers[profile];
 				if (buf && buf.length >= minBytes) {
-					await this.writeFileAsync(basePath, `autodoc-${profile}.pdf`, buf);
+					const fname = `autodoc-${profile}.pdf`;
+					await this.writeFileAsync(basePath, fname, buf);
+					const hex = sha256HexBuffer(buf);
+					if (hex) {
+						pdfHashes[fname] = hex;
+					}
 					this.log.info(
-						`PDF (${contextLabel}): saved files/${this.namespace}/${`autodoc-${profile}.pdf`} (${buf.length} bytes)`,
+						`PDF (${contextLabel}): saved files/${this.namespace}/${fname} (${buf.length} bytes)`,
 					);
 				}
 			}
@@ -971,6 +997,41 @@ class Autodoc extends utils.Adapter {
 			await this.exportPdfBuffersToFilesystem(buffers, contextLabel);
 		} catch (e) {
 			this.log.warn(`PDF (${contextLabel}) skipped or failed: ${e.message}`);
+		}
+		return pdfHashes;
+	}
+
+	/**
+	 * Merge PDF SHA-256 entries into `documentation.exportHashes` (manual export or late PDF run).
+	 *
+	 * @param {Record<string, string>} pdfHashes -
+	 * @returns {Promise<void>}
+	 */
+	async mergeExportHashesPdf(pdfHashes) {
+		if (!pdfHashes || Object.keys(pdfHashes).length === 0) {
+			return;
+		}
+		try {
+			const st = await this.getStateAsync('documentation.exportHashes');
+			const raw = st && Object.prototype.hasOwnProperty.call(st, 'val') ? st.val : null;
+			let base = {};
+			if (typeof raw === 'string' && raw.trim()) {
+				try {
+					const parsed = JSON.parse(raw);
+					if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) {
+						base = parsed;
+					}
+				} catch {
+					/* keep base */
+				}
+			}
+			const merged = { ...base, ...pdfHashes };
+			await this.setStateAsync('documentation.exportHashes', {
+				val: JSON.stringify(merged),
+				ack: true,
+			});
+		} catch (e) {
+			this.log.debug(`mergeExportHashesPdf: ${e.message}`);
 		}
 	}
 
@@ -1018,7 +1079,8 @@ class Autodoc extends utils.Adapter {
 			this.log.warn('PDF export: no autodoc-*.html files found — run documentation generation first.');
 			return;
 		}
-		await this.runPdfExport(htmlAll, 'manual-exportPdf-state');
+		const pdfHashes = await this.runPdfExport(htmlAll, 'manual-exportPdf-state');
+		await this.mergeExportHashesPdf(pdfHashes);
 	}
 
 	/**

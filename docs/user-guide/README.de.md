@@ -27,8 +27,8 @@ Nach dem Instanziieren der Instanz: **Instanzen → autodoc.0 → Schraubenschl�
 
 1. **Grundeinstellungen** — Projektname, **Sprache** der erzeugten Doku, welches Markdown-Profil standardmäßig **exportiert** wird; **Auslöser** (bei Start, Cron, Änderungen, …).
 2. **Meine Dokumentation** — **eigene** Texte für Familie/Gäste (Notfallhilfe, Abläufe, Playbook); optionale Kurzzeilen (WLAN/Strom/Wasser); optional ein **selbst geschriebenes Mermaid-Diagramm** sowie die Auto-Host-Topologie.
-3. **Erweitert** — Basis-URL (für **QR/link** beim Onboarding-HTML), **`documentationStatesMode`** (`full` vs. `metadata`), optionaler **Filesystem-Export**, Wartungs-Score-Schwellen, …
-4. **HTML & Zusatzkapitel** — Kapitel ausblenden, **Reihenfolge**, **freie Markdown-Zusatzkapitel**, Theme.
+3. **Erweitert** — Basis-URL (für **QR/link** beim Onboarding-HTML), **`documentationStatesMode`** (`full` vs. `metadata`), optionaler **Filesystem-Export**, optional **PDF nach jedem Lauf** ( **`puppeteer`** im Adapterordner), Wartungs-Score-Schwellen, …
+4. **HTML & Zusatzkapitel** — Kapitel ausblenden, **Reihenfolge**, **freie Markdown-Zusatzkapitel**, Theme; im **Einleitungstext** dieses Tabs Kurzverweis auf **PDF** (Schalter unter **Erweitert**).
 5. **Benachrichtigungen** — optional Telegram/Push-Mail bei erzeugter Doku (adapterabhängig).
 6. **KI-Dokumentation** — nur bei **gewähltem Anbieter** relevant; wenn **„Deaktiviert“**, bleibt nur Hinweis/Kontrollkästichen oben ohne Funktion.
 
@@ -52,7 +52,7 @@ Die folgenden **SVG** sind **vereinfachte Drahtgitter** (keine produkt­getreuen
 
 - Alle Profile (Admin-/User-/Onboarding-HTML, Markdown, JSON) unter **`/files/autodoc.<instanz>/`**, Dateien wie `autodoc-latest.*` sowie rollierende Versionen (je nach Einstellung).
 - Datenpunkte z. B. **`info.htmlUrlAdmin`** / **`User`** / **`Onboarding`**, **`info.lastGeneration`**.
-- **Immer aktualisiert:** **`documentation.exportHashes`** — SHA‑256‑Hex zum Erkennen, ob sich einer der drei „latest“-Exporte seit dem letzten Lesen geändert hat (bei `full` **und** bei `metadata`).
+- **Immer aktualisiert:** **`documentation.exportHashes`** — SHA‑256‑Hex zum Erkennen, ob sich einer der drei „latest“-Exporte (Markdown, Admin-HTML, JSON) seit dem letzten Lesen geändert hat; nach erfolgreichem **PDF**-Export stehen dort zusätzlich die Prüfsummen der **`autodoc-*.pdf`** (bei `full` **und** bei `metadata`).
 
 **„Voll“ vs. nur Metadaten:** bei **`metadata`** liegt der **Kanontext nur in `/files`**; **`documentation.*` große States sind Platzhalter** — eigene Skripte, die früher Volltext aus States lesen, umstellen.
 
@@ -103,7 +103,7 @@ Max. **12** Einträge, überschuende Länge wird gekürzt.
 
 ### Schritt 5 — Optional Mermaid (Tab **„Meine Dokumentation“**)
 
-Im Textfeld gilt der **Placeholder** als **Starter** (zum Überschreiben). Bei installierter **Mermaid‑CLI** auf dem ioBroker-Rechner: Einbettung als **SVG** im HTML beim Generieren (**offline‑freundlicher**); sonst Fallback mit Browser/JavaScript beim Öffnen (siehe Hilfetext dort).
+Im Textfeld gilt der **Placeholder** als **Starter** (zum Überschreiben). Bei installierter **Mermaid‑CLI** auf dem ioBroker-Rechner: Einbettung als **SVG** im HTML beim Generieren (**offline‑freundlich**); sind **alle** Diagramme eingebettet, lädt die HTML-Datei **kein** Mermaid von jsDelivr mehr. Bleibt ein `<pre class="mermaid">` (CLI fehlt oder Fehler), greift der **Browser-Fallback** mit CDN — siehe Hilfetext im Admin.
 
 Ausblenden: Kapitel-Ids **`mermaid`** (**manuell**) und **`mermaidAuto`** (**nur** Auto-Host-Graph) in den jeweiligen **„Ausblenden“**-Listen.
 

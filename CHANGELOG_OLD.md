@@ -6,6 +6,10 @@ Histories for versions **no longer** in the **7-version** window shared by `comm
 
 - **Phase 5.x.2 — quick start tuning:** Onboarding **Quick Start** (HTML + Markdown) shows a **shorter** view of the same `docModel.quickStart` data: **3** setup lines, **4** room cards, **2** highlights per room (`sliceQuickStartForOnboarding` in `lib/quickStartGuide.js`). **User** “at a glance” keeps the **full** depth; intro copy clarifies resident vs guest; a **link to the Rooms chapter** appears when room highlights exist and that chapter is not hidden (User HTML + User Markdown). **KI** user grounding still uses the **full** quick-start facts. `RENDERER_VERSION` **2026.04.28.6**.
 
+### 0.9.27 (2026-04-28)
+
+- **Phase 5.x.3 (step 1 — curated Mermaid):** New optional field **`manualMermaidDiagram`** under **My documentation** (native + Admin UI). Parsed into `manualContext.mermaidDiagram` (max **12 000** characters). **HTML** profiles load **Mermaid 10.9.1** from jsDelivr when the export contains `pre.mermaid` and render client-side (`securityLevel: 'strict'`, theme follows dark toggle on first paint). **Markdown** adds a fenced **`mermaid`** block under **Manual information**. **Hide** the block with chapter id **`mermaid`** in User/Onboarding hide lists (`docTemplateConfig` whitelist updated). Onboarding HTML shows the diagram in the **welcome** area; Admin/User manual chapter uses subsection `#mermaid-diagram`. Export copy: `mermaidDiagramTitle` / `mermaidDiagramIntro` in **EN / DE / FR** (`lib/i18n.js`). `RENDERER_VERSION` **2026.04.28.8**.
+
 ### 0.9.25 (2026-04-28)
 
 - **My documentation — playbook:** optional **`ownerPlaybookNote`** (household procedures: order, must-dos, do-not rules in plain language). Shown in Admin manual, separate **User** / **Onboarding** HTML chapter (`#owner-playbook`) with nav when filled, **Markdown** (User/Onboarding profile) under **Manual information**, and **AI owner context**. Hide with chapter id **`ownerPlaybook`** on tab **HTML export & extra sections** (not *Advanced*). Export/renderer: `RENDERER_VERSION` **2026.04.28.5**. Admin UI copy EN/DE/FR; **Doc layout intro** clarifies Admin vs User/Onboarding hide lists.
@@ -84,7 +88,7 @@ Histories for versions **no longer** in the **7-version** window shared by `comm
 ### 0.9.11 (2026-04-20)
 
 - **Advanced — Documentation states storage:** **`full`** (default: last MD / Admin HTML / JSON also in `documentation.*` states, as before) or **`metadata`** (full exports only under `/files` as `autodoc-latest.*` / profile HTML; large `documentation.*` states hold short placeholders — less load on object DB / **Redis**). Scripts that read `documentation.*` as full text must use **`/files/`** or **`info.htmlUrl*`** when using metadata mode.
-- **State `documentation.exportHashes`:** JSON with **SHA-256 (hex)** for `autodoc-latest.md`, `autodoc-latest.json`, `autodoc-admin.html` (change detection without loading large payloads).
+- **State `documentation.exportHashes`:** JSON with **SHA-256 (hex)** for `autodoc-latest.md`, `autodoc-latest.json`, `autodoc-admin.html`, and (after PDF export) `autodoc-{admin,user,onboarding}.pdf` when written (change detection without loading large payloads).
 - **Download actions** (`autodoc.md` / `.json` / `.html`): content is read preferentially from the latest adapter files; legacy full-state fallback only if needed.
 - **HTML changelog:** lines for **adapter instance version** changes; **i18n** strings for changelog types (including EN / DE / FR).
 - **Docs:** `README` / `TODO.md` / `PLAN.md` reorganized for open vs. completed work (no functional change).

@@ -11,6 +11,7 @@ Willst du **echte Screenshots**, arbeite vorzugsweise mit **neutralen Platzhalte
 | `screen-grundeinstellungen-admin.png` | Tab **Grundeinstellungen**, nur nicht-kritische Felder sichtbar (Projektname z. B. „Demo …“). |
 | `screen-meine-dokumentation-admin.png` | Tab **Meine Dokumentation**, Textfelder leer oder mit **MUSTER**‑Text ohne Adressen. |
 | `screen-erweitert-basisurl-admin.png` | Tab **Erweitert**, Basis-URL **absichtlich** mit **erfundener** Domain/IP oder verpixelt/blurred. |
+| `screen-html-export-pdf-hint-admin.png` | Tab **HTML-Export & Zusatzkapitel** mit Kurztext-Hinweis auf **PDF** (optional). |
 
 - **PNG** oder **WebP**, Breite etwa **920–1280 px**, Dateigröße **< 350 KB**, wo möglich.
 - Admin- und AutoDoc-Version in der Bildunterschrift nennen (z. B. „screenshot 2026‑05, Admin ≥ …“).

@@ -1,8 +1,21 @@
 {
 	"common": {
 		"name": "autodoc",
-		"version": "0.9.33",
+		"version": "0.9.34",
 		"news": {
+			"0.9.34": {
+				"en": "**Export hashes + polish:** `documentation.exportHashes` merges **`autodoc-*.pdf`** digests after PDF runs. **HTML:** Mermaid **jsDelivr** loads only when `<pre class=\"mermaid\">` remains (full SVG embed skips CDN). Admin **HTML export** tab shows **PDF hint**; Quick Start script lines sorted **by name**; `RENDERER_VERSION` **2026.05.08.1**.",
+				"de": "**Export-Hashes & Feinschliff:** `documentation.exportHashes` enthält nach PDF-Läufen auch **`autodoc-*.pdf`**-Prüfsummen. **HTML:** Mermaid **jsDelivr** nur bei verbleibendem `<pre class=\"mermaid\">` (volles SVG-Embedding ohne CDN). Admin-Tab **HTML-Export** mit **PDF-Hinweis**; Quick-Start-Skriptzeilen **nach Namen** sortiert; `RENDERER_VERSION` **2026.05.08.1**.",
+				"ru": "0.9.34: exportHashes + PDF; Mermaid CDN nur bei pre; Admin PDF-Hinweis; RENDERER_VERSION",
+				"pt": "0.9.34: exportHashes PDF; Mermaid CDN só com pre; hint PDF; RENDERER_VERSION",
+				"nl": "0.9.34: exportHashes pdf; Mermaid CDN alleen bij pre; PDF-hint admin; RENDERER_VERSION",
+				"fr": "0.9.34 : hashes export + PDF ; Mermaid jsDelivr si `<pre>` reste ; hint PDF ; RENDERER_VERSION",
+				"it": "0.9.34: exportHashes PDF; Mermaid CDN solo con pre; hint PDF; RENDERER_VERSION",
+				"es": "0.9.34: exportHashes PDF; Mermaid CDN solo con pre; hint PDF; RENDERER_VERSION",
+				"pl": "0.9.34: exportHashes PDF; Mermaid CDN tylko przy pre; hint PDF; RENDERER_VERSION",
+				"uk": "0.9.34: exportHashes PDF; Mermaid CDN лише з pre; PDF підказка; RENDERER_VERSION",
+				"zh-cn": "0.9.34：exportHashes 含 PDF；Mermaid 按需加载；管理端 PDF 提示；RENDERER_VERSION"
+			},
 			"0.9.33": {
 				"en": "**PDF export (Phase 5):** optional **`puppeteer`** — after each run (optional) or via state **`action.exportPdf`**, writes **`autodoc-{admin,user,onboarding}.pdf`** under adapter **Files** and mirrors to **Filesystem export path** when set. Headless Chromium uses same sandbox flags as Mermaid CLI. **Best effort:** requires optional `npm install puppeteer` in adapter folder; embedded Mermaid SVG offline-friendly; jsDelivr Mermaid needs network during render.",
 				"de": "**PDF-Export (Phase 5):** optional **`puppeteer`** — nach jedem Lauf (optional) oder per State **`action.exportPdf`** werden **`autodoc-{admin,user,onboarding}.pdf`** unter Adapter-**Dateien** geschrieben und bei gesetztem **Dateisystem-Exportpfad** gespiegelt. Headless-Chromium mit denselben Sandbox-Flags wie Mermaid-CLI. **Best effort:** `npm install puppeteer` im Adapterordner nötig; eingebettetes Mermaid-SVG offline-tauglich; jsDelivr-Mermaid braucht Netz beim Rendern.",
@@ -80,19 +93,6 @@
 				"pl": "0.9.28: autoMermaidHostGraph; topologia Mermaid; RENDERER_VERSION",
 				"uk": "0.9.28: autoMermaidHostGraph; топологія хостів Mermaid; RENDERER_VERSION",
 				"zh-cn": "0.9.28：autoMermaidHostGraph；按主机实例 Mermaid 图；RENDERER_VERSION"
-			},
-			"0.9.27": {
-				"en": "Phase **5.x.3 (step 1):** optional **`manualMermaidDiagram`** in **My documentation** — owner-written Mermaid source. **HTML** exports load Mermaid **10.9.1** from jsDelivr when the page contains a diagram; **Markdown** adds a fenced **`mermaid`** block. Hide with chapter id **`mermaid`** (User/Onboarding hide lists). Clamped to **12 000** characters in `parseManualContext`. `RENDERER_VERSION` **2026.04.28.8**.",
-				"de": "Phase **5.x.3 (Stufe 1):** optionales **`manualMermaidDiagram`** unter **Meine Dokumentation** — selbst geschriebener Mermaid-Quelltext. **HTML**-Exporte laden Mermaid **10.9.1** von jsDelivr, wenn ein Diagramm vorkommt; **Markdown** erhält einen **`mermaid`**-Codeblock. Ausblenden mit Kapitel-Id **`mermaid`** (User/Onboarding). In `parseManualContext` auf **12 000** Zeichen begrenzt. `RENDERER_VERSION` **2026.04.28.8**.",
-				"ru": "0.9.27: Mermaid manualMermaidDiagram; HTML+MD; RENDERER_VERSION",
-				"pt": "0.9.27: Mermaid manualMermaidDiagram; HTML+MD; RENDERER_VERSION",
-				"nl": "0.9.27: Mermaid manualMermaidDiagram; HTML+MD; RENDERER_VERSION",
-				"fr": "0.9.27 : Mermaid manualMermaidDiagram ; HTML + MD ; RENDERER_VERSION",
-				"it": "0.9.27: Mermaid manualMermaidDiagram; HTML+MD; RENDERER_VERSION",
-				"es": "0.9.27: Mermaid manualMermaidDiagram; HTML+MD; RENDERER_VERSION",
-				"pl": "0.9.27: Mermaid manualMermaidDiagram; HTML+MD; RENDERER_VERSION",
-				"uk": "0.9.27: Mermaid manualMermaidDiagram; HTML+MD; RENDERER_VERSION",
-				"zh-cn": "0.9.27：手动 Mermaid 图；HTML/MD；RENDERER_VERSION"
 			}
 		},
 		"titleLang": {

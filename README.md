@@ -4,7 +4,7 @@
 
 Automatically generates structured documentation (HTML, Markdown, JSON) for your ioBroker installation — on demand, on a schedule, or when the system changes.
 
-**Version:** 0.9.33
+**Version:** 0.9.34
 
 | | |
 | --- | --- |
@@ -42,7 +42,7 @@ Short **orientation** for operators (install paths, tabs, exports, hashes, check
 
 Useful **states** (selection): `action.generate`; **`action.exportPdf`** (writes **PDF** profiles from the latest HTML under `/files` when optional **`puppeteer`** is installed in the adapter directory — no full regeneration); `info.lastGeneration` / `info.nextGeneration`; `info.htmlUrlAdmin` / `info.htmlUrlUser` / `info.htmlUrlOnboarding`; `info.templateVersion` (HTML template / renderer alignment); `info.forumCardPlain` (plaintext “system card” for forums, updated when documentation is generated).
 
-**Exports & storage:** after each successful run, **`documentation.exportHashes`** holds **SHA-256 (hex)** for the latest MD / JSON / Admin HTML served from `/files`. In Admin **Advanced**, **Documentation states storage** is **`full`** (defaults; last bodies in `documentation.*`) or **`metadata`** (lightweight states; canonical files remain under `/files`).
+**Exports & storage:** after each successful run, **`documentation.exportHashes`** holds **SHA-256 (hex)** for the latest MD / JSON / Admin HTML served from `/files`, and **merges digests for `autodoc-{admin,user,onboarding}.pdf`** whenever a PDF export step wrote those files. In Admin **Advanced**, **Documentation states storage** is **`full`** (defaults; last bodies in `documentation.*`) or **`metadata`** (lightweight states; canonical files remain under `/files`).
 
 ### Media, Redis, and state storage (short)
 
@@ -87,6 +87,14 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 
 The **seven** sections below match **`common.news`** in `io-package.json` (ioBroker repository builder keeps only the latest **7** news entries). Older versions are in [`CHANGELOG_OLD.md`](CHANGELOG_OLD.md).
 
+### 0.9.34 (2026-05-08)
+
+- **`documentation.exportHashes`:** after a successful PDF step, **SHA-256** entries for **`autodoc-admin.pdf`**, **`autodoc-user.pdf`**, **`autodoc-onboarding.pdf`** are merged into the same state (generation with **`pdfExportAfterGeneration`** or manual **`action.exportPdf`**).
+- **Mermaid / HTML:** jsDelivr **`mermaid.min.js`** is injected **only** when the page still contains **`<pre class="mermaid">`** (fully SVG-embedded exports skip the CDN). `RENDERER_VERSION` **2026.05.08.1**.
+- **Admin:** **`Doc layout pdf hint`** on tab **HTML export & extra sections**; **export-hashes** help text mentions PDF digests; **`manualMermaidDiagram`** help clarified.
+- **Quick Start:** scripts-with-description lines are ordered **by name** for stable output.
+- **`docs/user-guide`:** tab overview, **exportHashes**/Mermaid wording, **SCREENSHOTS.md** row for optional HTML-tab capture.
+
 ### 0.9.33 (2026-05-08)
 
 - **PDF export (Phase 5 — first slice):** optional **`puppeteer`** — **`pdfExportAfterGeneration`** in Admin **Advanced** and/or **`action.exportPdf`**; writes **`autodoc-{admin,user,onboarding}.pdf`** alongside HTML under **`/files/`** and mirrors to **Filesystem export path** when set (`lib/htmlToPdf.js`). Same Chromium sandbox flags as Mermaid CLI. Without **`puppeteer`** or on broken headless setups, PDF is skipped; core documentation generation continues.
@@ -130,11 +138,7 @@ The **seven** sections below match **`common.news`** in `io-package.json` (ioBro
 
 - **Phase 5.x.3 (step 2 — auto host topology):** Optional **`autoMermaidHostGraph`** and **`autoMermaidHostGraphMaxNodes`** (8–80, default **40**) under **My documentation**. Generates `manualContext.autoHostTopologyMermaid` via **`lib/autoHostTopologyMermaid.js`**: **Mermaid** `flowchart TB` with one **subgraph per ioBroker host** and **instance** nodes (`system.adapter.*` shortened, disabled instances suffixed `(off)`). When there are more instances than the limit, **round-robin** selection across hosts applies; a **`%%`** comment notes **`shown / total`**. Renders in HTML after the owner diagram (`#mermaid-diagram-auto`), in Onboarding **welcome** after the curated diagram, and as a second **`mermaid`** fenced block in Markdown. Same hide chapter id **`mermaid`** as the owner diagram. Export strings **`mermaidAutoTopologyTitle`** / **`mermaidAutoTopologyIntro`** (EN/DE/FR). `RENDERER_VERSION` **2026.04.28.9**.
 
-### 0.9.27 (2026-04-28)
-
-- **Phase 5.x.3 (step 1 — curated Mermaid):** New optional field **`manualMermaidDiagram`** under **My documentation** (native + Admin UI). Parsed into `manualContext.mermaidDiagram` (max **12 000** characters). **HTML** profiles load **Mermaid 10.9.1** from jsDelivr when the export contains `pre.mermaid` and render client-side (`securityLevel: 'strict'`, theme follows dark toggle on first paint). **Markdown** adds a fenced **`mermaid`** block under **Manual information**. **Hide** the block with chapter id **`mermaid`** in User/Onboarding hide lists (`docTemplateConfig` whitelist updated). Onboarding HTML shows the diagram in the **welcome** area; Admin/User manual chapter uses subsection `#mermaid-diagram`. Export copy: `mermaidDiagramTitle` / `mermaidDiagramIntro` in **EN / DE / FR** (`lib/i18n.js`). `RENDERER_VERSION` **2026.04.28.8**.
-
-Older releases (**0.9.26** and earlier): [`CHANGELOG_OLD.md`](CHANGELOG_OLD.md).
+Older releases (**0.9.27** and earlier): [`CHANGELOG_OLD.md`](CHANGELOG_OLD.md).
 
 ## License
 

@@ -318,7 +318,7 @@
 				"manualMermaidDiagram": {
 					"type": "text",
 					"label": "Mermaid diagram (optional)",
-					"help": "Optional Mermaid diagram you write yourself (flowchart, sequence, …). **HTML exports:** With `@mermaid-js/mermaid-cli` installed on the ioBroker host (optional npm dependency), diagrams are rendered to **embedded SVG during generation** — works in offline `file://` copies without network. Without the CLI the export uses `<pre class=\"mermaid\">` and loads **Mermaid 10.9.1** from jsDelivr when you open the page in a browser (**online**). **Markdown** always emits a ```mermaid source fence (not pre-rendered). Hide your manual diagram in User/Onboarding with chapter id **`mermaid`** (**`mermaidAuto`** is only for the optional auto-host diagram below). Very long input is truncated. Tip: `flowchart LR` uses horizontal page width; `flowchart TB` (default) stacks top-to-bottom.",
+					"help": "Optional Mermaid diagram you write yourself (flowchart, sequence, …). **HTML exports:** With `@mermaid-js/mermaid-cli` installed on the ioBroker host (optional npm dependency), diagrams are rendered to **embedded SVG during generation** — works in offline `file://` copies without network. Without the CLI the export uses `<pre class=\"mermaid\">` and loads **Mermaid 10.9.1** from jsDelivr when you open the page in a browser (**online**). **When all diagrams are embedded as SVG, the export no longer loads jsDelivr** (the script is only injected if a `<pre class=\"mermaid\">` remains). **Markdown** always emits a ```mermaid source fence (not pre-rendered). Hide your manual diagram in User/Onboarding with chapter id **`mermaid`** (**`mermaidAuto`** is only for the optional auto-host diagram below). Very long input is truncated. Tip: `flowchart LR` uses horizontal page width; `flowchart TB` (default) stacks top-to-bottom.",
 					"placeholder": "flowchart LR\n    DEMOROOM --> DEMOGW",
 					"minRows": 4,
 					"maxRows": 28,
@@ -829,6 +829,16 @@
 				"_docLayoutIntro": {
 					"type": "staticText",
 					"text": "Doc layout intro",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
+				"_docLayoutPdfHint": {
+					"type": "staticText",
+					"text": "Doc layout pdf hint",
 					"newLine": true,
 					"xs": 12,
 					"sm": 12,
