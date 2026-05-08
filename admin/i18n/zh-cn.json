@@ -34,7 +34,7 @@
 	"Maximum stored documentation files": "Maximum stored documentation files",
 	"How many timestamped file sets to keep (per type: .md, .html, .json). Oldest are deleted automatically. 0 = use default (3).": "How many timestamped file sets to keep (per type: .md, .html, .json). Oldest are deleted automatically. 0 = use default (3).",
 	"Documentation states storage": "Documentation states storage",
-	"Documentation states storage help": "Full: duplicate markdown, HTML, and JSON in adapter states (legacy, larger object DB / Redis). Metadata only: keep full exports only under Files (autodoc-latest.*); states hold a short placeholder — reduces database size. Scripts that read documentation.* for full text must use /files/ or HTTP URLs instead. Download actions still write autodoc.md / .json / .html from the latest files.",
+	"Documentation states storage help": "Full: duplicate markdown, HTML, and JSON in adapter states (legacy, larger object DB / Redis). Metadata only: keep full exports only under Files (autodoc-latest.*); states hold a short placeholder — reduces database size. Scripts that read documentation.* for full text must use /files/ or HTTP URLs instead. Download actions still write autodoc.md / .json / .html from the latest files. In both modes **`documentation.exportHashes`** stores **SHA-256 (hex)** digests of the latest MD / Admin HTML / JSON exports for change detection.",
 	"Doc states mode full": "Full (in states — larger DB)",
 	"Doc states mode metadata": "Metadata only (content in /files only)",
 	"Manual context (JSON)": "Manual context (JSON)",

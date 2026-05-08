@@ -318,7 +318,7 @@
 				"manualMermaidDiagram": {
 					"type": "text",
 					"label": "Mermaid diagram (optional)",
-					"help": "Optional Mermaid diagram you write yourself (flowchart, sequence, …). Shown in HTML exports (interactive render via Mermaid script; offline file preview needs network once) and as a ```mermaid fenced block in Markdown exports. Hide in User/Onboarding with chapter id `mermaid`. Very long input is truncated. Tip: start with `flowchart LR` for a left-to-right layout (uses page width); `flowchart TB` (default) grows top-to-bottom.",
+					"help": "Optional Mermaid diagram you write yourself (flowchart, sequence, …). **HTML exports:** With `@mermaid-js/mermaid-cli` installed on the ioBroker host (optional npm dependency), diagrams are rendered to **embedded SVG during generation** — works in offline `file://` copies without network. Without the CLI the export uses `<pre class=\"mermaid\">` and loads **Mermaid 10.9.1** from jsDelivr when you open the page in a browser (**online**). **Markdown** always emits a ```mermaid source fence (not pre-rendered). Hide your manual diagram in User/Onboarding with chapter id **`mermaid`** (**`mermaidAuto`** is only for the optional auto-host diagram below). Very long input is truncated. Tip: `flowchart LR` uses horizontal page width; `flowchart TB` (default) stacks top-to-bottom.",
 					"minRows": 4,
 					"maxRows": 28,
 					"newLine": true,
@@ -331,7 +331,7 @@
 				"autoMermaidHostGraph": {
 					"type": "checkbox",
 					"label": "Auto host topology diagram (Mermaid)",
-					"help": "When enabled, adds a second Mermaid block: adapter instances grouped by ioBroker host. Useful for multihost setups. Hard-capped number of instance nodes (see next setting). Not a full wiring graph. Same hide chapter id `mermaid` as your own diagram.",
+					"help": "When enabled, adds a second Mermaid diagram in HTML: adapter instances grouped by ioBroker host (helps in multihost setups). Instance node count is capped (next setting); not a full wiring graph. In User/Onboarding hide lists, use **`mermaidAuto`** to hide **only** this auto diagram (**`mermaid`** hides your manual diagram above). Same HTML embedding as manual Mermaid: embedded SVG when the CLI runs on the host, otherwise `<pre>` + jsDelivr in the browser.",
 					"default": false,
 					"newLine": true,
 					"xs": 12,

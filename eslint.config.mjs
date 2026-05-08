@@ -19,6 +19,11 @@ export default [
 			'admin/blockly.js',
 			'**/adapter-config.d.ts',
 			'widgets/**/*.js',
+			'iobroker-data/',
+			'install/',
+			'controller.js',
+			'install.js',
+			'uninstall.js',
 		],
 	},
 	{

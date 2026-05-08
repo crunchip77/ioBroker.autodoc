@@ -22,3 +22,13 @@ lint.log
 
 # Standalone ioBroker JavaScript user script (does not belong in this adapter repo)
 prozess-monitor.js
+
+# Accidental full ioBroker bootstrap dropped into this adapter clone (never commit)
+controller.js
+install.js
+uninstall.js
+iobroker.bat
+iob.bat
+serviceIoBroker.bat
+iobroker-data/
+install/

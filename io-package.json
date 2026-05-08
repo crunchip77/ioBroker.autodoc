@@ -139,7 +139,7 @@
 		"platform": "Javascript/Node.js",
 		"icon": "autodoc.png",
 		"enabled": true,
-		"extIcon": "https://raw.githubusercontent.com/crunchip77/ioBroker.autodoc/main/admin/autodoc.png",
+		"extIcon": "https://raw.githubusercontent.com/crunchip77/ioBroker.autodoc/dev/admin/autodoc.png",
 		"readme": "https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md",
 		"loglevel": "info",
 		"tier": 3,
