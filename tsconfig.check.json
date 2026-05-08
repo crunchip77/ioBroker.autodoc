@@ -3,5 +3,14 @@
 	"extends": "./tsconfig.json",
 	"compilerOptions": {},
 	"include": ["**/*.js", "**/*.d.ts"],
-	"exclude": ["**/build", "node_modules/", "widgets/"]
+	"exclude": [
+		"**/build",
+		"node_modules/",
+		"widgets/",
+		"iobroker-data/**",
+		"install/**",
+		"controller.js",
+		"install.js",
+		"uninstall.js"
+	]
 }

@@ -29,5 +29,13 @@
 		"useUnknownInCatchVariables": false
 	},
 	"include": ["**/*.js", "**/*.d.ts"],
-	"exclude": ["node_modules/**", "widgets/**"]
+	"exclude": [
+		"node_modules/**",
+		"widgets/**",
+		"iobroker-data/**",
+		"install/**",
+		"controller.js",
+		"install.js",
+		"uninstall.js"
+	]
 }
