@@ -8,7 +8,7 @@ Automatically generates structured documentation (HTML, Markdown, JSON) for your
 
 | | |
 | --- | --- |
-| **Install** | [ioBroker Admin](https://www.iobroker.net/#en/documentation) — from this **Git** repository (URL / clone) while there is **no** [npm](https://www.npmjs.com/package/iobroker.autodoc) release yet; a default list install follows **npm** + [ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories) (see [TODO — release](TODO.md#release-veroeffentlichung)). |
+| **Install** | [ioBroker Admin](https://www.iobroker.net/#en/documentation) — [npm](https://www.npmjs.com/package/iobroker.autodoc) package **`iobroker.autodoc`**, or install from this **Git** repository (URL / clone). Default adapter lists still need the package in [ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories) (see [TODO — release](TODO.md#release-veroeffentlichung)). |
 | **Repository** | [github.com/crunchip77/ioBroker.autodoc](https://github.com/crunchip77/ioBroker.autodoc) |
 | **Issues** | [GitHub Issues](https://github.com/crunchip77/ioBroker.autodoc/issues) |
 
@@ -88,6 +88,9 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 The **seven** sections below match **`common.news`** in `io-package.json` (ioBroker repository builder keeps only the latest **7** news entries). Older versions are in [`CHANGELOG_OLD.md`](CHANGELOG_OLD.md).
 
 ### **WORK IN PROGRESS**
+
+- **npm:** publish **`iobroker.autodoc`** on the public registry so hosts can `npm install` the adapter tarball without cloning.
+- **README:** install table reflects **npm** plus Git; default-list installs still depend on **ioBroker.repositories** (unchanged process).
 
 ### 0.9.34 (2026-05-08)
 
