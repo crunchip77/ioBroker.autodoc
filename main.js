@@ -105,6 +105,7 @@ class Autodoc extends utils.Adapter {
 		await this.subscribeStatesAsync('action.generate');
 		await this.subscribeStatesAsync('action.cancelScriptSourceAi');
 		await this.subscribeStatesAsync('action.download*');
+		await this.subscribeStatesAsync('action.exportPdf');
 
 		// Subscribe to adapter instance object changes for event-based generation
 		if (this.config.autoGenerateOnEvents) {
@@ -286,6 +287,14 @@ class Autodoc extends utils.Adapter {
 			},
 			'action.downloadHtml': {
 				name: 'Download HTML documentation',
+				type: 'boolean',
+				role: 'button',
+				read: false,
+				write: true,
+				def: false,
+			},
+			'action.exportPdf': {
+				name: 'Export PDF (three profiles from latest HTML)',
 				type: 'boolean',
 				role: 'button',
 				read: false,
@@ -891,6 +900,10 @@ class Autodoc extends utils.Adapter {
 
 			const forum = buildForumCard(docModel, this.i18n);
 			await this.setStateAsync('info.forumCardPlain', { val: forum.plaintext, ack: true });
+
+			if (this.config.pdfExportAfterGeneration) {
+				await this.runPdfExport(htmlAll, `after-generation (${docModel.meta.trigger})`);
+			}
 		} catch (error) {
 			this.log.error(`Error persisting documentation: ${error.message}`);
 			throw error;
@@ -925,6 +938,87 @@ class Autodoc extends utils.Adapter {
 		} catch (e) {
 			this.log.warn(`Filesystem export failed (${exportPath}): ${e.message} — ioBroker output unaffected`);
 		}
+	}
+
+	/**
+	 * Write `autodoc-*.pdf` to ioBroker /files and optionally to `exportPath` (mirrors HTML export).
+	 *
+	 * @param {{ admin?: string, user?: string, onboarding?: string }} htmlAll HTML UTF-8 strings.
+	 * @param {string} contextLabel Log context (e.g. trigger name).
+	 * @returns {Promise<void>}
+	 */
+	async runPdfExport(htmlAll, contextLabel) {
+		try {
+			const { renderProfilesToPdfBuffers } = require('./lib/htmlToPdf');
+
+			const buffers = await renderProfilesToPdfBuffers(htmlAll, line =>
+				this.log.info(`PDF (${contextLabel}): ${line}`),
+			);
+
+			const basePath = `${this.namespace}.files`;
+			const minBytes = 800;
+
+			for (const profile of ['admin', 'user', 'onboarding']) {
+				const buf = buffers[profile];
+				if (buf && buf.length >= minBytes) {
+					await this.writeFileAsync(basePath, `autodoc-${profile}.pdf`, buf);
+					this.log.info(
+						`PDF (${contextLabel}): saved files/${this.namespace}/${`autodoc-${profile}.pdf`} (${buf.length} bytes)`,
+					);
+				}
+			}
+
+			await this.exportPdfBuffersToFilesystem(buffers, contextLabel);
+		} catch (e) {
+			this.log.warn(`PDF (${contextLabel}) skipped or failed: ${e.message}`);
+		}
+	}
+
+	/**
+	 * Copy generated PDF buffers to `config.exportPath` when set (same semantics as HTML export).
+	 *
+	 * @param {Partial<Record<string, Buffer>>} buffers Named PDF buffers per profile.
+	 * @param {string} contextLabel Used in log prefix.
+	 * @returns {Promise<void>}
+	 */
+	async exportPdfBuffersToFilesystem(buffers, contextLabel) {
+		const exportPath = (this.config.exportPath || '').trim();
+		if (!exportPath) {
+			return;
+		}
+		try {
+			await fs.promises.mkdir(exportPath, { recursive: true });
+			for (const profile of ['admin', 'user', 'onboarding']) {
+				const buf = buffers[profile];
+				if (buf && buf.length > 500) {
+					const dest = path.join(exportPath, `autodoc-${profile}.pdf`);
+					await fs.promises.writeFile(dest, buf);
+				}
+			}
+			this.log.info(`PDF (${contextLabel}): filesystem mirrors written to ${exportPath}`);
+		} catch (e) {
+			this.log.warn(`PDF (${contextLabel}): filesystem export failed (${exportPath}): ${e.message}`);
+		}
+	}
+
+	/**
+	 * Build PDFs from the latest stored HTML profiles (button under adapter states).
+	 *
+	 * @returns {Promise<void>}
+	 */
+	async exportPdfFromLatestHtmlFiles() {
+		const basePath = `${this.namespace}.files`;
+		const htmlAll = {
+			admin: await this.readAdapterFileUtf8(basePath, 'autodoc-admin.html'),
+			user: await this.readAdapterFileUtf8(basePath, 'autodoc-user.html'),
+			onboarding: await this.readAdapterFileUtf8(basePath, 'autodoc-onboarding.html'),
+		};
+		const any = htmlAll.admin || htmlAll.user || htmlAll.onboarding;
+		if (!any) {
+			this.log.warn('PDF export: no autodoc-*.html files found — run documentation generation first.');
+			return;
+		}
+		await this.runPdfExport(htmlAll, 'manual-exportPdf-state');
 	}
 
 	/**
@@ -1108,6 +1202,17 @@ class Autodoc extends utils.Adapter {
 				this.log.error(`HTML download failed: ${err.message}`);
 			}
 			await this.setStateAsync('action.downloadHtml', { val: false, ack: true });
+			return;
+		}
+
+		if (id === `${this.namespace}.action.exportPdf` && state.ack === false && state.val === true) {
+			this.log.info('PDF export command received (latest HTML files)');
+			try {
+				await this.exportPdfFromLatestHtmlFiles();
+			} catch (err) {
+				this.log.error(`PDF export failed: ${err.message}`);
+			}
+			await this.setStateAsync('action.exportPdf', { val: false, ack: true });
 			return;
 		}
 

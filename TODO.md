@@ -39,10 +39,10 @@ Diese Datei ist die **Arbeitsliste**: was **offen** ist steht oben; **erledigte*
 | **0.9.x** RC-Features (Aliase, Diagnose, QR/Copy, `exportPath`, …) | ✅ | Siehe README-Changelog |
 | **Multihost** (Host-Karten, Slave-Warnung, Export) | ✅ | |
 | **KI** (Provider, Tab `hidden`, Timeouts, Temperaturen, **AI context hints**, `guestHelpNote` / `homeRoutinesNote` / `ownerPlaybookNote`) | ✅ | Sprachqualität kleiner Modelle bleibt iterativ |
-| **Custom Templates** (Kapitel ausblenden, Custom-Sections, Theme-Teile) | 🟡 | [PLAN.md — Custom Templates](PLAN.md#custom-templates-detail); **0.9.17:** Admin-Reihenfolge + **Farb-Presets** (ohne Roh-CSS); **main:** Reihenfolge **User/Onboarding** (`userChapterOrderJson`, `onboardingChapterOrderJson`); offen: **PDF**, DnD |
+| **Custom Templates** (Kapitel ausblenden, Custom-Sections, Theme-Teile) | 🟡 | [PLAN.md — Custom Templates](PLAN.md#custom-templates-detail); **0.9.17:** Admin-Reihenfolge + **Farb-Presets** (ohne Roh-CSS); **main:** Reihenfolge **User/Onboarding** (`userChapterOrderJson`, `onboardingChapterOrderJson`); **0.9.33:** PDF; offen: DnD |
 | **Admin-HTML Lesbarkeit** (lange Listen eingeklappt; Score ohne „Strafe“ für bewusst deaktivierte Instanzen) | ✅ | In **0.9.17** README-Changelog (block „Also on `dev`…“) + Feature-Bullets oben drunter |
 | **States entlasten** (`documentationStatesMode`, Platzhalter, Downloads aus `/files`, **`documentation.exportHashes`**) | ✅ | Default weiterhin `full`; News bei Default-Wechsel → offen |
-| **Phase 5** (PDF, Backup-Adapter, Rest Custom Templates) | ⬜ | PDF‑Merker: [§ 1.2a](#phase-5-pdf-offline-mermaid) (Offline/Druck/Mermaid vs. CDN) |
+| **Phase 5** (PDF, Backup-Adapter, Rest Custom Templates) | 🟡 | **PDF 0.9.33** ([§ 1.2a](#phase-5-pdf-offline-mermaid)); Backup / DnD offen |
 | **Phase 5.x.1** Notfall/Troubleshooting „Hybrid“ | ✅ | Kurzzeilen, Doku-Links (0.9.18), **Auto-Checklisten** bei Node-Befund + Disclaimer (0.9.19) |
 | **Phase 5.x.2** Quick Start / Raumguides | 🟡 | Kern in **0.9.20**; **0.9.26:** Gäste-Schnellstart kürzer (`sliceQuickStartForOnboarding`), User-Kurzüberblick mit Raum-Kapitel-Link; Fein: weitere Sortierung/Übersetzung, siehe [§ 1.3 — 5.x.2](#phase-5x) |
 | **Phase 5.x.3** Mermaid | ✅ | **0.9.27:** Stufe 1 — `manualMermaidDiagram`; **0.9.28:** Stufe 2 — `autoMermaidHostGraph`; **main:** `mermaidAuto` als eigene Chapter-ID (Auto-Topologie immer versteckt im Onboarding); **0.9.32:** Admin-Hilfen/JSON-Placeholder ergänzt |
@@ -122,14 +122,14 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 
 ### 1.2 Phase 5 — Features (Nice-to-Have)
 
-- [ ] PDF-Export — Merker bei Umsetzung: [§ 1.2a](#phase-5-pdf-offline-mermaid)
+- [x] PDF-Export — **0.9.33:** optional **`puppeteer`**, `pdfExportAfterGeneration`, **`action.exportPdf`**, `/files` + `exportPath`; Merker / Randbed.: [§ 1.2a](#phase-5-pdf-offline-mermaid)
 - [ ] Backup-Anbindung (siehe [Backup / ioBroker.backitup](#backup-backitup-festlegung) — **tar.gz**, Pfad und/oder `sendTo` Backitup)
 - [x] Custom Templates — **Reihenfolge User/Onboarding** (`userChapterOrderJson`, `onboardingChapterOrderJson`) — [PLAN.md — Custom Templates](PLAN.md#custom-templates-detail)
-- [ ] Custom Templates — **Rest**: ggf. **PDF**, Drag-and-Drop — [PLAN.md — Custom Templates](PLAN.md#custom-templates-detail)
+- [ ] Custom Templates — **Rest**: Drag-and-Drop — [PLAN.md — Custom Templates](PLAN.md#custom-templates-detail)
 
 <a id="phase-5-pdf-offline-mermaid"></a>
 
-#### 1.2a Merker: PDF, Druck, Offline & Mermaid *(Phase 5 — Festlegung getroffen, Umsetzung offen)*
+#### 1.2a Merker: PDF, Druck, Offline & Mermaid *(Phase 5 — Festlegung; PDF-Umsetzung 0.9.33)*
 
 > **Kontext:** Heute lädt **HTML** Mermaid **10.9.1** von **jsDelivr**, wenn ein Diagramm im Export liegt — **PDF**, **Druck** und **Offline-Kopien** ohne Netz zeigen dann **kein** gerendertes Diagramm, solange nur der Quelltext bzw. Client-Skript fehlt.
 
@@ -139,9 +139,10 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 - [x] **PDF:** Primär **aus dem generierten HTML** (nach SVG-Einbettung), z. B. **Headless-Browser** `page.pdf()` (Puppeteer/Playwright) oder dokumentierter **Browser-Workflow** „Drucken → PDF“. **Keine** separate, nur-PDF-eigene Mermaid-Render-Kette nötig.
 - [x] **Markdown-Export:** vorerst **unverändert** **Mermaid-Quelltext** in Fences; optional später angleichen — wie in den Leitplanken beschrieben.
 
-**Umsetzung (noch offen):**
+**Umsetzung:**
 
 - [x] **SVG-Rendering** bei Generierung über **`@mermaid-js/mermaid-cli`** (`lib/mermaidServerSvg.js`, optionalDependency) — pro `<pre class="mermaid">` in den drei HTML-Profilen; **light/dark** aus `htmlColorScheme` (**auto** → Default-Theme); ohne Paket bleibt **jsDelivr**-Mermaid wie bisher.
+- [x] **PDF aus HTML:** **`lib/htmlToPdf.js`** + optional **`puppeteer`** (^19 wie Mermaid-CLI), **`pdfExportAfterGeneration`**, **`action.exportPdf`** — Artefakte unter `/files` und optional `exportPath` (**0.9.33**, Best Effort ohne Puppeteer/OS-Chromium).
 
 **Festgehalten (Installation / Laufzeit — 2026-05):**
 
@@ -179,8 +180,8 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 - **Kopie für Neuinstallation:** Nutzer sichern den **Export-Ordner** (plus später Backitup-Strang aus Phase 5). Doku dient dann als **Referenz beim Wiederaufbau**, unabhängig vom alten Laufzeit-System.
 
 - [ ] Bestehendes **Client-Mermaid** (jsDelivr) **entfernen oder nur noch Fallback**, wenn überall eingebettetes SVG genügt.
-- [ ] **PDF:** Admin-Aktion und/oder Dateiausgabe `*.pdf` unter `/files/` bzw. `exportPath` — nach Festlegung oben.
-- [ ] README + ggf. **io-package**-Hilfe: Abhängigkeit (Chromium?), RAM, Hinweis **Offline/PDF** gemäß dieser Festlegung.
+- [x] **PDF:** **`autodoc-*.pdf`** unter `/files` bzw. `exportPath` — **0.9.33** (`puppeteer` optional).
+- [x] README / **common.news** / Admin-Hilfen: Chromium optional, RAM/CPU, Offline/PDF vs. jsDelivr — siehe README **Optional PDF export** und **Advanced**-Felder.
 
 <a id="phase-5x"></a>
 

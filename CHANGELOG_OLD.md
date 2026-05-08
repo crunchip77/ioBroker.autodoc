@@ -2,6 +2,10 @@
 
 Histories for versions **no longer** in the **7-version** window shared by `common.news` in `io-package.json` and the main [`README.md`](README.md#changelog) changelog (Adapter Checker / **ioBroker.repositories**).
 
+### 0.9.26 (2026-04-28)
+
+- **Phase 5.x.2 — quick start tuning:** Onboarding **Quick Start** (HTML + Markdown) shows a **shorter** view of the same `docModel.quickStart` data: **3** setup lines, **4** room cards, **2** highlights per room (`sliceQuickStartForOnboarding` in `lib/quickStartGuide.js`). **User** “at a glance” keeps the **full** depth; intro copy clarifies resident vs guest; a **link to the Rooms chapter** appears when room highlights exist and that chapter is not hidden (User HTML + User Markdown). **KI** user grounding still uses the **full** quick-start facts. `RENDERER_VERSION` **2026.04.28.6**.
+
 ### 0.9.25 (2026-04-28)
 
 - **My documentation — playbook:** optional **`ownerPlaybookNote`** (household procedures: order, must-dos, do-not rules in plain language). Shown in Admin manual, separate **User** / **Onboarding** HTML chapter (`#owner-playbook`) with nav when filled, **Markdown** (User/Onboarding profile) under **Manual information**, and **AI owner context**. Hide with chapter id **`ownerPlaybook`** on tab **HTML export & extra sections** (not *Advanced*). Export/renderer: `RENDERER_VERSION` **2026.04.28.5**. Admin UI copy EN/DE/FR; **Doc layout intro** clarifies Admin vs User/Onboarding hide lists.

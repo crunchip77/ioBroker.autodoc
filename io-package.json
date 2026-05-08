@@ -1,8 +1,21 @@
 {
 	"common": {
 		"name": "autodoc",
-		"version": "0.9.32",
+		"version": "0.9.33",
 		"news": {
+			"0.9.33": {
+				"en": "**PDF export (Phase 5):** optional **`puppeteer`** — after each run (optional) or via state **`action.exportPdf`**, writes **`autodoc-{admin,user,onboarding}.pdf`** under adapter **Files** and mirrors to **Filesystem export path** when set. Headless Chromium uses same sandbox flags as Mermaid CLI. **Best effort:** requires optional `npm install puppeteer` in adapter folder; embedded Mermaid SVG offline-friendly; jsDelivr Mermaid needs network during render.",
+				"de": "**PDF-Export (Phase 5):** optional **`puppeteer`** — nach jedem Lauf (optional) oder per State **`action.exportPdf`** werden **`autodoc-{admin,user,onboarding}.pdf`** unter Adapter-**Dateien** geschrieben und bei gesetztem **Dateisystem-Exportpfad** gespiegelt. Headless-Chromium mit denselben Sandbox-Flags wie Mermaid-CLI. **Best effort:** `npm install puppeteer` im Adapterordner nötig; eingebettetes Mermaid-SVG offline-tauglich; jsDelivr-Mermaid braucht Netz beim Rendern.",
+				"ru": "0.9.33: PDF export puppeteer; action.exportPdf; /files + exportPath",
+				"pt": "0.9.33: PDF export + puppeteer opcional; action.exportPdf",
+				"nl": "0.9.33: PDF-export (puppeteer optioneel); action.exportPdf",
+				"fr": "0.9.33 : export PDF (puppeteer optionnel) ; action.exportPdf ; fichiers + exportPath",
+				"it": "0.9.33: export PDF puppeteer opzionale; action.exportPdf",
+				"es": "0.9.33: exportación PDF con puppeteer opcional; action.exportPdf",
+				"pl": "0.9.33: eksport PDF (opcjonalny puppeteer); action.exportPdf",
+				"uk": "0.9.33: PDF (puppeteer опційно); action.exportPdf",
+				"zh-cn": "0.9.33：可选 PDF（puppeteer）；action.exportPdf"
+			},
 			"0.9.32": {
 				"en": "**Operator guides** in **`docs/user-guide/`** (EN + DE scenario). **Admin:** richer `jsonConfig` / i18n help (Mermaid modes, **export hashes** / states storage, placeholders; AI tab quieter when provider off). **`common.extIcon`** + repo links → **`main`**; refreshed **PNG** icon. **CI:** workflow **concurrency** per ioBroker template (**Adapter Checker E3009**). **Tooling:** `tsconfig.check` skips local bootstrap dirs; guide **SVG** valid on GitHub; `guestHelpContent` lint.",
 				"de": "**Betriebsanleitungen:** **`docs/user-guide/`** (EN + deutsch Muster-Szenario). **Admin:** mehr Hilfe in `jsonConfig`/i18n (Mermaid, **Export-Hashes** / States-Speicher, Platzhalter; **KI**-Tab ruhiger ohne aktiven Provider). **`common.extIcon`** und Repo-Links → **`main`**; Icon-**PNG** erneuert. **CI:** Workflow-**Concurrency** wie ioBroker-Vorlage (**E3009**). **Tooling:** `tsconfig.check` ohne lokale Bootstrap-Pfade; Guide-**SVG** GitHub‑tauglich; ESLint **`guestHelpContent`**.",
@@ -80,19 +93,6 @@
 				"pl": "0.9.27: Mermaid manualMermaidDiagram; HTML+MD; RENDERER_VERSION",
 				"uk": "0.9.27: Mermaid manualMermaidDiagram; HTML+MD; RENDERER_VERSION",
 				"zh-cn": "0.9.27：手动 Mermaid 图；HTML/MD；RENDERER_VERSION"
-			},
-			"0.9.26": {
-				"en": "**Phase 5.x.2 (tuning):** Onboarding **Quick Start** uses a **shorter** slice of `docModel.quickStart` (fewer system lines, room cards, highlights per room). **User** quick overview unchanged in depth; intro copy and a **link to the Rooms chapter** (HTML + User Markdown) reduce duplication. `sliceQuickStartForOnboarding` in `lib/quickStartGuide.js`. `RENDERER_VERSION` **2026.04.28.6**.",
-				"de": "**Phase 5.x.2 (Feintuning):** Onboarding-**Schnellstart** nutzt eine **kürzere** Auswahl aus `docModel.quickStart` (weniger Systemzeilen, Raumkarten, Highlights pro Raum). **User**-Kurzüberblick in der Tiefe unverändert; angepasster Text plus **Link zum Räume-Kapitel** (HTML + User-Markdown). `sliceQuickStartForOnboarding` in `lib/quickStartGuide.js`. `RENDERER_VERSION` **2026.04.28.6**.",
-				"ru": "0.9.26: Quick Start guest slice; rooms cross-link; RENDERER_VERSION",
-				"pt": "0.9.26: Quick Start convidado mais curto; link salas; RENDERER_VERSION",
-				"nl": "0.9.26: kortere Quick Start gast; link kamers; RENDERER_VERSION",
-				"fr": "0.9.26 : Quick Start invité raccourci ; lien pièces ; RENDERER_VERSION",
-				"it": "0.9.26: Quick Start ospite più corto; link stanze; RENDERER_VERSION",
-				"es": "0.9.26: Quick Start invitado más corto; enlace habitaciones; RENDERER_VERSION",
-				"pl": "0.9.26: krótszy Quick Start gościa; link pokoje; RENDERER_VERSION",
-				"uk": "0.9.26: коротший Quick Start для гостя; посилання кімнати; RENDERER_VERSION",
-				"zh-cn": "0.9.26：访客快速开始缩短；房间章节链接；RENDERER_VERSION"
 			}
 		},
 		"titleLang": {
@@ -217,6 +217,7 @@
 		"maintenanceScoreMinDescriptionChars": 40,
 		"maintenanceScoreUnassignedWarnAt": 30,
 		"exportPath": "",
+		"pdfExportAfterGeneration": false,
 		"aiOwnerHints": "",
 		"htmlColorScheme": "auto",
 		"htmlThemePreset": "default",

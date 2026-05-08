@@ -801,6 +801,24 @@
 					"md": 12,
 					"lg": 12,
 					"xl": 12
+				},
+				"_advancedSectionPdf": {
+					"type": "header",
+					"text": "Advanced section pdf export",
+					"size": 4,
+					"newLine": true
+				},
+				"pdfExportAfterGeneration": {
+					"type": "checkbox",
+					"label": "Pdf export after generation label",
+					"help": "Pdf export after generation help",
+					"default": false,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
 				}
 			}
 		},
