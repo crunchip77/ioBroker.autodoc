@@ -110,9 +110,10 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 
 ### 1.1b Nutzer-Handbuch / Wiki *(optional — Backlog)*
 
-> Später: „Wiki-artige“ Hilfe mit **Beispieltexten** und **Screenshots** (ausgefüllte Admin-Felder, ggf. Export-Ausschnitte), damit Einsteiger wissen **wo sie was einstellen**.
+> Erste Ausbaustufe im Repo: **`docs/user-guide/`** (`README.md` **EN**, **`README.de.md` DE** mit Muster-Szenario) + Verweise aus **README** und Admin-Hilfe.  
+> **Noch offen / später:** Wikis mit **Screenshots** (ausgefüllte Admin-Felder, Export-Ausschnitte), **AutoDoc-/Admin-Versionshinweis** auf Bildern, weitere Sprachen.
 
-- [ ] Ablage festlegen (`docs/user-guide/` im Repo **oder** GitHub-Wiki) + Verweis im **README**
+- [x] Ablage festlegen (`docs/user-guide/` im Repo) + Verweis im **README**
 - [ ] Inhalte nur mit **Demo-/Platzhalterdaten** (keine echten URLs, IPs, Forum-Karten aus Produktion)
 - [ ] Screenshots mit **AutoDoc-/Admin-Versionshinweis** pflegen (UI drift vermeidbar kennzeichnen)
 - [ ] Mindeststruktur: Erste Schritte (Tabs), 1–2 Szenarien (z. B. Einfamilienhaus, Gäste), Hinweis Exporte / Forum
@@ -263,9 +264,7 @@ Details: [PLAN — System-Visitenkarte](PLAN.md#system-visitenkarte-festlegung),
 
 > **Merker:** Bessere Orientierung bei komplexeren Feldern, **ohne** Demo-Inhalt in Exporten durch `native`-**`default`** (der wäre echter gespeicherter Text).
 
-- [ ] Abwägen und ggf. umsetzen:
-  - **Mermaid** (`manualMermaidDiagram`): ergänzend zu `help` ggf. **UI-`placeholder`** (falls jsonConfig/Textfeld in Admin unterstützt) oder gekürzte **Beispielzeilen** nur in Hilfe-/Panel-Text (**EN/DE/FR**),
-  - **JSON-Konfig** (`customDocSectionsJson`, versteckte Kapitel, Kapitelreihenfolge, …): Mini-Schema oder Link auf README-/Doku-Stelle — **nicht** ein großes Array als **`default`** in `io-package` `native`, das ungeprüft exportiert wirkt.
+- [x] **teilweise umgesetzt:** **Mermaid** (`manualMermaidDiagram`): **Placeholder** im Textfeld (neutral `DEMO*`, keine `native`-Defaults). **JSON-Felder** (**Kapitelreihenfolge / Ausblenden / Custom sections**): **Placeholder** im UI + Verweis im Hilfetext **„Custom sections (JSON)“** auf **`docs/user-guide/README.de.md`** (Musterszenario); weiterhin **kein** großes **`default`**-JSON in `io-package` `native`.
 
 <a id="admin-react-optional"></a>
 

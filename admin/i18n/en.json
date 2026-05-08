@@ -218,7 +218,7 @@
 	"Custom Markdown sections": "Custom Markdown sections",
 	"Custom sections JSON hint": "JSON array of objects: `{ \"title\": \"Wi-Fi\", \"body\": \"**Guest** …\", \"profiles\": [\"user\",\"onboarding\"] }`. **body** is Markdown (no raw HTML). **profiles** optional — omit to show in all three HTML profiles. Max 12 sections; long text is truncated. Example uses: emergency contacts, Wi-Fi, router model.",
 	"Custom sections (JSON)": "Custom sections (JSON)",
-	"Custom sections JSON help": "See the hint above. After editing, run **Generate documentation** again.",
+	"Custom sections JSON help": "See the hint above. After editing, run **Generate documentation** again. **Walkthrough** (German, fictional demo home): https://github.com/crunchip77/ioBroker.autodoc/blob/dev/docs/user-guide/README.de.md",
 	"User/Family HTML — hide chapters": "User/Family HTML — hide chapters",
 	"User hidden chapters hint": "JSON array of chapter ids to hide in **User/Family** HTML and in **Markdown** when the documentation profile is User. Example: `[\"scripts\",\"adapters\"]`. Valid ids: `manual`, `ai`, `guestHelp`, `atAGlance`, `rooms`, `scripts`, `routines`, `ownerPlaybook`, `mermaid` (user-defined Mermaid diagram), `mermaidAuto` (auto-generated host topology — not shown in Onboarding), `adapters`, `custom`, `system`, `troubleshooting`.",
 	"User profile — hidden chapter IDs (JSON)": "User profile — hidden chapter IDs (JSON)",

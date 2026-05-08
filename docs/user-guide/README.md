@@ -1,6 +1,10 @@
 # AutoDoc — user guide (first steps)
 
-Structured help for **operators** who install and run the adapter from the [GitHub repository](https://github.com/crunchip77/ioBroker.autodoc). Screenshots and per-field walkthroughs stay out of scope here; use the **Inline help** texts in ioBroker Admin (`jsonConfig`) and the [**README**](https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md).
+Structured help for **operators** who install and run the adapter from the [GitHub repository](https://github.com/crunchip77/ioBroker.autodoc).
+
+- **German** walkthrough — includes a fictional **„Muster‑Einfamilienhaus“** scenario: **[`README.de.md`](README.de.md)**  
+
+Screenshots stay out of scope; use inline **Help** texts in Admin (`jsonConfig`) and the [**README**](../../README.md).
 
 ## Prerequisites
 
