@@ -2,7 +2,7 @@
 
 Orientierung für **Betreuer**, die den Adapter über das **[GitHub-Repository](https://github.com/crunchip77/ioBroker.autodoc)** installieren. Detail-Hilfe je Feld liefert weiter die **Inline-Hilfe** in der ioBroker-Admin-Oberfläche (`jsonConfig`); technische Grundlagen im **[README (EN)](../../README.md)**.
 
-**Abbildungen:** unten **SVG-Schemas** (stilisiert, ohne echtes UI und ohne Ihre Daten). **Echte PNG/WebP:** Anleitung und Dateinamen-Empfehlung in [`assets/SCREENSHOTS.md`](assets/SCREENSHOTS.md).
+**Abbildungen:** **SVG-Schemas** und **Screenshots** der ersten vier Registerkarten (unten); **Benachrichtigungen** und **KI-Dokumentation** können bei Bedarf später mit eigenen Aufnahmen ergänzt werden. Aufnahmen/Datenschutz: [`SCREENSHOTS.md`](assets/SCREENSHOTS.md).
 
 **englische Kurzfassung:** [`README.md`](README.md).
 
@@ -34,17 +34,63 @@ Nach dem Instanziieren der Instanz: **Instanzen → autodoc.0 → Schraubenschl�
 
 Nach Änderungen: **Dokumentation generieren** (Button / Datenpunkt **`action.generate`**) oder eingerichteten Cron abwarten.
 
-### Abbildungen (Schemas — stilisiert)
+### Abbildungen
 
-Die folgenden **SVG** sind **vereinfachte Drahtgitter** (keine produkt­getreuen Screenshots).
+**SVGs** hier sind **vereinfachte Drahtgitter** (keine pixelgenauen Produkt‑Screenshots). **PNG‑Screenshots** zeigen echte Admin‑Oberfläche (**Demo‑Instanz**; Layout je nach Admin‑Theme/-Version möglicherweise abweichend).
 
 ![Grundeinstellungen — überblicksartiges Schema](assets/fig-tab-grundeinstellungen.svg)
 
+*Echte Admin-Oberfläche (Demo-Instanz; je nach Theme/Version abweichend):*
+
+![Grundeinstellungen — Screenshot](assets/screen-grundeinstellungen-admin.png)
+
 ![Meine Dokumentation — Freitext- und Diagrammbereiche (Schema)](assets/fig-tab-meine-dokumentation.svg)
+
+*Echte Admin-Oberfläche — **Meine Dokumentation** ist ein langer Scroll; vier Screenshots **von oben nach unten** (Demo):*
+
+**1/4 —** Projekt, Kontakt & Hinweise; Hilfe & Abläufe (Klartext).
+
+![Meine Dokumentation — Screenshot (1/4)](assets/screen-meine-dokumentation-admin.png)
+
+**2/4 —** Playbook, optionales **Mermaid**-Diagramm, automatische Host-Topologie, Notfall-Kurzzeilen (WLAN/Strom/Wasser).
+
+![Meine Dokumentation — Screenshot (2/4)](assets/screen-meine-dokumentation-admin-2.png)
+
+**3/4 —** Kurzzeile Sonstiges (optional); Adapter- und Raum-Notizen.
+
+![Meine Dokumentation — Screenshot (3/4)](assets/screen-meine-dokumentation-admin-3.png)
+
+**4/4 —** Räume/Adapter pro Profil ausblenden (Onboarding vs. User/Familie); Anzeige interner JavaScript-Dateinamen für Gäste.
+
+![Meine Dokumentation — Screenshot (4/4)](assets/screen-meine-dokumentation-admin-4.png)
 
 ![Erweitert — Basis-URL und Hinweise (Schema, Beispieldomain)](assets/fig-erweitert-basisurl.svg)
 
-**Echte Fotos vom Admin:** siehe **[`assets/SCREENSHOTS.md`](assets/SCREENSHOTS.md)** (Dateien z. B. `screen-*-admin.png` ins gleiche **`assets/`**-Verzeichnis legen und in diesem Markdown wie dort beschrieben verlinken).
+*Echte Admin-Oberfläche — Tab **Erweitert**, langer Scroll; zwei Screenshots **von oben nach unten** (Demo; **Basis-URL** und Exportpfade nur **Beispiele**):*
+
+**1/2 —** Inhalt & Grenzen; **Dokumentation in States**; optionale **Basis-URL**.
+
+![Erweitert — Screenshot (1/2)](assets/screen-erweitert-basisurl-admin.png)
+
+**2/2 —** **Doku-Setup-Score**; optionaler **Dateisystem-Export**; **PDF nach jedem Lauf** (Puppeteer/Chromium).
+
+![Erweitert — Screenshot (2/2)](assets/screen-erweitert-basisurl-admin-2.png)
+
+*Echte Admin-Oberfläche — Tab **HTML-Export & Zusatzkapitel**, drei Screenshots **von oben nach unten** (Demo). Im Einleitungstext Hinweis auf **PDF** (Schalter unter **Erweitert**). Für öffentliche Repos: Logo-URLs und Mustertexte in **eigenen** Zusatzkapiteln durch **generische Beispiele** ersetzen.*
+
+**1/3 —** Darstellung: **Farbschema** & **Preset** (HTML), optionale **Logo-URL** (Seitenleiste).
+
+![HTML-Export & Zusatzkapitel — Screenshot (1/3)](assets/screen-html-export-pdf-hint-admin.png)
+
+**2/3 —** **Admin**: Kapitel-Reihenfolge & ausgeblendete Kapitel (**JSON**). **User/Familie**: ausgeblendete Kapitel & Reihenfolge (**JSON**).
+
+![HTML-Export & Zusatzkapitel — Screenshot (2/3)](assets/screen-html-export-pdf-hint-admin-2.png)
+
+**3/3 —** **Onboarding**: ausgeblendete Kapitel & Reihenfolge (**JSON**); **eigene Markdown-Kapitel** (**JSON**-Objekte); unten Hinweis auf optionale Schrift/zusätzliches CSS.
+
+![HTML-Export & Zusatzkapitel — Screenshot (3/3)](assets/screen-html-export-pdf-hint-admin-3.png)
+
+*Optional später:* eigene Screenshots für **Benachrichtigungen** und **KI-Dokumentation** ergänzen (Dateinamen, Einbindung, Datenschutz: **[`assets/SCREENSHOTS.md`](assets/SCREENSHOTS.md)**).
 
 ---
 

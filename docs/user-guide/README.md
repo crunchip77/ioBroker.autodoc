@@ -4,7 +4,7 @@ Structured help for **operators** who install and run the adapter from the [GitH
 
 - **German** walkthrough — includes a fictional **„Muster‑Einfamilienhaus“** scenario: **[`README.de.md`](README.de.md)**  
 
-**Figures:** simplified **SVG wireframes** below (not real screenshots). For **PNG/WebP** capture naming and privacy rules see **[`assets/SCREENSHOTS.md`](assets/SCREENSHOTS.md)**. Per-field tooltips in Admin (`?`) remain authoritative. Project overview: **[README](../../README.md)**.
+**Figures:** **SVG wireframes** plus **real screenshots** for the first four admin tabs below; **Notifications** and **AI documentation** screenshots can follow the same pattern when needed. Naming and privacy: **[`assets/SCREENSHOTS.md`](assets/SCREENSHOTS.md)**. Per-field tooltips in Admin (`?`) remain authoritative. Project overview: **[README](../../README.md)**.
 
 ## Prerequisites
 
@@ -23,15 +23,63 @@ Until the adapter is listed on npm, installs typically use Git (see README **Ins
 4. **HTML export & extra sections** — themes, chapter visibility/order, custom sections; the intro text on that tab also points to **PDF** settings (they live under **Advanced**).  
 5. **Notifications** / **AI** — optional; opt-in only.
 
-### Figures (wireframes — not pixel-perfect Admin UI)
+### Figures
+
+**SVG wireframes** are schematic (**not pixel-perfect**). **PNG screenshots** are real Admin UI (**demo instance**; layout varies by Admin theme/version).
 
 ![Basic settings — schematic](assets/fig-tab-grundeinstellungen.svg)
 
+*Real Admin UI:*
+
+![Basic settings tab — screenshot](assets/screen-grundeinstellungen-admin.png)
+
 ![My documentation — schematic](assets/fig-tab-meine-dokumentation.svg)
+
+*Real Admin UI (demo instance; **My documentation** is a long scroll — four screenshots, top to bottom):*
+
+**1/4 —** Project, contact & notes; guest help & everyday automation wording.
+
+![My documentation — screenshot (1/4)](assets/screen-meine-dokumentation-admin.png)
+
+**2/4 —** Playbook, optional **Mermaid** diagram, automatic host topology, emergency one-liners (WLAN / power / water).
+
+![My documentation — screenshot (2/4)](assets/screen-meine-dokumentation-admin-2.png)
+
+**3/4 —** Short “misc” line (optional); per-adapter and per-room notes.
+
+![My documentation — screenshot (3/4)](assets/screen-meine-dokumentation-admin-3.png)
+
+**4/4 —** Hide rooms or adapters per profile (onboarding vs. user/family); guest JavaScript filename visibility.
+
+![My documentation — screenshot (4/4)](assets/screen-meine-dokumentation-admin-4.png)
 
 ![Advanced — base URL schematic (fictitious host)](assets/fig-erweitert-basisurl.svg)
 
-Add or substitute **PNG** snapshots from your **demo** Host — naming and DPI hints: **[`assets/SCREENSHOTS.md`](assets/SCREENSHOTS.md)**.
+*Real Admin UI (demo; **Advanced** is a long scroll — two screenshots, top to bottom). **Base URL** and export paths are **placeholders**, not your real network.*
+
+**1/2 —** Content limits; **documentation in states** (`metadata` vs `full`); optional **Base URL** for bookmark/QR targets.
+
+![Advanced tab — screenshot (1/2)](assets/screen-erweitert-basisurl-admin.png)
+
+**2/2 —** Documentation **setup score** options; optional **filesystem export** path; **PDF after each run** (Puppeteer / Chromium).
+
+![Advanced tab — screenshot (2/2)](assets/screen-erweitert-basisurl-admin-2.png)
+
+*Real Admin UI (demo; tab **HTML export & extra chapters** — three screenshots, top to bottom). Intro text mentions **PDF** (switches live under **Advanced**). Replace logo URLs / custom-chapter demo text with your own placeholders for public repos.*
+
+**1/3 —** Appearance: HTML **color scheme** & **preset**, optional **sidebar logo** URL.
+
+![HTML export & extra chapters — screenshot (1/3)](assets/screen-html-export-pdf-hint-admin.png)
+
+**2/3 —** **Admin** profile: chapter order & hidden chapters (**JSON** arrays). **User/Family**: hidden chapters & order (**JSON**).
+
+![HTML export & extra chapters — screenshot (2/3)](assets/screen-html-export-pdf-hint-admin-2.png)
+
+**3/3 —** **Onboarding**: hidden chapters & order (**JSON**); **custom Markdown chapters** (**JSON** objects); footer points to optional font/CSS (fields further down).
+
+![HTML export & extra chapters — screenshot (3/3)](assets/screen-html-export-pdf-hint-admin-3.png)
+
+**Notifications** and **AI documentation** tabs: add screenshots later if you extend this guide (**[`assets/SCREENSHOTS.md`](assets/SCREENSHOTS.md)**). Otherwise add or swap **PNG** snapshots from your **demo** host using the same naming hints.
 
 ## Generating documentation
 
