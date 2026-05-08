@@ -4,7 +4,7 @@ Structured help for **operators** who install and run the adapter from the [GitH
 
 - **German** walkthrough — includes a fictional **„Muster‑Einfamilienhaus“** scenario: **[`README.de.md`](README.de.md)**  
 
-Screenshots stay out of scope; use inline **Help** texts in Admin (`jsonConfig`) and the [**README**](../../README.md).
+**Figures:** simplified **SVG wireframes** below (not real screenshots). For **PNG/WebP** capture naming and privacy rules see **[`assets/SCREENSHOTS.md`](assets/SCREENSHOTS.md)**. Per-field tooltips in Admin (`?`) remain authoritative. Project overview: **[README](../../README.md)**.
 
 ## Prerequisites
 
@@ -21,6 +21,16 @@ Until the adapter is listed on npm, installs typically use Git (see README **Ins
 2. **Manual documentation (“My documentation”)** — human text for households and guests (`guestHelpNote`, playbook, troubleshooting quick lines). Optional **Mermaid** diagrams: see field help there (embedded SVG vs. browser/CDN fallback).  
 3. **Advanced** — **`documentationStatesMode`** (`full` vs `metadata`), optional **Filesystem export path**, **`documentation.exportHashes`** usage (summarised below).  
 4. **Notifications** / **AI** — optional; opt-in only.
+
+### Figures (wireframes — not pixel-perfect Admin UI)
+
+![Basic settings — schematic](assets/fig-tab-grundeinstellungen.svg)
+
+![My documentation — schematic](assets/fig-tab-meine-dokumentation.svg)
+
+![Advanced — base URL schematic (fictitious host)](assets/fig-erweitert-basisurl.svg)
+
+Add or substitute **PNG** snapshots from your **demo** Host — naming and DPI hints: **[`assets/SCREENSHOTS.md`](assets/SCREENSHOTS.md)**.
 
 ## Generating documentation
 

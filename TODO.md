@@ -114,9 +114,9 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 > **Noch offen / später:** Wikis mit **Screenshots** (ausgefüllte Admin-Felder, Export-Ausschnitte), **AutoDoc-/Admin-Versionshinweis** auf Bildern, weitere Sprachen.
 
 - [x] Ablage festlegen (`docs/user-guide/` im Repo) + Verweis im **README**
-- [ ] Inhalte nur mit **Demo-/Platzhalterdaten** (keine echten URLs, IPs, Forum-Karten aus Produktion)
-- [ ] Screenshots mit **AutoDoc-/Admin-Versionshinweis** pflegen (UI drift vermeidbar kennzeichnen)
-- [ ] Mindeststruktur: Erste Schritte (Tabs), 1–2 Szenarien (z. B. Einfamilienhaus, Gäste), Hinweis Exporte / Forum
+- [x] Inhalte nur mit **Demo-/Platzhalterdaten** (keine echten URLs, IPs, Forum-Karten aus Produktion) — **Schemas** `fig-*.svg` + Anleitung **`assets/SCREENSHOTS.md`**
+- [ ] Screenshots mit **AutoDoc-/Admin-Versionshinweis** pflegen (echte PNG/WebP aus **Demo** nach `assets/SCREENSHOTS.md` ergänzen)
+- [x] Mindeststruktur: Erste Schritte (Tabs), 1–2 Szenarien (z. B. Einfamilienhaus, Gäste), Hinweis Exporte / Forum
 
 <a id="phase-5-features"></a>
 

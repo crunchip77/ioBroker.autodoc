@@ -1,6 +1,8 @@
 # AutoDoc — Kurzanleitung (erste Schritte)
 
-Orientierung für **Betreuer**, die den Adapter über das **[GitHub-Repository](https://github.com/crunchip77/ioBroker.autodoc)** installieren. Feld-für-Feld-Anleitung mit Screenshots bleiben in der **Inline-Hilfe** der ioBroker-Admin Oberfläche (`jsonConfig`); technische Grundlagen im **[README (EN)](../../README.md)**.
+Orientierung für **Betreuer**, die den Adapter über das **[GitHub-Repository](https://github.com/crunchip77/ioBroker.autodoc)** installieren. Detail-Hilfe je Feld liefert weiter die **Inline-Hilfe** in der ioBroker-Admin-Oberfläche (`jsonConfig`); technische Grundlagen im **[README (EN)](../../README.md)**.
+
+**Abbildungen:** unten **SVG-Schemas** (stilisiert, ohne echtes UI und ohne Ihre Daten). **Echte PNG/WebP:** Anleitung und Dateinamen-Empfehlung in [`assets/SCREENSHOTS.md`](assets/SCREENSHOTS.md).
 
 **englische Kurzfassung:** [`README.md`](README.md).
 
@@ -31,6 +33,18 @@ Nach dem Instanziieren der Instanz: **Instanzen → autodoc.0 → Schraubenschl�
 6. **KI-Dokumentation** — nur bei **gewähltem Anbieter** relevant; wenn **„Deaktiviert“**, bleibt nur Hinweis/Kontrollkästichen oben ohne Funktion.
 
 Nach Änderungen: **Dokumentation generieren** (Button / Datenpunkt **`action.generate`**) oder eingerichteten Cron abwarten.
+
+### Abbildungen (Schemas — stilisiert)
+
+Die folgenden **SVG** sind **vereinfachte Drahtgitter** (keine produkt­getreuen Screenshots).
+
+![Grundeinstellungen — überblicksartiges Schema](assets/fig-tab-grundeinstellungen.svg)
+
+![Meine Dokumentation — Freitext- und Diagrammbereiche (Schema)](assets/fig-tab-meine-dokumentation.svg)
+
+![Erweitert — Basis-URL und Hinweise (Schema, Beispieldomain)](assets/fig-erweitert-basisurl.svg)
+
+**Echte Fotos vom Admin:** siehe **[`assets/SCREENSHOTS.md`](assets/SCREENSHOTS.md)** (Dateien z. B. `screen-*-admin.png` ins gleiche **`assets/`**-Verzeichnis legen und in diesem Markdown wie dort beschrieben verlinken).
 
 ---
 
