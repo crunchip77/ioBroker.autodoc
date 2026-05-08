@@ -58,7 +58,7 @@ The optional **`@mermaid-js/mermaid-cli`** package (installed with `npm install`
 
 ## Repository checks before release
 
-Maintainers run the **adapter checker** from the cloned repo (`dev` workflow):
+Maintainers run the **adapter checker** from the cloned repo (expects the default branch you pass to `repochecker`; `package.json` uses **`main`**):
 
 ```bash
 npm install

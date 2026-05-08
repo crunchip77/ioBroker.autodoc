@@ -36,9 +36,9 @@ After `npm install`, from the repository root (**working tree = this adapter**, 
 npm run adapter-check
 ```
 
-This runs **`@iobroker/repochecker`** in **`--local`** mode against **`https://github.com/crunchip77/ioBroker.autodoc` `dev`** (see `package.json` → **`adapter-check`**). Typical messages until npm/repositories shipping:
+This runs **`@iobroker/repochecker`** in **`--local`** mode against **`https://github.com/crunchip77/ioBroker.autodoc` `main`** (see `package.json` → **`adapter-check`**). Typical messages until npm/repositories shipping:
 
-- **E1025 / E1042 (`extIcon`):** the checker **HTTP-fetches** **`common.extIcon`**. The file must **exist** at that URL and be a **valid** icon (also **≤ 512×512** px for **E1042**). **`dev`** often carries **`admin/autodoc.png`** before **`main`** catches up; **`io-package.json`** may use the **`dev`** raw GitHub URL until the default branch contains the same asset. Prefer **`main`** (or your default branch) in **`extIcon`** before a repositories PR.
+- **E1025 / E1042 (`extIcon`):** the checker **HTTP-fetches** **`common.extIcon`**. The file must **exist** at that URL and be a **valid** icon (also **≤ 512×512** px for **E1042**). Use the **`main`** raw GitHub URL (same commit users get from the default branch).
 - **E2000 (package not on npm):** expected while install is Git-only; see [`TODO.md` — release](TODO.md#release-veroeffentlichung).
 - **W4001 (adapter not in `ioBroker.repositories` yet):** ignore until your repositories PR lands.
 - **E9999 / checkCode crashes:** tooling bug seen on some setups (`includes` on `undefined`). Re-run via the hosted [Adapter Checker](https://adapter-check.iobroker.in/) if needed; fixing it belongs upstream.

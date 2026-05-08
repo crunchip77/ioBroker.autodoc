@@ -212,7 +212,7 @@
 	"Custom Markdown sections": "Chapitres Markdown personnalisés",
 	"Custom sections JSON hint": "Tableau d'objets : `{ \"title\": \"Wi-Fi\", \"body\": \"**Invités** …\", \"profiles\": [\"user\",\"onboarding\"] }`. **body** en Markdown (pas de HTML brut). **profiles** facultatif — absent = les trois profils HTML. Max. 12 sections.",
 	"Custom sections (JSON)": "Sections personnalisées (JSON)",
-	"Custom sections JSON help": "Voir l'aide ci-dessus. Relancer **Générer la documentation** après modification. Parcours **démonstration** (DE, Maison d'exemple) : https://github.com/crunchip77/ioBroker.autodoc/blob/dev/docs/user-guide/README.de.md",
+	"Custom sections JSON help": "Voir l'aide ci-dessus. Relancer **Générer la documentation** après modification. Parcours **démonstration** (DE, Maison d'exemple) : https://github.com/crunchip77/ioBroker.autodoc/blob/main/docs/user-guide/README.de.md",
 	"User/Family HTML — hide chapters": "HTML utilisateur/famille — masquer des chapitres",
 	"User hidden chapters hint": "Tableau JSON d'ids pour le HTML **utilisateur/famille** et le **Markdown** (profil utilisateur). Ex. `[\"scripts\"]`. Ids : `manual`, `ai`, `guestHelp`, `atAGlance` (aperçu rapide d’après la découverte ; HTML + Markdown utilisateur), `rooms`, `scripts`, `routines`, `ownerPlaybook`, `mermaid` (diagramme Mermaid sous informations manuelles), `adapters`, `custom`, `system`, `troubleshooting`.",
 	"User profile — hidden chapter IDs (JSON)": "Profil utilisateur — chapitres masqués (JSON)",

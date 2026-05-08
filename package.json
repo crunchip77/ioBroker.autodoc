@@ -75,7 +75,7 @@
     "test": "npm run test:js && npm run test:package",
     "check": "tsc --noEmit -p tsconfig.check.json",
     "lint": "eslint -c eslint.config.mjs .",
-    "adapter-check": "npx --yes @iobroker/repochecker \"https://github.com/crunchip77/ioBroker.autodoc\" dev --local",
+    "adapter-check": "npx --yes @iobroker/repochecker \"https://github.com/crunchip77/ioBroker.autodoc\" main --local",
     "translate": "translate-adapter",
     "release": "release-script",
     "dev-server": "dev-server"

@@ -221,7 +221,7 @@
 	"Custom Markdown sections": "Eigene Markdown-Kapitel",
 	"Custom sections JSON hint": "JSON-Array von Objekten: `{ \"title\": \"WLAN\", \"body\": \"**Gast** …\", \"profiles\": [\"user\",\"onboarding\"] }`. **body** ist Markdown (kein rohes HTML). **profiles** optional — weglassen = alle drei HTML-Profile. Max. 12 Kapitel; sehr langer Text wird gekürzt. Typisch: Notfallkontakte, WLAN, Router.",
 	"Custom sections (JSON)": "Eigene Kapitel (JSON)",
-	"Custom sections JSON help": "Siehe Hinweis oben. Nach Änderung **Dokumentation generieren** ausführen. Ausführliches **Muster-Szenario** (Repository): https://github.com/crunchip77/ioBroker.autodoc/blob/dev/docs/user-guide/README.de.md",
+	"Custom sections JSON help": "Siehe Hinweis oben. Nach Änderung **Dokumentation generieren** ausführen. Ausführliches **Muster-Szenario** (Repository): https://github.com/crunchip77/ioBroker.autodoc/blob/main/docs/user-guide/README.de.md",
 	"User/Family HTML — hide chapters": "User/Familie-HTML — Kapitel ausblenden",
 	"User hidden chapters hint": "JSON-Array von Kapitel-Ids für **User/Familie**-HTML und **Markdown** (Profil User). Erlaubt: `manual`, `ai`, `guestHelp`, `atAGlance`, `rooms`, `scripts`, `routines`, `ownerPlaybook`, `mermaid` (manuelles Mermaid-Diagramm), `mermaidAuto` (automatisches Host-Topologie-Diagramm — im Onboarding nie sichtbar), `adapters`, `custom`, `system`, `troubleshooting`.",
 	"User profile — hidden chapter IDs (JSON)": "User-Profil — ausgeblendete Kapitel (JSON)",

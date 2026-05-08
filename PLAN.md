@@ -52,7 +52,7 @@ Detaillierte **Checkboxen**: immer **[TODO.md](TODO.md)** zuerst; dieser PLAN li
 
 - **IDE**: Visual Studio Code auf Windows
 - **Testsystem**: ioBroker auf Unraid-Server (separat vom Produktivsystem)
-- **Deployment**: `dev`-Branch → GitHub Push → Installation auf Testserver via ioBroker Admin → **Benutzerdefinierte URL** → `https://github.com/crunchip77/ioBroker.autodoc/tarball/dev` (oder `/tarball/main` nach Merge)
+- **Deployment**: everyday work on **`dev`** → push → Test install via ioBroker Admin (**custom URL**): `https://github.com/crunchip77/ioBroker.autodoc/tarball/dev`; stable default line follows **`main`**: `…/tarball/main`.
 - **Release-Strategie**: `dev` testen → Merge nach `main` für Forum-/RC-Tester; **npm + repositories** erst wenn Adapter-Checker und PR durch sind (Versionsnummer dann bewusst wählen — **nicht** mit RC **0.9.x** verwechseln)
 
 ## Branch-Strategie

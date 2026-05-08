@@ -145,7 +145,7 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 
 **Festgehalten (Installation / Laufzeit — 2026-05):**
 
-- **`iobroker url …/tarball/dev`:** Erfolgreicher Lauf **Exit 0**; **`@mermaid-js/mermaid-cli`** zieht **transitives Puppeteer** nach — im npm-Log ggf. **Deprecation-Warnungen** (`puppeteer`, `uuid`): **normal**, kommt von der CLI, nicht von eigenen Adapter-`dependencies`. Aufräumen erst sinnvoll bei **Upgrade/Fork** der CLI oder gemeinsamer PDF-Puppeteer-Linie.
+- **`iobroker url …/tarball/main`** (oder `…/tarball/dev` für Entwicklungsbranch): Erfolgreicher Lauf **Exit 0**; **`@mermaid-js/mermaid-cli`** zieht **transitives Puppeteer** nach — im npm-Log ggf. **Deprecation-Warnungen** (`puppeteer`, `uuid`): **normal**, kommt von der CLI, nicht von eigenen Adapter-`dependencies`. Aufräumen erst sinnvoll bei **Upgrade/Fork** der CLI oder gemeinsamer PDF-Puppeteer-Linie.
 - **Chromium-Download** (z. B. unter **`…/.cache/puppeteer`**) beim ersten Install oder ersten mmdc-Lauf: **erwartet**; bestätigt, dass Headless für **SVG-Einbettung** verfügbar ist.
 - **Node `package.exports`:** `require.resolve('@mermaid-js/mermaid-cli/package.json')` **scheitert** an den Exporten der CLI — der Adapter löst **`src/cli.js`** per **`node_modules`**-Pfad ab Adapter-Root (und Elternverzeichnissen bei Hoisting), siehe `resolveMmdcCliJs` in `lib/mermaidServerSvg.js`.
 
