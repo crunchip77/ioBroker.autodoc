@@ -87,6 +87,10 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 
 **Admin `common.news`** in `io-package.json` lists only versions **published on npm** (Adapter Checker **E2004**). The detailed sections below are the **user-facing** changelog (Git-era releases plus npm); older entries are in [`CHANGELOG_OLD.md`](CHANGELOG_OLD.md).
 
+### **WORK IN PROGRESS**
+
+- **Release prep:** Draft user-facing bullets here before **`npm run release`** (`CONTRIBUTING.md`). Open work: **[`TODO.md`](TODO.md)** · **[`PLAN.md`](PLAN.md)** · optional **PR** [ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories) when ready.
+
 ### 0.9.36 (2026-05-09)
 
 - **npm / Checker:** tarball **0.9.36** matches **`main`**: **`common.news`** lists only npm-published versions (fixes **E2004** stale metadata from first **0.9.35** publish). README **Version:** line synced; no adapter runtime/UI changes.
