@@ -31,7 +31,7 @@ Diese Datei ist die **Arbeitsliste**: was **offen** ist steht oben; **erledigte*
 
 <a id="stand-uebersicht"></a>
 
-## Übersicht — Umsetzung vs. Rest (Stand: `package.json` / README, 2026-05-07; Branch je nach Arbeitskopie, z. B. `main` / `dev`)
+## Übersicht — Umsetzung vs. Rest (Stand: `package.json` / README, **0.9.32**, 2026-05-08; Branch je nach Arbeitskopie, z. B. `main` / `dev`)
 
 | Thema | Status | Kurz |
 | ----- | ------ | ---- |
@@ -39,20 +39,20 @@ Diese Datei ist die **Arbeitsliste**: was **offen** ist steht oben; **erledigte*
 | **0.9.x** RC-Features (Aliase, Diagnose, QR/Copy, `exportPath`, …) | ✅ | Siehe README-Changelog |
 | **Multihost** (Host-Karten, Slave-Warnung, Export) | ✅ | |
 | **KI** (Provider, Tab `hidden`, Timeouts, Temperaturen, **AI context hints**, `guestHelpNote` / `homeRoutinesNote` / `ownerPlaybookNote`) | ✅ | Sprachqualität kleiner Modelle bleibt iterativ |
-| **Custom Templates** (Kapitel ausblenden, Custom-Sections, Theme-Teile) | 🟡 | [PLAN.md — Custom Templates](PLAN.md#custom-templates-detail); **0.9.17:** Admin-Reihenfolge + **Farb-Presets** (ohne Roh-CSS); **dev:** Reihenfolge **User/Onboarding** (`userChapterOrderJson`, `onboardingChapterOrderJson`); offen: **PDF**, DnD |
+| **Custom Templates** (Kapitel ausblenden, Custom-Sections, Theme-Teile) | 🟡 | [PLAN.md — Custom Templates](PLAN.md#custom-templates-detail); **0.9.17:** Admin-Reihenfolge + **Farb-Presets** (ohne Roh-CSS); **main:** Reihenfolge **User/Onboarding** (`userChapterOrderJson`, `onboardingChapterOrderJson`); offen: **PDF**, DnD |
 | **Admin-HTML Lesbarkeit** (lange Listen eingeklappt; Score ohne „Strafe“ für bewusst deaktivierte Instanzen) | ✅ | In **0.9.17** README-Changelog (block „Also on `dev`…“) + Feature-Bullets oben drunter |
 | **States entlasten** (`documentationStatesMode`, Platzhalter, Downloads aus `/files`, **`documentation.exportHashes`**) | ✅ | Default weiterhin `full`; News bei Default-Wechsel → offen |
 | **Phase 5** (PDF, Backup-Adapter, Rest Custom Templates) | ⬜ | PDF‑Merker: [§ 1.2a](#phase-5-pdf-offline-mermaid) (Offline/Druck/Mermaid vs. CDN) |
 | **Phase 5.x.1** Notfall/Troubleshooting „Hybrid“ | ✅ | Kurzzeilen, Doku-Links (0.9.18), **Auto-Checklisten** bei Node-Befund + Disclaimer (0.9.19) |
 | **Phase 5.x.2** Quick Start / Raumguides | 🟡 | Kern in **0.9.20**; **0.9.26:** Gäste-Schnellstart kürzer (`sliceQuickStartForOnboarding`), User-Kurzüberblick mit Raum-Kapitel-Link; Fein: weitere Sortierung/Übersetzung, siehe [§ 1.3 — 5.x.2](#phase-5x) |
-| **Phase 5.x.3** Mermaid | ✅ | **0.9.27:** Stufe 1 — `manualMermaidDiagram`; **0.9.28:** Stufe 2 — `autoMermaidHostGraph`; **dev:** `mermaidAuto` als eigene Chapter-ID (Auto-Topologie immer versteckt im Onboarding) |
+| **Phase 5.x.3** Mermaid | ✅ | **0.9.27:** Stufe 1 — `manualMermaidDiagram`; **0.9.28:** Stufe 2 — `autoMermaidHostGraph`; **main:** `mermaidAuto` als eigene Chapter-ID (Auto-Topologie immer versteckt im Onboarding); **0.9.32:** Admin-Hilfen/JSON-Placeholder ergänzt |
 | **System-Visitenkarte** / Forum-Copy | ✅ | `textSendTo` **getForumCard** + State `info.forumCardPlain`; Diagnose-HTML nutzt `forumCard.js` |
 | **KI + Skript-Quellcode** | 🟡 | **A** umgesetzt (`aiAnalyzeScriptSources`); **B** weiterhin Phase 5 Backup |
 | **npm + ioBroker.repositories** | ⬜ | Nach Adapter-Checker |
 | **Dokumentations-Score** (Wartung — Checkliste mit echten Kriterien) | ✅ | **0.9.30–0.9.31:** Dreiteiliger Score (Datenerfassung / Manuelle Inhalte / Dokumentationstiefe); instancesWithoutRoom komplett raus; neue Checks: Diagramm, Räume m. Geräten, eigene Kapitel, KI-Provider — [§ 1.6](#dokumentations-score-checkliste) |
 | **Admin-Markdown: Diagnose-Kapitel** (Parität zu Admin-HTML) | ✅ | `renderDiagnosis` / `renderDiagnosisMarkdown` — TOC-Zeile, ausblendbar wie HTML; Diagnose-Befunde sind datengetrieben (z. B. Node‑Hinweis, OS‑Hinweis), **ohne** entferntes Skript‑`desc`‑Finding (0.9.29). Details [§ 1.6](#admin-markdown-diagnose-optional), Anhang A |
-| **Admin-Konfig — Hilfen / Mini-Beispiele** (`manualMermaidDiagram`, JSON-Felder …) | *optional* | Entscheidung offen — [§ 1.7](#admin-config-hilfen-beispiele) |
-| **Nutzer-Handbuch / Wiki** (Beispiele, Demo-Felder, Screenshots Admin/Exporte; z. B. `docs/user-guide/`) | *optional* | Konzept noch offen; nur **Demo-/Platzhalterdaten** (keine Produktions-IPs/QR); README-Link wenn vorhanden — [§ 1.1b](#nutzer-handbuch-wiki) |
+| **Admin-Konfig — Hilfen / Mini-Beispiele** (`manualMermaidDiagram`, JSON-Felder …) | 🟡 | **0.9.32:** Mermaid-/States-/Hashes-Hilfen, Platzhalter, KI-Tab — [§ 1.7](#admin-config-hilfen-beispiele); optional weiter Mini-Beispiele |
+| **Nutzer-Handbuch / Wiki** (`docs/user-guide/`) | 🟡 | **0.9.32:** EN + DE-Lauftext + SVG-Wireframes; **offen:** echte **Screenshots** — [§ 1.1b](#nutzer-handbuch-wiki) |
 | **Admin-UI React** (statt/nur wo nötig neben `jsonConfig`) | *optional* | Nur wenn jsonConfig für geplante Features zu eng — [§ 1.8](#admin-react-optional) |
 
 ---
@@ -95,7 +95,7 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 
 > Solange **kein npm** und **kein** Eintrag in **ioBroker.repositories**: URL-Installation nutzt u. a. `main`; Tags/Releases ändern für viele Nutzer nichts.
 
-- [ ] [Adapter Checker](https://adapter-check.iobroker.in/) vollständig grün
+- [ ] [Adapter Checker](https://adapter-check.iobroker.in/) **ohne vermeidbare** Fehler (**E2000** npm / **W4001** Liste bis zum Publish normal)
 - [ ] npm-Account / Paketname `iobroker.autodoc` klären
 - [ ] Erstes **npm**-Release: `package.json` + `io-package.json` **Version** und **news** synchron (Nummer nach ioBroker-Übung, nicht „1.0.0 vortäuschen“)
 - [ ] `npm publish`
@@ -161,7 +161,7 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 
 - **Symptom A — fehlende Bibliotheken:** `Failed to launch the browser process` und z. B. **`libnss3.so: cannot open shared object file`** — **bundled Chromium** braucht **Distro-Pakete** (häufig bei schlanken Images).
 - **Symptom B — Docker / Unraid / LXC:** **`No usable sandbox`** / **SUID sandbox** — der Kernel/Namespace erlaubt die **Chrome-Standard-Sandbox** oft nicht.
-- **Umsetzung im Adapter (ab aktueller `dev`):** mmdc wird mit **`-p`** und **Puppeteer-JSON** aufgerufen: **`--no-sandbox`**, **`--disable-setuid-sandbox`**, **`--disable-dev-shm-usage`** (`lib/mermaidServerSvg.js`, `writeMmdcPuppeteerConfigFile`). Behebt typisch **Symptom B**; **Symptom A** weiterhin durch **PACKAGES** / apt (siehe unten).
+- **Umsetzung im Adapter** (Stand **main / dev**): mmdc wird mit **`-p`** und **Puppeteer-JSON** aufgerufen: **`--no-sandbox`**, **`--disable-setuid-sandbox`**, **`--disable-dev-shm-usage`** (`lib/mermaidServerSvg.js`, `writeMmdcPuppeteerConfigFile`). Behebt typisch **Symptom B**; **Symptom A** weiterhin durch **PACKAGES** / apt (siehe unten).
 - **Folge bei Fehler:** Diagramme bleiben **`<pre class="mermaid">`**; **jsDelivr** im Browser mit Netz; **Offline** ohne eingebettetes SVG.
 - **Abhilfe Pakete (Distro):** u. a. `libnss3`, `libatk1.0-0`, `libatk-bridge2.0-0`, `libcups2`, `libdrm2`, `libgbm1`, `libasound2`, `libxkbcommon0`, `libxcomposite1`, `libxdamage1`, `libxfixes3`, `libxrandr2` — [Puppeteer Linux](https://pptr.dev/troubleshooting); **buanet-Image:** Umgebungsvariable **`PACKAGES`**.
 - **Verifikation:** Doku neu generieren — **keine** mmdc-Warnung; im HTML **`mermaid-svg-embedded`**.
@@ -260,11 +260,12 @@ Details: [PLAN — System-Visitenkarte](PLAN.md#system-visitenkarte-festlegung),
 
 <a id="admin-config-hilfen-beispiele"></a>
 
-### 1.7 Admin-Konfig — Hilfen / Mini-Beispiele *(optional)*
+### 1.7 Admin-Konfig — Hilfen / Mini-Beispiele *(teilweise)*
 
 > **Merker:** Bessere Orientierung bei komplexeren Feldern, **ohne** Demo-Inhalt in Exporten durch `native`-**`default`** (der wäre echter gespeicherter Text).
 
 - [x] **teilweise umgesetzt:** **Mermaid** (`manualMermaidDiagram`): **Placeholder** im Textfeld (neutral `DEMO*`, keine `native`-Defaults). **JSON-Felder** (**Kapitelreihenfolge / Ausblenden / Custom sections**): **Placeholder** im UI + Verweis im Hilfetext **„Custom sections (JSON)“** auf **`docs/user-guide/README.de.md`** (Musterszenario); weiterhin **kein** großes **`default`**-JSON in `io-package` `native`.
+- [x] **0.9.32:** Hilfetexte **Mermaid** (Client vs. eingebettetes SVG / Auto vs. Kurzdiagramm nach Bedarf); **`documentation.exportHashes`**; Documentation **states** **`full`** / **`metadata`**; **KI**: Header/Blocke ohne Provider bzw. Skript-Analyse weniger grell.
 
 <a id="admin-react-optional"></a>
 

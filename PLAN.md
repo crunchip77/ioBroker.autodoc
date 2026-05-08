@@ -45,7 +45,7 @@ Detaillierte **Checkboxen**: immer **[TODO.md](TODO.md)** zuerst; dieser PLAN li
 - **Sprache**: JavaScript (ioBroker Creator Standard)
 - **Admin UI**: JSON/jsonConfig
 - **Framework**: @iobroker/create-adapter v3.1.2
-- **Node.js**: Version 22
+- **Node.js**: Mindest **22** (`package.json` → `engines` **>= 22**; CI oft **Node 24**)
 - **Repository**: [crunchip77/ioBroker.autodoc](https://github.com/crunchip77/ioBroker.autodoc)
 
 ## Entwicklungs-Umgebung
