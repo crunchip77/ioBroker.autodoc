@@ -17,8 +17,14 @@ Willst du **echte Screenshots**, arbeite vorzugsweise mit **neutralen Platzhalte
 
 **Eingebunden im Repo:** siehe Tabellenzeilen oben — **alle sechs** Registerkarten mit Screenshots in **`README.md`** und **`README.de.md`**.
 
-- **PNG** oder **WebP**, Breite etwa **920–1280 px**, Dateigröße **< 350 KB**, wo möglich.
+- **PNG** oder **WebP**; für **lesbare Beschriftungen** im Admin (v. a. dunkles Theme) lieber **≥ 1280 px** Breite **oder** vor der Aufnahme **Browser-Zoom 125–150 %** und dann den sichtbaren Bereich erfassen. Die frühere **920–1280 px**-Spanne war knapp — bei Bedarf **bis ~1680 px** gehen, solange die Repo-Größe noch vertretbar ist (PNG komprimieren statt harte Qualitätsverluste).
+- **Dateigröße:** **< 350 KB** anstreben, aber **Lesbarkeit** hat Vorrang; lieber etwas größere Datei als unleserlich kleine Schrift.
 - Admin- und AutoDoc-Version in der Bildunterschrift nennen (z. B. „screenshot 2026‑05, Admin ≥ …“).
+
+## Lesbarkeit (GitHub, eingebettete Vorschau)
+
+- Eingebettete Markdown-Bilder werden auf der Readme-Seite oft **skaliert**; Kleingedrucktes im Screenshot bleibt **im Vollbild** (Rechtsklick → Bild in neuem Tab) gut lesbar.
+- **Neuaufnahmen:** breiteres Fenster, **Zoom im Admin**, oder **Höhe** so wählen, dass weniger Kleintext pro Bild (mehr Teile bei langen Tabs).
 
 ## Datenschutz
 

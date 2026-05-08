@@ -4,7 +4,7 @@ Structured help for **operators** who install and run the adapter from the [GitH
 
 - **German** walkthrough — includes a fictional **„Muster‑Einfamilienhaus“** scenario: **[`README.de.md`](README.de.md)**  
 
-**Figures:** **SVG wireframes** (where shown) plus **real screenshots** for **all six** admin tabs below — optional tabs included. Naming and privacy: **[`assets/SCREENSHOTS.md`](assets/SCREENSHOTS.md)**. Per-field tooltips in Admin (`?`) remain authoritative. Project overview: **[README](../../README.md)**.
+**Figures:** For several tabs you get **two images in a row**: an **SVG wireframe** (what belongs where — not real pixels) and then a **PNG** of the real Admin UI (all six tabs covered). That pairing is **intentional**. If embedded images look small on GitHub, **open the image in a new tab** or zoom the page; see **[`SCREENSHOTS.md`](assets/SCREENSHOTS.md)** (*Legibility*). Naming and privacy: same file. Per-field tooltips in Admin (`?`) remain authoritative. Project overview: **[README](../../README.md)**.
 
 ## Prerequisites
 
@@ -25,7 +25,7 @@ Until the adapter is listed on npm, installs typically use Git (see README **Ins
 
 ### Figures
 
-**SVG wireframes** are schematic (**not pixel-perfect**). **PNG screenshots** are real Admin UI (**demo instance**; layout varies by Admin theme/version).
+**SVG wireframes** and **PNG screenshots** are **paired on purpose**: the SVG is a **schematic** of the same tab; the PNG is the **real** Admin view (demo instance; layout varies by theme/version). GitHub’s inline preview often shrinks images — **click through** to the full-resolution file or use browser zoom to read small labels.
 
 ![Basic settings — schematic](assets/fig-tab-grundeinstellungen.svg)
 

@@ -2,7 +2,7 @@
 
 Orientierung für **Betreuer**, die den Adapter über das **[GitHub-Repository](https://github.com/crunchip77/ioBroker.autodoc)** installieren. Detail-Hilfe je Feld liefert weiter die **Inline-Hilfe** in der ioBroker-Admin-Oberfläche (`jsonConfig`); technische Grundlagen im **[README (EN)](../../README.md)**.
 
-**Abbildungen:** **SVG-Schemas** (wo vorhanden) und **Screenshots sämtlicher** sechs Konfig‑Tabs — inklusive der optionalen **Benachrichtigungen** und **KI-Dokumentation**. Aufnahmen/Datenschutz: [`SCREENSHOTS.md`](assets/SCREENSHOTS.md).
+**Abbildungen:** Wo ein **SVG** existiert, steht es **immer vor** dem passenden **Screenshot** — das Schema zeigt die Tab-Logik, der Screenshot das echte Admin-Layout (beides absichtlich). Lesbarkeit in der eingebetteten Vorschau: **[`SCREENSHOTS.md`](assets/SCREENSHOTS.md)** („Lesbarkeit“). Aufnahmen/Datenschutz: ebenda.
 
 **englische Kurzfassung:** [`README.md`](README.md).
 
@@ -36,7 +36,7 @@ Nach Änderungen: **Dokumentation generieren** (Button / Datenpunkt **`action.ge
 
 ### Abbildungen
 
-**SVGs** hier sind **vereinfachte Drahtgitter** (keine pixelgenauen Produkt‑Screenshots). **PNG‑Screenshots** zeigen echte Admin‑Oberfläche (**Demo‑Instanz**; Layout je nach Admin‑Theme/-Version möglicherweise abweichend).
+**SVGs** und **Screenshots** pro Tab gehören **zusammen**: das **SVG** fasst Tabs und Felder schematisch zusammen (**kein** exaktes UI), der **PNG** zeigt dieselbe Ecke der **echten Oberfläche** (Demo). In GitHub wirken eingebettete Bilder oft klein — **auf das Bild klicken** („Open image in new tab“) oder Seite zoomen zum Mitlesen.
 
 ![Grundeinstellungen — überblicksartiges Schema](assets/fig-tab-grundeinstellungen.svg)
 
