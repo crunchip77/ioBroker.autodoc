@@ -87,6 +87,8 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 
 The **seven** sections below match **`common.news`** in `io-package.json` (ioBroker repository builder keeps only the latest **7** news entries). Older versions are in [`CHANGELOG_OLD.md`](CHANGELOG_OLD.md).
 
+### **WORK IN PROGRESS**
+
 ### 0.9.34 (2026-05-08)
 
 - **`documentation.exportHashes`:** after a successful PDF step, **SHA-256** entries for **`autodoc-admin.pdf`**, **`autodoc-user.pdf`**, **`autodoc-onboarding.pdf`** are merged into the same state (generation with **`pdfExportAfterGeneration`** or manual **`action.exportPdf`**).
