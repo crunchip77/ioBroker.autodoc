@@ -85,7 +85,7 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 
 ## Changelog
 
-The **seven** sections below match **`common.news`** in `io-package.json` (ioBroker repository builder keeps only the latest **7** news entries). Older versions are in [`CHANGELOG_OLD.md`](CHANGELOG_OLD.md).
+**Admin `common.news`** in `io-package.json` lists only versions **published on npm** (Adapter Checker **E2004**). The detailed sections below are the **user-facing** changelog (Git-era releases plus npm); older entries are in [`CHANGELOG_OLD.md`](CHANGELOG_OLD.md).
 ### 0.9.35 (2026-05-08)
 
 - **npm:** publish **`iobroker.autodoc`** on the public registry so hosts can `npm install` the adapter tarball without cloning.
