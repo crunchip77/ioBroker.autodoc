@@ -19,6 +19,10 @@ Willst du **echte Screenshots**, arbeite vorzugsweise mit **neutralen Platzhalte
 
 - **Keine** echten Gast-WLANs, **keine** echten Routen IPs, QR-Ziele nur mit **erfundener** Basis-URL oder geschwärzte Bereiche.
 
+## SVG-Schemas (`fig-*.svg`)
+
+Die **von Hand** gepflegten Diagramme sind **gültiges XML**: im Text **`&`** nur als **`&amp;`**; keine **Steuerzeichen** aus Word/Clipboard — sonst meldet GitHub z. B. „Invalid image source“ bei der eingebetteten Vorschau.
+
 ## Markdown einbinden
 
 In **`README.md`** oder **`README.de.md`** z. B.:
