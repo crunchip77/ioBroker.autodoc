@@ -2,6 +2,10 @@
 
 Histories for versions **no longer** in the **7-version** window shared by `common.news` in `io-package.json` and the main [`README.md`](README.md#changelog) changelog (Adapter Checker / **ioBroker.repositories**).
 
+### 0.9.25 (2026-04-28)
+
+- **My documentation — playbook:** optional **`ownerPlaybookNote`** (household procedures: order, must-dos, do-not rules in plain language). Shown in Admin manual, separate **User** / **Onboarding** HTML chapter (`#owner-playbook`) with nav when filled, **Markdown** (User/Onboarding profile) under **Manual information**, and **AI owner context**. Hide with chapter id **`ownerPlaybook`** on tab **HTML export & extra sections** (not *Advanced*). Export/renderer: `RENDERER_VERSION` **2026.04.28.5**. Admin UI copy EN/DE/FR; **Doc layout intro** clarifies Admin vs User/Onboarding hide lists.
+
 ### 0.9.24 (2026-04-28)
 
 - **Wording — documentation setup vs. diagnosis:** Admin chapter title **Maintenance & documentation setup** (EN/DE/FR); technical **Diagnosis** stays its own chapter. Labels use **documentation setup score** where appropriate; checklist copy points to Adapter **Advanced** and configurable minimums. If **all** score checks are disabled, HTML/Markdown show a short explanation (100 % default).

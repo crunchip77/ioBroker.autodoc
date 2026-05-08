@@ -1,8 +1,21 @@
 {
 	"common": {
 		"name": "autodoc",
-		"version": "0.9.31",
+		"version": "0.9.32",
 		"news": {
+			"0.9.32": {
+				"en": "**Operator guides** in **`docs/user-guide/`** (EN + DE scenario). **Admin:** richer `jsonConfig` / i18n help (Mermaid modes, **export hashes** / states storage, placeholders; AI tab quieter when provider off). **`common.extIcon`** + repo links → **`main`**; refreshed **PNG** icon. **CI:** workflow **concurrency** per ioBroker template (**Adapter Checker E3009**). **Tooling:** `tsconfig.check` skips local bootstrap dirs; guide **SVG** valid on GitHub; `guestHelpContent` lint.",
+				"de": "**Betriebsanleitungen:** **`docs/user-guide/`** (EN + deutsch Muster-Szenario). **Admin:** mehr Hilfe in `jsonConfig`/i18n (Mermaid, **Export-Hashes** / States-Speicher, Platzhalter; **KI**-Tab ruhiger ohne aktiven Provider). **`common.extIcon`** und Repo-Links → **`main`**; Icon-**PNG** erneuert. **CI:** Workflow-**Concurrency** wie ioBroker-Vorlage (**E3009**). **Tooling:** `tsconfig.check` ohne lokale Bootstrap-Pfade; Guide-**SVG** GitHub‑tauglich; ESLint **`guestHelpContent`**.",
+				"ru": "0.9.32: user-guide EN/DE; Admin jsonConfig/i18n; extIcon main; CI concurrency; tooling",
+				"pt": "0.9.32: guias user-guide; Admin help; extIcon main; CI; tooling",
+				"nl": "0.9.32: user-guide handles; Admin help; extIcon main; CI; tooling",
+				"fr": "0.9.32 : guides user-guide ; aide Admin ; extIcon main ; CI ; tooling",
+				"it": "0.9.32: guide user-help; Admin; extIcon main; CI; tooling",
+				"es": "0.9.32: guías user-guide; Admin; extIcon main; CI; tooling",
+				"pl": "0.9.32: user-guide Admin; extIcon main; CI; tooling",
+				"uk": "0.9.32: user-guide та Admin; extIcon main; CI; tooling",
+				"zh-cn": "0.9.32：用户指南与管理员帮助；extIcon 指向 main；CI 与工作流并发"
+			},
 			"0.9.31": {
 				"en": "**Score 3 (documentation depth) rework:** removed **instances without room** from scoring; added **custom chapter has content** and **AI provider configured** (only when scripts exist). `maintenanceScoreCheckUnassigned` / `maintenanceScoreUnassignedWarnAt` kept in config for backward compatibility but **no longer affect** the score. i18n **EN / DE / FR** for `checkHasCustomSections`, `checkAiConfigured`. **npm / CI:** `package.json` **overrides** (`chromium-bidi` → `devtools-protocol`) plus **devDependencies** so `npm ci` stays reproducible on Linux with the optional **Mermaid CLI** stack.",
 				"de": "**Score 3 („Dokumentationstiefe“) überarbeitet:** **„Instanzen ohne Raum“** komplett aus der Bewertung entfernt; neu: **„Eigener Kapitelinhalt vorhanden“** und **„KI-Provider konfiguriert“** (nur wenn Skripte existieren). `maintenanceScoreCheckUnassigned` / `maintenanceScoreUnassignedWarnAt` bleiben in der Konfiguration (**ohne Auswirkung** auf den Score). i18n **EN / DE / FR**. **npm / CI:** `overrides` + **devDependencies** für konsistentes `npm ci` (Mermaid-Toolchain).",
@@ -80,19 +93,6 @@
 				"pl": "0.9.26: krótszy Quick Start gościa; link pokoje; RENDERER_VERSION",
 				"uk": "0.9.26: коротший Quick Start для гостя; посилання кімнати; RENDERER_VERSION",
 				"zh-cn": "0.9.26：访客快速开始缩短；房间章节链接；RENDERER_VERSION"
-			},
-			"0.9.25": {
-				"en": "**My documentation:** new **playbook** field (`ownerPlaybookNote`) — step order, must-dos, and “do not” rules in your own words. Shown in Admin manual, User/Onboarding HTML (own section + TOC when enabled), Markdown export, and **AI owner context**. Hide via chapter id **`ownerPlaybook`**. `RENDERER_VERSION` **2026.04.28.5**.",
-				"de": "**Meine Dokumentation:** neues **Ablauf-/Playbook**-Feld (`ownerPlaybookNote`) — Reihenfolge, Muss und „bitte nicht“ in eigenen Worten. Im Admin-Handbuch, User-/Onboarding-HTML (eigenes Kapitel + Navigation), Markdown-Export und **KI-Eigentümerkontext**. Ausblenden mit Kapitel-Id **`ownerPlaybook`**. `RENDERER_VERSION` **2026.04.28.5**.",
-				"ru": "0.9.25: owner playbook note; exports; RENDERER_VERSION",
-				"pt": "0.9.25: owner playbook note; exports; RENDERER_VERSION",
-				"nl": "0.9.25: owner playbook note; exports; RENDERER_VERSION",
-				"fr": "0.9.25 : note « playbook » propriétaire ; exports ; RENDERER_VERSION",
-				"it": "0.9.25: owner playbook note; exports; RENDERER_VERSION",
-				"es": "0.9.25: owner playbook note; exports; RENDERER_VERSION",
-				"pl": "0.9.25: owner playbook note; exports; RENDERER_VERSION",
-				"uk": "0.9.25: owner playbook note; exports; RENDERER_VERSION",
-				"zh-cn": "0.9.25：维护人操作流程文本；导出；RENDERER_VERSION"
 			}
 		},
 		"titleLang": {

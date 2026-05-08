@@ -242,7 +242,7 @@ Details: [PLAN — System-Visitenkarte](PLAN.md#system-visitenkarte-festlegung),
 
 ### 1.6 Dokumentations-Score (Wartung) - Checkliste
 
-> **Stand 0.9.31:** Dreiteiliger Score komplett umgesetzt.
+> **Stand 0.9.32:** Dreiteiliger Score komplett umgesetzt; Betriebsdoku `docs/user-guide`, Admin-Hilfen & Repo-„main“-Linie siehe README / `common.news`.
 
 - [x] **Umgesetzt (0.9.22):** Projektbeschreibung >= 40 Zeichen; Basis-URL; Instanzen ohne Raum (Schwelle).
 - [x] **Erweiterung 0.9.23:** Pro Check `maintenanceScoreCheck*`, `maintenanceScoreMinDescriptionChars`, `maintenanceScoreUnassignedWarnAt`.
