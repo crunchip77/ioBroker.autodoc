@@ -105,7 +105,7 @@
 				"autoGenerateInterval": {
 					"type": "number",
 					"label": "Scheduled interval (hours)",
-					"help": "Optional timer: regenerate every X hours, independent of start and adapter-change options above. 0 = no scheduled runs (events and start still work).",
+					"help": "Optional timer: regenerate every X hours, independent of start and adapter-change options above. 0 = no scheduled runs (events and start still work). Example: **24** = about once per day.",
 					"min": 0,
 					"max": 168,
 					"default": 0,
@@ -229,7 +229,7 @@
 				"projectName": {
 					"type": "text",
 					"label": "Project name",
-					"help": "Name of the ioBroker project or installation",
+					"help": "Name of the ioBroker project or installation. Shown in exports and notifications. Example: **Demo home** or **Musterhaus Schulweg** (use fictional labels in public screenshots).",
 					"newLine": true,
 					"xs": 12,
 					"sm": 12,
@@ -240,7 +240,7 @@
 				"projectDescription": {
 					"type": "text",
 					"label": "Project description",
-					"help": "What does this system do? e.g. 'Single-family home, heating + lighting + security on 3 floors'",
+					"help": "What does this system do? e.g. 'Single-family home, heating + lighting + security on 3 floors'. Counts toward the optional **documentation setup score** when that row is enabled (Advanced tab — minimum description length).",
 					"newLine": true,
 					"xs": 12,
 					"sm": 12,
@@ -262,7 +262,7 @@
 				"additionalNotes": {
 					"type": "text",
 					"label": "General notes",
-					"help": "Anything that doesn't fit elsewhere: e.g. 'Backup runs every Sunday, server is in the basement'",
+					"help": "Anything that doesn't fit elsewhere: e.g. 'Backup runs every Sunday, server is in the basement' — same field for maintenance windows, NAS paths, or hardware quirks.",
 					"newLine": true,
 					"xs": 12,
 					"sm": 12,
@@ -424,7 +424,7 @@
 				"adapterNotes": {
 					"type": "table",
 					"label": "Adapter notes",
-					"help": "Add a human-readable note for specific adapters (shown in all profiles)",
+					"help": "Add a human-readable note for specific adapters (shown in all profiles). Table row example: adapter **hue** — note **Living room scenes — wall switch overrides.**",
 					"newLine": true,
 					"xs": 12,
 					"sm": 12,
@@ -455,7 +455,7 @@
 				"roomNotes": {
 					"type": "table",
 					"label": "Room notes",
-					"help": "Add a human-readable note for specific rooms (shown in User and Onboarding profiles)",
+					"help": "Add a human-readable note for specific rooms (shown in User and Onboarding profiles). Example: room **Kitchen** — note **Gas shutoff — left of sink.**",
 					"newLine": true,
 					"xs": 12,
 					"sm": 12,
@@ -697,7 +697,7 @@
 				"baseUrl": {
 					"type": "text",
 					"label": "ioBroker base URL (optional)",
-					"help": "Used for the info.htmlUrl state. Include port, e.g. 192.168.1.100:8081 or http://myserver:8082. Protocol is optional. Leave empty for auto-detection (may fail in Docker).",
+					"help": "Used for the info.htmlUrl state and bookmark/QR targets. Include **host and port**, e.g. **http://192.168.1.100:8081** or **https://iobroker.home:443** — **no trailing slash**. Protocol is optional. Leave empty for auto-detection (may fail in Docker).",
 					"newLine": true,
 					"xs": 12,
 					"sm": 12,
@@ -1203,7 +1203,7 @@
 				"notifyInstance": {
 					"type": "text",
 					"label": "Messaging adapter instance",
-					"help": "Instance to send the notification through, e.g. telegram.0, pushover.0, email.0",
+					"help": "Instance to send the notification through, e.g. telegram.0, pushover.0, email.0, signal.0",
 					"newLine": true,
 					"xs": 12,
 					"sm": 12,
@@ -1214,7 +1214,7 @@
 				"notifyTarget": {
 					"type": "text",
 					"label": "Recipient (optional)",
-					"help": "Telegram username, Pushover device, or email address - leave empty for adapter default",
+					"help": "Telegram username, Pushover device, or email address - leave empty for adapter default. Examples: Telegram **@nickname**, email **ops@example.com**, Pushover device **phone**.",
 					"xs": 12,
 					"sm": 12,
 					"md": 6,
@@ -1224,7 +1224,7 @@
 				"notifyMessage": {
 					"type": "text",
 					"label": "Custom message template (optional)",
-					"help": "Use {project}, {summary}, {version}, {trigger} as placeholders. Leave empty for default message.",
+					"help": "Use {project}, {summary}, {version}, {trigger} as placeholders. Leave empty for default message. Example: **{project} — documentation updated ({trigger}). {summary}**",
 					"newLine": true,
 					"xs": 12,
 					"sm": 12,

@@ -271,6 +271,7 @@ Details: [PLAN — System-Visitenkarte](PLAN.md#system-visitenkarte-festlegung),
 
 - [x] **teilweise umgesetzt:** **Mermaid** (`manualMermaidDiagram`): **Placeholder** im Textfeld (neutral `DEMO*`, keine `native`-Defaults). **JSON-Felder** (**Kapitelreihenfolge / Ausblenden / Custom sections**): **Placeholder** im UI + Verweis im Hilfetext **„Custom sections (JSON)“** auf **`docs/user-guide/README.de.md`** (Musterszenario); weiterhin **kein** großes **`default`**-JSON in `io-package` `native`.
 - [x] **0.9.32:** Hilfetexte **Mermaid** (Client vs. eingebettetes SVG / Auto vs. Kurzdiagramm nach Bedarf); **`documentation.exportHashes`**; Documentation **states** **`full`** / **`metadata`**; **KI**: Header/Blocke ohne Provider bzw. Skript-Analyse weniger grell.
+- [x] **Weitere Mini-Beispiele** in `jsonConfig`/`i18n` (Projektname, Beschreibung/Score, Timer, Basis-URL, States-Modus-Tipp, Adapter-/Raum-Notizen, Benachrichtigungen, JSON **hide**-Felder, Logo-Pfad, Extra-CSS, KI-Kontext) — EN/DE/FR + englische Keys in den übrigen Locales.
 
 <a id="admin-react-optional"></a>
 
