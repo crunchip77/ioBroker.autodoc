@@ -12,6 +12,12 @@ Use the links at the top of [`TODO.md`](TODO.md) (**Wichtige Referenzen**) while
 
 Roadmap and internal task tracking: [`TODO.md`](TODO.md), [`PLAN.md`](PLAN.md).
 
+### npm package identity (for maintainers)
+
+- **Public package name:** [`iobroker.autodoc`](https://www.npmjs.com/package/iobroker.autodoc) (matches `package.json` → **`name`**). First publish from **0.9.35** onward; earlier **0.9.x** builds were Git-only (see **`common.news`** and **README** changelog).
+- **Owners:** whoever maintains releases should appear under `npm owner ls iobroker.autodoc`; GitHub org/user for the repo is **crunchip77** (see `package.json` **`author`** / **`repository`**).
+- **Keep versions in sync:** on every release, bump **`version`** in **`package.json`** and **`io-package.json`** together, refresh **`common.news`** (max **7** keys — only versions that **exist on npm**, checker **E2004**), and align the README **Changelog** window with the same set. Use **`npm run release`** ([`@alcalzone/release-script`](https://github.com/AlCalzone/release-script)) rather than a naked **`npm publish`** so ioBroker plugins run as intended (see **Releases and README changelog** below).
+
 ## Branch workflow (Git)
 
 - **Develop on `dev`:** use `git checkout dev` for everyday commits and experiments. Pushes: `git push origin dev`.
@@ -36,10 +42,10 @@ After `npm install`, from the repository root (**working tree = this adapter**, 
 npm run adapter-check
 ```
 
-This runs **`@iobroker/repochecker`** in **`--local`** mode against **`https://github.com/crunchip77/ioBroker.autodoc` `main`** (see `package.json` → **`adapter-check`**). Typical messages until npm/repositories shipping:
+This runs **`@iobroker/repochecker`** in **`--local`** mode against **`https://github.com/crunchip77/ioBroker.autodoc` `main`** (see `package.json` → **`adapter-check`**). Typical messages while **ioBroker.repositories** PR is still open:
 
 - **E1025 / E1042 (`extIcon`):** the checker **HTTP-fetches** **`common.extIcon`**. The file must **exist** at that URL and be a **valid** icon (also **≤ 512×512** px for **E1042**). Use the **`main`** raw GitHub URL (same commit users get from the default branch).
-- **E2000 (package not on npm):** expected while install is Git-only; see [`TODO.md` — release](TODO.md#release-veroeffentlichung).
+- **E2000 (package not on npm):** the adapter **is** published as **`iobroker.autodoc`** (from **0.9.35**). If a checker run still reports **E2000**, retry after registry/index lag or compare with the [hosted Adapter Checker](https://adapter-check.iobroker.in/) for the same version tarball.
 - **W4001 (adapter not in `ioBroker.repositories` yet):** ignore until your repositories PR lands.
 - **W5042 (`puppeteer` used in source but missing from `dependencies`):** **`puppeteer` is intentionally listed under `optionalDependencies`** in `package.json` (with `@mermaid-js/mermaid-cli`). PDF export loads it via **`require('puppeteer')`** in **`lib/htmlToPdf.js`** only when present; adapters without Puppeteer/Chromium avoid a heavyweight default install — especially relevant on constrained hosts (e.g. Raspberry Pi). The repochecker rule appears to match **`dependencies` only**, not **`optionalDependencies`**, so this warning is a **known false positive** here. Do **not** add a second **`puppeteer`** entry under `dependencies` merely to silence W5042: ioBroker’s checker rejects listing the **same package in both `dependencies` and `optionalDependencies`**, and moving Puppeteer exclusively into **`dependencies`** would force Chromium downloads for everyone. Treat W5042 as **expected until** upstream repochecker counts **`optionalDependencies`** (or equivalent) as declared.
 - **E9999 / checkCode crashes:** tooling bug seen on some setups (`includes` on `undefined`). Re-run via the hosted [Adapter Checker](https://adapter-check.iobroker.in/) if needed; fixing it belongs upstream.

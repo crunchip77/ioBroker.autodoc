@@ -19,7 +19,9 @@ Willst du **echte Screenshots**, arbeite vorzugsweise mit **neutralen Platzhalte
 
 - **PNG** oder **WebP**; für **lesbare Beschriftungen** im Admin (v. a. dunkles Theme) lieber **≥ 1280 px** Breite **oder** vor der Aufnahme **Browser-Zoom 125–150 %** und dann den sichtbaren Bereich erfassen. Die frühere **920–1280 px**-Spanne war knapp — bei Bedarf **bis ~1680 px** gehen, solange die Repo-Größe noch vertretbar ist (PNG komprimieren statt harte Qualitätsverluste).
 - **Dateigröße:** **< 350 KB** anstreben, aber **Lesbarkeit** hat Vorrang; lieber etwas größere Datei als unleserlich kleine Schrift.
-- Admin- und AutoDoc-Version in der Bildunterschrift nennen (z. B. „screenshot 2026‑05, Admin ≥ …“).
+- **Bildunterschrift (Markdown):** Unter jedem eingebundenen **PNG** in **`README.md`** / **`README.de.md`** dieselbe Kurzform verwenden und bei **neuen Aufnahmen** anpassen:
+  - **EN:** `*Capture: AutoDoc **0.9.36**, ioBroker Admin **≥ 7.6.20** (May **2026**).*` — `0.9.36` an **`package.json` `version`**, Monat/Jahr an ReShoot, Admin-Version an **`io-package.json` → `common.globalDependencies`** (Admin).
+  - **DE:** `*Aufnahme: AutoDoc **0.9.36**, ioBroker Admin **≥ 7.6.20** (Stand **2026-05**).*`
 
 ## Lesbarkeit (GitHub, eingebettete Vorschau)
 

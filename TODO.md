@@ -31,7 +31,7 @@ Diese Datei ist die **Arbeitsliste**: was **offen** ist steht oben; **erledigte*
 
 <a id="stand-uebersicht"></a>
 
-## Übersicht — Umsetzung vs. Rest (Stand: `package.json` / README, **0.9.34**, 2026-05-08; Branch je nach Arbeitskopie, z. B. `main` / `dev`)
+## Übersicht — Umsetzung vs. Rest (Stand: `package.json` / README, **0.9.36**, 2026-05-09; Branch je nach Arbeitskopie, z. B. `main` / `dev`)
 
 | Thema | Status | Kurz |
 | ----- | ------ | ---- |
@@ -42,17 +42,17 @@ Diese Datei ist die **Arbeitsliste**: was **offen** ist steht oben; **erledigte*
 | **Custom Templates** (Kapitel ausblenden, Custom-Sections, Theme-Teile) | 🟡 | [PLAN.md — Custom Templates](PLAN.md#custom-templates-detail); **0.9.17:** Admin-Reihenfolge + **Farb-Presets** (ohne Roh-CSS); **main:** Reihenfolge **User/Onboarding** (`userChapterOrderJson`, `onboardingChapterOrderJson`); **0.9.33:** PDF; offen: DnD |
 | **Admin-HTML Lesbarkeit** (lange Listen eingeklappt; Score ohne „Strafe“ für bewusst deaktivierte Instanzen) | ✅ | In **0.9.17** README-Changelog (block „Also on `dev`…“) + Feature-Bullets oben drunter |
 | **States entlasten** (`documentationStatesMode`, Platzhalter, Downloads aus `/files`, **`documentation.exportHashes`**) | ✅ | Default weiterhin `full`; News bei Default-Wechsel → offen |
-| **Phase 5** (PDF, Backup-Adapter, Rest Custom Templates) | 🟡 | **PDF 0.9.33** ([§ 1.2a](#phase-5-pdf-offline-mermaid)); Backup / DnD offen |
+| **Phase 5** (PDF, Backup-Adapter, Rest Custom Templates) | 🟡 | **PDF 0.9.33** ([§ 1.2a](#phase-5-pdf-offline-mermaid)); **Backup** bewusst **zurückgestellt** (Resonanz nach **latest**-Repo — [§ 1.2](#phase-5-features)); DnD offen |
 | **Phase 5.x.1** Notfall/Troubleshooting „Hybrid“ | ✅ | Kurzzeilen, Doku-Links (0.9.18), **Auto-Checklisten** bei Node-Befund + Disclaimer (0.9.19) |
 | **Phase 5.x.2** Quick Start / Raumguides | 🟡 | Kern in **0.9.20**; **0.9.26:** Gäste-Schnellstart kürzer (`sliceQuickStartForOnboarding`), User-Kurzüberblick mit Raum-Kapitel-Link; Fein: weitere Sortierung/Übersetzung, siehe [§ 1.3 — 5.x.2](#phase-5x) |
 | **Phase 5.x.3** Mermaid | ✅ | **0.9.27:** Stufe 1 — `manualMermaidDiagram`; **0.9.28:** Stufe 2 — `autoMermaidHostGraph`; **main:** `mermaidAuto` als eigene Chapter-ID (Auto-Topologie immer versteckt im Onboarding); **0.9.32:** Admin-Hilfen/JSON-Placeholder ergänzt |
 | **System-Visitenkarte** / Forum-Copy | ✅ | `textSendTo` **getForumCard** + State `info.forumCardPlain`; Diagnose-HTML nutzt `forumCard.js` |
-| **KI + Skript-Quellcode** | 🟡 | **A** umgesetzt (`aiAnalyzeScriptSources`); **B** weiterhin Phase 5 Backup |
-| **npm + ioBroker.repositories** | ⬜ | Nach Adapter-Checker |
+| **KI + Skript-Quellcode** | 🟡 | **A** umgesetzt (`aiAnalyzeScriptSources`); **B** an Backup gekoppelt — **gleicher Zeitpunkt** wie Backup ([§ 1.2](#phase-5-features)) |
+| **npm + ioBroker.repositories** | 🟡 | **npm:** Paket **`iobroker.autodoc`** (siehe **`package.json`**, **CONTRIBUTING.md** → npm-Paketidentität); **Standard-Adapterlisten:** PR **ioBroker.repositories** + Checker |
 | **Dokumentations-Score** (Wartung — Checkliste mit echten Kriterien) | ✅ | **0.9.30–0.9.31:** Dreiteiliger Score (Datenerfassung / Manuelle Inhalte / Dokumentationstiefe); instancesWithoutRoom komplett raus; neue Checks: Diagramm, Räume m. Geräten, eigene Kapitel, KI-Provider — [§ 1.6](#dokumentations-score-checkliste) |
 | **Admin-Markdown: Diagnose-Kapitel** (Parität zu Admin-HTML) | ✅ | `renderDiagnosis` / `renderDiagnosisMarkdown` — TOC-Zeile, ausblendbar wie HTML; Diagnose-Befunde sind datengetrieben (z. B. Node‑Hinweis, OS‑Hinweis), **ohne** entferntes Skript‑`desc`‑Finding (0.9.29). Details [§ 1.6](#admin-markdown-diagnose-optional), Anhang A |
 | **Admin-Konfig — Hilfen / Mini-Beispiele** (`manualMermaidDiagram`, JSON-Felder …) | 🟡 | **0.9.32:** Mermaid-/States-/Hashes-Hilfen, Platzhalter, KI-Tab — [§ 1.7](#admin-config-hilfen-beispiele); optional weiter Mini-Beispiele |
-| **Nutzer-Handbuch / Wiki** (`docs/user-guide/`) | 🟡 | **0.9.32:** EN + DE + SVG-Wireframes; **`main`:** echte **Screenshots** aller Konfig-Tabs + **SCREENSHOTS.md**; optional: Versionshinweise **auf** den Bildern — [§ 1.1b](#nutzer-handbuch-wiki) |
+| **Nutzer-Handbuch / Wiki** (`docs/user-guide/`) | 🟡 | **0.9.32:** EN + DE + SVG-Wireframes; **`main`:** PNG aller Konfig-Tabs + **SCREENSHOTS.md**; **Bildunterschriften** mit AutoDoc-/Admin-Version — [§ 1.1b](#nutzer-handbuch-wiki); optional: weitere Sprachen |
 | **Admin-UI React** (statt/nur wo nötig neben `jsonConfig`) | *optional* | Nur wenn jsonConfig für geplante Features zu eng — [§ 1.8](#admin-react-optional) |
 
 ---
@@ -73,12 +73,14 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 | 2 | **Phase 5.x.1** Hybrid (Notfall-Block + Diagnose-Snapshot) | ✅ 0.9.18 / 0.9.19 — [§ 1.3 — 5.x.1](#phase-5x) |
 | 3 | **Phase 5.x.2** Quick Start / Raumguides | 🟡 Kern in **0.9.20**; **0.9.26** Feintuning Gäste kürzer + User-Link zum Räume-Kapitel; optional mehr: [§ 1.3 — 5.x.2](#phase-5x) |
 | 4 | **Phase 5.x.3** Mermaid (gestaffelt) | ✅ **Stufe 1** **0.9.27**; **Stufe 2** **0.9.28** (`autoMermaidHostGraph`): [§ 1.3 — 5.x.3](#phase-5x) |
-| 5 | **Phase 5:** Backup-Anbindung, PDF, Rest Custom Templates | [§ 1.2](#phase-5-features), [Backup/Backitup](#backup-backitup-festlegung) |
-| 6 | **npm** + **Adapter Checker** + **ioBroker.repositories** | [§ 1.1](#release-veroeffentlichung) |
+| 5 | **Phase 5:** PDF ✅ — **Backup** / **Rest Custom Templates** (DnD) | Backup **zurückgestellt** bis User-Resonanz nach Eintrag in **latest** (Repo); DnD weiter offen — [§ 1.2](#phase-5-features), [Backup/Backitup](#backup-backitup-festlegung) |
+| 6 | **npm** ✅ (Paket **`iobroker.autodoc`**) + **Adapter Checker** + **ioBroker.repositories** | Detail & Sync: [§ 1.1](#release-veroeffentlichung), [CONTRIBUTING.md](CONTRIBUTING.md) |
 
 <a id="backup-backitup-festlegung"></a>
 
 ### Backup / ioBroker.backitup — Festlegung für die spätere Umsetzung
+
+> **Zeitlich zurückgestellt:** keine Umsetzung kurzfristig — Priorität liegt auf **Checker**, **ioBroker.repositories** (sichtbar in **latest**) und Rückmeldungen aus dem Feld. **Größere Brocken** (Parser, Archive, ggf. `sendTo`) erst **wenn** sich der Nutzen bestätigt. Die folgenden Punkte bleiben **Referenz** für eine spätere Phase.
 
 > **Noch nicht implementiert** — Inhalt aus Abstimmung (Backitup-Repo, typische Nutzer-Setups). Dient als einheitliche Referenz, damit PLAN/KI-B nicht nur „ZIP“ sagen.
 
@@ -93,14 +95,16 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 
 ### 1.1 Release / Veröffentlichung
 
-> Solange **kein npm** und **kein** Eintrag in **ioBroker.repositories**: URL-Installation nutzt u. a. `main`; Tags/Releases ändern für viele Nutzer nichts.
+> **npm:** Das öffentliche Paket heißt **[**`iobroker.autodoc`**](https://www.npmjs.com/package/iobroker.autodoc)** (`package.json` → **`name`**). Hosts können den Tarball ohne Git installieren. **Standard-Adapterlisten** im ioBroker-Admin hängen weiter an **[ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories)** — ein PR dorthin bleibt der Schritt für „in **latest** auffindbar“. **GitHub-Tags/Releases** sind für Endnutzer nachrangig, sobald **npm** und der Repo-Eintrag stimmen.
 
-- [ ] [Adapter Checker](https://adapter-check.iobroker.in/) **ohne vermeidbare** Fehler (**E2000** npm / **W4001** Liste bis zum Publish normal)
-- [ ] npm-Account / Paketname `iobroker.autodoc` klären
-- [ ] Erstes **npm**-Release: `package.json` + `io-package.json` **Version** und **news** synchron (Nummer nach ioBroker-Übung, nicht „1.0.0 vortäuschen“)
-- [ ] `npm publish`
-- [ ] GitHub Release (Tag) sinnvoll erst danach
-- [ ] PR [ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories) (`sources-dist.json`)
+**Synchron halten** (jedes Release): `package.json` **`version`**, `io-package.json` **`common.version`**, **`common.news`** (nur Versionen auf **npm**, Checker **E2004**), README-**Changelog**-Fenster — siehe **[CONTRIBUTING.md](CONTRIBUTING.md)** (**npm-Paketidentität**, **`npm run release`**).
+
+- [ ] [Adapter Checker](https://adapter-check.iobroker.in/) **ohne vermeidbare** Fehler nach Stand der Regeln; **W4001** („nicht in repositories“) **bis zum Merge** des **ioBroker.repositories**-PRs **normal**
+- [x] **npm**-Paketname **`iobroker.autodoc`** und Release-Prozess dokumentiert (**CONTRIBUTING.md**, [npm](https://www.npmjs.com/package/iobroker.autodoc))
+- [x] Erstes und **fortlaufende** **npm**-Releases: Versionen/`news`/README-Fenster über **`npm run release`** synchron (**0.9.35** ff.)
+- [x] `npm publish` erfolgt im Release-Workflow (nicht „nur“ manuell lose zum ioBroker-Adapter)
+- [ ] GitHub Release / Tag — **optional**, sinnvoll zur Nachverfolgung nach Publish
+- [ ] PR [ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories) (`sources-dist.json`) — für **latest**/Beta-Eintrag
 
 - [x] **`dev` → `main`** (Fast-forward, **0.9.17** inkl. Presets, Kapitelreihenfolge, i18n-Id-Listen)
 - [x] **Foren-Ankündigung** 0.9.17 (Kurztext wahlweise im Chat/Notiz, nicht im README)
@@ -110,13 +114,12 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 
 ### 1.1b Nutzer-Handbuch / Wiki *(optional — Backlog)*
 
-> **`docs/user-guide/`** (`README.md` **EN**, **`README.de.md` DE** mit Muster-Szenario) + Verweise aus **README** und Admin-Hilfe — **Screenshots sämtlicher** Admin-Konfig-Tabs und Hinweise Lesbarkeit/Datenschutz in **`assets/SCREENSHOTS.md`** (Stand **`main`**, nach **0.9.32**).  
-> **Noch optional:** **Versionshinweise** direkt auf den Bildunterschriften (AutoDoc-/Admin-Version), weitere Sprachen, feinere Texte.
+> **`docs/user-guide/`** (`README.md` **EN**, **`README.de.md` DE** mit Muster-Szenario) + Verweise aus **README** und Admin-Hilfe — **Screenshots sämtlicher** Admin-Konfig-Tabs, **Versionshinweise** in den PNG-Bildunterschriften und in **`assets/SCREENSHOTS.md`**; optional: weitere Sprachen, feinere Texte.
 
 - [x] Ablage festlegen (`docs/user-guide/` im Repo) + Verweis im **README**
 - [x] Inhalte nur mit **Demo-/Platzhalterdaten** (keine echten URLs, IPs, Forum-Karten aus Produktion) — **Schemas** `fig-*.svg` + Anleitung **`assets/SCREENSHOTS.md`**
 - [x] Echte **PNG-Screenshots** der Konfig-Tabs in **`assets/`** und eingebunden in **README.md** / **README.de.md**
-- [ ] Screenshots mit **AutoDoc-/Admin-Versionshinweis** in der Bildunterschrift pflegen (siehe Tipps in **SCREENSHOTS.md**)
+- [x] Screenshots mit **AutoDoc-/Admin-Versionshinweis** in der Bildunterschrift (siehe **[SCREENSHOTS.md](docs/user-guide/assets/SCREENSHOTS.md)** und `README.md` / `README.de.md`)
 - [x] Mindeststruktur: Erste Schritte (Tabs), 1–2 Szenarien (z. B. Einfamilienhaus, Gäste), Hinweis Exporte / Forum
 
 <a id="phase-5-features"></a>
@@ -124,7 +127,7 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 ### 1.2 Phase 5 — Features (Nice-to-Have)
 
 - [x] PDF-Export — **0.9.33:** optional **`puppeteer`**, `pdfExportAfterGeneration`, **`action.exportPdf`**, `/files` + `exportPath`; Merker / Randbed.: [§ 1.2a](#phase-5-pdf-offline-mermaid)
-- [ ] Backup-Anbindung (siehe [Backup / ioBroker.backitup](#backup-backitup-festlegung) — **tar.gz**, Pfad und/oder `sendTo` Backitup)
+- [ ] Backup-Anbindung — **zurückgestellt** (kein kurzfristiger Bau); Konzept: [Backup / ioBroker.backitup](#backup-backitup-festlegung) — **tar.gz**, Pfad und/oder `sendTo` Backitup; **KI + Skript Variante B** ebenfalls erst dann
 - [x] Custom Templates — **Reihenfolge User/Onboarding** (`userChapterOrderJson`, `onboardingChapterOrderJson`) — [PLAN.md — Custom Templates](PLAN.md#custom-templates-detail)
 - [ ] Custom Templates — **Rest**: Drag-and-Drop — [PLAN.md — Custom Templates](PLAN.md#custom-templates-detail)
 
@@ -238,7 +241,7 @@ Noch offen (größere Ausbaustufe als reiner Freitext):
 Details: [PLAN — System-Visitenkarte](PLAN.md#system-visitenkarte-festlegung), [PLAN — KI + Skript](PLAN.md#ki-skript-festlegung).
 
 - [x] **System-Visitenkarte:** **jsonConfig** `textSendTo` `getForumCard` (+ Copy); State `info.forumCardPlain`; gemeinsame Logik `lib/forumCard.js`
-- [x] **KI + Skriptquellcode:** **Variante A** — `aiAnalyzeScriptSources`, Zeilen-Redaktion, User/Onboarding HTML + Markdown; **Variante B** → Phase 5 Backup / [Backup-Backitup](#backup-backitup-festlegung) (offen)
+- [x] **KI + Skriptquellcode:** **Variante A** — `aiAnalyzeScriptSources`, Zeilen-Redaktion, User/Onboarding HTML + Markdown; **Variante B** → mit [Phase-5-Backup](#phase-5-features) **zurückgestellt** ([Backup-Backitup](#backup-backitup-festlegung))
 
 <a id="dokumentations-score-checkliste"></a>
 
@@ -284,7 +287,7 @@ Details: [PLAN — System-Visitenkarte](PLAN.md#system-visitenkarte-festlegung),
 | Bereich | Was schon da ist | Was „Phase 5.x“ / PLAN noch meint |
 | ------- | ---------------- | ---------------------------------- |
 | Notfall / Gäste | wie oben + Diagnose-Snapshot (Node) | Weitere Befund-Typen nur bei tragfähigen Daten |
-| Customization | `*HiddenChaptersJson`, `customDocSectionsJson`, `htmlThemePreset`, `adminChapterOrderJson` (Admin), Theme-Felder, Markdown-Export | Drag-Sort, PDF, ggf. Presets/Order für **User/Onboarding** |
+| Customization | `*HiddenChaptersJson`, `customDocSectionsJson`, `htmlThemePreset`, `adminChapterOrderJson` (Admin), Theme-Felder, Markdown-Export | Drag-Sort; **Backup** siehe Phase 5 (**zurückgestellt**) |
 | Forum-Hilfe | Diagnose-Block + **`getForumCard`** / State `info.forumCardPlain` (`lib/forumCard.js`) | Optional: spätere Template-„nur System“-HTML ([PLAN](PLAN.md#system-visitenkarte-festlegung)) |
 | Doku in States | `full` / `metadata`, Platzhalter, Dateizugriff, **exportHashes** | Nur **Kommunikation** (news), wenn Default wechselt |
 
@@ -454,11 +457,11 @@ Der folgende Stand ist **historisch vollständig** (✅). Bei Abweichungsfragen 
 
 > Oberste Priorität: **Abschnitt 1.1** oben. Diese Zeilen sind die gleiche Liste, kompakt.
 
-- [ ] Adapter Checker grün
-- [ ] npm-Konto / Paketname
-- [ ] Version + news (`package.json`, `io-package.json`)
-- [ ] `npm publish`
-- [ ] GitHub Release
+- [ ] Adapter Checker grün nach dem obigen Maßstab (**W4001** verschwindet mit Repos-Eintrag)
+- [x] npm-Paket **`iobroker.autodoc`** und Maintainer-Abgleich (siehe **CONTRIBUTING.md**)
+- [x] Version + `news` bei jedem Release synchron (`package.json`, `io-package.json`, README-Changelog)
+- [x] `npm publish` im Release-Workflow
+- [ ] GitHub Release — optional
 - [ ] PR ioBroker.repositories
 
 Bereits erledigt:

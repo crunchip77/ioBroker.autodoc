@@ -13,7 +13,7 @@ Structured help for **operators** who install and run the adapter from the [GitH
 
 ## Installation (URL / clone)
 
-Until the adapter is listed on npm, installs typically use Git (see README **Install**). After adding an instance, open **Instances → AutoDoc.X → Config**.
+Install via [npm **`iobroker.autodoc`**](https://www.npmjs.com/package/iobroker.autodoc), Git URL / clone, or (once listed) the ioBroker Admin adapter list — see main README **Install**. Default adapter lists still require **[ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories)**. After adding an instance, open **Instances → AutoDoc.X → Config**.
 
 ## Admin tabs (what to configure first)
 
@@ -33,6 +33,8 @@ Until the adapter is listed on npm, installs typically use Git (see README **Ins
 
 ![Basic settings tab — screenshot](assets/screen-grundeinstellungen-admin.png)
 
+*Capture: AutoDoc **0.9.36**, ioBroker Admin **≥ 7.6.20** (May **2026**).*
+
 ![My documentation — schematic](assets/fig-tab-meine-dokumentation.svg)
 
 *Real Admin UI (demo instance; **My documentation** is a long scroll — four screenshots, top to bottom):*
@@ -41,17 +43,25 @@ Until the adapter is listed on npm, installs typically use Git (see README **Ins
 
 ![My documentation — screenshot (1/4)](assets/screen-meine-dokumentation-admin.png)
 
+*Capture: AutoDoc **0.9.36**, ioBroker Admin **≥ 7.6.20** (May **2026**).*
+
 **2/4 —** Playbook, optional **Mermaid** diagram, automatic host topology, emergency one-liners (WLAN / power / water).
 
 ![My documentation — screenshot (2/4)](assets/screen-meine-dokumentation-admin-2.png)
+
+*Capture: AutoDoc **0.9.36**, ioBroker Admin **≥ 7.6.20** (May **2026**).*
 
 **3/4 —** Short “misc” line (optional); per-adapter and per-room notes.
 
 ![My documentation — screenshot (3/4)](assets/screen-meine-dokumentation-admin-3.png)
 
+*Capture: AutoDoc **0.9.36**, ioBroker Admin **≥ 7.6.20** (May **2026**).*
+
 **4/4 —** Hide rooms or adapters per profile (onboarding vs. user/family); guest JavaScript filename visibility.
 
 ![My documentation — screenshot (4/4)](assets/screen-meine-dokumentation-admin-4.png)
+
+*Capture: AutoDoc **0.9.36**, ioBroker Admin **≥ 7.6.20** (May **2026**).*
 
 ![Advanced — base URL schematic (fictitious host)](assets/fig-erweitert-basisurl.svg)
 
@@ -61,9 +71,13 @@ Until the adapter is listed on npm, installs typically use Git (see README **Ins
 
 ![Advanced tab — screenshot (1/2)](assets/screen-erweitert-basisurl-admin.png)
 
+*Capture: AutoDoc **0.9.36**, ioBroker Admin **≥ 7.6.20** (May **2026**).*
+
 **2/2 —** Documentation **setup score** options; optional **filesystem export** path; **PDF after each run** (Puppeteer / Chromium).
 
 ![Advanced tab — screenshot (2/2)](assets/screen-erweitert-basisurl-admin-2.png)
+
+*Capture: AutoDoc **0.9.36**, ioBroker Admin **≥ 7.6.20** (May **2026**).*
 
 *Real Admin UI (demo; tab **HTML export & extra chapters** — three screenshots, top to bottom). Intro text mentions **PDF** (switches live under **Advanced**). Replace logo URLs / custom-chapter demo text with your own placeholders for public repos.*
 
@@ -71,17 +85,25 @@ Until the adapter is listed on npm, installs typically use Git (see README **Ins
 
 ![HTML export & extra chapters — screenshot (1/3)](assets/screen-html-export-pdf-hint-admin.png)
 
+*Capture: AutoDoc **0.9.36**, ioBroker Admin **≥ 7.6.20** (May **2026**).*
+
 **2/3 —** **Admin** profile: chapter order & hidden chapters (**JSON** arrays). **User/Family**: hidden chapters & order (**JSON**).
 
 ![HTML export & extra chapters — screenshot (2/3)](assets/screen-html-export-pdf-hint-admin-2.png)
+
+*Capture: AutoDoc **0.9.36**, ioBroker Admin **≥ 7.6.20** (May **2026**).*
 
 **3/3 —** **Onboarding**: hidden chapters & order (**JSON**); **custom Markdown chapters** (**JSON** objects); footer points to optional font/CSS (fields further down).
 
 ![HTML export & extra chapters — screenshot (3/3)](assets/screen-html-export-pdf-hint-admin-3.png)
 
+*Capture: AutoDoc **0.9.36**, ioBroker Admin **≥ 7.6.20** (May **2026**).*
+
 *Real Admin UI (demo; **Notifications** — skip this tab entirely if you do not need post-run messaging). Keep **adapter instance IDs**, recipients, and custom templates **out of public repos** or use placeholders.*
 
 ![Notifications tab — screenshot](assets/screen-benachrichtigungen-admin.png)
+
+*Capture: AutoDoc **0.9.36**, ioBroker Admin **≥ 7.6.20** (May **2026**).*
 
 *Real Admin UI (demo; **AI documentation** — long tab, two screenshots **top to bottom**). Inline **privacy / hardware** notices are product text. For public repos prefer **local Ollama** or **redacted** cloud fields; never publish **API keys**.*
 
@@ -89,9 +111,13 @@ Until the adapter is listed on npm, installs typically use Git (see README **Ins
 
 ![AI documentation — screenshot (1/2)](assets/screen-ki-dokumentation-admin.png)
 
+*Capture: AutoDoc **0.9.36**, ioBroker Admin **≥ 7.6.20** (May **2026**).*
+
 **2/2 —** Optional operator **context hints** (prompt-only); **temperature**; opt-in **“AI explains JavaScript scripts”**.
 
 ![AI documentation — screenshot (2/2)](assets/screen-ki-dokumentation-admin-2.png)
+
+*Capture: AutoDoc **0.9.36**, ioBroker Admin **≥ 7.6.20** (May **2026**).*
 
 Naming, swap-out **PNG** hints, redaction: **[`assets/SCREENSHOTS.md`](assets/SCREENSHOTS.md)**.
 
@@ -128,7 +154,7 @@ npm install
 npm run adapter-check
 ```
 
-See **`CONTRIBUTING.md`** for interpretation (npm not published yet on purpose, **`common.extIcon`**, known repochecker quirks). CI still runs **`npm test`**, **`npm run lint`**, **`npm run check`**.
+See **`CONTRIBUTING.md`** for interpretation (**`common.extIcon`**, npm package **`iobroker.autodoc`**, **W4001** until the repositories PR lands, known repochecker quirks). CI still runs **`npm test`**, **`npm run lint`**, **`npm run check`**.
 
 ## Demo content only here
 

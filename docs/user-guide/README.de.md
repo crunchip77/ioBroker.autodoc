@@ -17,7 +17,7 @@ Orientierung für **Betreuer**, die den Adapter über das **[GitHub-Repository](
 
 ## Installation (URL / Clone)
 
-Solange der Adapter noch **nicht** über die normale Adapter-Liste (npm **+** [ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories)) installierbar ist, typischerweise per **„Installieren aus URL“** oder **Git**.
+**npm:** Paket **[`iobroker.autodoc`](https://www.npmjs.com/package/iobroker.autodoc)** — zusätzlich wie gewohnt **„Installieren aus URL“** / Git oder (sobald eingetragen) die **Standard-Adapterliste** im Admin. Die **Standardlisten** kommen weiter aus **[ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories)**.
 
 Nach dem Instanziieren der Instanz: **Instanzen → autodoc.0 → Schraubenschlüssel**.
 
@@ -44,6 +44,8 @@ Nach Änderungen: **Dokumentation generieren** (Button / Datenpunkt **`action.ge
 
 ![Grundeinstellungen — Screenshot](assets/screen-grundeinstellungen-admin.png)
 
+*Aufnahme: AutoDoc **0.9.36**, ioBroker Admin **≥ 7.6.20** (Stand **2026-05**).*
+
 ![Meine Dokumentation — Freitext- und Diagrammbereiche (Schema)](assets/fig-tab-meine-dokumentation.svg)
 
 *Echte Admin-Oberfläche — **Meine Dokumentation** ist ein langer Scroll; vier Screenshots **von oben nach unten** (Demo):*
@@ -52,17 +54,25 @@ Nach Änderungen: **Dokumentation generieren** (Button / Datenpunkt **`action.ge
 
 ![Meine Dokumentation — Screenshot (1/4)](assets/screen-meine-dokumentation-admin.png)
 
+*Aufnahme: AutoDoc **0.9.36**, ioBroker Admin **≥ 7.6.20** (Stand **2026-05**).*
+
 **2/4 —** Playbook, optionales **Mermaid**-Diagramm, automatische Host-Topologie, Notfall-Kurzzeilen (WLAN/Strom/Wasser).
 
 ![Meine Dokumentation — Screenshot (2/4)](assets/screen-meine-dokumentation-admin-2.png)
+
+*Aufnahme: AutoDoc **0.9.36**, ioBroker Admin **≥ 7.6.20** (Stand **2026-05**).*
 
 **3/4 —** Kurzzeile Sonstiges (optional); Adapter- und Raum-Notizen.
 
 ![Meine Dokumentation — Screenshot (3/4)](assets/screen-meine-dokumentation-admin-3.png)
 
+*Aufnahme: AutoDoc **0.9.36**, ioBroker Admin **≥ 7.6.20** (Stand **2026-05**).*
+
 **4/4 —** Räume/Adapter pro Profil ausblenden (Onboarding vs. User/Familie); Anzeige interner JavaScript-Dateinamen für Gäste.
 
 ![Meine Dokumentation — Screenshot (4/4)](assets/screen-meine-dokumentation-admin-4.png)
+
+*Aufnahme: AutoDoc **0.9.36**, ioBroker Admin **≥ 7.6.20** (Stand **2026-05**).*
 
 ![Erweitert — Basis-URL und Hinweise (Schema, Beispieldomain)](assets/fig-erweitert-basisurl.svg)
 
@@ -72,9 +82,13 @@ Nach Änderungen: **Dokumentation generieren** (Button / Datenpunkt **`action.ge
 
 ![Erweitert — Screenshot (1/2)](assets/screen-erweitert-basisurl-admin.png)
 
+*Aufnahme: AutoDoc **0.9.36**, ioBroker Admin **≥ 7.6.20** (Stand **2026-05**).*
+
 **2/2 —** **Doku-Setup-Score**; optionaler **Dateisystem-Export**; **PDF nach jedem Lauf** (Puppeteer/Chromium).
 
 ![Erweitert — Screenshot (2/2)](assets/screen-erweitert-basisurl-admin-2.png)
+
+*Aufnahme: AutoDoc **0.9.36**, ioBroker Admin **≥ 7.6.20** (Stand **2026-05**).*
 
 *Echte Admin-Oberfläche — Tab **HTML-Export & Zusatzkapitel**, drei Screenshots **von oben nach unten** (Demo). Im Einleitungstext Hinweis auf **PDF** (Schalter unter **Erweitert**). Für öffentliche Repos: Logo-URLs und Mustertexte in **eigenen** Zusatzkapiteln durch **generische Beispiele** ersetzen.*
 
@@ -82,17 +96,25 @@ Nach Änderungen: **Dokumentation generieren** (Button / Datenpunkt **`action.ge
 
 ![HTML-Export & Zusatzkapitel — Screenshot (1/3)](assets/screen-html-export-pdf-hint-admin.png)
 
+*Aufnahme: AutoDoc **0.9.36**, ioBroker Admin **≥ 7.6.20** (Stand **2026-05**).*
+
 **2/3 —** **Admin**: Kapitel-Reihenfolge & ausgeblendete Kapitel (**JSON**). **User/Familie**: ausgeblendete Kapitel & Reihenfolge (**JSON**).
 
 ![HTML-Export & Zusatzkapitel — Screenshot (2/3)](assets/screen-html-export-pdf-hint-admin-2.png)
+
+*Aufnahme: AutoDoc **0.9.36**, ioBroker Admin **≥ 7.6.20** (Stand **2026-05**).*
 
 **3/3 —** **Onboarding**: ausgeblendete Kapitel & Reihenfolge (**JSON**); **eigene Markdown-Kapitel** (**JSON**-Objekte); unten Hinweis auf optionale Schrift/zusätzliches CSS.
 
 ![HTML-Export & Zusatzkapitel — Screenshot (3/3)](assets/screen-html-export-pdf-hint-admin-3.png)
 
+*Aufnahme: AutoDoc **0.9.36**, ioBroker Admin **≥ 7.6.20** (Stand **2026-05**).*
+
 *Echte Admin-Oberfläche — Tab **Benachrichtigungen** (optional; Tab überspringen, wenn nicht benötigt). **Instanznamen**, Empfänger und Vorlagen für **öffentliche Repos** nur mit **Platzhaltern** oder weglassen.*
 
 ![Benachrichtigungen — Screenshot](assets/screen-benachrichtigungen-admin.png)
+
+*Aufnahme: AutoDoc **0.9.36**, ioBroker Admin **≥ 7.6.20** (Stand **2026-05**).*
 
 *Echte Admin-Oberfläche — Tab **KI-Dokumentation**, langer Scroll; **zwei Screenshots von oben nach unten** (Demo). Die **Datenschutz-** und **Hardware-Hinweise** im UI sind Bestandteil des Adapters — Cloud‑Anbieter nur nutzen, wenn das für euch passt.*
 
@@ -100,9 +122,13 @@ Nach Änderungen: **Dokumentation generieren** (Button / Datenpunkt **`action.ge
 
 ![KI-Dokumentation — Screenshot (1/2)](assets/screen-ki-dokumentation-admin.png)
 
+*Aufnahme: AutoDoc **0.9.36**, ioBroker Admin **≥ 7.6.20** (Stand **2026-05**).*
+
 **2/2 —** **KI-Kontexthinweise** (nur für die Anfrage); **Temperatur**; Opt-in **„KI erklärt JavaScript-Skripte“**.
 
 ![KI-Dokumentation — Screenshot (2/2)](assets/screen-ki-dokumentation-admin-2.png)
+
+*Aufnahme: AutoDoc **0.9.36**, ioBroker Admin **≥ 7.6.20** (Stand **2026-05**).*
 
 Dateinamen wechseln, verpixeln, Datenschutz: **[`assets/SCREENSHOTS.md`](assets/SCREENSHOTS.md)**.
 

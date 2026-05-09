@@ -29,14 +29,14 @@ Langfristige inhaltliche Richtung (Zusammenhänge, Auto vs. Pflege, Forum-Feedba
 | Bereich | Kurz |
 | ------- | ---- |
 | Phasen 1–4, 0.9.x RC, Multihost, KI-Basis, Custom-Template-**Teile**, States-Modus **`full`/`metadata`**, **`documentation.exportHashes`**, Downloads aus `/files` | ✅ siehe [TODO.md — Übersichtstabelle](TODO.md#stand-uebersicht) |
-| Phase 5 (PDF ✅ **0.9.33**, Backup-Anbindung, Custom-Templates-Rest) | 🟡 PDF erledigt — Backup / DnD offen ([TODO Phase 5](TODO.md#phase-5-features)) |
+| Phase 5 (PDF ✅ **0.9.33**, Backup-Anbindung *zurückgestellt*, Custom-Templates-Rest) | 🟡 PDF erledigt — Backup bewusst später (Resonanz nach Repos-**latest**); DnD offen ([TODO Phase 5](TODO.md#phase-5-features)) |
 | Phase **5.x.2** Quick Start / Raumguides | 🟡 (Kern in 0.9.20, Fein-Sortierung/Länge offen — [TODO § 5.x.2](TODO.md#phase-5x)) |
 | Phase **5.x.3** Mermaid | ✅ Stufe 1 **0.9.27**, Stufe 2 **0.9.28** — [TODO § 5.x.3](TODO.md#phase-5x) |
-| **npm-Release** + **ioBroker.repositories** | ⬜ — bewusst **nach** Phase‑5‑Features / Feinschliff ([TODO — Reihenfolge](TODO.md#offene-arbeit)) |
+| **npm-Release** + **ioBroker.repositories** | 🟡 **npm** **`iobroker.autodoc`** (ab **0.9.35**); **repositories**-PR ausstehend — [TODO — Reihenfolge](TODO.md#offene-arbeit), [CONTRIBUTING — npm](CONTRIBUTING.md) |
 | Phase **5.x.1** „Hybrid-Troubleshooting“ | 🟡 **Kern in 0.9.18 / 0.9.19:** Freitext (`guestHelpNote` u. a.) ✅, **Kurzzeilen** + Doku-Links (Bookmark-URLs) ✅, **Node.js**-Checkliste + Snapshot-Hinweis (`lib/diagnosisSnapshot.js`) ✅; **später** weitere Befund-Typen o. ä. — [TODO § 5.x.1](TODO.md#phase-5x) |
 | **Architektur:** Redis/jsonl, States, Medien/Grafiken ([Leitplanken](#architektur-grenzen), [Medien-MVP](#architektur-medien-mvp), [Nächste Schritte](#architektur-naechste-schritte)) | ✅ festgelegt | Umsetzung = README + Phase 5 / 5.x |
 | **System-Visitenkarte** „Forum kopieren“ | ✅ [Festlegung](#system-visitenkarte-festlegung) | ✅ **jsonConfig** `getForumCard`, State `info.forumCardPlain`, `lib/forumCard.js` + Diagnose-HTML |
-| **KI + Skriptquellcode** | ✅ [Festlegung](#ki-skript-festlegung) | **A** ✅ (`aiAnalyzeScriptSources`); **B** ⬜ an [Phase 5 Backup](TODO.md#offene-arbeit) |
+| **KI + Skriptquellcode** | ✅ [Festlegung](#ki-skript-festlegung) | **A** ✅ (`aiAnalyzeScriptSources`); **B** ⬜ wie Backup **zurückgestellt** ([TODO Phase 5](TODO.md#phase-5-features)) |
 
 Detaillierte **Checkboxen**: immer **[TODO.md](TODO.md)** zuerst; dieser PLAN liefert **Warum** und **Kontext**.
 
@@ -57,23 +57,23 @@ Detaillierte **Checkboxen**: immer **[TODO.md](TODO.md)** zuerst; dieser PLAN li
 
 ## Branch-Strategie
 
-- `main` = stabiler Stand nach Merge aus `dev` (**0.9.x** Release-Kandidat / Forum); separates **npm-Release** später mit eigener Versionspolitik
+- `main` = stabiler Stand nach Merge aus `dev` (**0.9.x** Release-Kandidat / Forum); **npm**-Paket **`iobroker.autodoc`** wird von hier veröffentlicht (Version/News wie in **CONTRIBUTING**)
 - `dev` = aktive Entwicklung; Commits immer auf `dev`
 - Kein direkter Feature-Push auf `main` ohne vorherigen `dev`-Stand; Merges `dev` → `main` für getestete RC-Schnitte
 
 ## Release-Prozess (echter ioBroker-Release)
 
-Solange der Adapter **nicht auf npm** und **nicht in `ioBroker.repositories`** eingetragen ist, haben Git-Tags und GitHub Releases keine Wirkung auf Update-Erkennung oder Installation im ioBroker Admin. URL-Installation lädt immer `main` HEAD.
+Solange der Adapter **nicht in `ioBroker.repositories`** (Beta/**latest**) eingetragen ist, erscheint er in den **Standard-Adapterlisten** des ioBroker-Admins nicht — Nutzer können den Tarball trotzdem über **npm** (`iobroker.autodoc`) oder Git laden. **Ohne** Repo-Eintrag haben Git-Tags/GitHub-Releases **keine** Wirkung auf „Update verfügbar“ in den Standardlisten. URL-Installation von `main` bleibt für Tester möglich.
 
 **Reihenfolge für einen echten Release:**
 
 1. `package.json` + `io-package.json` Version synchron bumpen
-2. News-Eintrag in `io-package.json` (EN + DE minimum)
-3. `dev` → Merge nach `main` _(für aktuellen **0.9.x**-RC / Forum umgesetzt; vor **npm** erneut Version + News setzen)_
-4. `npm publish` → Paket auf npmjs.com
-5. Git-Tag + GitHub Release erstellen (erst jetzt sinnvoll)
+2. News-Eintrag in `io-package.json` (EN + DE minimum) — nur **auf npm existierende** Versionen (**E2004**)
+3. `dev` → Merge nach `main` wenn der Stand stabil ist
+4. `npm run release` / `npm publish` → Paket auf npmjs.com
+5. Git-Tag + GitHub Release (**optional**, zur Nachverfolgung)
 6. PR zu [ioBroker/ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories) für Beta-Eintrag (`sources-dist.json`)
-7. Voraussetzung: [Adapter Checker](https://adapter-check.iobroker.in/) vollständig grün
+7. Voraussetzung: [Adapter Checker](https://adapter-check.iobroker.in/) vollständig grün (**W4001** entfällt erst mit **ioBroker.repositories**-Eintrag)
 
 ## Wichtige Referenzen
 
