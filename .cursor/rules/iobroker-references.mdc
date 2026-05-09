@@ -1,0 +1,28 @@
+---
+description: AutoDoc — ioBroker-Adapterarbeit; Verweis auf neutrale Referenz + Projekt-Docs
+alwaysApply: false
+globs:
+  - main.js
+  - main.test.js
+  - io-package.json
+  - package.json
+  - README.md
+  - lib/**/*
+  - admin/**/*
+  - test/**/*
+---
+
+# ioBroker.autodoc — Cursor-Hinweis (Projekt)
+
+Gilt bei Arbeit an **Adapter-Runtime, Admin-UI, Metadaten oder Tests** (siehe `globs`).
+
+## Adapter-neutral (für jeden ioBroker-Adapter)
+
+Die **wiederverwendbare** Linksammlung und Checker-/release-script-Grundlagen liegen **im Repo** (versioniert): **[`docs/iobroker-adapter-references.md`](docs/iobroker-adapter-references.md)** — zum Kopieren oder als Vorlage für **andere Adapter**.
+
+## Nur dieses Projekt
+
+- **Roadmap / Release-Checkliste:** [`TODO.md`](TODO.md) → **1.1** Release, **Anhang B**.
+- **Maintainer-Details** (Paket **`iobroker.autodoc`**, Branches `dev`/`main`, Changelog, Checker-Ausnahmen): [`CONTRIBUTING.md`](CONTRIBUTING.md).
+- **`npm run release`:** Branch-Policy und Changelog-Plugin siehe **CONTRIBUTING**; vor Release sinnvoll `npm test`, `npm run lint`, `npm run check`, optional `npm run adapter-check`.
+- **Typisch hier:** **W4001** bis **ioBroker.repositories**-PR; **E2000** sollte bei veröffentlichtem Paket nicht dauerhaft bleiben (Registry/Hosted-Checker bei Zweifel). **W5042**/`optionalDependencies`: siehe **CONTRIBUTING** (false positive Repochecker).

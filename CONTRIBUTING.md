@@ -4,6 +4,8 @@ This file is for **contributors in the Git repository**. It is intentionally **n
 
 ## References (ioBroker ecosystem)
 
+Adapter-neutral link collection (reusable across projects): [`docs/iobroker-adapter-references.md`](docs/iobroker-adapter-references.md).
+
 Use the links at the top of [`TODO.md`](TODO.md) (**Wichtige Referenzen**) while developing or reviewing changes:
 
 - [ioBroker AI Developer Guide](https://github.com/Jey-Cee/iobroker-ai-developer-guide)

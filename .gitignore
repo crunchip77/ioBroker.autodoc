@@ -1,7 +1,11 @@
-# No dot-directories except github/vscode
+# No dot-directories except github/vscode/cursor-rules
 .*/
 !.vscode/
 !.github/
+!.cursor/
+.cursor/*
+!.cursor/rules/
+!.cursor/rules/*.mdc
 
 *.code-workspace
 node_modules
