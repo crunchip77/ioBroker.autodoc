@@ -10,9 +10,11 @@ Diese Datei ist die **Arbeitsliste**: was **offen** ist steht oben; **erledigte*
 
 ## Wichtige Referenzen
 
+- [**Adapter-Referenzen (neutral)**](docs/iobroker-adapter-references.md) — Links, typische Checker-Themen, release-script-Grundlagen; für **andere Adapter** übernehmbar (Details und AutoDoc-Spezifisches: [CONTRIBUTING.md](CONTRIBUTING.md))
 - [ioBroker AI Developer Guide](https://github.com/Jey-Cee/iobroker-ai-developer-guide)
 - [Adapter Creator](https://github.com/ioBroker/create-adapter)
 - [Adapter Checker](https://adapter-check.iobroker.in/)
+- [ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories#development-and-coding-best-practices) — Listen, Einreichung, Best Practices
 - Mitwirkung: [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ---
