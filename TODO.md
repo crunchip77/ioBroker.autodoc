@@ -31,7 +31,7 @@ Diese Datei ist die **Arbeitsliste**: was **offen** ist steht oben; **erledigte*
 
 <a id="stand-uebersicht"></a>
 
-## Übersicht — Umsetzung vs. Rest (Stand: `package.json` / README, **0.9.36**, 2026-05-09; Branch je nach Arbeitskopie, z. B. `main` / `dev`)
+## Übersicht — Umsetzung vs. Rest (Stand der **Version** wie in `package.json` / `io-package.json`, derzeit **0.9.36**; Tabellen-Stichtag **2026-05-09** — bei Releases bitte diese Zeile mitziehen; Branch je nach Arbeitskopie, z. B. `main` / `dev`)
 
 | Thema | Status | Kurz |
 | ----- | ------ | ---- |
@@ -51,7 +51,7 @@ Diese Datei ist die **Arbeitsliste**: was **offen** ist steht oben; **erledigte*
 | **npm + ioBroker.repositories** | 🟡 | **npm:** Paket **`iobroker.autodoc`** (siehe **`package.json`**, **CONTRIBUTING.md** → npm-Paketidentität); **Standard-Adapterlisten:** PR **ioBroker.repositories** + Checker |
 | **Dokumentations-Score** (Wartung — Checkliste mit echten Kriterien) | ✅ | **0.9.30–0.9.31:** Dreiteiliger Score (Datenerfassung / Manuelle Inhalte / Dokumentationstiefe); instancesWithoutRoom komplett raus; neue Checks: Diagramm, Räume m. Geräten, eigene Kapitel, KI-Provider — [§ 1.6](#dokumentations-score-checkliste) |
 | **Admin-Markdown: Diagnose-Kapitel** (Parität zu Admin-HTML) | ✅ | `renderDiagnosis` / `renderDiagnosisMarkdown` — TOC-Zeile, ausblendbar wie HTML; Diagnose-Befunde sind datengetrieben (z. B. Node‑Hinweis, OS‑Hinweis), **ohne** entferntes Skript‑`desc`‑Finding (0.9.29). Details [§ 1.6](#admin-markdown-diagnose-optional), Anhang A |
-| **Admin-Konfig — Hilfen / Mini-Beispiele** (`manualMermaidDiagram`, JSON-Felder …) | 🟡 | **0.9.32:** Mermaid-/States-/Hashes-Hilfen, Platzhalter, KI-Tab — [§ 1.7](#admin-config-hilfen-beispiele); optional weiter Mini-Beispiele |
+| **Admin-Konfig — Hilfen / Mini-Beispiele** (`manualMermaidDiagram`, JSON-Felder …) | 🟡 | **0.9.32** Mermaid-/States-/Hashes; **aktueller Repo-Stand:** weitere Mini-Beispiele in Hilfetexten (`jsonConfig` / i18n EN/DE/FR) — [§ 1.7](#admin-config-hilfen-beispiele); optional noch mehr Felder |
 | **Nutzer-Handbuch / Wiki** (`docs/user-guide/`) | 🟡 | **0.9.32:** EN + DE + SVG-Wireframes; **`main`:** PNG aller Konfig-Tabs + **SCREENSHOTS.md**; **Bildunterschriften** mit AutoDoc-/Admin-Version — [§ 1.1b](#nutzer-handbuch-wiki); optional: weitere Sprachen |
 | **Admin-UI React** (statt/nur wo nötig neben `jsonConfig`) | *optional* | Nur wenn jsonConfig für geplante Features zu eng — [§ 1.8](#admin-react-optional) |
 
@@ -99,11 +99,12 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 
 **Synchron halten** (jedes Release): `package.json` **`version`**, `io-package.json` **`common.version`**, **`common.news`** (nur Versionen auf **npm**, Checker **E2004**), README-**Changelog**-Fenster — siehe **[CONTRIBUTING.md](CONTRIBUTING.md)** (**npm-Paketidentität**, **`npm run release`**).
 
-- [ ] [Adapter Checker](https://adapter-check.iobroker.in/) **ohne vermeidbare** Fehler nach Stand der Regeln; **W4001** („nicht in repositories“) **bis zum Merge** des **ioBroker.repositories**-PRs **normal**
+- [ ] [Adapter Checker](https://adapter-check.iobroker.in/) **ohne vermeidbare** Fehler nach Stand der Regeln (**E2000** und ähnliche harte Meldungen sollten mit Paket auf npm nicht dauerhaft bestehen); **W4001** („nicht in repositories“) **bis zum Merge** des **ioBroker.repositories**-PRs **normal**
 - [x] **npm**-Paketname **`iobroker.autodoc`** und Release-Prozess dokumentiert (**CONTRIBUTING.md**, [npm](https://www.npmjs.com/package/iobroker.autodoc))
-- [x] Erstes und **fortlaufende** **npm**-Releases: Versionen/`news`/README-Fenster über **`npm run release`** synchron (**0.9.35** ff.)
+- [x] Erstes und **fortlaufende** **npm**-Releases: Versionen/`news`/README-Fenster über **`npm run release`** synchron (**0.9.35** ff.; derzeit **`package.json` / `io-package.json` = 0.9.36**)
 - [x] `npm publish` erfolgt im Release-Workflow (nicht „nur“ manuell lose zum ioBroker-Adapter)
-- [ ] GitHub Release / Tag — **optional**, sinnvoll zur Nachverfolgung nach Publish
+- [x] **Git-Tags** zu veröffentlichten npm-Versionen (**v0.9.35**, **v0.9.36** im Repository)
+- [ ] **GitHub Releases** (Release-Seite mit Text/Assets auf github.com) — **optional**, nicht Voraussetzung für npm
 - [ ] PR [ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories) (`sources-dist.json`) — für **latest**/Beta-Eintrag
 
 - [x] **`dev` → `main`** (Fast-forward, **0.9.17** inkl. Presets, Kapitelreihenfolge, i18n-Id-Listen)
@@ -271,7 +272,7 @@ Details: [PLAN — System-Visitenkarte](PLAN.md#system-visitenkarte-festlegung),
 
 - [x] **teilweise umgesetzt:** **Mermaid** (`manualMermaidDiagram`): **Placeholder** im Textfeld (neutral `DEMO*`, keine `native`-Defaults). **JSON-Felder** (**Kapitelreihenfolge / Ausblenden / Custom sections**): **Placeholder** im UI + Verweis im Hilfetext **„Custom sections (JSON)“** auf **`docs/user-guide/README.de.md`** (Musterszenario); weiterhin **kein** großes **`default`**-JSON in `io-package` `native`.
 - [x] **0.9.32:** Hilfetexte **Mermaid** (Client vs. eingebettetes SVG / Auto vs. Kurzdiagramm nach Bedarf); **`documentation.exportHashes`**; Documentation **states** **`full`** / **`metadata`**; **KI**: Header/Blocke ohne Provider bzw. Skript-Analyse weniger grell.
-- [x] **Weitere Mini-Beispiele** in `jsonConfig`/`i18n` (Projektname, Beschreibung/Score, Timer, Basis-URL, States-Modus-Tipp, Adapter-/Raum-Notizen, Benachrichtigungen, JSON **hide**-Felder, Logo-Pfad, Extra-CSS, KI-Kontext) — EN/DE/FR + englische Keys in den übrigen Locales.
+- [x] **Weitere Mini-Beispiele** in `jsonConfig`/`i18n` (Projektname, Beschreibung/Score, Timer, Basis-URL, States-Modus-Tipp, Adapter-/Raum-Notizen, Benachrichtigungen, JSON **hide**-Felder, Logo-Pfad, Extra-CSS, KI-Kontext) — EN/DE/FR + englische Keys in den übrigen Locales (**Repo-Stand**, nicht an eine einzelne npm-Version gebunden).
 
 <a id="admin-react-optional"></a>
 
@@ -458,11 +459,12 @@ Der folgende Stand ist **historisch vollständig** (✅). Bei Abweichungsfragen 
 
 > Oberste Priorität: **Abschnitt 1.1** oben. Diese Zeilen sind die gleiche Liste, kompakt.
 
-- [ ] Adapter Checker grün nach dem obigen Maßstab (**W4001** verschwindet mit Repos-Eintrag)
+- [ ] Adapter Checker grün nach dem obigen Maßstab (**W4001** verschwindet mit Repos-Eintrag; **E2000** o. Ä. sollte mit Paket auf npm nicht dauerhaft offen bleiben)
 - [x] npm-Paket **`iobroker.autodoc`** und Maintainer-Abgleich (siehe **CONTRIBUTING.md**)
-- [x] Version + `news` bei jedem Release synchron (`package.json`, `io-package.json`, README-Changelog)
+- [x] Version + `news` bei jedem Release synchron (`package.json`, `io-package.json`, README-Changelog); derzeit **0.9.36**
 - [x] `npm publish` im Release-Workflow
-- [ ] GitHub Release — optional
+- [x] Git-Tags **v0.9.35**, **v0.9.36**
+- [ ] GitHub Releases (Seite auf github.com) — optional
 - [ ] PR ioBroker.repositories
 
 Bereits erledigt:
