@@ -33,7 +33,7 @@ Langfristige inhaltliche Richtung (Zusammenhänge, Auto vs. Pflege, Forum-Feedba
 | Phase **5.x.2** Quick Start / Raumguides | 🟡 (Kern in 0.9.20, Fein-Sortierung/Länge offen — [TODO § 5.x.2](TODO.md#phase-5x)) |
 | Phase **5.x.3** Mermaid | ✅ Stufe 1 **0.9.27**, Stufe 2 **0.9.28** — [TODO § 5.x.3](TODO.md#phase-5x) |
 | **npm-Release** + **ioBroker.repositories** | 🟡 **npm** **`iobroker.autodoc`** (ab **0.9.35**); **repositories**-PR ausstehend — [TODO — Reihenfolge](TODO.md#offene-arbeit), [CONTRIBUTING — npm](CONTRIBUTING.md) |
-| Phase **5.x.1** „Hybrid-Troubleshooting“ | 🟡 **Kern in 0.9.18 / 0.9.19:** Freitext (`guestHelpNote` u. a.) ✅, **Kurzzeilen** + Doku-Links (Bookmark-URLs) ✅, **Node.js**-Checkliste + Snapshot-Hinweis (`lib/diagnosisSnapshot.js`) ✅; **später** weitere Befund-Typen o. ä. — [TODO § 5.x.1](TODO.md#phase-5x) |
+| Phase **5.x.1** „Hybrid-Troubleshooting“ | ✅ **MVP in 0.9.18 / 0.9.19:** Freitext (`guestHelpNote` u. a.), **Kurzzeilen** + Doku-Links (Bookmark-URLs), **Node.js**-Checkliste + Snapshot-Hinweis (`lib/diagnosisSnapshot.js`) — [TODO § 5.x.1](TODO.md#phase-5x); optional später weitere Befund-Typen |
 | **Architektur:** Redis/jsonl, States, Medien/Grafiken ([Leitplanken](#architektur-grenzen), [Medien-MVP](#architektur-medien-mvp), [Nächste Schritte](#architektur-naechste-schritte)) | ✅ festgelegt | Umsetzung = README + Phase 5 / 5.x |
 | **System-Visitenkarte** „Forum kopieren“ | ✅ [Festlegung](#system-visitenkarte-festlegung) | ✅ **jsonConfig** `getForumCard`, State `info.forumCardPlain`, `lib/forumCard.js` + Diagnose-HTML |
 | **KI + Skriptquellcode** | ✅ [Festlegung](#ki-skript-festlegung) | **A** ✅ (`aiAnalyzeScriptSources`); **B** ⬜ wie Backup **zurückgestellt** ([TODO Phase 5](TODO.md#phase-5-features)) |

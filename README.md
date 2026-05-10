@@ -89,7 +89,8 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 
 ### **WORK IN PROGRESS**
 
-- **Release prep:** Draft user-facing bullets here before **`npm run release`** (`CONTRIBUTING.md`). Open work: **[`TODO.md`](TODO.md)** · **[`PLAN.md`](PLAN.md)** · optional **PR** [ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories) when ready.
+- **Tooling:** `runPdfExport` builds the PDF hash map with a typed empty object so **`npm run check`** (TypeScript) passes again; no change to PDF output behavior.
+- **Docs:** Adapter-neutral reference **[`docs/iobroker-adapter-references.md`](docs/iobroker-adapter-references.md)** linked from **`TODO.md`**, **`CONTRIBUTING.md`**, and the Cursor project rule; **`PLAN.md`** Phase **5.x.1** status aligned with **`TODO.md`** (MVP complete).
 
 ### 0.9.36 (2026-05-09)
 
