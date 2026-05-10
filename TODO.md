@@ -33,7 +33,7 @@ Diese Datei ist die **Arbeitsliste**: was **offen** ist steht oben; **erledigte*
 
 <a id="stand-uebersicht"></a>
 
-## Übersicht — Umsetzung vs. Rest (Stand der **Version** wie in `package.json` / `io-package.json`, derzeit **0.9.37**; Tabellen-Stichtag **2026-05-10** — bei Releases bitte diese Zeile mitziehen; Branch je nach Arbeitskopie, z. B. `main` / `dev`)
+## Übersicht — Umsetzung vs. Rest (Stand der **Version** wie in `package.json` / `io-package.json`, derzeit **0.9.37**; Tabellen-Stichtag **2026-05-11** — bei Releases bitte diese Zeile mitziehen; Branch je nach Arbeitskopie, z. B. `main` / `dev`)
 
 | Thema | Status | Kurz |
 | ----- | ------ | ---- |
@@ -50,7 +50,7 @@ Diese Datei ist die **Arbeitsliste**: was **offen** ist steht oben; **erledigte*
 | **Phase 5.x.3** Mermaid | ✅ | **0.9.27:** Stufe 1 — `manualMermaidDiagram`; **0.9.28:** Stufe 2 — `autoMermaidHostGraph`; **main:** `mermaidAuto` als eigene Chapter-ID (Auto-Topologie immer versteckt im Onboarding); **0.9.32:** Admin-Hilfen/JSON-Placeholder ergänzt |
 | **System-Visitenkarte** / Forum-Copy | ✅ | `textSendTo` **getForumCard** + State `info.forumCardPlain`; Diagnose-HTML nutzt `forumCard.js` |
 | **KI + Skript-Quellcode** | 🟡 | **A** umgesetzt (`aiAnalyzeScriptSources`); **B** an Backup gekoppelt — **gleicher Zeitpunkt** wie Backup ([§ 1.2](#phase-5-features)) |
-| **npm + ioBroker.repositories** | 🟡 | **npm:** Paket **`iobroker.autodoc`** (siehe **`package.json`**, **CONTRIBUTING.md** → npm-Paketidentität); **Standard-Adapterlisten:** PR **ioBroker.repositories** + Checker |
+| **npm + ioBroker.repositories** | 🟡 | **npm:** ✅ Paket **`iobroker.autodoc`**, Stand **0.9.37** auf Registry (**`package.json`**, **CONTRIBUTING.md**). **Standard-Adapterlisten:** PR bei **ioBroker.repositories** (**latest**) **eingereicht** — Review/Merge ausstehend; **W4001** bis Merge normal |
 | **Dokumentations-Score** (Wartung — Checkliste mit echten Kriterien) | ✅ | **0.9.30–0.9.31:** Dreiteiliger Score (Datenerfassung / Manuelle Inhalte / Dokumentationstiefe); instancesWithoutRoom komplett raus; neue Checks: Diagramm, Räume m. Geräten, eigene Kapitel, KI-Provider — [§ 1.6](#dokumentations-score-checkliste) |
 | **Admin-Markdown: Diagnose-Kapitel** (Parität zu Admin-HTML) | ✅ | `renderDiagnosis` / `renderDiagnosisMarkdown` — TOC-Zeile, ausblendbar wie HTML; Diagnose-Befunde sind datengetrieben (z. B. Node‑Hinweis, OS‑Hinweis), **ohne** entferntes Skript‑`desc`‑Finding (0.9.29). Details [§ 1.6](#admin-markdown-diagnose-optional), Anhang A |
 | **Admin-Konfig — Hilfen / Mini-Beispiele** (`manualMermaidDiagram`, JSON-Felder …) | 🟡 | **0.9.32** Mermaid-/States-/Hashes; **aktueller Repo-Stand:** weitere Mini-Beispiele in Hilfetexten (`jsonConfig` / i18n EN/DE/FR) — [§ 1.7](#admin-config-hilfen-beispiele); optional noch mehr Felder |
@@ -76,7 +76,7 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 | 3 | **Phase 5.x.2** Quick Start / Raumguides | 🟡 Kern in **0.9.20**; **0.9.26** Feintuning Gäste kürzer + User-Link zum Räume-Kapitel; optional mehr: [§ 1.3 — 5.x.2](#phase-5x) |
 | 4 | **Phase 5.x.3** Mermaid (gestaffelt) | ✅ **Stufe 1** **0.9.27**; **Stufe 2** **0.9.28** (`autoMermaidHostGraph`): [§ 1.3 — 5.x.3](#phase-5x) |
 | 5 | **Phase 5:** PDF ✅ — **Backup** / **Rest Custom Templates** (DnD) | Backup **zurückgestellt** bis User-Resonanz nach Eintrag in **latest** (Repo); DnD weiter offen — [§ 1.2](#phase-5-features), [Backup/Backitup](#backup-backitup-festlegung) |
-| 6 | **npm** ✅ (Paket **`iobroker.autodoc`**) + **Adapter Checker** + **ioBroker.repositories** | Detail & Sync: [§ 1.1](#release-veroeffentlichung), [CONTRIBUTING.md](CONTRIBUTING.md) |
+| 6 | **npm** ✅ (**0.9.37**) + **ioBroker.repositories** 🟡 PR eingereicht (Review) | [§ 1.1](#release-veroeffentlichung), [CONTRIBUTING.md](CONTRIBUTING.md) |
 
 <a id="backup-backitup-festlegung"></a>
 
@@ -97,17 +97,18 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 
 ### 1.1 Release / Veröffentlichung
 
-> **npm:** Das öffentliche Paket heißt **[**`iobroker.autodoc`**](https://www.npmjs.com/package/iobroker.autodoc)** (`package.json` → **`name`**). Hosts können den Tarball ohne Git installieren. **Standard-Adapterlisten** im ioBroker-Admin hängen weiter an **[ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories)** — ein PR dorthin bleibt der Schritt für „in **latest** auffindbar“. **GitHub-Tags/Releases** sind für Endnutzer nachrangig, sobald **npm** und der Repo-Eintrag stimmen.
+> **npm:** Das öffentliche Paket heißt **[**`iobroker.autodoc`**](https://www.npmjs.com/package/iobroker.autodoc)** (`package.json` → **`name`**). Hosts können den Tarball ohne Git installieren (**aktuell 0.9.37**). **Standard-Adapterlisten** im ioBroker-Admin folgen nach **Merge** eines PRs auf **[ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories)** („**latest**“) — ein entsprechender PR ist **eingereicht** (Stand Abgleich dieser Doku); **W4001** im Adapter Checker bis dahin **normal**. **GitHub-Tags/Releases** sind für Endnutzer nachrangig, sobald **npm** und der Repo-Eintrag stimmen.
 
 **Synchron halten** (jedes Release): `package.json` **`version`**, `io-package.json` **`common.version`**, **`common.news`** (nur Versionen auf **npm**, Checker **E2004**), README-**Changelog**-Fenster — siehe **[CONTRIBUTING.md](CONTRIBUTING.md)** (**npm-Paketidentität**, **`npm run release`**).
 
 - [ ] [Adapter Checker](https://adapter-check.iobroker.in/) **ohne vermeidbare** Fehler nach Stand der Regeln (**E2000** und ähnliche harte Meldungen sollten mit Paket auf npm nicht dauerhaft bestehen); **W4001** („nicht in repositories“) **bis zum Merge** des **ioBroker.repositories**-PRs **normal**
 - [x] **npm**-Paketname **`iobroker.autodoc`** und Release-Prozess dokumentiert (**CONTRIBUTING.md**, [npm](https://www.npmjs.com/package/iobroker.autodoc))
-- [x] Erstes und **fortlaufende** **npm**-Releases: Versionen/`news`/README-Fenster über **`npm run release`** synchron (**0.9.35** ff.; derzeit **`package.json` / `io-package.json` = 0.9.36**)
+- [x] Erstes und **fortlaufende** **npm**-Releases: Versionen/`news`/README-Fenster über **`npm run release`** synchron (**0.9.35** ff.; derzeit **`package.json` / `io-package.json` = 0.9.37**)
 - [x] `npm publish` erfolgt im Release-Workflow (nicht „nur“ manuell lose zum ioBroker-Adapter)
-- [x] **Git-Tags** zu veröffentlichten npm-Versionen (**v0.9.35**, **v0.9.36** im Repository)
+- [x] **Git-Tags** zu veröffentlichten npm-Versionen (**v0.9.35** … **v0.9.37** im Repository)
 - [ ] **GitHub Releases** (Release-Seite mit Text/Assets auf github.com) — **optional**, nicht Voraussetzung für npm
-- [ ] PR [ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories) (`sources-dist.json`) — für **latest**/Beta-Eintrag
+- [x] PR [ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories) (`sources-dist.json`) — **eingereicht** (**New at LATEST**; Review / Maintainer-Freigaben)
+- [ ] PR **gemerged** — Adapter in **latest**-Liste sichtbar; danach **W4001** entfallen
 
 - [x] **`dev` → `main`** (Fast-forward, **0.9.17** inkl. Presets, Kapitelreihenfolge, i18n-Id-Listen)
 - [x] **Foren-Ankündigung** 0.9.17 (Kurztext wahlweise im Chat/Notiz, nicht im README)
@@ -463,11 +464,12 @@ Der folgende Stand ist **historisch vollständig** (✅). Bei Abweichungsfragen 
 
 - [ ] Adapter Checker grün nach dem obigen Maßstab (**W4001** verschwindet mit Repos-Eintrag; **E2000** o. Ä. sollte mit Paket auf npm nicht dauerhaft offen bleiben)
 - [x] npm-Paket **`iobroker.autodoc`** und Maintainer-Abgleich (siehe **CONTRIBUTING.md**)
-- [x] Version + `news` bei jedem Release synchron (`package.json`, `io-package.json`, README-Changelog); derzeit **0.9.36**
+- [x] Version + `news` bei jedem Release synchron (`package.json`, `io-package.json`, README-Changelog); derzeit **0.9.37**
 - [x] `npm publish` im Release-Workflow
-- [x] Git-Tags **v0.9.35**, **v0.9.36**
+- [x] Git-Tags **v0.9.35** … **v0.9.37**
 - [ ] GitHub Releases (Seite auf github.com) — optional
-- [ ] PR ioBroker.repositories
+- [x] PR ioBroker.repositories **erstellt** (Review)
+- [ ] PR ioBroker.repositories **gemerged** (Eintrag **latest** aktiv)
 
 Bereits erledigt:
 

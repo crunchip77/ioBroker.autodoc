@@ -8,7 +8,7 @@ Automatically generates structured documentation (HTML, Markdown, JSON) for your
 
 | | |
 | --- | --- |
-| **Install** | [ioBroker Admin](https://www.iobroker.net/#en/documentation) — [npm](https://www.npmjs.com/package/iobroker.autodoc) package **`iobroker.autodoc`**, or install from this **Git** repository (URL / clone). Default adapter lists still need the package in [ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories) (see [TODO — release](TODO.md#release-veroeffentlichung)). |
+| **Install** | [ioBroker Admin](https://www.iobroker.net/#en/documentation) — [npm](https://www.npmjs.com/package/iobroker.autodoc) package **`iobroker.autodoc`** (current **0.9.37**), or install from this **Git** repository (URL / clone). Inclusion in the **default** adapter catalog requires a merged entry in [ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories) — a PR is **open** (see [TODO — release](TODO.md#release-veroeffentlichung)); until then use **npm** or **Install from URL**. |
 | **Repository** | [github.com/crunchip77/ioBroker.autodoc](https://github.com/crunchip77/ioBroker.autodoc) |
 | **Issues** | [GitHub Issues](https://github.com/crunchip77/ioBroker.autodoc/issues) |
 
@@ -89,7 +89,7 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 
 ### **WORK IN PROGRESS**
 
-- **Release prep:** Draft user-facing bullets here before **`npm run release`** (`CONTRIBUTING.md`). Open work: **[`TODO.md`](TODO.md)** · **[`PLAN.md`](PLAN.md)** · optional **PR** [ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories) when ready.
+- **Release prep:** Draft user-facing bullets here before **`npm run release`** (`CONTRIBUTING.md`). **ioBroker.repositories:** PR for **latest** **open** (review); tracking: **[`TODO.md` § 1.1](TODO.md#release-veroeffentlichung)** · **[`PLAN.md`](PLAN.md)**.
 
 ### 0.9.37 (2026-05-10)
 
@@ -103,7 +103,7 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 ### 0.9.35 (2026-05-08)
 
 - **npm:** publish **`iobroker.autodoc`** on the public registry so hosts can `npm install` the adapter tarball without cloning.
-- **README:** install table reflects **npm** plus Git; default-list installs still depend on **ioBroker.repositories** (unchanged process).
+- **README:** install table reflects **npm** plus Git; **default** Admin catalog after merged **ioBroker.repositories** entry (PR in review — [TODO § 1.1](TODO.md#release-veroeffentlichung)).
 
 ### 0.9.34 (2026-05-08)
 
