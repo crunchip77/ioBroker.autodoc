@@ -13,7 +13,7 @@ Vor größeren Änderungen an **`io-package.json`**, **Admin-Konfig**, **`packag
 
 ## Typische Adapter-Checker-Themen (Kurz)
 
-- **W4001** („nicht in repositories“): oft **normal**, bis ein PR auf `sources-dist.json` gemerged ist.  
+- **W4001** („nicht in repositories“): **normal**, bis ein PR auf **`sources-dist.json`** gemerged ist — danach sollte die Meldung entfallen.  
 - **E2004** (`common.news`): nur **Versionen eintragen, die auf npm existieren**; ältere Git-only-Versionen nicht in `news` lassen.  
 - **E2001**: für die zentrale Liste wird **Maintainer „bluefox“** als npm-Owner erwartet — `npm owner add bluefox <dein-paketname>` (Befehl aus Checker-Doku / Meldung prüfen).  
 - **W5042 / optionale Abhängigkeiten**: manche Pakete (z. B. schwere Browser-Bibliotheken) stehen bewusst unter **`optionalDependencies`**; der lokale Repochecker kann das anders bewerten als der gehostete Checker — **Doppel-Eintrag** unter `dependencies` + `optionalDependencies` vermeiden (oft durch Regeln verboten).

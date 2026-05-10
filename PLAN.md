@@ -32,7 +32,7 @@ Langfristige inhaltliche Richtung (Zusammenhänge, Auto vs. Pflege, Forum-Feedba
 | Phase 5 (PDF ✅ **0.9.33**, Backup-Anbindung *zurückgestellt*, Custom-Templates-Rest) | 🟡 PDF erledigt — Backup bewusst später (Resonanz nach Repos-**latest**); DnD offen ([TODO Phase 5](TODO.md#phase-5-features)) |
 | Phase **5.x.2** Quick Start / Raumguides | 🟡 (Kern in 0.9.20, Fein-Sortierung/Länge offen — [TODO § 5.x.2](TODO.md#phase-5x)) |
 | Phase **5.x.3** Mermaid | ✅ Stufe 1 **0.9.27**, Stufe 2 **0.9.28** — [TODO § 5.x.3](TODO.md#phase-5x) |
-| **npm-Release** + **ioBroker.repositories** | 🟡 **npm** **`iobroker.autodoc`** **0.9.37** auf Registry; **repositories-PR** (**latest**) **eingereicht** — Review/Merge ausstehend — [TODO § 1.1](TODO.md#release-veroeffentlichung), [CONTRIBUTING — npm](CONTRIBUTING.md) |
+| **npm-Release** + **ioBroker.repositories** | ✅ | **npm** **`iobroker.autodoc`** **0.9.37**; **latest**-Eintrag **gemerged** — [TODO § 1.1](TODO.md#release-veroeffentlichung), [CONTRIBUTING — npm](CONTRIBUTING.md) |
 | Phase **5.x.1** „Hybrid-Troubleshooting“ | ✅ **MVP in 0.9.18 / 0.9.19:** Freitext (`guestHelpNote` u. a.), **Kurzzeilen** + Doku-Links (Bookmark-URLs), **Node.js**-Checkliste + Snapshot-Hinweis (`lib/diagnosisSnapshot.js`) — [TODO § 5.x.1](TODO.md#phase-5x); optional später weitere Befund-Typen |
 | **Architektur:** Redis/jsonl, States, Medien/Grafiken ([Leitplanken](#architektur-grenzen), [Medien-MVP](#architektur-medien-mvp), [Nächste Schritte](#architektur-naechste-schritte)) | ✅ festgelegt | Umsetzung = README + Phase 5 / 5.x |
 | **System-Visitenkarte** „Forum kopieren“ | ✅ [Festlegung](#system-visitenkarte-festlegung) | ✅ **jsonConfig** `getForumCard`, State `info.forumCardPlain`, `lib/forumCard.js` + Diagnose-HTML |
@@ -63,17 +63,17 @@ Detaillierte **Checkboxen**: immer **[TODO.md](TODO.md)** zuerst; dieser PLAN li
 
 ## Release-Prozess (echter ioBroker-Release)
 
-Solange der Adapter **nicht in `ioBroker.repositories`** (Beta/**latest**) eingetragen ist, erscheint er in den **Standard-Adapterlisten** des ioBroker-Admins nicht — Nutzer können den Tarball trotzdem über **npm** (`iobroker.autodoc`) oder Git laden. **Ohne** Repo-Eintrag haben Git-Tags/GitHub-Releases **keine** Wirkung auf „Update verfügbar“ in den Standardlisten. URL-Installation von `main` bleibt für Tester möglich.
+Der Adapter **autodoc** ist in **ioBroker.repositories** (**latest**) eingetragen — er erscheint in den **Standard-Adapterlisten** des Admins (neben Installation über **npm** `iobroker.autodoc` und **Git**/URL). Für **neue Versionen** bleibt die Reihenfolge: npm-Release, dann PR/Update der Listeneinträge wie in der **repositories**-Doku. URL-Installation von `main`/`dev` bleibt für Tester möglich.
 
-**Reihenfolge für einen echten Release:**
+**Reihenfolge für einen echten Release (künftige Versionen):**
 
 1. `package.json` + `io-package.json` Version synchron bumpen
 2. News-Eintrag in `io-package.json` (EN + DE minimum) — nur **auf npm existierende** Versionen (**E2004**)
 3. `dev` → Merge nach `main` wenn der Stand stabil ist
 4. `npm run release` / `npm publish` → Paket auf npmjs.com
 5. Git-Tag + GitHub Release (**optional**, zur Nachverfolgung)
-6. PR zu [ioBroker/ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories) für Beta-Eintrag (`sources-dist.json`)
-7. Voraussetzung: [Adapter Checker](https://adapter-check.iobroker.in/) vollständig grün (**W4001** entfällt erst mit **ioBroker.repositories**-Eintrag)
+6. [ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories) aktualisieren (`sources-dist.json` / wie in deren Anleitung) — **Ersteintrag erledigt**; ab jetzt **Versions-Updates** der Liste bei Bedarf
+7. [Adapter Checker](https://adapter-check.iobroker.in/) — **W4001** entfällt mit Listeneintrag; verbleibende Warnungen siehe **CONTRIBUTING**
 
 ## Wichtige Referenzen
 
@@ -617,8 +617,8 @@ Master → Slave1 (zigbee.0, hm-rpc.0)
 
 1. ~~**Nutzer-Doku (README)** — kurzer Abschnitt **„Medien & Redis“** (Soft-Limits, Fotos per URL, `metadata`; Details in PLAN) — **erledigt**.~~
 2. ~~**Festgelegte Features** aus [TODO § 1.5](TODO.md#todo-festlegt-umsetzung): **System-Visitenkarte** und **KI + Skriptquellcode Variante A** — **erledigt** (0.9.12).~~ **Variante B** (Backup-Analyse) bleibt an **Backup-Anbindung** ([TODO — Backitup](TODO.md#backup-backitup-festlegung), [§ 1.2](TODO.md#phase-5-features)) gekoppelt.
-3. **Feature-Reihenfolge (Projekt):** [TODO — abgestimmte Umsetzungsreihenfolge](TODO.md#offene-arbeit) — ~~**Custom Templates — Rest** (Admin chapter order, HTML presets — **0.9.17** auf `main`)~~; ~~**5.x.1** (Hybrid)~~, ~~**5.x.2** (Kern)~~, ~~**5.x.3** (Mermaid **0.9.27** / **0.9.28**)~~; ~~**PDF**~~ **0.9.33** ✅; **npm** ✅ (**0.9.37**); **ioBroker.repositories** 🟡 PR eingereicht (Review). **Nächster inhaltlicher Fokus:** Phase‑5‑**Rest** (**Backup** / Backitup, optional DnD Custom Templates) — [TODO § 1.2](TODO.md#phase-5-features). **Adapter Checker:** verbleibende Meldungen wie **W5042** (`optionalDependencies`) — siehe **CONTRIBUTING**.
-4. **Adapter Checker** und **Merge repositories-PR** ([TODO § 1.1](TODO.md#release-veroeffentlichung)) — nach Merge entfällt **W4001**.
+3. **Feature-Reihenfolge (Projekt):** [TODO — abgestimmte Umsetzungsreihenfolge](TODO.md#offene-arbeit) — ~~**Custom Templates — Rest** (Admin chapter order, HTML presets — **0.9.17** auf `main`)~~; ~~**5.x.1** (Hybrid)~~, ~~**5.x.2** (Kern)~~, ~~**5.x.3** (Mermaid **0.9.27** / **0.9.28**)~~; ~~**PDF**~~ **0.9.33** ✅; **npm** ✅ (**0.9.37**); **ioBroker.repositories** ✅ (**latest**). **Nächster inhaltlicher Fokus:** Phase‑5‑**Rest** (**Backup** / Backitup, optional DnD Custom Templates) — [TODO § 1.2](TODO.md#phase-5-features). **Adapter Checker:** z. B. **W5042** — **CONTRIBUTING**.
+4. **Adapter Checker** und **Listen-Updates** bei neuen npm-Versionen ([TODO § 1.1](TODO.md#release-veroeffentlichung)).
 5. Optional **Default `documentationStatesMode`** auf `metadata` **mit** `io-package` news ([TODO § 1.4](TODO.md#nachzuege)) — **Produktentscheidung**.
 6. **Optional später (nicht blockierend):** HTTP-Asset-Endpunkt, harte Limits, eigenes Asset-UI — nur bei **realem** Bedarf und dann als **Schicht-2-Erweiterung** im PLAN nachziehen.
 
@@ -644,5 +644,5 @@ Master → Slave1 (zigbee.0, hm-rpc.0)
 | ---------- | ------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------------------------------------------------- |
 | **v0.x**   | Basis: Adapter-Inventar, Export, Profile, Versionierung                                                                  | ✅ main    | interner Meilenstein                                      |
 | **v0.9.x** | RC: drei Profile, Aliase, UX-Akzente, RAM-Summe, Onboarding-Capabilities, Filter, Doku-Score-Erklärung, README (Changelog); Multihost; optional `exportPath`; States **`documentationStatesMode`** + **`documentation.exportHashes`**; Changelog u. a. `adapter_version`; ab **0.9.17** auf **`main`:** `htmlThemePreset`, `adminChapterOrderJson` (nur **Admin**-HTML/MD), i18n mit **vollständiger Kapitel-Id-Liste**; ab **0.9.18/0.9.19:** **5.x.1** Hybrid-Notfall (Kurzzeilen, Lesezeichen-Links, Node-Snapshot); ab **0.9.20:** **5.x.2** Quick Start / `atAGlance` | ✅ `main` (= `dev`, Fast-forward) | Vor **npm** mit Checker + README-Changelog abgleichen |
-| **npm/stable** | **npm** (**0.9.37**) ✅; **ioBroker.repositories**-PR **eingereicht** (Review/Merge ausstehend)                                         | 🟡 in Review | Nach Merge: Adapter in **latest**-Liste; **W4001** entfällt |
+| **npm/stable** | **npm** + **ioBroker.repositories** (**latest**) für **autodoc** ✅ (**0.9.37**)                                         | ✅ erledigt | Folge-Versionen: npm + Listen-Update nach **CONTRIBUTING** / repositories-Doku |
 | **v1.x**   | Phase 5: PDF, Backup, Custom Templates (Rest); Phase 5.x **Rest:** Feintuning 5.x.2, ggf. weitere Diagnose-Signale; **5.x.3** ✅ in **0.9.27–0.9.28** | ⬜ geplant | [TODO § 1.3](TODO.md#phase-5x) |
