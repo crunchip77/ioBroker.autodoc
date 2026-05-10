@@ -4,7 +4,7 @@
 
 Automatically generates structured documentation (HTML, Markdown, JSON) for your ioBroker installation — on demand, on a schedule, or when the system changes.
 
-**Version:** 0.9.36
+**Version:** 0.9.37
 
 | | |
 | --- | --- |
@@ -89,8 +89,12 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 
 ### **WORK IN PROGRESS**
 
-- **Tooling:** `runPdfExport` builds the PDF hash map with a typed empty object so **`npm run check`** (TypeScript) passes again; no change to PDF output behavior.
-- **Docs:** Adapter-neutral reference **[`docs/iobroker-adapter-references.md`](docs/iobroker-adapter-references.md)** linked from **`TODO.md`**, **`CONTRIBUTING.md`**, and the Cursor project rule; **`PLAN.md`** Phase **5.x.1** status aligned with **`TODO.md`** (MVP complete).
+- **Release prep:** Draft user-facing bullets here before **`npm run release`** (`CONTRIBUTING.md`). Open work: **[`TODO.md`](TODO.md)** · **[`PLAN.md`](PLAN.md)** · optional **PR** [ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories) when ready.
+
+### 0.9.37 (2026-05-10)
+
+- **Tooling:** `runPdfExport` initializes the PDF digest map with a typed empty collection so **`npm run check`** (TypeScript) passes; no change to PDF export behavior.
+- **Docs:** Adapter-neutral **[`docs/iobroker-adapter-references.md`](docs/iobroker-adapter-references.md)** linked from **`TODO.md`**, **`CONTRIBUTING.md`**, and the Cursor project rule; **`PLAN.md`** phase **5.x.1** aligned with **`TODO.md`** (MVP complete).
 
 ### 0.9.36 (2026-05-09)
 
@@ -113,21 +117,6 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 
 - **PDF export (Phase 5 — first slice):** optional **`puppeteer`** — **`pdfExportAfterGeneration`** in Admin **Advanced** and/or **`action.exportPdf`**; writes **`autodoc-{admin,user,onboarding}.pdf`** alongside HTML under **`/files/`** and mirrors to **Filesystem export path** when set (`lib/htmlToPdf.js`). Same Chromium sandbox flags as Mermaid CLI. Without **`puppeteer`** or on broken headless setups, PDF is skipped; core documentation generation continues.
 - **Admin:** **`jsonConfig`** + **i18n** (EN/DE/FR + English copy elsewhere) for PDF options and extended **export path** hint.
-
-### 0.9.32 (2026-05-08)
-
-- **Documentation for operators:** new **`docs/user-guide/`** — [English README](docs/user-guide/README.md) plus [German scenario walkthrough](docs/user-guide/README.de.md); SVG wireframes and notes for replacing them with screenshots.
-- **Admin UI (`jsonConfig` + i18n):** extended help for **Mermaid** (CDN vs bundled, curated vs auto topology fields), **`documentation.exportHashes`**, documentation **states storage** (`full` vs `metadata`); **placeholders** on long JSON/manual fields where helpful; AI tab trims visible noise when provider is **`none`** or scripts are unchecked.
-- **Repository hygiene:** **`dev` merged into `main`** as default line; **`common.extIcon`** raw URL and Admin **guide links** in i18n use **`main`**; **PNG icon** refreshed (512×512).
-- **CI / tooling:** GitHub **`test-and-release.yml`** concurrency block matches **ioBroker.example** (Adapter Checker **E3009**); **`tsconfig`** / **`tsconfig.check`** exclude accidental local bootstrap paths (`iobroker-data/`, installer stubs) — aligns with ESLint ignores; **`guestHelpContent`** ESLint tidy.
-- **Docs assets:** guide SVG markup fixed so **GitHub’s preview** no longer rejects them as invalid images.
-
-### 0.9.31 (2026-05-07)
-
-- **Score 3 "Dokumentationstiefe" rework:** removed the "instances without room" check entirely from all scores (caused confusion, too many legitimate exceptions). Replaced with two new checks: **"custom documentation chapter has content"** and **"AI provider configured for script enrichment"** (conditional — only shown when scripts exist, auto-passes when no scripts are present).
-- `DEFAULT_UNASSIGNED_INSTANCE_WARN_AT` constant removed; `maintenanceScoreCheckUnassigned` and `maintenanceScoreUnassignedWarnAt` config fields are now unused in score logic (kept in admin config for backward compatibility but have no effect).
-- i18n EN/DE/FR: new keys `checkHasCustomSections`, `checkAiConfigured`, `checkInstancesWithoutRoomInfo`.
-- **Dev / CI (npm):** optional **Mermaid CLI** toolchain + striktes `npm ci` auf Linux (Node 24) — **`package.json` → `overrides`** (`chromium-bidi` → `devtools-protocol@0.0.1107588`) und **devDependencies** `cytoscape`, `d3-selection`, `devtools-protocol`, damit `package-lock.json` vollständig bleibt. Nach Dependency-Änderungen: `npm install` und Lock mit committen (`CONTRIBUTING.md`).
 
 ## License
 

@@ -143,6 +143,21 @@ Histories for versions **no longer** in the **7-version** window shared by `comm
 ### Earlier releases
 
 Changes for **0.9.4** and older: see **`git log`** and this file’s history in Git, or archived tags.
+## 0.9.32 (2026-05-08)
+
+- **Documentation for operators:** new **`docs/user-guide/`** — [English README](docs/user-guide/README.md) plus [German scenario walkthrough](docs/user-guide/README.de.md); SVG wireframes and notes for replacing them with screenshots.
+- **Admin UI (`jsonConfig` + i18n):** extended help for **Mermaid** (CDN vs bundled, curated vs auto topology fields), **`documentation.exportHashes`**, documentation **states storage** (`full` vs `metadata`); **placeholders** on long JSON/manual fields where helpful; AI tab trims visible noise when provider is **`none`** or scripts are unchecked.
+- **Repository hygiene:** **`dev` merged into `main`** as default line; **`common.extIcon`** raw URL and Admin **guide links** in i18n use **`main`**; **PNG icon** refreshed (512×512).
+- **CI / tooling:** GitHub **`test-and-release.yml`** concurrency block matches **ioBroker.example** (Adapter Checker **E3009**); **`tsconfig`** / **`tsconfig.check`** exclude accidental local bootstrap paths (`iobroker-data/`, installer stubs) — aligns with ESLint ignores; **`guestHelpContent`** ESLint tidy.
+- **Docs assets:** guide SVG markup fixed so **GitHub’s preview** no longer rejects them as invalid images.
+
+## 0.9.31 (2026-05-07)
+
+- **Score 3 "Dokumentationstiefe" rework:** removed the "instances without room" check entirely from all scores (caused confusion, too many legitimate exceptions). Replaced with two new checks: **"custom documentation chapter has content"** and **"AI provider configured for script enrichment"** (conditional — only shown when scripts exist, auto-passes when no scripts are present).
+- `DEFAULT_UNASSIGNED_INSTANCE_WARN_AT` constant removed; `maintenanceScoreCheckUnassigned` and `maintenanceScoreUnassignedWarnAt` config fields are now unused in score logic (kept in admin config for backward compatibility but have no effect).
+- i18n EN/DE/FR: new keys `checkHasCustomSections`, `checkAiConfigured`, `checkInstancesWithoutRoomInfo`.
+- **Dev / CI (npm):** optional **Mermaid CLI** toolchain + striktes `npm ci` auf Linux (Node 24) — **`package.json` → `overrides`** (`chromium-bidi` → `devtools-protocol@0.0.1107588`) und **devDependencies** `cytoscape`, `d3-selection`, `devtools-protocol`, damit `package-lock.json` vollständig bleibt. Nach Dependency-Änderungen: `npm install` und Lock mit committen (`CONTRIBUTING.md`).
+
 ## 0.9.30 (2026-05-07)
 
 - **Three-dimensional documentation score:** The single maintenance percentage is replaced by **three independent sub-scores** — each with its own progress bar and checklist — plus an overall average:
