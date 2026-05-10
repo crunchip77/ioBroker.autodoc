@@ -968,7 +968,7 @@ class Autodoc extends utils.Adapter {
 	 * @returns {Promise<Record<string, string>>} Map `autodoc-*.pdf` filename → SHA-256 hex for files written under /files
 	 */
 	async runPdfExport(htmlAll, contextLabel) {
-		const pdfHashes = {};
+		const pdfHashes = Object.fromEntries([]);
 		try {
 			const { renderProfilesToPdfBuffers } = require('./lib/htmlToPdf');
 
