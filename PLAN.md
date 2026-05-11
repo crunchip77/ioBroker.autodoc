@@ -28,12 +28,12 @@ Langfristige inhaltliche Richtung (Zusammenhänge, Auto vs. Pflege, Forum-Feedba
 
 | Bereich | Kurz |
 | ------- | ---- |
-| Phasen 1–4, 0.9.x RC, Multihost, KI-Basis, Custom-Template-**Teile**, States-Modus **`full`/`metadata`**, **`documentation.exportHashes`**, Downloads aus `/files` | ✅ siehe [TODO.md — Übersichtstabelle](TODO.md#stand-uebersicht) |
+| Phasen 1–4, 0.9.x RC, Multihost, KI-Basis, Custom-Template-**Teile**, **`documentation.exportHashes`**, große **`documentation.*` nur Platzhalter (ab 0.9.39)**, Downloads aus `/files` | ✅ siehe [TODO.md — Übersichtstabelle](TODO.md#stand-uebersicht) |
 | Phase 5 (PDF ✅ **0.9.33**, Backup-Anbindung *zurückgestellt*, Custom-Templates-Rest) | 🟡 PDF erledigt — Backup bewusst später (Resonanz nach Repos-**latest**); DnD offen ([TODO Phase 5](TODO.md#phase-5-features)) |
 | Phase **5.x.2** Quick Start / Raumguides | 🟡 (Kern in 0.9.20, Fein-Sortierung/Länge offen — [TODO § 5.x.2](TODO.md#phase-5x)) |
 | Phase **5.x.3** Mermaid | ✅ Stufe 1 **0.9.27**, Stufe 2 **0.9.28** — [TODO § 5.x.3](TODO.md#phase-5x) |
-| **npm-Release** + **ioBroker.repositories** | 🟡 | **npm** **`iobroker.autodoc`** **0.9.38** ✅; **latest**-Eintrag: **repositories**-PR **offen** (Merge ausstehend) — [TODO § 1.1](TODO.md#release-veroeffentlichung), [CONTRIBUTING — npm](CONTRIBUTING.md) |
-| Phase **5.x.1** „Hybrid-Troubleshooting“ | ✅ **MVP in 0.9.18 / 0.9.19:** Freitext (`guestHelpNote` u. a.), **Kurzzeilen** + Doku-Links (Bookmark-URLs), **Node.js**-Checkliste + Snapshot-Hinweis (`lib/diagnosisSnapshot.js`) — [TODO § 5.x.1](TODO.md#phase-5x); optional später weitere Befund-Typen |
+| **npm-Release** + **ioBroker.repositories** | 🟡 | **npm** **`iobroker.autodoc`** — **Repo** **0.9.39** (`package.json`); **Registry** nach **`npm publish`** abgleichen. **latest**-Eintrag: **repositories**-PR **offen** (Merge ausstehend) — [TODO § 1.1](TODO.md#release-veroeffentlichung), [CONTRIBUTING — npm](CONTRIBUTING.md) |
+| Phase **5.x.1** „Hybrid-Troubleshooting“ | ✅ **MVP in 0.9.18 / 0.9.19:** Freitext (`guestHelpNote` u. a.), **Kurzzeilen** + Doku-Links (Bookmark-URLs), **Node.js**-Checkliste + Snapshot-Hinweis (`lib/diagnosisSnapshot.js`) — [TODO § 5.x.1](TODO.md#phase-5x); **dev:** Admin **Betrieb – Referenz** + Diagnose-Copy (Schnappschuss / enge Checks) — optional später weitere Befund-Typen |
 | **Architektur:** Redis/jsonl, States, Medien/Grafiken ([Leitplanken](#architektur-grenzen), [Medien-MVP](#architektur-medien-mvp), [Nächste Schritte](#architektur-naechste-schritte)) | ✅ festgelegt | Umsetzung = README + Phase 5 / 5.x |
 | **System-Visitenkarte** „Forum kopieren“ | ✅ [Festlegung](#system-visitenkarte-festlegung) | ✅ **jsonConfig** `getForumCard`, State `info.forumCardPlain`, `lib/forumCard.js` + Diagnose-HTML |
 | **KI + Skriptquellcode** | ✅ [Festlegung](#ki-skript-festlegung) | **A** ✅ (`aiAnalyzeScriptSources`); **B** ⬜ wie Backup **zurückgestellt** ([TODO Phase 5](TODO.md#phase-5-features)) |
@@ -59,7 +59,7 @@ Detaillierte **Checkboxen**: immer **[TODO.md](TODO.md)** zuerst; dieser PLAN li
 
 1. **Grundeinstellungen:** Projektname, Sprache, sinnvolle **Generierungs-Auslöser** (Start / Intervall / Adapter-Änderungen nach Bedarf).
 2. **Erweitert → ioBroker-Basis-URL:** Für **QR**, **Link kopieren** und **Lesezeichen** die URL eintragen, die **Gäste im Browser** nutzen (oft ≠ Docker-Interna oder rein interne IPs — siehe Hinweis direkt über dem Feld im Admin).
-3. **Dokumentation in States:** Standard **`metadata`**, sofern keine Alt-Skripte **Volltext** aus `documentation.*` brauchen; sonst **`full`** oder Skripte auf **`/files/`** umstellen (Hilfe am Feld).
+3. **Dokumentation in States:** Entfällt ab **0.9.39** — **Volltext** nur unter **`/files/`**; States **`documentation.markdown` / `.html` / `.json`** sind **immer** kurze Platzhalter ([README — Exports & storage](README.md), `io-package` **0.9.39** `news`).
 4. **Meine Dokumentation:** Freitexte (Notfall, Routinen, optional Mermaid); **HTML-Export & Zusatzkapitel:** Theme, sichtbare Kapitel, Reihenfolge — **`atAGlance`** / Onboarding **`quickstart`**: Hilfetexte beachten (User vs. Gast-Kapitel).
 5. **Optional:** **`exportPath`** für NAS/USB-Kopien; **KI** und **PDF** bewusst aktivieren (Ressourcen/Datenschutz); Kurzanleitung **`docs/user-guide/`**.
 
@@ -69,7 +69,7 @@ Detaillierte **Checkboxen**: immer **[TODO.md](TODO.md)** zuerst; dieser PLAN li
 
 ## Release-Prozess (echter ioBroker-Release)
 
-**npm** `iobroker.autodoc` ist veröffentlicht (**aktuell 0.9.38**). Der Eintrag in **ioBroker.repositories** (**latest**) ist per **PR** eingereicht — **Standard-Adapterliste** im Admin **nach Merge**; bis dahin Installation über **npm** oder **Git**/URL. Für **neue Versionen** bleibt die Reihenfolge: npm-Release, dann PR/Update der Listeneinträge wie in der **repositories**-Doku. URL-Installation von `main`/`dev` bleibt für Tester möglich.
+**npm** `iobroker.autodoc`: **Version im Repo** siehe `package.json` (derzeit **0.9.39** auf **`dev`**); den **Stand auf npmjs** nach **`npm publish`** abgleichen. Der Eintrag in **ioBroker.repositories** (**latest**) ist per **PR** eingereicht — **Standard-Adapterliste** im Admin **nach Merge**; bis dahin Installation über **npm** oder **Git**/URL. Für **neue Versionen** bleibt die Reihenfolge: npm-Release, dann PR/Update der Listeneinträge wie in der **repositories**-Doku. URL-Installation von `main`/`dev` bleibt für Tester möglich.
 
 **Reihenfolge für einen echten Release (künftige Versionen):**
 
@@ -252,6 +252,7 @@ Echte Zielgruppen-Dokus statt "mehr oder weniger Detail vom selben Template".
 **Umgesetzt (fester MVP laut [TODO — 5.x.1](TODO.md#phase-5x)):**  
 - **0.9.18:** **Kurzzeilen** (WLAN, Strom, Wasser, Sonstiges) + **Lesezeichen-Links** zu generiertem **User-**, **Onboarding-** und **Admin**-HTML (gleiche Ziele wie QR / `info.htmlUrl*`, sinnvoll nur mit gesetzter **ioBroker base URL**).  
 - **0.9.19:** In **User/Onboarding**-Exporten kurze **Auto-Checklisten** nur bei **konkretem** Befund (derzeit: **Node.js**-Regel wie in **Admin → Diagnosis**) plus **Hinweis auf Momentaufnahme**; gemeinsame Logik: `lib/diagnosisSnapshot.js` — kein doppelter Diagnose-Block im **Admin**-HTML (dort vollwertiges Diagnose-Kapitel).  
+- **dev (Renderer-Copy, nicht zwingend eigene semver):** Admin-HTML: Kapitel **Betrieb – Referenz** (mit Disclaimer statt „Fehlerbehebung“-Konnotation); **Diagnose:** Einleitung **Schnappschuss** (kein Voll-Audit), **Automatische Prüfungen** (Node-Heuristik) getrennt von **Allgemeine Erinnerungen** (OS-Tipp); `RENDERER_VERSION` in `lib/htmlRenderer.js` bei Templateänderung anheben.
 
 **Später ausbaufähig (nicht blockierend):** weitere Diagnose-Signal-Typen in dieselbe **„nur bei Befund“**-Logik, falls Daten tragfähig; keine Pflicht, den Hybrid um „KI-Notfallwissen“ zu erweitern.
 
@@ -625,7 +626,7 @@ Master → Slave1 (zigbee.0, hm-rpc.0)
 
 1. ~~**Nutzer-Doku (README)** — kurzer Abschnitt **„Medien & Redis“** (Soft-Limits, Fotos per URL, `metadata`; Details in PLAN) — **erledigt**.~~
 2. ~~**Festgelegte Features** aus [TODO § 1.5](TODO.md#todo-festlegt-umsetzung): **System-Visitenkarte** und **KI + Skriptquellcode Variante A** — **erledigt** (0.9.12).~~ **Variante B** (Backup-Analyse) bleibt an **Backup-Anbindung** ([TODO — Backitup](TODO.md#backup-backitup-festlegung), [§ 1.2](TODO.md#phase-5-features)) gekoppelt.
-3. **Feature-Reihenfolge (Projekt):** [TODO — abgestimmte Umsetzungsreihenfolge](TODO.md#offene-arbeit) — ~~**Custom Templates — Rest** (Admin chapter order, HTML presets — **0.9.17** auf `main`)~~; ~~**5.x.1** (Hybrid)~~, ~~**5.x.2** (Kern)~~, ~~**5.x.3** (Mermaid **0.9.27** / **0.9.28**)~~; ~~**PDF**~~ **0.9.33** ✅; **npm** ✅ (**0.9.38**); **ioBroker.repositories** 🟡 (**latest**-PR offen); **Default States** **`metadata`** (**0.9.38**). **Nächster inhaltlicher Fokus:** Phase‑5‑**Rest** (**Backup** / Backitup, optional DnD Custom Templates) — [TODO § 1.2](TODO.md#phase-5-features). **Adapter Checker:** z. B. **W5042** — **CONTRIBUTING**.
+3. **Feature-Reihenfolge (Projekt):** [TODO — abgestimmte Umsetzungsreihenfolge](TODO.md#offene-arbeit) — ~~**Custom Templates — Rest** (Admin chapter order, HTML presets — **0.9.17** auf `main`)~~; ~~**5.x.1** (Hybrid)~~, ~~**5.x.2** (Kern)~~, ~~**5.x.3** (Mermaid **0.9.27** / **0.9.28**)~~; ~~**PDF**~~ **0.9.33** ✅; **npm** / **Repo** **0.9.39**; **ioBroker.repositories** 🟡 (**latest**-PR offen); **`documentationStatesMode`** entfällt — große **`documentation.*`** nur Platzhalter (**0.9.39**). **Nächster inhaltlicher Fokus:** Phase‑5‑**Rest** (**Backup** / Backitup, optional DnD Custom Templates) — [TODO § 1.2](TODO.md#phase-5-features). **Adapter Checker:** z. B. **W5042** — **CONTRIBUTING**.
 4. **Adapter Checker** und **Listen-Updates** bei neuen npm-Versionen ([TODO § 1.1](TODO.md#release-veroeffentlichung)).
 5. ~~Optional **Default `documentationStatesMode`** auf `metadata` **mit** `io-package` news ([TODO § 1.4](TODO.md#nachzuege))~~ — **0.9.38** ✅; **0.9.39** entfernt `documentationStatesMode` / `full` vollständig
 6. **Optional später (nicht blockierend):** HTTP-Asset-Endpunkt, harte Limits, eigenes Asset-UI — nur bei **realem** Bedarf und dann als **Schicht-2-Erweiterung** im PLAN nachziehen.

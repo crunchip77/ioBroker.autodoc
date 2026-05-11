@@ -87,14 +87,13 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 
 **Admin `common.news`** in `io-package.json` lists only versions **published on npm** (Adapter Checker **E2004**). The detailed sections below are the **user-facing** changelog (Git-era releases plus npm); older entries are in [`CHANGELOG_OLD.md`](CHANGELOG_OLD.md).
 
-### **WORK IN PROGRESS**
+### **WORK IN PROGRESS** (`dev` — vor Merge/`npm run release` ggf. einkürzen)
 
+- **Export-Copy / Klarheit (Admin-HTML + Admin-Markdown):** Kapitel **Betrieb – Referenz** (ehem. Troubleshooting-Konnotation) mit Top-Disclaimer; **Diagnose** mit Schnappschuss-Einleitung, **Automatische Prüfungen** (Node-Heuristik) und separatem Block **Allgemeine Erinnerungen** (OS). Template: `RENDERER_VERSION` **2026.05.10.2** (`lib/htmlRenderer.js`).
 - **Nutzbarkeit (dev):** **Erweitert** zeigt vor der **ioBroker-Basis-URL** einen kurzen Hinweis (Gäste/QR, Docker/Proxy). **Onboarding-Kapitelreihenfolge:** Hilfe erklärt **`quickstart`** (immer Zähler + nächste Schritte) vs. **Discovery-Snapshot** (nur mit Daten); vgl. **`PLAN.md`** „Adapter sinnvoll einsetzen“.
-- **Phase 5.x.2 (dev):** Quick-Start-Skripte — Länge `desc`, Tie-Break `triggerType`; **`RENDERER_VERSION` `2026.05.12.2`**.
+- **Phase 5.x.2 (dev):** Quick-Start-Skripte — Länge `desc`, Tie-Break `triggerType`; **`RENDERER_VERSION`** siehe oben (gesetzt bei letzter Template-Änderung).
 - **Admin §1.7:** User-Kapitelreihenfolge, Onboarding-Kapitelreihenfolge, Base-URL-Callout (Hilfen).
-- **Release prep:** Draft user-facing bullets here before **`npm run release`** (`CONTRIBUTING.md`). **Standard list:** nach neuen npm-Versionen ggf. **ioBroker.repositories** mitziehen — **[`TODO.md` § 1.1](TODO.md#release-veroeffentlichung)** · **[`PLAN.md`](PLAN.md)**.
-
-### 0.9.39 (2026-05-11)
+- **Release prep:** Vor **`npm run release`** WIP hier aufräumen (`CONTRIBUTING.md`). **ioBroker.repositories** nach neuen npm-Versionen — **[`TODO.md` § 1.1](TODO.md#release-veroeffentlichung)** · **`PLAN.md`**.
 
 - **Storage (breaking):** Removed the Admin option **Documentation in States** / **`documentationStatesMode`**. Large exports **always** live under **`/files/`**; **`documentation.markdown`**, **`documentation.html`**, and **`documentation.json`** are **always** placeholders. **`documentation.exportHashes`** unchanged. Integrations that read full text from those states must use **`/files/`**, **`info.htmlUrl*`**, or download actions (`common.news`).
 
