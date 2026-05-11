@@ -25,7 +25,7 @@
 				"profile": {
 					"type": "select",
 					"label": "Documentation profile",
-					"help": "Target audience for Markdown export and default focus. HTML always includes all three profiles (admin, user, onboarding). AI text for User/Onboarding HTML runs whenever a KI provider is set, regardless of this selection.",
+					"help": "**Markdown** export and **default documentation focus** follow this choice. **Every run** still generates **all three** HTML profiles (admin, user, onboarding). **User/Onboarding AI** runs when an AI **provider** is configured — not controlled by this dropdown.",
 					"options": [
 						{
 							"label": "Admin",
@@ -240,7 +240,7 @@
 				"projectDescription": {
 					"type": "text",
 					"label": "Project description",
-					"help": "What does this system do? e.g. 'Single-family home, heating + lighting + security on 3 floors'. Counts toward the optional **documentation setup score** when that row is enabled (Advanced tab — minimum description length).",
+					"help": "What the installation covers in **one or two sentences** (e.g. family home: heating, lighting, security). Shown in exports as the **short system summary**. Counts toward the optional **documentation setup score** when that check is on (**Advanced** tab — minimum length).",
 					"newLine": true,
 					"xs": 12,
 					"sm": 12,
