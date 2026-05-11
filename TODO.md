@@ -214,7 +214,7 @@ Noch offen (größere Ausbaustufe als reiner Freitext):
 
 | Thema | Mögliche Arbeit |
 | ----- | --------------- |
-| **Sortierung / Relevanz** | **0.9.23:** Raumkarten nach **Gerätezahl**; Funktionsbereiche nach **Mitgliedern**. **Skript-Zeilen:** Primär **Länge** der ersten **`desc`**-Zeile ↓; bei Gleichstand **`triggerType`**: schedule → subscribe → on-start → blockly → unknown; dann **Name** — `lib/quickStartGuide.js`. **Raum-Highlights (Geräte):** bei gleichem **Live-Wert**-Status sekundär **Kategorie-Relevanz** (z. B. Tür/Fenster/Alarm vor Licht/Schalter), dann **Gerätename**; Wechsel wirkt auf Export-HTML (**RENDERER_VERSION**); Gegenprobe: `main.test.js`. **Optional:** weitere Gewichtung, Admin-Caps. |
+| **Sortierung / Relevanz** | **0.9.23:** Raumkarten nach **Gerätezahl**; Funktionsbereiche nach **Mitgliedern**. **Skript-Zeilen:** Primär **Länge** der ersten **`desc`**-Zeile ↓; bei Gleichstand **`triggerType`**: schedule → subscribe → on-start → blockly → unknown; dann **Name** — `lib/quickStartGuide.js`. **Raum-Highlights (Geräte):** bei gleichem **Live-Wert**-Status sekundär **Kategorie-Relevanz** (z. B. Tür/Fenster/Alarm vor Licht/Schalter), dann **Gerätename**; die finale Auswahl wird noch einmal nach derselben Reihenfolge **sortiert** (mehrere Geräte einer Kategorie). Wechsel wirkt auf Export-HTML (**RENDERER_VERSION**); Gegenprobe: `main.test.js`. **Optional:** weitere Gewichtung, Admin-Caps. |
 | **Länge Onboarding vs. User** | **0.9.26:** Gäste kürzer (Schnitt im Renderer); User volle Tiefe. Optional: weitere Caps oder Layout pro Profil. |
 | **Konsistenz** | **0.9.26:** Link vom Kurzüberblick zum Räume-Kapitel (User). Optional: weitere doppelte Infos reduzieren. |
 

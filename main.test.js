@@ -132,6 +132,26 @@ describe('quickStartGuide', () => {
 		expect(g.roomGuides[0].highlights.map(h => h.deviceName)).to.deep.equal(['Lamp', 'Door', 'Window']);
 	});
 
+	it('buildQuickStartGuide room highlights sort picked list by relevance (same category, multiple live)', () => {
+		const roomsBlock = {
+			totalRooms: 1,
+			functions: [],
+			rooms: [
+				{
+					name: 'Hall',
+					memberCount: 3,
+					devices: [
+						{ deviceName: 'Door B', category: 'door', currentValue: 'open' },
+						{ deviceName: 'Win1', category: 'window' },
+						{ deviceName: 'Door A', category: 'door', currentValue: 'closed' },
+					],
+				},
+			],
+		};
+		const g = buildQuickStartGuide(roomsBlock, { scripts: [] });
+		expect(g.roomGuides[0].highlights.map(h => h.deviceName)).to.deep.equal(['Door A', 'Door B', 'Win1']);
+	});
+
 	it('highlightCategoryRank maps blank or unknown categories to other rank bucket', () => {
 		expect(highlightCategoryRank('   ')).to.equal(HIGHLIGHT_CATEGORY_RANK.other);
 		expect(highlightCategoryRank('')).to.equal(HIGHLIGHT_CATEGORY_RANK.other);
