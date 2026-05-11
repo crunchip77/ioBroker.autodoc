@@ -19,7 +19,7 @@ Install via [npm **`iobroker.autodoc`**](https://www.npmjs.com/package/iobroker.
 
 1. **Basic settings** — project name, documentation language, markdown profile preference, timers and triggers (“Generate …”).  
 2. **Manual documentation (“My documentation”)** — human text for households and guests (`guestHelpNote`, playbook, troubleshooting quick lines). Optional **Mermaid** diagrams: see field help there (embedded SVG vs. browser/CDN fallback).  
-3. **Advanced** — **`documentationStatesMode`** (`full` vs `metadata`), optional **Filesystem export path**, optional **PDF after each run** (needs **`puppeteer`**), **`documentation.exportHashes`** usage (summarised below).  
+3. **Advanced** — optional **Filesystem export path**, optional **PDF after each run** (needs **`puppeteer`**), **`documentation.exportHashes`** (summarised below); large exports always under **`/files/`** (see Admin hint).  
 4. **HTML export & extra sections** — themes, chapter visibility/order, custom sections; the intro text on that tab also points to **PDF** settings (they live under **Advanced**).  
 5. **Notifications** / **AI** — optional; opt-in only.
 
@@ -67,7 +67,7 @@ Install via [npm **`iobroker.autodoc`**](https://www.npmjs.com/package/iobroker.
 
 *Real Admin UI (demo; **Advanced** is a long scroll — two screenshots, top to bottom). **Base URL** and export paths are **placeholders**, not your real network.*
 
-**1/2 —** Content limits; **documentation in states** (`metadata` vs `full`); optional **Base URL** for bookmark/QR targets.
+**1/2 —** Content limits; **exports in Files** (short placeholders in `documentation.*` states); optional **Base URL** for bookmark/QR targets.
 
 ![Advanced tab — screenshot (1/2)](assets/screen-erweitert-basisurl-admin.png)
 
@@ -128,14 +128,9 @@ Trigger **Generate** from the instance (state `action.generate`, or the schedule
 - **Files** under `/files/autodoc.<instance>/` — canonical **HTML** (admin, user, onboarding), **Markdown**, **JSON**
 - **States** such as `info.htmlUrlAdmin` / `info.htmlUrlUser` / `info.htmlUrlOnboarding`, `info.lastGeneration`, …
 
-Whether large bodies live in **`documentation.*`** states or only on disk depends on **`documentationStatesMode`**:
+Large Markdown, Admin HTML, and the JSON model live **only** under **`/files/`** (`autodoc-latest.*`, profile HTML). The states **`documentation.markdown`**, **`documentation.html`**, and **`documentation.json`** hold **short placeholders** — use **`info.htmlUrl*`**, **`/files/`**, or download actions for full text.
 
-| Mode       | Behaviour (short) |
-| ---------- | ------------------- |
-| **full**   | Full markdown/HTML/JSON also duplicated into adapter states (legacy, larger DB). |
-| **metadata** | States hold placeholders; canonical full text stays under **`/files/`**. Scripts that used to read states for full exports should read **`/files/`** or HTTP links. |
-
-**In both modes** the adapter updates **`documentation.exportHashes`** — **SHA-256 (hex)** of the latest **Markdown**, **Admin HTML**, **JSON**, and (after a successful **PDF** run) **`autodoc-*.pdf`** files so integrations can cheaply detect “did the doc change?” without parsing full payloads.
+**Hashes:** the adapter updates **`documentation.exportHashes`** — **SHA-256 (hex)** of the latest **Markdown**, **Admin HTML**, **JSON**, and (after a successful **PDF** run) **`autodoc-*.pdf`** files so integrations can cheaply detect “did the doc change?” without parsing full payloads.
 
 ## Onboarding QR and copied link
 

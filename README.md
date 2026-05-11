@@ -4,11 +4,11 @@
 
 Automatically generates structured documentation (HTML, Markdown, JSON) for your ioBroker installation — on demand, on a schedule, or when the system changes.
 
-**Version:** 0.9.38
+**Version:** 0.9.39
 
 | | |
 | --- | --- |
-| **Install** | [ioBroker Admin](https://www.iobroker.net/#en/documentation) — [npm](https://www.npmjs.com/package/iobroker.autodoc) package **`iobroker.autodoc`** (current **0.9.38**), **Git** repository (URL / clone). **Default adapter list** ([ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories) **latest**): **PR offen** → Eintrag in der Admin-Standardliste **nach Merge**; siehe [TODO § 1.1](TODO.md#release-veroeffentlichung). |
+| **Install** | [ioBroker Admin](https://www.iobroker.net/#en/documentation) — [npm](https://www.npmjs.com/package/iobroker.autodoc) package **`iobroker.autodoc`** (current **0.9.39**), **Git** repository (URL / clone). **Default adapter list** ([ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories) **latest**): **PR offen** → Eintrag in der Admin-Standardliste **nach Merge**; siehe [TODO § 1.1](TODO.md#release-veroeffentlichung). |
 | **Repository** | [github.com/crunchip77/ioBroker.autodoc](https://github.com/crunchip77/ioBroker.autodoc) |
 | **Issues** | [GitHub Issues](https://github.com/crunchip77/ioBroker.autodoc/issues) |
 
@@ -42,12 +42,12 @@ Short **orientation** for operators (install paths, tabs, exports, hashes, check
 
 Useful **states** (selection): `action.generate`; **`action.exportPdf`** (writes **PDF** profiles from the latest HTML under `/files` when optional **`puppeteer`** is installed in the adapter directory — no full regeneration); `info.lastGeneration` / `info.nextGeneration`; `info.htmlUrlAdmin` / `info.htmlUrlUser` / `info.htmlUrlOnboarding`; `info.templateVersion` (HTML template / renderer alignment); `info.forumCardPlain` (plaintext “system card” for forums, updated when documentation is generated).
 
-**Exports & storage:** after each successful run, **`documentation.exportHashes`** holds **SHA-256 (hex)** for the latest MD / JSON / Admin HTML served from `/files`, and **merges digests for `autodoc-{admin,user,onboarding}.pdf`** whenever a PDF export step wrote those files. In Admin **Advanced**, **Documentation states storage** is **`full`** (defaults; last bodies in `documentation.*`) or **`metadata`** (lightweight states; canonical files remain under `/files`).
+**Exports & storage:** after each successful run, **`documentation.exportHashes`** holds **SHA-256 (hex)** for the latest MD / JSON / Admin HTML served from `/files`, and **merges digests for `autodoc-{admin,user,onboarding}.pdf`** whenever a PDF export step wrote those files. Canonical full Markdown, JSON model, and Admin HTML live **only** under **`/files/`** (`autodoc-latest.*`, profile HTML). The states **`documentation.markdown`**, **`documentation.html`**, and **`documentation.json`** hold **short placeholders** only — use **`info.htmlUrl*`**, **`/files/`**, or download actions for full text.
 
 ### Media, Redis, and state storage (short)
 
 - **Canonical exports** always live under **`/files/autodoc.<instance>/`** and are **overwritten** each run (no accumulation of old HTML versions there).
-- If the **object / Redis** database should stay small, prefer **`metadata`** for documentation states (see **Exports & storage** above): scripts and integrations that need **full text** should read **`/files/`** or use **`info.htmlUrl*`** / download actions.
+- **`documentation.*` body states** are **placeholders only** (large payloads are not duplicated in the object database). Scripts and integrations that need **full text** read **`/files/`** or use **`info.htmlUrl*`** / download actions.
 - **Photos and large binaries:** do **not** rely on storing big images in ioBroker’s virtual file storage — **especially with Redis** (binary blobs inflate RAM). Use **external URLs** (your NAS, HTTP server) or small **inline SVG** diagrams; the same guideline keeps **jsonl** setups predictable.
 - Rationale, options, and future media work: [`PLAN.md` — Media (MVP) & limits](PLAN.md#architektur-medien-mvp) and [Architecture boundaries](PLAN.md#architektur-grenzen).
 
@@ -94,10 +94,15 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 - **Admin §1.7:** User-Kapitelreihenfolge, Onboarding-Kapitelreihenfolge, Base-URL-Callout (Hilfen).
 - **Release prep:** Draft user-facing bullets here before **`npm run release`** (`CONTRIBUTING.md`). **Standard list:** nach neuen npm-Versionen ggf. **ioBroker.repositories** mitziehen — **[`TODO.md` § 1.1](TODO.md#release-veroeffentlichung)** · **[`PLAN.md`](PLAN.md)**.
 
+### 0.9.39 (2026-05-11)
+
+- **Storage (breaking):** Removed the Admin option **Documentation in States** / **`documentationStatesMode`**. Large exports **always** live under **`/files/`**; **`documentation.markdown`**, **`documentation.html`**, and **`documentation.json`** are **always** placeholders. **`documentation.exportHashes`** unchanged. Integrations that read full text from those states must use **`/files/`**, **`info.htmlUrl*`**, or download actions (`common.news`).
+
 ### 0.9.38 (2026-05-12)
 
 - **Advanced — storage default:** **`documentationStatesMode`** default for **new** instances is now **`metadata`** (full HTML/Markdown/JSON in **`/files/`** only; `documentation.*` states are placeholders). Lowers object-database load for typical installs (e.g. Redis). **Existing** instances keep their saved value until you change **Dokumentation in States** in Admin. Scripts that relied on full text in states should use **`/files/`** paths or download actions (`common.news` + Admin help).
 - **Rationale:** Sobald **autodoc** in **ioBroker.repositories** **latest** steht (nach Merge des Listeneintrags), sollen neue Installationen nicht still **full**-States für alle erzwingen — der Default **`metadata`** ist darauf ausgerichtet.
+- **Superseded by 0.9.39:** the **`documentationStatesMode`** setting and **`full`** duplication in **`documentation.*`** states are **removed** — see **0.9.39**.
 
 ### 0.9.37 (2026-05-10)
 

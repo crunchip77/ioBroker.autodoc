@@ -672,21 +672,9 @@
 					"size": 4,
 					"newLine": true
 				},
-				"documentationStatesMode": {
-					"type": "select",
-					"label": "Documentation states storage",
-					"help": "Documentation states storage help",
-					"options": [
-						{
-							"label": "Doc states mode full",
-							"value": "full"
-						},
-						{
-							"label": "Doc states mode metadata",
-							"value": "metadata"
-						}
-					],
-					"default": "full",
+				"_advancedDocumentationStorageHint": {
+					"type": "staticText",
+					"text": "Advanced documentation storage hint",
 					"newLine": true,
 					"xs": 12,
 					"sm": 12,

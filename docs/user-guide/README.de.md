@@ -27,7 +27,7 @@ Nach dem Anlegen der Instanz: **Instanzen → autodoc.0 → Konfiguration öffne
 
 1. **Grundeinstellungen** — Projektname, **Sprache** der erzeugten Doku, welches Markdown-Profil standardmäßig **exportiert** wird; **Auslöser** (bei Start, zeitgesteuert, bei Adapteränderungen, …).
 2. **Meine Dokumentation** — **eigene** Texte für Familie und Gäste (Notfallhilfe, Abläufe, Playbook); optionale Kurzzeilen (WLAN/Strom/Wasser); optional ein **selbst verfasstes Mermaid-Diagramm** sowie die Auto-Host-Topologie.
-3. **Erweitert** — Basis-URL (für **QR-Codes und Links** im Onboarding-HTML), **`documentationStatesMode`** (`full` vs. `metadata`), optionaler **Dateisystem-Export**, optional **PDF nach jedem Lauf** (**`puppeteer`** im Adapterordner), Schwellen für den Wartungs-Score, …
+3. **Erweitert** — Basis-URL (für **QR-Codes und Links** im Onboarding-HTML), optionaler **Dateisystem-Export**, optional **PDF nach jedem Lauf** (**`puppeteer`** im Adapterordner), Schwellen für den Wartungs-Score; **vollständige Exporte** liegen kanonisch unter **`/files`** (kurze Platzhalter in `documentation.*`, siehe Admin-Hilfe).
 4. **HTML & Zusatzkapitel** — Kapitel ausblenden, **Reihenfolge**, **freie Markdown-Zusatzkapitel**, Theme; im **Einleitungstext** dieses Tabs ein kurzer Verweis auf **PDF** (Schalter unter **Erweitert**).
 5. **Benachrichtigungen** — optional Benachrichtigung nach erzeugter Doku, z. B. per Telegram, Pushover oder E-Mail (vom gewählten Messaging-Adapter abhängig).
 6. **KI-Dokumentation** — nur bei **gewähltem Anbieter** relevant; wenn **„Deaktiviert“** gewählt ist, bleiben die Hinweise und Kontrollkästchen oben **ohne** KI-Funktion.
@@ -78,7 +78,7 @@ Nach Änderungen: **Dokumentation generieren** (Button / Datenpunkt **`action.ge
 
 *Echte Admin-Oberfläche — Tab **Erweitert**, langer Scroll; zwei Screenshots **von oben nach unten** (Demo; **Basis-URL** und Exportpfade nur **Beispiele**):*
 
-**1/2 —** Inhalt & Grenzen; **Dokumentation in States**; optionale **Basis-URL**.
+**1/2 —** Inhalt & Grenzen; **Exporte in Dateien** (Platzhalter in `documentation.*`); optionale **Basis-URL**.
 
 ![Erweitert — Screenshot (1/2)](assets/screen-erweitert-basisurl-admin.png)
 
@@ -138,9 +138,9 @@ Hinweise zu **Dateinamen**, **Verpixelung** und **Datenschutz**: **[`assets/SCRE
 
 - Alle Profile (Admin-/User-/Onboarding-HTML, Markdown, JSON) unter **`/files/autodoc.<instanz>/`**, Dateien wie `autodoc-latest.*` sowie ältere **zeitgestempelte** Versionen (je nach Einstellung).
 - Datenpunkte z. B. **`info.htmlUrlAdmin`** / **`User`** / **`Onboarding`**, **`info.lastGeneration`**.
-- **Immer aktualisiert:** **`documentation.exportHashes`** — SHA‑256‑Hex-Werte, um zu erkennen, ob sich einer der drei „latest“-Exporte (Markdown, Admin-HTML, JSON) seit dem letzten Lesen geändert hat; nach erfolgreichem **PDF**-Export stehen dort zusätzlich die Prüfsummen der **`autodoc-*.pdf`** (sowohl bei `full` **als auch** bei `metadata`).
+- **Immer aktualisiert:** **`documentation.exportHashes`** — SHA‑256‑Hex-Werte, um zu erkennen, ob sich einer der drei „latest“-Exporte (Markdown, Admin-HTML, JSON) seit dem letzten Lesen geändert hat; nach erfolgreichem **PDF**-Export stehen dort zusätzlich die Prüfsummen der **`autodoc-*.pdf`**.
 
-**„Voll“ vs. nur Metadaten:** Bei **`metadata`** liegt der **vollständige Inhalt** nur in **`/files`**; die **`documentation.*`-States** enthalten nur **Platzhalter** — eigene Skripte, die bisher Volltext aus States gelesen haben, sollten auf **`/files`** oder URLs umgestellt werden.
+**Speicherlayout:** Der **vollständige Inhalt** liegt **nur** in **`/files`**; die **`documentation.*`-States** enthalten **nur Platzhalter** — Skripte mit Volltext aus States auf **`/files`**, **`info.htmlUrl*`** oder Download-Aktionen umstellen (seit Adapter **0.9.39** gibt es keinen »Volltext in States«-Modus mehr).
 
 ---
 

@@ -20,7 +20,7 @@ const Notifier = require('./lib/notifier');
 const AiEnhancer = require('./lib/aiEnhancer');
 const { buildForumCard } = require('./lib/forumCard');
 
-/** When `documentationStatesMode` is metadata — full exports live only under adapter /files. */
+/** Large exports live under adapter /files only; `documentation.*` body states use placeholders (see below). */
 const DOCS_STATE_METADATA_PLACEHOLDER =
 	'[AutoDoc] Full content is stored only in adapter files (autodoc-latest.md, autodoc-latest.json, autodoc-admin.html). Open Files in Admin or use info.htmlUrl*.';
 /** Valid minimal JSON for `documentation.json` state when not duplicating the full export. */
@@ -706,14 +706,6 @@ class Autodoc extends utils.Adapter {
 	}
 
 	/**
-	 * @returns {boolean} True when large documentation strings are not stored in object states.
-	 */
-	isDocumentationStatesMetadataOnly() {
-		const m = String(this.config.documentationStatesMode || 'full').toLowerCase();
-		return m === 'metadata' || m === 'metadata_only' || m === 'files_only';
-	}
-
-	/**
 	 * Read a UTF-8 file from this adapter's ioBroker file namespace.
 	 *
 	 * @param {string} basePath e.g. `autodoc.0.files`
@@ -844,19 +836,9 @@ class Autodoc extends utils.Adapter {
 			});
 			await this.setStateAsync('documentation.lastJsonFile', { val: jsonFilename, ack: true });
 
-			const metadataOnly = this.isDocumentationStatesMetadataOnly();
-			if (metadataOnly) {
-				this.log.info(
-					'Documentation states: metadata-only mode — markdown/HTML/JSON are not duplicated in object states (see /files autodoc-latest.*).',
-				);
-				await this.setStateAsync('documentation.markdown', { val: DOCS_STATE_METADATA_PLACEHOLDER, ack: true });
-				await this.setStateAsync('documentation.html', { val: DOCS_STATE_METADATA_PLACEHOLDER, ack: true });
-				await this.setStateAsync('documentation.json', { val: DOCS_JSON_METADATA_PLACEHOLDER, ack: true });
-			} else {
-				await this.setStateAsync('documentation.markdown', { val: markdown, ack: true });
-				await this.setStateAsync('documentation.html', { val: htmlAll.admin, ack: true });
-				await this.setStateAsync('documentation.json', { val: json, ack: true });
-			}
+			await this.setStateAsync('documentation.markdown', { val: DOCS_STATE_METADATA_PLACEHOLDER, ack: true });
+			await this.setStateAsync('documentation.html', { val: DOCS_STATE_METADATA_PLACEHOLDER, ack: true });
+			await this.setStateAsync('documentation.json', { val: DOCS_JSON_METADATA_PLACEHOLDER, ack: true });
 
 			let exportHashes = {
 				'autodoc-latest.md': sha256HexUtf8(markdown),
@@ -1166,7 +1148,7 @@ class Autodoc extends utils.Adapter {
 
 	/**
 	 * Copy latest documentation from adapter files to a fixed filename (e.g. autodoc.md).
-	 * Prefers content from `autodoc-latest.*` files; falls back to legacy full state only if not a metadata placeholder.
+	 * Prefers content from `autodoc-latest.*` files; falls back to state value only for rare legacy data (before placeholders were always used).
 	 *
 	 * @param {string} stateId State id suffix e.g. `documentation.markdown` (no namespace).
 	 * @param {string} filename Target filename under the adapter file namespace.

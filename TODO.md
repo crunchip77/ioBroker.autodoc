@@ -43,7 +43,7 @@ Diese Datei ist die **Arbeitsliste**: was **offen** ist steht oben; **erledigte*
 | **KI** (Provider, Tab `hidden`, Timeouts, Temperaturen, **AI context hints**, `guestHelpNote` / `homeRoutinesNote` / `ownerPlaybookNote`) | ✅ | Sprachqualität kleiner Modelle bleibt iterativ |
 | **Custom Templates** (Kapitel ausblenden, Custom-Sections, Theme-Teile) | 🟡 | [PLAN.md — Custom Templates](PLAN.md#custom-templates-detail); **0.9.17:** Admin-Reihenfolge + **Farb-Presets** (ohne Roh-CSS); **main:** Reihenfolge **User/Onboarding** (`userChapterOrderJson`, `onboardingChapterOrderJson`); **0.9.33:** PDF; offen: DnD |
 | **Admin-HTML Lesbarkeit** (lange Listen eingeklappt; Score ohne „Strafe“ für bewusst deaktivierte Instanzen) | ✅ | In **0.9.17** README-Changelog (block „Also on `dev`…“) + Feature-Bullets oben drunter |
-| **States entlasten** (`documentationStatesMode`, Platzhalter, Downloads aus `/files`, **`documentation.exportHashes`**) | ✅ | **Neue Instanzen (0.9.38):** Default **`metadata`** — Exporte kanonisch **`/files/`**, States entlastet. **Bestehende** Installationen: gespeicherter Modus unverändert; **`full`** weiter wählbar (`common.news`) |
+| **States entlasten** (Platzhalter in `documentation.*`, kanonisch `/files`, **`documentation.exportHashes`**) | ✅ | Ab **0.9.39:** kein `documentationStatesMode` mehr — große Inhalte **immer** nur unter **`/files/`**; **`documentation.markdown` / `.html` / `.json`** nur Platzhalter |
 | **Phase 5** (PDF, Backup-Adapter, Rest Custom Templates) | 🟡 | **PDF 0.9.33** ([§ 1.2a](#phase-5-pdf-offline-mermaid)); **Backup** bewusst **zurückgestellt** (Resonanz nach **latest**-Repo — [§ 1.2](#phase-5-features)); DnD offen |
 | **Phase 5.x.1** Notfall/Troubleshooting „Hybrid“ | ✅ | Kurzzeilen, Doku-Links (0.9.18), **Auto-Checklisten** bei Node-Befund + Disclaimer (0.9.19) |
 | **Phase 5.x.2** Quick Start / Raumguides | 🟡 | Kern in **0.9.20**; **0.9.26:** Gäste-Schnellstart kürzer (`sliceQuickStartForOnboarding`), User-Kurzüberblick mit Raum-Kapitel-Link; Fein: weitere Sortierung/Übersetzung, siehe [§ 1.3 — 5.x.2](#phase-5x) |
@@ -234,6 +234,7 @@ Noch offen (größere Ausbaustufe als reiner Freitext):
 ### 1.4 Kleine Nachzüge / Trigger
 
 - [x] **README-Changelog** + **io-package `news`:** Gäste-Onboarding **Skript-Datenschutz** (`onboardingGuestShowScriptNames`, `lib/guestScriptPrivacy.js`) und Schnellstart-Logik (**kein** Ersatz aus `common.desc`, wenn Skriptnamen in der Gäste-Ansicht verborgen sind) + **RENDERER_VERSION** — in **0.9.21** nachgezogen.
+- [x] **`documentationStatesMode` entfallen** (**0.9.39**) — nur noch Platzhalter in großen `documentation.*`-States; Admin-Auswahl entfernt
 - [x] **`io-package` news** bei Default **`documentationStatesMode` = `metadata`** für neue Instanzen (**0.9.38**)
 - [x] **README-Changelog** + Version **0.9.11** um States/Hashes/Changelog-i18n ergänzt
 
@@ -454,7 +455,7 @@ Der folgende Stand ist **historisch vollständig** (✅). Bei Abweichungsfragen 
 
 **Problem / Ziel** wörtlich: große Inhalte kanonisch unter **`/files/`**; States nicht unnötig mit Megabyte-Strings belasten — siehe [PLAN.md — Doppelte Ablage](PLAN.md#doppelte-ablage-states).
 
-- [x] **`documentationStatesMode`**: `full` \| `metadata`, Default **`metadata`** (neue Instanzen ab **0.9.38**) — io-package, `jsonConfig`, EN/DE/FR
+- [x] **`documentationStatesMode`**: bis **0.9.38** `full` \| `metadata` (Default **`metadata`** neu); ab **0.9.39** entfernt — immer **`/files/`** + Platzhalter-States
 - [x] **`persistDocumentation`**: bei `metadata` Platzhalter in `documentation.markdown` / `.html` / `.json`; `documentation.stateSummary` unverändert
 - [x] Download-Aktionen: Quelle `autodoc-latest.*` / `autodoc-admin.html`, Fallback Legacy-State
 - [x] **`documentation.exportHashes`**: SHA-256 (hex) der Latest-Exporte (**MD / JSON / Admin-HTML**); bei PDF-Lauf auch **`autodoc-*.pdf`** — beide Modi (**0.9.34** ergänzt PDF-Fingerabdrücke)
