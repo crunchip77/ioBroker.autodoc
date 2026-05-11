@@ -8,7 +8,7 @@ const path = require('path');
 const adminI18n = path.join(__dirname, '..', 'admin', 'i18n');
 const en = JSON.parse(fs.readFileSync(path.join(adminI18n, 'en.json'), 'utf8'));
 
-const keys = Object.keys(en).filter((k) => k.startsWith('Optional Mermaid diagram you write yourself'));
+const keys = Object.keys(en).filter(k => k.startsWith('Optional Mermaid diagram you write yourself'));
 if (keys.length !== 1) {
 	console.error('Expected exactly one Mermaid help key in en.json, got', keys.length);
 	process.exit(1);
