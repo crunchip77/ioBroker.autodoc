@@ -8,7 +8,7 @@ Automatically generates structured documentation (HTML, Markdown, JSON) for your
 
 | | |
 | --- | --- |
-| **Install** | [ioBroker Admin](https://www.iobroker.net/#en/documentation) — [npm](https://www.npmjs.com/package/iobroker.autodoc) package **`iobroker.autodoc`** (current **0.9.38**), **default adapter list** via [ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories) (**latest**), or install from this **Git** repository (URL / clone). See [TODO — release](TODO.md#release-veroeffentlichung) for maintainer notes. |
+| **Install** | [ioBroker Admin](https://www.iobroker.net/#en/documentation) — [npm](https://www.npmjs.com/package/iobroker.autodoc) package **`iobroker.autodoc`** (current **0.9.38**), **Git** repository (URL / clone). **Default adapter list** ([ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories) **latest**): **PR offen** → Eintrag in der Admin-Standardliste **nach Merge**; siehe [TODO § 1.1](TODO.md#release-veroeffentlichung). |
 | **Repository** | [github.com/crunchip77/ioBroker.autodoc](https://github.com/crunchip77/ioBroker.autodoc) |
 | **Issues** | [GitHub Issues](https://github.com/crunchip77/ioBroker.autodoc/issues) |
 
@@ -89,18 +89,21 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 
 ### **WORK IN PROGRESS**
 
+- **Nutzbarkeit (dev):** **Erweitert** zeigt vor der **ioBroker-Basis-URL** einen kurzen Hinweis (Gäste/QR, Docker/Proxy). **Onboarding-Kapitelreihenfolge:** Hilfe erklärt **`quickstart`** (immer Zähler + nächste Schritte) vs. **Discovery-Snapshot** (nur mit Daten); vgl. **`PLAN.md`** „Adapter sinnvoll einsetzen“.
+- **Phase 5.x.2 (dev):** Quick-Start-Skripte — Länge `desc`, Tie-Break `triggerType`; **`RENDERER_VERSION` `2026.05.12.2`**.
+- **Admin §1.7:** User-Kapitelreihenfolge, Onboarding-Kapitelreihenfolge, Base-URL-Callout (Hilfen).
 - **Release prep:** Draft user-facing bullets here before **`npm run release`** (`CONTRIBUTING.md`). **Standard list:** nach neuen npm-Versionen ggf. **ioBroker.repositories** mitziehen — **[`TODO.md` § 1.1](TODO.md#release-veroeffentlichung)** · **[`PLAN.md`](PLAN.md)**.
 
 ### 0.9.38 (2026-05-12)
 
 - **Advanced — storage default:** **`documentationStatesMode`** default for **new** instances is now **`metadata`** (full HTML/Markdown/JSON in **`/files/`** only; `documentation.*` states are placeholders). Lowers object-database load for typical installs (e.g. Redis). **Existing** instances keep their saved value until you change **Dokumentation in States** in Admin. Scripts that relied on full text in states should use **`/files/`** paths or download actions (`common.news` + Admin help).
-- **Rationale:** With the adapter in **ioBroker.repositories** **latest**, new installations should avoid silently growing the **full**-mode footprint for everyone.
+- **Rationale:** Sobald **autodoc** in **ioBroker.repositories** **latest** steht (nach Merge des Listeneintrags), sollen neue Installationen nicht still **full**-States für alle erzwingen — der Default **`metadata`** ist darauf ausgerichtet.
 
 ### 0.9.37 (2026-05-10)
 
 - **Tooling:** `runPdfExport` initializes the PDF digest map with a typed empty collection so **`npm run check`** (TypeScript) passes; no change to PDF export behavior.
 - **Docs:** Adapter-neutral **[`docs/iobroker-adapter-references.md`](docs/iobroker-adapter-references.md)** linked from **`TODO.md`**, **`CONTRIBUTING.md`**, and the Cursor project rule; **`PLAN.md`** phase **5.x.1** aligned with **`TODO.md`** (MVP complete).
-- **Distribution (follow-up):** **ioBroker.repositories** — **`autodoc`** in **latest**; damit im Admin neben **npm** und Git‑URL in der **Standard-Adapterliste** (siehe [TODO § 1.1](TODO.md#release-veroeffentlichung)).
+- **Distribution (follow-up):** **ioBroker.repositories** — PR **`autodoc` → latest** eingereicht (**Merge ausstehend**); danach Eintrag in der **Standard-Adapterliste** neben **npm** und Git‑URL (siehe [TODO § 1.1](TODO.md#release-veroeffentlichung)).
 
 ### 0.9.36 (2026-05-09)
 

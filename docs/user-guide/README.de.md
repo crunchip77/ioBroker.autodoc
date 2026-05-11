@@ -17,7 +17,7 @@ Orientierung für **Betreuer**, die den Adapter über das **[GitHub-Repository](
 
 ## Installation (URL / Clone)
 
-**npm:** Paket **[`iobroker.autodoc`](https://www.npmjs.com/package/iobroker.autodoc)** — zusätzlich wie gewohnt **„Installieren aus URL“** / Git oder (sobald eingetragen) die **Standard-Adapterliste** im Admin. Die **Standardlisten** kommen weiter aus **[ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories)**.
+**npm:** Paket **[`iobroker.autodoc`](https://www.npmjs.com/package/iobroker.autodoc)** — zusätzlich wie gewohnt **„Installieren aus URL“** / Git oder (nach Merge des **repositories**-PRs) die **Standard-Adapterliste** im Admin (**aktuell:** PR offen). Die **Standardlisten** kommen aus **[ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories)**.
 
 Nach dem Instanziieren der Instanz: **Instanzen → autodoc.0 → Schraubenschlüssel**.
 

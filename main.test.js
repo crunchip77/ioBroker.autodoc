@@ -2,7 +2,7 @@
 
 const { expect } = require('chai');
 const { onboardingGuestShowsScriptNames } = require('./lib/guestScriptPrivacy');
-const { sliceQuickStartForOnboarding } = require('./lib/quickStartGuide');
+const { buildQuickStartGuide, sliceQuickStartForOnboarding } = require('./lib/quickStartGuide');
 
 describe('guestScriptPrivacy', () => {
 	it('treats missing, null config and non-true values as hide script names', () => {
@@ -49,5 +49,45 @@ describe('quickStartGuide', () => {
 			systemItems: [],
 			roomGuides: [],
 		});
+	});
+
+	it('buildQuickStartGuide orders script snapshot lines by description length (longer first)', () => {
+		const roomsBlock = { totalRooms: 0, functions: [], rooms: [] };
+		const scriptsBlock = {
+			scripts: [
+				{ enabled: true, name: 'zzz', id: 'zzz', desc: 'Short.', triggerType: 'unknown' },
+				{ enabled: true, name: 'aaa', id: 'aaa', desc: 'A longer first-line description for quick start.', triggerType: 'unknown' },
+				{ enabled: true, name: 'mid', id: 'mid', desc: 'Medium length here.', triggerType: 'unknown' },
+			],
+		};
+		const g = buildQuickStartGuide(roomsBlock, scriptsBlock);
+		const scriptItems = (g.systemItems || []).filter(i => i.kind === 'script');
+		expect(scriptItems.map(i => i.name)).to.deep.equal(['aaa', 'mid', 'zzz']);
+	});
+
+	it('buildQuickStartGuide script order tie-breaks by name when first-line desc length matches', () => {
+		const roomsBlock = { totalRooms: 0, functions: [], rooms: [] };
+		const scriptsBlock = {
+			scripts: [
+				{ enabled: true, name: 'b', id: 'b', desc: 'Same\nignored second line', triggerType: 'schedule' },
+				{ enabled: true, name: 'a', id: 'a', desc: 'Same', triggerType: 'subscribe' },
+			],
+		};
+		const g = buildQuickStartGuide(roomsBlock, scriptsBlock);
+		const scriptItems = (g.systemItems || []).filter(i => i.kind === 'script');
+		expect(scriptItems.map(i => i.name)).to.deep.equal(['b', 'a']);
+	});
+
+	it('buildQuickStartGuide tie-breaks equal desc length by triggerType rank before name', () => {
+		const roomsBlock = { totalRooms: 0, functions: [], rooms: [] };
+		const scriptsBlock = {
+			scripts: [
+				{ enabled: true, name: 'z', id: 'z', desc: 'Dup', triggerType: 'subscribe' },
+				{ enabled: true, name: 'a', id: 'a', desc: 'Dup', triggerType: 'schedule' },
+			],
+		};
+		const g = buildQuickStartGuide(roomsBlock, scriptsBlock);
+		const scriptItems = (g.systemItems || []).filter(i => i.kind === 'script');
+		expect(scriptItems.map(i => i.name)).to.deep.equal(['a', 'z']);
 	});
 });

@@ -13,7 +13,7 @@ Structured help for **operators** who install and run the adapter from the [GitH
 
 ## Installation (URL / clone)
 
-Install via [npm **`iobroker.autodoc`**](https://www.npmjs.com/package/iobroker.autodoc), Git URL / clone, or (once listed) the ioBroker Admin adapter list — see main README **Install**. Default adapter lists still require **[ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories)**. After adding an instance, open **Instances → AutoDoc.X → Config**.
+Install via [npm **`iobroker.autodoc`**](https://www.npmjs.com/package/iobroker.autodoc), Git URL / clone, or (after the **ioBroker.repositories** PR merges) the ioBroker Admin default adapter list — see main README **Install**. Default lists are maintained in **[ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories)**. After adding an instance, open **Instances → AutoDoc.X → Config**.
 
 ## Admin tabs (what to configure first)
 
