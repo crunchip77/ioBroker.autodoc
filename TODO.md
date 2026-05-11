@@ -270,7 +270,7 @@ Details: [PLAN — System-Visitenkarte](PLAN.md#system-visitenkarte-festlegung),
 
 ### 1.7 Admin-Konfig — Hilfen / Mini-Beispiele *(teilweise)*
 
-> **Merker:** Bessere Orientierung bei komplexeren Feldern, **ohne** Demo-Inhalt in Exporten durch `native`-**`default`** (der wäre echter gespeicherter Text).
+> **Merker:** Bessere Orientierung bei komplexeren Feldern, **ohne** Demo-Inhalt in Exporten durch `native`-**`default`** (der wäre echter gespeicherter Text). In vielen ioBroker-Admin-Versionen liefern `jsonConfig`-/`i18n`-**`help`**-Strings **keine** zuverlässige Markdown-Fettung (`**`); Struktur lieber mit **Absätzen** (`\n\n`), technische Begriffe mit **Backticks** — siehe auch `scripts/sync-mermaid-help-i18n-key.js` nach Änderungen am langen Mermaid-Hilfetext.
 
 - [x] **teilweise umgesetzt:** **Mermaid** (`manualMermaidDiagram`): **Placeholder** im Textfeld (neutral `DEMO*`, keine `native`-Defaults). **JSON-Felder** (**Kapitelreihenfolge / Ausblenden / Custom sections**): **Placeholder** im UI + Verweis im Hilfetext **„Custom sections (JSON)“** auf **`docs/user-guide/README.de.md`** (Musterszenario); weiterhin **kein** großes **`default`**-JSON in `io-package` `native`.
 - [x] **0.9.32:** Hilfetexte **Mermaid** (Client vs. eingebettetes SVG / Auto vs. Kurzdiagramm nach Bedarf); **`documentation.exportHashes`**; Documentation **states** **`full`** / **`metadata`**; **KI**: Header/Blocke ohne Provider bzw. Skript-Analyse weniger grell.
