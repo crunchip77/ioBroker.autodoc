@@ -90,4 +90,45 @@ describe('quickStartGuide', () => {
 		const scriptItems = (g.systemItems || []).filter(i => i.kind === 'script');
 		expect(scriptItems.map(i => i.name)).to.deep.equal(['a', 'z']);
 	});
+
+	it('buildQuickStartGuide room highlights order by category relevance when no live values', () => {
+		const roomsBlock = {
+			totalRooms: 1,
+			functions: [],
+			rooms: [
+				{
+					name: 'Living',
+					memberCount: 3,
+					devices: [
+						{ deviceName: 'Lamp', category: 'light', icon: '💡' },
+						{ deviceName: 'Door', category: 'door', icon: '🚪' },
+						{ deviceName: 'Window', category: 'window', icon: '🪟' },
+					],
+				},
+			],
+		};
+		const g = buildQuickStartGuide(roomsBlock, { scripts: [] });
+		expect(g.roomGuides).to.have.length(1);
+		expect(g.roomGuides[0].highlights.map(h => h.deviceName)).to.deep.equal(['Door', 'Window', 'Lamp']);
+	});
+
+	it('buildQuickStartGuide room highlights prefer live values before category rank', () => {
+		const roomsBlock = {
+			totalRooms: 1,
+			functions: [],
+			rooms: [
+				{
+					name: 'Hall',
+					memberCount: 3,
+					devices: [
+						{ deviceName: 'Door', category: 'door' },
+						{ deviceName: 'Lamp', category: 'light', currentValue: 'on' },
+						{ deviceName: 'Window', category: 'window' },
+					],
+				},
+			],
+		};
+		const g = buildQuickStartGuide(roomsBlock, { scripts: [] });
+		expect(g.roomGuides[0].highlights.map(h => h.deviceName)).to.deep.equal(['Lamp', 'Door', 'Window']);
+	});
 });

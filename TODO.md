@@ -214,7 +214,7 @@ Noch offen (größere Ausbaustufe als reiner Freitext):
 
 | Thema | Mögliche Arbeit |
 | ----- | --------------- |
-| **Sortierung / Relevanz** | **0.9.23:** Raumkarten nach **Gerätezahl**; Funktionsbereiche nach **Mitgliedern**. **Skript-Zeilen:** Primär **Länge** der ersten **`desc`**-Zeile ↓; bei Gleichstand **`triggerType`**: schedule → subscribe → on-start → blockly → unknown; dann **Name** — `lib/quickStartGuide.js` (Gegenprobe: reine Trigger-Sortierung würde kurze, wenig aussagekräftige Texte bevorzugen). **Optional:** weitere Gewichtung, Admin-Caps. |
+| **Sortierung / Relevanz** | **0.9.23:** Raumkarten nach **Gerätezahl**; Funktionsbereiche nach **Mitgliedern**. **Skript-Zeilen:** Primär **Länge** der ersten **`desc`**-Zeile ↓; bei Gleichstand **`triggerType`**: schedule → subscribe → on-start → blockly → unknown; dann **Name** — `lib/quickStartGuide.js`. **Raum-Highlights (Geräte):** bei gleichem **Live-Wert**-Status sekundär **Kategorie-Relevanz** (z. B. Tür/Fenster/Alarm vor Licht/Schalter), dann **Gerätename**; Wechsel wirkt auf Export-HTML (**RENDERER_VERSION**); Gegenprobe: `main.test.js`. **Optional:** weitere Gewichtung, Admin-Caps. |
 | **Länge Onboarding vs. User** | **0.9.26:** Gäste kürzer (Schnitt im Renderer); User volle Tiefe. Optional: weitere Caps oder Layout pro Profil. |
 | **Konsistenz** | **0.9.26:** Link vom Kurzüberblick zum Räume-Kapitel (User). Optional: weitere doppelte Infos reduzieren. |
 
@@ -277,6 +277,7 @@ Details: [PLAN — System-Visitenkarte](PLAN.md#system-visitenkarte-festlegung),
 - [x] **Weitere Mini-Beispiele** in `jsonConfig`/`i18n` (Projektname, Beschreibung/Score, Timer, Basis-URL, States-Modus-Tipp, Adapter-/Raum-Notizen, Benachrichtigungen, JSON **hide**-Felder, Logo-Pfad, Extra-CSS, KI-Kontext) — EN/DE/FR + englische Keys in den übrigen Locales (**Repo-Stand**, nicht an eine einzelne npm-Version gebunden).
 - [x] **User chapter order** (`userChapterOrderJson`): Hinweis, dass **`atAGlance`** nur bei vorhandenem Quick-Start-Inhalt erscheint (kein leeres Kapitel durch JSON) — EN/DE/FR.
 - [x] **Onboarding chapter order** + **Base-URL-Kontext:** `quickstart` vs. Discovery-Block (`quickStart.hasContent`) in Hilfetexten; **Advanced**-Hinweis‑Box vor **`baseUrl`** (Gäste/QR/Docker/Proxy) — alle Locales für Callout (EN in ES/IT/…).
+- [x] **Versteckte Räume/Adapter (User & Onboarding):** Hilfen EN/DE/FR — exakte Admin-Bezeichnung, Instanzsuffix bei Adaptern, „alle Instanzen“-Semantik.
 
 <a id="admin-react-optional"></a>
 
