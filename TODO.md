@@ -279,6 +279,7 @@ Details: [PLAN — System-Visitenkarte](PLAN.md#system-visitenkarte-festlegung),
 - [x] **Onboarding chapter order** + **Base-URL-Kontext:** `quickstart` vs. Discovery-Block (`quickStart.hasContent`) in Hilfetexten; **Advanced**-Hinweis‑Box vor **`baseUrl`** (Gäste/QR/Docker/Proxy) — alle Locales für Callout (EN in ES/IT/…).
 - [x] **Versteckte Räume/Adapter (User & Onboarding):** Hilfen EN/DE/FR — exakte Admin-Bezeichnung, Instanzsuffix bei Adaptern, „alle Instanzen“-Semantik.
 - [x] **Advanced — Inhaltsfilter:** `onlyEnabledInstances`, `hideInstanceDetailsInMarkdown`, `maxDocumentedInstances` — kurze, korrekte Hilfen (HTML vs. Markdown, Discovery-Reihenfolge, **0** = unbegrenzt) — EN/DE/FR + gleiche i18n-Keys in ES/IT/…
+- [x] **Basic / Notify / Hide-Hinweise:** Dokumentationssprache (alle Profile + Markdown vs. Rohdaten), Adapter-Änderungen (30 s Debounce), Benachrichtigungen (erfolgreicher Lauf, Messaging-Instanz), ausführlichere **User/Onboarding hide hint** — EN/DE/FR + Keys in allen Locales; `jsonConfig`-`help` angepasst wo nötig.
 
 <a id="admin-react-optional"></a>
 
