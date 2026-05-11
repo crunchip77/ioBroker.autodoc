@@ -2,7 +2,7 @@
 
 const { expect } = require('chai');
 const { onboardingGuestShowsScriptNames } = require('./lib/guestScriptPrivacy');
-const { buildQuickStartGuide, sliceQuickStartForOnboarding } = require('./lib/quickStartGuide');
+const { buildQuickStartGuide, sliceQuickStartForOnboarding, highlightCategoryRank, HIGHLIGHT_CATEGORY_RANK } = require('./lib/quickStartGuide');
 
 describe('guestScriptPrivacy', () => {
 	it('treats missing, null config and non-true values as hide script names', () => {
@@ -130,5 +130,12 @@ describe('quickStartGuide', () => {
 		};
 		const g = buildQuickStartGuide(roomsBlock, { scripts: [] });
 		expect(g.roomGuides[0].highlights.map(h => h.deviceName)).to.deep.equal(['Lamp', 'Door', 'Window']);
+	});
+
+	it('highlightCategoryRank maps blank or unknown categories to other rank bucket', () => {
+		expect(highlightCategoryRank('   ')).to.equal(HIGHLIGHT_CATEGORY_RANK.other);
+		expect(highlightCategoryRank('')).to.equal(HIGHLIGHT_CATEGORY_RANK.other);
+		expect(highlightCategoryRank('madeUpCategory')).to.equal(HIGHLIGHT_CATEGORY_RANK.other);
+		expect(highlightCategoryRank('door')).to.equal(0);
 	});
 });

@@ -621,7 +621,7 @@
 				"onlyEnabledInstances": {
 					"type": "checkbox",
 					"label": "Only document enabled instances",
-					"help": "If enabled, only active adapter instances are included in the documentation",
+					"help": "When enabled, disabled adapter instances are omitted from instance lists in every export (HTML and Markdown).",
 					"newLine": true,
 					"xs": 12,
 					"sm": 12,
@@ -632,7 +632,7 @@
 				"hideInstanceDetailsInMarkdown": {
 					"type": "checkbox",
 					"label": "Hide instance details in markdown",
-					"help": "If enabled, the markdown output contains only summary information without the full instance list",
+					"help": "When enabled, Markdown skips per-instance detail blocks and keeps overview-style sections. HTML exports still list instances as usual.",
 					"newLine": true,
 					"xs": 12,
 					"sm": 12,
@@ -643,7 +643,7 @@
 				"maxDocumentedInstances": {
 					"type": "number",
 					"label": "Maximum documented instances",
-					"help": "Limits how many adapter instances are included in the generated documentation, 0 means unlimited",
+					"help": "After the optional enabled-only filter, only the first N instances in discovery order are kept (0 = unlimited). Applies to HTML and Markdown.",
 					"min": 0,
 					"default": 0,
 					"newLine": true,
