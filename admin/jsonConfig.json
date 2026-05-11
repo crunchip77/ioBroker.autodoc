@@ -25,7 +25,7 @@
 				"profile": {
 					"type": "select",
 					"label": "Documentation profile",
-					"help": "Markdown export and default documentation focus follow this choice. Every run still generates all three HTML profiles (admin, user, onboarding). User/Onboarding AI runs when an AI provider is configured — not controlled by this dropdown.",
+					"help": "Markdown export and default documentation focus follow this choice.\n\nEvery run still generates all three HTML profiles (admin, user, onboarding). User/Onboarding AI runs when an AI provider is configured — not controlled by this dropdown.",
 					"options": [
 						{
 							"label": "Admin",
@@ -240,7 +240,7 @@
 				"projectDescription": {
 					"type": "text",
 					"label": "Project description",
-					"help": "What the installation covers in one or two sentences (e.g. family home: heating, lighting, security). Shown in exports as the short system summary. Counts toward the optional documentation setup score when that check is on (Advanced tab — minimum length).",
+					"help": "What the installation covers in one or two sentences (e.g. family home: heating, lighting, security). Shown in exports as the short system summary.\n\nCounts toward the optional documentation setup score when that check is on (Advanced tab — minimum length).",
 					"newLine": true,
 					"xs": 12,
 					"sm": 12,
