@@ -4,11 +4,11 @@
 
 Automatically generates structured documentation (HTML, Markdown, JSON) for your ioBroker installation — on demand, on a schedule, or when the system changes.
 
-**Version:** 0.9.37
+**Version:** 0.9.38
 
 | | |
 | --- | --- |
-| **Install** | [ioBroker Admin](https://www.iobroker.net/#en/documentation) — [npm](https://www.npmjs.com/package/iobroker.autodoc) package **`iobroker.autodoc`** (current **0.9.37**), **default adapter list** via [ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories) (**latest**), or install from this **Git** repository (URL / clone). See [TODO — release](TODO.md#release-veroeffentlichung) for maintainer notes. |
+| **Install** | [ioBroker Admin](https://www.iobroker.net/#en/documentation) — [npm](https://www.npmjs.com/package/iobroker.autodoc) package **`iobroker.autodoc`** (current **0.9.38**), **default adapter list** via [ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories) (**latest**), or install from this **Git** repository (URL / clone). See [TODO — release](TODO.md#release-veroeffentlichung) for maintainer notes. |
 | **Repository** | [github.com/crunchip77/ioBroker.autodoc](https://github.com/crunchip77/ioBroker.autodoc) |
 | **Issues** | [GitHub Issues](https://github.com/crunchip77/ioBroker.autodoc/issues) |
 
@@ -91,6 +91,11 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 
 - **Release prep:** Draft user-facing bullets here before **`npm run release`** (`CONTRIBUTING.md`). **Standard list:** nach neuen npm-Versionen ggf. **ioBroker.repositories** mitziehen — **[`TODO.md` § 1.1](TODO.md#release-veroeffentlichung)** · **[`PLAN.md`](PLAN.md)**.
 
+### 0.9.38 (2026-05-12)
+
+- **Advanced — storage default:** **`documentationStatesMode`** default for **new** instances is now **`metadata`** (full HTML/Markdown/JSON in **`/files/`** only; `documentation.*` states are placeholders). Lowers object-database load for typical installs (e.g. Redis). **Existing** instances keep their saved value until you change **Dokumentation in States** in Admin. Scripts that relied on full text in states should use **`/files/`** paths or download actions (`common.news` + Admin help).
+- **Rationale:** With the adapter in **ioBroker.repositories** **latest**, new installations should avoid silently growing the **full**-mode footprint for everyone.
+
 ### 0.9.37 (2026-05-10)
 
 - **Tooling:** `runPdfExport` initializes the PDF digest map with a typed empty collection so **`npm run check`** (TypeScript) passes; no change to PDF export behavior.
@@ -113,11 +118,6 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 - **Admin:** **`Doc layout pdf hint`** on tab **HTML export & extra sections**; **export-hashes** help text mentions PDF digests; **`manualMermaidDiagram`** help clarified.
 - **Quick Start:** scripts-with-description lines are ordered **by name** for stable output.
 - **`docs/user-guide`:** tab overview, **exportHashes**/Mermaid wording; **SCREENSHOTS.md** + eingebettete **PNG-Screenshots** für alle sechs Konfig-Tabs (neben den SVG-Wireframes), Hinweise Lesbarkeit/GitHub-Vorschau.
-
-### 0.9.33 (2026-05-08)
-
-- **PDF export (Phase 5 — first slice):** optional **`puppeteer`** — **`pdfExportAfterGeneration`** in Admin **Advanced** and/or **`action.exportPdf`**; writes **`autodoc-{admin,user,onboarding}.pdf`** alongside HTML under **`/files/`** and mirrors to **Filesystem export path** when set (`lib/htmlToPdf.js`). Same Chromium sandbox flags as Mermaid CLI. Without **`puppeteer`** or on broken headless setups, PDF is skipped; core documentation generation continues.
-- **Admin:** **`jsonConfig`** + **i18n** (EN/DE/FR + English copy elsewhere) for PDF options and extended **export path** hint.
 
 ## License
 

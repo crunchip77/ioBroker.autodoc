@@ -2,6 +2,11 @@
 
 Histories for versions **no longer** in the **7-version** window shared by `common.news` in `io-package.json` and the main [`README.md`](README.md#changelog) changelog (Adapter Checker / **ioBroker.repositories**).
 
+### 0.9.33 (2026-05-08)
+
+- **PDF export (Phase 5 — first slice):** optional **`puppeteer`** — **`pdfExportAfterGeneration`** in Admin **Advanced** and/or **`action.exportPdf`**; writes **`autodoc-{admin,user,onboarding}.pdf`** alongside HTML under **`/files/`** and mirrors to **Filesystem export path** when set (`lib/htmlToPdf.js`). Same Chromium sandbox flags as Mermaid CLI. Without **`puppeteer`** or on broken headless setups, PDF is skipped; core documentation generation continues.
+- **Admin:** **`jsonConfig`** + **i18n** (EN/DE/FR + English copy elsewhere) for PDF options and extended **export path** hint.
+
 ### 0.9.36 (2026-05-09)
 
 - **npm metadata:** Tarball aligns with **`main`** — **`common.news`** only npm-published keys (checker **E2004** alignment after first **0.9.35** publish). README version line synced. No adapter behavior changes.

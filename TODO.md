@@ -33,7 +33,7 @@ Diese Datei ist die **Arbeitsliste**: was **offen** ist steht oben; **erledigte*
 
 <a id="stand-uebersicht"></a>
 
-## Übersicht — Umsetzung vs. Rest (Stand der **Version** wie in `package.json` / `io-package.json`, derzeit **0.9.37**; Tabellen-Stichtag **2026-05-12** — bei Releases bitte diese Zeile mitziehen; Branch je nach Arbeitskopie, z. B. `main` / `dev`)
+## Übersicht — Umsetzung vs. Rest (Stand der **Version** wie in `package.json` / `io-package.json`, derzeit **0.9.38**; Tabellen-Stichtag **2026-05-12** — bei Releases bitte diese Zeile mitziehen; Branch je nach Arbeitskopie, z. B. `main` / `dev`)
 
 | Thema | Status | Kurz |
 | ----- | ------ | ---- |
@@ -43,14 +43,14 @@ Diese Datei ist die **Arbeitsliste**: was **offen** ist steht oben; **erledigte*
 | **KI** (Provider, Tab `hidden`, Timeouts, Temperaturen, **AI context hints**, `guestHelpNote` / `homeRoutinesNote` / `ownerPlaybookNote`) | ✅ | Sprachqualität kleiner Modelle bleibt iterativ |
 | **Custom Templates** (Kapitel ausblenden, Custom-Sections, Theme-Teile) | 🟡 | [PLAN.md — Custom Templates](PLAN.md#custom-templates-detail); **0.9.17:** Admin-Reihenfolge + **Farb-Presets** (ohne Roh-CSS); **main:** Reihenfolge **User/Onboarding** (`userChapterOrderJson`, `onboardingChapterOrderJson`); **0.9.33:** PDF; offen: DnD |
 | **Admin-HTML Lesbarkeit** (lange Listen eingeklappt; Score ohne „Strafe“ für bewusst deaktivierte Instanzen) | ✅ | In **0.9.17** README-Changelog (block „Also on `dev`…“) + Feature-Bullets oben drunter |
-| **States entlasten** (`documentationStatesMode`, Platzhalter, Downloads aus `/files`, **`documentation.exportHashes`**) | ✅ | Default weiterhin `full`; News bei Default-Wechsel → offen |
+| **States entlasten** (`documentationStatesMode`, Platzhalter, Downloads aus `/files`, **`documentation.exportHashes`**) | ✅ | **Neue Instanzen (0.9.38):** Default **`metadata`** — Exporte kanonisch **`/files/`**, States entlastet. **Bestehende** Installationen: gespeicherter Modus unverändert; **`full`** weiter wählbar (`common.news`) |
 | **Phase 5** (PDF, Backup-Adapter, Rest Custom Templates) | 🟡 | **PDF 0.9.33** ([§ 1.2a](#phase-5-pdf-offline-mermaid)); **Backup** bewusst **zurückgestellt** (Resonanz nach **latest**-Repo — [§ 1.2](#phase-5-features)); DnD offen |
 | **Phase 5.x.1** Notfall/Troubleshooting „Hybrid“ | ✅ | Kurzzeilen, Doku-Links (0.9.18), **Auto-Checklisten** bei Node-Befund + Disclaimer (0.9.19) |
 | **Phase 5.x.2** Quick Start / Raumguides | 🟡 | Kern in **0.9.20**; **0.9.26:** Gäste-Schnellstart kürzer (`sliceQuickStartForOnboarding`), User-Kurzüberblick mit Raum-Kapitel-Link; Fein: weitere Sortierung/Übersetzung, siehe [§ 1.3 — 5.x.2](#phase-5x) |
 | **Phase 5.x.3** Mermaid | ✅ | **0.9.27:** Stufe 1 — `manualMermaidDiagram`; **0.9.28:** Stufe 2 — `autoMermaidHostGraph`; **main:** `mermaidAuto` als eigene Chapter-ID (Auto-Topologie immer versteckt im Onboarding); **0.9.32:** Admin-Hilfen/JSON-Placeholder ergänzt |
 | **System-Visitenkarte** / Forum-Copy | ✅ | `textSendTo` **getForumCard** + State `info.forumCardPlain`; Diagnose-HTML nutzt `forumCard.js` |
 | **KI + Skript-Quellcode** | 🟡 | **A** umgesetzt (`aiAnalyzeScriptSources`); **B** an Backup gekoppelt — **gleicher Zeitpunkt** wie Backup ([§ 1.2](#phase-5-features)) |
-| **npm + ioBroker.repositories** | ✅ | **npm:** Paket **`iobroker.autodoc`**, Stand **0.9.37**. **latest:** Eintrag nach **Merge** des **ioBroker.repositories**-PRs — Adapter in der **Standard-Adapterliste** des Admins auffindbar (neben **npm** und Git-URL) |
+| **npm + ioBroker.repositories** | ✅ | **npm:** Paket **`iobroker.autodoc`**, Stand **0.9.38**. **latest:** Adapter in der **Standard-Adapterliste** (neben **npm** und Git-URL) |
 | **Dokumentations-Score** (Wartung — Checkliste mit echten Kriterien) | ✅ | **0.9.30–0.9.31:** Dreiteiliger Score (Datenerfassung / Manuelle Inhalte / Dokumentationstiefe); instancesWithoutRoom komplett raus; neue Checks: Diagramm, Räume m. Geräten, eigene Kapitel, KI-Provider — [§ 1.6](#dokumentations-score-checkliste) |
 | **Admin-Markdown: Diagnose-Kapitel** (Parität zu Admin-HTML) | ✅ | `renderDiagnosis` / `renderDiagnosisMarkdown` — TOC-Zeile, ausblendbar wie HTML; Diagnose-Befunde sind datengetrieben (z. B. Node‑Hinweis, OS‑Hinweis), **ohne** entferntes Skript‑`desc`‑Finding (0.9.29). Details [§ 1.6](#admin-markdown-diagnose-optional), Anhang A |
 | **Admin-Konfig — Hilfen / Mini-Beispiele** (`manualMermaidDiagram`, JSON-Felder …) | 🟡 | **0.9.32** Mermaid-/States-/Hashes; **aktueller Repo-Stand:** weitere Mini-Beispiele in Hilfetexten (`jsonConfig` / i18n EN/DE/FR) — [§ 1.7](#admin-config-hilfen-beispiele); optional noch mehr Felder |
@@ -76,7 +76,7 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 | 3 | **Phase 5.x.2** Quick Start / Raumguides | 🟡 Kern in **0.9.20**; **0.9.26** Feintuning Gäste kürzer + User-Link zum Räume-Kapitel; optional mehr: [§ 1.3 — 5.x.2](#phase-5x) |
 | 4 | **Phase 5.x.3** Mermaid (gestaffelt) | ✅ **Stufe 1** **0.9.27**; **Stufe 2** **0.9.28** (`autoMermaidHostGraph`): [§ 1.3 — 5.x.3](#phase-5x) |
 | 5 | **Phase 5:** PDF ✅ — **Backup** / **Rest Custom Templates** (DnD) | Backup **zurückgestellt** bis User-Resonanz nach Eintrag in **latest** (Repo); DnD weiter offen — [§ 1.2](#phase-5-features), [Backup/Backitup](#backup-backitup-festlegung) |
-| 6 | **npm** ✅ (**0.9.37**) + **ioBroker.repositories** ✅ (**latest** gemerged) | [§ 1.1](#release-veroeffentlichung), [CONTRIBUTING.md](CONTRIBUTING.md) |
+| 6 | **npm** ✅ (**0.9.38**) + **ioBroker.repositories** ✅ (**latest** gemerged) | [§ 1.1](#release-veroeffentlichung), [CONTRIBUTING.md](CONTRIBUTING.md) |
 
 <a id="backup-backitup-festlegung"></a>
 
@@ -97,15 +97,15 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 
 ### 1.1 Release / Veröffentlichung
 
-> **npm:** Das öffentliche Paket heißt **[**`iobroker.autodoc`**](https://www.npmjs.com/package/iobroker.autodoc)** (`package.json` → **`name`**). Hosts können den Tarball ohne Git installieren (**aktuell 0.9.37**). **Standard-Adapterlisten** des ioBroker-Admins nutzen **[ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories)** — der Adapter **autodoc** ist in **latest** eingetragen (**Merge** des Listeneintrags erledigt); **W4001** im Adapter Checker entfällt damit. **GitHub-Tags/Releases** bleiben für Endnutzer nachrangig gegenüber **npm** und Listen-Updates.
+> **npm:** Das öffentliche Paket heißt **[**`iobroker.autodoc`**](https://www.npmjs.com/package/iobroker.autodoc)** (`package.json` → **`name`**). Hosts können den Tarball ohne Git installieren (**aktuell 0.9.38**). **Standard-Adapterlisten** des ioBroker-Admins nutzen **[ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories)** — der Adapter **autodoc** ist in **latest** eingetragen (**Merge** des Listeneintrags erledigt); **W4001** im Adapter Checker entfällt damit. **GitHub-Tags/Releases** bleiben für Endnutzer nachrangig gegenüber **npm** und Listen-Updates.
 
 **Synchron halten** (jedes Release): `package.json` **`version`**, `io-package.json` **`common.version`**, **`common.news`** (nur Versionen auf **npm**, Checker **E2004**), README-**Changelog**-Fenster — siehe **[CONTRIBUTING.md](CONTRIBUTING.md)** (**npm-Paketidentität**, **`npm run release`**).
 
 - [ ] [Adapter Checker](https://adapter-check.iobroker.in/) **ohne vermeidbare** Fehler nach Stand der Regeln (**E2000** und ähnliche harte Meldungen sollten mit Paket auf npm nicht dauerhaft bestehen); **W4001** entfällt mit **latest**-Eintrag — verbleibende **Warnungen** (z. B. **W5042**) siehe **CONTRIBUTING.md**
 - [x] **npm**-Paketname **`iobroker.autodoc`** und Release-Prozess dokumentiert (**CONTRIBUTING.md**, [npm](https://www.npmjs.com/package/iobroker.autodoc))
-- [x] Erstes und **fortlaufende** **npm**-Releases: Versionen/`news`/README-Fenster über **`npm run release`** synchron (**0.9.35** ff.; derzeit **`package.json` / `io-package.json` = 0.9.37**)
+- [x] Erstes und **fortlaufende** **npm**-Releases: Versionen/`news`/README-Fenster über **`npm run release`** synchron (**0.9.35** ff.; derzeit **`package.json` / `io-package.json` = 0.9.38**)
 - [x] `npm publish` erfolgt im Release-Workflow (nicht „nur“ manuell lose zum ioBroker-Adapter)
-- [x] **Git-Tags** zu veröffentlichten npm-Versionen (**v0.9.35** … **v0.9.37** im Repository)
+- [x] **Git-Tags** zu veröffentlichten npm-Versionen (**v0.9.35** … **v0.9.38** im Repository)
 - [ ] **GitHub Releases** (Release-Seite mit Text/Assets auf github.com) — **optional**, nicht Voraussetzung für npm
 - [x] PR [ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories) (`sources-dist.json`) — **gemerged** — **autodoc** in **latest**
 
@@ -234,7 +234,7 @@ Noch offen (größere Ausbaustufe als reiner Freitext):
 ### 1.4 Kleine Nachzüge / Trigger
 
 - [x] **README-Changelog** + **io-package `news`:** Gäste-Onboarding **Skript-Datenschutz** (`onboardingGuestShowScriptNames`, `lib/guestScriptPrivacy.js`) und Schnellstart-Logik (**kein** Ersatz aus `common.desc`, wenn Skriptnamen in der Gäste-Ansicht verborgen sind) + **RENDERER_VERSION** — in **0.9.21** nachgezogen.
-- [ ] **`io-package` news**, wenn **Default** `documentationStatesMode` auf **`metadata`** geändert wird (sinnvoll beim npm-Release; bei reiner Git-Installation optional)
+- [x] **`io-package` news** bei Default **`documentationStatesMode` = `metadata`** für neue Instanzen (**0.9.38**)
 - [x] **README-Changelog** + Version **0.9.11** um States/Hashes/Changelog-i18n ergänzt
 
 <a id="todo-festlegt-umsetzung"></a>
@@ -449,7 +449,7 @@ Der folgende Stand ist **historisch vollständig** (✅). Bei Abweichungsfragen 
 
 **Problem / Ziel** wörtlich: große Inhalte kanonisch unter **`/files/`**; States nicht unnötig mit Megabyte-Strings belasten — siehe [PLAN.md — Doppelte Ablage](PLAN.md#doppelte-ablage-states).
 
-- [x] **`documentationStatesMode`**: `full` \| `metadata`, Default `full` — io-package, `jsonConfig`, EN/DE/FR
+- [x] **`documentationStatesMode`**: `full` \| `metadata`, Default **`metadata`** (neue Instanzen ab **0.9.38**) — io-package, `jsonConfig`, EN/DE/FR
 - [x] **`persistDocumentation`**: bei `metadata` Platzhalter in `documentation.markdown` / `.html` / `.json`; `documentation.stateSummary` unverändert
 - [x] Download-Aktionen: Quelle `autodoc-latest.*` / `autodoc-admin.html`, Fallback Legacy-State
 - [x] **`documentation.exportHashes`**: SHA-256 (hex) der Latest-Exporte (**MD / JSON / Admin-HTML**); bei PDF-Lauf auch **`autodoc-*.pdf`** — beide Modi (**0.9.34** ergänzt PDF-Fingerabdrücke)
@@ -463,9 +463,9 @@ Der folgende Stand ist **historisch vollständig** (✅). Bei Abweichungsfragen 
 
 - [ ] Adapter Checker nach dem obigen Maßstab (**E2000** o. Ä. nicht dauerhaft; verbleibende **Warnings** dokumentiert — **CONTRIBUTING.md**)
 - [x] npm-Paket **`iobroker.autodoc`** und Maintainer-Abgleich (siehe **CONTRIBUTING.md**)
-- [x] Version + `news` bei jedem Release synchron (`package.json`, `io-package.json`, README-Changelog); derzeit **0.9.37**
+- [x] Version + `news` bei jedem Release synchron (`package.json`, `io-package.json`, README-Changelog); derzeit **0.9.38**
 - [x] `npm publish` im Release-Workflow
-- [x] Git-Tags **v0.9.35** … **v0.9.37**
+- [x] Git-Tags **v0.9.35** … **v0.9.38**
 - [ ] GitHub Releases (Seite auf github.com) — optional
 - [x] PR ioBroker.repositories **gemerged** (**latest** aktiv)
 
