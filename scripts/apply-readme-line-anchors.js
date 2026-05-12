@@ -1,9 +1,13 @@
 /**
  * GitHub blob markdown often ignores or rewrites heading fragments; #L line URLs scroll reliably.
  * Updates external README links only (not same-file #heading links).
+ *
+ * Branch for full blob URLs: use **dev** while doc layout leads **main**; set to **main** after merging.
  */
 const fs = require('fs');
 const path = require('path');
+
+const DOC_BRANCH = 'dev';
 
 const fragToLine = {
 	'documentation-instance-overview': '44',
@@ -17,11 +21,11 @@ const fragToLine = {
 function swapFragToLine(s) {
 	let out = s;
 	for (const [frag, lineNum] of Object.entries(fragToLine)) {
-		const fromHttps = `https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#${frag}`;
-		const toHttps = `https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#L${lineNum}`;
+		const fromHttps = `https://github.com/crunchip77/ioBroker.autodoc/blob/${DOC_BRANCH}/README.md#${frag}`;
+		const toHttps = `https://github.com/crunchip77/ioBroker.autodoc/blob/${DOC_BRANCH}/README.md#L${lineNum}`;
 		out = out.split(fromHttps).join(toHttps);
-		const fromBlob = `blob/main/README.md#${frag}`;
-		const toBlob = `blob/main/README.md#L${lineNum}`;
+		const fromBlob = `blob/${DOC_BRANCH}/README.md#${frag}`;
+		const toBlob = `blob/${DOC_BRANCH}/README.md#L${lineNum}`;
 		out = out.split(fromBlob).join(toBlob);
 		const fromRel = `../../README.md#${frag}`;
 		const toRel = `../../README.md#L${lineNum}`;

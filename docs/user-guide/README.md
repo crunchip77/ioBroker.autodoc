@@ -128,7 +128,7 @@ Step-by-step JSON for **custom sections** also appears in **[`README.de.md`](REA
 - [**Mermaid cookbook examples**](../../README.md#L100)
 - [**JSON cookbook snippets**](../../README.md#L131)
 
-Use these targets when linking from Admin field help after **`main`** is updated — prefer **`blob/main/README.md#L…`** line highlights (heading `#…` fragments are unreliable in GitHub’s Markdown viewer; repo-root `#…` rarely scrolls either).
+Use these targets when linking from Admin field help — prefer **`blob/dev/README.md#L…`** line highlights while **`dev`** carries the doc layout ahead of **`main`** (switch back to **`blob/main`** after merging). Heading `#…` fragments are unreliable in GitHub’s Markdown viewer; repo-root `#…` rarely scrolls either.
 
 ## Generating documentation
 

@@ -6,27 +6,27 @@ Die **Inline-Hilfe** bei jedem Feld im Admin (`jsonConfig`) bleibt die **fachlic
 
 **Technische Grundlagen** (Systemvoraussetzungen, Projektbeschreibung) und **Copy-Paste-Beispiele** für **Mermaid**, **JSON-Felder** und **HTML-Schrift/CSS**: englisches Haupt-[README](../../README.md) mit den Abschnitten [**Mermaid cookbook examples**](../../README.md#L100), [**JSON cookbook snippets**](../../README.md#L131) und [**HTML custom CSS examples**](../../README.md#L186).
 
-**Stabile GitHub-Links** (nach Merge auf `main`): Nutzt **`blob/main/README.md#L…`** (Zeilen-Highlight). Das ist im GitHub-Markdown-Viewer zuverlässiger als Überschriften-Anker (`#mermaid-cookbook-examples`), die dort oft **nicht** zur erwarteten Stelle springen — ebenso wenig wie die bloße Repository-Wurzel mit Fragment, z. B. `…/ioBroker.autodoc#json-cookbook-snippets` (Projektstartseite springt dort typischerweise **nicht** zum Kochbuch).
+**Stabile GitHub-Links:** Admin-**`staticLink`** und die Liste unten nutzen **`blob/dev/…#L…`** (Zeilen-Highlight), solange die beschriebene README-Struktur auf **`dev`** liegt und **`main`** noch nicht dieselben Zeilen hat — **nach Merge nach `main`** wieder **`blob/main`** verwenden und `#L…` prüfen. Das ist im GitHub-Markdown-Viewer zuverlässiger als Überschriften-Anker (`#mermaid-cookbook-examples`), die dort oft **nicht** zur erwarteten Stelle springen — ebenso wenig wie die bloße Repository-Wurzel mit Fragment, z. B. `…/ioBroker.autodoc#json-cookbook-snippets` (Projektstartseite springt dort typischerweise **nicht** zum Kochbuch).
 
-Die Zuordnung **Haupt-[README](../../README.md)** (Zeilenmarken = zuverlässiger Sprung im GitHub-Blob): **L44** Dokumentationssprache & Deltas, **L67** Basis-URL / QR, **L78** PDF/Puppeteer, **L100** Mermaid-Kochbuch, **L131** JSON-Kochbuch, **L186** HTML/CSS. **DE-Wiki** (`README.de.md`): **L189** Schritt QR & Basis-URL (Tab Erweitert), **L193** Custom sections / `customDocSectionsJson`. **Nach großen README-/Wiki-Umbrüchen** die `#L…`-URLs in **`admin/jsonConfig.json`** und hier im Wiki anpassen (Pflegehinweis auch als HTML-Kommentar vor der Lizenzzeile im Haupt-README).
+Die Zuordnung **Haupt-[README](../../README.md)** (Zeilenmarken = zuverlässiger Sprung im GitHub-Blob auf **`dev`**): **L44** Dokumentationssprache & Deltas, **L67** Basis-URL / QR, **L78** PDF/Puppeteer, **L100** Mermaid-Kochbuch, **L131** JSON-Kochbuch, **L186** HTML/CSS. **DE-Wiki** (`README.de.md`): **L189** Schritt QR & Basis-URL (Tab Erweitert), **L193** Custom sections / `customDocSectionsJson`. **Nach großen README-/Wiki-Umbrüchen** die `#L…`-URLs in **`admin/jsonConfig.json`** und hier im Wiki anpassen (Pflegehinweis auch als HTML-Kommentar vor der Lizenzzeile im Haupt-README).
 
 **Warum früher oft nur der PDF-Link zu stimmen schien:** Unter der Repo-Wurzel `#…` hat nur **`### Optional PDF export …`** zufällig denselben Slug wie `#optional-pdf-export-puppeteer` geliefert; die anderen Kurz-Hashes passten dort nicht — oder springen im **Blob**-Viewer trotzdem nicht zuverlässig.
 
-- [Dokumentationssprache & Deltas](https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#L44)
-- [Öffentliche Basis-URL / QR](https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#L67)
-- [PDF-Export (Puppeteer)](https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#L78)
-- [Mermaid-Kochbuch](https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#L100)
-- [JSON-Kochbuch](https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#L131)
-- [HTML — Schrift & CSS](https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#L186)
+- [Dokumentationssprache & Deltas](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#L44)
+- [Öffentliche Basis-URL / QR](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#L67)
+- [PDF-Export (Puppeteer)](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#L78)
+- [Mermaid-Kochbuch](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#L100)
+- [JSON-Kochbuch](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#L131)
+- [HTML — Schrift & CSS](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#L186)
 
 **Autolinks** (gleiche Ziele, oft gut klickbar in Vorschau):
 
-<https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#L44>  
-<https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#L67>  
-<https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#L78>  
-<https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#L100>  
-<https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#L131>  
-<https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#L186>
+<https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#L44>  
+<https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#L67>  
+<https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#L78>  
+<https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#L100>  
+<https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#L131>  
+<https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#L186>
 
 **Instanz öffnen:** **Instanzen** → Ihre AutoDoc-Instanz → **Schraubenschlüssel** (Konfiguration).
 
