@@ -2,7 +2,7 @@
 
 Diese Seite richtet sich an **Betreuer** und **Haus-Admins**, die die **AutoDoc-Instanz** im ioBroker-Admin einrichten: Sie beschreibt die **Registerkarten**, was dort typischerweise eingetragen wird, und zeigt **Screenshots** zur Orientierung.  
 
-Die **Inline-Hilfe** bei jedem Feld im Admin (`jsonConfig`) bleibt die **fachliche Referenz** — diese Datei ergänzt sie um **Überblick, Bilder und ein Übungsszenario**.
+Die **Inline-Hilfe** bei jedem Feld im Admin (`jsonConfig`) bleibt die **fachliche Referenz** — diese Datei ergänzt sie um **Überblick, Bilder und ein Übungsszenario**. **Klickbare Dokumentation:** In den Instanz-Tabs zeigt AutoDoc unter den betreffenden Feldern **eigene GitHub-Links** (nicht nur Fließtext in der `?`-Tooltip-Hilfe — dort sind URLs meist nicht anklickbar).
 
 **Technische Grundlagen** (Systemvoraussetzungen, Projektbeschreibung) und **Copy-Paste-Beispiele** für **Mermaid**, **JSON-Felder** und **HTML-Schrift/CSS**: englisches Haupt-[README](../../README.md) mit den Abschnitten [**Mermaid cookbook examples**](../../README.md#mermaid-cookbook-examples), [**JSON cookbook snippets**](../../README.md#json-cookbook-snippets) und [**HTML custom CSS examples**](../../README.md#html-custom-css-examples).
 
@@ -14,6 +14,15 @@ Die **Inline-Hilfe** bei jedem Feld im Admin (`jsonConfig`) bleibt die **fachlic
 - [Dokumentationssprache & Deltas](https://github.com/crunchip77/ioBroker.autodoc#documentation-instance-overview)
 - [Öffentliche Basis-URL / QR](https://github.com/crunchip77/ioBroker.autodoc#public-base-url)
 - [PDF-Export (Puppeteer)](https://github.com/crunchip77/ioBroker.autodoc#optional-pdf-export-puppeteer)
+
+**Autolinks** (ein Klick auch manchen Markdown-Vorschauen; auf [github.com/crunchip77/ioBroker.autodoc](https://github.com/crunchip77/ioBroker.autodoc) immer sinnvoll):
+
+<https://github.com/crunchip77/ioBroker.autodoc#mermaid-cookbook-examples>  
+<https://github.com/crunchip77/ioBroker.autodoc#json-cookbook-snippets>  
+<https://github.com/crunchip77/ioBroker.autodoc#html-custom-css-examples>  
+<https://github.com/crunchip77/ioBroker.autodoc#documentation-instance-overview>  
+<https://github.com/crunchip77/ioBroker.autodoc#public-base-url>  
+<https://github.com/crunchip77/ioBroker.autodoc#optional-pdf-export-puppeteer>
 
 **Instanz öffnen:** **Instanzen** → Ihre AutoDoc-Instanz → **Schraubenschlüssel** (Konfiguration).
 
