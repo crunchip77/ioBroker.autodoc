@@ -83,19 +83,19 @@ The **Onboarding** HTML includes a QR code and a **Copy link** control. Both use
 
 **AI context hints** are injected only into the LLM prompt; they are **not** printed in the documentation. For **guest onboarding**, prefer everyday facts. Heavy IT or project wording (adapters, repos, …) can cause the model to leak jargon into guest text; a **safety step** then replaces that AI block with neutral guest wording. That is intentional. The **resident / family** profile does not use the same guest-only restriction. Configure them in Admin under **KI documentation / AI documentation** (after enabling a provider); full wording appears in the hint above the field.
 
-Copy-paste **examples** (field IDs, syntax): [**Mermaid**](#mermaid-cookbook-examples) · [**JSON arrays**](#json-cookbook-snippets) · [**Custom CSS**](#html-custom-css-examples). **Stable links** after merge to `main`: use the **`README.md` file URL** with `#…` — the repository root URL (`github.com/org/repo#…`) often **does not scroll** to README headings; `blob/main/README.md#…` does.
+Copy-paste **examples** (field IDs, syntax): [**Mermaid**](#mermaid-cookbook-examples) · [**JSON arrays**](#json-cookbook-snippets) · [**Custom CSS**](#html-custom-css-examples). **Stable URLs** for bookmarks / Admin `staticLink`: **`blob/main/README.md#L…`** (line highlights). GitHub’s Markdown **blob** view often ignores or rewrites heading fragments (`#mermaid-cookbook-examples`, …); the repo root URL (`github.com/org/repo#…`) rarely scrolls either. Line numbers refer to **this README on `main`** — refresh `#L…` in `admin/jsonConfig.json` / wiki after large edits above those headings:
 
-`https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#mermaid-cookbook-examples`
+`https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#L44`
 
-`https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#json-cookbook-snippets`
+`https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#L67`
 
-`https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#html-custom-css-examples`
+`https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#L78`
 
-`https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#documentation-instance-overview`
+`https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#L100`
 
-`https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#public-base-url`
+`https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#L131`
 
-`https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#optional-pdf-export-puppeteer`
+`https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#L186`
 
 ### Mermaid cookbook examples
 

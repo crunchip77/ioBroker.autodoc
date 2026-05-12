@@ -125,10 +125,10 @@ Naming, swap-out **PNG** hints, redaction: **[`assets/SCREENSHOTS.md`](assets/SC
 
 Step-by-step JSON for **custom sections** also appears in **[`README.de.md`](README.de.md)** (scenario section). For **additional copy-paste diagrams**, **chapter-order / hide-list** patterns, and **`customDocSectionsJson`** variants, see the main **[README](../../README.md)**:
 
-- [**Mermaid cookbook examples**](../../README.md#mermaid-cookbook-examples)
-- [**JSON cookbook snippets**](../../README.md#json-cookbook-snippets)
+- [**Mermaid cookbook examples**](../../README.md#L100)
+- [**JSON cookbook snippets**](../../README.md#L131)
 
-Use these anchors when linking from Admin field help after **`main`** is updated — prefer `https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#…` (repo root `#…` often does not scroll to README headings).
+Use these targets when linking from Admin field help after **`main`** is updated — prefer **`blob/main/README.md#L…`** line highlights (heading `#…` fragments are unreliable in GitHub’s Markdown viewer; repo-root `#…` rarely scrolls either).
 
 ## Generating documentation
 
