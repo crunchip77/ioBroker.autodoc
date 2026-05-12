@@ -6,23 +6,23 @@ Die **Inline-Hilfe** bei jedem Feld im Admin (`jsonConfig`) bleibt die **fachlic
 
 **Technische Grundlagen** (Systemvoraussetzungen, Projektbeschreibung) und **Copy-Paste-Beispiele** für **Mermaid**, **JSON-Felder** und **HTML-Schrift/CSS**: englisches Haupt-[README](../../README.md) mit den Abschnitten [**Mermaid cookbook examples**](../../README.md#mermaid-cookbook-examples), [**JSON cookbook snippets**](../../README.md#json-cookbook-snippets) und [**HTML custom CSS examples**](../../README.md#html-custom-css-examples).
 
-**Stabile GitHub-Links** (nach Merge auf `main`; die `#…`-Fragmente entsprechen den **`###`-Überschriften** im Haupt-[README](../../README.md) — dort springt GitHub zuverlässig hin):
+**Stabile GitHub-Links** (nach Merge auf `main`): Nutzt **`blob/main/README.md#…`**, nicht nur die Repository-Startseite mit `#…` — dort scrollt GitHub oft **nicht** zur README-Überschrift. Die Fragmente passen zu den **`###`-Überschriften** im [README.md](../../README.md).
 
-- [Mermaid-Kochbuch](https://github.com/crunchip77/ioBroker.autodoc#mermaid-cookbook-examples)
-- [JSON-Kochbuch](https://github.com/crunchip77/ioBroker.autodoc#json-cookbook-snippets)
-- [HTML — Schrift & CSS](https://github.com/crunchip77/ioBroker.autodoc#html-custom-css-examples)
-- [Dokumentationssprache & Deltas](https://github.com/crunchip77/ioBroker.autodoc#documentation-instance-overview)
-- [Öffentliche Basis-URL / QR](https://github.com/crunchip77/ioBroker.autodoc#public-base-url)
-- [PDF-Export (Puppeteer)](https://github.com/crunchip77/ioBroker.autodoc#optional-pdf-export-puppeteer)
+- [Mermaid-Kochbuch](https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#mermaid-cookbook-examples)
+- [JSON-Kochbuch](https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#json-cookbook-snippets)
+- [HTML — Schrift & CSS](https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#html-custom-css-examples)
+- [Dokumentationssprache & Deltas](https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#documentation-instance-overview)
+- [Öffentliche Basis-URL / QR](https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#public-base-url)
+- [PDF-Export (Puppeteer)](https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#optional-pdf-export-puppeteer)
 
-**Autolinks** (ein Klick auch manchen Markdown-Vorschauen; auf [github.com/crunchip77/ioBroker.autodoc](https://github.com/crunchip77/ioBroker.autodoc) immer sinnvoll):
+**Autolinks** (gleiche Ziele, oft gut klickbar in Vorschau):
 
-<https://github.com/crunchip77/ioBroker.autodoc#mermaid-cookbook-examples>  
-<https://github.com/crunchip77/ioBroker.autodoc#json-cookbook-snippets>  
-<https://github.com/crunchip77/ioBroker.autodoc#html-custom-css-examples>  
-<https://github.com/crunchip77/ioBroker.autodoc#documentation-instance-overview>  
-<https://github.com/crunchip77/ioBroker.autodoc#public-base-url>  
-<https://github.com/crunchip77/ioBroker.autodoc#optional-pdf-export-puppeteer>
+<https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#mermaid-cookbook-examples>  
+<https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#json-cookbook-snippets>  
+<https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#html-custom-css-examples>  
+<https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#documentation-instance-overview>  
+<https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#public-base-url>  
+<https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#optional-pdf-export-puppeteer>
 
 **Instanz öffnen:** **Instanzen** → Ihre AutoDoc-Instanz → **Schraubenschlüssel** (Konfiguration).
 
