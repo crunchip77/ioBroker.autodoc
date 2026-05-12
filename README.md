@@ -38,6 +38,12 @@ No other adapters are **required** for AutoDoc itself. Optional: a **web server*
 
 Configure the instance in **ioBroker Admin** (tabs for basics, manual notes, advanced options, notifications, AI). Generation can be triggered manually, on startup, on a timer, and after adapter changes (debounced).
 
+**Documentation language** (Basic settings) drives headings and fixed wording in **all HTML profiles** and in Markdown. It also controls the **short summary lines** for inventory comparison (“changes since last run”) and for **changelog** cards when you regenerate — older stored changelog rows are shown in the **current** export language, not the language they had when saved.
+
+In **Advanced → What to include & limits**, **Hide “changes since last run” in Admin exports** removes only the yellow delta box at the top of the **Admin** HTML system chapter and the matching subsection in **Admin** Markdown. The **Changelog** chapter, **User**, and **Onboarding** exports are not affected.
+
+The **User / Family** profile adds a brief everyday sentence after the title block when AutoDoc found **at least one** inventory change since the previous snapshot (skipped on the first run and when nothing changed). **Onboarding** does not include that extra notice.
+
 Short **orientation** for operators (install paths, tabs, exports, hashes, checker): **[`docs/user-guide/README.md`](docs/user-guide/README.md)** · **German** scenario walkthrough (**„Muster-Einfamilienhaus“** etc.): **[`docs/user-guide/README.de.md`](docs/user-guide/README.de.md)**.
 
 Useful **states** (selection): `action.generate`; **`action.exportPdf`** (writes **PDF** profiles from the latest HTML under `/files` when optional **`puppeteer`** is installed in the adapter directory — no full regeneration); `info.lastGeneration` / `info.nextGeneration`; `info.htmlUrlAdmin` / `info.htmlUrlUser` / `info.htmlUrlOnboarding`; `info.templateVersion` (HTML template / renderer alignment); `info.forumCardPlain` (plaintext “system card” for forums, updated when documentation is generated).
@@ -76,7 +82,7 @@ The **Onboarding** HTML includes a QR code and a **Copy link** control. Both use
 - Standalone HTML per profile with search, dark mode, responsive layout
 - Markdown + JSON export and version history (rotation configurable)
 - Maintenance-oriented hints (documentation score for open checklist items; disabled instances listed as inventory, not penalized)
-- Multilingual Admin UI strings (EN / DE / FR full; more locales with English copy until translated — [CONTRIBUTING](CONTRIBUTING.md#admin-ui-translations-i18n)); generated copy follows your configured project language where applicable
+- Multilingual Admin UI strings (EN / DE / FR full; more locales with English copy until translated — [CONTRIBUTING](CONTRIBUTING.md#admin-ui-translations-i18n)); generated documentation text follows **Documentation language**, including changelog/compare summary lines and optional inventory-change notices in User exports
 - Optional AI providers (e.g. Ollama, Groq, Anthropic) with strict opt-in
 
 For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full completed checklists in the appendix) and [`PLAN.md`](PLAN.md) (vision, rationale, architecture brainstorming).
@@ -89,9 +95,13 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 
 ### **WORK IN PROGRESS** (`dev` — vor Merge/`npm run release` ggf. einkürzen)
 
-- **Export-Copy / Klarheit (Admin-HTML + Admin-Markdown):** Kapitel **Betrieb – Referenz** (ehem. Troubleshooting-Konnotation) mit Top-Disclaimer; **Diagnose** mit Schnappschuss-Einleitung, **Automatische Prüfungen** (Node-Heuristik) und separatem Block **Allgemeine Erinnerungen** (OS). Template: `RENDERER_VERSION` **2026.05.10.2** (`lib/htmlRenderer.js`).
+- **Inventar-Delta & Sprache:** **Documentation language** (Basic) steuert auch die **einzeiligen** Texte für **gespeicherte Changelog-Einträge** und für den Hinweis **„changes since last run“** beim Export. **`hideAdminDeltaSinceLastRun`** (Advanced → *What to include & limits*) blendet die gelbe **Admin**-Delta-Box und den gleichen Unterabschnitt im **Admin-Markdown** aus — **Changelog chapter**, User, and Onboarding are unchanged.
+- **User / Family:** When AutoDoc detects **real inventory changes** since the last snapshot (not the first run), exports add a short **plain-language** notice (HTML + Markdown). **Onboarding** does not show this block.
+- **Template:** `RENDERER_VERSION` **2026.05.12.5** (`lib/htmlRenderer.js`) after HTML/changelog display changes; tests in `docChangeFormat.test.js`.
+
+- **Export-Copy / Klarheit (Admin-HTML + Admin-Markdown):** Kapitel **Betrieb – Referenz** (ehem. Troubleshooting-Konnotation) mit Top-Disclaimer; **Diagnose** mit Schnappschuss-Einleitung, **Automatische Prüfungen** (Node-Heuristik) und separatem Block **Allgemeine Erinnerungen** (OS).
 - **Nutzbarkeit (dev):** **Erweitert** zeigt vor der **ioBroker-Basis-URL** einen kurzen Hinweis (Gäste/QR, Docker/Proxy). **Onboarding-Kapitelreihenfolge:** Hilfe erklärt **`quickstart`** (immer Zähler + nächste Schritte) vs. **Discovery-Snapshot** (nur mit Daten); vgl. **`PLAN.md`** „Adapter sinnvoll einsetzen“.
-- **Phase 5.x.2 (dev):** Quick-Start-Skripte — Länge `desc`, Tie-Break `triggerType`; **`RENDERER_VERSION`** siehe oben (gesetzt bei letzter Template-Änderung).
+- **Phase 5.x.2 (dev):** Quick-Start-Skripte — Länge `desc`, Tie-Break `triggerType`.
 - **Admin §1.7:** User-Kapitelreihenfolge, Onboarding-Kapitelreihenfolge, Base-URL-Callout (Hilfen).
 - **Release prep:** Vor **`npm run release`** WIP hier aufräumen (`CONTRIBUTING.md`). **ioBroker.repositories** nach neuen npm-Versionen — **[`TODO.md` § 1.1](TODO.md#release-veroeffentlichung)** · **`PLAN.md`**.
 

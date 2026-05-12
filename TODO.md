@@ -33,11 +33,12 @@ Diese Datei ist die **Arbeitsliste**: was **offen** ist steht oben; **erledigte*
 
 <a id="stand-uebersicht"></a>
 
-## Übersicht — Umsetzung vs. Rest (Stand der **Version** wie in `package.json` / `io-package.json`, derzeit **0.9.39**; Tabellen-Stichtag **2026-05-13** — bei Releases bitte diese Zeile mitziehen; Branch je nach Arbeitskopie, z. B. `main` / `dev`)
+## Übersicht — Umsetzung vs. Rest (Stand der **Version** wie in `package.json` / `io-package.json`, derzeit **0.9.39**; Tabellen-Stichtag **2026-05-12** — bei Releases bitte diese Zeile mitziehen; Branch je nach Arbeitskopie, z. B. `main` / `dev`)
 
 | Thema | Status | Kurz |
 | ----- | ------ | ---- |
 | Phasen **1–4** (Basis … Profile-Redesign) | ✅ | Modular, drei Profile, Discovery, Renderer, i18n EN/DE/FR, … |
+| **Delta seit letztem Lauf** (Admin optional ausblendbar; Changelog-Zusammenfassung in **Export-Sprache**; User Kurzinfo bei echten Inventar-Deltas) | ✅ | **`hideAdminDeltaSinceLastRun`**, `localizeCompareSummary` / `docChangeFormat`, User HTML+MD — **`dev`**; README |
 | **0.9.x** RC-Features (Aliase, Diagnose, QR/Copy, `exportPath`, …) | ✅ | Siehe README-Changelog |
 | **Multihost** (Host-Karten, Slave-Warnung, Export) | ✅ | |
 | **KI** (Provider, Tab `hidden`, Timeouts, Temperaturen, **AI context hints**, `guestHelpNote` / `homeRoutinesNote` / `ownerPlaybookNote`) | ✅ | Sprachqualität kleiner Modelle bleibt iterativ |
@@ -203,6 +204,7 @@ Noch offen (größere Ausbaustufe als reiner Freitext):
 - [x] Strukturierter Block **über** reine Notizfelder hinaus: **Kurzzeilen** (WLAN/Strom/Wasser/Sonstiges) + **automatische Doku-Links** (User/Onboarding/Admin, gleiche Logik wie QR — **0.9.18**)
 - [x] Kurze **Auto-Checklisten** nur bei **konkreten** Diagnose-Befunden (aktuell: **Node.js** wie Admin-Diagnose) + **Momentaufnahme-Hinweis** — **0.9.19** (`lib/diagnosisSnapshot.js`)
 - [x] **dev (nach 0.9.39):** Admin-Export **Betrieb – Referenz** (Benennung + Disclaimer); **Diagnose-Kapitel:** Einleitung „Schnappschuss“, **Automatische Prüfungen** vs. **Allgemeine Erinnerungen** — Copy; `RENDERER_VERSION`-Bump bei Template-Änderung
+- [x] **dev (nach 0.9.39):** **Delta seit letztem Lauf** — optional ausblendbar (`hideAdminDeltaSinceLastRun`); **Changelog**-/Vergleichs-Einzeiler in Export-Sprache; **User** Kurzinfo bei echten Deltas (HTML+MD); Tests `docChangeFormat.test.js`
 
 #### 5.x.2 Quick Start & Raumguides
 
@@ -281,6 +283,8 @@ Details: [PLAN — System-Visitenkarte](PLAN.md#system-visitenkarte-festlegung),
 - [x] **Onboarding chapter order** + **Base-URL-Kontext:** `quickstart` vs. Discovery-Block (`quickStart.hasContent`) in Hilfetexten; **Advanced**-Hinweis‑Box vor **`baseUrl`** (Gäste/QR/Docker/Proxy) — alle Locales für Callout (EN in ES/IT/…).
 - [x] **Versteckte Räume/Adapter (User & Onboarding):** Hilfen EN/DE/FR — exakte Admin-Bezeichnung, Instanzsuffix bei Adaptern, „alle Instanzen“-Semantik.
 - [x] **Advanced — Inhaltsfilter:** `onlyEnabledInstances`, `hideInstanceDetailsInMarkdown`, `maxDocumentedInstances` — kurze, korrekte Hilfen (HTML vs. Markdown, Discovery-Reihenfolge, **0** = unbegrenzt) — EN/DE/FR + gleiche i18n-Keys in ES/IT/…
+- [x] **Advanced — Admin-Delta ausblenden:** `hideAdminDeltaSinceLastRun` — gelbe Box **Systemübersicht** (Admin-HTML) und gleichlautender Unterabschnitt **Admin-Markdown** optional aus; **Änderungsprotokoll**-Kapitel und User/Onboarding **unverändert**; Hilfen EN/DE/FR (`admin/i18n`).
+- [x] **Export-Sprache / Inventar-Vergleich:** gespeicherte **Changelog**-Karten zeigen die Einzeiler-Zusammenfassung in der **aktuellen Dokumentationssprache** (`localizeCompareSummary`); **`compareVersions`-Summary** beim Speichern ebenfalls lokalisiert (`main.js`). **User**-Profil: kurzer Alltagssatz bei **mindestens einem** erkannten Delta (nicht Erstlauf, nicht „keine Änderung“) — HTML + Markdown; **Onboarding** ohne diesen Block.
 - [x] **Basic / Notify / Hide-Hinweise:** Dokumentationssprache (alle Profile + Markdown vs. Rohdaten), Adapter-Änderungen (30 s Debounce), Benachrichtigungen (erfolgreicher Lauf, Messaging-Instanz), ausführlichere **User/Onboarding hide hint** — EN/DE/FR + Keys in allen Locales; `jsonConfig`-`help` angepasst wo nötig.
 
 <a id="admin-react-optional"></a>
@@ -315,6 +319,15 @@ Ausführlich: [PLAN.md — Zukunftsvision](PLAN.md#zukunftsvision) inkl. **[Merk
 ## Anhang A — Vollständige Checklisten: Erledigt (Referenz)
 
 Der folgende Stand ist **historisch vollständig** (✅). Bei Abweichungsfragen immer **Git / README-Changelog** prüfen.
+
+### Dev — Delta-UX & Vergleichstexte (Export-Sprache) ✅
+
+- [x] **`lib/docChangeFormat.js`:** `localizeCompareSummary`, `shouldShowUserFriendlyDocChange`; gebündelt mit `buildDocChangeSinceLastRun`
+- [x] **`main.js`:** nach `compareVersions` Summary für Snapshot/Changelog lokalisiert; `i18n.setLanguage(config.language)` vor Export
+- [x] **Admin:** gelbe **Änderungen seit letztem Lauf**-Box + Markdown-Analog — nur wenn `hideAdminDeltaSinceLastRun` nicht aktiv
+- [x] **Admin Changelog-Kapitel:** `renderChangelogChapter` nutzt `localizeCompareSummary(entry)` für Anzeige
+- [x] **User HTML/Markdown:** Hinweis `userDocChangeSinceLastPlain` nach Header/TOC wenn echte Deltas; Onboarding ohne
+- [x] **Konfig / `native`:** `hideAdminDeltaSinceLastRun` (Default false); Admin-i18n EN/DE/FR; `RENDERER_VERSION`-Bump bei HTML-Template
 
 ### Dev (nach 0.9.28) — Adapter-Ansicht, Chapter-Reihenfolge, mermaidAuto ✅
 
