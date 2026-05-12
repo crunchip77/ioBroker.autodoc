@@ -34,11 +34,30 @@ function swapFragToLine(s) {
 	return out;
 }
 
+/**
+ * GitHub Markdown Preview ignores #L…; ?plain=1 opens source with line numbers (idempotent).
+ *
+ * @param {string} s File text to normalize.
+ */
+function ensurePlainBeforeMdLineFragments(s) {
+	let out = s;
+	out = out.replace(
+		/https:\/\/github\.com\/crunchip77\/ioBroker\.autodoc\/blob\/[\w.-]+\/[\w./-]+\.md(?!\?plain=1)#L\d+/g,
+		match => match.replace(/\.md#L/, '.md?plain=1#L'),
+	);
+	out = out.replace(/\.\.\/\.\.\/README\.md(?!\?plain=1)#L\d+/g, match => match.replace(/\.md#L/, '.md?plain=1#L'));
+	out = out.replace(
+		/\(((?:\.\/)?README(?:\.de)?\.md)(?!\?plain=1)#L(\d+)\)/g,
+		(_, base, lineNum) => `(${base}?plain=1#L${lineNum})`,
+	);
+	return out;
+}
+
 const root = path.join(__dirname, '..');
 for (const rel of ['admin/jsonConfig.json', 'README.md', 'docs/user-guide/README.de.md', 'docs/user-guide/README.md']) {
 	const fp = path.join(root, rel);
 	let txt = fs.readFileSync(fp, 'utf8');
-	txt = swapFragToLine(txt);
+	txt = ensurePlainBeforeMdLineFragments(swapFragToLine(txt));
 	fs.writeFileSync(fp, txt);
 	console.log('updated', rel);
 }

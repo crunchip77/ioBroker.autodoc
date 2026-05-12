@@ -268,6 +268,6 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 
 MIT License
 
-<!-- Maintainer: passage URLs use README.md lines L44 · L67 · L78 · L100 · L131 · L186 ; README.de.md L189 · L193 — sync admin/jsonConfig staticLink hrefs if headings move. Doc blob branch: **dev** in jsonConfig until README/wiki merged to **main** (then set DOC_BRANCH in scripts/apply-readme-line-anchors.js and replace blob/dev → blob/main). GitHub renders `.md` as Preview by default — `#L…` only scrolls in source view; links use **`?plain=1`** before **`#L…`**. -->
+<!-- Maintainer: passage URLs use README.md lines L44 · L67 · L78 · L100 · L131 · L186 ; README.de.md L189 · L193 — sync admin/jsonConfig staticLink hrefs if headings move. Doc blob branch: **dev** in jsonConfig until README/wiki merged to **main** (then set DOC_BRANCH in scripts/apply-readme-line-anchors.js and replace blob/dev → blob/main). GitHub renders `.md` as Preview by default — `#L…` only scrolls in source view; links use **`?plain=1`** before **`#L…`**. **`package.json` `homepage`** and **`io-package.json` `readme`** use **`README.md?plain=1`** (top of file, source view). -->
 
 Copyright (c) 2026 crunchip77 <41550245+crunchip77@users.noreply.github.com>
