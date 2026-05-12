@@ -4,13 +4,9 @@ Diese Seite richtet sich an **Betreuer** und **Haus-Admins**, die die **AutoDoc-
 
 Die **Inline-Hilfe** bei jedem Feld im Admin (`jsonConfig`) bleibt die **fachliche Referenz** — diese Datei ergänzt sie um **Überblick, Bilder und ein Übungsszenario**. **Klickbare Dokumentation:** In den Instanz-Tabs zeigt AutoDoc unter den betreffenden Feldern **eigene GitHub-Links** (nicht nur Fließtext in der `?`-Tooltip-Hilfe — dort sind URLs meist nicht anklickbar).
 
-**Technische Grundlagen** (Systemvoraussetzungen, Projektbeschreibung) und **Copy-Paste-Beispiele** für **Mermaid**, **JSON-Felder** und **HTML-Schrift/CSS**: englisches Haupt-[README](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md) mit den Abschnitten [**Mermaid cookbook examples**](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#mermaid-cookbook-examples), [**JSON cookbook snippets**](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#json-cookbook-snippets) und [**HTML custom CSS examples**](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#html-custom-css-examples).
+## Schnellzugriff — englisches Haupt-README (gleiche Ziele wie die Admin-Links)
 
-**Stabile GitHub-Links:** Admin-**`staticLink`** und die Liste unten nutzen **`blob/dev/…#.…`** (Markdown-**Vorschau** — lesbar, Tabellen/Listen wie gewohnt). Die **Fragmente** entsprechen den englischen Überschriften im Haupt-[README](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md) (z. B. `#mermaid-cookbook-examples`); Sprung zum Abschnitt ist bei GitHub **nicht garantiert**, aber üblicherweise brauchbarer als Rohquelle (`?plain=1`). Die **Repo-Startseite** mit `#…` bleibt unzuverlässig. **`main`** noch ohne gleichen Stand → weiter **`dev`** in der URL; nach Merge **`blob/main`** und Slugs prüfen.
-
-Die Zuordnung **Haupt-[README](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md)** (**Fragmente**, grob dieselben Zeilen wie früher **L44·L67·L78·L100·L131·L186**): **`#documentation-instance-overview`**, **`#public-base-url`**, **`#optional-pdf-export-puppeteer`**, **`#mermaid-cookbook-examples`**, **`#json-cookbook-snippets`**, **`#html-custom-css-examples`**. **DE-Wiki-Anker** (stabile IDs in **`README.de.md`**): **`#wiki-step3-qr-base-url`**, **`#wiki-step4-custom-sections-json`**. **Nach großen Umbauten** Slugs/IDs und **`admin/jsonConfig.json`** abstimmen (Pflegehinweis auch als HTML-Kommentar vor der Lizenz im Haupt-README).
-
-**Warum früher oft nur der PDF-Link zu stimmen schien:** Unter der Repo-Wurzel `#…` hat nur **`### Optional PDF export …`** zufällig denselben Slug wie `#optional-pdf-export-puppeteer` geliefert; die anderen Kurz-Hashes passten dort nicht — oder springen im **Blob**-Viewer trotzdem nicht zuverlässig.
+Die gleichen **sechs Themen** wie unter den Instanz-Tabs, hier zum Kopieren/Lesen auf GitHub (**Vorschau**). Auf GitHub unbedingt Branch **`dev`** und diese Datei **`docs/user-guide/README.de.md`** — auf **`main`** kann ein älterer Stand ohne diese Liste liegen.
 
 - [Dokumentationssprache & Deltas](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#documentation-instance-overview)
 - [Öffentliche Basis-URL / QR](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#public-base-url)
@@ -19,7 +15,7 @@ Die Zuordnung **Haupt-[README](https://github.com/crunchip77/ioBroker.autodoc/bl
 - [JSON-Kochbuch](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#json-cookbook-snippets)
 - [HTML — Schrift & CSS](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#html-custom-css-examples)
 
-**Autolinks** (gleiche Ziele, oft gut klickbar in Vorschau):
+**Autolinks** (gleiche Ziele, oft gut klickbar in der Vorschau):
 
 <https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#documentation-instance-overview>  
 <https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#public-base-url>  
@@ -27,6 +23,14 @@ Die Zuordnung **Haupt-[README](https://github.com/crunchip77/ioBroker.autodoc/bl
 <https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#mermaid-cookbook-examples>  
 <https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#json-cookbook-snippets>  
 <https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#html-custom-css-examples>
+
+**Technische Grundlagen** (Systemvoraussetzungen, Projektbeschreibung) und **Copy-Paste-Beispiele** für **Mermaid**, **JSON-Felder** und **HTML-Schrift/CSS**: englisches Haupt-[README](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md) mit den Abschnitten [**Mermaid cookbook examples**](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#mermaid-cookbook-examples), [**JSON cookbook snippets**](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#json-cookbook-snippets) und [**HTML custom CSS examples**](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#html-custom-css-examples).
+
+**Stabile GitHub-Links:** Admin-**`staticLink`** und der Abschnitt **„Schnellzugriff“** oben nutzen **`blob/dev/…#.…`** (Markdown-**Vorschau** — lesbar, Tabellen/Listen wie gewohnt). Die **Fragmente** entsprechen den englischen Überschriften im Haupt-[README](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md) (z. B. `#mermaid-cookbook-examples`); Sprung zum Abschnitt ist bei GitHub **nicht garantiert**, aber üblicherweise brauchbarer als Rohquelle (`?plain=1`). Die **Repo-Startseite** mit `#…` bleibt unzuverlässig. **`main`** noch ohne gleichen Stand → weiter **`dev`** in der URL; nach Merge **`blob/main`** und Slugs prüfen.
+
+Die Zuordnung **Haupt-[README](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md)** (**Fragmente**, grob dieselben Zeilen wie früher **L44·L67·L78·L100·L131·L186**): **`#documentation-instance-overview`**, **`#public-base-url`**, **`#optional-pdf-export-puppeteer`**, **`#mermaid-cookbook-examples`**, **`#json-cookbook-snippets`**, **`#html-custom-css-examples`**. **DE-Wiki-Anker** (stabile IDs in **`README.de.md`**): **`#wiki-step3-qr-base-url`**, **`#wiki-step4-custom-sections-json`**. **Nach großen Umbauten** Slugs/IDs und **`admin/jsonConfig.json`** abstimmen (Pflegehinweis auch als HTML-Kommentar vor der Lizenz im Haupt-README).
+
+**Warum früher oft nur der PDF-Link zu stimmen schien:** Unter der Repo-Wurzel `#…` hat nur **`### Optional PDF export …`** zufällig denselben Slug wie `#optional-pdf-export-puppeteer` geliefert; die anderen Kurz-Hashes passten dort nicht — oder springen im **Blob**-Viewer trotzdem nicht zuverlässig.
 
 **Instanz öffnen:** **Instanzen** → Ihre AutoDoc-Instanz → **Schraubenschlüssel** (Konfiguration).
 
