@@ -2,7 +2,7 @@
 
 Structured help for **operators** who install and run the adapter from the [GitHub repository](https://github.com/crunchip77/ioBroker.autodoc).
 
-- **German** walkthrough — includes a fictional **„Muster‑Einfamilienhaus“** scenario: **[`README.de.md`](README.de.md)**  
+- **German** wiki — Admin tabs, screenshots, fictional **„Muster‑Einfamilienhaus“** practice scenario: **[`README.de.md`](README.de.md)**  
 
 **Figures:** For several tabs you get **two images in a row**: an **SVG wireframe** (what belongs where — not real pixels) and then a **PNG** of the real Admin UI (all six tabs covered). That pairing is **intentional**. If embedded images look small on GitHub, **open the image in a new tab** or zoom the page; see **[`SCREENSHOTS.md`](assets/SCREENSHOTS.md)** (*Legibility*). Naming and privacy: same file. Per-field tooltips in Admin (`?`) remain authoritative. Project overview: **[README](../../README.md)**.
 
@@ -123,7 +123,7 @@ Naming, swap-out **PNG** hints, redaction: **[`assets/SCREENSHOTS.md`](assets/SC
 
 ## Cookbook examples (Mermaid & JSON)
 
-Step-by-step JSON for **custom sections** also appears in **[`README.de.md`](README.de.md)** (scenario). For **additional copy-paste diagrams**, **chapter-order / hide-list** patterns, and **`customDocSectionsJson`** variants, see the main **[README](../../README.md)**:
+Step-by-step JSON for **custom sections** also appears in **[`README.de.md`](README.de.md)** (scenario section). For **additional copy-paste diagrams**, **chapter-order / hide-list** patterns, and **`customDocSectionsJson`** variants, see the main **[README](../../README.md)**:
 
 - [**Mermaid cookbook examples**](../../README.md#mermaid-cookbook-examples)
 - [**JSON cookbook snippets**](../../README.md#json-cookbook-snippets)

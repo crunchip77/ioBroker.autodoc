@@ -44,7 +44,7 @@ In **Advanced → What to include & limits**, **Hide “changes since last run�
 
 The **User / Family** profile adds a brief everyday sentence after the title block when AutoDoc found **at least one** inventory change since the previous snapshot (skipped on the first run and when nothing changed). **Onboarding** does not include that extra notice.
 
-Short **orientation** for operators (install paths, tabs, exports, hashes, checker): **[`docs/user-guide/README.md`](docs/user-guide/README.md)** · **German** scenario walkthrough (**„Muster-Einfamilienhaus“** etc.): **[`docs/user-guide/README.de.md`](docs/user-guide/README.de.md)**.
+Short **orientation** for operators (install paths, tabs, exports, hashes, checker): **[`docs/user-guide/README.md`](docs/user-guide/README.md)** · **German** config wiki (tabs, screenshots, demo scenario): **[`docs/user-guide/README.de.md`](docs/user-guide/README.de.md)**.
 
 Useful **states** (selection): `action.generate`; **`action.exportPdf`** (writes **PDF** profiles from the latest HTML under `/files` when optional **`puppeteer`** is installed in the adapter directory — no full regeneration); `info.lastGeneration` / `info.nextGeneration`; `info.htmlUrlAdmin` / `info.htmlUrlUser` / `info.htmlUrlOnboarding`; `info.templateVersion` (HTML template / renderer alignment); `info.forumCardPlain` (plaintext “system card” for forums, updated when documentation is generated).
 
@@ -194,6 +194,7 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 - **Inventar-Delta & Sprache:** **Documentation language** (Basic) steuert auch die **einzeiligen** Texte für **gespeicherte Changelog-Einträge** und für den Hinweis **„changes since last run“** beim Export. **`hideAdminDeltaSinceLastRun`** (Advanced → *What to include & limits*) blendet die gelbe **Admin**-Delta-Box und den gleichen Unterabschnitt im **Admin-Markdown** aus — **Changelog chapter**, User, and Onboarding are unchanged.
 - **User / Family:** When AutoDoc detects **real inventory changes** since the last snapshot (not the first run), exports add a short **plain-language** notice (HTML + Markdown). **Onboarding** does not show this block.
 - **Docs — cookbook:** README sections [**Mermaid cookbook examples**](#mermaid-cookbook-examples) and [**JSON cookbook snippets**](#json-cookbook-snippets); user-guide cross-links in **`docs/user-guide/README(.de).md`**.
+- **Docs — DE user-guide:** `README.de.md` auf **Wiki-Fokus** (Tabs, Screenshots, Exporte, Übungsszenario) umgebaut; Installations-/Maintainer-Abschnitte entfernt; Verweise im Haupt-README und bei **Custom sections**-Hilfe (Admin-i18n) angepasst.
 
 - **Export-Copy / Klarheit (Admin-HTML + Admin-Markdown):** Kapitel **Betrieb – Referenz** (ehem. Troubleshooting-Konnotation) mit Top-Disclaimer; **Diagnose** mit Schnappschuss-Einleitung, **Automatische Prüfungen** (Node-Heuristik) und separatem Block **Allgemeine Erinnerungen** (OS).
 - **Nutzbarkeit (dev):** **Erweitert** zeigt vor der **ioBroker-Basis-URL** einen kurzen Hinweis (Gäste/QR, Docker/Proxy). **Onboarding-Kapitelreihenfolge:** Hilfe erklärt **`quickstart`** (immer Zähler + nächste Schritte) vs. **Discovery-Snapshot** (nur mit Daten); vgl. **`PLAN.md`** „Adapter sinnvoll einsetzen“.

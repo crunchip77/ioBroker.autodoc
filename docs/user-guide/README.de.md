@@ -1,42 +1,33 @@
-# AutoDoc — Kurzanleitung (erste Schritte)
+# AutoDoc — Konfiguration der Instanz (Wiki)
 
-Orientierung für **Betreuer** und **Admins**, die den Adapter über das **[GitHub-Repository](https://github.com/crunchip77/ioBroker.autodoc)** installieren. Ausführliche Hilfe zu jedem Feld liefert weiterhin die **Inline-Hilfe** in der ioBroker-Admin-Oberfläche (`jsonConfig`); technische Grundlagen stehen im **[README (EN)](../../README.md)**.
+Diese Seite richtet sich an **Betreuer** und **Haus-Admins**, die die **AutoDoc-Instanz** im ioBroker-Admin einrichten: Sie beschreibt die **Registerkarten**, was dort typischerweise eingetragen wird, und zeigt **Screenshots** zur Orientierung.  
 
-**Abbildungen:** Wo ein **SVG** existiert, steht es **immer vor** dem zugehörigen **Screenshot**: Das Schema verdeutlicht die Tab-Logik, der Screenshot zeigt das reale Admin-Layout — das ist so gewollt. Hinweise zur Lesbarkeit in der eingebetteten Vorschau: **[`SCREENSHOTS.md`](assets/SCREENSHOTS.md)** („Lesbarkeit“). Aufnahmen und Datenschutz: ebenda.
+Die **Inline-Hilfe** bei jedem Feld im Admin (`jsonConfig`) bleibt die **fachliche Referenz** — diese Datei ergänzt sie um **Überblick, Bilder und ein Übungsszenario**.
 
-**Englische Kurzfassung:** [`README.md`](README.md).
+**Technische Grundlagen** (Systemvoraussetzungen, Projektbeschreibung) und **Copy-Paste-Beispiele** für **Mermaid** und **JSON-Felder**: englisches Haupt-[README](../../README.md) mit den Abschnitten [**Mermaid cookbook examples**](../../README.md#mermaid-cookbook-examples) und [**JSON cookbook snippets**](../../README.md#json-cookbook-snippets).  
 
----
+**Instanz öffnen:** **Instanzen** → Ihre AutoDoc-Instanz → **Schraubenschlüssel** (Konfiguration).
 
-## Voraussetzungen
-
-- **Node.js** ≥ 22  
-- **Systemvoraussetzungen** wie im Haupt-[README](../../README.md) beschrieben (JS-Controller, Admin-Version).
+**Zu den Bildern:** Wo ein **SVG** steht, beschreibt es die **Tab-Struktur** schematisch; der **Screenshot** darunter zeigt dieselbe Stelle in der **echten Oberfläche** (Demo). In GitHub wirken Vorschauen oft klein — Bild in neuem Tab öffnen oder zoomen. Hinweise zu **Aufnahmen, Verpixelung und Datenschutz**: **[`SCREENSHOTS.md`](assets/SCREENSHOTS.md)**.
 
 ---
 
-## Installation (URL / Clone)
+## Registerkarten — was gehört wohin?
 
-**npm:** Paket **[`iobroker.autodoc`](https://www.npmjs.com/package/iobroker.autodoc)** — zusätzlich wie gewohnt **„Installieren aus URL“** / Git oder (nach Merge des **repositories**-PRs) die **Standard-Adapterliste** im Admin (**aktuell:** PR offen). Die **Standardlisten** kommen aus **[ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories)**.
+1. **Grundeinstellungen** — **Projektname** und **Dokumentationssprache** (alle Exporte); welches **Markdown-Profil** standardmäßig erzeugt wird; **wann** neu generiert wird (Start, Zeitplan, Adapteränderungen).
+2. **Meine Dokumentation** — **Leser-Texte** für Familie und Gäste (Notizen, Abläufe, Playbook); optionale **Notfall-Kurzzeilen**; optional **Mermaid** und **Auto-Host-Topologie**; Filter „was ausblenden“ für User vs. Onboarding.
+3. **Erweitert** — **Basis-URL** für QR/Links; Grenzen (z. B. nur aktivierte Instanzen); **Export nach Dateisystem**; optional **PDF**; **Doku-Setup-Score**; Hinweis: volle Exporte liegen unter **`/files`**, States nur Platzhalter.
+4. **HTML-Export & Zusatzkapitel** — **Erscheinungsbild** (Theme, Logo); **Kapitelreihenfolge und Ausblenden** je Profil (**JSON**); **eigene Markdown-Kapitel** (`customDocSectionsJson`); Verweis auf PDF-Schalter unter **Erweitert**.
+5. **Benachrichtigungen** — optional Nachricht nach erfolgreicher Generierung (abhängig vom Messaging-Adapter).
+6. **KI-Dokumentation** — nur relevant, wenn ein **Anbieter aktiv** ist; sonst bleiben die Felder ohne KI-Wirkung.
 
-Nach dem Anlegen der Instanz: **Instanzen → autodoc.0 → Konfiguration öffnen** (Schraubenschlüssel).
+Nach inhaltlichen Änderungen: **Dokumentation generieren** (Button oder Datenpunkt **`action.generate`**) auslösen oder den eingestellten Timer abwarten.
 
 ---
 
-## Registerkartenüberblick — was ist zuerst dran?
+## Screenshots der Tabs
 
-1. **Grundeinstellungen** — Projektname, **Sprache** der erzeugten Doku, welches Markdown-Profil standardmäßig **exportiert** wird; **Auslöser** (bei Start, zeitgesteuert, bei Adapteränderungen, …).
-2. **Meine Dokumentation** — **eigene** Texte für Familie und Gäste (Notfallhilfe, Abläufe, Playbook); optionale Kurzzeilen (WLAN/Strom/Wasser); optional ein **selbst verfasstes Mermaid-Diagramm** sowie die Auto-Host-Topologie.
-3. **Erweitert** — Basis-URL (für **QR-Codes und Links** im Onboarding-HTML), optionaler **Dateisystem-Export**, optional **PDF nach jedem Lauf** (**`puppeteer`** im Adapterordner), Schwellen für den Wartungs-Score; **vollständige Exporte** liegen kanonisch unter **`/files`** (kurze Platzhalter in `documentation.*`, siehe Admin-Hilfe).
-4. **HTML & Zusatzkapitel** — Kapitel ausblenden, **Reihenfolge**, **freie Markdown-Zusatzkapitel**, Theme; im **Einleitungstext** dieses Tabs ein kurzer Verweis auf **PDF** (Schalter unter **Erweitert**).
-5. **Benachrichtigungen** — optional Benachrichtigung nach erzeugter Doku, z. B. per Telegram, Pushover oder E-Mail (vom gewählten Messaging-Adapter abhängig).
-6. **KI-Dokumentation** — nur bei **gewähltem Anbieter** relevant; wenn **„Deaktiviert“** gewählt ist, bleiben die Hinweise und Kontrollkästchen oben **ohne** KI-Funktion.
-
-Nach Änderungen: **Dokumentation generieren** (Button / Datenpunkt **`action.generate`**) oder eingerichteten Cron abwarten.
-
-### Abbildungen
-
-**SVGs** und **Screenshots** pro Tab gehören **zusammen**: Das **SVG** fasst Tabs und Felder **schematisch** zusammen (**kein** pixelgenaues UI), der **PNG** zeigt dieselbe Stelle der **echten Oberfläche** (Demo). In GitHub wirken eingebettete Bilder oft klein — **Bild anklicken** („Open image in new tab“) oder die Seite zoomen, um Text mitzulesen.
+**SVG + PNG gehören zusammen:** Schema zuerst, dann reales UI (Demo-Instanz; Layout kann je nach Admin-Version variieren).
 
 ![Grundeinstellungen — überblicksartiges Schema](assets/fig-tab-grundeinstellungen.svg)
 
@@ -130,52 +121,46 @@ Nach Änderungen: **Dokumentation generieren** (Button / Datenpunkt **`action.ge
 
 *Aufnahme: AutoDoc **0.9.36**, ioBroker Admin **≥ 7.6.20** (Stand **2026-05**).*
 
-Hinweise zu **Dateinamen**, **Verpixelung** und **Datenschutz**: **[`assets/SCREENSHOTS.md`](assets/SCREENSHOTS.md)**.
-
 ---
 
-## Wo liegen die Ergebnisse?
+## Wo liegen die fertigen Exporte?
 
-- Alle Profile (Admin-/User-/Onboarding-HTML, Markdown, JSON) unter **`/files/autodoc.<instanz>/`**, Dateien wie `autodoc-latest.*` sowie ältere **zeitgestempelte** Versionen (je nach Einstellung).
+- Alle Profile (Admin-/User-/Onboarding-HTML, Markdown, JSON) unter **`/files/autodoc.<instanz>/`**, u. a. `autodoc-latest.*` und bei Bedarf **ältere** zeitgestempelte Dateien.
 - Datenpunkte z. B. **`info.htmlUrlAdmin`** / **`User`** / **`Onboarding`**, **`info.lastGeneration`**.
-- **Immer aktualisiert:** **`documentation.exportHashes`** — SHA‑256‑Hex-Werte, um zu erkennen, ob sich einer der drei „latest“-Exporte (Markdown, Admin-HTML, JSON) seit dem letzten Lesen geändert hat; nach erfolgreichem **PDF**-Export stehen dort zusätzlich die Prüfsummen der **`autodoc-*.pdf`**.
+- **`documentation.exportHashes`** — SHA‑256‑Hex der „latest“-Exporte (Markdown, Admin-HTML, JSON); nach **PDF**-Lauf zusätzlich die **`autodoc-*.pdf`**.
 
-**Speicherlayout:** Der **vollständige Inhalt** liegt **nur** in **`/files`**; die **`documentation.*`-States** enthalten **nur Platzhalter** — Skripte mit Volltext aus States auf **`/files`**, **`info.htmlUrl*`** oder Download-Aktionen umstellen (seit Adapter **0.9.39** gibt es keinen »Volltext in States«-Modus mehr).
+**Speicherlayout:** Volltext liegt **nur** unter **`/files`**; **`documentation.*`-States** sind **kurze Platzhalter** (Stand Adapter **0.9.39**). Wer Automatisierung anbindet: Volltext aus **`/files`**, **`info.htmlUrl*`** oder Download-Aktionen lesen.
 
 ---
 
-## Szenario: **„Muster-Einfamilienhaus“** (nur Demonstration)
+## Übungsszenario: „Muster-Einfamilienhaus“
 
-> Alle folgenden Werte sind **bewusst generisch**. Verwenden Sie **keine** echten IPs, Hostnamen, Forum-Karten oder **Gast-WLAN**-Angaben — nutzen Sie Platzhalter wie **Hausnummer XY** oder **beispiel.domain**, und passen Sie die Einträge nach dem ersten Test an.
+> **Nur Übung:** Alle Werte sind **frei erfunden**. Keine echten **Adressen**, **WLAN-Schlüssel**, **internen IPs**, **Forum-Karten** oder Produktiv-Zugänge in Screenshots oder Git übernehmen — lieber **Platzhalter** und eigene Notizen **lokal** pflegen.
 
-**Ausganglage:** Zweistöckiges Einfamilienhaus mit ioBroker (**Heizszenen**, Licht in **„Wohnzimmer“, „Treppenhaus“ und Kinderzimmer**), vereinzelt **Rauchmelder- oder KNX-Anbindungen**; es geht **nicht** um produktive Zugangsdaten in der Doku, sondern um **Nachvollziehbarkeit** für Leser.
+**Ausganglage:** Zweistöckiges Einfamilienhaus mit ioBroker (**Heizszenen**, Licht u. a. in **Wohnzimmer**, **Treppenhaus**, Kinderzimmer), ergänzend z. B. Rauchmelder oder KNX — es geht um **nachvollziehbare Beispieltexte**, nicht um echte Hausdaten.
 
 ### Schritt 1 — Basis
 
-- Projektbezeichnung: z. B. **„Musterhaus Schulweg“** — **keine** echte Adresse, zum Schutz vor OSINT.
-- Dokumentationssprache: **DE** (später bei Bedarf weitere Sprachen über Profilwahl).
-- **Erzeugung** mindestens **einmal nach Konfigurationsänderung** anstoßen (Schaltfläche).
+- Projektbezeichnung: z. B. **„Musterhaus Schulweg“** (keine echte Anschrift).
+- Dokumentationssprache: **DE**.
+- Nach Änderungen mindestens einmal **Dokumentation erzeugen**.
 
 ### Schritt 2 — Gäste & Familie (Tab „Meine Dokumentation“)
 
-- **`guestHelpNote`**: stichwortartig (**Notfallkontakt**, **Standort der Sicherungen** (z. B. unten rechts), **wie das Gäste-WLAN vom Hauptnetz getrennt ist** — frei formulieren, keine erfundenen Fakten).
-- Optional **Kurzzeilen** zu WLAN/Strom/Wasser, wenn Sie das im Notfallbuch so handhaben.
-- **`ownerPlaybookNote`**: drei Stichpunkte (z. B. „**Warmwasser erst nach XYZ** öffnen“).
-- Alle Texte können Sie beliebig löschen oder leer lassen — **ohne Ihre Angaben** füllt sich nichts von alleine.
+- **`guestHelpNote`**: Stichworte (**Notfallkontakt**, **Sicherungen**, **Gäste-WLAN getrennt vom Hauptnetz** — nur das, was ihr wirklich so dokumentieren wollt).
+- Optional **Kurzzeilen** WLAN/Strom/Wasser.
+- **`ownerPlaybookNote`**: wenige Stichpunkte aus dem Alltag (z. B. **Warmwasser** erst nach …).
+- Felder dürfen **leer** bleiben — ohne eure Texte füllt sich nichts von alleine.
 
-### Schritt 3 — QR & Link (**Erweitert**)
+### Schritt 3 — QR & Link (Tab **Erweitert**)
 
-Die Basis-URL entspricht **genau der Adresse**, unter der Sie den Admin öffnen (**https://…** oder **http://hostname:8081**) — **ohne** abschließenden Schrägstrich. Nach Änderungen: **Dokumentation erneut erzeugen**.
+**Basis-URL** = genau die Adresse, mit der **ihr** den Admin im Browser öffnet (**https://…** oder **http://host:8081**), **ohne** Schrägstrich am Ende. Danach wieder **Dokumentation erzeugen**. Test zuerst im **Heim-WLAN**, nicht öffentlich exponieren.
 
-**Test ohne öffentliche Freigabe:** nur im **Heim-WLAN** ausprobieren, nicht ins offene Internet stellen.
+### Schritt 4 — Zusätzliches Markdown-Kapitel (Tab **HTML … & Zusatzkapitel** → **Custom sections**, **`customDocSectionsJson`**)
 
-### Schritt 4 — Zusätzliches Markdown-Kapitel (Tab **„HTML … & Zusatzkapitel“** → **Custom sections**, JSON-Feld **`customDocSectionsJson`**)
+Im Feld: gültiges **JSON-Array** mit Objekten `title`, `body`, optional `profiles` — Platzhalter und Hilfetext im Admin beachten.
 
-Dort finden Sie den **grauen Hinweistext**, die **Feldbeschreibung** und den **Platzhalter** im Eingabefeld (ein **JSON-Array** mit Objekten `title`, `body`, optional `profiles`).
-
-**Weitere Beispiele** (Reihenfolge-/Ausblendlisten, zweites Mermaid-Muster): englisches Haupt-[README](../../README.md) → Abschnitte [**Mermaid cookbook examples**](../../README.md#mermaid-cookbook-examples) und [**JSON cookbook snippets**](../../README.md#json-cookbook-snippets).
-
-Beispiel (nur Musterinhalt):
+**Weitere Beispiele** (Reihenfolgen, Ausblenden, zweites Mermaid-Muster): Haupt-[README](../../README.md) → [**JSON cookbook snippets**](../../README.md#json-cookbook-snippets), [**Mermaid cookbook**](../../README.md#mermaid-cookbook-examples).
 
 ```json
 [
@@ -187,33 +172,18 @@ Beispiel (nur Musterinhalt):
 ]
 ```
 
-Maximal **12** Einträge; **überlange** Inhalte werden gekürzt.
+Maximal **12** Einträge; sehr lange Texte werden beim Erzeugen gekürzt.
 
 ### Schritt 5 — Optional Mermaid (Tab **„Meine Dokumentation“**)
 
-Im Textfeld dient der **Platzhalter** als **Starter** (zum Überschreiben). Zusätzliche **fertige Mini-Diagramme** (Copy-Paste): [**Mermaid cookbook examples**](../../README.md#mermaid-cookbook-examples) im Haupt-README.
+Platzhalter im Feld überschreiben. **Copy-Paste-Diagramme:** [**Mermaid cookbook examples**](../../README.md#mermaid-cookbook-examples).
 
-Ist die **Mermaid‑CLI** auf dem ioBroker-Rechner installiert, werden Diagramme beim Generieren als **SVG** ins HTML eingebettet (**offlinefreundlich**). Sind **alle** Diagramme eingebettet, lädt die HTML-Datei **kein** Mermaid mehr von jsDelivr. Bleibt ein `<pre class="mermaid">` übrig (CLI fehlt oder Fehler), greift der **Browser-Fallback** über ein CDN — siehe Hilfetext im Admin.
+Mit installierter **Mermaid-CLI** werden Diagramme als **SVG** ins HTML eingebettet (offlinefreundlich). Ohne CLI oder bei Fehler bleibt `<pre class="mermaid">` und der Browser kann **jsDelivr** laden — siehe Admin-Hilfe.
 
-**Ausblenden:** Kapitel-IDs **`mermaid`** (**manuell**) und **`mermaidAuto`** (**nur** Auto-Host-Graph) in den jeweiligen **„Ausblenden“**-Listen.
+**Ausblenden:** Kapitel-IDs **`mermaid`** (manuell) und **`mermaidAuto`** (nur Auto-Host-Graph) in den jeweiligen **Ausblenden**-Listen.
 
-### Schritt 6 — Kapitelreihenfolge oder verstecken
+### Schritt 6 — Kapitelreihenfolge oder ausblenden
 
-Die JSON-Arrays (**Admin**, **User**, **Onboarding**) sind im Admin mit **kurzen gültigen IDs** und **Platzhaltern** versehen — für die Standardreihenfolge bzw. **keine** zusätzliche Ausblendung verwenden Sie **`"[]"`**. **Mustervorlagen** für Reihenfolge und Ausblenden: [**JSON cookbook snippets**](../../README.md#json-cookbook-snippets) im Haupt-README.
+Standard belassen: **`[]`** in den JSON-Feldern. **Mustervorlagen:** [**JSON cookbook snippets**](../../README.md#json-cookbook-snippets).
 
-Nach jeder strukturellen Änderung: **Dokumentation erneut erzeugen** und einen HTML-Profil-Link (`info.*Url*`) gegenlesen.
-
----
-
-## Für Maintainer: lokaler Repo-Check
-
-```bash
-npm install
-npm run adapter-check   # lokaler @iobroker/repochecker, siehe CONTRIBUTING.md
-```
-
----
-
-## Nur Demo-Inhalte in dieser Anleitung
-
-Die Beispiele dienen dem **Üben mit den Feldern**. **Private Adressen**, **WLAN-Passwörter**, **IPs** oder eine **Forum-Karte ungekürzt kopiert** gehören **nicht** ins öffentliche Git — besser eine **eigene lokale Dokumentation** oder **bearbeitbare Dateien** im lokalen Netz **ohne** Commit verwenden.
+Nach Änderungen: **Dokumentation erzeugen** und einen Export-Link (`info.*Url*`) kurz prüfen.

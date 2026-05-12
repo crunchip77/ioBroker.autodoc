@@ -118,7 +118,7 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 
 ### 1.1b Nutzer-Handbuch / Wiki *(optional — Backlog)*
 
-> **`docs/user-guide/`** (`README.md` **EN**, **`README.de.md` DE** mit Muster-Szenario) + Verweise aus **README** und Admin-Hilfe — **Screenshots sämtlicher** Admin-Konfig-Tabs, **Versionshinweise** in den PNG-Bildunterschriften und in **`assets/SCREENSHOTS.md`**; optional: weitere Sprachen, feinere Texte.
+> **`docs/user-guide/`** (`README.md` **EN**, **`README.de.md`** DE als **Wiki zu Admin-Tabs** + Muster-Szenario) + Verweise aus **README** und Admin-Hilfe — **Screenshots sämtlicher** Admin-Konfig-Tabs, **Versionshinweise** in den PNG-Bildunterschriften und in **`assets/SCREENSHOTS.md`**; optional: weitere Sprachen, feinere Texte.
 
 - [x] Ablage festlegen (`docs/user-guide/` im Repo) + Verweis im **README**
 - [x] Inhalte nur mit **Demo-/Platzhalterdaten** (keine echten URLs, IPs, Forum-Karten aus Produktion) — **Schemas** `fig-*.svg` + Anleitung **`assets/SCREENSHOTS.md`**

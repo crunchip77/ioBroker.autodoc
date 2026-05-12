@@ -62,7 +62,7 @@ Detaillierte **Checkboxen**: immer **[TODO.md](TODO.md)** zuerst; dieser PLAN li
 2. **Erweitert → ioBroker-Basis-URL:** Für **QR**, **Link kopieren** und **Lesezeichen** die URL eintragen, die **Gäste im Browser** nutzen (oft ≠ Docker-Interna oder rein interne IPs — siehe Hinweis direkt über dem Feld im Admin).
 3. **Dokumentation in States:** Entfällt ab **0.9.39** — **Volltext** nur unter **`/files/`**; States **`documentation.markdown` / `.html` / `.json`** sind **immer** kurze Platzhalter ([README — Exports & storage](README.md), `io-package` **0.9.39** `news`).
 4. **Meine Dokumentation:** Freitexte (Notfall, Routinen, optional Mermaid); **HTML-Export & Zusatzkapitel:** Theme, sichtbare Kapitel, Reihenfolge — **`atAGlance`** / Onboarding **`quickstart`**: Hilfetexte beachten (User vs. Gast-Kapitel).
-5. **Optional:** **`exportPath`** für NAS/USB-Kopien; **KI** und **PDF** bewusst aktivieren (Ressourcen/Datenschutz); Kurzanleitung **`docs/user-guide/`**.
+5. **Optional:** **`exportPath`** für NAS/USB-Kopien; **KI** und **PDF** bewusst aktivieren (Ressourcen/Datenschutz); **`docs/user-guide/`** (Konfigurations-Wiki / Screenshots).
 
 - `main` = stabiler Stand nach Merge aus `dev` (**0.9.x** Release-Kandidat / Forum); **npm**-Paket **`iobroker.autodoc`** wird von hier veröffentlicht (Version/News wie in **CONTRIBUTING**)
 - `dev` = aktive Entwicklung; Commits immer auf `dev`
