@@ -1099,6 +1099,7 @@ class Autodoc extends utils.Adapter {
 
 			const previousDocModel = await this.versionTracker.getPreviousVersion();
 			const changeData = this.versionTracker.compareVersions(docModel, previousDocModel);
+			docModel.docChangeSinceLastRun = changeData;
 
 			docModel.changelog = await this.versionTracker.getChangelog();
 

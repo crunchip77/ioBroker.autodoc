@@ -5,7 +5,7 @@ Diese Datei ist die **Arbeitsliste**: was **offen** ist steht oben; **erledigte*
 | Dokument | Rolle |
 | -------- | ----- |
 | **TODO.md** (hier) | Checkboxen, Offenes, Anhang „Erledigt“ |
-| **[PLAN.md](PLAN.md)** | Vision, Begründungen, Architektur, Festlegungen (u. a. Visitenkarte, KI+Skript), Brainstorming |
+| **[PLAN.md](PLAN.md)** | Vision, Begründungen, Architektur, Festlegungen (u. a. Visitenkarte, KI+Skript), Brainstorming, **[Produkt-Merkliste](PLAN.md#merkliste-produktluecken-platform)** |
 | **[README.md](README.md)** | Nutzer-README + **Changelog** (Release-Notizen) |
 
 ## Wichtige Referenzen
@@ -306,7 +306,7 @@ Details: [PLAN — System-Visitenkarte](PLAN.md#system-visitenkarte-festlegung),
 
 ## 3. Zur Klärung (ohne feste Roadmap)
 
-Ausführlich: [PLAN.md — Zukunftsvision](PLAN.md#zukunftsvision). **Medien, Redis/jsonl, States:** Arbeitsweise und Leitplanken sind festgelegt — [PLAN — Medien-MVP](PLAN.md#architektur-medien-mvp), [Architektur](PLAN.md#architektur-grenzen).
+Ausführlich: [PLAN.md — Zukunftsvision](PLAN.md#zukunftsvision) inkl. **[Merkliste — Produkt-Lücken & Plattform-Reconnaissance](PLAN.md#merkliste-produktluecken-platform)** (stückweise umsetzbar). **Medien, Redis/jsonl, States:** Arbeitsweise und Leitplanken sind festgelegt — [PLAN — Medien-MVP](PLAN.md#architektur-medien-mvp), [Architektur](PLAN.md#architektur-grenzen).
 
 ---
 

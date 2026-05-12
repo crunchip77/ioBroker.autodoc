@@ -21,7 +21,7 @@ Langfristige inhaltliche Richtung (Zusammenhänge, Auto vs. Pflege, Forum-Feedba
 | Datei | Zweck |
 | ----- | ----- |
 | **[TODO.md](TODO.md)** | **Offene** Punkte und **Klärungen** oben; **erledigte** Meilensteine im **Anhang** (vollständige Checklisten — nichts verloren) |
-| **PLAN.md** (hier) | Vision, technische und inhaltliche **Begründungen**, **Architektur** (Ist / Leitplanken im Abschnitt [Architektur](#architektur-grenzen); [Nächste Schritte](#architektur-naechste-schritte)), Forum-Brainstorming, **Festlegungen** ([System-Visitenkarte](#system-visitenkarte-festlegung), [KI + Skriptquellcode](#ki-skript-festlegung)) |
+| **PLAN.md** (hier) | Vision, technische und inhaltliche **Begründungen**, **Architektur** (Ist / Leitplanken im Abschnitt [Architektur](#architektur-grenzen); [Nächste Schritte](#architektur-naechste-schritte)), Forum-Brainstorming, **Festlegungen** ([System-Visitenkarte](#system-visitenkarte-festlegung), [KI + Skriptquellcode](#ki-skript-festlegung)), **[Produkt-Merkliste](#merkliste-produktluecken-platform)** (unter [Zukunftsvision](#zukunftsvision)) |
 | **[README.md](README.md)** | Nutzer-Dokumentation und **Changelog** (Release-Notizen) |
 
 ### Überblick — was umgesetzt ist vs. was noch offen ist
@@ -272,7 +272,7 @@ MVP: im `documentModel` feste, kurze Blöcke (systemweit Top 3–5 Aktionen; pro
 
 ## Zukunftsvision — Zusammenhänge & Kontext (Brainstorming)
 
-> **Status:** Sammelplatte für Ideen — **keine feste Roadmap** für alles in der Tabelle unten. **5.x.3 (Mermaid)** ist umgesetzt; **Phase 5** (u. a. PDF, Backup-Anbindung) und weiteres Feintuning bleiben **Umsetzung / Produktentscheid** mit [TODO.md — Phase 5](TODO.md#phase-5-features). Dieser Abschnitt soll verhindern, dass Diskussionen (Forum, intern) verloren gehen.
+> **Status:** Sammelplatte für Ideen — **keine feste Roadmap** für alles in der Tabelle unten. **5.x.3 (Mermaid)** ist umgesetzt; **Phase 5** (u. a. PDF, Backup-Anbindung) und weiteres Feintuning bleiben **Umsetzung / Produktentscheid** mit [TODO.md — Phase 5](TODO.md#phase-5-features). Festgehaltene **Produkt-Merkliste** inkl. **Plattform-Reconnaissance:** Abschnitt [Merkliste — Produkt-Lücken & nächste Ausbaustufen](#merkliste-produktluecken-platform). Dieser Abschnitt soll verhindern, dass Diskussionen (Forum, intern) verloren gehen.
 
 ### Auslöser
 
@@ -308,6 +308,29 @@ MVP: im `documentModel` feste, kurze Blöcke (systemweit Top 3–5 Aktionen; pro
 
 - **Orientierung** und **„was läuft automatisch“** in groben, vertrauenswürdigen Worten; strikt **faktenbasiert** wo KI genutzt wird (Guards, Fallbacks — bestehende Philosophie fortsetzen).
 - **Zusammenhänge** als sehr kurzer Block + ggf. **eine** visuelle oder verlinkte Ebene — kein Architektur-Wälzer für Gäste.
+
+<a id="merkliste-produktluecken-platform"></a>
+
+### Merkliste — Produkt-Lücken & nächste Ausbaustufen
+
+> **Zweck:** Sammelt Punkte aus Produkt-/Nutzerperspektive — **keine** automatische Priorität gegenüber der abgestimmten Reihenfolge in [TODO.md — offene Arbeit](TODO.md#offene-arbeit). Umsetzung **stückweise**, wenn Aufwand und Nutzen passen.
+
+**Inhaltliche Lücken („erklären“, nicht nur inventarisieren):**
+
+- **Semantik der Automatisierung:** zuverlässiger Überblick „was läuft wie automatisch“ über alle **für die Installation** relevanten Quellen (Skripte, Schedules, wo erkennbar Adapter-interne Regeln). Bekannte Grenzen mitdenken: Blockly-Inhalt, **dynamische** State-IDs (heute Regex-Grenzen), Szenen/Logik/Node-RED und andere Regeladapter — nur wo Daten tragfähig sind oder **gezielt** angebunden wird.
+- **Tiefere Skript-Analyse:** über Live-/Regex-Schicht hinaus — insbesondere **offline** aus Backup-Inhalten (**KI + Skript Variante B**, gekoppelt an [Backup / Backitup](TODO.md#backup-backitup-festlegung)): längere Läufe, ggf. AST statt nur Muster, ohne das laufende System zu belasten.
+- **Gerätemanager (ioBroker Admin Device Manager):** optional strukturierte Gerätelisten über das **`dm:`**-/Device-Manager-Protokoll nutzen, wo Adapter mitspielen — stärkeres „welche Geräte unter welcher Instanz“; **ersetzt nicht** globale Automatisierungs-Semantik.
+- **Vertrauen & Zeit:** menschenlesbare **„Was hat sich seit dem letzten Lauf geändert?“**-Zusammenfassung aus bestehender Versions-/Diff-Logik — Doku als nachvollziehbare Entwicklung, nicht nur Snapshot.
+- **Kurierte „Warum“-Ebene:** neben KI/Freitext eine **systematische** Schicht (z. B. knappe Pflicht-/Halbpflichtfelder pro Bereich, Glossar, „Absicht in einem Satz“) — skalierbarer als reine KI-Erklärung.
+- **Transparenz der Grenzen:** in Exporten klar kennzeichnen, **wo automatische Erkennung endet** (Gerät/Firmware/Cloud/manuelle Schicht) — Erwartungsmanagement für Nutzer. *Baseline (Export):* kurzer Hinweis am Ende des **Systemübersicht**-Kapitels (HTML + Markdown, alle Profile) — `docTransparencyLimitsShort` in `lib/i18n.js`.
+
+**Plattform-Reconnaissance (laufend; bei js-controller-/Admin-Sprüngen oder größeren AutoDoc-Releases sinnvoll):**
+
+- **js-controller** und Objekt-/State-Zugriffe: welche **`getObjectView`**-Designs und APIs sind portabel und über Releases hinweg stabil interpretierbar?
+- **Admin** (Stand relevanten **globalDependencies**): **jsonConfig**, **Device Manager**, Messaging — welche Endpunkte liefern strukturierte, adapterübergreifend nutzbare Daten?
+- **Referenz-Adapter** stichprobenartig prüfen (z. B. **javascript**, **backitup**, bei Bedarf Szenen/Logik/„IoT“-Regeln o. Ä.): Objektschemas, typische States, Backup-Artefakte, `sendTo`-Konventionen — kurz festhalten, **was zuverlässig für AutoDoc nutzbar ist** vs. **Best Effort**.
+
+Ergebnisse können in Erweiterungen von `discovery.js` / Hilfstexten münden — ohne dass jedes Diskussionsthema sofort ein eigenes Feature wird.
 
 ### Umsetzungs-Ideen (nicht priorisiert)
 
