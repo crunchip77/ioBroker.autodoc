@@ -640,6 +640,18 @@
 					"lg": 12,
 					"xl": 12
 				},
+				"hideAdminDeltaSinceLastRun": {
+					"type": "checkbox",
+					"label": "Hide “changes since last run” in Admin exports",
+					"help": "When enabled, the yellow delta box at the top of the Admin HTML System overview and the matching subsection in Admin Markdown are omitted. Changelog history is unchanged; User and Onboarding exports are unchanged.",
+					"default": false,
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
 				"maxDocumentedInstances": {
 					"type": "number",
 					"label": "Maximum documented instances",

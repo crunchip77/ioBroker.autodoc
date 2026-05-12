@@ -28,6 +28,8 @@
 	"When enabled, disabled adapter instances are omitted from instance lists in every export (HTML and Markdown).": "Wenn aktiviert, fehlen deaktivierte Adapter-Instanzen in allen Exporten (HTML und Markdown) in den Instanzlisten.",
 	"Hide instance details in markdown": "Instanzdetails im Markdown ausblenden",
 	"When enabled, Markdown skips per-instance detail blocks and keeps overview-style sections. HTML exports still list instances as usual.": "Wenn aktiviert, enthält Markdown keine Instanz-Detailblöcke mehr — nur Überblicks-Abschnitte. HTML-Exporte listen Instanzen wie gewohnt.",
+	"Hide “changes since last run” in Admin exports": "„Änderungen seit dem letzten Lauf“ in Admin-Exporten ausblenden",
+	"When enabled, the yellow delta box at the top of the Admin HTML System overview and the matching subsection in Admin Markdown are omitted. Changelog history is unchanged; User and Onboarding exports are unchanged.": "Wenn aktiviert, entfallen die gelbe Hinweisbox oben in der Admin-HTML-Systemübersicht und der entsprechende Unterabschnitt im Admin-Markdown. Das Änderungsprotokoll bleibt unverändert; User- und Onboarding-Exporte sind unverändert.",
 	"Maximum documented instances": "Maximale Anzahl dokumentierter Instanzen",
 	"After the optional enabled-only filter, only the first N instances in discovery order are kept (0 = unlimited). Applies to HTML and Markdown.": "Nach optionalem „nur aktivierte“-Filter bleiben nur die ersten N Instanzen in Discovery-Reihenfolge (0 = unbegrenzt). Gilt für HTML und Markdown.",
 	"ioBroker base URL (optional)": "ioBroker Basis-URL (optional)",

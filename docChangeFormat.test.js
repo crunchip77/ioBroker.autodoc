@@ -2,7 +2,7 @@
 
 const { expect } = require('chai');
 const I18n = require('./lib/i18n');
-const { buildDocChangeSinceLastRun } = require('./lib/docChangeFormat');
+const { buildDocChangeSinceLastRun, localizeCompareSummary, shouldShowUserFriendlyDocChange } = require('./lib/docChangeFormat');
 
 describe('docChangeFormat', () => {
 	it('returns skip when changeData is missing', () => {
@@ -45,5 +45,22 @@ describe('docChangeFormat', () => {
 		expect(r.lines[0].detail).to.include('MQTT');
 		expect(r.lines[0].detail).to.include('mqtt.0');
 		expect(r.headline).to.include('1 Änderung');
+	});
+
+	it('localizeCompareSummary follows doc language without trailing colon form', () => {
+		const i18n = new I18n();
+		i18n.setLanguage('de');
+		expect(localizeCompareSummary({ isInitial: true }, i18n)).to.include('Erster Dokumentationslauf');
+		expect(localizeCompareSummary({ isInitial: false, changes: [] }, i18n)).to.include('Keine wesentlichen');
+		const multi = localizeCompareSummary({ isInitial: false, changes: [{}, {}] }, i18n);
+		expect(multi).to.include('2 Bestandsänderungen');
+		expect(multi.endsWith(':')).to.equal(false);
+	});
+
+	it('shouldShowUserFriendlyDocChange only for non-initial with changes', () => {
+		expect(shouldShowUserFriendlyDocChange(null)).to.equal(false);
+		expect(shouldShowUserFriendlyDocChange({ isInitial: true, changes: [{ type: 'x' }] })).to.equal(false);
+		expect(shouldShowUserFriendlyDocChange({ isInitial: false, changes: [] })).to.equal(false);
+		expect(shouldShowUserFriendlyDocChange({ isInitial: false, changes: [{ type: 'state_objects' }] })).to.equal(true);
 	});
 });

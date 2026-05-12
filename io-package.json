@@ -181,6 +181,7 @@
     "autoGenerateInterval": 0,
     "onlyEnabledInstances": false,
     "hideInstanceDetailsInMarkdown": false,
+    "hideAdminDeltaSinceLastRun": false,
     "maxDocumentedInstances": 0,
     "maxStoredFiles": 3,
     "baseUrl": "",

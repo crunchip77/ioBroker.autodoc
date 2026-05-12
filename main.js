@@ -19,6 +19,7 @@ const VersionTracker = require('./lib/versionTracker');
 const Notifier = require('./lib/notifier');
 const AiEnhancer = require('./lib/aiEnhancer');
 const { buildForumCard } = require('./lib/forumCard');
+const { localizeCompareSummary } = require('./lib/docChangeFormat');
 
 /** Large exports live under adapter /files only; `documentation.*` body states use placeholders (see below). */
 const DOCS_STATE_METADATA_PLACEHOLDER =
@@ -1079,6 +1080,8 @@ class Autodoc extends utils.Adapter {
 		}
 		this._documentationGenerationInProgress = true;
 		try {
+			this.i18n.setLanguage(this.config.language || 'en');
+
 			this.log.info(
 				`Documentation generation (${trigger}): 1/5 — discovery (scanning system, may take a bit on large installs)…`,
 			);
@@ -1099,6 +1102,7 @@ class Autodoc extends utils.Adapter {
 
 			const previousDocModel = await this.versionTracker.getPreviousVersion();
 			const changeData = this.versionTracker.compareVersions(docModel, previousDocModel);
+			changeData.summary = localizeCompareSummary(changeData, this.i18n);
 			docModel.docChangeSinceLastRun = changeData;
 
 			docModel.changelog = await this.versionTracker.getChangelog();
