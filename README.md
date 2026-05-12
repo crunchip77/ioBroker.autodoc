@@ -77,6 +77,8 @@ The **Onboarding** HTML includes a QR code and a **Copy link** control. Both use
 
 **Filesystem export path** writes the three HTML profiles to a real directory (in addition to ioBroker’s `/files/…` storage). In **Docker**, map a host folder into the container and set **export path** to the **container-side** path (not the Unraid/host path). See the field help in Admin for a short reminder.
 
+<a id="optional-pdf-export-puppeteer"></a>
+
 ### Optional PDF export (Puppeteer)
 
 **Best effort:** after a successful documentation run, you can create **`autodoc-admin.pdf`**, **`autodoc-user.pdf`**, and **`autodoc-onboarding.pdf`** from the same HTML that is stored under `/files/` (headless Chromium via **`puppeteer`**, declared as an **optional** npm dependency — same major line as **`@mermaid-js/mermaid-cli`**). Enable **Generate PDF after each documentation run** in **Advanced** next to the filesystem export, or trigger **`action.exportPdf`** manually. PDFs are written under **`/files/autodoc.<instance>/`** and mirrored to **Filesystem export path** when that path is set. **Embedded Mermaid SVG** (when mmdc ran during generation) prints without extra network; **jsDelivr** client Mermaid still needs internet during the PDF step. Without a working Chromium stack, PDF creation is skipped with a clear log line — HTML/Markdown generation is unaffected.
@@ -85,13 +87,19 @@ The **Onboarding** HTML includes a QR code and a **Copy link** control. Both use
 
 **AI context hints** are injected only into the LLM prompt; they are **not** printed in the documentation. For **guest onboarding**, prefer everyday facts. Heavy IT or project wording (adapters, repos, …) can cause the model to leak jargon into guest text; a **safety step** then replaces that AI block with neutral guest wording. That is intentional. The **resident / family** profile does not use the same guest-only restriction. Configure them in Admin under **KI documentation / AI documentation** (after enabling a provider); full wording appears in the hint above the field.
 
-Copy-paste **examples** (field IDs, syntax): [**Mermaid**](#mermaid-cookbook-examples) · [**JSON arrays**](#json-cookbook-snippets) · [**Custom CSS**](#html-custom-css-examples). **Stable links** for Admin `help` text after merge to `main`:
+Copy-paste **examples** (field IDs, syntax): [**Mermaid**](#mermaid-cookbook-examples) · [**JSON arrays**](#json-cookbook-snippets) · [**Custom CSS**](#html-custom-css-examples). **Stable links** for Admin `help` text after merge to `main` (repo root + fragment — scrolls reliably on GitHub):
 
-`https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#mermaid-cookbook-examples`
+`https://github.com/crunchip77/ioBroker.autodoc#mermaid-cookbook-examples`
 
-`https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#json-cookbook-snippets`
+`https://github.com/crunchip77/ioBroker.autodoc#json-cookbook-snippets`
 
-`https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#html-custom-css-examples`
+`https://github.com/crunchip77/ioBroker.autodoc#html-custom-css-examples`
+
+`https://github.com/crunchip77/ioBroker.autodoc#documentation-instance-overview`
+
+`https://github.com/crunchip77/ioBroker.autodoc#public-base-url`
+
+`https://github.com/crunchip77/ioBroker.autodoc#optional-pdf-export-puppeteer`
 
 <a id="mermaid-cookbook-examples"></a>
 
