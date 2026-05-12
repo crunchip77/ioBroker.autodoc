@@ -34,7 +34,7 @@ function migratePlainLineAnchorsToHeadingFragments(s) {
 	}
 	out = out
 		.split('docs/user-guide/README.de.md?plain=1#L189')
-		.join('docs/user-guide/README.de.md#wiki-step3-qr-base-url');
+		.join('docs/user-guide/README.de.md#wiki-admin-doc-lang');
 	out = out
 		.split('docs/user-guide/README.de.md?plain=1#L193')
 		.join(

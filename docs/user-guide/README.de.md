@@ -34,7 +34,7 @@ Die **sechs häufigsten Schnellzugriff-Themen** sind wie folgt aufgeteilt (Branc
 
 **„In neuem Tab öffnen“:** Der Link und das **`#…`** sind korrekt — trotzdem bleibt GitHubs Markdown-Vorschau manchmal **oben**, weil die Seite **asynchron** rendert und der Browser den Sprung **vor** dem Ziel im DOM ausführt ([bekanntes Verhalten](https://github.com/github/markup/issues/1807), nicht nur „euer Browser“). **Meist hilft:** nach dem Laden in der Adresszeile **Enter** (Hash erneut anwenden), einmal **F5**, oder den Link **im gleichen Tab** öffnen.
 
-**Englisches Haupt-[README](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md)** (Kochbuch & weitere Fragmente, grob **L44·L67·L78·L100·L131·L186**): u. a. **`#mermaid-cookbook-examples`**, **`#json-cookbook-snippets`**, **`#html-custom-css-examples`**. **DE-Wiki-Anker** (nur noch für Kontext-Links / Abschnitte hier): **`#wiki-overview-registerkarten`**, **`#wiki-admin-doc-lang`**, **`#wiki-admin-pdf-export`**, **`#wiki-admin-json-cookbook`**, **`#wiki-admin-html-css`**, **`#wiki-step3-qr-base-url`**, **`#wiki-step4-custom-sections-json`** (kurz; gleicher Absatz: GitHub-Slug **`#schritt-4--zusätzliches-markdown-kapitel-tab-html---zusatzkapitel--custom-sections-customdocsectionsjson`** — oft zuverlässiger in der Vorschau), **`#wiki-step5-mermaid`**. **Nach großen Umbauten** IDs und **`admin/jsonConfig.json`** abstimmen (Pflegehinweis auch als HTML-Kommentar vor der Lizenz im Haupt-README).
+**Englisches Haupt-[README](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md)** (Kochbuch & weitere Fragmente, grob **L44·L67·L78·L100·L131·L186**): u. a. **`#mermaid-cookbook-examples`**, **`#json-cookbook-snippets`**, **`#html-custom-css-examples`**. **DE-Wiki-Anker** (nur noch für Kontext-Links / Abschnitte hier): **`#wiki-overview-registerkarten`**, **`#wiki-admin-doc-lang`** (Sprache, Deltas &amp; Kurz-Hinweise; Übungsszenario Schritt 1: **`#wiki-step1-basis`**), **`#wiki-admin-pdf-export`**, **`#wiki-admin-json-cookbook`**, **`#wiki-admin-html-css`**, **`#wiki-step3-qr-base-url`**, **`#wiki-step4-custom-sections-json`** (kurz; gleicher Absatz: GitHub-Slug **`#schritt-4--zusätzliches-markdown-kapitel-tab-html---zusatzkapitel--custom-sections-customdocsectionsjson`** — oft zuverlässiger in der Vorschau), **`#wiki-step5-mermaid`**. **Nach großen Umbauten** IDs und **`admin/jsonConfig.json`** abstimmen (Pflegehinweis auch als HTML-Kommentar vor der Lizenz im Haupt-README).
 
 **Warum früher oft nur der PDF-Link zu stimmen schien:** Unter der Repo-Wurzel `#…` hat nur **`### Optional PDF export …`** zufällig denselben Slug wie `#optional-pdf-export-puppeteer` geliefert; die anderen Kurz-Hashes passten dort nicht — oder springen im **Blob**-Viewer trotzdem nicht zuverlässig.
 
@@ -44,7 +44,7 @@ Die **sechs häufigsten Schnellzugriff-Themen** sind wie folgt aufgeteilt (Branc
 
 ---
 
-## Kurz vom Haupt-README (Betrieb)
+<h2 id="wiki-admin-doc-lang">Kurz vom Haupt-README (Betrieb)</h2>
 
 - **Dokumentationssprache** (Grundeinstellungen): steuert Überschriften und feste Texte in **allen HTML-Profilen** und im Markdown; auch die **Kurzzeilen** für Inventarvergleich („changes since last run“) und für **Changelog**-Karten beim erneuten Erzeugen — ältere gespeicherte Changelog-Zeilen erscheinen in der **aktuellen** Export-Sprache. Details: gleicher GitHub-Sprung wie unter **„Schnellzugriff“** → *Dokumentationssprache & Deltas*.
 - **Erweitert → Ausblenden „Änderungen seit letztem Lauf“** (`hideAdminDeltaSinceLastRun`): blendet nur die **gelbe Delta-Box** in der **Admin**-HTML-Systemübersicht und den passenden Block im **Admin**-Markdown aus; **Changelog-Kapitel**, User und Onboarding bleiben unverändert.
@@ -186,7 +186,7 @@ Nach inhaltlichen Änderungen: **Dokumentation generieren** (Button oder Datenpu
 
 **Ausganglage:** Zweistöckiges Einfamilienhaus mit ioBroker (**Heizszenen**, Licht u. a. in **Wohnzimmer**, **Treppenhaus**, Kinderzimmer), ergänzend z. B. Rauchmelder oder KNX — es geht um **nachvollziehbare Beispieltexte**, nicht um echte Hausdaten.
 
-<h3 id="wiki-admin-doc-lang">Schritt 1 — Basis</h3>
+<h3 id="wiki-step1-basis">Schritt 1 — Basis</h3>
 
 - Projektbezeichnung: z. B. **„Musterhaus Schulweg“** (keine echte Anschrift).
 - Dokumentationssprache: **DE**.
