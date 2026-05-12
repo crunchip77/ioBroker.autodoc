@@ -22,13 +22,13 @@ function swapFragToLine(s) {
 	let out = s;
 	for (const [frag, lineNum] of Object.entries(fragToLine)) {
 		const fromHttps = `https://github.com/crunchip77/ioBroker.autodoc/blob/${DOC_BRANCH}/README.md#${frag}`;
-		const toHttps = `https://github.com/crunchip77/ioBroker.autodoc/blob/${DOC_BRANCH}/README.md#L${lineNum}`;
+		const toHttps = `https://github.com/crunchip77/ioBroker.autodoc/blob/${DOC_BRANCH}/README.md?plain=1#L${lineNum}`;
 		out = out.split(fromHttps).join(toHttps);
 		const fromBlob = `blob/${DOC_BRANCH}/README.md#${frag}`;
-		const toBlob = `blob/${DOC_BRANCH}/README.md#L${lineNum}`;
+		const toBlob = `blob/${DOC_BRANCH}/README.md?plain=1#L${lineNum}`;
 		out = out.split(fromBlob).join(toBlob);
 		const fromRel = `../../README.md#${frag}`;
-		const toRel = `../../README.md#L${lineNum}`;
+		const toRel = `../../README.md?plain=1#L${lineNum}`;
 		out = out.split(fromRel).join(toRel);
 	}
 	return out;

@@ -125,10 +125,10 @@ Naming, swap-out **PNG** hints, redaction: **[`assets/SCREENSHOTS.md`](assets/SC
 
 Step-by-step JSON for **custom sections** also appears in **[`README.de.md`](README.de.md)** (scenario section). For **additional copy-paste diagrams**, **chapter-order / hide-list** patterns, and **`customDocSectionsJson`** variants, see the main **[README](../../README.md)**:
 
-- [**Mermaid cookbook examples**](../../README.md#L100)
-- [**JSON cookbook snippets**](../../README.md#L131)
+- [**Mermaid cookbook examples**](../../README.md?plain=1#L100)
+- [**JSON cookbook snippets**](../../README.md?plain=1#L131)
 
-Use these targets when linking from Admin field help — prefer **`blob/dev/README.md#L…`** line highlights while **`dev`** carries the doc layout ahead of **`main`** (switch back to **`blob/main`** after merging). Heading `#…` fragments are unreliable in GitHub’s Markdown viewer; repo-root `#…` rarely scrolls either.
+Use these targets when linking from Admin field help — prefer **`blob/dev/README.md?plain=1#L…`**. **`?plain=1`** opens GitHub’s **source** view so **`#L…`** works; the default **Preview** tab ignores line fragments. While **`dev`** carries the doc layout ahead of **`main`**, use **`dev`** in the path (switch back to **`blob/main`** after merging). Heading `#…` fragments stay unreliable; repo-root `#…` rarely scrolls either.
 
 ## Generating documentation
 

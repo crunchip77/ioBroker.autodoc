@@ -4,29 +4,29 @@ Diese Seite richtet sich an **Betreuer** und **Haus-Admins**, die die **AutoDoc-
 
 Die **Inline-Hilfe** bei jedem Feld im Admin (`jsonConfig`) bleibt die **fachliche Referenz** — diese Datei ergänzt sie um **Überblick, Bilder und ein Übungsszenario**. **Klickbare Dokumentation:** In den Instanz-Tabs zeigt AutoDoc unter den betreffenden Feldern **eigene GitHub-Links** (nicht nur Fließtext in der `?`-Tooltip-Hilfe — dort sind URLs meist nicht anklickbar).
 
-**Technische Grundlagen** (Systemvoraussetzungen, Projektbeschreibung) und **Copy-Paste-Beispiele** für **Mermaid**, **JSON-Felder** und **HTML-Schrift/CSS**: englisches Haupt-[README](../../README.md) mit den Abschnitten [**Mermaid cookbook examples**](../../README.md#L100), [**JSON cookbook snippets**](../../README.md#L131) und [**HTML custom CSS examples**](../../README.md#L186).
+**Technische Grundlagen** (Systemvoraussetzungen, Projektbeschreibung) und **Copy-Paste-Beispiele** für **Mermaid**, **JSON-Felder** und **HTML-Schrift/CSS**: englisches Haupt-[README](../../README.md) mit den Abschnitten [**Mermaid cookbook examples**](../../README.md?plain=1#L100), [**JSON cookbook snippets**](../../README.md?plain=1#L131) und [**HTML custom CSS examples**](../../README.md?plain=1#L186).
 
-**Stabile GitHub-Links:** Admin-**`staticLink`** und die Liste unten nutzen **`blob/dev/…#L…`** (Zeilen-Highlight), solange die beschriebene README-Struktur auf **`dev`** liegt und **`main`** noch nicht dieselben Zeilen hat — **nach Merge nach `main`** wieder **`blob/main`** verwenden und `#L…` prüfen. Das ist im GitHub-Markdown-Viewer zuverlässiger als Überschriften-Anker (`#mermaid-cookbook-examples`), die dort oft **nicht** zur erwarteten Stelle springen — ebenso wenig wie die bloße Repository-Wurzel mit Fragment, z. B. `…/ioBroker.autodoc#json-cookbook-snippets` (Projektstartseite springt dort typischerweise **nicht** zum Kochbuch).
+**Stabile GitHub-Links:** Admin-**`staticLink`** und die Liste unten nutzen **`blob/dev/…?plain=1#L…`**: Ohne **`?plain=1`** zeigt GitHub Markdown oft nur die **Vorschau** — dort greifen **Zeilenanker `#L…` nicht**; **`plain=1`** öffnet die **Quelle mit Zeilennummern**. Gibt **`main`** den gleichen Stand wie **`dev`**, wieder **`blob/main`** verwenden und **`?plain=1`** beibehalten. Das ist im GitHub-Markdown-Viewer zuverlässiger als Überschriften-Anker (`#mermaid-cookbook-examples`), die dort oft **nicht** zur erwarteten Stelle springen — ebenso wenig wie die bloße Repository-Wurzel mit Fragment, z. B. `…/ioBroker.autodoc#json-cookbook-snippets` (Projektstartseite springt dort typischerweise **nicht** zum Kochbuch).
 
-Die Zuordnung **Haupt-[README](../../README.md)** (Zeilenmarken = zuverlässiger Sprung im GitHub-Blob auf **`dev`**): **L44** Dokumentationssprache & Deltas, **L67** Basis-URL / QR, **L78** PDF/Puppeteer, **L100** Mermaid-Kochbuch, **L131** JSON-Kochbuch, **L186** HTML/CSS. **DE-Wiki** (`README.de.md`): **L189** Schritt QR & Basis-URL (Tab Erweitert), **L193** Custom sections / `customDocSectionsJson`. **Nach großen README-/Wiki-Umbrüchen** die `#L…`-URLs in **`admin/jsonConfig.json`** und hier im Wiki anpassen (Pflegehinweis auch als HTML-Kommentar vor der Lizenzzeile im Haupt-README).
+Die Zuordnung **Haupt-[README](../../README.md)** (Zeilenmarken **`?plain=1#L…`** = zuverlässiger Sprung zur Quelle auf **`dev`**): **L44** Dokumentationssprache & Deltas, **L67** Basis-URL / QR, **L78** PDF/Puppeteer, **L100** Mermaid-Kochbuch, **L131** JSON-Kochbuch, **L186** HTML/CSS. **DE-Wiki** (`README.de.md`): **L189** Schritt QR & Basis-URL (Tab Erweitert), **L193** Custom sections / `customDocSectionsJson`. **Nach großen README-/Wiki-Umbrüchen** die `#L…`-URLs in **`admin/jsonConfig.json`** und hier im Wiki anpassen (Pflegehinweis auch als HTML-Kommentar vor der Lizenzzeile im Haupt-README).
 
 **Warum früher oft nur der PDF-Link zu stimmen schien:** Unter der Repo-Wurzel `#…` hat nur **`### Optional PDF export …`** zufällig denselben Slug wie `#optional-pdf-export-puppeteer` geliefert; die anderen Kurz-Hashes passten dort nicht — oder springen im **Blob**-Viewer trotzdem nicht zuverlässig.
 
-- [Dokumentationssprache & Deltas](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#L44)
-- [Öffentliche Basis-URL / QR](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#L67)
-- [PDF-Export (Puppeteer)](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#L78)
-- [Mermaid-Kochbuch](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#L100)
-- [JSON-Kochbuch](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#L131)
-- [HTML — Schrift & CSS](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#L186)
+- [Dokumentationssprache & Deltas](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md?plain=1#L44)
+- [Öffentliche Basis-URL / QR](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md?plain=1#L67)
+- [PDF-Export (Puppeteer)](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md?plain=1#L78)
+- [Mermaid-Kochbuch](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md?plain=1#L100)
+- [JSON-Kochbuch](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md?plain=1#L131)
+- [HTML — Schrift & CSS](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md?plain=1#L186)
 
 **Autolinks** (gleiche Ziele, oft gut klickbar in Vorschau):
 
-<https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#L44>  
-<https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#L67>  
-<https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#L78>  
-<https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#L100>  
-<https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#L131>  
-<https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#L186>
+<https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md?plain=1#L44>  
+<https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md?plain=1#L67>  
+<https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md?plain=1#L78>  
+<https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md?plain=1#L100>  
+<https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md?plain=1#L131>  
+<https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md?plain=1#L186>
 
 **Instanz öffnen:** **Instanzen** → Ihre AutoDoc-Instanz → **Schraubenschlüssel** (Konfiguration).
 
@@ -36,11 +36,11 @@ Die Zuordnung **Haupt-[README](../../README.md)** (Zeilenmarken = zuverlässiger
 
 ## Kurz vom Haupt-README (Betrieb)
 
-- **Dokumentationssprache** (Grundeinstellungen): steuert Überschriften und feste Texte in **allen HTML-Profilen** und im Markdown; auch die **Kurzzeilen** für Inventarvergleich („changes since last run“) und für **Changelog**-Karten beim erneuten Erzeugen — ältere gespeicherte Changelog-Zeilen erscheinen in der **aktuellen** Export-Sprache. Details: [**documentation-instance-overview**](../../README.md#L44).
+- **Dokumentationssprache** (Grundeinstellungen): steuert Überschriften und feste Texte in **allen HTML-Profilen** und im Markdown; auch die **Kurzzeilen** für Inventarvergleich („changes since last run“) und für **Changelog**-Karten beim erneuten Erzeugen — ältere gespeicherte Changelog-Zeilen erscheinen in der **aktuellen** Export-Sprache. Details: [**documentation-instance-overview**](../../README.md?plain=1#L44).
 - **Erweitert → Ausblenden „Änderungen seit letztem Lauf“** (`hideAdminDeltaSinceLastRun`): blendet nur die **gelbe Delta-Box** in der **Admin**-HTML-Systemübersicht und den passenden Block im **Admin**-Markdown aus; **Changelog-Kapitel**, User und Onboarding bleiben unverändert.
 - **User/Familie**: bei **echten** Inventaränderungen seit dem letzten Schnappschuss (nicht beim ersten Lauf) erscheint ein kurzer **Alltagssatz** unter dem Titelblock — **Onboarding** nicht.
-- **Basis-URL / QR / „Link kopieren“**: dieselbe Einstellung wie der Browser-Zugang zum Admin, **ohne** Slash am Ende; nach Änderung **Dokumentation erzeugen**. Ausführlich: [**Public base URL**](../../README.md#L67).
-- **PDF**: optional **`puppeteer`** im **Adapterverzeichnis**; Schalter unter **Erweitert** oder Datenpunkt **`action.exportPdf`**. Siehe [**Optional PDF export**](../../README.md#L78).
+- **Basis-URL / QR / „Link kopieren“**: dieselbe Einstellung wie der Browser-Zugang zum Admin, **ohne** Slash am Ende; nach Änderung **Dokumentation erzeugen**. Ausführlich: [**Public base URL**](../../README.md?plain=1#L67).
+- **PDF**: optional **`puppeteer`** im **Adapterverzeichnis**; Schalter unter **Erweitert** oder Datenpunkt **`action.exportPdf`**. Siehe [**Optional PDF export**](../../README.md?plain=1#L78).
 - **Dateisystem-Export / Docker**: Host-Ordner einbinden und im Adapter den **Container-Pfad** eintragen — Kurzhinweis auch in der Feldhilfe.
 - **Große Bilder / Redis:** Große Bilder oder Binärdateien **nicht** als **State-Werte** in der **Objektdatenbank** ablegen — bei Backend **Redis** treiben große Blobs den RAM hoch. Lieber **externe URLs** oder kleine **SVG**. AutoDoc legt Volltext ohnehin nur unter **`/files/`** ab; **`documentation.markdown` / `.html` / `.json`** sind **kurze Platzhalter** (kein Ersatz für Medienspeicher) — siehe [PLAN.md — Medien (MVP)](../../PLAN.md#architektur-medien-mvp).
 
@@ -51,7 +51,7 @@ Die Zuordnung **Haupt-[README](../../README.md)** (Zeilenmarken = zuverlässiger
 1. **Grundeinstellungen** — **Projektname** und **Dokumentationssprache** (alle Exporte); welches **Markdown-Profil** standardmäßig erzeugt wird; **wann** neu generiert wird (Start, Zeitplan, Adapteränderungen).
 2. **Meine Dokumentation** — **Leser-Texte** für Familie und Gäste (Notizen, Abläufe, Playbook); optionale **Notfall-Kurzzeilen**; optional **Mermaid** und **Auto-Host-Topologie**; Filter „was ausblenden“ für User vs. Onboarding.
 3. **Erweitert** — **Basis-URL** für QR/Links; Grenzen (z. B. nur aktivierte Instanzen); **Export nach Dateisystem**; optional **PDF**; **Doku-Setup-Score**; Hinweis: volle Exporte liegen unter **`/files`**, States nur Platzhalter.
-4. **HTML-Export & Zusatzkapitel** — **Erscheinungsbild** (Theme, Logo); **Kapitelreihenfolge und Ausblenden** je Profil (**JSON**); **eigene Markdown-Kapitel** (`customDocSectionsJson`); optional **Schriftart** (`htmlFontStack`) und **zusätzliches CSS** (`htmlExtraCss`, nur exportiertes HTML) — Beispiele und Selektoren: [**HTML — Schrift & CSS**](../../README.md#L186); Verweis auf PDF-Schalter unter **Erweitert**.
+4. **HTML-Export & Zusatzkapitel** — **Erscheinungsbild** (Theme, Logo); **Kapitelreihenfolge und Ausblenden** je Profil (**JSON**); **eigene Markdown-Kapitel** (`customDocSectionsJson`); optional **Schriftart** (`htmlFontStack`) und **zusätzliches CSS** (`htmlExtraCss`, nur exportiertes HTML) — Beispiele und Selektoren: [**HTML — Schrift & CSS**](../../README.md?plain=1#L186); Verweis auf PDF-Schalter unter **Erweitert**.
 5. **Benachrichtigungen** — optional Nachricht nach erfolgreicher Generierung (abhängig vom Messaging-Adapter).
 6. **KI-Dokumentation** — nur relevant, wenn ein **Anbieter aktiv** ist; sonst bleiben die Felder ohne KI-Wirkung.
 
@@ -188,13 +188,13 @@ Nach inhaltlichen Änderungen: **Dokumentation generieren** (Button oder Datenpu
 
 ### Schritt 3 — QR & Link (Tab **Erweitert**)
 
-**Basis-URL** = genau die Adresse, mit der **ihr** den Admin im Browser öffnet (**https://…** oder **http://host:8081**), **ohne** Schrägstrich am Ende. Danach wieder **Dokumentation erzeugen**. Test zuerst im **Heim-WLAN**, nicht öffentlich exponieren. Ausführlicher: Haupt-[README → Public base URL](../../README.md#L67).
+**Basis-URL** = genau die Adresse, mit der **ihr** den Admin im Browser öffnet (**https://…** oder **http://host:8081**), **ohne** Schrägstrich am Ende. Danach wieder **Dokumentation erzeugen**. Test zuerst im **Heim-WLAN**, nicht öffentlich exponieren. Ausführlicher: Haupt-[README → Public base URL](../../README.md?plain=1#L67).
 
 ### Schritt 4 — Zusätzliches Markdown-Kapitel (Tab **HTML … & Zusatzkapitel** → **Custom sections**, **`customDocSectionsJson`**)
 
 Im Feld: gültiges **JSON-Array** mit Objekten `title`, `body`, optional `profiles` — Platzhalter und Hilfetext im Admin beachten.
 
-**Weitere Beispiele** (Reihenfolgen, Ausblenden, zweites Mermaid-Muster): Haupt-[README](../../README.md) → [**JSON cookbook snippets**](../../README.md#L131), [**Mermaid cookbook**](../../README.md#L100).
+**Weitere Beispiele** (Reihenfolgen, Ausblenden, zweites Mermaid-Muster): Haupt-[README](../../README.md) → [**JSON cookbook snippets**](../../README.md?plain=1#L131), [**Mermaid cookbook**](../../README.md?plain=1#L100).
 
 ```json
 [
@@ -210,7 +210,7 @@ Maximal **12** Einträge; sehr lange Texte werden beim Erzeugen gekürzt.
 
 ### Schritt 5 — Optional Mermaid (Tab **„Meine Dokumentation“**)
 
-Platzhalter im Feld überschreiben. **Copy-Paste-Diagramme:** [**Mermaid cookbook examples**](../../README.md#L100).
+Platzhalter im Feld überschreiben. **Copy-Paste-Diagramme:** [**Mermaid cookbook examples**](../../README.md?plain=1#L100).
 
 Mit installierter **Mermaid-CLI** werden Diagramme als **SVG** ins HTML eingebettet (offlinefreundlich). Ohne CLI oder bei Fehler bleibt `<pre class="mermaid">` und der Browser kann **jsDelivr** laden — siehe Admin-Hilfe.
 
@@ -218,10 +218,10 @@ Mit installierter **Mermaid-CLI** werden Diagramme als **SVG** ins HTML eingebet
 
 ### Schritt 6 — Kapitelreihenfolge oder ausblenden
 
-Standard belassen: **`[]`** in den JSON-Feldern. **Mustervorlagen:** [**JSON cookbook snippets**](../../README.md#L131).
+Standard belassen: **`[]`** in den JSON-Feldern. **Mustervorlagen:** [**JSON cookbook snippets**](../../README.md?plain=1#L131).
 
 Nach Änderungen: **Dokumentation erzeugen** und einen Export-Link (`info.*Url*`) kurz prüfen.
 
 ### Schritt 7 — Optional: Schrift & zusätzliches CSS
 
-Nur für den **HTML**-Export (Tab **HTML-Export & Zusatzkapitel**, Bereich **Optional: eigene Schrift & CSS**). Die **Tooltips** (`?`) enthalten **Copy-Paste-Starter**; Hintergrund und Selektoren (`nav`, `nav ul li a`, …): Haupt-[README → HTML Schrift & CSS](../../README.md#L186). Nach Änderung wieder **Dokumentation erzeugen**.
+Nur für den **HTML**-Export (Tab **HTML-Export & Zusatzkapitel**, Bereich **Optional: eigene Schrift & CSS**). Die **Tooltips** (`?`) enthalten **Copy-Paste-Starter**; Hintergrund und Selektoren (`nav`, `nav ul li a`, …): Haupt-[README → HTML Schrift & CSS](../../README.md?plain=1#L186). Nach Änderung wieder **Dokumentation erzeugen**.

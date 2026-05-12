@@ -83,19 +83,19 @@ The **Onboarding** HTML includes a QR code and a **Copy link** control. Both use
 
 **AI context hints** are injected only into the LLM prompt; they are **not** printed in the documentation. For **guest onboarding**, prefer everyday facts. Heavy IT or project wording (adapters, repos, …) can cause the model to leak jargon into guest text; a **safety step** then replaces that AI block with neutral guest wording. That is intentional. The **resident / family** profile does not use the same guest-only restriction. Configure them in Admin under **KI documentation / AI documentation** (after enabling a provider); full wording appears in the hint above the field.
 
-Copy-paste **examples** (field IDs, syntax): [**Mermaid**](#mermaid-cookbook-examples) · [**JSON arrays**](#json-cookbook-snippets) · [**Custom CSS**](#html-custom-css-examples). **Stable URLs** for bookmarks / Admin `staticLink`: **`blob/dev/README.md#L…`** (line highlights). GitHub’s Markdown **blob** view often ignores or rewrites heading fragments (`#mermaid-cookbook-examples`, …). The **repository landing page** with a fragment — e.g. `https://github.com/crunchip77/ioBroker.autodoc#json-cookbook-snippets` — **does not** reliably jump to a README heading; open **`blob/dev/README.md#L131`** (JSON cookbook) instead. Line numbers refer to **this README on branch `dev`** (same branch as those URLs until docs are merged to **`main`**) — refresh `#L…` in `admin/jsonConfig.json` / wiki after large edits above those headings; **switch URLs back to `blob/main`** once **`main`** matches.
+Copy-paste **examples** (field IDs, syntax): [**Mermaid**](#mermaid-cookbook-examples) · [**JSON arrays**](#json-cookbook-snippets) · [**Custom CSS**](#html-custom-css-examples). **Stable URLs** for bookmarks / Admin `staticLink`: **`blob/dev/README.md?plain=1#L…`** (GitHub opens Markdown as **Preview** by default; **`?plain=1`** switches to **source** so **`#L…`** highlights the line). Heading fragments (`#mermaid-cookbook-examples`) stay unreliable in both views. The **repository landing page** with a fragment — e.g. `https://github.com/crunchip77/ioBroker.autodoc#json-cookbook-snippets` — **does not** reliably jump to a README heading; open **`blob/dev/README.md?plain=1#L131`** (JSON cookbook) instead. Line numbers refer to **this README on branch `dev`** (same branch as those URLs until docs are merged to **`main`**) — refresh `#L…` in `admin/jsonConfig.json` / wiki after large edits above those headings; **switch URLs back to `blob/main`** once **`main`** matches.
 
-`https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#L44`
+`https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md?plain=1#L44`
 
-`https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#L67`
+`https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md?plain=1#L67`
 
-`https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#L78`
+`https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md?plain=1#L78`
 
-`https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#L100`
+`https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md?plain=1#L100`
 
-`https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#L131`
+`https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md?plain=1#L131`
 
-`https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#L186`
+`https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md?plain=1#L186`
 
 ### Mermaid cookbook examples
 
@@ -268,6 +268,6 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 
 MIT License
 
-<!-- Maintainer: passage URLs use README.md lines L44 · L67 · L78 · L100 · L131 · L186 ; README.de.md L189 · L193 — sync admin/jsonConfig staticLink hrefs if headings move. Doc blob branch: **dev** in jsonConfig until README/wiki merged to **main** (then set DOC_BRANCH in scripts/apply-readme-line-anchors.js and replace blob/dev → blob/main). -->
+<!-- Maintainer: passage URLs use README.md lines L44 · L67 · L78 · L100 · L131 · L186 ; README.de.md L189 · L193 — sync admin/jsonConfig staticLink hrefs if headings move. Doc blob branch: **dev** in jsonConfig until README/wiki merged to **main** (then set DOC_BRANCH in scripts/apply-readme-line-anchors.js and replace blob/dev → blob/main). GitHub renders `.md` as Preview by default — `#L…` only scrolls in source view; links use **`?plain=1`** before **`#L…`**. -->
 
 Copyright (c) 2026 crunchip77 <41550245+crunchip77@users.noreply.github.com>
