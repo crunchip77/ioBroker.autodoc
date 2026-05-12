@@ -80,11 +80,13 @@ The **Onboarding** HTML includes a QR code and a **Copy link** control. Both use
 
 **AI context hints** are injected only into the LLM prompt; they are **not** printed in the documentation. For **guest onboarding**, prefer everyday facts. Heavy IT or project wording (adapters, repos, …) can cause the model to leak jargon into guest text; a **safety step** then replaces that AI block with neutral guest wording. That is intentional. The **resident / family** profile does not use the same guest-only restriction. Configure them in Admin under **KI documentation / AI documentation** (after enabling a provider); full wording appears in the hint above the field.
 
-Copy-paste **examples** (field IDs, syntax): [**Mermaid**](#mermaid-cookbook-examples) · [**JSON arrays**](#json-cookbook-snippets). **Stable links** for Admin `help` text after merge to `main`:
+Copy-paste **examples** (field IDs, syntax): [**Mermaid**](#mermaid-cookbook-examples) · [**JSON arrays**](#json-cookbook-snippets) · [**Custom CSS**](#html-custom-css-examples). **Stable links** for Admin `help` text after merge to `main`:
 
 `https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#mermaid-cookbook-examples`
 
 `https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#json-cookbook-snippets`
+
+`https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#html-custom-css-examples`
 
 <a id="mermaid-cookbook-examples"></a>
 
@@ -176,6 +178,28 @@ Admin stores these fields as **strings**; content must be **valid JSON** (`"` ke
 
 Max **12** sections; very long bodies are truncated at generation time.
 
+<a id="html-custom-css-examples"></a>
+
+### HTML export — custom font & CSS (examples)
+
+Under **Admin → HTML export & extra sections**, **Font stack** (`htmlFontStack`) and **Extra CSS** (`htmlExtraCss`) tweak only the **exported HTML** (not Markdown). The renderer wraps pages in `lib/htmlRenderer.js` (`wrapPage`): sidebar links live under **`nav ul li a`**, layout uses **`#layout`**, **`nav`**, and **`main`** — inspect generated HTML if you need a selector.
+
+**Font stack:** one CSS `font-family` list (risky characters `< > { }` are stripped). Example paste:
+
+```css
+"Source Serif 4", Georgia, serif
+```
+
+**Extra CSS:** append short rules after the built-in stylesheet. Prefer **existing palette tokens** (`var(--link)`, `var(--nav-bg)`, `var(--border)`, `var(--surface)`, … from the `:root` / `body.dark` blocks); **`htmlThemePreset`** swaps those via `html.autodoc-preset-*` classes — there is no separate `--accent` token on `:root` (some components use `var(--accent, #0066cc)` as a **local** fallback only).
+
+Starter snippet you can paste into **Extra CSS**:
+
+```css
+nav { width: 260px; }
+nav ul li a:hover { opacity: 0.92; }
+h2 { border-bottom-color: var(--link); }
+```
+
 ## Features (overview)
 
 - Discovery across instances, hosts, enums, scripts, aliases, userdata, system config
@@ -197,7 +221,7 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 
 - **Inventar-Delta & Sprache:** **Documentation language** (Basic) steuert auch die **einzeiligen** Texte für **gespeicherte Changelog-Einträge** und für den Hinweis **„changes since last run“** beim Export. **`hideAdminDeltaSinceLastRun`** (Advanced → *What to include & limits*) blendet die gelbe **Admin**-Delta-Box und den gleichen Unterabschnitt im **Admin-Markdown** aus — **Changelog chapter**, User, and Onboarding are unchanged.
 - **User / Family:** When AutoDoc detects **real inventory changes** since the last snapshot (not the first run), exports add a short **plain-language** notice (HTML + Markdown). **Onboarding** does not show this block.
-- **Docs — cookbook:** README sections [**Mermaid cookbook examples**](#mermaid-cookbook-examples) and [**JSON cookbook snippets**](#json-cookbook-snippets); user-guide cross-links in **`docs/user-guide/README(.de).md`**.
+- **Docs — cookbook:** README sections [**Mermaid cookbook examples**](#mermaid-cookbook-examples), [**JSON cookbook snippets**](#json-cookbook-snippets), and [**HTML custom CSS**](#html-custom-css-examples); user-guide cross-links in **`docs/user-guide/README(.de).md`**.
 - **Docs — DE user-guide:** `README.de.md` auf **Wiki-Fokus** (Tabs, Screenshots, Exporte, Übungsszenario) umgebaut; Installations-/Maintainer-Abschnitte entfernt; Verweise im Haupt-README und bei **Custom sections**-Hilfe (Admin-i18n) angepasst.
 
 - **Export-Copy / Klarheit (Admin-HTML + Admin-Markdown):** Kapitel **Betrieb – Referenz** (ehem. Troubleshooting-Konnotation) mit Top-Disclaimer; **Diagnose** mit Schnappschuss-Einleitung, **Automatische Prüfungen** (Node-Heuristik) und separatem Block **Allgemeine Erinnerungen** (OS).
