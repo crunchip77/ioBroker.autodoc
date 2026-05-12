@@ -2,16 +2,16 @@
  * GitHub blob markdown often ignores or rewrites heading fragments; #L line URLs scroll reliably.
  * Updates external README links only (not same-file #heading links).
  */
-const fs = require("fs");
-const path = require("path");
+const fs = require('fs');
+const path = require('path');
 
 const fragToLine = {
-	"documentation-instance-overview": "44",
-	"public-base-url": "67",
-	"optional-pdf-export-puppeteer": "78",
-	"mermaid-cookbook-examples": "100",
-	"json-cookbook-snippets": "131",
-	"html-custom-css-examples": "186",
+	'documentation-instance-overview': '44',
+	'public-base-url': '67',
+	'optional-pdf-export-puppeteer': '78',
+	'mermaid-cookbook-examples': '100',
+	'json-cookbook-snippets': '131',
+	'html-custom-css-examples': '186',
 };
 
 function swapFragToLine(s) {
@@ -30,16 +30,11 @@ function swapFragToLine(s) {
 	return out;
 }
 
-const root = path.join(__dirname, "..");
-for (const rel of [
-	"admin/jsonConfig.json",
-	"README.md",
-	"docs/user-guide/README.de.md",
-	"docs/user-guide/README.md",
-]) {
+const root = path.join(__dirname, '..');
+for (const rel of ['admin/jsonConfig.json', 'README.md', 'docs/user-guide/README.de.md', 'docs/user-guide/README.md']) {
 	const fp = path.join(root, rel);
-	let txt = fs.readFileSync(fp, "utf8");
+	let txt = fs.readFileSync(fp, 'utf8');
 	txt = swapFragToLine(txt);
 	fs.writeFileSync(fp, txt);
-	console.log("updated", rel);
+	console.log('updated', rel);
 }
