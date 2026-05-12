@@ -4,7 +4,7 @@ Structured help for **operators** who install and run the adapter from the [GitH
 
 - **German** wiki — Admin tabs, screenshots, fictional **„Muster‑Einfamilienhaus“** practice scenario: **[`README.de.md`](README.de.md)**  
 
-**Figures:** For several tabs you get **two images in a row**: an **SVG wireframe** (what belongs where — not real pixels) and then a **PNG** of the real Admin UI (all six tabs covered). That pairing is **intentional**. If embedded images look small on GitHub, **open the image in a new tab** or zoom the page; see **[`SCREENSHOTS.md`](assets/SCREENSHOTS.md)** (*Legibility*). Naming and privacy: same file. Per-field tooltips in Admin (`?`) remain authoritative. Project overview: **[README](../../README.md)**.
+**Figures:** For several tabs you get **two images in a row**: an **SVG wireframe** (what belongs where — not real pixels) and then a **PNG** of the real Admin UI (all six tabs covered). That pairing is **intentional**. If embedded images look small on GitHub, **open the image in a new tab** or zoom the page; see **[`SCREENSHOTS.md`](assets/SCREENSHOTS.md)** (*Legibility*, **when to reshoot**, privacy). Naming and privacy: same file. Per-field tooltips in Admin (`?`) remain authoritative. Project overview: **[README](../../README.md)**.
 
 ## Prerequisites
 

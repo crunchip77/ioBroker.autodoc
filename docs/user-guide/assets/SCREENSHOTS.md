@@ -1,5 +1,19 @@
 # Echte Screenshots für den User-Guide (optional)
 
+## Wann neu aufnehmen? (Pflege)
+
+**Nicht** bei jedem Patch-Release automatisch neue PNGs erwarten: Solange Tabs und **sichtbare** Feldreihenfolge zum bestehenden Screenshot passen, genügt oft eine **angepasste Bildunterschrift** (AutoDoc-Version aus **`package.json`**, Datum).
+
+**Neu aufnehmen oder gezielt ersetzen**, wenn:
+
+- sich **Tab-Namen**, große **Blöcke** oder **Defaults** im Admin merklich ändern und die alten Bilder **irreführen**;
+- **neue** Einstellungsbereiche dokumentiert werden, die auf den alten Shots **nicht vorkommen**;
+- Text auf den Bildern (Überschriften, Hinweise) **hart veraltet** wirkt.
+
+**Umfang:** Vollständige Scroll-Serien wie bisher sind **optional**. Für kleine Änderungen reichen oft **Ausschnitte** des betroffenen Bereichs — konsistent zum übrigen Guide halten (nicht jedes Bild Crop, jedes Volltab). **Nachziehen bei Bedarf** durch Maintainer:in ist ausdrücklich ok.
+
+---
+
 Die Dateien **`fig-*.svg`** im Ordner **`assets/`** sind **Schemas** („Drahtgitter“): sie sind **kein** Ersatz für echtes Admin‑UI‑Pixel‑Layout, laden aber ohne persönliche Daten und werden auf GitHub sauber angezeigt.
 
 Willst du **echte Screenshots**, arbeite vorzugsweise mit **neutralen Platzhaltern** oder **Demo-Installation**:
@@ -10,7 +24,7 @@ Willst du **echte Screenshots**, arbeite vorzugsweise mit **neutralen Platzhalte
 | ----------------------- | ---------------------------- |
 | `screen-grundeinstellungen-admin.png` | Tab **Grundeinstellungen**, nur nicht-kritische Felder sichtbar (Projektname z. B. „Demo …“). |
 | `screen-meine-dokumentation-admin.png` … `screen-meine-dokumentation-admin-4.png` | Tab **Meine Dokumentation** als **vier** zusammenhängende Screenshots (langer Scroll): Projekt/Gästetexte; Playbook/Mermaid/Auto-Topologie/Notfall; Adapter-/Raum-Notizen; Sichtbarkeit pro Profil. |
-| `screen-erweitert-basisurl-admin.png` … `screen-erweitert-basisurl-admin-2.png` | Tab **Erweitert**, **zwei** Teile (Scroll): Grenzen & **States-Modus** & Basis-URL; **Setup-Score**, Dateisystem-Export, **PDF**. Basis-URL/Pfade immer **erfunden** oder geschwärzt. |
+| `screen-erweitert-basisurl-admin.png` … `screen-erweitert-basisurl-admin-2.png` | Tab **Erweitert**, **zwei** Teile (Scroll): Grenzen & **Speicher-/States-Hinweis** (Platzhalter) & Basis-URL; **Setup-Score**, Dateisystem-Export, **PDF**. Basis-URL/Pfade immer **erfunden** oder geschwärzt. |
 | `screen-html-export-pdf-hint-admin.png` … `screen-html-export-pdf-hint-admin-3.png` | Tab **HTML-Export & Zusatzkapitel**, **drei** Teile: Darstellung/PDF-Hinweis; Admin- & User-Kapitel (**JSON**); Onboarding-Kapitel, **eigene Kapitel** (**JSON**), Schrift/CSS-Hinweis. Keine sensiblen Daten in Logo/JSON-Demos. |
 | `screen-benachrichtigungen-admin.png` | Tab **Benachrichtigungen** — Adapter‑Instanz, Empfänger, Vorlage: **keine** echten Tokens/Chat‑IDs in öffentlichen Commits (Platzhalter oder leere Felder). |
 | `screen-ki-dokumentation-admin.png` … `screen-ki-dokumentation-admin-2.png` | Tab **KI-Dokumentation**, **zwei** Teile (Scroll): Anbieter/Modell/URL/Timeout; Kontexthinweise, Temperatur, Opt‑in „Skripte erklären“. **Keine** API‑Keys, Abrechnungsdaten oder produktiven Cloud‑Felder zeigen — lieber **Ollama‑localhost‑Demo** oder schwärzen. |
@@ -20,8 +34,8 @@ Willst du **echte Screenshots**, arbeite vorzugsweise mit **neutralen Platzhalte
 - **PNG** oder **WebP**; für **lesbare Beschriftungen** im Admin (v. a. dunkles Theme) lieber **≥ 1280 px** Breite **oder** vor der Aufnahme **Browser-Zoom 125–150 %** und dann den sichtbaren Bereich erfassen. Die frühere **920–1280 px**-Spanne war knapp — bei Bedarf **bis ~1680 px** gehen, solange die Repo-Größe noch vertretbar ist (PNG komprimieren statt harte Qualitätsverluste).
 - **Dateigröße:** **< 350 KB** anstreben, aber **Lesbarkeit** hat Vorrang; lieber etwas größere Datei als unleserlich kleine Schrift.
 - **Bildunterschrift (Markdown):** Unter jedem eingebundenen **PNG** in **`README.md`** / **`README.de.md`** dieselbe Kurzform verwenden und bei **neuen Aufnahmen** anpassen:
-  - **EN:** `*Capture: AutoDoc **0.9.36**, ioBroker Admin **≥ 7.6.20** (May **2026**).*` — `0.9.36` an **`package.json` `version`**, Monat/Jahr an ReShoot, Admin-Version an **`io-package.json` → `common.globalDependencies`** (Admin).
-  - **DE:** `*Aufnahme: AutoDoc **0.9.36**, ioBroker Admin **≥ 7.6.20** (Stand **2026-05**).*`
+  - **EN:** `*Capture: AutoDoc **0.9.39**, ioBroker Admin **≥ 7.6.20** (May **2026**).*` — `0.9.39` an **`package.json` `version`**, Monat/Jahr an ReShoot, Admin-Version an **`io-package.json` → `common.globalDependencies`** (Admin).
+  - **DE:** `*Aufnahme: AutoDoc **0.9.39**, ioBroker Admin **≥ 7.6.20** (Stand **2026-05**).*`
 
 ## Lesbarkeit (GitHub, eingebettete Vorschau)
 
