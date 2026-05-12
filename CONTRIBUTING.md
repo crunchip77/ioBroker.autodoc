@@ -45,7 +45,7 @@ After `npm install`, from the repository root (**working tree = this adapter**, 
 npm run adapter-check
 ```
 
-This runs **`@iobroker/repochecker@5.11.1`** in **`--local`** mode against **`https://github.com/crunchip77/ioBroker.autodoc` `main`** (see `package.json` → **`adapter-check`**). **Note:** **`--local`** can hit **`[E9999] … reading 'includes'`** (tooling bug: first repo scan uses **`context.readFiles`** before it exists). If that happens, use the hosted [Adapter Checker](https://adapter-check.iobroker.in/) for the same repo/branch, or upgrade **`@iobroker/repochecker`** when a fixed release is available.
+This runs **`@iobroker/repochecker@5.11.1`** in **`--local`** mode against **`https://github.com/crunchip77/ioBroker.autodoc` `main`** (see `package.json` → **`adapter-check`**). **Note:** **`--local`** can hit **`[E9999] … reading 'includes'`** (tooling bug: first repo scan uses **`context.readFiles`** before it exists). The **hosted** checker ([Adapter Checker](https://adapter-check.iobroker.in/) / **`iobroker.dev`**) is an alternative but may return **504 Gateway Timeout** or fail under load — retry later, try branch **`main`**, or rely on **`npm run adapter-check`** and CI. Upgrade **`@iobroker/repochecker`** when a fixed release is available.
 
 Typical messages while **ioBroker.repositories** PR is still open:
 
