@@ -236,11 +236,11 @@
 	"Onboarding chapter order JSON help": "Tableau d’ids de chapitres, ex. `[\"quickstart\",\"tips\",\"rooms\",\"adapters\"]`. Ids valides : `welcome`, `quickstart`, `tips`, `guestHelp`, `stats`, `ai`, `capabilities`, `mermaid`, `rooms`, `routines`, `ownerPlaybook`, `automations`, `adapters`, `custom`, `hint`, `system`, `manual`. Inconnus ignorés ; omis ajoutés à la fin dans l’ordre par défaut. `[]` = ordre intégré. `quickstart` affiche toujours accueil, compteurs et prochaines étapes ; le bloc découverte uniquement si `quickStart.hasContent`.",
 	"Advanced base URL callout": "Invités, QR, lien copié : l’URL tapée dans le navigateur du téléphone pour ouvrir l’admin ioBroker (schéma + hôte + port, sans / final). Si elle diffère du nom interne Docker ou du nom public derrière un proxy, la saisir explicitement — la détection auto échoue souvent dans les conteneurs ou avec HTTPS devant.",
 	"copyForForum": "Copier pour le forum",
-	"Docs link README documentation overview": "README — Langue & deltas (GitHub)",
-	"Docs link README public base URL": "README — URL publique / QR (GitHub)",
+	"Docs link README documentation overview": "Wiki DE — Langue & aperçu (GitHub)",
+	"Docs link README public base URL": "Wiki DE — URL publique / QR (GitHub)",
 	"Docs link wiki German config": "Wiki allemand — Configuration (GitHub)",
 	"Docs link README Mermaid cookbook": "Wiki DE — Mermaid (guide utilisateur, GitHub)",
-	"Docs link README JSON cookbook": "README — Snippets JSON (GitHub)",
-	"Docs link README PDF export": "README — Export PDF / Puppeteer (GitHub)",
-	"Docs link README HTML CSS": "README — CSS HTML (GitHub)"
+	"Docs link README JSON cookbook": "Wiki DE — JSON (ordre & exemples, GitHub)",
+	"Docs link README PDF export": "Wiki DE — Export PDF / Puppeteer (GitHub)",
+	"Docs link README HTML CSS": "Wiki DE — Police & CSS personnalisés (GitHub)"
 }

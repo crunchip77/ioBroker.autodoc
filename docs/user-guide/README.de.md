@@ -4,22 +4,22 @@ Diese Seite richtet sich an **Betreuer** und **Haus-Admins**, die die **AutoDoc-
 
 Die **Inline-Hilfe** bei jedem Feld im Admin (`jsonConfig`) bleibt die **fachliche Referenz** — diese Datei ergänzt sie um **Überblick, Bilder und ein Übungsszenario**. **Klickbare Dokumentation:** In den Instanz-Tabs zeigt AutoDoc unter den betreffenden Feldern **eigene GitHub-Links** (nicht nur Fließtext in der `?`-Tooltip-Hilfe — dort sind URLs meist nicht anklickbar).
 
-## Schnellzugriff — englisches Haupt-README (gleiche Ziele wie die Admin-Links)
+## Schnellzugriff — stabile Wiki-Anker (gleiche Ziele wie die Admin-Links)
 
-Die gleichen **sechs Themen** wie unter den Instanz-Tabs, hier zum Kopieren/Lesen auf GitHub (**Vorschau**). Auf GitHub unbedingt Branch **`dev`** und diese Datei **`docs/user-guide/README.de.md`** — auf **`main`** kann ein älterer Stand ohne diese Liste liegen.
+Die gleichen **sechs Themen** wie unter den Instanz-Tabs, hier zum Kopieren/Lesen auf GitHub (**Vorschau**, **`blob/dev/docs/user-guide/README.de.md#…`**). Auf **`main`** kann ein älterer Stand ohne diese Liste liegen.
 
-- [Dokumentationssprache & Deltas](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#documentation-instance-overview)
-- [Öffentliche Basis-URL / QR](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#public-base-url)
-- [PDF-Export (Puppeteer)](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#optional-pdf-export-puppeteer)
-- [Mermaid-Kochbuch](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#mermaid-cookbook-examples)
-- [JSON-Kochbuch](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#json-cookbook-snippets)
-- [HTML — Schrift & CSS](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#html-custom-css-examples)
+- [Dokumentationssprache & Deltas](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/docs/user-guide/README.de.md#wiki-admin-doc-lang)
+- [Öffentliche Basis-URL / QR](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/docs/user-guide/README.de.md#wiki-step3-qr-base-url)
+- [PDF-Export (Puppeteer)](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/docs/user-guide/README.de.md#wiki-admin-pdf-export)
+- [Mermaid-Kochbuch](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/docs/user-guide/README.de.md#wiki-step5-mermaid)
+- [JSON-Kochbuch](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/docs/user-guide/README.de.md#wiki-admin-json-cookbook)
+- [HTML — Schrift & CSS](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/docs/user-guide/README.de.md#wiki-admin-html-css)
 
-**Technische Grundlagen** (Systemvoraussetzungen, Projektbeschreibung) und **Copy-Paste-Beispiele** für **Mermaid**, **JSON** und **HTML/CSS**: englisches Haupt-[README](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md); die **direkten Sprünge** zu den Kochbuch-Abschnitten stehen in der Liste **„Schnellzugriff“** oben (Punkte **Mermaid-Kochbuch**, **JSON-Kochbuch**, **HTML — Schrift & CSS** sowie die ersten drei Themen).
+**Technische Grundlagen** (Systemvoraussetzungen, Projektbeschreibung) stehen im englischen Haupt-[README](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md). **Ausführliche Copy-Paste-Beispiele** für **Mermaid**, **JSON** und **HTML/CSS** ebenfalls dort (**Fragmente** **`#mermaid-cookbook-examples`**, **`#json-cookbook-snippets`**, **`#html-custom-css-examples`**). Kurzüberblicke und Tab-Zuordnung auf Deutsch: **„Schnellzugriff“** oben (stabile Wiki-Anker).
 
-**Stabile GitHub-Links:** Admin-**`staticLink`** und der Abschnitt **„Schnellzugriff“** oben nutzen **`blob/dev/…#.…`** (Markdown-**Vorschau** — lesbar, Tabellen/Listen wie gewohnt). Die **Fragmente** entsprechen den englischen Überschriften im Haupt-[README](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md) (z. B. `#mermaid-cookbook-examples`); Sprung zum Abschnitt ist bei GitHub **nicht garantiert**, aber üblicherweise brauchbarer als Rohquelle (`?plain=1`). Die **Repo-Startseite** mit `#…` bleibt unzuverlässig. **`main`** noch ohne gleichen Stand → weiter **`dev`** in der URL; nach Merge **`blob/main`** und Slugs prüfen.
+**Stabile GitHub-Links:** Admin-**`staticLink`** und **„Schnellzugriff“** nutzen **`blob/dev/docs/user-guide/README.de.md#…`** mit festen **HTML-IDs** (Markdown-**Vorschau**). **Ausführliche Copy-Paste-Kochbücher** (Mermaid, JSON, CSS) bleiben im englischen Haupt-[README](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md); dort entsprechen die **Überschriften-Slugs** z. B. **`#mermaid-cookbook-examples`** — Sprung ist bei GitHub **best effort**. Die **Repo-Startseite** mit `#…` bleibt unzuverlässig. **`main`** noch ohne gleichen Stand → weiter **`dev`**; nach Merge **`blob/main`** und Anker prüfen.
 
-Die Zuordnung **Haupt-[README](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md)** (**Fragmente**, grob dieselben Zeilen wie früher **L44·L67·L78·L100·L131·L186**): **`#documentation-instance-overview`**, **`#public-base-url`**, **`#optional-pdf-export-puppeteer`**, **`#mermaid-cookbook-examples`**, **`#json-cookbook-snippets`**, **`#html-custom-css-examples`**. **DE-Wiki-Anker** (stabile IDs in **`README.de.md`**): **`#wiki-step3-qr-base-url`**, **`#wiki-step4-custom-sections-json`**, **`#wiki-step5-mermaid`**. **Nach großen Umbauten** Slugs/IDs und **`admin/jsonConfig.json`** abstimmen (Pflegehinweis auch als HTML-Kommentar vor der Lizenz im Haupt-README).
+**Englisches Haupt-[README](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md)** (Kochbuch-Fragmente, grob **L44·L67·L78·L100·L131·L186**): **`#documentation-instance-overview`**, **`#public-base-url`**, **`#optional-pdf-export-puppeteer`**, **`#mermaid-cookbook-examples`**, **`#json-cookbook-snippets`**, **`#html-custom-css-examples`**. **DE-Wiki-Anker** (stabile **`id=`** in dieser Datei): **`#wiki-admin-doc-lang`**, **`#wiki-admin-pdf-export`**, **`#wiki-admin-json-cookbook`**, **`#wiki-admin-html-css`**, **`#wiki-step3-qr-base-url`**, **`#wiki-step4-custom-sections-json`**, **`#wiki-step5-mermaid`**. **Nach großen Umbauten** IDs und **`admin/jsonConfig.json`** abstimmen (Pflegehinweis auch als HTML-Kommentar vor der Lizenz im Haupt-README).
 
 **Warum früher oft nur der PDF-Link zu stimmen schien:** Unter der Repo-Wurzel `#…` hat nur **`### Optional PDF export …`** zufällig denselben Slug wie `#optional-pdf-export-puppeteer` geliefert; die anderen Kurz-Hashes passten dort nicht — oder springen im **Blob**-Viewer trotzdem nicht zuverlässig.
 
@@ -35,6 +35,8 @@ Die Zuordnung **Haupt-[README](https://github.com/crunchip77/ioBroker.autodoc/bl
 - **Erweitert → Ausblenden „Änderungen seit letztem Lauf“** (`hideAdminDeltaSinceLastRun`): blendet nur die **gelbe Delta-Box** in der **Admin**-HTML-Systemübersicht und den passenden Block im **Admin**-Markdown aus; **Changelog-Kapitel**, User und Onboarding bleiben unverändert.
 - **User/Familie**: bei **echten** Inventaränderungen seit dem letzten Schnappschuss (nicht beim ersten Lauf) erscheint ein kurzer **Alltagssatz** unter dem Titelblock — **Onboarding** nicht.
 - **Basis-URL / QR / „Link kopieren“**: dieselbe Einstellung wie der Browser-Zugang zum Admin, **ohne** Slash am Ende; nach Änderung **Dokumentation erzeugen**. Ausführlich: **„Schnellzugriff“** → *Öffentliche Basis-URL / QR*.
+<a id="wiki-admin-pdf-export"></a>
+
 - **PDF**: optional **`puppeteer`** im **Adapterverzeichnis**; Schalter unter **Erweitert** oder Datenpunkt **`action.exportPdf`**. Siehe **„Schnellzugriff“** → *PDF-Export (Puppeteer)*.
 - **Dateisystem-Export / Docker**: Host-Ordner einbinden und im Adapter den **Container-Pfad** eintragen — Kurzhinweis auch in der Feldhilfe.
 - **Große Bilder / Redis:** Große Bilder oder Binärdateien **nicht** als **State-Werte** in der **Objektdatenbank** ablegen — bei Backend **Redis** treiben große Blobs den RAM hoch. Lieber **externe URLs** oder kleine **SVG**. AutoDoc legt Volltext ohnehin nur unter **`/files/`** ab; **`documentation.markdown` / `.html` / `.json`** sind **kurze Platzhalter** (kein Ersatz für Medienspeicher) — siehe [PLAN.md — Medien (MVP)](../../PLAN.md#architektur-medien-mvp).
@@ -168,6 +170,8 @@ Nach inhaltlichen Änderungen: **Dokumentation generieren** (Button oder Datenpu
 
 **Ausganglage:** Zweistöckiges Einfamilienhaus mit ioBroker (**Heizszenen**, Licht u. a. in **Wohnzimmer**, **Treppenhaus**, Kinderzimmer), ergänzend z. B. Rauchmelder oder KNX — es geht um **nachvollziehbare Beispieltexte**, nicht um echte Hausdaten.
 
+<a id="wiki-admin-doc-lang"></a>
+
 ### Schritt 1 — Basis
 
 - Projektbezeichnung: z. B. **„Musterhaus Schulweg“** (keine echte Anschrift).
@@ -217,11 +221,15 @@ Mit installierter **Mermaid-CLI** werden Diagramme als **SVG** ins HTML eingebet
 
 **Ausblenden:** Kapitel-IDs **`mermaid`** (manuell) und **`mermaidAuto`** (nur Auto-Host-Graph) in den jeweiligen **Ausblenden**-Listen.
 
+<a id="wiki-admin-json-cookbook"></a>
+
 ### Schritt 6 — Kapitelreihenfolge oder ausblenden
 
 Standard belassen: **`[]`** in den JSON-Feldern. **Mustervorlagen:** **„Schnellzugriff“** → *JSON-Kochbuch*.
 
 Nach Änderungen: **Dokumentation erzeugen** und einen Export-Link (`info.*Url*`) kurz prüfen.
+
+<a id="wiki-admin-html-css"></a>
 
 ### Schritt 7 — Optional: Schrift & zusätzliches CSS
 

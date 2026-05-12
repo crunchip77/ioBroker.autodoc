@@ -76,7 +76,7 @@
 				"_docsLinkReadmeDocLangBasic": {
 					"type": "staticLink",
 					"label": "Docs link README documentation overview",
-					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#documentation-instance-overview",
+					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/docs/user-guide/README.de.md#wiki-admin-doc-lang",
 					"target": "_blank",
 					"newLine": true,
 					"xs": 12,
@@ -679,7 +679,7 @@
 				"_docsLinkReadmeDocLangAdvanced": {
 					"type": "staticLink",
 					"label": "Docs link README documentation overview",
-					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#documentation-instance-overview",
+					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/docs/user-guide/README.de.md#wiki-admin-doc-lang",
 					"target": "_blank",
 					"newLine": true,
 					"xs": 12,
@@ -754,7 +754,7 @@
 				"_docsLinkReadmePublicBaseUrl": {
 					"type": "staticLink",
 					"label": "Docs link README public base URL",
-					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#public-base-url",
+					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/docs/user-guide/README.de.md#wiki-step3-qr-base-url",
 					"target": "_blank",
 					"newLine": true,
 					"xs": 12,
@@ -893,7 +893,7 @@
 				"_docsLinkReadmePdfExport": {
 					"type": "staticLink",
 					"label": "Docs link README PDF export",
-					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#optional-pdf-export-puppeteer",
+					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/docs/user-guide/README.de.md#wiki-admin-pdf-export",
 					"target": "_blank",
 					"newLine": true,
 					"xs": 12,
@@ -1010,7 +1010,7 @@
 				"_docsLinkReadmeJsonCookbook": {
 					"type": "staticLink",
 					"label": "Docs link README JSON cookbook",
-					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#json-cookbook-snippets",
+					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/docs/user-guide/README.de.md#wiki-admin-json-cookbook",
 					"target": "_blank",
 					"newLine": true,
 					"xs": 12,
@@ -1276,7 +1276,7 @@
 				"_docsLinkReadmeHtmlCss": {
 					"type": "staticLink",
 					"label": "Docs link README HTML CSS",
-					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#html-custom-css-examples",
+					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/docs/user-guide/README.de.md#wiki-admin-html-css",
 					"target": "_blank",
 					"newLine": true,
 					"xs": 12,
