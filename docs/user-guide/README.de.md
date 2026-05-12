@@ -30,6 +30,8 @@ Die **sechs häufigsten Schnellzugriff-Themen** sind wie folgt aufgeteilt (Branc
 
 **Häufiger Fehler:** **`raw.githubusercontent.com/…/README.md`** ist nur **Plaintext** — dort funktionieren **`#…`-Sprünge praktisch nicht**. Immer die **GitHub-Vorschau** öffnen (`github.com/…/blob/<branch>/…#.…`), wie die Admin-Links sie setzen.
 
+**Sprungmarken:** Ziele wie **`#wiki-admin-pdf-export`** und **`#wiki-step3-qr-base-url`** sitzen auf **`h2`/`h3` mit festem `id=`** — die GitHub-Vorschau scrollt dorthin zuverlässiger als bei einem bloßen **`<a id="…"></a>`** ohne Überschrift (wirkt oft wie „immer Seitenanfang“).
+
 **Englisches Haupt-[README](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md)** (Kochbuch & weitere Fragmente, grob **L44·L67·L78·L100·L131·L186**): u. a. **`#mermaid-cookbook-examples`**, **`#json-cookbook-snippets`**, **`#html-custom-css-examples`**. **DE-Wiki-Anker** (nur noch für Kontext-Links / Abschnitte hier): **`#wiki-overview-registerkarten`**, **`#wiki-admin-doc-lang`**, **`#wiki-admin-pdf-export`**, **`#wiki-admin-json-cookbook`**, **`#wiki-admin-html-css`**, **`#wiki-step3-qr-base-url`**, **`#wiki-step4-custom-sections-json`**, **`#wiki-step5-mermaid`**. **Nach großen Umbauten** IDs und **`admin/jsonConfig.json`** abstimmen (Pflegehinweis auch als HTML-Kommentar vor der Lizenz im Haupt-README).
 
 **Warum früher oft nur der PDF-Link zu stimmen schien:** Unter der Repo-Wurzel `#…` hat nur **`### Optional PDF export …`** zufällig denselben Slug wie `#optional-pdf-export-puppeteer` geliefert; die anderen Kurz-Hashes passten dort nicht — oder springen im **Blob**-Viewer trotzdem nicht zuverlässig.
@@ -47,15 +49,15 @@ Die **sechs häufigsten Schnellzugriff-Themen** sind wie folgt aufgeteilt (Branc
 - **User/Familie**: bei **echten** Inventaränderungen seit dem letzten Schnappschuss (nicht beim ersten Lauf) erscheint ein kurzer **Alltagssatz** unter dem Titelblock — **Onboarding** nicht.
 - **Basis-URL / QR / „Link kopieren“**: dieselbe Einstellung wie der Browser-Zugang zum Admin, **ohne** Slash am Ende; nach Änderung **Dokumentation erzeugen**. Ausführlich: **„Schnellzugriff“** → *Öffentliche Basis-URL / QR*.
 
-- <a id="wiki-admin-pdf-export"></a>**PDF**: optional **`puppeteer`** im **Adapterverzeichnis**; Schalter unter **Erweitert** oder Datenpunkt **`action.exportPdf`**. Siehe **„Schnellzugriff“** → *PDF-Export (Puppeteer)*.
+<h3 id="wiki-admin-pdf-export">PDF-Export (Puppeteer)</h3>
+
+- **PDF**: optional **`puppeteer`** im **Adapterverzeichnis**; Schalter unter **Erweitert** oder Datenpunkt **`action.exportPdf`**. Siehe **„Schnellzugriff“** → *PDF-Export (Puppeteer)*.
 - **Dateisystem-Export / Docker**: Host-Ordner einbinden und im Adapter den **Container-Pfad** eintragen — Kurzhinweis auch in der Feldhilfe.
 - **Große Bilder / Redis:** Große Bilder oder Binärdateien **nicht** als **State-Werte** in der **Objektdatenbank** ablegen — bei Backend **Redis** treiben große Blobs den RAM hoch. Lieber **externe URLs** oder kleine **SVG**. AutoDoc legt Volltext ohnehin nur unter **`/files/`** ab; **`documentation.markdown` / `.html` / `.json`** sind **kurze Platzhalter** (kein Ersatz für Medienspeicher) — siehe [PLAN.md — Medien (MVP)](../../PLAN.md#architektur-medien-mvp).
 
 ---
 
-<a id="wiki-overview-registerkarten"></a>
-
-## Registerkarten — was gehört wohin?
+<h2 id="wiki-overview-registerkarten">Registerkarten — was gehört wohin?</h2>
 
 1. **Grundeinstellungen** — **Projektname** und **Dokumentationssprache** (alle Exporte); welches **Markdown-Profil** standardmäßig erzeugt wird; **wann** neu generiert wird (Start, Zeitplan, Adapteränderungen).
 2. **Meine Dokumentation** — **Leser-Texte** für Familie und Gäste (Notizen, Abläufe, Playbook); optionale **Notfall-Kurzzeilen**; optional **Mermaid** und **Auto-Host-Topologie**; Filter „was ausblenden“ für User vs. Onboarding.
@@ -182,9 +184,7 @@ Nach inhaltlichen Änderungen: **Dokumentation generieren** (Button oder Datenpu
 
 **Ausganglage:** Zweistöckiges Einfamilienhaus mit ioBroker (**Heizszenen**, Licht u. a. in **Wohnzimmer**, **Treppenhaus**, Kinderzimmer), ergänzend z. B. Rauchmelder oder KNX — es geht um **nachvollziehbare Beispieltexte**, nicht um echte Hausdaten.
 
-<a id="wiki-admin-doc-lang"></a>
-
-### Schritt 1 — Basis
+<h3 id="wiki-admin-doc-lang">Schritt 1 — Basis</h3>
 
 - Projektbezeichnung: z. B. **„Musterhaus Schulweg“** (keine echte Anschrift).
 - Dokumentationssprache: **DE**.
@@ -197,15 +197,11 @@ Nach inhaltlichen Änderungen: **Dokumentation generieren** (Button oder Datenpu
 - **`ownerPlaybookNote`**: wenige Stichpunkte aus dem Alltag (z. B. **Warmwasser** erst nach …).
 - Felder dürfen **leer** bleiben — ohne eure Texte füllt sich nichts von alleine.
 
-<a id="wiki-step3-qr-base-url"></a>
-
-### Schritt 3 — QR & Link (Tab **Erweitert**)
+<h3 id="wiki-step3-qr-base-url">Schritt 3 — QR &amp; Link (Tab Erweitert)</h3>
 
 **Basis-URL** = genau die Adresse, mit der **ihr** den Admin im Browser öffnet (**https://…** oder **http://host:8081**), **ohne** Schrägstrich am Ende. Danach wieder **Dokumentation erzeugen**. Test zuerst im **Heim-WLAN**, nicht öffentlich exponieren. Ausführlicher: **„Schnellzugriff“** oben → *Öffentliche Basis-URL / QR*.
 
-<a id="wiki-step4-custom-sections-json"></a>
-
-### Schritt 4 — Zusätzliches Markdown-Kapitel (Tab **HTML … & Zusatzkapitel** → **Custom sections**, **`customDocSectionsJson`**)
+<h3 id="wiki-step4-custom-sections-json">Schritt 4 — Zusätzliches Markdown-Kapitel (Custom sections, JSON)</h3>
 
 Im Feld: gültiges **JSON-Array** mit Objekten `title`, `body`, optional `profiles` — Platzhalter und Hilfetext im Admin beachten.
 
@@ -223,9 +219,7 @@ Im Feld: gültiges **JSON-Array** mit Objekten `title`, `body`, optional `profil
 
 Maximal **12** Einträge; sehr lange Texte werden beim Erzeugen gekürzt.
 
-<a id="wiki-step5-mermaid"></a>
-
-### Schritt 5 — Optional Mermaid (Tab **„Meine Dokumentation“**)
+<h3 id="wiki-step5-mermaid">Schritt 5 — Optional Mermaid (Tab „Meine Dokumentation“)</h3>
 
 Platzhalter im Feld überschreiben. **Copy-Paste-Diagramme:** **„Schnellzugriff“** → *Mermaid-Kochbuch*.
 
@@ -233,16 +227,12 @@ Mit installierter **Mermaid-CLI** werden Diagramme als **SVG** ins HTML eingebet
 
 **Ausblenden:** Kapitel-IDs **`mermaid`** (manuell) und **`mermaidAuto`** (nur Auto-Host-Graph) in den jeweiligen **Ausblenden**-Listen.
 
-<a id="wiki-admin-json-cookbook"></a>
-
-### Schritt 6 — Kapitelreihenfolge oder ausblenden
+<h3 id="wiki-admin-json-cookbook">Schritt 6 — Kapitelreihenfolge oder ausblenden</h3>
 
 Standard belassen: **`[]`** in den JSON-Feldern. **Mustervorlagen:** **„Schnellzugriff“** → *JSON-Kochbuch*.
 
 Nach Änderungen: **Dokumentation erzeugen** und einen Export-Link (`info.*Url*`) kurz prüfen.
 
-<a id="wiki-admin-html-css"></a>
-
-### Schritt 7 — Optional: Schrift & zusätzliches CSS
+<h3 id="wiki-admin-html-css">Schritt 7 — Optional: Schrift &amp; zusätzliches CSS</h3>
 
 Nur für den **HTML**-Export (Tab **HTML-Export & Zusatzkapitel**, Bereich **Optional: eigene Schrift & CSS**). Die **Tooltips** (`?`) enthalten **Copy-Paste-Starter**; Hintergrund und Selektoren (`nav`, `nav ul li a`, …): **„Schnellzugriff“** → *HTML — Schrift & CSS*. Nach Änderung wieder **Dokumentation erzeugen**.

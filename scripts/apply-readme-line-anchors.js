@@ -2,7 +2,7 @@
  * Keeps GitHub doc links on **rendered** blob URLs (`blob/<branch>/…/*.md#…`) — not `?plain=1` + `#L…`
  * (source view is unreadable for operators).
  *
- * Maps legacy line URLs (`?plain=1#L###`) to **README heading slugs**; DE wiki uses explicit `<a id="…">`.
+ * Maps legacy line URLs (`?plain=1#L###`) to **README heading slugs**; DE wiki uses explicit **`id=` on `h2`/`h3`** (GitHub scroll targets).
  * Branch: set **main** after merging if URLs should track **main**.
  */
 const fs = require('fs');
