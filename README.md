@@ -41,7 +41,7 @@ No other adapters are **required** for AutoDoc itself. Optional: a **web server*
 
 ## Configuration
 
-<a id="documentation-instance-overview"></a>
+### Documentation instance overview
 
 Configure the instance in **ioBroker Admin** (tabs for basics, manual notes, advanced options, notifications, AI). Generation can be triggered manually, on startup, on a timer, and after adapter changes (debounced).
 
@@ -64,9 +64,7 @@ Useful **states** (selection): `action.generate`; **`action.exportPdf`** (writes
 - **Photos and large binaries:** do **not** store big images or blobs as **large state values** in ioBroker’s **object database** — **especially with Redis** (binary payloads inflate RAM). Use **external URLs** (your NAS, HTTP server) or small **inline SVG** diagrams; the same guideline keeps **jsonl** setups predictable. AutoDoc keeps **full** Markdown/HTML/JSON under **`/files/`**; **`documentation.markdown`**, **`documentation.html`**, and **`documentation.json`** are **short placeholders** only — not a media store.
 - Rationale, options, and future media work: [`PLAN.md` — Media (MVP) & limits](PLAN.md#architektur-medien-mvp) and [Architecture boundaries](PLAN.md#architektur-grenzen).
 
-<a id="public-base-url"></a>
-
-### Public base URL (QR code and “Copy link”)
+### Public base URL
 
 The **Onboarding** HTML includes a QR code and a **Copy link** control. Both use the same target: the onboarding file under `/files/autodoc.<instance>/autodoc-onboarding.html`, prefixed with the **ioBroker base URL** from the adapter settings (**Advanced** tab: *ioBroker base URL (optional)*).
 
@@ -77,8 +75,6 @@ The **Onboarding** HTML includes a QR code and a **Copy link** control. Both use
 
 **Filesystem export path** writes the three HTML profiles to a real directory (in addition to ioBroker’s `/files/…` storage). In **Docker**, map a host folder into the container and set **export path** to the **container-side** path (not the Unraid/host path). See the field help in Admin for a short reminder.
 
-<a id="optional-pdf-export-puppeteer"></a>
-
 ### Optional PDF export (Puppeteer)
 
 **Best effort:** after a successful documentation run, you can create **`autodoc-admin.pdf`**, **`autodoc-user.pdf`**, and **`autodoc-onboarding.pdf`** from the same HTML that is stored under `/files/` (headless Chromium via **`puppeteer`**, declared as an **optional** npm dependency — same major line as **`@mermaid-js/mermaid-cli`**). Enable **Generate PDF after each documentation run** in **Advanced** next to the filesystem export, or trigger **`action.exportPdf`** manually. PDFs are written under **`/files/autodoc.<instance>/`** and mirrored to **Filesystem export path** when that path is set. **Embedded Mermaid SVG** (when mmdc ran during generation) prints without extra network; **jsDelivr** client Mermaid still needs internet during the PDF step. Without a working Chromium stack, PDF creation is skipped with a clear log line — HTML/Markdown generation is unaffected.
@@ -87,7 +83,7 @@ The **Onboarding** HTML includes a QR code and a **Copy link** control. Both use
 
 **AI context hints** are injected only into the LLM prompt; they are **not** printed in the documentation. For **guest onboarding**, prefer everyday facts. Heavy IT or project wording (adapters, repos, …) can cause the model to leak jargon into guest text; a **safety step** then replaces that AI block with neutral guest wording. That is intentional. The **resident / family** profile does not use the same guest-only restriction. Configure them in Admin under **KI documentation / AI documentation** (after enabling a provider); full wording appears in the hint above the field.
 
-Copy-paste **examples** (field IDs, syntax): [**Mermaid**](#mermaid-cookbook-examples) · [**JSON arrays**](#json-cookbook-snippets) · [**Custom CSS**](#html-custom-css-examples). **Stable links** for Admin `help` text after merge to `main` (repo root + fragment — scrolls reliably on GitHub):
+Copy-paste **examples** (field IDs, syntax): [**Mermaid**](#mermaid-cookbook-examples) · [**JSON arrays**](#json-cookbook-snippets) · [**Custom CSS**](#html-custom-css-examples). **Stable links** for Admin `help` text after merge to `main` (repository root `#…` — each fragment matches a **`###` heading** below so GitHub scrolls reliably):
 
 `https://github.com/crunchip77/ioBroker.autodoc#mermaid-cookbook-examples`
 
@@ -100,8 +96,6 @@ Copy-paste **examples** (field IDs, syntax): [**Mermaid**](#mermaid-cookbook-exa
 `https://github.com/crunchip77/ioBroker.autodoc#public-base-url`
 
 `https://github.com/crunchip77/ioBroker.autodoc#optional-pdf-export-puppeteer`
-
-<a id="mermaid-cookbook-examples"></a>
 
 ### Mermaid cookbook examples
 
@@ -133,8 +127,6 @@ flowchart LR
 
 - Stick to **supported Mermaid** constructs you have seen working elsewhere; exotic directives may break `mmdc`.
 - **Auto host topology** is separate (`autoMermaidHostGraph`); hide it with chapter id **`mermaidAuto`** in the Admin hide list, **`mermaid`** for this manual diagram only (`lib/docTemplateConfig.js`).
-
-<a id="json-cookbook-snippets"></a>
 
 ### JSON cookbook snippets
 
@@ -191,9 +183,7 @@ Admin stores these fields as **strings**; content must be **valid JSON** (`"` ke
 
 Max **12** sections; very long bodies are truncated at generation time.
 
-<a id="html-custom-css-examples"></a>
-
-### HTML export — custom font & CSS (examples)
+### HTML custom CSS examples
 
 Under **Admin → HTML export & extra sections**, **Font stack** (`htmlFontStack`) and **Extra CSS** (`htmlExtraCss`) tweak only the **exported HTML** (not Markdown). The renderer wraps pages in `lib/htmlRenderer.js` (`wrapPage`): sidebar links live under **`nav ul li a`**, layout uses **`#layout`**, **`nav`**, and **`main`** — inspect generated HTML if you need a selector.
 

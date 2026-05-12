@@ -4,9 +4,9 @@ Diese Seite richtet sich an **Betreuer** und **Haus-Admins**, die die **AutoDoc-
 
 Die **Inline-Hilfe** bei jedem Feld im Admin (`jsonConfig`) bleibt die **fachliche Referenz** — diese Datei ergänzt sie um **Überblick, Bilder und ein Übungsszenario**.
 
-**Technische Grundlagen** (Systemvoraussetzungen, Projektbeschreibung) und **Copy-Paste-Beispiele** für **Mermaid**, **JSON-Felder** und **HTML-Schrift/CSS**: englisches Haupt-[README](../../README.md) mit den Abschnitten [**Mermaid cookbook examples**](../../README.md#mermaid-cookbook-examples), [**JSON cookbook snippets**](../../README.md#json-cookbook-snippets) und [**HTML export — custom font & CSS**](../../README.md#html-custom-css-examples).
+**Technische Grundlagen** (Systemvoraussetzungen, Projektbeschreibung) und **Copy-Paste-Beispiele** für **Mermaid**, **JSON-Felder** und **HTML-Schrift/CSS**: englisches Haupt-[README](../../README.md) mit den Abschnitten [**Mermaid cookbook examples**](../../README.md#mermaid-cookbook-examples), [**JSON cookbook snippets**](../../README.md#json-cookbook-snippets) und [**HTML custom CSS examples**](../../README.md#html-custom-css-examples).
 
-**Stabile GitHub-Links** (nach Merge auf `main`, z. B. für Lesezeichen aus der Inline-Hilfe; Repository-Startseite `#…` springt auf GitHub zuverlässiger als `blob/…/README.md#…`):
+**Stabile GitHub-Links** (nach Merge auf `main`; die `#…`-Fragmente entsprechen den **`###`-Überschriften** im Haupt-[README](../../README.md) — dort springt GitHub zuverlässig hin):
 
 - [Mermaid-Kochbuch](https://github.com/crunchip77/ioBroker.autodoc#mermaid-cookbook-examples)
 - [JSON-Kochbuch](https://github.com/crunchip77/ioBroker.autodoc#json-cookbook-snippets)
