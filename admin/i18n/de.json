@@ -242,7 +242,7 @@
 	"Advanced base URL callout": "Gäste / QR / Link kopieren: dieselbe URL wie im Handy-Browser, um den ioBroker-Admin zu öffnen (Schema + Host + Port, ohne / am Ende). Wenn das von Docker-internen Namen oder der öffentlichen Proxy-Adresse abweicht, explizit eintragen — automatische Erkennung scheitert oft in Containern oder hinter HTTPS-Offloading.",
 	"copyForForum": "Für Forum kopieren",
 	"Docs link README public base URL": "Wiki DE — Basis-URL / QR (GitHub)",
-	"Docs link wiki German config": "Wiki DE — Registerkarten-Überblick (GitHub)",
+	"Docs link wiki German config": "Wiki — Instanz-Konfiguration DE (GitHub)",
 	"Docs link README Mermaid cookbook": "README EN — Mermaid-Kochbuch (GitHub)",
 	"Docs link README JSON cookbook": "README EN — JSON-Kochbuch (GitHub)",
 	"Docs link README PDF export": "Wiki DE — PDF-Export / Puppeteer (GitHub)",

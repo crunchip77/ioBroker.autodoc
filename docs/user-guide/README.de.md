@@ -6,6 +6,8 @@ Die **Inline-Hilfe** bei jedem Feld im Admin (`jsonConfig`) bleibt die **fachlic
 
 **Je nach Link** öffnet sich im Browser **nicht immer dieselbe GitHub-Datei:** **Einordnung** (Tabs, Sprache, Basis-URL, PDF, Zusatzkapitel-JSON) → **Wiki DE** (`README.de.md`); **lange Copy-Paste-Kochbücher** (Mermaid, JSON-Felder, CSS) → **englisches Haupt-[README](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md)**. Darunter im **Übungsszenario** gibt es zusätzlich **dieselben Themen** noch einmal mit **Screenshots** — dort weiterhin die Wiki-Anker **`#wiki-step…`** / **`#wiki-admin…`**.
 
+Im Admin sind **Instanz-Konfiguration** und **Zusätzliche Markdown-Kapitel** zwei **getrennte** Links — erster Sprung **[Registerkarten](#wiki-overview-registerkarten)**, zweiter **[Schritt 4 — Custom sections](#wiki-step4-custom-sections-json)**. Wäre für beide dieselbe Textmarke im Adapter hinterlegt gewesen, würde auch „Instanz-Konfiguration“ fälschlich nach Schritt 4 zeigen.
+
 ## Schnellzugriff — wie die Admin-Links (je nach Link: Wiki DE oder README EN)
 
 Die **sechs häufigsten Schnellzugriff-Themen** sind wie folgt aufgeteilt (Branch **`dev`**; auf **`main`** kann ein älterer Stand liegen):

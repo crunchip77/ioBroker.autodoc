@@ -41,7 +41,7 @@ const docsLinkLabels = {
 		'Docs link README documentation overview advanced':
 			'Wiki DE — Sprache, Deltas & erweiterte Hinweise (Tab Erweitert, GitHub)',
 		'Docs link README public base URL': 'Wiki DE — Basis-URL / QR (GitHub)',
-		'Docs link wiki German config': 'Wiki DE — Registerkarten-Überblick (GitHub)',
+		'Docs link wiki German config': 'Wiki — Instanz-Konfiguration DE (GitHub)',
 		'Docs link wiki German custom sections': 'Wiki DE — Zusätzliche Markdown-Kapitel (JSON, GitHub)',
 		'Docs link README Mermaid cookbook': 'README EN — Mermaid-Kochbuch (GitHub)',
 		'Docs link README JSON cookbook': 'README EN — JSON-Kochbuch (GitHub)',
