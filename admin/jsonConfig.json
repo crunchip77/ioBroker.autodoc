@@ -75,7 +75,7 @@
 				},
 				"_docsLinkReadmeDocLangBasic": {
 					"type": "staticLink",
-					"label": "Docs link README documentation overview",
+					"label": "Docs link README documentation overview basic",
 					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/docs/user-guide/README.de.md#wiki-admin-doc-lang",
 					"target": "_blank",
 					"newLine": true,
@@ -678,7 +678,7 @@
 				},
 				"_docsLinkReadmeDocLangAdvanced": {
 					"type": "staticLink",
-					"label": "Docs link README documentation overview",
+					"label": "Docs link README documentation overview advanced",
 					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/docs/user-guide/README.de.md#wiki-admin-doc-lang",
 					"target": "_blank",
 					"newLine": true,
@@ -766,7 +766,7 @@
 				"_docsLinkWikiGermanConfig": {
 					"type": "staticLink",
 					"label": "Docs link wiki German config",
-					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/docs/user-guide/README.de.md#wiki-step3-qr-base-url",
+					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/docs/user-guide/README.de.md#wiki-overview-registerkarten",
 					"target": "_blank",
 					"newLine": true,
 					"xs": 12,
@@ -1199,7 +1199,7 @@
 				},
 				"_docsLinkWikiGermanCustomSections": {
 					"type": "staticLink",
-					"label": "Docs link wiki German config",
+					"label": "Docs link wiki German custom sections",
 					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/docs/user-guide/README.de.md#wiki-step4-custom-sections-json",
 					"target": "_blank",
 					"newLine": true,

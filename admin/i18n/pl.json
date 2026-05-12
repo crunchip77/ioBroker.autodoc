@@ -240,11 +240,13 @@
 	"Onboarding chapter order JSON help": "JSON array of chapter ids, e.g. `[\"quickstart\",\"tips\",\"rooms\",\"adapters\"]`. Valid ids: `welcome`, `quickstart`, `tips`, `guestHelp`, `stats`, `ai`, `capabilities`, `mermaid`, `rooms`, `routines`, `ownerPlaybook`, `automations`, `adapters`, `custom`, `hint`, `system`, `manual`. Unknown ids skipped; omitted ids append in default order. `[]` = built-in order. `quickstart` always shows welcome, counts, next steps; discovery block only when `quickStart.hasContent`.",
 	"Advanced base URL callout": "Guests & QR / copy link: Enter the URL you would use in a phone browser to open ioBroker Admin (scheme + host + port, no trailing slash). If that differs from Docker-internal hostnames or from a reverse-proxy public name, set it explicitly — auto-detection often fails in containers or behind HTTPS offload.",
 	"copyForForum": "Copy for Forum",
-	"Docs link README documentation overview": "DE user guide — Documentation language & overview (GitHub)",
 	"Docs link README public base URL": "DE user guide — Public base URL / QR (GitHub)",
-	"Docs link wiki German config": "German wiki — Instance configuration (GitHub)",
+	"Docs link wiki German config": "German wiki — Tabs overview (DE) (GitHub)",
 	"Docs link README Mermaid cookbook": "DE user guide — Mermaid (My documentation tab) (GitHub)",
 	"Docs link README JSON cookbook": "DE user guide — JSON chapter order & snippets (GitHub)",
 	"Docs link README PDF export": "DE user guide — Optional PDF export / Puppeteer (GitHub)",
-	"Docs link README HTML CSS": "DE user guide — HTML font & custom CSS (GitHub)"
+	"Docs link README HTML CSS": "DE user guide — HTML font & custom CSS (GitHub)",
+	"Docs link README documentation overview basic": "DE user guide — Project & documentation language (Basics tab) (GitHub)",
+	"Docs link README documentation overview advanced": "DE user guide — Language effects & change deltas (Advanced tab) (GitHub)",
+	"Docs link wiki German custom sections": "German wiki — Custom Markdown chapters (JSON) (GitHub)"
 }

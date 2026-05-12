@@ -19,7 +19,7 @@ Die gleichen **sechs Themen** wie unter den Instanz-Tabs, hier zum Kopieren/Lese
 
 **Stabile GitHub-Links:** Admin-**`staticLink`** und **„Schnellzugriff“** nutzen **`blob/dev/docs/user-guide/README.de.md#…`** mit festen **HTML-IDs** (Markdown-**Vorschau**). **Ausführliche Copy-Paste-Kochbücher** (Mermaid, JSON, CSS) bleiben im englischen Haupt-[README](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md); dort entsprechen die **Überschriften-Slugs** z. B. **`#mermaid-cookbook-examples`** — Sprung ist bei GitHub **best effort**. Die **Repo-Startseite** mit `#…` bleibt unzuverlässig. **`main`** noch ohne gleichen Stand → weiter **`dev`**; nach Merge **`blob/main`** und Anker prüfen.
 
-**Englisches Haupt-[README](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md)** (Kochbuch-Fragmente, grob **L44·L67·L78·L100·L131·L186**): **`#documentation-instance-overview`**, **`#public-base-url`**, **`#optional-pdf-export-puppeteer`**, **`#mermaid-cookbook-examples`**, **`#json-cookbook-snippets`**, **`#html-custom-css-examples`**. **DE-Wiki-Anker** (stabile **`id=`** in dieser Datei): **`#wiki-admin-doc-lang`**, **`#wiki-admin-pdf-export`**, **`#wiki-admin-json-cookbook`**, **`#wiki-admin-html-css`**, **`#wiki-step3-qr-base-url`**, **`#wiki-step4-custom-sections-json`**, **`#wiki-step5-mermaid`**. **Nach großen Umbauten** IDs und **`admin/jsonConfig.json`** abstimmen (Pflegehinweis auch als HTML-Kommentar vor der Lizenz im Haupt-README).
+**Englisches Haupt-[README](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md)** (Kochbuch-Fragmente, grob **L44·L67·L78·L100·L131·L186**): **`#documentation-instance-overview`**, **`#public-base-url`**, **`#optional-pdf-export-puppeteer`**, **`#mermaid-cookbook-examples`**, **`#json-cookbook-snippets`**, **`#html-custom-css-examples`**. **DE-Wiki-Anker** (stabile **`id=`** in dieser Datei): **`#wiki-overview-registerkarten`**, **`#wiki-admin-doc-lang`**, **`#wiki-admin-pdf-export`**, **`#wiki-admin-json-cookbook`**, **`#wiki-admin-html-css`**, **`#wiki-step3-qr-base-url`**, **`#wiki-step4-custom-sections-json`**, **`#wiki-step5-mermaid`**. **Nach großen Umbauten** IDs und **`admin/jsonConfig.json`** abstimmen (Pflegehinweis auch als HTML-Kommentar vor der Lizenz im Haupt-README).
 
 **Warum früher oft nur der PDF-Link zu stimmen schien:** Unter der Repo-Wurzel `#…` hat nur **`### Optional PDF export …`** zufällig denselben Slug wie `#optional-pdf-export-puppeteer` geliefert; die anderen Kurz-Hashes passten dort nicht — oder springen im **Blob**-Viewer trotzdem nicht zuverlässig.
 
@@ -42,6 +42,8 @@ Die gleichen **sechs Themen** wie unter den Instanz-Tabs, hier zum Kopieren/Lese
 - **Große Bilder / Redis:** Große Bilder oder Binärdateien **nicht** als **State-Werte** in der **Objektdatenbank** ablegen — bei Backend **Redis** treiben große Blobs den RAM hoch. Lieber **externe URLs** oder kleine **SVG**. AutoDoc legt Volltext ohnehin nur unter **`/files/`** ab; **`documentation.markdown` / `.html` / `.json`** sind **kurze Platzhalter** (kein Ersatz für Medienspeicher) — siehe [PLAN.md — Medien (MVP)](../../PLAN.md#architektur-medien-mvp).
 
 ---
+
+<a id="wiki-overview-registerkarten"></a>
 
 ## Registerkarten — was gehört wohin?
 
