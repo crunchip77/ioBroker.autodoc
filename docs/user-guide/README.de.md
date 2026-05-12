@@ -15,16 +15,7 @@ Die gleichen **sechs Themen** wie unter den Instanz-Tabs, hier zum Kopieren/Lese
 - [JSON-Kochbuch](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#json-cookbook-snippets)
 - [HTML — Schrift & CSS](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#html-custom-css-examples)
 
-**Autolinks** (gleiche Ziele, oft gut klickbar in der Vorschau):
-
-<https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#documentation-instance-overview>  
-<https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#public-base-url>  
-<https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#optional-pdf-export-puppeteer>  
-<https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#mermaid-cookbook-examples>  
-<https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#json-cookbook-snippets>  
-<https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#html-custom-css-examples>
-
-**Technische Grundlagen** (Systemvoraussetzungen, Projektbeschreibung) und **Copy-Paste-Beispiele** für **Mermaid**, **JSON-Felder** und **HTML-Schrift/CSS**: englisches Haupt-[README](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md) mit den Abschnitten [**Mermaid cookbook examples**](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#mermaid-cookbook-examples), [**JSON cookbook snippets**](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#json-cookbook-snippets) und [**HTML custom CSS examples**](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#html-custom-css-examples).
+**Technische Grundlagen** (Systemvoraussetzungen, Projektbeschreibung) und **Copy-Paste-Beispiele** für **Mermaid**, **JSON** und **HTML/CSS**: englisches Haupt-[README](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md); die **direkten Sprünge** zu den Kochbuch-Abschnitten stehen in der Liste **„Schnellzugriff“** oben (Punkte **Mermaid-Kochbuch**, **JSON-Kochbuch**, **HTML — Schrift & CSS** sowie die ersten drei Themen).
 
 **Stabile GitHub-Links:** Admin-**`staticLink`** und der Abschnitt **„Schnellzugriff“** oben nutzen **`blob/dev/…#.…`** (Markdown-**Vorschau** — lesbar, Tabellen/Listen wie gewohnt). Die **Fragmente** entsprechen den englischen Überschriften im Haupt-[README](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md) (z. B. `#mermaid-cookbook-examples`); Sprung zum Abschnitt ist bei GitHub **nicht garantiert**, aber üblicherweise brauchbarer als Rohquelle (`?plain=1`). Die **Repo-Startseite** mit `#…` bleibt unzuverlässig. **`main`** noch ohne gleichen Stand → weiter **`dev`** in der URL; nach Merge **`blob/main`** und Slugs prüfen.
 
@@ -40,11 +31,11 @@ Die Zuordnung **Haupt-[README](https://github.com/crunchip77/ioBroker.autodoc/bl
 
 ## Kurz vom Haupt-README (Betrieb)
 
-- **Dokumentationssprache** (Grundeinstellungen): steuert Überschriften und feste Texte in **allen HTML-Profilen** und im Markdown; auch die **Kurzzeilen** für Inventarvergleich („changes since last run“) und für **Changelog**-Karten beim erneuten Erzeugen — ältere gespeicherte Changelog-Zeilen erscheinen in der **aktuellen** Export-Sprache. Details: [**documentation-instance-overview**](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#documentation-instance-overview).
+- **Dokumentationssprache** (Grundeinstellungen): steuert Überschriften und feste Texte in **allen HTML-Profilen** und im Markdown; auch die **Kurzzeilen** für Inventarvergleich („changes since last run“) und für **Changelog**-Karten beim erneuten Erzeugen — ältere gespeicherte Changelog-Zeilen erscheinen in der **aktuellen** Export-Sprache. Details: gleicher GitHub-Sprung wie unter **„Schnellzugriff“** → *Dokumentationssprache & Deltas*.
 - **Erweitert → Ausblenden „Änderungen seit letztem Lauf“** (`hideAdminDeltaSinceLastRun`): blendet nur die **gelbe Delta-Box** in der **Admin**-HTML-Systemübersicht und den passenden Block im **Admin**-Markdown aus; **Changelog-Kapitel**, User und Onboarding bleiben unverändert.
 - **User/Familie**: bei **echten** Inventaränderungen seit dem letzten Schnappschuss (nicht beim ersten Lauf) erscheint ein kurzer **Alltagssatz** unter dem Titelblock — **Onboarding** nicht.
-- **Basis-URL / QR / „Link kopieren“**: dieselbe Einstellung wie der Browser-Zugang zum Admin, **ohne** Slash am Ende; nach Änderung **Dokumentation erzeugen**. Ausführlich: [**Public base URL**](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#public-base-url).
-- **PDF**: optional **`puppeteer`** im **Adapterverzeichnis**; Schalter unter **Erweitert** oder Datenpunkt **`action.exportPdf`**. Siehe [**Optional PDF export**](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#optional-pdf-export-puppeteer).
+- **Basis-URL / QR / „Link kopieren“**: dieselbe Einstellung wie der Browser-Zugang zum Admin, **ohne** Slash am Ende; nach Änderung **Dokumentation erzeugen**. Ausführlich: **„Schnellzugriff“** → *Öffentliche Basis-URL / QR*.
+- **PDF**: optional **`puppeteer`** im **Adapterverzeichnis**; Schalter unter **Erweitert** oder Datenpunkt **`action.exportPdf`**. Siehe **„Schnellzugriff“** → *PDF-Export (Puppeteer)*.
 - **Dateisystem-Export / Docker**: Host-Ordner einbinden und im Adapter den **Container-Pfad** eintragen — Kurzhinweis auch in der Feldhilfe.
 - **Große Bilder / Redis:** Große Bilder oder Binärdateien **nicht** als **State-Werte** in der **Objektdatenbank** ablegen — bei Backend **Redis** treiben große Blobs den RAM hoch. Lieber **externe URLs** oder kleine **SVG**. AutoDoc legt Volltext ohnehin nur unter **`/files/`** ab; **`documentation.markdown` / `.html` / `.json`** sind **kurze Platzhalter** (kein Ersatz für Medienspeicher) — siehe [PLAN.md — Medien (MVP)](../../PLAN.md#architektur-medien-mvp).
 
@@ -55,7 +46,7 @@ Die Zuordnung **Haupt-[README](https://github.com/crunchip77/ioBroker.autodoc/bl
 1. **Grundeinstellungen** — **Projektname** und **Dokumentationssprache** (alle Exporte); welches **Markdown-Profil** standardmäßig erzeugt wird; **wann** neu generiert wird (Start, Zeitplan, Adapteränderungen).
 2. **Meine Dokumentation** — **Leser-Texte** für Familie und Gäste (Notizen, Abläufe, Playbook); optionale **Notfall-Kurzzeilen**; optional **Mermaid** und **Auto-Host-Topologie**; Filter „was ausblenden“ für User vs. Onboarding.
 3. **Erweitert** — **Basis-URL** für QR/Links; Grenzen (z. B. nur aktivierte Instanzen); **Export nach Dateisystem**; optional **PDF**; **Doku-Setup-Score**; Hinweis: volle Exporte liegen unter **`/files`**, States nur Platzhalter.
-4. **HTML-Export & Zusatzkapitel** — **Erscheinungsbild** (Theme, Logo); **Kapitelreihenfolge und Ausblenden** je Profil (**JSON**); **eigene Markdown-Kapitel** (`customDocSectionsJson`); optional **Schriftart** (`htmlFontStack`) und **zusätzliches CSS** (`htmlExtraCss`, nur exportiertes HTML) — Beispiele und Selektoren: [**HTML — Schrift & CSS**](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#html-custom-css-examples); Verweis auf PDF-Schalter unter **Erweitert**.
+4. **HTML-Export & Zusatzkapitel** — **Erscheinungsbild** (Theme, Logo); **Kapitelreihenfolge und Ausblenden** je Profil (**JSON**); **eigene Markdown-Kapitel** (`customDocSectionsJson`); optional **Schriftart** (`htmlFontStack`) und **zusätzliches CSS** (`htmlExtraCss`, nur exportiertes HTML) — Beispiele und Selektoren: **„Schnellzugriff“** → *HTML — Schrift & CSS*; PDF-Schalter unter **Erweitert**.
 5. **Benachrichtigungen** — optional Nachricht nach erfolgreicher Generierung (abhängig vom Messaging-Adapter).
 6. **KI-Dokumentation** — nur relevant, wenn ein **Anbieter aktiv** ist; sonst bleiben die Felder ohne KI-Wirkung.
 
@@ -194,7 +185,7 @@ Nach inhaltlichen Änderungen: **Dokumentation generieren** (Button oder Datenpu
 
 ### Schritt 3 — QR & Link (Tab **Erweitert**)
 
-**Basis-URL** = genau die Adresse, mit der **ihr** den Admin im Browser öffnet (**https://…** oder **http://host:8081**), **ohne** Schrägstrich am Ende. Danach wieder **Dokumentation erzeugen**. Test zuerst im **Heim-WLAN**, nicht öffentlich exponieren. Ausführlicher: Haupt-[README → Public base URL](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#public-base-url).
+**Basis-URL** = genau die Adresse, mit der **ihr** den Admin im Browser öffnet (**https://…** oder **http://host:8081**), **ohne** Schrägstrich am Ende. Danach wieder **Dokumentation erzeugen**. Test zuerst im **Heim-WLAN**, nicht öffentlich exponieren. Ausführlicher: **„Schnellzugriff“** oben → *Öffentliche Basis-URL / QR*.
 
 <a id="wiki-step4-custom-sections-json"></a>
 
@@ -202,7 +193,7 @@ Nach inhaltlichen Änderungen: **Dokumentation generieren** (Button oder Datenpu
 
 Im Feld: gültiges **JSON-Array** mit Objekten `title`, `body`, optional `profiles` — Platzhalter und Hilfetext im Admin beachten.
 
-**Weitere Beispiele** (Reihenfolgen, Ausblenden, zweites Mermaid-Muster): Haupt-[README](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md) → [**JSON cookbook snippets**](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#json-cookbook-snippets), [**Mermaid cookbook**](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#mermaid-cookbook-examples).
+**Weitere Beispiele** (Reihenfolgen, Ausblenden, zweites Mermaid-Muster): **„Schnellzugriff“** → *JSON-Kochbuch* und *Mermaid-Kochbuch* (englisches README).
 
 ```json
 [
@@ -218,7 +209,7 @@ Maximal **12** Einträge; sehr lange Texte werden beim Erzeugen gekürzt.
 
 ### Schritt 5 — Optional Mermaid (Tab **„Meine Dokumentation“**)
 
-Platzhalter im Feld überschreiben. **Copy-Paste-Diagramme:** [**Mermaid cookbook examples**](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#mermaid-cookbook-examples).
+Platzhalter im Feld überschreiben. **Copy-Paste-Diagramme:** **„Schnellzugriff“** → *Mermaid-Kochbuch*.
 
 Mit installierter **Mermaid-CLI** werden Diagramme als **SVG** ins HTML eingebettet (offlinefreundlich). Ohne CLI oder bei Fehler bleibt `<pre class="mermaid">` und der Browser kann **jsDelivr** laden — siehe Admin-Hilfe.
 
@@ -226,10 +217,10 @@ Mit installierter **Mermaid-CLI** werden Diagramme als **SVG** ins HTML eingebet
 
 ### Schritt 6 — Kapitelreihenfolge oder ausblenden
 
-Standard belassen: **`[]`** in den JSON-Feldern. **Mustervorlagen:** [**JSON cookbook snippets**](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#json-cookbook-snippets).
+Standard belassen: **`[]`** in den JSON-Feldern. **Mustervorlagen:** **„Schnellzugriff“** → *JSON-Kochbuch*.
 
 Nach Änderungen: **Dokumentation erzeugen** und einen Export-Link (`info.*Url*`) kurz prüfen.
 
 ### Schritt 7 — Optional: Schrift & zusätzliches CSS
 
-Nur für den **HTML**-Export (Tab **HTML-Export & Zusatzkapitel**, Bereich **Optional: eigene Schrift & CSS**). Die **Tooltips** (`?`) enthalten **Copy-Paste-Starter**; Hintergrund und Selektoren (`nav`, `nav ul li a`, …): Haupt-[README → HTML Schrift & CSS](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#html-custom-css-examples). Nach Änderung wieder **Dokumentation erzeugen**.
+Nur für den **HTML**-Export (Tab **HTML-Export & Zusatzkapitel**, Bereich **Optional: eigene Schrift & CSS**). Die **Tooltips** (`?`) enthalten **Copy-Paste-Starter**; Hintergrund und Selektoren (`nav`, `nav ul li a`, …): **„Schnellzugriff“** → *HTML — Schrift & CSS*. Nach Änderung wieder **Dokumentation erzeugen**.
