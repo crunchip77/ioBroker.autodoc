@@ -37,7 +37,9 @@ function migratePlainLineAnchorsToHeadingFragments(s) {
 		.join('docs/user-guide/README.de.md#wiki-step3-qr-base-url');
 	out = out
 		.split('docs/user-guide/README.de.md?plain=1#L193')
-		.join('docs/user-guide/README.de.md#wiki-step4-custom-sections-json');
+		.join(
+			'docs/user-guide/README.de.md#schritt-4--zus\u00e4tzliches-markdown-kapitel-tab-html---zusatzkapitel--custom-sections-customdocsectionsjson',
+		);
 	out = out.replace(/README\.md\?plain=1(?=["')\s]|$)/g, 'README.md');
 	out = out.replace(/README\.de\.md\?plain=1(?=["')\s]|$)/g, 'README.de.md');
 	return out;

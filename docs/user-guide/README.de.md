@@ -34,7 +34,7 @@ Die **sechs häufigsten Schnellzugriff-Themen** sind wie folgt aufgeteilt (Branc
 
 **„In neuem Tab öffnen“:** Der Link und das **`#…`** sind korrekt — trotzdem bleibt GitHubs Markdown-Vorschau manchmal **oben**, weil die Seite **asynchron** rendert und der Browser den Sprung **vor** dem Ziel im DOM ausführt ([bekanntes Verhalten](https://github.com/github/markup/issues/1807), nicht nur „euer Browser“). **Meist hilft:** nach dem Laden in der Adresszeile **Enter** (Hash erneut anwenden), einmal **F5**, oder den Link **im gleichen Tab** öffnen.
 
-**Englisches Haupt-[README](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md)** (Kochbuch & weitere Fragmente, grob **L44·L67·L78·L100·L131·L186**): u. a. **`#mermaid-cookbook-examples`**, **`#json-cookbook-snippets`**, **`#html-custom-css-examples`**. **DE-Wiki-Anker** (nur noch für Kontext-Links / Abschnitte hier): **`#wiki-overview-registerkarten`**, **`#wiki-admin-doc-lang`**, **`#wiki-admin-pdf-export`**, **`#wiki-admin-json-cookbook`**, **`#wiki-admin-html-css`**, **`#wiki-step3-qr-base-url`**, **`#wiki-step4-custom-sections-json`**, **`#wiki-step5-mermaid`**. **Nach großen Umbauten** IDs und **`admin/jsonConfig.json`** abstimmen (Pflegehinweis auch als HTML-Kommentar vor der Lizenz im Haupt-README).
+**Englisches Haupt-[README](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md)** (Kochbuch & weitere Fragmente, grob **L44·L67·L78·L100·L131·L186**): u. a. **`#mermaid-cookbook-examples`**, **`#json-cookbook-snippets`**, **`#html-custom-css-examples`**. **DE-Wiki-Anker** (nur noch für Kontext-Links / Abschnitte hier): **`#wiki-overview-registerkarten`**, **`#wiki-admin-doc-lang`**, **`#wiki-admin-pdf-export`**, **`#wiki-admin-json-cookbook`**, **`#wiki-admin-html-css`**, **`#wiki-step3-qr-base-url`**, **`#wiki-step4-custom-sections-json`** (kurz; gleicher Absatz: GitHub-Slug **`#schritt-4--zusätzliches-markdown-kapitel-tab-html---zusatzkapitel--custom-sections-customdocsectionsjson`** — oft zuverlässiger in der Vorschau), **`#wiki-step5-mermaid`**. **Nach großen Umbauten** IDs und **`admin/jsonConfig.json`** abstimmen (Pflegehinweis auch als HTML-Kommentar vor der Lizenz im Haupt-README).
 
 **Warum früher oft nur der PDF-Link zu stimmen schien:** Unter der Repo-Wurzel `#…` hat nur **`### Optional PDF export …`** zufällig denselben Slug wie `#optional-pdf-export-puppeteer` geliefert; die anderen Kurz-Hashes passten dort nicht — oder springen im **Blob**-Viewer trotzdem nicht zuverlässig.
 
@@ -203,7 +203,7 @@ Nach inhaltlichen Änderungen: **Dokumentation generieren** (Button oder Datenpu
 
 **Basis-URL** = genau die Adresse, mit der **ihr** den Admin im Browser öffnet (**https://…** oder **http://host:8081**), **ohne** Schrägstrich am Ende. Danach wieder **Dokumentation erzeugen**. Test zuerst im **Heim-WLAN**, nicht öffentlich exponieren. Ausführlicher: **„Schnellzugriff“** oben → *Öffentliche Basis-URL / QR*.
 
-<h3 id="wiki-step4-custom-sections-json">Schritt 4 — Zusätzliches Markdown-Kapitel (Custom sections, JSON)</h3>
+<h3 id="schritt-4--zusätzliches-markdown-kapitel-tab-html---zusatzkapitel--custom-sections-customdocsectionsjson"><span id="wiki-step4-custom-sections-json"></span>Schritt 4 — Zusätzliches Markdown-Kapitel (Custom sections, JSON)</h3>
 
 Im Feld: gültiges **JSON-Array** mit Objekten `title`, `body`, optional `profiles` — Platzhalter und Hilfetext im Admin beachten.
 

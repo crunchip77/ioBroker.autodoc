@@ -1200,7 +1200,7 @@
 				"_docsLinkWikiGermanCustomSections": {
 					"type": "staticLink",
 					"label": "Docs link wiki German custom sections",
-					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/docs/user-guide/README.de.md#wiki-step4-custom-sections-json",
+					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/docs/user-guide/README.de.md#schritt-4--zusätzliches-markdown-kapitel-tab-html---zusatzkapitel--custom-sections-customdocsectionsjson",
 					"target": "_blank",
 					"newLine": true,
 					"xs": 12,
