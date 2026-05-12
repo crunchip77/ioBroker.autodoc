@@ -8,17 +8,12 @@ Die **Inline-Hilfe** bei jedem Feld im Admin (`jsonConfig`) bleibt die **fachlic
 
 **Stabile GitHub-Links** (nach Merge auf `main`, z. B. für Lesezeichen aus der Inline-Hilfe):
 
-`https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#mermaid-cookbook-examples`
-
-`https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#json-cookbook-snippets`
-
-`https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#html-custom-css-examples`
-
-`https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#documentation-instance-overview`
-
-`https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#public-base-url`
-
-`https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#optional-pdf-export-puppeteer`  
+- [Mermaid-Kochbuch](https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#mermaid-cookbook-examples)
+- [JSON-Kochbuch](https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#json-cookbook-snippets)
+- [HTML — Schrift & CSS](https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#html-custom-css-examples)
+- [Dokumentationssprache & Deltas](https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#documentation-instance-overview)
+- [Öffentliche Basis-URL / QR](https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#public-base-url)
+- [PDF-Export (Puppeteer)](https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#optional-pdf-export-puppeteer)
 
 **Instanz öffnen:** **Instanzen** → Ihre AutoDoc-Instanz → **Schraubenschlüssel** (Konfiguration).
 
