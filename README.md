@@ -56,7 +56,7 @@ Useful **states** (selection): `action.generate`; **`action.exportPdf`** (writes
 
 - **Canonical exports** always live under **`/files/autodoc.<instance>/`** and are **overwritten** each run (no accumulation of old HTML versions there).
 - **`documentation.*` body states** are **placeholders only** (large payloads are not duplicated in the object database). Scripts and integrations that need **full text** read **`/files/`** or use **`info.htmlUrl*`** / download actions.
-- **Photos and large binaries:** do **not** rely on storing big images in ioBroker’s virtual file storage — **especially with Redis** (binary blobs inflate RAM). Use **external URLs** (your NAS, HTTP server) or small **inline SVG** diagrams; the same guideline keeps **jsonl** setups predictable.
+- **Photos and large binaries:** do **not** store big images or blobs as **large state values** in ioBroker’s **object database** — **especially with Redis** (binary payloads inflate RAM). Use **external URLs** (your NAS, HTTP server) or small **inline SVG** diagrams; the same guideline keeps **jsonl** setups predictable. AutoDoc keeps **full** Markdown/HTML/JSON under **`/files/`**; **`documentation.markdown`**, **`documentation.html`**, and **`documentation.json`** are **short placeholders** only — not a media store.
 - Rationale, options, and future media work: [`PLAN.md` — Media (MVP) & limits](PLAN.md#architektur-medien-mvp) and [Architecture boundaries](PLAN.md#architektur-grenzen).
 
 <a id="public-base-url"></a>

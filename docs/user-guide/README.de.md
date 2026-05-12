@@ -34,7 +34,7 @@ Die **Inline-Hilfe** bei jedem Feld im Admin (`jsonConfig`) bleibt die **fachlic
 - **Basis-URL / QR / „Link kopieren“**: dieselbe Einstellung wie der Browser-Zugang zum Admin, **ohne** Slash am Ende; nach Änderung **Dokumentation erzeugen**. Ausführlich: [**Public base URL**](../../README.md#public-base-url).
 - **PDF**: optional **`puppeteer`** im **Adapterverzeichnis**; Schalter unter **Erweitert** oder Datenpunkt **`action.exportPdf`**. Siehe [**Optional PDF export**](../../README.md#optional-pdf-export-puppeteer).
 - **Dateisystem-Export / Docker**: Host-Ordner einbinden und im Adapter den **Container-Pfad** eintragen — Kurzhinweis auch in der Feldhilfe.
-- **Große Bilder / Redis:** Bilder und große Binärdateien **nicht** dauerhaft im virtuellen Dateispeicher der ioBroker-Instanz horten (RAM bei Redis); lieber **externe URLs** oder kleine **SVG** — siehe [PLAN.md — Medien (MVP)](../../PLAN.md#architektur-medien-mvp).
+- **Große Bilder / Redis:** Große Bilder oder Binärdateien **nicht** als **State-Werte** in der **Objektdatenbank** ablegen — bei Backend **Redis** treiben große Blobs den RAM hoch. Lieber **externe URLs** oder kleine **SVG**. AutoDoc legt Volltext ohnehin nur unter **`/files/`** ab; **`documentation.markdown` / `.html` / `.json`** sind **kurze Platzhalter** (kein Ersatz für Medienspeicher) — siehe [PLAN.md — Medien (MVP)](../../PLAN.md#architektur-medien-mvp).
 
 ---
 
