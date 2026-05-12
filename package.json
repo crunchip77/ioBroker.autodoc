@@ -1,6 +1,6 @@
 {
   "name": "iobroker.autodoc",
-  "version": "0.9.39",
+  "version": "0.9.39-alpha.0",
   "description": "On-demand documentation for ioBroker",
   "author": {
     "name": "crunchip77",
@@ -76,7 +76,7 @@
     "test": "npm run test:js && npm run test:package",
     "check": "tsc --noEmit -p tsconfig.check.json",
     "lint": "eslint -c eslint.config.mjs .",
-    "adapter-check": "npx --yes @iobroker/repochecker \"https://github.com/crunchip77/ioBroker.autodoc\" main --local",
+    "adapter-check": "npx --yes @iobroker/repochecker@5.11.1 \"https://github.com/crunchip77/ioBroker.autodoc\" main --local",
     "i18n:sync-mermaid-help": "node scripts/sync-mermaid-help-i18n-key.js",
     "translate": "translate-adapter",
     "release": "release-script",

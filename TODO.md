@@ -33,7 +33,7 @@ Diese Datei ist die **Arbeitsliste**: was **offen** ist steht oben; **erledigte*
 
 <a id="stand-uebersicht"></a>
 
-## Übersicht — Umsetzung vs. Rest (Stand der **Version** wie in `package.json` / `io-package.json`, derzeit **0.9.39**; Tabellen-Stichtag **2026-05-12** — bei Releases bitte diese Zeile mitziehen; Branch je nach Arbeitskopie, z. B. `main` / `dev`)
+## Übersicht — Umsetzung vs. Rest (Stand der **Version** wie in `package.json` / `io-package.json`, derzeit **`0.9.39-alpha.0`** Pre-Release — npm **latest** kann noch **0.9.38** sein; bei Releases Version/`news` wie in CONTRIBUTING; Tabellen-Stichtag **2026-05-12** — bei Releases bitte diese Zeile mitziehen; Branch je nach Arbeitskopie, z. B. `main` / `dev`)
 
 | Thema | Status | Kurz |
 | ----- | ------ | ---- |

@@ -33,7 +33,7 @@ Langfristige inhaltliche Richtung (Zusammenhänge, Auto vs. Pflege, Forum-Feedba
 | Phase **5.x.2** Quick Start / Raumguides | 🟡 (Kern in 0.9.20, Fein-Sortierung/Länge offen — [TODO § 5.x.2](TODO.md#phase-5x)) |
 | **Inventar-Delta / Export-Sprache** (Admin-Hinweis optional aus, Changelog-Zeilen lokalisiert, User-Kurzinfo) | ✅ **`dev`** nach **0.9.39** — `hideAdminDeltaSinceLastRun`, `docChangeFormat`, README/TODO |
 | Phase **5.x.3** Mermaid | ✅ Stufe 1 **0.9.27**, Stufe 2 **0.9.28** — [TODO § 5.x.3](TODO.md#phase-5x) |
-| **npm-Release** + **ioBroker.repositories** | 🟡 | **npm** **`iobroker.autodoc`** — **Repo** **0.9.39** (`package.json`); **Registry** nach **`npm publish`** abgleichen. **latest**-Eintrag: **repositories**-PR **offen** (Merge ausstehend) — [TODO § 1.1](TODO.md#release-veroeffentlichung), [CONTRIBUTING — npm](CONTRIBUTING.md) |
+| **npm-Release** + **ioBroker.repositories** | 🟡 | **npm** **`iobroker.autodoc`** — **Repo** **`0.9.39-alpha.0`** (Pre-Release; Ziel **0.9.39** beim Publish); **Registry** nach **`npm publish`** abgleichen. **latest**-Eintrag: **repositories**-PR **offen** (Merge ausstehend) — [TODO § 1.1](TODO.md#release-veroeffentlichung), [CONTRIBUTING — npm](CONTRIBUTING.md) |
 | Phase **5.x.1** „Hybrid-Troubleshooting“ | ✅ **MVP in 0.9.18 / 0.9.19:** Freitext (`guestHelpNote` u. a.), **Kurzzeilen** + Doku-Links (Bookmark-URLs), **Node.js**-Checkliste + Snapshot-Hinweis (`lib/diagnosisSnapshot.js`) — [TODO § 5.x.1](TODO.md#phase-5x); **dev:** Admin **Betrieb – Referenz** + Diagnose-Copy (Schnappschuss / enge Checks) — optional später weitere Befund-Typen |
 | **Architektur:** Redis/jsonl, States, Medien/Grafiken ([Leitplanken](#architektur-grenzen), [Medien-MVP](#architektur-medien-mvp), [Nächste Schritte](#architektur-naechste-schritte)) | ✅ festgelegt | Umsetzung = README + Phase 5 / 5.x |
 | **System-Visitenkarte** „Forum kopieren“ | ✅ [Festlegung](#system-visitenkarte-festlegung) | ✅ **jsonConfig** `getForumCard`, State `info.forumCardPlain`, `lib/forumCard.js` + Diagnose-HTML |
@@ -70,7 +70,7 @@ Detaillierte **Checkboxen**: immer **[TODO.md](TODO.md)** zuerst; dieser PLAN li
 
 ## Release-Prozess (echter ioBroker-Release)
 
-**npm** `iobroker.autodoc`: **Version im Repo** siehe `package.json` (derzeit **0.9.39** auf **`dev`**); den **Stand auf npmjs** nach **`npm publish`** abgleichen. Der Eintrag in **ioBroker.repositories** (**latest**) ist per **PR** eingereicht — **Standard-Adapterliste** im Admin **nach Merge**; bis dahin Installation über **npm** oder **Git**/URL. Für **neue Versionen** bleibt die Reihenfolge: npm-Release, dann PR/Update der Listeneinträge wie in der **repositories**-Doku. URL-Installation von `main`/`dev` bleibt für Tester möglich.
+**npm** `iobroker.autodoc`: **Version im Repo** siehe `package.json` (Pre-Release z. B. **`0.9.39-alpha.0`** auf **`dev`** — beim **`npm publish`** auf **`0.9.39`** setzen und **`news`** ergänzen, siehe CONTRIBUTING); den **Stand auf npmjs** nach **`npm publish`** abgleichen. Der Eintrag in **ioBroker.repositories** (**latest**) ist per **PR** eingereicht — **Standard-Adapterliste** im Admin **nach Merge**; bis dahin Installation über **npm** oder **Git**/URL. Für **neue Versionen** bleibt die Reihenfolge: npm-Release, dann PR/Update der Listeneinträge wie in der **repositories**-Doku. URL-Installation von `main`/`dev` bleibt für Tester möglich.
 
 **Reihenfolge für einen echten Release (künftige Versionen):**
 
