@@ -322,7 +322,7 @@ MVP: im `documentModel` feste, kurze Blöcke (systemweit Top 3–5 Aktionen; pro
 - **Gerätemanager (ioBroker Admin Device Manager):** optional strukturierte Gerätelisten über das **`dm:`**-/Device-Manager-Protokoll nutzen, wo Adapter mitspielen — stärkeres „welche Geräte unter welcher Instanz“; **ersetzt nicht** globale Automatisierungs-Semantik.
 - **Vertrauen & Zeit:** menschenlesbare **„Was hat sich seit dem letzten Lauf geändert?“**-Zusammenfassung aus bestehender Versions-/Diff-Logik — Doku als nachvollziehbare Entwicklung, nicht nur Snapshot.
 - **Kurierte „Warum“-Ebene:** neben KI/Freitext eine **systematische** Schicht (z. B. knappe Pflicht-/Halbpflichtfelder pro Bereich, Glossar, „Absicht in einem Satz“) — skalierbarer als reine KI-Erklärung.
-- **Transparenz der Grenzen:** in Exporten klar kennzeichnen, **wo automatische Erkennung endet** (Gerät/Firmware/Cloud/manuelle Schicht) — Erwartungsmanagement für Nutzer. *Baseline (Export):* kurzer Hinweis am Ende des **Systemübersicht**-Kapitels (HTML + Markdown, alle Profile) — `docTransparencyLimitsShort` in `lib/i18n.js`.
+- **Transparenz der Grenzen:** in Exporten klar kennzeichnen, **wo automatische Erkennung endet** (Gerät/Firmware/Cloud/manuelle Schicht) — Erwartungsmanagement für Nutzer. *Baseline (Export):* kurzer Hinweis am Ende des **Systemübersicht**-Kapitels (**Admin**-Profil: HTML + Markdown) — `docTransparencyLimitsShort` in `lib/i18n.js`. User/Onboarding-HTML haben **kein** technisches Systemkapitel; dort bleibt der Hinweis bewusst weg.
 
 **Plattform-Reconnaissance (laufend; bei js-controller-/Admin-Sprüngen oder größeren AutoDoc-Releases sinnvoll):**
 
