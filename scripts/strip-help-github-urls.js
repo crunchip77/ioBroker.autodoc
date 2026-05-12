@@ -30,10 +30,10 @@ const docsLinkLabels = {
 		'Docs link README public base URL': 'DE user guide — Public base URL / QR (GitHub)',
 		'Docs link wiki German config': 'German wiki — Tabs overview (DE) (GitHub)',
 		'Docs link wiki German custom sections': 'German wiki — Custom Markdown chapters (JSON) (GitHub)',
-		'Docs link README Mermaid cookbook': 'DE user guide — Mermaid (My documentation tab) (GitHub)',
-		'Docs link README JSON cookbook': 'DE user guide — JSON chapter order & snippets (GitHub)',
+		'Docs link README Mermaid cookbook': 'English README — Mermaid cookbook examples (GitHub)',
+		'Docs link README JSON cookbook': 'English README — JSON cookbook snippets (GitHub)',
 		'Docs link README PDF export': 'DE user guide — Optional PDF export / Puppeteer (GitHub)',
-		'Docs link README HTML CSS': 'DE user guide — HTML font & custom CSS (GitHub)',
+		'Docs link README HTML CSS': 'English README — HTML custom CSS examples (GitHub)',
 	},
 	de: {
 		'Docs link README documentation overview basic':
@@ -43,10 +43,10 @@ const docsLinkLabels = {
 		'Docs link README public base URL': 'Wiki DE — Basis-URL / QR (GitHub)',
 		'Docs link wiki German config': 'Wiki DE — Registerkarten-Überblick (GitHub)',
 		'Docs link wiki German custom sections': 'Wiki DE — Zusätzliche Markdown-Kapitel (JSON, GitHub)',
-		'Docs link README Mermaid cookbook': 'Wiki DE — Mermaid (Tab „Meine Dokumentation“, GitHub)',
-		'Docs link README JSON cookbook': 'Wiki DE — JSON (Reihenfolge & Kochbuch, GitHub)',
+		'Docs link README Mermaid cookbook': 'README EN — Mermaid-Kochbuch (GitHub)',
+		'Docs link README JSON cookbook': 'README EN — JSON-Kochbuch (GitHub)',
 		'Docs link README PDF export': 'Wiki DE — PDF-Export / Puppeteer (GitHub)',
-		'Docs link README HTML CSS': 'Wiki DE — Schrift & zusätzliches CSS (GitHub)',
+		'Docs link README HTML CSS': 'README EN — HTML & CSS-Beispiele (GitHub)',
 	},
 	fr: {
 		'Docs link README documentation overview basic': 'Wiki DE — Langue & projet (onglet Réglages de base, GitHub)',
@@ -55,10 +55,10 @@ const docsLinkLabels = {
 		'Docs link README public base URL': 'Wiki DE — URL publique / QR (GitHub)',
 		'Docs link wiki German config': 'Wiki DE — Aperçu des onglets (GitHub)',
 		'Docs link wiki German custom sections': 'Wiki DE — Chapitres Markdown (JSON, GitHub)',
-		'Docs link README Mermaid cookbook': 'Wiki DE — Mermaid (guide utilisateur, GitHub)',
-		'Docs link README JSON cookbook': 'Wiki DE — JSON (ordre & exemples, GitHub)',
+		'Docs link README Mermaid cookbook': 'README EN — Exemples Mermaid (GitHub)',
+		'Docs link README JSON cookbook': 'README EN — Snippets JSON (GitHub)',
 		'Docs link README PDF export': 'Wiki DE — Export PDF / Puppeteer (GitHub)',
-		'Docs link README HTML CSS': 'Wiki DE — Police & CSS personnalisés (GitHub)',
+		'Docs link README HTML CSS': 'README EN — CSS HTML (GitHub)',
 	},
 };
 

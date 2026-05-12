@@ -268,6 +268,6 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 
 MIT License
 
-<!-- Maintainer: Admin instance staticLinks target docs/user-guide/README.de.md HTML ids (#wiki-overview-registerkarten, #wiki-admin-doc-lang, #wiki-admin-pdf-export, #wiki-admin-json-cookbook, #wiki-admin-html-css, #wiki-step3-qr-base-url, #wiki-step4-custom-sections-json, #wiki-step5-mermaid). English README cookbook fragments (#documentation-instance-overview, …, approx. L44·L67·L78·L100·L131·L186) remain for long copy-paste sections — sync slugs if headings change. Doc blob branch **dev** until merged to **main** (then DOC_BRANCH + blob/dev → blob/main in scripts/apply-readme-line-anchors.js). -->
+<!-- Maintainer: Admin staticLinks — wiki DE (#wiki-overview-registerkarten, #wiki-admin-doc-lang, #wiki-admin-pdf-export, #wiki-step3-qr-base-url, #wiki-step4-custom-sections-json, …) vs English README cookbooks (#mermaid-cookbook-examples, #json-cookbook-snippets, #html-custom-css-examples on blob/dev/README.md). Sync README.de.md anchors + jsonConfig if headings change. Doc blob branch **dev** until merged to **main**. -->
 
 Copyright (c) 2026 crunchip77 <41550245+crunchip77@users.noreply.github.com>

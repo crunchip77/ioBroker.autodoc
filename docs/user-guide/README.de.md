@@ -4,22 +4,27 @@ Diese Seite richtet sich an **Betreuer** und **Haus-Admins**, die die **AutoDoc-
 
 Die **Inline-Hilfe** bei jedem Feld im Admin (`jsonConfig`) bleibt die **fachliche Referenz** — diese Datei ergänzt sie um **Überblick, Bilder und ein Übungsszenario**. **Klickbare Dokumentation:** In den Instanz-Tabs zeigt AutoDoc unter den betreffenden Feldern **eigene GitHub-Links** (nicht nur Fließtext in der `?`-Tooltip-Hilfe — dort sind URLs meist nicht anklickbar).
 
-## Schnellzugriff — stabile Wiki-Anker (gleiche Ziele wie die Admin-Links)
+## Schnellzugriff — wie die Admin-Links (Wiki DE + englisches Kochbuch)
 
-Die gleichen **sechs Themen** wie unter den Instanz-Tabs, hier zum Kopieren/Lesen auf GitHub (**Vorschau**, **`blob/dev/docs/user-guide/README.de.md#…`**). Auf **`main`** kann ein älterer Stand ohne diese Liste liegen.
+Die **sechs Themen** unter den Instanz-Tabs landen auf GitHub in **zwei** Dateien: Kontext auf **Deutsch** (Wiki), **lange Copy-Paste-Beispiele** im **englischen** Haupt-[README](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md). Branch **`dev`**; auf **`main`** kann ein älterer Stand liegen.
+
+**Wiki DE** (`blob/dev/docs/user-guide/README.de.md`, Markdown-**Vorschau**, feste **`id=`**):
 
 - [Dokumentationssprache & Deltas](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/docs/user-guide/README.de.md#wiki-admin-doc-lang)
 - [Öffentliche Basis-URL / QR](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/docs/user-guide/README.de.md#wiki-step3-qr-base-url)
 - [PDF-Export (Puppeteer)](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/docs/user-guide/README.de.md#wiki-admin-pdf-export)
-- [Mermaid-Kochbuch](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/docs/user-guide/README.de.md#wiki-step5-mermaid)
-- [JSON-Kochbuch](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/docs/user-guide/README.de.md#wiki-admin-json-cookbook)
-- [HTML — Schrift & CSS](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/docs/user-guide/README.de.md#wiki-admin-html-css)
 
-**Technische Grundlagen** (Systemvoraussetzungen, Projektbeschreibung) stehen im englischen Haupt-[README](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md). **Ausführliche Copy-Paste-Beispiele** für **Mermaid**, **JSON** und **HTML/CSS** ebenfalls dort (**Fragmente** **`#mermaid-cookbook-examples`**, **`#json-cookbook-snippets`**, **`#html-custom-css-examples`**). Kurzüberblicke und Tab-Zuordnung auf Deutsch: **„Schnellzugriff“** oben (stabile Wiki-Anker).
+**Englisches Haupt-README — Kochbuch** (`blob/dev/README.md`, Überschriften-Slugs, Sprung **best effort**):
 
-**Stabile GitHub-Links:** Admin-**`staticLink`** und **„Schnellzugriff“** nutzen **`blob/dev/docs/user-guide/README.de.md#…`** mit festen **HTML-IDs** (Markdown-**Vorschau**). **Ausführliche Copy-Paste-Kochbücher** (Mermaid, JSON, CSS) bleiben im englischen Haupt-[README](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md); dort entsprechen die **Überschriften-Slugs** z. B. **`#mermaid-cookbook-examples`** — Sprung ist bei GitHub **best effort**. Die **Repo-Startseite** mit `#…` bleibt unzuverlässig. **`main`** noch ohne gleichen Stand → weiter **`dev`**; nach Merge **`blob/main`** und Anker prüfen.
+- [Mermaid-Kochbuch](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#mermaid-cookbook-examples)
+- [JSON-Kochbuch](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#json-cookbook-snippets)
+- [HTML — Schrift & CSS](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#html-custom-css-examples)
 
-**Englisches Haupt-[README](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md)** (Kochbuch-Fragmente, grob **L44·L67·L78·L100·L131·L186**): **`#documentation-instance-overview`**, **`#public-base-url`**, **`#optional-pdf-export-puppeteer`**, **`#mermaid-cookbook-examples`**, **`#json-cookbook-snippets`**, **`#html-custom-css-examples`**. **DE-Wiki-Anker** (stabile **`id=`** in dieser Datei): **`#wiki-overview-registerkarten`**, **`#wiki-admin-doc-lang`**, **`#wiki-admin-pdf-export`**, **`#wiki-admin-json-cookbook`**, **`#wiki-admin-html-css`**, **`#wiki-step3-qr-base-url`**, **`#wiki-step4-custom-sections-json`**, **`#wiki-step5-mermaid`**. **Nach großen Umbauten** IDs und **`admin/jsonConfig.json`** abstimmen (Pflegehinweis auch als HTML-Kommentar vor der Lizenz im Haupt-README).
+**Technische Grundlagen** (Systemvoraussetzungen, Projektbeschreibung) stehen ebenfalls im englischen Haupt-[README](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md). **Szenario & Screenshots** zu Mermaid/JSON/HTML/CSS: weiter unten in dieser Datei (**Schritt 4–7**) und unter **`#wiki-step5-mermaid`** usw. — die **Admin-Kochbuch-Links** zeigen bewusst auf die **englischen** Schnipsel-Abschnitte.
+
+**Admin-`staticLink`:** drei Ziele **Wiki DE**, drei **`README.md`** (Mermaid / JSON / HTML). Die **Repo-Startseite** mit `#…` bleibt unzuverlässig — immer **`blob/dev/…`**. Nach Merge auf **`main`** Pfade und Slugs prüfen.
+
+**Englisches Haupt-[README](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md)** (Kochbuch & weitere Fragmente, grob **L44·L67·L78·L100·L131·L186**): u. a. **`#mermaid-cookbook-examples`**, **`#json-cookbook-snippets`**, **`#html-custom-css-examples`**. **DE-Wiki-Anker** (nur noch für Kontext-Links / Abschnitte hier): **`#wiki-overview-registerkarten`**, **`#wiki-admin-doc-lang`**, **`#wiki-admin-pdf-export`**, **`#wiki-admin-json-cookbook`**, **`#wiki-admin-html-css`**, **`#wiki-step3-qr-base-url`**, **`#wiki-step4-custom-sections-json`**, **`#wiki-step5-mermaid`**. **Nach großen Umbauten** IDs und **`admin/jsonConfig.json`** abstimmen (Pflegehinweis auch als HTML-Kommentar vor der Lizenz im Haupt-README).
 
 **Warum früher oft nur der PDF-Link zu stimmen schien:** Unter der Repo-Wurzel `#…` hat nur **`### Optional PDF export …`** zufällig denselben Slug wie `#optional-pdf-export-puppeteer` geliefert; die anderen Kurz-Hashes passten dort nicht — oder springen im **Blob**-Viewer trotzdem nicht zuverlässig.
 

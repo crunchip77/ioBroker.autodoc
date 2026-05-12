@@ -344,7 +344,7 @@
 				"_docsLinkReadmeMermaidCookbook": {
 					"type": "staticLink",
 					"label": "Docs link README Mermaid cookbook",
-					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/docs/user-guide/README.de.md#wiki-step5-mermaid",
+					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#mermaid-cookbook-examples",
 					"target": "_blank",
 					"newLine": true,
 					"xs": 12,
@@ -1010,7 +1010,7 @@
 				"_docsLinkReadmeJsonCookbook": {
 					"type": "staticLink",
 					"label": "Docs link README JSON cookbook",
-					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/docs/user-guide/README.de.md#wiki-admin-json-cookbook",
+					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#json-cookbook-snippets",
 					"target": "_blank",
 					"newLine": true,
 					"xs": 12,
@@ -1276,7 +1276,7 @@
 				"_docsLinkReadmeHtmlCss": {
 					"type": "staticLink",
 					"label": "Docs link README HTML CSS",
-					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/docs/user-guide/README.de.md#wiki-admin-html-css",
+					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#html-custom-css-examples",
 					"target": "_blank",
 					"newLine": true,
 					"xs": 12,
