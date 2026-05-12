@@ -766,7 +766,7 @@
 				"_docsLinkWikiGermanConfig": {
 					"type": "staticLink",
 					"label": "Docs link wiki German config",
-					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/main/docs/user-guide/README.de.md",
+					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/main/docs/user-guide/README.de.md#L189",
 					"target": "_blank",
 					"newLine": true,
 					"xs": 12,
@@ -1200,7 +1200,7 @@
 				"_docsLinkWikiGermanCustomSections": {
 					"type": "staticLink",
 					"label": "Docs link wiki German config",
-					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/main/docs/user-guide/README.de.md",
+					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/main/docs/user-guide/README.de.md#L193",
 					"target": "_blank",
 					"newLine": true,
 					"xs": 12,
