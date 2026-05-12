@@ -19,7 +19,7 @@ Die gleichen **sechs Themen** wie unter den Instanz-Tabs, hier zum Kopieren/Lese
 
 **Stabile GitHub-Links:** Admin-**`staticLink`** und der Abschnitt **„Schnellzugriff“** oben nutzen **`blob/dev/…#.…`** (Markdown-**Vorschau** — lesbar, Tabellen/Listen wie gewohnt). Die **Fragmente** entsprechen den englischen Überschriften im Haupt-[README](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md) (z. B. `#mermaid-cookbook-examples`); Sprung zum Abschnitt ist bei GitHub **nicht garantiert**, aber üblicherweise brauchbarer als Rohquelle (`?plain=1`). Die **Repo-Startseite** mit `#…` bleibt unzuverlässig. **`main`** noch ohne gleichen Stand → weiter **`dev`** in der URL; nach Merge **`blob/main`** und Slugs prüfen.
 
-Die Zuordnung **Haupt-[README](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md)** (**Fragmente**, grob dieselben Zeilen wie früher **L44·L67·L78·L100·L131·L186**): **`#documentation-instance-overview`**, **`#public-base-url`**, **`#optional-pdf-export-puppeteer`**, **`#mermaid-cookbook-examples`**, **`#json-cookbook-snippets`**, **`#html-custom-css-examples`**. **DE-Wiki-Anker** (stabile IDs in **`README.de.md`**): **`#wiki-step3-qr-base-url`**, **`#wiki-step4-custom-sections-json`**. **Nach großen Umbauten** Slugs/IDs und **`admin/jsonConfig.json`** abstimmen (Pflegehinweis auch als HTML-Kommentar vor der Lizenz im Haupt-README).
+Die Zuordnung **Haupt-[README](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md)** (**Fragmente**, grob dieselben Zeilen wie früher **L44·L67·L78·L100·L131·L186**): **`#documentation-instance-overview`**, **`#public-base-url`**, **`#optional-pdf-export-puppeteer`**, **`#mermaid-cookbook-examples`**, **`#json-cookbook-snippets`**, **`#html-custom-css-examples`**. **DE-Wiki-Anker** (stabile IDs in **`README.de.md`**): **`#wiki-step3-qr-base-url`**, **`#wiki-step4-custom-sections-json`**, **`#wiki-step5-mermaid`**. **Nach großen Umbauten** Slugs/IDs und **`admin/jsonConfig.json`** abstimmen (Pflegehinweis auch als HTML-Kommentar vor der Lizenz im Haupt-README).
 
 **Warum früher oft nur der PDF-Link zu stimmen schien:** Unter der Repo-Wurzel `#…` hat nur **`### Optional PDF export …`** zufällig denselben Slug wie `#optional-pdf-export-puppeteer` geliefert; die anderen Kurz-Hashes passten dort nicht — oder springen im **Blob**-Viewer trotzdem nicht zuverlässig.
 
@@ -206,6 +206,8 @@ Im Feld: gültiges **JSON-Array** mit Objekten `title`, `body`, optional `profil
 ```
 
 Maximal **12** Einträge; sehr lange Texte werden beim Erzeugen gekürzt.
+
+<a id="wiki-step5-mermaid"></a>
 
 ### Schritt 5 — Optional Mermaid (Tab **„Meine Dokumentation“**)
 

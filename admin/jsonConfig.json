@@ -344,7 +344,7 @@
 				"_docsLinkReadmeMermaidCookbook": {
 					"type": "staticLink",
 					"label": "Docs link README Mermaid cookbook",
-					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#mermaid-cookbook-examples",
+					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/docs/user-guide/README.de.md#wiki-step5-mermaid",
 					"target": "_blank",
 					"newLine": true,
 					"xs": 12,
