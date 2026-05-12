@@ -333,6 +333,27 @@ MVP: im `documentModel` feste, kurze Blöcke (systemweit Top 3–5 Aktionen; pro
 
 Ergebnisse können in Erweiterungen von `discovery.js` / Hilfstexten münden — ohne dass jedes Diskussionsthema sofort ein eigenes Feature wird.
 
+<a id="merkliste-nachzeichnung-2026-05"></a>
+
+### Nachzeichnung — Produktperspektive & Fortführung (2026-05-12)
+
+> **Zweck:** Vollständige **Formulierung** aus der Projekt-Diskussion („was dem Adapter aus Nutzer-/Produktperspektive noch fehlt“), damit beim Fortsetzen nichts fehlt. **Keine** neue Priorität gegenüber [TODO.md — offene Arbeit](TODO.md#offene-arbeit). Die technischen Stichworte sind mit **Inhaltliche Lücken** und **Plattform-Reconnaissance** oben bereits verbunden.
+
+**Checkliste (Diskussionsstand):**
+
+1. **„Was automatisiert hier wirklich?“** — Inventar allein reicht nicht ohne **zuverlässige Semantik**: Blockly ohne eigene Auswertung bleibt eine Blackbox; **dynamische** State-IDs unterlaufen die Regex-Schicht; Szenen/Logik/Node-RED/eigene Adapter-Regeln sind **kein** einheitlicher Automatisierungsüberblick — entweder angehen oder Erwartung „vollständige Doku“ durch **Transparenz der Grenzen** entschärfen.
+2. **Zweite, tiefere Datenquelle für Skripte** — z. B. **Backup-/Stand-basiert**, **AST statt nur Regex**, längere Läufe, weniger Live-Last; bei uns angeplant (**KI + Skript Variante B**, [Backup-Festlegung](TODO.md#backup-backitup-festlegung)), noch nicht umgesetzt.
+3. **Brücken zu neuen Admin-Fähigkeiten** — z. B. **Gerätemanager** (`dm:` / Device Management) für strukturierte Gerätelisten, wo Adapter mitspielen (**ersetzt nicht** globale Automatisierungs-Semantik).
+4. **Vertrauen: Änderungen erzählen** — Diff intern vorhanden; in der **lesbaren Doku** das Narrativ „**seit letztem Lauf** …“. **Erste Ausbaustufe umgesetzt** (Admin-HTML/Markdown, User-Kurzzeile, optional ausblendbar — siehe Bullet **Vertrauen & Zeit** oben und [TODO — Delta-UX](TODO.md#anhang-a-erledigt)); weitere Ausbaustufen optional.
+5. **Kuratierte „Warum“-Ebene ohne nur KI** — systematische Schicht (Pflicht-/Halbpflichtfelder, Glossar, „Absicht in einem Satz“), skalierbarer als reine KI-Erklärung.
+6. **Transparenz der Grenzen** — explizit, wo automatische Erkennung endet (Gerät/Firmware/Cloud/manuelle Schicht); Baseline z. B. `docTransparencyLimitsShort` am Ende der Admin-**Systemübersicht**.
+
+**Prioritäts-Empfehlung (Diskussion):** Richtung „vollwertige Doku“ zuerst **Automatisierungs-Semantik / Inventar-Tiefe** und **Änderungs-Narrativ** stärken — **DnD/Kosmetik** nachrangig.
+
+**Fortführung:** Aktuellen Stand von **js-controller**, **Admin** und **Referenz-/Default-Adaptern** (welche APIs liefern **tragfähige** Daten vs. nur Best Effort?) wie unter **Plattform-Reconnaissance** — bei größeren Releases oder Controller-/Admin-Sprüngen kurz gegenprüfen; Erkenntnisse ggf. hier oder in Issue/TODO nachziehen.
+
+**Betrieb / GitHub-Doku (Support-Hinweis):** Sprünge zu `#…` auf `github.com` setzen **JavaScript** voraus — strenge Blocker (z. B. **NoScript** ohne Ausnahme für GitHub) können Hash-Scroll ausfallen lassen; Adapter-Links auf **`blob/<branch>/…`**, nicht `raw.githubusercontent.com`.
+
 ### Umsetzungs-Ideen (nicht priorisiert)
 
 | Richtung | Idee |
