@@ -76,7 +76,7 @@
 				"_docsLinkReadmeDocLangBasic": {
 					"type": "staticLink",
 					"label": "Docs link README documentation overview",
-					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md?plain=1#L44",
+					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#documentation-instance-overview",
 					"target": "_blank",
 					"newLine": true,
 					"xs": 12,
@@ -344,7 +344,7 @@
 				"_docsLinkReadmeMermaidCookbook": {
 					"type": "staticLink",
 					"label": "Docs link README Mermaid cookbook",
-					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md?plain=1#L100",
+					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#mermaid-cookbook-examples",
 					"target": "_blank",
 					"newLine": true,
 					"xs": 12,
@@ -679,7 +679,7 @@
 				"_docsLinkReadmeDocLangAdvanced": {
 					"type": "staticLink",
 					"label": "Docs link README documentation overview",
-					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md?plain=1#L44",
+					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#documentation-instance-overview",
 					"target": "_blank",
 					"newLine": true,
 					"xs": 12,
@@ -754,7 +754,7 @@
 				"_docsLinkReadmePublicBaseUrl": {
 					"type": "staticLink",
 					"label": "Docs link README public base URL",
-					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md?plain=1#L67",
+					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#public-base-url",
 					"target": "_blank",
 					"newLine": true,
 					"xs": 12,
@@ -766,7 +766,7 @@
 				"_docsLinkWikiGermanConfig": {
 					"type": "staticLink",
 					"label": "Docs link wiki German config",
-					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/docs/user-guide/README.de.md?plain=1#L189",
+					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/docs/user-guide/README.de.md#wiki-step3-qr-base-url",
 					"target": "_blank",
 					"newLine": true,
 					"xs": 12,
@@ -893,7 +893,7 @@
 				"_docsLinkReadmePdfExport": {
 					"type": "staticLink",
 					"label": "Docs link README PDF export",
-					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md?plain=1#L78",
+					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#optional-pdf-export-puppeteer",
 					"target": "_blank",
 					"newLine": true,
 					"xs": 12,
@@ -1010,7 +1010,7 @@
 				"_docsLinkReadmeJsonCookbook": {
 					"type": "staticLink",
 					"label": "Docs link README JSON cookbook",
-					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md?plain=1#L131",
+					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#json-cookbook-snippets",
 					"target": "_blank",
 					"newLine": true,
 					"xs": 12,
@@ -1200,7 +1200,7 @@
 				"_docsLinkWikiGermanCustomSections": {
 					"type": "staticLink",
 					"label": "Docs link wiki German config",
-					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/docs/user-guide/README.de.md?plain=1#L193",
+					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/docs/user-guide/README.de.md#wiki-step4-custom-sections-json",
 					"target": "_blank",
 					"newLine": true,
 					"xs": 12,
@@ -1276,7 +1276,7 @@
 				"_docsLinkReadmeHtmlCss": {
 					"type": "staticLink",
 					"label": "Docs link README HTML CSS",
-					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md?plain=1#L186",
+					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#html-custom-css-examples",
 					"target": "_blank",
 					"newLine": true,
 					"xs": 12,

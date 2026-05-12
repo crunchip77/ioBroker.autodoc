@@ -114,7 +114,7 @@
     "icon": "autodoc.png",
     "enabled": true,
     "extIcon": "https://raw.githubusercontent.com/crunchip77/ioBroker.autodoc/main/admin/autodoc.png",
-    "readme": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md?plain=1",
+    "readme": "https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md",
     "loglevel": "info",
     "tier": 3,
     "dataFolder": "files",

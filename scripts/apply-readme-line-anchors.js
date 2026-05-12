@@ -1,8 +1,9 @@
 /**
- * GitHub blob markdown often ignores or rewrites heading fragments; #L line URLs scroll reliably.
- * Updates external README links only (not same-file #heading links).
+ * Keeps GitHub doc links on **rendered** blob URLs (`blob/<branch>/…/*.md#…`) — not `?plain=1` + `#L…`
+ * (source view is unreadable for operators).
  *
- * Branch for full blob URLs: use **dev** while doc layout leads **main**; set to **main** after merging.
+ * Maps legacy line URLs (`?plain=1#L###`) to **README heading slugs**; DE wiki uses explicit `<a id="…">`.
+ * Branch: set **main** after merging if URLs should track **main**.
  */
 const fs = require('fs');
 const path = require('path');
@@ -11,6 +12,7 @@ const DOC_BRANCH = 'dev';
 
 const README_BLOB_BASE = `https://github.com/crunchip77/ioBroker.autodoc/blob/${DOC_BRANCH}/README.md`;
 
+/** Heading slug → approximate README line (maintainer hint only). */
 const fragToLine = {
 	'documentation-instance-overview': '44',
 	'public-base-url': '67',
@@ -20,60 +22,49 @@ const fragToLine = {
 	'html-custom-css-examples': '186',
 };
 
-function swapFragToLine(s) {
+/**
+ * @param {string} s File text to normalize.
+ */
+function migratePlainLineAnchorsToHeadingFragments(s) {
 	let out = s;
 	for (const [frag, lineNum] of Object.entries(fragToLine)) {
-		const fromHttps = `https://github.com/crunchip77/ioBroker.autodoc/blob/${DOC_BRANCH}/README.md#${frag}`;
-		const toHttps = `https://github.com/crunchip77/ioBroker.autodoc/blob/${DOC_BRANCH}/README.md?plain=1#L${lineNum}`;
-		out = out.split(fromHttps).join(toHttps);
-		const fromBlob = `blob/${DOC_BRANCH}/README.md#${frag}`;
-		const toBlob = `blob/${DOC_BRANCH}/README.md?plain=1#L${lineNum}`;
-		out = out.split(fromBlob).join(toBlob);
-		const fromRel = `../../README.md#${frag}`;
-		const toRel = `${README_BLOB_BASE}?plain=1#L${lineNum}`;
-		out = out.split(fromRel).join(toRel);
+		const needle = `README.md?plain=1#L${lineNum}`;
+		const repl = `README.md#${frag}`;
+		out = out.split(needle).join(repl);
 	}
+	out = out
+		.split('docs/user-guide/README.de.md?plain=1#L189')
+		.join('docs/user-guide/README.de.md#wiki-step3-qr-base-url');
+	out = out
+		.split('docs/user-guide/README.de.md?plain=1#L193')
+		.join('docs/user-guide/README.de.md#wiki-step4-custom-sections-json');
+	out = out.replace(/README\.md\?plain=1(?=["')\s]|$)/g, 'README.md');
+	out = out.replace(/README\.de\.md\?plain=1(?=["')\s]|$)/g, 'README.de.md');
 	return out;
 }
 
 /**
- * Relative `](../../README.md?…)` targets break on GitHub when `?plain=1` is present; use blob URLs.
- *
- * @param {string} s Markdown file contents.
+ * @param {string} s File text to normalize.
  */
 function expandRelativeMainReadmeLinks(s) {
 	let out = s;
-	out = out.replace(
-		/\]\(\.\.\/\.\.\/README\.md\?plain=1#L(\d+)\)/g,
-		(_, lineNum) => `](${README_BLOB_BASE}?plain=1#L${lineNum})`,
-	);
-	out = out.replace(/\]\(\.\.\/\.\.\/README\.md\)/g, () => `](${README_BLOB_BASE}?plain=1)`);
-	return out;
-}
-
-/**
- * GitHub Markdown Preview ignores #L…; ?plain=1 opens source with line numbers (idempotent).
- *
- * @param {string} s File text to normalize.
- */
-function ensurePlainBeforeMdLineFragments(s) {
-	let out = s;
-	out = out.replace(
-		/https:\/\/github\.com\/crunchip77\/ioBroker\.autodoc\/blob\/[\w.-]+\/[\w./-]+\.md(?!\?plain=1)#L\d+/g,
-		match => match.replace(/\.md#L/, '.md?plain=1#L'),
-	);
-	out = out.replace(
-		/\(((?:\.\/)?README(?:\.de)?\.md)(?!\?plain=1)#L(\d+)\)/g,
-		(_, base, lineNum) => `(${base}?plain=1#L${lineNum})`,
-	);
+	out = out.replace(/\]\(\.\.\/\.\.\/README\.md#([\w-]+)\)/g, (_, frag) => `](${README_BLOB_BASE}#${frag})`);
+	out = out.replace(/\]\(\.\.\/\.\.\/README\.md\)/g, () => `](${README_BLOB_BASE})`);
 	return out;
 }
 
 const root = path.join(__dirname, '..');
-for (const rel of ['admin/jsonConfig.json', 'README.md', 'docs/user-guide/README.de.md', 'docs/user-guide/README.md']) {
+for (const rel of [
+	'admin/jsonConfig.json',
+	'README.md',
+	'docs/user-guide/README.de.md',
+	'docs/user-guide/README.md',
+	'package.json',
+	'io-package.json',
+]) {
 	const fp = path.join(root, rel);
 	let txt = fs.readFileSync(fp, 'utf8');
-	txt = ensurePlainBeforeMdLineFragments(expandRelativeMainReadmeLinks(swapFragToLine(txt)));
+	txt = expandRelativeMainReadmeLinks(migratePlainLineAnchorsToHeadingFragments(txt));
 	fs.writeFileSync(fp, txt);
 	console.log('updated', rel);
 }
