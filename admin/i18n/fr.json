@@ -238,10 +238,10 @@
 	"copyForForum": "Copier pour le forum",
 	"Docs link README public base URL": "Wiki DE — URL publique / QR (GitHub)",
 	"Docs link wiki German config": "Wiki DE — Aperçu des onglets (GitHub)",
-	"Docs link README Mermaid cookbook": "README EN — Exemples Mermaid (GitHub)",
-	"Docs link README JSON cookbook": "README EN — Snippets JSON (GitHub)",
+	"Docs link README Mermaid cookbook": "README — Exemples Mermaid (GitHub)",
+	"Docs link README JSON cookbook": "README — Snippets JSON (GitHub)",
 	"Docs link README PDF export": "Wiki DE — Export PDF / Puppeteer (GitHub)",
-	"Docs link README HTML CSS": "README EN — CSS HTML (GitHub)",
+	"Docs link README HTML CSS": "README — CSS HTML (GitHub)",
 	"Docs link README documentation overview basic": "Wiki DE — Langue & projet (onglet Réglages de base, GitHub)",
 	"Docs link README documentation overview advanced": "Wiki DE — Effets de langue & deltas (onglet Avancé, GitHub)",
 	"Docs link wiki German custom sections": "Wiki DE — Chapitres Markdown (JSON, GitHub)"

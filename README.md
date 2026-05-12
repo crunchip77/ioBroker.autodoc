@@ -97,7 +97,7 @@ Copy-paste **examples** (field IDs, syntax): [**Mermaid**](#mermaid-cookbook-exa
 
 `https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#html-custom-css-examples`
 
-### Mermaid cookbook examples
+<h3 id="mermaid-cookbook-examples">Mermaid cookbook examples</h3>
 
 Paste into **My documentation → Mermaid diagram** (`manualMermaidDiagram`). Use **plain line breaks** inside the field (no HTML). Prefer **`flowchart LR`** so wide diagrams fit the HTML page; very large graphs are hard to read — split concepts across separate diagrams if needed.
 
@@ -128,7 +128,7 @@ flowchart LR
 - Stick to **supported Mermaid** constructs you have seen working elsewhere; exotic directives may break `mmdc`.
 - **Auto host topology** is separate (`autoMermaidHostGraph`); hide it with chapter id **`mermaidAuto`** in the Admin hide list, **`mermaid`** for this manual diagram only (`lib/docTemplateConfig.js`).
 
-### JSON cookbook snippets
+<h3 id="json-cookbook-snippets">JSON cookbook snippets</h3>
 
 Admin stores these fields as **strings**; content must be **valid JSON** (`"` keys/strings, no trailing commas). Empty roster means defaults: use **`[]`** where you do not want to override order or hide anything.
 
@@ -183,7 +183,7 @@ Admin stores these fields as **strings**; content must be **valid JSON** (`"` ke
 
 Max **12** sections; very long bodies are truncated at generation time.
 
-### HTML custom CSS examples
+<h3 id="html-custom-css-examples">HTML custom CSS examples</h3>
 
 Under **Admin → HTML export & extra sections**, **Font stack** (`htmlFontStack`) and **Extra CSS** (`htmlExtraCss`) tweak only the **exported HTML** (not Markdown). The renderer wraps pages in `lib/htmlRenderer.js` (`wrapPage`): sidebar links live under **`nav ul li a`**, layout uses **`#layout`**, **`nav`**, and **`main`** — inspect generated HTML if you need a selector.
 

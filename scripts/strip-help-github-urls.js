@@ -30,10 +30,10 @@ const docsLinkLabels = {
 		'Docs link README public base URL': 'DE user guide — Public base URL / QR (GitHub)',
 		'Docs link wiki German config': 'German wiki — Tabs overview (DE) (GitHub)',
 		'Docs link wiki German custom sections': 'German wiki — Custom Markdown chapters (JSON) (GitHub)',
-		'Docs link README Mermaid cookbook': 'English README — Mermaid cookbook examples (GitHub)',
-		'Docs link README JSON cookbook': 'English README — JSON cookbook snippets (GitHub)',
+		'Docs link README Mermaid cookbook': 'README — Mermaid cookbook examples (GitHub)',
+		'Docs link README JSON cookbook': 'README — JSON cookbook snippets (GitHub)',
 		'Docs link README PDF export': 'DE user guide — Optional PDF export / Puppeteer (GitHub)',
-		'Docs link README HTML CSS': 'English README — HTML custom CSS examples (GitHub)',
+		'Docs link README HTML CSS': 'README — HTML custom CSS examples (GitHub)',
 	},
 	de: {
 		'Docs link README documentation overview basic':
@@ -43,8 +43,8 @@ const docsLinkLabels = {
 		'Docs link README public base URL': 'README — Basis-URL / QR (GitHub)',
 		'Docs link wiki German config': 'Wiki — Instanz-Konfiguration DE (GitHub)',
 		'Docs link wiki German custom sections': 'Wiki DE — Zusätzliche Markdown-Kapitel (JSON, GitHub)',
-		'Docs link README Mermaid cookbook': 'README EN — Mermaid-Kochbuch (GitHub)',
-		'Docs link README JSON cookbook': 'README EN — JSON-Kochbuch (GitHub)',
+		'Docs link README Mermaid cookbook': 'README — Mermaid-Kochbuch (GitHub)',
+		'Docs link README JSON cookbook': 'README — JSON-Kochbuch (GitHub)',
 		'Docs link README PDF export': 'README — PDF-Export / Puppeteer (GitHub)',
 		'Docs link README HTML CSS': 'README — HTML & CSS-Beispiele (GitHub)',
 	},
@@ -55,10 +55,10 @@ const docsLinkLabels = {
 		'Docs link README public base URL': 'Wiki DE — URL publique / QR (GitHub)',
 		'Docs link wiki German config': 'Wiki DE — Aperçu des onglets (GitHub)',
 		'Docs link wiki German custom sections': 'Wiki DE — Chapitres Markdown (JSON, GitHub)',
-		'Docs link README Mermaid cookbook': 'README EN — Exemples Mermaid (GitHub)',
-		'Docs link README JSON cookbook': 'README EN — Snippets JSON (GitHub)',
+		'Docs link README Mermaid cookbook': 'README — Exemples Mermaid (GitHub)',
+		'Docs link README JSON cookbook': 'README — Snippets JSON (GitHub)',
 		'Docs link README PDF export': 'Wiki DE — Export PDF / Puppeteer (GitHub)',
-		'Docs link README HTML CSS': 'README EN — CSS HTML (GitHub)',
+		'Docs link README HTML CSS': 'README — CSS HTML (GitHub)',
 	},
 };
 

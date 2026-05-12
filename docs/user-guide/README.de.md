@@ -28,6 +28,8 @@ Die **sechs häufigsten Schnellzugriff-Themen** sind wie folgt aufgeteilt (Branc
 
 **Instanz-Links (`staticLink`):** **Je nach Thema** — drei auf **Wiki DE**, drei auf **`README.md`** (Mermaid / JSON / HTML). Die **Repo-Startseite** mit `#…` bleibt unzuverlässig — immer **`blob/dev/…`**. Nach Merge auf **`main`** Pfade und Slugs prüfen.
 
+**Häufiger Fehler:** **`raw.githubusercontent.com/…/README.md`** ist nur **Plaintext** — dort funktionieren **`#…`-Sprünge praktisch nicht**. Immer die **GitHub-Vorschau** öffnen (`github.com/…/blob/<branch>/…#.…`), wie die Admin-Links sie setzen.
+
 **Englisches Haupt-[README](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md)** (Kochbuch & weitere Fragmente, grob **L44·L67·L78·L100·L131·L186**): u. a. **`#mermaid-cookbook-examples`**, **`#json-cookbook-snippets`**, **`#html-custom-css-examples`**. **DE-Wiki-Anker** (nur noch für Kontext-Links / Abschnitte hier): **`#wiki-overview-registerkarten`**, **`#wiki-admin-doc-lang`**, **`#wiki-admin-pdf-export`**, **`#wiki-admin-json-cookbook`**, **`#wiki-admin-html-css`**, **`#wiki-step3-qr-base-url`**, **`#wiki-step4-custom-sections-json`**, **`#wiki-step5-mermaid`**. **Nach großen Umbauten** IDs und **`admin/jsonConfig.json`** abstimmen (Pflegehinweis auch als HTML-Kommentar vor der Lizenz im Haupt-README).
 
 **Warum früher oft nur der PDF-Link zu stimmen schien:** Unter der Repo-Wurzel `#…` hat nur **`### Optional PDF export …`** zufällig denselben Slug wie `#optional-pdf-export-puppeteer` geliefert; die anderen Kurz-Hashes passten dort nicht — oder springen im **Blob**-Viewer trotzdem nicht zuverlässig.
@@ -44,9 +46,8 @@ Die **sechs häufigsten Schnellzugriff-Themen** sind wie folgt aufgeteilt (Branc
 - **Erweitert → Ausblenden „Änderungen seit letztem Lauf“** (`hideAdminDeltaSinceLastRun`): blendet nur die **gelbe Delta-Box** in der **Admin**-HTML-Systemübersicht und den passenden Block im **Admin**-Markdown aus; **Changelog-Kapitel**, User und Onboarding bleiben unverändert.
 - **User/Familie**: bei **echten** Inventaränderungen seit dem letzten Schnappschuss (nicht beim ersten Lauf) erscheint ein kurzer **Alltagssatz** unter dem Titelblock — **Onboarding** nicht.
 - **Basis-URL / QR / „Link kopieren“**: dieselbe Einstellung wie der Browser-Zugang zum Admin, **ohne** Slash am Ende; nach Änderung **Dokumentation erzeugen**. Ausführlich: **„Schnellzugriff“** → *Öffentliche Basis-URL / QR*.
-<a id="wiki-admin-pdf-export"></a>
 
-- **PDF**: optional **`puppeteer`** im **Adapterverzeichnis**; Schalter unter **Erweitert** oder Datenpunkt **`action.exportPdf`**. Siehe **„Schnellzugriff“** → *PDF-Export (Puppeteer)*.
+- <a id="wiki-admin-pdf-export"></a>**PDF**: optional **`puppeteer`** im **Adapterverzeichnis**; Schalter unter **Erweitert** oder Datenpunkt **`action.exportPdf`**. Siehe **„Schnellzugriff“** → *PDF-Export (Puppeteer)*.
 - **Dateisystem-Export / Docker**: Host-Ordner einbinden und im Adapter den **Container-Pfad** eintragen — Kurzhinweis auch in der Feldhilfe.
 - **Große Bilder / Redis:** Große Bilder oder Binärdateien **nicht** als **State-Werte** in der **Objektdatenbank** ablegen — bei Backend **Redis** treiben große Blobs den RAM hoch. Lieber **externe URLs** oder kleine **SVG**. AutoDoc legt Volltext ohnehin nur unter **`/files/`** ab; **`documentation.markdown` / `.html` / `.json`** sind **kurze Platzhalter** (kein Ersatz für Medienspeicher) — siehe [PLAN.md — Medien (MVP)](../../PLAN.md#architektur-medien-mvp).
 
