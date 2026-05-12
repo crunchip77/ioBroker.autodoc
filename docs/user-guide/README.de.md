@@ -8,6 +8,8 @@ Die **Inline-Hilfe** bei jedem Feld im Admin (`jsonConfig`) bleibt die **fachlic
 
 **Stabile GitHub-Links** (nach Merge auf `main`): Nutzt **`blob/main/README.md#…`**, nicht nur die Repository-Startseite mit `#…` — dort scrollt GitHub oft **nicht** zur README-Überschrift. Die Fragmente passen zu den **`###`-Überschriften** im [README.md](../../README.md).
 
+**Warum früher oft nur der PDF-Link „ging“:** Unter `https://github.com/…/ioBroker.autodoc#…` (nur Repo-Wurzel) vergibt GitHub Sprungmarken vor allem aus den **sichtbaren README-Überschriften**. `#optional-pdf-export-puppeteer` stimmte zufällig mit der Überschrift **`### Optional PDF export (Puppeteer)`** überein — die anderen Kurz-IDs (`#mermaid-cookbook-examples` usw.) existierten dort so **nicht** (falsche/fehlende Überschriften-Slugs, keine echte `###`-Zeile). Mit **`blob/main/README.md#…`** und den angepassten **`###`-Titeln** im Haupt-README sind alle Einträge in der Liste unten gleichwertig.
+
 - [Mermaid-Kochbuch](https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#mermaid-cookbook-examples)
 - [JSON-Kochbuch](https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#json-cookbook-snippets)
 - [HTML — Schrift & CSS](https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#html-custom-css-examples)
