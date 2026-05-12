@@ -4,11 +4,37 @@ Diese Seite richtet sich an **Betreuer** und **Haus-Admins**, die die **AutoDoc-
 
 Die **Inline-Hilfe** bei jedem Feld im Admin (`jsonConfig`) bleibt die **fachliche Referenz** — diese Datei ergänzt sie um **Überblick, Bilder und ein Übungsszenario**.
 
-**Technische Grundlagen** (Systemvoraussetzungen, Projektbeschreibung) und **Copy-Paste-Beispiele** für **Mermaid** und **JSON-Felder**: englisches Haupt-[README](../../README.md) mit den Abschnitten [**Mermaid cookbook examples**](../../README.md#mermaid-cookbook-examples) und [**JSON cookbook snippets**](../../README.md#json-cookbook-snippets).  
+**Technische Grundlagen** (Systemvoraussetzungen, Projektbeschreibung) und **Copy-Paste-Beispiele** für **Mermaid**, **JSON-Felder** und **HTML-Schrift/CSS**: englisches Haupt-[README](../../README.md) mit den Abschnitten [**Mermaid cookbook examples**](../../README.md#mermaid-cookbook-examples), [**JSON cookbook snippets**](../../README.md#json-cookbook-snippets) und [**HTML export — custom font & CSS**](../../README.md#html-custom-css-examples).
+
+**Stabile GitHub-Links** (nach Merge auf `main`, z. B. für Lesezeichen aus der Inline-Hilfe):
+
+`https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#mermaid-cookbook-examples`
+
+`https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#json-cookbook-snippets`
+
+`https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#html-custom-css-examples`
+
+`https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#documentation-instance-overview`
+
+`https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#public-base-url`
+
+`https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#optional-pdf-export-puppeteer`  
 
 **Instanz öffnen:** **Instanzen** → Ihre AutoDoc-Instanz → **Schraubenschlüssel** (Konfiguration).
 
 **Zu den Bildern:** Wo ein **SVG** steht, beschreibt es die **Tab-Struktur** schematisch; der **Screenshot** darunter zeigt dieselbe Stelle in der **echten Oberfläche** (Demo). In GitHub wirken Vorschauen oft klein — Bild in neuem Tab öffnen oder zoomen. Hinweise zu **Aufnahmen, Verpixelung und Datenschutz**: **[`SCREENSHOTS.md`](assets/SCREENSHOTS.md)**.
+
+---
+
+## Kurz vom Haupt-README (Betrieb)
+
+- **Dokumentationssprache** (Grundeinstellungen): steuert Überschriften und feste Texte in **allen HTML-Profilen** und im Markdown; auch die **Kurzzeilen** für Inventarvergleich („changes since last run“) und für **Changelog**-Karten beim erneuten Erzeugen — ältere gespeicherte Changelog-Zeilen erscheinen in der **aktuellen** Export-Sprache. Details: [**documentation-instance-overview**](../../README.md#documentation-instance-overview).
+- **Erweitert → Ausblenden „Änderungen seit letztem Lauf“** (`hideAdminDeltaSinceLastRun`): blendet nur die **gelbe Delta-Box** in der **Admin**-HTML-Systemübersicht und den passenden Block im **Admin**-Markdown aus; **Changelog-Kapitel**, User und Onboarding bleiben unverändert.
+- **User/Familie**: bei **echten** Inventaränderungen seit dem letzten Schnappschuss (nicht beim ersten Lauf) erscheint ein kurzer **Alltagssatz** unter dem Titelblock — **Onboarding** nicht.
+- **Basis-URL / QR / „Link kopieren“**: dieselbe Einstellung wie der Browser-Zugang zum Admin, **ohne** Slash am Ende; nach Änderung **Dokumentation erzeugen**. Ausführlich: [**Public base URL**](../../README.md#public-base-url).
+- **PDF**: optional **`puppeteer`** im **Adapterverzeichnis**; Schalter unter **Erweitert** oder Datenpunkt **`action.exportPdf`**. Siehe [**Optional PDF export**](../../README.md#optional-pdf-export-puppeteer).
+- **Dateisystem-Export / Docker**: Host-Ordner einbinden und im Adapter den **Container-Pfad** eintragen — Kurzhinweis auch in der Feldhilfe.
+- **Große Bilder / Redis:** Bilder und große Binärdateien **nicht** dauerhaft im virtuellen Dateispeicher der ioBroker-Instanz horten (RAM bei Redis); lieber **externe URLs** oder kleine **SVG** — siehe [PLAN.md — Medien (MVP)](../../PLAN.md#architektur-medien-mvp).
 
 ---
 
@@ -17,7 +43,7 @@ Die **Inline-Hilfe** bei jedem Feld im Admin (`jsonConfig`) bleibt die **fachlic
 1. **Grundeinstellungen** — **Projektname** und **Dokumentationssprache** (alle Exporte); welches **Markdown-Profil** standardmäßig erzeugt wird; **wann** neu generiert wird (Start, Zeitplan, Adapteränderungen).
 2. **Meine Dokumentation** — **Leser-Texte** für Familie und Gäste (Notizen, Abläufe, Playbook); optionale **Notfall-Kurzzeilen**; optional **Mermaid** und **Auto-Host-Topologie**; Filter „was ausblenden“ für User vs. Onboarding.
 3. **Erweitert** — **Basis-URL** für QR/Links; Grenzen (z. B. nur aktivierte Instanzen); **Export nach Dateisystem**; optional **PDF**; **Doku-Setup-Score**; Hinweis: volle Exporte liegen unter **`/files`**, States nur Platzhalter.
-4. **HTML-Export & Zusatzkapitel** — **Erscheinungsbild** (Theme, Logo); **Kapitelreihenfolge und Ausblenden** je Profil (**JSON**); **eigene Markdown-Kapitel** (`customDocSectionsJson`); Verweis auf PDF-Schalter unter **Erweitert**.
+4. **HTML-Export & Zusatzkapitel** — **Erscheinungsbild** (Theme, Logo); **Kapitelreihenfolge und Ausblenden** je Profil (**JSON**); **eigene Markdown-Kapitel** (`customDocSectionsJson`); optional **Schriftart** (`htmlFontStack`) und **zusätzliches CSS** (`htmlExtraCss`, nur exportiertes HTML) — Beispiele und Selektoren: [**HTML — Schrift & CSS**](../../README.md#html-custom-css-examples); Verweis auf PDF-Schalter unter **Erweitert**.
 5. **Benachrichtigungen** — optional Nachricht nach erfolgreicher Generierung (abhängig vom Messaging-Adapter).
 6. **KI-Dokumentation** — nur relevant, wenn ein **Anbieter aktiv** ist; sonst bleiben die Felder ohne KI-Wirkung.
 
@@ -154,7 +180,7 @@ Nach inhaltlichen Änderungen: **Dokumentation generieren** (Button oder Datenpu
 
 ### Schritt 3 — QR & Link (Tab **Erweitert**)
 
-**Basis-URL** = genau die Adresse, mit der **ihr** den Admin im Browser öffnet (**https://…** oder **http://host:8081**), **ohne** Schrägstrich am Ende. Danach wieder **Dokumentation erzeugen**. Test zuerst im **Heim-WLAN**, nicht öffentlich exponieren.
+**Basis-URL** = genau die Adresse, mit der **ihr** den Admin im Browser öffnet (**https://…** oder **http://host:8081**), **ohne** Schrägstrich am Ende. Danach wieder **Dokumentation erzeugen**. Test zuerst im **Heim-WLAN**, nicht öffentlich exponieren. Ausführlicher: Haupt-[README → Public base URL](../../README.md#public-base-url).
 
 ### Schritt 4 — Zusätzliches Markdown-Kapitel (Tab **HTML … & Zusatzkapitel** → **Custom sections**, **`customDocSectionsJson`**)
 
@@ -187,3 +213,7 @@ Mit installierter **Mermaid-CLI** werden Diagramme als **SVG** ins HTML eingebet
 Standard belassen: **`[]`** in den JSON-Feldern. **Mustervorlagen:** [**JSON cookbook snippets**](../../README.md#json-cookbook-snippets).
 
 Nach Änderungen: **Dokumentation erzeugen** und einen Export-Link (`info.*Url*`) kurz prüfen.
+
+### Schritt 7 — Optional: Schrift & zusätzliches CSS
+
+Nur für den **HTML**-Export (Tab **HTML-Export & Zusatzkapitel**, Bereich **Optional: eigene Schrift & CSS**). Die **Tooltips** (`?`) enthalten **Copy-Paste-Starter**; Hintergrund und Selektoren (`nav`, `nav ul li a`, …): Haupt-[README → HTML Schrift & CSS](../../README.md#html-custom-css-examples). Nach Änderung wieder **Dokumentation erzeugen**.
