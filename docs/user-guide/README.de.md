@@ -173,6 +173,8 @@ Die Basis-URL entspricht **genau der Adresse**, unter der Sie den Admin öffnen 
 
 Dort finden Sie den **grauen Hinweistext**, die **Feldbeschreibung** und den **Platzhalter** im Eingabefeld (ein **JSON-Array** mit Objekten `title`, `body`, optional `profiles`).
 
+**Weitere Beispiele** (Reihenfolge-/Ausblendlisten, zweites Mermaid-Muster): englisches Haupt-[README](../../README.md) → Abschnitte [**Mermaid cookbook examples**](../../README.md#mermaid-cookbook-examples) und [**JSON cookbook snippets**](../../README.md#json-cookbook-snippets).
+
 Beispiel (nur Musterinhalt):
 
 ```json
@@ -189,13 +191,15 @@ Maximal **12** Einträge; **überlange** Inhalte werden gekürzt.
 
 ### Schritt 5 — Optional Mermaid (Tab **„Meine Dokumentation“**)
 
-Im Textfeld dient der **Platzhalter** als **Starter** (zum Überschreiben). Ist die **Mermaid‑CLI** auf dem ioBroker-Rechner installiert, werden Diagramme beim Generieren als **SVG** ins HTML eingebettet (**offlinefreundlich**). Sind **alle** Diagramme eingebettet, lädt die HTML-Datei **kein** Mermaid mehr von jsDelivr. Bleibt ein `<pre class="mermaid">` übrig (CLI fehlt oder Fehler), greift der **Browser-Fallback** über ein CDN — siehe Hilfetext im Admin.
+Im Textfeld dient der **Platzhalter** als **Starter** (zum Überschreiben). Zusätzliche **fertige Mini-Diagramme** (Copy-Paste): [**Mermaid cookbook examples**](../../README.md#mermaid-cookbook-examples) im Haupt-README.
+
+Ist die **Mermaid‑CLI** auf dem ioBroker-Rechner installiert, werden Diagramme beim Generieren als **SVG** ins HTML eingebettet (**offlinefreundlich**). Sind **alle** Diagramme eingebettet, lädt die HTML-Datei **kein** Mermaid mehr von jsDelivr. Bleibt ein `<pre class="mermaid">` übrig (CLI fehlt oder Fehler), greift der **Browser-Fallback** über ein CDN — siehe Hilfetext im Admin.
 
 **Ausblenden:** Kapitel-IDs **`mermaid`** (**manuell**) und **`mermaidAuto`** (**nur** Auto-Host-Graph) in den jeweiligen **„Ausblenden“**-Listen.
 
 ### Schritt 6 — Kapitelreihenfolge oder verstecken
 
-Die JSON-Arrays (**Admin**, **User**, **Onboarding**) sind im Admin mit **kurzen gültigen IDs** und **Platzhaltern** versehen — für die Standardreihenfolge bzw. **keine** zusätzliche Ausblendung verwenden Sie **`"[]"`**.
+Die JSON-Arrays (**Admin**, **User**, **Onboarding**) sind im Admin mit **kurzen gültigen IDs** und **Platzhaltern** versehen — für die Standardreihenfolge bzw. **keine** zusätzliche Ausblendung verwenden Sie **`"[]"`**. **Mustervorlagen** für Reihenfolge und Ausblenden: [**JSON cookbook snippets**](../../README.md#json-cookbook-snippets) im Haupt-README.
 
 Nach jeder strukturellen Änderung: **Dokumentation erneut erzeugen** und einen HTML-Profil-Link (`info.*Url*`) gegenlesen.
 

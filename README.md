@@ -76,6 +76,102 @@ The **Onboarding** HTML includes a QR code and a **Copy link** control. Both use
 
 **AI context hints** are injected only into the LLM prompt; they are **not** printed in the documentation. For **guest onboarding**, prefer everyday facts. Heavy IT or project wording (adapters, repos, …) can cause the model to leak jargon into guest text; a **safety step** then replaces that AI block with neutral guest wording. That is intentional. The **resident / family** profile does not use the same guest-only restriction. Configure them in Admin under **KI documentation / AI documentation** (after enabling a provider); full wording appears in the hint above the field.
 
+Copy-paste **examples** (field IDs, syntax): [**Mermaid**](#mermaid-cookbook-examples) · [**JSON arrays**](#json-cookbook-snippets). **Stable links** for Admin `help` text after merge to `main`:
+
+`https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#mermaid-cookbook-examples`
+
+`https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#json-cookbook-snippets`
+
+<a id="mermaid-cookbook-examples"></a>
+
+### Mermaid cookbook examples
+
+Paste into **My documentation → Mermaid diagram** (`manualMermaidDiagram`). Use **plain line breaks** inside the field (no HTML). Prefer **`flowchart LR`** so wide diagrams fit the HTML page; very large graphs are hard to read — split concepts across separate diagrams if needed.
+
+**Embedded SVG:** when **`@mermaid-js/mermaid-cli`** is installed in the adapter directory and generation succeeds, diagrams become inline SVG in HTML (good for offline / PDF). If embedding fails or the CLI is missing, the export keeps a `<pre class="mermaid">` block and the browser may load Mermaid from jsDelivr — see **Optional PDF export** and **`docs/user-guide`** (“Optional Mermaid CLI”).
+
+Minimal left-to-right overview:
+
+```text
+flowchart LR
+  Internet([Internet]) --> Router[Router]
+  Router --> ioB(ioBroker host)
+  ioB --> Heating[Heating adapters]
+  ioB --> Lights[Lights / rooms]
+```
+
+Small **subgraph** (group related nodes):
+
+```text
+flowchart LR
+  subgraph LAN["Home LAN"]
+    A[js-controller] --> B[javascript.0]
+    A --> C[other instances]
+  end
+```
+
+**Tips**
+
+- Stick to **supported Mermaid** constructs you have seen working elsewhere; exotic directives may break `mmdc`.
+- **Auto host topology** is separate (`autoMermaidHostGraph`); hide it with chapter id **`mermaidAuto`** in the Admin hide list, **`mermaid`** for this manual diagram only (`lib/docTemplateConfig.js`).
+
+<a id="json-cookbook-snippets"></a>
+
+### JSON cookbook snippets
+
+Admin stores these fields as **strings**; content must be **valid JSON** (`"` keys/strings, no trailing commas). Empty roster means defaults: use **`[]`** where you do not want to override order or hide anything.
+
+**Allowed chapter ids** come from the adapter (`lib/docTemplateConfig.js`):
+
+| Profile | Order fields | Hidden fields | Notes |
+| --- | --- | --- | --- |
+| Admin | `adminChapterOrderJson` | `adminHiddenChaptersJson` | Order default: `manual`, `system`, `adapters`, `rooms`, `scripts`, `schedule`, `userdata`, `aliases`, `maintenance`, `diagnosis`, `troubleshooting`, `custom`, `changelog`, `appendices`. Extra hide-only ids: **`mermaid`**, **`mermaidAuto`**. |
+| User | `userChapterOrderJson` | `userHiddenChaptersJson` | Keys include `manual`, `ai`, `guestHelp`, `atAGlance`, `rooms`, `scripts`, `routines`, `ownerPlaybook`, `mermaid`, `adapters`, `custom`, `system`, `troubleshooting`. |
+| Onboarding | `onboardingChapterOrderJson` | `onboardingHiddenChaptersJson` | Keys include `welcome`, `quickstart`, `tips`, `guestHelp`, `stats`, `ai`, `capabilities`, `mermaid`, `rooms`, `routines`, `ownerPlaybook`, `automations`, `adapters`, `custom`, `hint`, `system`, `manual`. |
+
+**Reorder Admin** — put system overview directly after manual context:
+
+```json
+["manual", "system", "adapters", "rooms", "scripts", "schedule", "userdata", "aliases", "maintenance", "diagnosis", "troubleshooting", "custom", "changelog", "appendices"]
+```
+
+**Hide** Admin changelog and appendices:
+
+```json
+["changelog", "appendices"]
+```
+
+**Hide User scripts chapter:**
+
+```json
+["scripts"]
+```
+
+**Reorder User** — bring **`system`** up after rooms (full key list, same ids as default order otherwise):
+
+```json
+["manual", "guestHelp", "ai", "atAGlance", "rooms", "system", "scripts", "routines", "ownerPlaybook", "mermaid", "adapters", "custom", "troubleshooting"]
+```
+
+**Custom Markdown chapters** (`customDocSectionsJson`) — array of objects with **`title`**, **`body`** (or **`bodyMarkdown`**), optional **`profiles`** (`"admin"` | `"user"` | `"onboarding"`). Omit **`profiles`** to show in **all** profiles.
+
+```json
+[
+  {
+    "title": "Emergency contacts",
+    "body": "## Numbers\n- **Repair:** …\n- **Utility:** …",
+    "profiles": ["user", "onboarding"]
+  },
+  {
+    "title": "Operator notes",
+    "body": "## Rack layout\nShort **Markdown** only; keep secrets out.",
+    "profiles": ["admin"]
+  }
+]
+```
+
+Max **12** sections; very long bodies are truncated at generation time.
+
 ## Features (overview)
 
 - Discovery across instances, hosts, enums, scripts, aliases, userdata, system config
@@ -97,7 +193,7 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 
 - **Inventar-Delta & Sprache:** **Documentation language** (Basic) steuert auch die **einzeiligen** Texte für **gespeicherte Changelog-Einträge** und für den Hinweis **„changes since last run“** beim Export. **`hideAdminDeltaSinceLastRun`** (Advanced → *What to include & limits*) blendet die gelbe **Admin**-Delta-Box und den gleichen Unterabschnitt im **Admin-Markdown** aus — **Changelog chapter**, User, and Onboarding are unchanged.
 - **User / Family:** When AutoDoc detects **real inventory changes** since the last snapshot (not the first run), exports add a short **plain-language** notice (HTML + Markdown). **Onboarding** does not show this block.
-- **Template:** `RENDERER_VERSION` **2026.05.12.5** (`lib/htmlRenderer.js`) after HTML/changelog display changes; tests in `docChangeFormat.test.js`.
+- **Docs — cookbook:** README sections [**Mermaid cookbook examples**](#mermaid-cookbook-examples) and [**JSON cookbook snippets**](#json-cookbook-snippets); user-guide cross-links in **`docs/user-guide/README(.de).md`**.
 
 - **Export-Copy / Klarheit (Admin-HTML + Admin-Markdown):** Kapitel **Betrieb – Referenz** (ehem. Troubleshooting-Konnotation) mit Top-Disclaimer; **Diagnose** mit Schnappschuss-Einleitung, **Automatische Prüfungen** (Node-Heuristik) und separatem Block **Allgemeine Erinnerungen** (OS).
 - **Nutzbarkeit (dev):** **Erweitert** zeigt vor der **ioBroker-Basis-URL** einen kurzen Hinweis (Gäste/QR, Docker/Proxy). **Onboarding-Kapitelreihenfolge:** Hilfe erklärt **`quickstart`** (immer Zähler + nächste Schritte) vs. **Discovery-Snapshot** (nur mit Daten); vgl. **`PLAN.md`** „Adapter sinnvoll einsetzen“.

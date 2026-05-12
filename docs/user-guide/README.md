@@ -121,6 +121,15 @@ Install via [npm **`iobroker.autodoc`**](https://www.npmjs.com/package/iobroker.
 
 Naming, swap-out **PNG** hints, redaction: **[`assets/SCREENSHOTS.md`](assets/SCREENSHOTS.md)**.
 
+## Cookbook examples (Mermaid & JSON)
+
+Step-by-step JSON for **custom sections** also appears in **[`README.de.md`](README.de.md)** (scenario). For **additional copy-paste diagrams**, **chapter-order / hide-list** patterns, and **`customDocSectionsJson`** variants, see the main **[README](../../README.md)**:
+
+- [**Mermaid cookbook examples**](../../README.md#mermaid-cookbook-examples)
+- [**JSON cookbook snippets**](../../README.md#json-cookbook-snippets)
+
+Use these anchors when linking from Admin field help after **`main`** is updated (`https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#…`).
+
 ## Generating documentation
 
 Trigger **Generate** from the instance (state `action.generate`, or the schedule you enabled). After a successful run you get:
