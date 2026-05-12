@@ -6,9 +6,14 @@ Automatically generates structured documentation (HTML, Markdown, JSON) for your
 
 **Version:** 0.9.39
 
+**Installation**
+
+1. Open **[ioBroker Admin](https://www.iobroker.net/#en/documentation)** and install **`iobroker.autodoc`** (see the [npm package](https://www.npmjs.com/package/iobroker.autodoc); current **0.9.39**).
+2. Optional: clone or install from **[GitHub](https://github.com/crunchip77/ioBroker.autodoc)**.
+3. Official adapter index: **[ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories)** (**latest**). Maintainer workflow / PR: **[TODO — § 1.1 Release](TODO.md#release-veroeffentlichung)**.
+
 | | |
 | --- | --- |
-| **Install** | [ioBroker Admin](https://www.iobroker.net/#en/documentation) — [npm](https://www.npmjs.com/package/iobroker.autodoc) package **`iobroker.autodoc`** (current **0.9.39**), **Git** repository (URL / clone). **Default adapter list** ([ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories) **latest**): **PR offen** → Eintrag in der Admin-Standardliste **nach Merge**; siehe [TODO § 1.1](TODO.md#release-veroeffentlichung). |
 | **Repository** | [github.com/crunchip77/ioBroker.autodoc](https://github.com/crunchip77/ioBroker.autodoc) |
 | **Issues** | [GitHub Issues](https://github.com/crunchip77/ioBroker.autodoc/issues) |
 
