@@ -36,6 +36,8 @@ No other adapters are **required** for AutoDoc itself. Optional: a **web server*
 
 ## Configuration
 
+<a id="documentation-instance-overview"></a>
+
 Configure the instance in **ioBroker Admin** (tabs for basics, manual notes, advanced options, notifications, AI). Generation can be triggered manually, on startup, on a timer, and after adapter changes (debounced).
 
 **Documentation language** (Basic settings) drives headings and fixed wording in **all HTML profiles** and in Markdown. It also controls the **short summary lines** for inventory comparison (“changes since last run”) and for **changelog** cards when you regenerate — older stored changelog rows are shown in the **current** export language, not the language they had when saved.
@@ -56,6 +58,8 @@ Useful **states** (selection): `action.generate`; **`action.exportPdf`** (writes
 - **`documentation.*` body states** are **placeholders only** (large payloads are not duplicated in the object database). Scripts and integrations that need **full text** read **`/files/`** or use **`info.htmlUrl*`** / download actions.
 - **Photos and large binaries:** do **not** rely on storing big images in ioBroker’s virtual file storage — **especially with Redis** (binary blobs inflate RAM). Use **external URLs** (your NAS, HTTP server) or small **inline SVG** diagrams; the same guideline keeps **jsonl** setups predictable.
 - Rationale, options, and future media work: [`PLAN.md` — Media (MVP) & limits](PLAN.md#architektur-medien-mvp) and [Architecture boundaries](PLAN.md#architektur-grenzen).
+
+<a id="public-base-url"></a>
 
 ### Public base URL (QR code and “Copy link”)
 
