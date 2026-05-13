@@ -148,6 +148,7 @@ Histories for versions **no longer** in the **7-version** window shared by `comm
 ### Earlier releases
 
 Changes for **0.9.4** and older: see **`git log`** and this file’s history in Git, or archived tags.
+
 ## 0.9.32 (2026-05-08)
 
 - **Documentation for operators:** new **`docs/user-guide/`** — [English README](docs/user-guide/README.md) plus [German scenario walkthrough](docs/user-guide/README.de.md); SVG wireframes and notes for replacing them with screenshots.

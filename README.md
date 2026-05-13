@@ -4,7 +4,7 @@
 
 Automatically generates structured documentation (HTML, Markdown, JSON) for your ioBroker installation — on demand, on a schedule, or when the system changes.
 
-**Version:** 0.9.39
+**Version:** 0.9.40
 
 **Installation**
 
@@ -226,6 +226,12 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 - **Gehosteter Checker / iobroker.dev:** häufig **504** oder Timeouts; lokal `npm run adapter-check` kann **E9999** im **`--local`‑Pfad liefern (**CONTRIBUTING**) — Releases an **CI** und **`npm test`** festmachen, nicht nur an der Web-UI.
 - **Roadmap:** laufende Themen vor allem in **[`TODO.md`](TODO.md)** und **[`PLAN.md`](PLAN.md)**; diesen Abschnitt vor dem nächsten Release in eine neue **`### x.y.z`**-Sektion übernehmen oder kürzen.
 
+### 0.9.40 (2026-05-13)
+
+- **Maintainer docs & release tooling:** **[CONTRIBUTING.md](CONTRIBUTING.md)** documents **`npm run release`** only from **`main`**; **[`docs/iobroker-adapter-references.md`](docs/iobroker-adapter-references.md)** documents the literal README changelog heading ``### **WORK IN PROGRESS**`` required by `@alcalzone/release-script` / ioBroker plugins (do not rename — avoids **`check:changelog`** failures).
+- **Lint:** JSDoc **`@param` / `@returns` descriptions** completed for **`lib/docChangeFormat.js`** (clean **`npm run lint`**).
+- **Runtime:** no adapter behaviour or export pipeline change in this patch release.
+
 ### 0.9.39 (2026-05-13)
 
 - **Breaking — storage:** Admin setting **`documentationStatesMode`** (**Documentation in States**) is **removed**. **`documentation.markdown`**, **`documentation.html`**, and **`documentation.json`** are **always** short placeholders; canonical full exports live **only** under **`/files/`** (and optional filesystem export). **`documentation.exportHashes`** unchanged — integrations must use **`/files/`**, **`info.htmlUrl*`**, or download actions for full body text (`common.news`).
@@ -246,19 +252,6 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 ### 0.9.36 (2026-05-09)
 
 - **npm / Checker:** tarball **0.9.36** matches **`main`**: **`common.news`** lists only npm-published versions (fixes **E2004** stale metadata from first **0.9.35** publish). README **Version:** line synced; no adapter runtime/UI changes.
-
-### 0.9.35 (2026-05-08)
-
-- **npm:** publish **`iobroker.autodoc`** on the public registry so hosts can `npm install` the adapter tarball without cloning.
-- **README:** install table reflects **npm** plus Git; default-list installs still depended on **ioBroker.repositories** (unchanged at that release).
-
-### 0.9.34 (2026-05-08)
-
-- **`documentation.exportHashes`:** after a successful PDF step, **SHA-256** entries for **`autodoc-admin.pdf`**, **`autodoc-user.pdf`**, **`autodoc-onboarding.pdf`** are merged into the same state (generation with **`pdfExportAfterGeneration`** or manual **`action.exportPdf`**).
-- **Mermaid / HTML:** jsDelivr **`mermaid.min.js`** is injected **only** when the page still contains **`<pre class="mermaid">`** (fully SVG-embedded exports skip the CDN). `RENDERER_VERSION` **2026.05.08.1**.
-- **Admin:** **`Doc layout pdf hint`** on tab **HTML export & extra sections**; **export-hashes** help text mentions PDF digests; **`manualMermaidDiagram`** help clarified.
-- **Quick Start:** scripts-with-description lines are ordered **by name** for stable output.
-- **`docs/user-guide`:** tab overview, **exportHashes**/Mermaid wording; **SCREENSHOTS.md** + eingebettete **PNG-Screenshots** für alle sechs Konfig-Tabs (neben den SVG-Wireframes), Hinweise Lesbarkeit/GitHub-Vorschau.
 
 ## License
 

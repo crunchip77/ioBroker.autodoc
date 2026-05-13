@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "autodoc",
-    "version": "0.9.39",
+    "version": "0.9.40",
     "news": {
+      "0.9.40": {
+        "en": "**Maintainer docs:** CONTRIBUTING documents **`npm run release`** only from **`main`**; **`docs/iobroker-adapter-references.md`** documents the literal README changelog heading required by ioBroker release-script plugins.\n**Lint:** JSDoc **`@param` / `@returns`** descriptions in **`lib/docChangeFormat.js`**.\n**Runtime:** no adapter behaviour change.",
+        "de": "**Maintainer-Doku:** **`npm run release`** nur auf **`main`** (CONTRIBUTING); **`iobroker-adapter-references.md`** — exakte README-Überschrift für Release-Plugins.\n**Lint:** JSDoc in **`lib/docChangeFormat.js`**.\n**Laufzeit:** kein Verhaltenswechsel.",
+        "ru": "**Документация:** релиз только с **`main`**; в **`iobroker-adapter-references.md`** — точная строка заголовка changelog для release-script.\n**Lint:** JSDoc в **`lib/docChangeFormat.js`**.\n**Поведение:** без изменений.",
+        "pt": "**Documentação (maintainers):** **`npm run release`** apenas em **`main`**; **`iobroker-adapter-references.md`** — cabeçalho changelog exigido pelos plugins.\n**Lint:** JSDoc em **`lib/docChangeFormat.js`**.\n**Runtime:** sem mudança.",
+        "nl": "**Maintainer-docs:** release alleen vanaf **`main`**; **`iobroker-adapter-references.md`** — exacte changelog-kop voor release-script.\n**Lint:** JSDoc in **`lib/docChangeFormat.js`**.\n**Runtime:** geen gedragswijziging.",
+        "fr": "**Documentation mainteneurs :** **`npm run release`** uniquement depuis **`main`** ; ligne de titre changelog pour les plugins release-script (**`iobroker-adapter-references.md`**).\n**Lint :** JSDoc dans **`lib/docChangeFormat.js`**.\n**Comportement :** inchangé.",
+        "it": "**Documentazione maintainer:** **`npm run release`** solo da **`main`**; intestazione changelog richiesta dai plugin (**`iobroker-adapter-references.md`**).\n**Lint:** JSDoc in **`lib/docChangeFormat.js`**.\n**Runtime:** nessun cambio.",
+        "es": "**Documentación de mantenimiento:** **`npm run release`** solo desde **`main`**; encabezado de changelog requerido por los plugins (**`iobroker-adapter-references.md`**).\n**Lint:** JSDoc en **`lib/docChangeFormat.js`**.\n**Ejecución:** sin cambios.",
+        "pl": "**Dokumentacja maintainerów:** **`npm run release`** tylko z **`main`**; nagłówek changelog w **`iobroker-adapter-references.md`**.\n**Lint:** JSDoc w **`lib/docChangeFormat.js`**.\n**Runtime:** bez zmian.",
+        "uk": "**Документація:** реліз лише з **`main`**; рядок заголовка changelog для release-script — **`iobroker-adapter-references.md`**.\n**Lint:** JSDoc у **`lib/docChangeFormat.js`**.\n**Поведінка:** без змін.",
+        "zh-cn": "**维护文档：** **`npm run release`** 仅在 **`main`** 分支执行；**`iobroker-adapter-references.md`** 说明 release-script 所需的 changelog 标题行。\n**Lint：** **`lib/docChangeFormat.js`** 的 JSDoc。\n**运行时：** 适配器行为无变更。"
+      },
       "0.9.39": {
         "en": "**Breaking — storage:** Admin option **`documentationStatesMode`** removed. **`documentation.markdown`**, **`.html`**, **`.json`** are **always** short placeholders; full text lives **only** under **`/files/`** (and optional filesystem export). Use **`/files/`**, **`info.htmlUrl*`**, or download actions.\n**Docs:** **`readme`** / npm **homepage** / Admin **`staticLink`** targets use GitHub **`main`** branch URLs.\n**Exports:** Saved changelog lines and **“changes since last run”** follow **Documentation language**; Admin / DE wiki help refresh.",
         "de": "**Breaking — Speicher:** Admin-Option **`documentationStatesMode`** entfällt. **`documentation.markdown`**, **`.html`**, **`.json`** sind **immer** kurze Platzhalter; Volltext nur unter **`/files/`** (optional Dateisystem-Export). **`/files/`**, **`info.htmlUrl*`** oder Download-Aktionen nutzen.\n**Docs:** **`readme`** / npm-**homepage** / Admin-**`staticLink`** zeigen auf GitHub-**`main`**.\n**Exporte:** Gespeicherte Changelog-Zeilen und **„Änderungen seit letztem Lauf“** folgen der **Dokumentationssprache**; Admin-Hilfe und DE-Wiki angepasst.",
