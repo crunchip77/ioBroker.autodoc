@@ -69,6 +69,24 @@ After changing **dependencies** or **overrides**, run **`npm install`**, commit 
 
 - Run **`npm run release`** only on **`main`** — **`@alcalzone/release-script-plugin-iobroker`** defaults to **`main`** only (`check:git` aborts on **`dev`**). From **`dev`**, merge/sync then: **`git checkout main && git pull origin main`** before **`npm run release`** (see branch workflow above).
 
+<a id="maintainer-checklist-release-order"></a>
+
+### Maintainer checklist — release order (do not skip)
+
+Follow these steps **in order** after the code for **`x.y.z`** is finished. **`npm publish` does not create a GitHub Release or Git tag.** If you publish from **`main`** but skip the tag/release step, **GitHub “Latest release” will lag npm** until you fix it.
+
+1. **`main` up to date:** `git checkout main && git pull origin main`.
+2. **Bump & metadata:** Prefer **`npm run release`** from **`main`** (interactive terminal; **`manual-review`**: inspect diff; **`yes`** only when correct — avoid **`Ctrl+C`** on prompts: Node 24 **enquirer** may throw **`ERR_USE_AFTER_CLOSE`**). If versioning was done manually, ensure **`package.json`**, **`io-package.json`** (`common.version`), **`common.news`** (**only semver keys that exist on npm** — checker **E2004**), root **`package-lock.json`** **`version`**, and README **`Version:`** / changelog all match **`x.y.z`**.
+3. **Quality gates:** `npm test`, `npm run lint`, `npm run check` (and optional `npm run adapter-check`).
+4. **Commit & push `main`:** `git push origin main`.
+5. **npm publish:** `npm login` if needed (`npm publish` cannot run without Maintainer auth — browser / security key flow is normal); then `npm publish --access public`. If **`Enter OTP`** appears, use an **npm TOTP authenticator**, not unrelated app entries (**GitHub** alone is unrelated). OTP **rate limiting** (**E429**) after bad attempts: pause or use a **Granular Publish token** (User **`.npmrc`**, never commit tokens). Optionally run **`npm pkg fix`** and commit **`repository.url`** normalization if **`npm publish`** warns.
+6. **Verify registry:** `npm view iobroker.autodoc version` → **`x.y.z`**.
+7. **Git tag + GitHub Release (mandatory parity with npm):** on the **`main`** commit you intend to label **`x.y.z`** (normally current **`main`** after publish):  
+   `git tag -a vx.y.z -m "vx.y.z: …"` → `git push origin vx.y.z` → **`gh release create vx.y.z --title "vx.y.z" --verify-tag --notes "…"`** (or equivalent on the GitHub UI). Omitting this leaves **releases** stale while **`npm`** is current.
+8. **Sync `dev`:** `git checkout dev`, merge/fast-forward **`origin/main`** into **`dev`**, `git push origin dev`, stay on **`dev`** for ongoing work unless hotfixing **`main`** only.
+
+Quick reference for **Agents / Copilot**: when the Maintainer asks to **finish a release** or **publish**, ensure step **7** is proposed or executed after confirmation that step **6** succeeded — do not assume **npm** updates GitHub **Releases**.
+
 - Keep the **Changelog** section in [`README.md`](README.md) aligned with **`common.news`** in `io-package.json`: list only the **same 7** newest versions; move dropped versions into [`CHANGELOG_OLD.md`](CHANGELOG_OLD.md) (see intro there).
 - Add a dated `### x.y.z` section at the **top** of that window when you ship a release (expected for ioBroker adapter listings).
 - Keep **`version`** in `package.json` and `io-package.json` consistent with the documented release (Adapter Checker may flag mismatches, e.g. **E6006** — follow the checker output for the current ruleset).

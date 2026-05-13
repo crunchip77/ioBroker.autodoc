@@ -24,5 +24,6 @@ Die **wiederverwendbare** Linksammlung und Checker-/release-script-Grundlagen li
 
 - **Roadmap / Release-Checkliste:** [`TODO.md`](TODO.md) → **1.1** Release, **Anhang B**.
 - **Maintainer-Details** (Paket **`iobroker.autodoc`**, Branches `dev`/`main`, Changelog, Checker-Ausnahmen): [`CONTRIBUTING.md`](CONTRIBUTING.md).
+- **Release Reihenfolge (nicht unterlassen — Tag/GitHub nach npm):** [`CONTRIBUTING.md` § Maintainer checklist](CONTRIBUTING.md#maintainer-checklist-release-order). Kurzreferenz zusätzlich in [`.cursor/rules/release-order.mdc`](.cursor/rules/release-order.mdc).
 - **`npm run release`:** Branch-Policy und Changelog-Plugin siehe **CONTRIBUTING**; vor Release sinnvoll `npm test`, `npm run lint`, `npm run check`, optional `npm run adapter-check`.
 - **Typisch hier:** **W4001** bis **ioBroker.repositories**-PR; **E2000** sollte bei veröffentlichtem Paket nicht dauerhaft bleiben (Registry/Hosted-Checker bei Zweifel). **W5042**/`optionalDependencies`: siehe **CONTRIBUTING** (false positive Repochecker).
