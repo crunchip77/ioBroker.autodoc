@@ -4,7 +4,7 @@
 
 Automatically generates structured documentation (HTML, Markdown, JSON) for your ioBroker installation — on demand, on a schedule, or when the system changes.
 
-**Version:** 0.9.42
+**Version:** 0.9.43
 
 **Installation**
 
@@ -226,11 +226,19 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 - **Gehosteter Checker / iobroker.dev:** häufig **504** oder Timeouts; lokal `npm run adapter-check` kann **E9999** im **`--local`‑Pfad liefern (**CONTRIBUTING**) — Releases an **CI** und **`npm test`** festmachen, nicht nur an der Web-UI.
 - **Roadmap:** laufende Themen vor allem in **[`TODO.md`](TODO.md)** und **[`PLAN.md`](PLAN.md)**; diesen Abschnitt vor dem nächsten Release in eine neue **`### x.y.z`**-Sektion übernehmen oder kürzen.
 
+### 0.9.43 (2026-05-13)
+
+- **Admin / Adapter Checker:** **`common.news`** lists only semver versions that exist as tarballs on **npm** (ioBroker Adapter Checker **E2004**). Removed **`news`** keys **0.9.39**, **0.9.40**, and **0.9.41** — those bumps never shipped to the registry between **0.9.38** and **0.9.42**. The narrative below remains the **user-facing** history for those Git-era steps.
+- **`common.news` copy:** **0.9.42** admin news now compares against **0.9.38** (last npm release before **0.9.42**).
+- **Runtime:** unchanged.
+
 ### 0.9.42 (2026-05-13)
 
-- **npm / process:** Patch **0.9.42** — **no functional change** vs **0.9.41**; `package.json` / `io-package.json` / README **`Version:`** aligned for npm publish only (release-script housekeeping).
+- **npm / process:** Patch **0.9.42** — **no functional change** vs **0.9.38** (previous tarball on npm before **0.9.42**); `package.json` / `io-package.json` / README **`Version:`** aligned for npm publish only (release-script housekeeping).
 
 ### 0.9.41 (2026-05-13)
+
+*Semver steps **0.9.39–0.9.41** were Git-era only — no tarballs on npm until **0.9.42**; **`common.news`** aligned with npm in **0.9.43** (**E2004**).*
 
 - **npm / process:** Patch **0.9.41** — **no functional change** vs **0.9.40**; `package.json` / `io-package.json` / README **`Version:`** aligned for npm publish only (release-script housekeeping).
 
