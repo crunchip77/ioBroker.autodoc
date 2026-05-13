@@ -22,7 +22,7 @@ Konkrete Meldungen und Projekt-Workarounds immer im **eigenen** Repo (`CONTRIBUT
 
 ## `@alcalzone/release-script` (häufig bei create-adapter)
 
-- **README-Changelog:** Sektion mit exakter Markdown-Überschrift `### **WORK IN PROGRESS**` (Plugin `@alcalzone/release-script-plugin-changelog`); **mindestens ein Eintrag** unter diesem Heading, sonst bricht der Release mit leerem Changelog ab.  
+- **README-Changelog:** Unter **`## Changelog`** die Überschriftzeile exakt ``### **WORK IN PROGRESS**`` stehen lassen (nicht umbenennen oder „schöner“ schreiben — sonst schlägt **`check:changelog`** mit z. B. „changelog placeholder is missing“ fehl). Darunter die Work-in-progress-Stichpunkte bis zum nächsten Release. Plugins (**z. B.** `@alcalzone/release-script-plugin-changelog`, **`release-script-plugin-iobroker`**) vergleichen diese Zeile **wortgetreu**.  
 - **`common.news`:** nur **veröffentlichte** npm-Versionen; max. **7** Einträge üblich (Checker / Listen).  
 - **Branch:** Viele Setups erlauben `npm run release` nur von **`main`** — auf Entwicklungsbranches ggf. `--branchPattern` (siehe Repo-Doku / `package.json`).  
 - **Publish:** Wenn das Projekt auf release-script ausgelegt ist, nicht nur nacktes `npm publish`, sondern den dokumentierten Release-Befehl nutzen.
