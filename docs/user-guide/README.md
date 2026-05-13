@@ -4,7 +4,7 @@ Structured help for **operators** who install and run the adapter from the [GitH
 
 - **German** wiki — Admin tabs, screenshots, fictional **„Muster‑Einfamilienhaus“** practice scenario: **[`README.de.md`](README.de.md)**  
 
-**Figures:** For several tabs you get **two images in a row**: an **SVG wireframe** (what belongs where — not real pixels) and then a **PNG** of the real Admin UI (all six tabs covered). That pairing is **intentional**. If embedded images look small on GitHub, **open the image in a new tab** or zoom the page; see **[`SCREENSHOTS.md`](assets/SCREENSHOTS.md)** (*Legibility*, **when to reshoot**, privacy). Naming and privacy: same file. Per-field tooltips in Admin (`?`) remain authoritative. Project overview: **[README](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md)**.
+**Figures:** For several tabs you get **two images in a row**: an **SVG wireframe** (what belongs where — not real pixels) and then a **PNG** of the real Admin UI (all six tabs covered). That pairing is **intentional**. If embedded images look small on GitHub, **open the image in a new tab** or zoom the page; see **[`SCREENSHOTS.md`](assets/SCREENSHOTS.md)** (*Legibility*, **when to reshoot**, privacy). Naming and privacy: same file. Per-field tooltips in Admin (`?`) remain authoritative. Project overview: **[README](https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md)**.
 
 ## Prerequisites
 
@@ -123,12 +123,12 @@ Naming, swap-out **PNG** hints, redaction: **[`assets/SCREENSHOTS.md`](assets/SC
 
 ## Cookbook examples (Mermaid & JSON)
 
-Step-by-step JSON for **custom sections** also appears in **[`README.de.md`](README.de.md)** (scenario section). For **additional copy-paste diagrams**, **chapter-order / hide-list** patterns, and **`customDocSectionsJson`** variants, see the main **[README](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md)**:
+Step-by-step JSON for **custom sections** also appears in **[`README.de.md`](README.de.md)** (scenario section). For **additional copy-paste diagrams**, **chapter-order / hide-list** patterns, and **`customDocSectionsJson`** variants, see the main **[README](https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md)**:
 
-- [**Mermaid cookbook examples**](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#mermaid-cookbook-examples)
-- [**JSON cookbook snippets**](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#json-cookbook-snippets)
+- [**Mermaid cookbook examples**](https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#mermaid-cookbook-examples)
+- [**JSON cookbook snippets**](https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#json-cookbook-snippets)
 
-Use these targets when linking from Admin field help — **`blob/dev/README.md#…`** opens **Preview** (readable). Heading fragments match the English `###` titles in the main README; scroll behavior is **best effort**. While **`dev`** leads **`main`**, keep **`dev`** in the path (switch to **`blob/main`** after merging). Repo-root `#…` URLs remain unreliable.
+Use these targets when linking from Admin field help — **`blob/main/README.md#…`** opens **Preview** (readable). Heading fragments match the English `###` titles in the main README; scroll behavior is **best effort**. Repo-root `#…` URLs remain unreliable — always use **`blob/main/…#…`**.
 
 ## Generating documentation
 

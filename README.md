@@ -83,19 +83,19 @@ The **Onboarding** HTML includes a QR code and a **Copy link** control. Both use
 
 **AI context hints** are injected only into the LLM prompt; they are **not** printed in the documentation. For **guest onboarding**, prefer everyday facts. Heavy IT or project wording (adapters, repos, …) can cause the model to leak jargon into guest text; a **safety step** then replaces that AI block with neutral guest wording. That is intentional. The **resident / family** profile does not use the same guest-only restriction. Configure them in Admin under **KI documentation / AI documentation** (after enabling a provider); full wording appears in the hint above the field.
 
-Copy-paste **examples** (field IDs, syntax): [**Mermaid**](#mermaid-cookbook-examples) · [**JSON arrays**](#json-cookbook-snippets) · [**Custom CSS**](#html-custom-css-examples). **Stable URLs** for bookmarks / Admin `staticLink`: **`blob/dev/README.md#…`** — GitHub opens Markdown in **Preview** (readable); fragments match heading slugs below (same names as local `#…` links). Scroll-to-section is **best effort** in GitHub’s viewer; **repository root** URLs like `…/ioBroker.autodoc#json-cookbook-snippets` remain unreliable. Targets track branch **`dev`** until docs are merged to **`main`** — then switch **`blob/main`** and **re-check slugs** after big README edits.
+Copy-paste **examples** (field IDs, syntax): [**Mermaid**](#mermaid-cookbook-examples) · [**JSON arrays**](#json-cookbook-snippets) · [**Custom CSS**](#html-custom-css-examples). **Stable URLs** for bookmarks / Admin `staticLink`: **`blob/main/README.md#…`** — GitHub opens Markdown in **Preview** (readable); fragments match heading slugs below (same names as local `#…` links). Scroll-to-section is **best effort** in GitHub’s viewer; **repository root** URLs like `…/ioBroker.autodoc#json-cookbook-snippets` remain unreliable. After large README edits, **re-check slugs** against **`blob/main`**.
 
-`https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#documentation-instance-overview`
+`https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#documentation-instance-overview`
 
-`https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#public-base-url`
+`https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#public-base-url`
 
-`https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#optional-pdf-export-puppeteer`
+`https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#optional-pdf-export-puppeteer`
 
-`https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#mermaid-cookbook-examples`
+`https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#mermaid-cookbook-examples`
 
-`https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#json-cookbook-snippets`
+`https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#json-cookbook-snippets`
 
-`https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#html-custom-css-examples`
+`https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#html-custom-css-examples`
 
 <h3 id="mermaid-cookbook-examples">Mermaid cookbook examples</h3>
 
@@ -268,6 +268,6 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 
 MIT License
 
-<!-- Maintainer: Admin staticLinks — target **depends on link**: wiki DE (…) vs English README cookbooks (#mermaid…, #json…, #html… on blob/dev/README.md). Sync README.de.md + jsonConfig if headings change. Branch **dev** until merged to **main**. -->
+<!-- Maintainer: Admin staticLinks — wiki DE vs English README cookbooks on **blob/main**. Sync README.de.md + jsonConfig if headings change. -->
 
 Copyright (c) 2026 crunchip77 <41550245+crunchip77@users.noreply.github.com>

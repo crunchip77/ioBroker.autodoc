@@ -8,7 +8,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const DOC_BRANCH = 'dev';
+const DOC_BRANCH = 'main';
 
 const README_BLOB_BASE = `https://github.com/crunchip77/ioBroker.autodoc/blob/${DOC_BRANCH}/README.md`;
 

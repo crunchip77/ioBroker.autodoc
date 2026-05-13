@@ -4,29 +4,29 @@ Diese Seite richtet sich an **Betreuer** und **Haus-Admins**, die die **AutoDoc-
 
 Die **Inline-Hilfe** bei jedem Feld im Admin (`jsonConfig`) bleibt die **fachliche Referenz** — diese Datei ergänzt sie um **Überblick, Bilder und ein Übungsszenario**. **Klickbare Dokumentation:** In den Instanz-Tabs zeigt AutoDoc unter den betreffenden Feldern **eigene GitHub-Links** (nicht nur Fließtext in der `?`-Tooltip-Hilfe — dort sind URLs meist nicht anklickbar).
 
-**Je nach Link** öffnet sich im Browser **nicht immer dieselbe GitHub-Datei:** **Einordnung** (Tabs, Sprache, Basis-URL, PDF, Zusatzkapitel-JSON) → **Wiki DE** (`README.de.md`); **lange Copy-Paste-Kochbücher** (Mermaid, JSON-Felder, CSS) → **englisches Haupt-[README](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md)**. Darunter im **Übungsszenario** gibt es zusätzlich **dieselben Themen** noch einmal mit **Screenshots** — dort weiterhin die Wiki-Anker **`#wiki-step…`** / **`#wiki-admin…`**.
+**Je nach Link** öffnet sich im Browser **nicht immer dieselbe GitHub-Datei:** **Einordnung** (Tabs, Sprache, Basis-URL, PDF, Zusatzkapitel-JSON) → **Wiki DE** (`README.de.md`); **lange Copy-Paste-Kochbücher** (Mermaid, JSON-Felder, CSS) → **englisches Haupt-[README](https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md)**. Darunter im **Übungsszenario** gibt es zusätzlich **dieselben Themen** noch einmal mit **Screenshots** — dort weiterhin die Wiki-Anker **`#wiki-step…`** / **`#wiki-admin…`**.
 
 Im Admin sind **Instanz-Konfiguration** und **Zusätzliche Markdown-Kapitel** zwei **getrennte** Links — erster Sprung **[Registerkarten](#wiki-overview-registerkarten)**, zweiter **[Schritt 4 — Custom sections](#wiki-step4-custom-sections-json)**. Wäre für beide dieselbe Textmarke im Adapter hinterlegt gewesen, würde auch „Instanz-Konfiguration“ fälschlich nach Schritt 4 zeigen.
 
 ## Schnellzugriff — wie die Admin-Links (je nach Link: Wiki DE oder README EN)
 
-Die **sechs häufigsten Schnellzugriff-Themen** sind wie folgt aufgeteilt (Branch **`dev`**; auf **`main`** kann ein älterer Stand liegen):
+Die **sechs häufigsten Schnellzugriff-Themen** sind wie folgt aufgeteilt (öffentliche **`staticLink`**-Ziele: **`blob/main/…`**; Tagesarbeit der Maintainer oft auf **`dev`**):
 
-**Wiki DE** (`blob/dev/docs/user-guide/README.de.md`, Markdown-**Vorschau**, feste **`id=`**):
+**Wiki DE** (`blob/main/docs/user-guide/README.de.md`, Markdown-**Vorschau**, feste **`id=`**):
 
-- [Dokumentationssprache & Deltas](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/docs/user-guide/README.de.md#wiki-admin-doc-lang)
-- [Öffentliche Basis-URL / QR](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/docs/user-guide/README.de.md#wiki-step3-qr-base-url)
-- [PDF-Export (Puppeteer)](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/docs/user-guide/README.de.md#wiki-admin-pdf-export)
+- [Dokumentationssprache & Deltas](https://github.com/crunchip77/ioBroker.autodoc/blob/main/docs/user-guide/README.de.md#wiki-admin-doc-lang)
+- [Öffentliche Basis-URL / QR](https://github.com/crunchip77/ioBroker.autodoc/blob/main/docs/user-guide/README.de.md#wiki-step3-qr-base-url)
+- [PDF-Export (Puppeteer)](https://github.com/crunchip77/ioBroker.autodoc/blob/main/docs/user-guide/README.de.md#wiki-admin-pdf-export)
 
-**Englisches Haupt-README — Kochbuch** (`blob/dev/README.md`, Überschriften-Slugs, Sprung **best effort**):
+**Englisches Haupt-README — Kochbuch** (`blob/main/README.md`, Überschriften-Slugs, Sprung **best effort**):
 
-- [Mermaid-Kochbuch](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#mermaid-cookbook-examples)
-- [JSON-Kochbuch](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#json-cookbook-snippets)
-- [HTML — Schrift & CSS](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md#html-custom-css-examples)
+- [Mermaid-Kochbuch](https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#mermaid-cookbook-examples)
+- [JSON-Kochbuch](https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#json-cookbook-snippets)
+- [HTML — Schrift & CSS](https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#html-custom-css-examples)
 
-**Technische Grundlagen** (Systemvoraussetzungen, Projektbeschreibung) stehen ebenfalls im englischen Haupt-[README](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md). **Szenario & Screenshots** zu Mermaid/JSON/HTML/CSS: weiter unten in dieser Datei (**Schritt 4–7**) und unter **`#wiki-step5-mermaid`** usw. — die **Admin-Kochbuch-Links** zeigen bewusst auf die **englischen** Schnipsel-Abschnitte.
+**Technische Grundlagen** (Systemvoraussetzungen, Projektbeschreibung) stehen ebenfalls im englischen Haupt-[README](https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md). **Szenario & Screenshots** zu Mermaid/JSON/HTML/CSS: weiter unten in dieser Datei (**Schritt 4–7**) und unter **`#wiki-step5-mermaid`** usw. — die **Admin-Kochbuch-Links** zeigen bewusst auf die **englischen** Schnipsel-Abschnitte.
 
-**Instanz-Links (`staticLink`):** **Je nach Thema** — drei auf **Wiki DE**, drei auf **`README.md`** (Mermaid / JSON / HTML). Die **Repo-Startseite** mit `#…` bleibt unzuverlässig — immer **`blob/dev/…`**. Nach Merge auf **`main`** Pfade und Slugs prüfen.
+**Instanz-Links (`staticLink`):** **Je nach Thema** — drei auf **Wiki DE**, drei auf **`README.md`** (Mermaid / JSON / HTML). Die **Repo-Startseite** mit `#…` bleibt unzuverlässig — immer **`blob/main/…`**. Nach großen README-/Wiki-Umbauten Pfade und Slugs prüfen.
 
 **Häufiger Fehler:** **`raw.githubusercontent.com/…/README.md`** ist nur **Plaintext** — dort funktionieren **`#…`-Sprünge praktisch nicht**. Immer die **GitHub-Vorschau** öffnen (`github.com/…/blob/<branch>/…#.…`), wie die Admin-Links sie setzen.
 
@@ -34,7 +34,7 @@ Die **sechs häufigsten Schnellzugriff-Themen** sind wie folgt aufgeteilt (Branc
 
 **„In neuem Tab öffnen“:** Der Link und das **`#…`** sind korrekt — trotzdem bleibt GitHubs Markdown-Vorschau manchmal **oben**, weil die Seite **asynchron** rendert und der Browser den Sprung **vor** dem Ziel im DOM ausführt ([bekanntes Verhalten](https://github.com/github/markup/issues/1807), nicht nur „euer Browser“). **Meist hilft:** nach dem Laden in der Adresszeile **Enter** (Hash erneut anwenden), einmal **F5**, oder den Link **im gleichen Tab** öffnen.
 
-**Englisches Haupt-[README](https://github.com/crunchip77/ioBroker.autodoc/blob/dev/README.md)** (Kochbuch & weitere Fragmente, grob **L44·L67·L78·L100·L131·L186**): u. a. **`#mermaid-cookbook-examples`**, **`#json-cookbook-snippets`**, **`#html-custom-css-examples`**. **DE-Wiki-Anker** (nur noch für Kontext-Links / Abschnitte hier): **`#wiki-overview-registerkarten`**, **`#wiki-admin-doc-lang`** (Sprache, Deltas &amp; Kurz-Hinweise; Übungsszenario Schritt 1: **`#wiki-step1-basis`**), **`#wiki-admin-pdf-export`**, **`#wiki-admin-json-cookbook`**, **`#wiki-admin-html-css`**, **`#wiki-step3-qr-base-url`**, **`#wiki-step4-custom-sections-json`** (kurz; gleicher Absatz: GitHub-Slug **`#schritt-4--zusätzliches-markdown-kapitel-tab-html---zusatzkapitel--custom-sections-customdocsectionsjson`** — oft zuverlässiger in der Vorschau), **`#wiki-step5-mermaid`**. **Nach großen Umbauten** IDs und **`admin/jsonConfig.json`** abstimmen (Pflegehinweis auch als HTML-Kommentar vor der Lizenz im Haupt-README).
+**Englisches Haupt-[README](https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md)** (Kochbuch & weitere Fragmente, grob **L44·L67·L78·L100·L131·L186**): u. a. **`#mermaid-cookbook-examples`**, **`#json-cookbook-snippets`**, **`#html-custom-css-examples`**. **DE-Wiki-Anker** (nur noch für Kontext-Links / Abschnitte hier): **`#wiki-overview-registerkarten`**, **`#wiki-admin-doc-lang`** (Sprache, Deltas &amp; Kurz-Hinweise; Übungsszenario Schritt 1: **`#wiki-step1-basis`**), **`#wiki-admin-pdf-export`**, **`#wiki-admin-json-cookbook`**, **`#wiki-admin-html-css`**, **`#wiki-step3-qr-base-url`**, **`#wiki-step4-custom-sections-json`** (kurz; gleicher Absatz: GitHub-Slug **`#schritt-4--zusätzliches-markdown-kapitel-tab-html---zusatzkapitel--custom-sections-customdocsectionsjson`** — oft zuverlässiger in der Vorschau), **`#wiki-step5-mermaid`**. **Nach großen Umbauten** IDs und **`admin/jsonConfig.json`** abstimmen (Pflegehinweis auch als HTML-Kommentar vor der Lizenz im Haupt-README).
 
 **Warum früher oft nur der PDF-Link zu stimmen schien:** Unter der Repo-Wurzel `#…` hat nur **`### Optional PDF export …`** zufällig denselben Slug wie `#optional-pdf-export-puppeteer` geliefert; die anderen Kurz-Hashes passten dort nicht — oder springen im **Blob**-Viewer trotzdem nicht zuverlässig.
 
