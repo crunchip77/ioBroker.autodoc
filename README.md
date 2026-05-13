@@ -220,7 +220,7 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 
 **Admin `common.news`** in `io-package.json` lists only versions **published on npm** (Adapter Checker **E2004**). The detailed sections below are the **user-facing** changelog (Git-era releases plus npm); older entries are in [`CHANGELOG_OLD.md`](CHANGELOG_OLD.md).
 
-### Work in progress (`dev` — before merge / next `npm run release`, merge into `### x.y.z` below or drop)
+### **WORK IN PROGRESS** (`dev` — before merge / next `npm run release`; fold into `### x.y.z` below or drop before publish)
 
 - **Liste / Checker:** Eintrag **`autodoc` → latest** unter **ioBroker.repositories** wartet weiter auf Maintainer-**Merge**; danach sollte **`W4001`** im Adapter Checker weg sein ([CONTRIBUTING](./CONTRIBUTING.md)), siehe **[TODO § 1.1](TODO.md#release-veroeffentlichung)**.
 - **Gehosteter Checker / iobroker.dev:** häufig **504** oder Timeouts; lokal `npm run adapter-check` kann **E9999** im **`--local`‑Pfad liefern (**CONTRIBUTING**) — Releases an **CI** und **`npm test`** festmachen, nicht nur an der Web-UI.
