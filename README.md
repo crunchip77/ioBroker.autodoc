@@ -4,7 +4,7 @@
 
 Automatically generates structured documentation (HTML, Markdown, JSON) for your ioBroker installation — on demand, on a schedule, or when the system changes.
 
-**Version:** 0.9.40
+**Version:** 0.9.41
 
 **Installation**
 
@@ -226,6 +226,10 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 - **Gehosteter Checker / iobroker.dev:** häufig **504** oder Timeouts; lokal `npm run adapter-check` kann **E9999** im **`--local`‑Pfad liefern (**CONTRIBUTING**) — Releases an **CI** und **`npm test`** festmachen, nicht nur an der Web-UI.
 - **Roadmap:** laufende Themen vor allem in **[`TODO.md`](TODO.md)** und **[`PLAN.md`](PLAN.md)**; diesen Abschnitt vor dem nächsten Release in eine neue **`### x.y.z`**-Sektion übernehmen oder kürzen.
 
+### 0.9.41 (2026-05-13)
+
+- **npm / process:** Patch **0.9.41** — **no functional change** vs **0.9.40**; `package.json` / `io-package.json` / README **`Version:`** aligned for npm publish only (release-script housekeeping).
+
 ### 0.9.40 (2026-05-13)
 
 - **Maintainer docs & release tooling:** **[CONTRIBUTING.md](CONTRIBUTING.md)** documents **`npm run release`** only from **`main`**; **[`docs/iobroker-adapter-references.md`](docs/iobroker-adapter-references.md)** documents the literal README changelog heading ``### **WORK IN PROGRESS**`` required by `@alcalzone/release-script` / ioBroker plugins (do not rename — avoids **`check:changelog`** failures).
@@ -252,6 +256,11 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 ### 0.9.36 (2026-05-09)
 
 - **npm / Checker:** tarball **0.9.36** matches **`main`**: **`common.news`** lists only npm-published versions (fixes **E2004** stale metadata from first **0.9.35** publish). README **Version:** line synced; no adapter runtime/UI changes.
+
+### 0.9.35 (2026-05-08)
+
+- **npm:** publish **`iobroker.autodoc`** on the public registry so hosts can `npm install` the adapter tarball without cloning.
+- **README:** install table reflects **npm** plus Git; default-list installs still depended on **ioBroker.repositories** (unchanged at that release).
 
 ## License
 

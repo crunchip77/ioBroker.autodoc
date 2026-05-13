@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "autodoc",
-    "version": "0.9.40",
+    "version": "0.9.41",
     "news": {
+      "0.9.41": {
+        "en": "**npm patch:** **0.9.41** — same adapter behaviour as **0.9.40**; metadata and changelog aligned for npm publish only (no runtime or export changes).",
+        "de": "**npm-Patch:** **0.9.41** — gleiches Verhalten wie **0.9.40**; nur Metadaten/Changelog für die Veröffentlichung (keine Laufzeit- oder Exportänderungen).",
+        "ru": "**Патч npm:** **0.9.41** — поведение как у **0.9.40**; только метаданные/changelog для публикации.",
+        "pt": "**Patch npm:** **0.9.41** — mesmo comportamento que **0.9.40**; apenas metadados/changelog para publicação.",
+        "nl": "**npm-patch:** **0.9.41** — zelfde gedrag als **0.9.40**; alleen metadata/changelog voor publish.",
+        "fr": "**Correctif npm :** **0.9.41** — même comportement que **0.9.40** ; métadonnées/changelog pour publication uniquement.",
+        "it": "**Patch npm:** **0.9.41** — stesso comportamento di **0.9.40**; solo metadati/changelog per publish.",
+        "es": "**Parche npm:** **0.9.41** — mismo comportamiento que **0.9.40**; solo metadatos/changelog para publicación.",
+        "pl": "**Patch npm:** **0.9.41** — to samo zachowanie co **0.9.40**; tylko metadane/changelog pod publikację.",
+        "uk": "**Патч npm:** **0.9.41** — така ж поведінка, як **0.9.40**; лише метадані/changelog для публікації.",
+        "zh-cn": "**npm 补丁：** **0.9.41** — 与 **0.9.40** 行为相同；仅为发布同步元数据/changelog。"
+      },
       "0.9.40": {
         "en": "**Maintainer docs:** CONTRIBUTING documents **`npm run release`** only from **`main`**; **`docs/iobroker-adapter-references.md`** documents the literal README changelog heading required by ioBroker release-script plugins.\n**Lint:** JSDoc **`@param` / `@returns`** descriptions in **`lib/docChangeFormat.js`**.\n**Runtime:** no adapter behaviour change.",
         "de": "**Maintainer-Doku:** **`npm run release`** nur auf **`main`** (CONTRIBUTING); **`iobroker-adapter-references.md`** — exakte README-Überschrift für Release-Plugins.\n**Lint:** JSDoc in **`lib/docChangeFormat.js`**.\n**Laufzeit:** kein Verhaltenswechsel.",
