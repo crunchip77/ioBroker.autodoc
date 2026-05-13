@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "autodoc",
-    "version": "0.9.39-alpha.0",
+    "version": "0.9.39",
     "news": {
+      "0.9.39": {
+        "en": "**Breaking — storage:** Admin option **`documentationStatesMode`** removed. **`documentation.markdown`**, **`.html`**, **`.json`** are **always** short placeholders; full text lives **only** under **`/files/`** (and optional filesystem export). Use **`/files/`**, **`info.htmlUrl*`**, or download actions.\n**Docs:** **`readme`** / npm **homepage** / Admin **`staticLink`** targets use GitHub **`main`** branch URLs.\n**Exports:** Saved changelog lines and **“changes since last run”** follow **Documentation language**; Admin / DE wiki help refresh.",
+        "de": "**Breaking — Speicher:** Admin-Option **`documentationStatesMode`** entfällt. **`documentation.markdown`**, **`.html`**, **`.json`** sind **immer** kurze Platzhalter; Volltext nur unter **`/files/`** (optional Dateisystem-Export). **`/files/`**, **`info.htmlUrl*`** oder Download-Aktionen nutzen.\n**Docs:** **`readme`** / npm-**homepage** / Admin-**`staticLink`** zeigen auf GitHub-**`main`**.\n**Exporte:** Gespeicherte Changelog-Zeilen und **„Änderungen seit letztem Lauf“** folgen der **Dokumentationssprache**; Admin-Hilfe und DE-Wiki angepasst.",
+        "ru": "**Breaking:** опция **`documentationStatesMode`** удалена. **`documentation.markdown`/`html`/`json`** — короткие заглушки; полный текст только в **`/files/`**. Ссылки README/справки — ветка **`main`**. Чangelog и дельты — язык документации.",
+        "pt": "**Breaking:** removido **`documentationStatesMode`**. Estados **`documentation.*`** apenas marcadores curtos; texto completo só em **`/files/`**. URLs públicas **`main`** no GitHub.",
+        "nl": "**Breaking:** **`documentationStatesMode`** verwijderd. **`documentation.*`** altijd placeholders; volledige tekst alleen onder **`/files/`**. Publieke links naar GitHub **`main`**.",
+        "fr": "**Breaking :** **`documentationStatesMode`** supprimé. États **`documentation.*`** = substituts courts ; texte complet **uniquement** sous **`/files/`**. Liens **`main`** pour README / aides Admin.",
+        "it": "**Breaking:** rimossa **`documentationStatesMode`**. Stati **`documentation.*`** sempre segnaposto brevi; testo completo solo in **`/files/`**. URL pubblici su **`main`**.",
+        "es": "**Breaking:** eliminado **`documentationStatesMode`**. Estados **`documentation.*`** siempre marcadores cortos; texto completo solo en **`/files/`**. Enlaces públicos rama **`main`**.",
+        "pl": "**Breaking:** usunięto **`documentationStatesMode`**. **`documentation.*`** — tylko krótkie placeholdery; pełny tekst tylko w **`/files/`**. Linki do **`main`**.",
+        "uk": "**Breaking:** прибрано **`documentationStatesMode`**. **`documentation.*`** — короткі плейсхолдери; повний текст лише в **`/files/`**. Посилання на **`main`**.",
+        "zh-cn": "**变更：**已移除 **`documentationStatesMode`**。`documentation.*` 状态仅为简短占位符；正文仅在 **`/files/`**。README/帮助链接指向 GitHub **`main`**。"
+      },
       "0.9.38": {
         "en": "**Default `documentationStatesMode`:** new instances use **`metadata`** (full exports under **`/files/`** only; `documentation.*` states are short placeholders) to ease load on the object database (e.g. Redis). **Existing** instances keep their current setting until you change **Advanced → Dokumentation in States**. Scripts that need full text must read **`/files/`** or use download actions — see Admin help.",
         "de": "**Standard `documentationStatesMode`:** neue Instanzen starten mit **`metadata`** (vollständige Exporte nur unter **`/files/`**; States nur kurze Platzhalter) — schont die Objektdatenbank (z. B. Redis). **Bestehende** Instanzen behalten die Einstellung, bis Sie unter **Erweitert → Dokumentation in States** umstellen. Skripte mit Volltext: **`/files/`** oder Download-Aktionen — siehe Admin-Hilfe.",

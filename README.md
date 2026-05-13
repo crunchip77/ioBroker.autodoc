@@ -4,7 +4,7 @@
 
 Automatically generates structured documentation (HTML, Markdown, JSON) for your ioBroker installation — on demand, on a schedule, or when the system changes.
 
-**Version:** 0.9.39-alpha.0 (pre-release; npm **latest** may still be **0.9.38** until the next publish)
+**Version:** 0.9.39
 
 **Installation**
 
@@ -220,26 +220,16 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 
 **Admin `common.news`** in `io-package.json` lists only versions **published on npm** (Adapter Checker **E2004**). The detailed sections below are the **user-facing** changelog (Git-era releases plus npm); older entries are in [`CHANGELOG_OLD.md`](CHANGELOG_OLD.md).
 
-### **WORK IN PROGRESS** (`dev` — vor Merge/`npm run release` ggf. einkürzen)
+### 0.9.39 (2026-05-13)
 
-- **Inventar-Delta & Sprache:** **Documentation language** (Basic) steuert auch die **einzeiligen** Texte für **gespeicherte Changelog-Einträge** und für den Hinweis **„changes since last run“** beim Export. **`hideAdminDeltaSinceLastRun`** (Advanced → *What to include & limits*) blendet die gelbe **Admin**-Delta-Box und den gleichen Unterabschnitt im **Admin-Markdown** aus — **Changelog chapter**, User, and Onboarding are unchanged.
-- **User / Family:** When AutoDoc detects **real inventory changes** since the last snapshot (not the first run), exports add a short **plain-language** notice (HTML + Markdown). **Onboarding** does not show this block.
-- **Docs — cookbook:** README sections [**Mermaid cookbook examples**](#mermaid-cookbook-examples), [**JSON cookbook snippets**](#json-cookbook-snippets), and [**HTML custom CSS**](#html-custom-css-examples); user-guide cross-links in **`docs/user-guide/README(.de).md`**.
-- **Docs — DE user-guide:** `README.de.md` auf **Wiki-Fokus** (Tabs, Screenshots, Exporte, Übungsszenario) umgebaut; Installations-/Maintainer-Abschnitte entfernt; Verweise im Haupt-README und bei **Custom sections**-Hilfe (Admin-i18n) angepasst.
-
-- **Export-Copy / Klarheit (Admin-HTML + Admin-Markdown):** Kapitel **Betrieb – Referenz** (ehem. Troubleshooting-Konnotation) mit Top-Disclaimer; **Diagnose** mit Schnappschuss-Einleitung, **Automatische Prüfungen** (Node-Heuristik) und separatem Block **Allgemeine Erinnerungen** (OS).
-- **Nutzbarkeit (dev):** **Erweitert** zeigt vor der **ioBroker-Basis-URL** einen kurzen Hinweis (Gäste/QR, Docker/Proxy). **Onboarding-Kapitelreihenfolge:** Hilfe erklärt **`quickstart`** (immer Zähler + nächste Schritte) vs. **Discovery-Snapshot** (nur mit Daten); vgl. **`PLAN.md`** „Adapter sinnvoll einsetzen“.
-- **Phase 5.x.2 (dev):** Quick-Start-Skripte — Länge `desc`, Tie-Break `triggerType`.
-- **Admin §1.7:** User-Kapitelreihenfolge, Onboarding-Kapitelreihenfolge, Base-URL-Callout (Hilfen).
-- **Release prep:** Vor **`npm run release`** WIP hier aufräumen (`CONTRIBUTING.md`). **ioBroker.repositories** nach neuen npm-Versionen — **[`TODO.md` § 1.1](TODO.md#release-veroeffentlichung)** · **`PLAN.md`**.
-
-- **Storage (breaking):** Removed the Admin option **Documentation in States** / **`documentationStatesMode`**. Large exports **always** live under **`/files/`**; **`documentation.markdown`**, **`documentation.html`**, and **`documentation.json`** are **always** placeholders. **`documentation.exportHashes`** unchanged. Integrations that read full text from those states must use **`/files/`**, **`info.htmlUrl*`**, or download actions (`common.news`).
+- **Breaking — storage:** Admin setting **`documentationStatesMode`** (**Documentation in States**) is **removed**. **`documentation.markdown`**, **`documentation.html`**, and **`documentation.json`** are **always** short placeholders; canonical full exports live **only** under **`/files/`** (and optional filesystem export). **`documentation.exportHashes`** unchanged — integrations must use **`/files/`**, **`info.htmlUrl*`**, or download actions for full body text (`common.news`).
+- **Docs / links:** **`readme`** in `io-package.json`, **`homepage`** in `package.json`, and Admin **`staticLink`** help URLs use GitHub **`main`** (`blob/main/…`) so default-branch installs match help targets.
+- **Localization & exports:** **Documentation language** drives one-line saved **changelog** rows and **“changes since last run”** / compare text. **`hideAdminDeltaSinceLastRun`** still hides only the yellow **Admin** delta box + matching Admin Markdown subsection. **User / Family:** short plain-language inventory-change notice when the snapshot differs (skipped on first run / no changes); **Onboarding** unchanged.
+- **Docs — wiki & cookbook:** **`docs/user-guide/README(.de).md`** refresh; README [**Mermaid**](#mermaid-cookbook-examples) / [**JSON**](#json-cookbook-snippets) / [**CSS**](#html-custom-css-examples) cookbooks maintained for copy-paste. **Export copy** (Admin HTML/Markdown): **Betrieb — Referenz** disclaimer, **Diagnose** framing, onboarding chapter-order help (**`quickstart`** vs discovery).
 
 ### 0.9.38 (2026-05-12)
 
-- **Advanced — storage default:** **`documentationStatesMode`** default for **new** instances is now **`metadata`** (full HTML/Markdown/JSON in **`/files/`** only; `documentation.*` states are placeholders). Lowers object-database load for typical installs (e.g. Redis). **Existing** instances keep their saved value until you change **Dokumentation in States** in Admin. Scripts that relied on full text in states should use **`/files/`** paths or download actions (`common.news` + Admin help).
-- **Rationale:** Sobald **autodoc** in **ioBroker.repositories** **latest** steht (nach Merge des Listeneintrags), sollen neue Installationen nicht still **full**-States für alle erzwingen — der Default **`metadata`** ist darauf ausgerichtet.
-- **Superseded by 0.9.39:** the **`documentationStatesMode`** setting and **`full`** duplication in **`documentation.*`** states are **removed** — see **0.9.39**.
+- **Advanced — storage (historical npm note):** release **0.9.38** introduced default **`metadata`** for **new** instances so full exports prefer **`/files/`** (`common.news`). **All** installs now behave like that **without** a toggle — **`documentationStatesMode`** was dropped in **0.9.39** (always placeholders + **`/files/`**).
 
 ### 0.9.37 (2026-05-10)
 
