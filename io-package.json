@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "autodoc",
-    "version": "0.9.41",
+    "version": "0.9.42",
     "news": {
+      "0.9.42": {
+        "en": "**npm patch:** **0.9.42** — same adapter behaviour as **0.9.41**; metadata and changelog aligned for npm publish only (no runtime or export changes).",
+        "de": "**npm-Patch:** **0.9.42** — gleiches Verhalten wie **0.9.41**; nur Metadaten/Changelog für die Veröffentlichung (keine Laufzeit- oder Exportänderungen).",
+        "ru": "**Патч npm:** **0.9.42** — поведение как у **0.9.41**; только метаданные/changelog для публикации.",
+        "pt": "**Patch npm:** **0.9.42** — mesmo comportamento que **0.9.41**; apenas metadados/changelog para publicação.",
+        "nl": "**npm-patch:** **0.9.42** — zelfde gedrag als **0.9.41**; alleen metadata/changelog voor publish.",
+        "fr": "**Correctif npm :** **0.9.42** — même comportement que **0.9.41** ; métadonnées/changelog pour publication uniquement.",
+        "it": "**Patch npm:** **0.9.42** — stesso comportamento di **0.9.41**; solo metadati/changelog per publish.",
+        "es": "**Parche npm:** **0.9.42** — mismo comportamiento que **0.9.41**; solo metadatos/changelog para publicación.",
+        "pl": "**Patch npm:** **0.9.42** — to samo zachowanie co **0.9.41**; tylko metadane/changelog pod publikację.",
+        "uk": "**Патч npm:** **0.9.42** — така ж поведінка, як **0.9.41**; лише метадані/changelog для публікації.",
+        "zh-cn": "**npm 补丁：** **0.9.42** — 与 **0.9.41** 行为相同；仅为发布同步元数据/changelog。"
+      },
       "0.9.41": {
         "en": "**npm patch:** **0.9.41** — same adapter behaviour as **0.9.40**; metadata and changelog aligned for npm publish only (no runtime or export changes).",
         "de": "**npm-Patch:** **0.9.41** — gleiches Verhalten wie **0.9.40**; nur Metadaten/Changelog für die Veröffentlichung (keine Laufzeit- oder Exportänderungen).",

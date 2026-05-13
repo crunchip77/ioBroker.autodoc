@@ -4,7 +4,7 @@
 
 Automatically generates structured documentation (HTML, Markdown, JSON) for your ioBroker installation — on demand, on a schedule, or when the system changes.
 
-**Version:** 0.9.41
+**Version:** 0.9.42
 
 **Installation**
 
@@ -225,6 +225,10 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 - **Liste / Checker:** Eintrag **`autodoc` → latest** unter **ioBroker.repositories** wartet weiter auf Maintainer-**Merge**; danach sollte **`W4001`** im Adapter Checker weg sein ([CONTRIBUTING](./CONTRIBUTING.md)), siehe **[TODO § 1.1](TODO.md#release-veroeffentlichung)**.
 - **Gehosteter Checker / iobroker.dev:** häufig **504** oder Timeouts; lokal `npm run adapter-check` kann **E9999** im **`--local`‑Pfad liefern (**CONTRIBUTING**) — Releases an **CI** und **`npm test`** festmachen, nicht nur an der Web-UI.
 - **Roadmap:** laufende Themen vor allem in **[`TODO.md`](TODO.md)** und **[`PLAN.md`](PLAN.md)**; diesen Abschnitt vor dem nächsten Release in eine neue **`### x.y.z`**-Sektion übernehmen oder kürzen.
+
+### 0.9.42 (2026-05-13)
+
+- **npm / process:** Patch **0.9.42** — **no functional change** vs **0.9.41**; `package.json` / `io-package.json` / README **`Version:`** aligned for npm publish only (release-script housekeeping).
 
 ### 0.9.41 (2026-05-13)
 
