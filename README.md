@@ -220,6 +220,12 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 
 **Admin `common.news`** in `io-package.json` lists only versions **published on npm** (Adapter Checker **E2004**). The detailed sections below are the **user-facing** changelog (Git-era releases plus npm); older entries are in [`CHANGELOG_OLD.md`](CHANGELOG_OLD.md).
 
+### **WORK IN PROGRESS** (`dev` — vor Merge / nächstem `npm run release` zu einer Versionssektion konsolidieren)
+
+- **Liste / Checker:** Eintrag **`autodoc` → latest** unter **ioBroker.repositories** wartet weiter auf Maintainer-**Merge**; danach sollte **`W4001`** im Adapter Checker weg sein ([CONTRIBUTING](./CONTRIBUTING.md)), siehe **[TODO § 1.1](TODO.md#release-veroeffentlichung)**.
+- **Gehosteter Checker / iobroker.dev:** häufig **504** oder Timeouts; lokal `npm run adapter-check` kann **E9999** im **`--local`‑Pfad liefern (**CONTRIBUTING**) — Releases an **CI** und **`npm test`** festmachen, nicht nur an der Web-UI.
+- **Offene Arbeit / Roadmap:** Details in **[`TODO.md`](TODO.md)** und **[`PLAN.md`](PLAN.md)**; vor Release WIP-Stichpunkte in die nächste **`### x.y.z`**-Sektion übernehmen oder streichen.
+
 ### 0.9.39 (2026-05-13)
 
 - **Breaking — storage:** Admin setting **`documentationStatesMode`** (**Documentation in States**) is **removed**. **`documentation.markdown`**, **`documentation.html`**, and **`documentation.json`** are **always** short placeholders; canonical full exports live **only** under **`/files/`** (and optional filesystem export). **`documentation.exportHashes`** unchanged — integrations must use **`/files/`**, **`info.htmlUrl*`**, or download actions for full body text (`common.news`).
