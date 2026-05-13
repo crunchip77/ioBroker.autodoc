@@ -67,6 +67,8 @@ After changing **dependencies** or **overrides**, run **`npm install`**, commit 
 
 ## Releases and README changelog
 
+- Run **`npm run release`** only on **`main`** — **`@alcalzone/release-script-plugin-iobroker`** defaults to **`main`** only (`check:git` aborts on **`dev`**). From **`dev`**, merge/sync then: **`git checkout main && git pull origin main`** before **`npm run release`** (see branch workflow above).
+
 - Keep the **Changelog** section in [`README.md`](README.md) aligned with **`common.news`** in `io-package.json`: list only the **same 7** newest versions; move dropped versions into [`CHANGELOG_OLD.md`](CHANGELOG_OLD.md) (see intro there).
 - Add a dated `### x.y.z` section at the **top** of that window when you ship a release (expected for ioBroker adapter listings).
 - Keep **`version`** in `package.json` and `io-package.json` consistent with the documented release (Adapter Checker may flag mismatches, e.g. **E6006** — follow the checker output for the current ruleset).
