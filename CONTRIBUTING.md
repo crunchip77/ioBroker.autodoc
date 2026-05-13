@@ -78,7 +78,7 @@ Follow these steps **in order** after the code for **`x.y.z`** is finished. **`n
 1. **`main` up to date:** `git checkout main && git pull origin main`.
 2. **Bump & metadata:** Prefer **`npm run release`** from **`main`** (interactive terminal; **`manual-review`**: inspect diff; **`yes`** only when correct — avoid **`Ctrl+C`** on prompts: Node 24 **enquirer** may throw **`ERR_USE_AFTER_CLOSE`**). If versioning was done manually, ensure **`package.json`**, **`io-package.json`** (`common.version`), **`common.news`** (**only semver keys that exist on npm** — checker **E2004**), root **`package-lock.json`** **`version`**, and README **`Version:`** / changelog all match **`x.y.z`**.
 3. **Quality gates:** `npm test`, `npm run lint`, `npm run check` (and optional `npm run adapter-check`).
-4. **Commit & push `main`:** `git push origin main`.
+4. **Commit & push `main`:** `git add` / `git commit` as needed, then `git push origin main`.
 5. **npm publish:** `npm login` if needed (`npm publish` cannot run without Maintainer auth — browser / security key flow is normal); then `npm publish --access public`. If **`Enter OTP`** appears, use an **npm TOTP authenticator**, not unrelated app entries (**GitHub** alone is unrelated). OTP **rate limiting** (**E429**) after bad attempts: pause or use a **Granular Publish token** (User **`.npmrc`**, never commit tokens). Optionally run **`npm pkg fix`** and commit **`repository.url`** normalization if **`npm publish`** warns.
 6. **Verify registry:** `npm view iobroker.autodoc version` → **`x.y.z`**.
 7. **Git tag + GitHub Release (mandatory parity with npm):** on the **`main`** commit you intend to label **`x.y.z`** (normally current **`main`** after publish):  

@@ -34,8 +34,8 @@ Willst du **echte Screenshots**, arbeite vorzugsweise mit **neutralen Platzhalte
 - **PNG** oder **WebP**; für **lesbare Beschriftungen** im Admin (v. a. dunkles Theme) lieber **≥ 1280 px** Breite **oder** vor der Aufnahme **Browser-Zoom 125–150 %** und dann den sichtbaren Bereich erfassen. Die frühere **920–1280 px**-Spanne war knapp — bei Bedarf **bis ~1680 px** gehen, solange die Repo-Größe noch vertretbar ist (PNG komprimieren statt harte Qualitätsverluste).
 - **Dateigröße:** **< 350 KB** anstreben, aber **Lesbarkeit** hat Vorrang; lieber etwas größere Datei als unleserlich kleine Schrift.
 - **Bildunterschrift (Markdown):** Unter jedem eingebundenen **PNG** in **`README.md`** / **`README.de.md`** dieselbe Kurzform verwenden und bei **neuen Aufnahmen** anpassen:
-  - **EN:** `*Capture: AutoDoc **0.9.39**, ioBroker Admin **≥ 7.6.20** (May **2026**).*` — `0.9.39` an **`package.json` `version`**, Monat/Jahr an ReShoot, Admin-Version an **`io-package.json` → `common.globalDependencies`** (Admin).
-  - **DE:** `*Aufnahme: AutoDoc **0.9.39**, ioBroker Admin **≥ 7.6.20** (Stand **2026-05**).*`
+  - **EN:** `*Capture: AutoDoc **0.9.43**, ioBroker Admin **≥ 7.6.20** (May **2026**).*` — `0.9.43` an **`package.json` `version`**, Monat/Jahr an ReShoot, Admin-Version an **`io-package.json` → `common.globalDependencies`** (Admin).
+  - **DE:** `*Aufnahme: AutoDoc **0.9.43**, ioBroker Admin **≥ 7.6.20** (Stand **2026-05**).*`
 
 ## Lesbarkeit (GitHub, eingebettete Vorschau)
 
