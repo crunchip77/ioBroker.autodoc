@@ -36,3 +36,8 @@ iob.bat
 serviceIoBroker.bat
 iobroker-data/
 install/
+
+# Accidental empty files at repo root (cmd/broken paste — blocks release-script if untracked)
+/cd
+/git
+/del
