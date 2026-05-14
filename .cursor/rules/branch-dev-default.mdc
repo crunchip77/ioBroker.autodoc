@@ -1,0 +1,11 @@
+---
+description: >-
+  Default git branch for day-to-day work: commit and push on dev unless release or explicit override.
+alwaysApply: true
+---
+
+# ioBroker.autodoc — branches: default **`dev`**
+
+- For **normal changes** (code, CI, docs, scripts): **`git checkout dev`**, commit there, **`git push origin dev`**. Prefer reconciling **`main → dev`** (merge/fast-forward after release) instead of committing directly on **`main`**.
+- **`main`** is reserved for **`npm run release`**, versioning, and the maintainer flow in **`CONTRIBUTING`** / **`release-order.mdc`**. Agents should not routinely land non-release work **only** on **`main`**.
+- Explicit **exceptions** ( Maintainer says hotfix **`main`**-only): follow Maintainer instructions while keeping **`dev`** aligned afterward (**merge `origin/main`** into **`dev`**, **`git push origin dev`**).
