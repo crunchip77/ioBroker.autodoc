@@ -2,6 +2,27 @@
 
 Histories for versions **no longer** in the **7-version** window shared by `common.news` in `io-package.json` and the main [`README.md`](README.md#changelog) changelog (Adapter Checker / **ioBroker.repositories**).
 
+The following **`###`** blocks were archived from **`README.md`** when **0.9.44** shipped so the main changelog lists **only** the same semver headings as **`common.news`**.
+
+### 0.9.41 (2026-05-13)
+
+*Semver steps **0.9.39–0.9.41** were Git-era only — no tarballs on npm until **0.9.42**; **`common.news`** aligned with npm in **0.9.43** (**E2004**).*
+
+- **npm / process:** Patch **0.9.41** — **no functional change** vs **0.9.40**; `package.json` / `io-package.json` / README **`Version:`** aligned for npm publish only (release-script housekeeping).
+
+### 0.9.40 (2026-05-13)
+
+- **Maintainer docs & release tooling:** **[CONTRIBUTING.md](CONTRIBUTING.md)** documents **`npm run release`** only from **`main`**; **[`docs/iobroker-adapter-references.md`](docs/iobroker-adapter-references.md)** documents the literal README changelog heading ``### **WORK IN PROGRESS**`` required by `@alcalzone/release-script` / ioBroker plugins (do not rename — avoids **`check:changelog`** failures).
+- **Lint:** JSDoc **`@param` / `@returns` descriptions** completed for **`lib/docChangeFormat.js`** (clean **`npm run lint`**).
+- **Runtime:** no adapter behaviour or export pipeline change in this patch release.
+
+### 0.9.39 (2026-05-13)
+
+- **Breaking — storage:** Admin setting **`documentationStatesMode`** (**Documentation in States**) is **removed**. **`documentation.markdown`**, **`documentation.html`**, and **`documentation.json`** are **always** short placeholders; canonical full exports live **only** under **`/files/`** (and optional filesystem export). **`documentation.exportHashes`** unchanged — integrations must use **`/files/`**, **`info.htmlUrl*`**, or download actions for full body text (`common.news`).
+- **Docs / links:** **`readme`** in `io-package.json`, **`homepage`** in `package.json`, and Admin **`staticLink`** help URLs use GitHub **`main`** (`blob/main/…`) so default-branch installs match help targets.
+- **Localization & exports:** **Documentation language** drives one-line saved **changelog** rows and **“changes since last run”** / compare text. **`hideAdminDeltaSinceLastRun`** still hides only the yellow **Admin** delta box + matching Admin Markdown subsection. **User / Family:** short plain-language inventory-change notice when the snapshot differs (skipped on first run / no changes); **Onboarding** unchanged.
+- **Docs — wiki & cookbook:** **`docs/user-guide/README(.de).md`** refresh; main README [**Mermaid** / **JSON** / **CSS** cookbook links](README.md): **Mermaid** · **JSON** · **CSS** cookbooks maintained for copy-paste. **Export copy** (Admin HTML/Markdown): **Betrieb — Referenz** disclaimer, **Diagnose** framing, onboarding chapter-order help (**`quickstart`** vs discovery).
+
 ### 0.9.33 (2026-05-08)
 
 - **PDF export (Phase 5 — first slice):** optional **`puppeteer`** — **`pdfExportAfterGeneration`** in Admin **Advanced** and/or **`action.exportPdf`**; writes **`autodoc-{admin,user,onboarding}.pdf`** alongside HTML under **`/files/`** and mirrors to **Filesystem export path** when set (`lib/htmlToPdf.js`). Same Chromium sandbox flags as Mermaid CLI. Without **`puppeteer`** or on broken headless setups, PDF is skipped; core documentation generation continues.

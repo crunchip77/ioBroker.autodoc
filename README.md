@@ -4,7 +4,7 @@
 
 Automatically generates structured documentation (HTML, Markdown, JSON) for your ioBroker installation — on demand, on a schedule, or when the system changes.
 
-**Version:** 0.9.43
+**Version:** 0.9.44
 
 **Installation**
 
@@ -224,40 +224,27 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 
 ### **WORK IN PROGRESS** (`dev` — before merge / next `npm run release`; fold into `### x.y.z` below or drop before publish)
 
-- **Chapter JSON:** Each documentation run evaluates chapter order/hide JSON; **`warn`** lines (English) list invalid JSON shape, unknown chapter ids, and duplicate ids, with a link to the **[German user guide — JSON cookbook](https://github.com/crunchip77/ioBroker.autodoc/blob/main/docs/user-guide/README.de.md#wiki-admin-json-cookbook)**. **Identical** lines are **not repeated** for the same adapter logger after the first emit (process lifetime). When the value comes only from a **legacy** native field, the line shows **`…Json via native …`**. Admin `?` help on those fields points to the log and the GitHub links under **Which chapters to show (per profile)**.
-- **Quick Start (5.x.2):** Room highlight ordering adds category ranks for **`leak`**, **`co2`**, **`valve`**, **`weather`**, **`sensor`**; function-area tie-break uses name when member counts match.
 - **Liste / Checker:** Eintrag **`autodoc` → latest** unter **ioBroker.repositories** wartet weiter auf Maintainer-**Merge**; danach sollte **`W4001`** im Adapter Checker weg sein ([CONTRIBUTING](./CONTRIBUTING.md)), siehe **[TODO § 1.1](TODO.md#release-veroeffentlichung)**.
 - **Gehosteter Checker / iobroker.dev:** häufig **504** oder Timeouts; lokal `npm run adapter-check` kann **E9999** im **`--local`‑Pfad liefern (**CONTRIBUTING**) — Releases an **CI** und **`npm test`** festmachen, nicht nur an der Web-UI.
 - **Roadmap:** laufende Themen vor allem in **[`TODO.md`](TODO.md)** und **[`PLAN.md`](PLAN.md)**; diesen Abschnitt vor dem nächsten Release in eine neue **`### x.y.z`**-Sektion übernehmen oder kürzen.
 
+### 0.9.44 (2026-05-14)
+
+- **Chapter JSON & logs:** Each documentation run evaluates Admin/User/Onboarding chapter order and hide JSON. **English** adapter **`warn`** lines report invalid JSON shape, **unknown** chapter ids, and **duplicate** ids, with a pointer to the **[German user guide — JSON cookbook](https://github.com/crunchip77/ioBroker.autodoc/blob/main/docs/user-guide/README.de.md#wiki-admin-json-cookbook)**. Identical warning **lines** are **deduplicated** per adapter **log** reference (process lifetime). Values read only from **legacy** native keys are labeled **`…Json via native …`** in the log. **`lib/chapterConfigWarnings.js`**; wired from **`DocumentModel.buildDocumentModel`**. **`EXTRA_HIDDEN_CHAPTER_IDS`** exported from **`docTemplateConfig`** for hide-list validation.
+- **Admin i18n:** Extended **`?`** help for the six chapter order/hide JSON fields (log + GitHub links under **Which chapters to show (per profile)**) — **DE/FR** translated, **EN** + other locales as fallbacks.
+- **Quick Start (5.x.2):** Room highlight **`HIGHLIGHT_CATEGORY_RANK`** extended (**`leak`**, **`co2`**, **`valve`**, **`weather`**, **`sensor`**, …); function areas with equal **member count** tie-break by **name**.
+- **HTML template:** **`RENDERER_VERSION`** in **`lib/htmlRenderer.js`** bumped so instances that skip “generate on start” still **regenerate once** after the adapter update (**`info.templateVersion`** vs renderer marker).
+- **Docs maintainer:** **`docs/user-guide/assets/SCREENSHOTS.md`** notes that tooltip-only changes often need **no** new PNG.
+
 ### 0.9.43 (2026-05-13)
 
-- **Admin / Adapter Checker:** **`common.news`** lists only semver versions that exist as tarballs on **npm** (ioBroker Adapter Checker **E2004**). Removed **`news`** keys **0.9.39**, **0.9.40**, and **0.9.41** — those bumps never shipped to the registry between **0.9.38** and **0.9.42**. The narrative below remains the **user-facing** history for those Git-era steps.
+- **Admin / Adapter Checker:** **`common.news`** lists only semver versions that exist as tarballs on **npm** (ioBroker Adapter Checker **E2004**). Removed **`news`** keys **0.9.39**, **0.9.40**, and **0.9.41** — those bumps never shipped to the registry between **0.9.38** and **0.9.42**. Full narrative for **0.9.41–0.9.39** is kept in **`CHANGELOG_OLD.md`** (README changelog window matches the **`common.news`** version set).
 - **`common.news` copy:** **0.9.42** admin news now compares against **0.9.38** (last npm release before **0.9.42**).
 - **Runtime:** unchanged.
 
 ### 0.9.42 (2026-05-13)
 
 - **npm / process:** Patch **0.9.42** — **no functional change** vs **0.9.38** (previous tarball on npm before **0.9.42**); `package.json` / `io-package.json` / README **`Version:`** aligned for npm publish only (release-script housekeeping).
-
-### 0.9.41 (2026-05-13)
-
-*Semver steps **0.9.39–0.9.41** were Git-era only — no tarballs on npm until **0.9.42**; **`common.news`** aligned with npm in **0.9.43** (**E2004**).*
-
-- **npm / process:** Patch **0.9.41** — **no functional change** vs **0.9.40**; `package.json` / `io-package.json` / README **`Version:`** aligned for npm publish only (release-script housekeeping).
-
-### 0.9.40 (2026-05-13)
-
-- **Maintainer docs & release tooling:** **[CONTRIBUTING.md](CONTRIBUTING.md)** documents **`npm run release`** only from **`main`**; **[`docs/iobroker-adapter-references.md`](docs/iobroker-adapter-references.md)** documents the literal README changelog heading ``### **WORK IN PROGRESS**`` required by `@alcalzone/release-script` / ioBroker plugins (do not rename — avoids **`check:changelog`** failures).
-- **Lint:** JSDoc **`@param` / `@returns` descriptions** completed for **`lib/docChangeFormat.js`** (clean **`npm run lint`**).
-- **Runtime:** no adapter behaviour or export pipeline change in this patch release.
-
-### 0.9.39 (2026-05-13)
-
-- **Breaking — storage:** Admin setting **`documentationStatesMode`** (**Documentation in States**) is **removed**. **`documentation.markdown`**, **`documentation.html`**, and **`documentation.json`** are **always** short placeholders; canonical full exports live **only** under **`/files/`** (and optional filesystem export). **`documentation.exportHashes`** unchanged — integrations must use **`/files/`**, **`info.htmlUrl*`**, or download actions for full body text (`common.news`).
-- **Docs / links:** **`readme`** in `io-package.json`, **`homepage`** in `package.json`, and Admin **`staticLink`** help URLs use GitHub **`main`** (`blob/main/…`) so default-branch installs match help targets.
-- **Localization & exports:** **Documentation language** drives one-line saved **changelog** rows and **“changes since last run”** / compare text. **`hideAdminDeltaSinceLastRun`** still hides only the yellow **Admin** delta box + matching Admin Markdown subsection. **User / Family:** short plain-language inventory-change notice when the snapshot differs (skipped on first run / no changes); **Onboarding** unchanged.
-- **Docs — wiki & cookbook:** **`docs/user-guide/README(.de).md`** refresh; README [**Mermaid**](#mermaid-cookbook-examples) / [**JSON**](#json-cookbook-snippets) / [**CSS**](#html-custom-css-examples) cookbooks maintained for copy-paste. **Export copy** (Admin HTML/Markdown): **Betrieb — Referenz** disclaimer, **Diagnose** framing, onboarding chapter-order help (**`quickstart`** vs discovery).
 
 ### 0.9.38 (2026-05-12)
 
