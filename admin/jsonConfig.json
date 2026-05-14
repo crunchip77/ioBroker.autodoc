@@ -1019,6 +1019,18 @@
 					"lg": 12,
 					"xl": 12
 				},
+				"_docsLinkWikiDEChapterRecipes": {
+					"type": "staticLink",
+					"label": "Docs link wiki DE chapter layout step 6",
+					"href": "https://github.com/crunchip77/ioBroker.autodoc/blob/main/docs/user-guide/README.de.md#wiki-admin-json-cookbook",
+					"target": "_blank",
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
+				},
 				"_adminChaptersHeader": {
 					"type": "header",
 					"text": "Admin HTML — hide chapters",

@@ -33,7 +33,7 @@ Install via [npm **`iobroker.autodoc`**](https://www.npmjs.com/package/iobroker.
 
 ![Basic settings tab — screenshot](assets/screen-grundeinstellungen-admin.png)
 
-*Capture: AutoDoc **0.9.36**, ioBroker Admin **≥ 7.6.20** (May **2026**).*
+*Capture: AutoDoc **0.9.43**, ioBroker Admin **≥ 7.6.20** (May **2026**).*
 
 ![My documentation — schematic](assets/fig-tab-meine-dokumentation.svg)
 
@@ -43,25 +43,25 @@ Install via [npm **`iobroker.autodoc`**](https://www.npmjs.com/package/iobroker.
 
 ![My documentation — screenshot (1/4)](assets/screen-meine-dokumentation-admin.png)
 
-*Capture: AutoDoc **0.9.36**, ioBroker Admin **≥ 7.6.20** (May **2026**).*
+*Capture: AutoDoc **0.9.43**, ioBroker Admin **≥ 7.6.20** (May **2026**).*
 
 **2/4 —** Playbook, optional **Mermaid** diagram, automatic host topology, emergency one-liners (WLAN / power / water).
 
 ![My documentation — screenshot (2/4)](assets/screen-meine-dokumentation-admin-2.png)
 
-*Capture: AutoDoc **0.9.36**, ioBroker Admin **≥ 7.6.20** (May **2026**).*
+*Capture: AutoDoc **0.9.43**, ioBroker Admin **≥ 7.6.20** (May **2026**).*
 
 **3/4 —** Short “misc” line (optional); per-adapter and per-room notes.
 
 ![My documentation — screenshot (3/4)](assets/screen-meine-dokumentation-admin-3.png)
 
-*Capture: AutoDoc **0.9.36**, ioBroker Admin **≥ 7.6.20** (May **2026**).*
+*Capture: AutoDoc **0.9.43**, ioBroker Admin **≥ 7.6.20** (May **2026**).*
 
 **4/4 —** Hide rooms or adapters per profile (onboarding vs. user/family); guest JavaScript filename visibility.
 
 ![My documentation — screenshot (4/4)](assets/screen-meine-dokumentation-admin-4.png)
 
-*Capture: AutoDoc **0.9.36**, ioBroker Admin **≥ 7.6.20** (May **2026**).*
+*Capture: AutoDoc **0.9.43**, ioBroker Admin **≥ 7.6.20** (May **2026**).*
 
 ![Advanced — base URL schematic (fictitious host)](assets/fig-erweitert-basisurl.svg)
 
@@ -71,13 +71,13 @@ Install via [npm **`iobroker.autodoc`**](https://www.npmjs.com/package/iobroker.
 
 ![Advanced tab — screenshot (1/2)](assets/screen-erweitert-basisurl-admin.png)
 
-*Capture: AutoDoc **0.9.36**, ioBroker Admin **≥ 7.6.20** (May **2026**).*
+*Capture: AutoDoc **0.9.43**, ioBroker Admin **≥ 7.6.20** (May **2026**).*
 
 **2/2 —** Documentation **setup score** options; optional **filesystem export** path; **PDF after each run** (Puppeteer / Chromium).
 
 ![Advanced tab — screenshot (2/2)](assets/screen-erweitert-basisurl-admin-2.png)
 
-*Capture: AutoDoc **0.9.36**, ioBroker Admin **≥ 7.6.20** (May **2026**).*
+*Capture: AutoDoc **0.9.43**, ioBroker Admin **≥ 7.6.20** (May **2026**).*
 
 *Real Admin UI (demo; tab **HTML export & extra chapters** — three screenshots, top to bottom). Intro text mentions **PDF** (switches live under **Advanced**). Replace logo URLs / custom-chapter demo text with your own placeholders for public repos.*
 
@@ -85,25 +85,25 @@ Install via [npm **`iobroker.autodoc`**](https://www.npmjs.com/package/iobroker.
 
 ![HTML export & extra chapters — screenshot (1/3)](assets/screen-html-export-pdf-hint-admin.png)
 
-*Capture: AutoDoc **0.9.36**, ioBroker Admin **≥ 7.6.20** (May **2026**).*
+*Capture: AutoDoc **0.9.43**, ioBroker Admin **≥ 7.6.20** (May **2026**).*
 
 **2/3 —** **Admin** profile: chapter order & hidden chapters (**JSON** arrays). **User/Family**: hidden chapters & order (**JSON**).
 
 ![HTML export & extra chapters — screenshot (2/3)](assets/screen-html-export-pdf-hint-admin-2.png)
 
-*Capture: AutoDoc **0.9.36**, ioBroker Admin **≥ 7.6.20** (May **2026**).*
+*Capture: AutoDoc **0.9.43**, ioBroker Admin **≥ 7.6.20** (May **2026**).*
 
 **3/3 —** **Onboarding**: hidden chapters & order (**JSON**); **custom Markdown chapters** (**JSON** objects); footer points to optional font/CSS (fields further down).
 
 ![HTML export & extra chapters — screenshot (3/3)](assets/screen-html-export-pdf-hint-admin-3.png)
 
-*Capture: AutoDoc **0.9.36**, ioBroker Admin **≥ 7.6.20** (May **2026**).*
+*Capture: AutoDoc **0.9.43**, ioBroker Admin **≥ 7.6.20** (May **2026**).*
 
 *Real Admin UI (demo; **Notifications** — skip this tab entirely if you do not need post-run messaging). Keep **adapter instance IDs**, recipients, and custom templates **out of public repos** or use placeholders.*
 
 ![Notifications tab — screenshot](assets/screen-benachrichtigungen-admin.png)
 
-*Capture: AutoDoc **0.9.36**, ioBroker Admin **≥ 7.6.20** (May **2026**).*
+*Capture: AutoDoc **0.9.43**, ioBroker Admin **≥ 7.6.20** (May **2026**).*
 
 *Real Admin UI (demo; **AI documentation** — long tab, two screenshots **top to bottom**). Inline **privacy / hardware** notices are product text. For public repos prefer **local Ollama** or **redacted** cloud fields; never publish **API keys**.*
 
@@ -111,19 +111,19 @@ Install via [npm **`iobroker.autodoc`**](https://www.npmjs.com/package/iobroker.
 
 ![AI documentation — screenshot (1/2)](assets/screen-ki-dokumentation-admin.png)
 
-*Capture: AutoDoc **0.9.36**, ioBroker Admin **≥ 7.6.20** (May **2026**).*
+*Capture: AutoDoc **0.9.43**, ioBroker Admin **≥ 7.6.20** (May **2026**).*
 
 **2/2 —** Optional operator **context hints** (prompt-only); **temperature**; opt-in **“AI explains JavaScript scripts”**.
 
 ![AI documentation — screenshot (2/2)](assets/screen-ki-dokumentation-admin-2.png)
 
-*Capture: AutoDoc **0.9.36**, ioBroker Admin **≥ 7.6.20** (May **2026**).*
+*Capture: AutoDoc **0.9.43**, ioBroker Admin **≥ 7.6.20** (May **2026**).*
 
 Naming, swap-out **PNG** hints, redaction: **[`assets/SCREENSHOTS.md`](assets/SCREENSHOTS.md)**.
 
 ## Cookbook examples (Mermaid & JSON)
 
-Step-by-step JSON for **custom sections** also appears in **[`README.de.md`](README.de.md)** (scenario section). For **additional copy-paste diagrams**, **chapter-order / hide-list** patterns, and **`customDocSectionsJson`** variants, see the main **[README](https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md)**:
+Step-by-step JSON for **custom sections** also appears in **[`README.de.md`](README.de.md)** (scenario section). For **additional copy-paste diagrams**, **chapter-order / hide-list** patterns, and **`customDocSectionsJson`** variants, see the main **[README](https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md)**. For a **German** narrative (**hide lists before reorder**, mini-recipes): **[`README.de.md` — Step 6 — chapter order / hide](https://github.com/crunchip77/ioBroker.autodoc/blob/main/docs/user-guide/README.de.md#wiki-admin-json-cookbook)**.
 
 - [**Mermaid cookbook examples**](https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#mermaid-cookbook-examples)
 - [**JSON cookbook snippets**](https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#json-cookbook-snippets)

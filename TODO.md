@@ -55,7 +55,7 @@ Diese Datei ist die **Arbeitsliste**: was **offen** ist steht oben; **erledigte*
 | **Dokumentations-Score** (Wartung — Checkliste mit echten Kriterien) | ✅ | **0.9.30–0.9.31:** Dreiteiliger Score (Datenerfassung / Manuelle Inhalte / Dokumentationstiefe); instancesWithoutRoom komplett raus; neue Checks: Diagramm, Räume m. Geräten, eigene Kapitel, KI-Provider — [§ 1.6](#dokumentations-score-checkliste) |
 | **Admin-Markdown: Diagnose-Kapitel** (Parität zu Admin-HTML) | ✅ | `renderDiagnosis` / `renderDiagnosisMarkdown` — TOC-Zeile, ausblendbar wie HTML; **dev:** Kapitel-Einleitung „Schnappschuss“; **Automatische Prüfungen** (Node-Heuristik) getrennt von **Allgemeine Erinnerungen** (OS-Hinweis). Details [§ 1.6](#admin-markdown-diagnose-optional), Anhang A |
 | **Admin-Konfig — Hilfen / Mini-Beispiele** (`manualMermaidDiagram`, JSON-Felder …) | 🟡 | **0.9.32** Mermaid-/States-/Hashes; **aktueller Repo-Stand:** weitere Mini-Beispiele in Hilfetexten (`jsonConfig` / i18n EN/DE/FR) — [§ 1.7](#admin-config-hilfen-beispiele); optional noch mehr Felder |
-| **Nutzer-Handbuch / Wiki** (`docs/user-guide/`) | 🟡 | **0.9.32:** EN + DE + SVG-Wireframes; **`main`:** PNG aller Konfig-Tabs + **SCREENSHOTS.md**; **Bildunterschriften** mit AutoDoc-/Admin-Version — [§ 1.1b](#nutzer-handbuch-wiki); optional: weitere Sprachen |
+| **Nutzer-Handbuch / Wiki** (`docs/user-guide/`) | 🟡 | EN/DE **`README`** + **Wiki Schritt 6** (Ausblenden/Reihenfolge); Admin **`staticLink`**‑Paar unter Kapitelsichtbarkeit (JSON‑Kochbuch + Wiki); PNG + **SCREENSHOTS.md** — [§ 1.1b](#nutzer-handbuch-wiki); optional: weitere Sprachen |
 | **Admin-UI React** (statt/nur wo nötig neben `jsonConfig`) | *optional* | Nur wenn jsonConfig für geplante Features zu eng — [§ 1.8](#admin-react-optional) |
 
 ---
@@ -118,7 +118,7 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 
 ### 1.1b Nutzer-Handbuch / Wiki *(optional — Backlog)*
 
-> **`docs/user-guide/`** (`README.md` **EN**, **`README.de.md`** DE als **Wiki zu Admin-Tabs** + Muster-Szenario) + Verweise aus **README** und Admin-Hilfe — **Screenshots sämtlicher** Admin-Konfig-Tabs, **Versionshinweise** in den PNG-Bildunterschriften und in **`assets/SCREENSHOTS.md`**; optional: weitere Sprachen, feinere Texte.
+> **`docs/user-guide/`** (`README.md` **EN**, **`README.de.md`** DE als **Wiki zu Admin-Tabs** + Muster-Szenario): **Wiki Schritt 6** (`#wiki-admin-json-cookbook`) für **Ausblenden/Reihenfolge**‑Rezepte; **engl.** Haupt-`README.md` für **JSON/Mermaid/CSS**‑Kochbücher — **Verbund** zur Instanzkonfig über **`staticLink`** (u. a. Tab **HTML-Export**, Abschnitt Kapitelsichtbarkeit) **und** Feldhilfen; **Screenshots**/Unterschriften siehe **`assets/SCREENSHOTS.md`**; optional: weitere Sprachen.
 
 - [x] Ablage festlegen (`docs/user-guide/` im Repo) + Verweis im **README**
 - [x] Inhalte nur mit **Demo-/Platzhalterdaten** (keine echten URLs, IPs, Forum-Karten aus Produktion) — **Schemas** `fig-*.svg` + Anleitung **`assets/SCREENSHOTS.md`**

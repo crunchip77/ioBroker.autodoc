@@ -126,17 +126,19 @@ flowchart LR
 **Tips**
 
 - Stick to **supported Mermaid** constructs you have seen working elsewhere; exotic directives may break `mmdc`.
-- **Auto host topology** is separate (`autoMermaidHostGraph`); hide it with chapter id **`mermaidAuto`** in the Admin hide list, **`mermaid`** for this manual diagram only (`lib/docTemplateConfig.js`).
+- **Auto host topology** is separate (`autoMermaidHostGraph`); hide it with **`mermaidAuto`** in **Admin/User** hide lists (see `EXTRA_HIDDEN_CHAPTER_IDS` in `lib/docTemplateConfig.js`). The **manual** Mermaid diagram lives under **`manual`** on **Admin** — hide that chapter if you want it gone. On **User**, field help lists **`mermaid`** and **`mermaidAuto`** separately; on **Onboarding**, use **`mermaid`** for the owner diagram in the welcome area (see that tab’s help).
 
 <h3 id="json-cookbook-snippets">JSON cookbook snippets</h3>
 
 Admin stores these fields as **strings**; content must be **valid JSON** (`"` keys/strings, no trailing commas). Empty roster means defaults: use **`[]`** where you do not want to override order or hide anything.
 
+German **scenario page** (“hide first vs reorder”, copy-paste walkthrough anchored to Step 6): **[`README.de.md` — Wiki — Step 6](https://github.com/crunchip77/ioBroker.autodoc/blob/main/docs/user-guide/README.de.md#wiki-admin-json-cookbook)** (`docs/user-guide/`).
+
 **Allowed chapter ids** come from the adapter (`lib/docTemplateConfig.js`):
 
 | Profile | Order fields | Hidden fields | Notes |
 | --- | --- | --- | --- |
-| Admin | `adminChapterOrderJson` | `adminHiddenChaptersJson` | Order default: `manual`, `system`, `adapters`, `rooms`, `scripts`, `schedule`, `userdata`, `aliases`, `maintenance`, `diagnosis`, `troubleshooting`, `custom`, `changelog`, `appendices`. Extra hide-only ids: **`mermaid`**, **`mermaidAuto`**. |
+| Admin | `adminChapterOrderJson` | `adminHiddenChaptersJson` | Order default: `manual`, `system`, …, `appendices`. Extra hide-only id: **`mermaidAuto`** (auto-host topology). The **manual** Mermaid diagram is part of **`manual`** — omit that chapter entirely to drop it from Admin exports. |
 | User | `userChapterOrderJson` | `userHiddenChaptersJson` | Keys include `manual`, `ai`, `guestHelp`, `atAGlance`, `rooms`, `scripts`, `routines`, `ownerPlaybook`, `mermaid`, `adapters`, `custom`, `system`, `troubleshooting`. |
 | Onboarding | `onboardingChapterOrderJson` | `onboardingHiddenChaptersJson` | Keys include `welcome`, `quickstart`, `tips`, `guestHelp`, `stats`, `ai`, `capabilities`, `mermaid`, `rooms`, `routines`, `ownerPlaybook`, `automations`, `adapters`, `custom`, `hint`, `system`, `manual`. |
 
@@ -278,6 +280,6 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 
 MIT License
 
-<!-- Maintainer: Admin staticLinks — wiki DE vs English README cookbooks on **blob/main**. Sync README.de.md + jsonConfig if headings change. -->
+<!-- Maintainer: Admin staticLinks — under chapter visibility: English README `#json-cookbook-snippets`, Wiki DE `#wiki-admin-json-cookbook`. Schnellzugriff in README.de; SCREENSHOTS table for PNG drift; Sync jsonConfig/i18n if URLs change. -->
 
 Copyright (c) 2026 crunchip77 <41550245+crunchip77@users.noreply.github.com>
