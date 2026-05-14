@@ -2,8 +2,8 @@
  * Remove trailing GitHub URL blocks from admin i18n keys/values (plain-text URLs
  * are not clickable in jsonConfig field help). Docs use staticLink instead.
  */
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
 
 const stripTrailingGithubBlocks = s => {
 	if (typeof s !== 'string') {

@@ -5,8 +5,8 @@
  * Maps legacy line URLs (`?plain=1#L###`) to **README heading slugs**; DE wiki uses explicit **`id=` on `h2`/`h3`** (GitHub scroll targets).
  * Branch: set **main** after merging if URLs should track **main**.
  */
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
 
 const DOC_BRANCH = 'main';
 

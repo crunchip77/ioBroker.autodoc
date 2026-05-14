@@ -2,8 +2,8 @@
 /**
  * Rename long Mermaid manual help i18n key (EN wording + paragraph breaks) in secondary locales.
  */
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
 
 const adminI18n = path.join(__dirname, '..', 'admin', 'i18n');
 const en = JSON.parse(fs.readFileSync(path.join(adminI18n, 'en.json'), 'utf8'));

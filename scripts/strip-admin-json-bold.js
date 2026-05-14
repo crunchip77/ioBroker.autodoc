@@ -3,8 +3,8 @@
  * Remove markdown **bold** markers from admin jsonConfig and i18n strings.
  * ioBroker json-config UI often shows help/staticText as plain text (no MD).
  */
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
 
 function stripBoldMarkers(s) {
 	return typeof s === 'string' ? s.replace(/\*\*/g, '') : s;

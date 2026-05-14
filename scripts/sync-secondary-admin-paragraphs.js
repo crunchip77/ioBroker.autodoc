@@ -3,8 +3,8 @@
  * Copy selected EN admin strings (with \n\n) into secondary locales.
  * Removes obsolete long i18n keys after profile/project help paragraph splits.
  */
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
 
 const adminI18n = path.join(__dirname, '..', 'admin', 'i18n');
 const en = JSON.parse(fs.readFileSync(path.join(adminI18n, 'en.json'), 'utf8'));
