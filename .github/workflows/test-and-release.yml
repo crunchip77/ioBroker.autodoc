@@ -54,7 +54,8 @@ jobs:
                   # Uncomment the following line if your adapter cannot be installed using 'npm ci'
                   # install-command: 'npm install'
 
-    # Deploys the package to npm when a version tag is pushed (requires npm trusted publishing — see npm docs)
+    # Deploys the package to npm when a version tag is pushed (requires npm trusted publishing — see npm docs).
+    # Skips publish when this semver already exists on npm (green run after workstation `npm publish`, then tag).
     deploy:
         needs: [check-and-lint, adapter-tests]
 
@@ -70,7 +71,26 @@ jobs:
             contents: write
 
         steps:
-            - uses: ioBroker/testing-action-deploy@v1
+            - name: Skip deploy if this version is already on npm
+              id: gate
+              shell: bash
+              run: |
+                  VER="${GITHUB_REF#refs/tags/v}"
+                  PKG="iobroker.autodoc"
+                  set +e
+                  GOT=$(npm view "${PKG}@${VER}" version 2>/dev/null | head -n1 | tr -d '\n\r ')
+                  RV=$?
+                  set -e
+                  if [[ "$RV" -eq 0 && "$GOT" == "$VER" ]]; then
+                    echo "::notice title=Deploy skipped::${PKG}@${VER} is already on npm — skipping ioBroker/testing-action-deploy. Create a GitHub Release for this tag manually if needed."
+                    echo "deploy=false" >> "$GITHUB_OUTPUT"
+                  else
+                    echo "deploy=true" >> "$GITHUB_OUTPUT"
+                  fi
+
+            - name: Publish to npm and create GitHub Release
+              if: steps.gate.outputs.deploy == 'true'
+              uses: ioBroker/testing-action-deploy@v1
               with:
                   node-version: '24.x'
                   # Uncomment the following line if your adapter cannot be installed using 'npm ci'

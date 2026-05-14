@@ -63,6 +63,8 @@ CI (`ioBroker/testing-action-check`) runs **`npm ci`**. The optional **@mermaid-
 
 **GitHub Actions:** `.github/workflows/test-and-release.yml` uses the **ioBroker.example** concurrency snippet (`group: ${{ github.ref }}`, **`cancel-in-progress: true`**). **`@iobroker/repochecker`** (**E3009**) compares this block **literally** to that template — custom `group` values always fail the check. Trade-off: a new push on the **same** branch invalidates older in-flight workflow runs (**Windows + Node 24** can show “Cancelled” if you push again before the matrix finishes).
 
+**`deploy` on semver tags (`v*.*.*`):** **`ioBroker/testing-action-deploy`** would publish to npm and create a release. If you already ran **`npm publish`** from your machine and then **`git push`** the tag, the workflow now runs **`npm view iobroker.autodoc@${version}`** first and **skips** that deploy step when the semver is already on npm — keeping the workflow **green** (add a GitHub Release manually when still missing). **Node.js deprecation** notices about embedded **`actions/checkout` / `setup-node`** stem from **`ioBroker/testing-action-*@v1`** bundle versions; upgrading those actions is tracked upstream (`ioBroker/testing-action-deploy` etc.), not locally in every adapter YAML.
+
 After changing **dependencies** or **overrides**, run **`npm install`**, commit **`package.json`** and **`package-lock.json`** together, and verify **`npm ci`** on a clean **`node_modules`** locally if you can.
 
 ## Releases and README changelog
