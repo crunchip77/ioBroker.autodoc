@@ -9,6 +9,7 @@
 - sich **Tab-Namen**, große **Blöcke** oder **Defaults** im Admin merklich ändern und die alten Bilder **irreführen**;
 - **neue** Einstellungsbereiche dokumentiert werden, die auf den alten Shots **nicht vorkommen**;
 - Text auf den Bildern (Überschriften, Hinweise) **hart veraltet** wirkt.
+- **Kapitel-JSON / Feld-Hilfe (`?`):** Ergänzungen zu den Tooltips (z. B. Hinweis auf **Adapter-Log** bei unbekannten oder doppelten Ids) erfordern **kein** neues PNG, solange der sichtbare Admin-Bereich gleich bleibt — nur bei irreführendem **Screenshot-Text** nachziehen. Log-Warnungen selbst müssen **nicht** abgelichtet werden.
 
 **Umfang:** Vollständige Scroll-Serien wie bisher sind **optional**. Für kleine Änderungen reichen oft **Ausschnitte** des betroffenen Bereichs — konsistent zum übrigen Guide halten (nicht jedes Bild Crop, jedes Volltab). **Nachziehen bei Bedarf** durch Maintainer:in ist ausdrücklich ok.
 

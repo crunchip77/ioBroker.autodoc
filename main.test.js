@@ -3,6 +3,7 @@
 const { expect } = require('chai');
 const { onboardingGuestShowsScriptNames } = require('./lib/guestScriptPrivacy');
 const { buildQuickStartGuide, sliceQuickStartForOnboarding, highlightCategoryRank, HIGHLIGHT_CATEGORY_RANK } = require('./lib/quickStartGuide');
+const { warnChapterJsonLayout, classifyChapterOrderTokens, DOC_HELP_URL } = require('./lib/chapterConfigWarnings');
 
 describe('guestScriptPrivacy', () => {
 	it('treats missing, null config and non-true values as hide script names', () => {
@@ -157,5 +158,93 @@ describe('quickStartGuide', () => {
 		expect(highlightCategoryRank('')).to.equal(HIGHLIGHT_CATEGORY_RANK.other);
 		expect(highlightCategoryRank('madeUpCategory')).to.equal(HIGHLIGHT_CATEGORY_RANK.other);
 		expect(highlightCategoryRank('door')).to.equal(0);
+		expect(highlightCategoryRank('leak')).to.equal(2);
+	});
+});
+
+describe('chapterConfigWarnings', () => {
+	function collectWarns(fn) {
+		const lines = [];
+		const log = {
+			warn(s) {
+				lines.push(s);
+			},
+		};
+		fn(log);
+		return lines;
+	}
+
+	it('warns unknown chapter ids in user order JSON', () => {
+		const lines = collectWarns(log =>
+			warnChapterJsonLayout(log, { userChapterOrderJson: '["rooms","unknownIdXYZ"]' }),
+		);
+		expect(lines.some(l => l.includes('unknownIdXYZ') && l.includes('userChapterOrderJson'))).to.equal(true);
+		expect(lines.some(l => l.includes(DOC_HELP_URL))).to.equal(true);
+	});
+
+	it('warns duplicate known ids in order JSON', () => {
+		const lines = collectWarns(log =>
+			warnChapterJsonLayout(log, { userChapterOrderJson: '["rooms","manual","rooms"]' }),
+		);
+		expect(lines.some(l => /duplicate.*\brooms\b/i.test(l) && l.includes('userChapterOrderJson'))).to.equal(
+			true,
+		);
+	});
+
+	it('warns invalid JSON for order field', () => {
+		const lines = collectWarns(log => warnChapterJsonLayout(log, { adminChapterOrderJson: '{' }));
+		expect(lines.some(l => /invalid JSON/i.test(l) && l.includes('adminChapterOrderJson'))).to.equal(true);
+	});
+
+	it('warns redundant duplicates in hide list', () => {
+		const lines = collectWarns(log =>
+			warnChapterJsonLayout(log, { userHiddenChaptersJson: '["scripts","scripts"]' }),
+		);
+		expect(lines.some(l => /duplicate id/i.test(l) && l.includes('userHiddenChaptersJson'))).to.equal(true);
+	});
+
+	it('warns unknown chapter ids when only legacy native key is set', () => {
+		const lines = collectWarns(log =>
+			warnChapterJsonLayout(log, { userChapterOrder: '["unknownLegacyOnly"]' }),
+		);
+		expect(
+			lines.some(
+				l => l.includes('unknownLegacyOnly') && l.includes('userChapterOrderJson via native userChapterOrder'),
+			),
+		).to.equal(true);
+	});
+
+	it('does not repeat identical warning lines for the same logger', () => {
+		const lines = [];
+		const log = {
+			warn(s) {
+				lines.push(s);
+			},
+		};
+		const bad = { userChapterOrderJson: '["sameUnknown"]' };
+		warnChapterJsonLayout(log, bad);
+		warnChapterJsonLayout(log, bad);
+		expect(lines.filter(l => l.includes('sameUnknown')).length).to.equal(1);
+	});
+
+	it('emits separate lines when the ignored id set changes for the same logger', () => {
+		const lines = [];
+		const log = {
+			warn(s) {
+				lines.push(s);
+			},
+		};
+		warnChapterJsonLayout(log, { userChapterOrderJson: '["firstX"]' });
+		warnChapterJsonLayout(log, { userChapterOrderJson: '["secondY"]' });
+		expect(lines.length).to.equal(2);
+		expect(lines.some(l => l.includes('firstX'))).to.equal(true);
+		expect(lines.some(l => l.includes('secondY'))).to.equal(true);
+	});
+
+	it('classifyChapterOrderTokens finds unknown and duplicate allowed ids', () => {
+		const allowed = new Set(['a', 'b']);
+		const { unknown, duplicateAllowed } = classifyChapterOrderTokens(['a', 'x', 'b', 'a'], allowed);
+		expect([...unknown].sort()).to.deep.equal(['x']);
+		expect([...duplicateAllowed].sort()).to.deep.equal(['a']);
 	});
 });
