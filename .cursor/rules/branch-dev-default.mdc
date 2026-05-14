@@ -1,11 +1,12 @@
 ---
 description: >-
-  Default git branch for day-to-day work: commit and push on dev unless release or explicit override.
+  Develop on dev, then merge to main; trivial changes may fast-forward main immediately after dev.
 alwaysApply: true
 ---
 
-# ioBroker.autodoc — branches: default **`dev`**
+# ioBroker.autodoc — branches
 
-- For **normal changes** (code, CI, docs, scripts): **`git checkout dev`**, commit there, **`git push origin dev`**. Prefer reconciling **`main → dev`** (merge/fast-forward after release) instead of committing directly on **`main`**.
-- **`main`** is reserved for **`npm run release`**, versioning, and the maintainer flow in **`CONTRIBUTING`** / **`release-order.mdc`**. Agents should not routinely land non-release work **only** on **`main`**.
-- Explicit **exceptions** ( Maintainer says hotfix **`main`**-only): follow Maintainer instructions while keeping **`dev`** aligned afterward (**merge `origin/main`** into **`dev`**, **`git push origin dev`**).
+1. **Development** lives on **`dev`**: **`git checkout dev`**, commit, **`git push origin dev`**.
+2. **`main`** follows **`dev`**: after the work is pushed, **merge `dev` into `main`** (prefer **fast-forward** when history allows) and **`git push origin main`**, so **GitHub default branch** stays aligned.
+3. **Small / trivial changes** (typos, Cursor rules, trivial CI or docs): same flow — **always commit on `dev` first** — but you **may immediately** merge and push **`main`** in the same session (no separate release window required).
+4. **`npm run release`**, version bumps, tags, and **`release-order.mdc`** still target **`main`** per **`CONTRIBUTING`**. A rare **Maintainer-only hotfix** on **`main`** is allowed; afterward **merge `origin/main`** into **`dev`** and **`git push origin dev`**.
