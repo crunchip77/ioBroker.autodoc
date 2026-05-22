@@ -57,7 +57,7 @@
     "cytoscape": "^3.33.3",
     "d3-selection": "^3.0.0",
     "devtools-protocol": "^0.0.1107588",
-    "typescript": "~6.0.2"
+    "typescript": "~6.0.3"
   },
   "main": "main.js",
   "files": [
