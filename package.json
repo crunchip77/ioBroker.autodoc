@@ -40,7 +40,7 @@
   },
   "optionalDependencies": {
     "@mermaid-js/mermaid-cli": "10.9.1",
-    "puppeteer": "^19.0.0"
+    "puppeteer": "^25.0.2"
   },
   "devDependencies": {
     "@alcalzone/release-script": "^5.2.0",
