@@ -39,8 +39,8 @@
     "qrcode": "^1.5.4"
   },
   "optionalDependencies": {
-    "@mermaid-js/mermaid-cli": "10.9.1",
-    "puppeteer": "^25.0.2"
+    "@mermaid-js/mermaid-cli": "11.15.0",
+    "puppeteer": "^24.43.1"
   },
   "devDependencies": {
     "@alcalzone/release-script": "^5.2.0",
