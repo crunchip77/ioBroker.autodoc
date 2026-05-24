@@ -218,6 +218,7 @@
     "maintenanceScoreUnassignedWarnAt": 30,
     "exportPath": "",
     "pdfExportAfterGeneration": false,
+    "aiApiKey": "",
     "aiOwnerHints": "",
     "htmlColorScheme": "auto",
     "htmlThemePreset": "default",
@@ -234,6 +235,12 @@
     "aiAnalyzeScriptSources": false,
     "aiMaxScriptCharsForAi": 12000
   },
+  "protectedNative": [
+    "aiApiKey"
+  ],
+  "encryptedNative": [
+    "aiApiKey"
+  ],
   "objects": [],
   "instanceObjects": [
     {
