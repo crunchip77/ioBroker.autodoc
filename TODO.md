@@ -310,7 +310,7 @@ Details: [PLAN — System-Visitenkarte](PLAN.md#system-visitenkarte-festlegung),
 
 ## 3. Zur Klärung (ohne feste Roadmap)
 
-Ausführlich: [PLAN.md — Zukunftsvision](PLAN.md#zukunftsvision) inkl. **[Merkliste — Produkt-Lücken & Plattform-Reconnaissance](PLAN.md#merkliste-produktluecken-platform)** (stückweise umsetzbar). **Diskussions-Nachzeichnung** (Checkliste Produktperspektive, nichts vergessen für Fortführung): [PLAN — Nachzeichnung 2026-05](PLAN.md#merkliste-nachzeichnung-2026-05). **Medien, Redis/jsonl, States:** Arbeitsweise und Leitplanken sind festgelegt — [PLAN — Medien-MVP](PLAN.md#architektur-medien-mvp), [Architektur](PLAN.md#architektur-grenzen).
+Ausführlich: [PLAN.md — Zukunftsvision](PLAN.md#zukunftsvision) inkl. **[Merkliste — Produkt-Lücken & Plattform-Reconnaissance](PLAN.md#merkliste-produktluecken-platform)** (stückweise umsetzbar). **Diskussions-Nachzeichnung** (Checkliste Produktperspektive, nichts vergessen für Fortführung): [PLAN — Nachzeichnung 2026-05](PLAN.md#merkliste-nachzeichnung-2026-05). **Weitere Ausbaustufen** (Roadmap-Vorschlag js-controller/Admin/Adapter, Pakete 1–3): [PLAN — Weitere Möglichkeiten](PLAN.md#weitere-moeglichkeiten-roadmap-2026-05). **Medien, Redis/jsonl, States:** Arbeitsweise und Leitplanken sind festgelegt — [PLAN — Medien-MVP](PLAN.md#architektur-medien-mvp), [Architektur](PLAN.md#architektur-grenzen).
 
 ---
 

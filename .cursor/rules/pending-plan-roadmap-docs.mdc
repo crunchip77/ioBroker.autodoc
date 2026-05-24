@@ -1,0 +1,19 @@
+---
+description: >-
+  Reminder: local PLAN/TODO roadmap section not yet committed; check git status and
+  remind Maintainer to push on dev then main when appropriate.
+alwaysApply: true
+---
+
+# ioBroker.autodoc — ausstehender Doku-Commit (PLAN / TODO)
+
+**Maintainer (2026-05):** Erweiterung **„Weitere Möglichkeiten — Roadmap-Vorschlag“** in **PLAN.md** (Anker `#weitere-moeglichkeiten-roadmap-2026-05`) und Querverweis in **TODO.md** § 3 — bewusst **noch nicht** committed/gepusht („ein andermal hochziehen“).
+
+## Agent-Verhalten
+
+1. **Zu Sessionbeginn oder vor Plan-/Roadmap-/Release-Themen:** `git status` — wenn **`PLAN.md`** und/oder **`TODO.md`** modified sind und der Anker **`weitere-moeglichkeiten-roadmap-2026-05`** in der lokalen **PLAN.md** existiert, aber **nicht** auf `origin/dev` / `origin/main` ist → **kurz erinnern** (ein Satz), dass der Doku-Stand noch **lokal** ist.
+2. **Nicht** selbst committen/pushen, solange der Maintainer das nicht verlangt (z. B. „hochziehen“, „commit“, „push dev“).
+3. **Wenn commit gewünscht:** **`dev`** → commit → **`git push origin dev`** → **`main`** per Fast-forward/merge → **`git push origin main`** ([`branch-dev-default.mdc`](branch-dev-default.mdc)).
+4. **Nach erfolgreichem Push:** diesen Merker in **`.cursor/MERKER-pending-commit.md`** aktualisieren oder die Regel hier anpassen, falls der Maintainer es wünscht.
+
+Details der Roadmap: [PLAN.md — Weitere Möglichkeiten](PLAN.md#weitere-moeglichkeiten-roadmap-2026-05) (lokal bis Commit).

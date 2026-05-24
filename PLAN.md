@@ -21,7 +21,7 @@ Langfristige inhaltliche Richtung (Zusammenhänge, Auto vs. Pflege, Forum-Feedba
 | Datei | Zweck |
 | ----- | ----- |
 | **[TODO.md](TODO.md)** | **Offene** Punkte und **Klärungen** oben; **erledigte** Meilensteine im **Anhang** (vollständige Checklisten — nichts verloren) |
-| **PLAN.md** (hier) | Vision, technische und inhaltliche **Begründungen**, **Architektur** (Ist / Leitplanken im Abschnitt [Architektur](#architektur-grenzen); [Nächste Schritte](#architektur-naechste-schritte)), Forum-Brainstorming, **Festlegungen** ([System-Visitenkarte](#system-visitenkarte-festlegung), [KI + Skriptquellcode](#ki-skript-festlegung)), **[Produkt-Merkliste](#merkliste-produktluecken-platform)** (unter [Zukunftsvision](#zukunftsvision)) |
+| **PLAN.md** (hier) | Vision, technische und inhaltliche **Begründungen**, **Architektur** (Ist / Leitplanken im Abschnitt [Architektur](#architektur-grenzen); [Nächste Schritte](#architektur-naechste-schritte)), Forum-Brainstorming, **Festlegungen** ([System-Visitenkarte](#system-visitenkarte-festlegung), [KI + Skriptquellcode](#ki-skript-festlegung)), **[Produkt-Merkliste](#merkliste-produktluecken-platform)** und **[Weitere Möglichkeiten](#weitere-moeglichkeiten-roadmap-2026-05)** (unter [Zukunftsvision](#zukunftsvision)) |
 | **[README.md](README.md)** | Nutzer-Dokumentation und **Changelog** (Release-Notizen) |
 
 ### Überblick — was umgesetzt ist vs. was noch offen ist
@@ -361,6 +361,108 @@ Ergebnisse können in Erweiterungen von `discovery.js` / Hilfstexten münden —
 | **B — Semi-auto** | Ein konfigurierbares Markdown-Feld „System & Zusammenhänge“ mit optionalen Mermaid-Blöcken (wenig Pflege, hoher Effekt). |
 | **C — Verknüpfung** | Felder für **URLs** externer Doku; AutoDoc bleibt **Quelle der Wahrheit** für Installationsstand, externe Doku für **Absicht/Kontext**. |
 | **D — Medien** | Bild-Upload oder Ablage unter `files/…` + Verweise — höherer Aufwand (Größe, Dark Mode, Rotation). |
+
+<a id="weitere-moeglichkeiten-roadmap-2026-05"></a>
+
+### Weitere Möglichkeiten — Roadmap-Vorschlag (2026-05)
+
+> **Zweck:** Sammelt **konkrete Ausbaustufen** aus Projekt-Diskussion (Produktperspektive, Plattform **js-controller** / **Admin** / Referenz-Adapter), damit Ideen **nicht verloren** gehen. **Keine** automatische Priorität gegenüber [TODO.md — offene Arbeit](TODO.md#offene-arbeit) — Checkboxen und Releases bleiben in **TODO**; hier nur **Möglichkeiten** und **Begründungen**. Bei Umsetzung: Eintrag in TODO anlegen oder abhaken, ggf. Reconnaissance-Ergebnisse kurz nachziehen.
+
+#### A — Prozess & Sichtbarkeit (wenig Code, hoher Nutzen)
+
+| Möglichkeit | Kurz |
+| ----------- | ---- |
+| **PR [ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories)** (`sources-dist.json`, **latest**) | Schließt Adapter-Checker **W4001**; Standard-Adapterliste im Admin — [TODO § 1.1](TODO.md#release-veroeffentlichung) |
+| **Forum-/Tester-Feedback nach `latest`** | Entscheidet, ob **Backup/Backitup** Priorität bekommt (in TODO bewusst **zurückgestellt** bis Resonanz) |
+| **Plattform-Reconnaissance** (laufend) | Bei js-controller-/Admin-Sprüngen oder größeren Releases: was ist **stabil** vs. **Best Effort**? Kurz in Issue/TODO/PLAN — siehe [Plattform-Reconnaissance](#merkliste-produktluecken-platform) |
+
+#### B — Offene Arbeitspakete aus TODO / Phase 5 (bereits festgehalten, hier zur Vollständigkeit)
+
+| Thema | Sinn | Aufwand (grob) | Verweis |
+| ----- | ---- | -------------- | ------- |
+| **Backup / [ioBroker.backitup](https://github.com/simatec/ioBroker.backitup)** | Offline/Migration, **KI-Skript Variante B**, Doku aus **`.tar.gz`** | Hoch | [TODO — Backup-Festlegung](TODO.md#backup-backitup-festlegung), [§ 1.2](TODO.md#phase-5-features) |
+| **Custom Templates — Drag-and-Drop** | Komfort Kapitelreihenfolge | Mittel | [Custom Templates](PLAN.md#custom-templates-detail); PLAN: **nachrangig** vs. Semantik |
+| **Admin-UI React** | Nur wenn **jsonConfig** für DnD, Live-Mermaid-Preview, Medien-Galerie **systematisch** zu eng | Hoch, optional | [TODO § 1.8](TODO.md#admin-react-optional) |
+| **Phase 5.x.2 — Feintuning** | Sortierung/Relevanz Quick Start, Caps Onboarding vs. User, weniger Doppelinfos | Klein–mittel | [TODO § 5.x.2](TODO.md#phase-5x) |
+| **Phase 5.x.1 — weitere Diagnose-Signale** | Auto-Checklisten **nur bei Befund** (wie Node.js heute via `lib/diagnosisSnapshot.js`) | Mittel | [TODO § 5.x.1](TODO.md#phase-5x), [Hybrid MVP](PLAN.md#phase-5x-plan) |
+
+#### C — Merkliste „Sinn der Doku“ (inhaltliche Vertiefung)
+
+| Lücke (PLAN) | Erster sinnvoller Schritt | Anknüpfung Code |
+| ------------ | ------------------------- | ---------------- |
+| **„Was automatisiert hier wirklich?“** | Admin-Kapitel **„Automatisierung im Überblick“**: Schedules + Skript-Trigger + Adapter-`schedule`/`restartSchedule` in **einer** Übersicht (kein Gesamtgraph) | `discovery.js`, `documentModel.js`, Renderer |
+| **Kuratierte „Warum“-Ebene** | Optionale **Halbpflichtfelder** (z. B. „Absicht in einem Satz“ pro Raum/Adapter) in `manualContext` / jsonConfig — strukturiert, nicht nur KI/Freitext | `parseManualContext`, Admin i18n |
+| **Transparenz der Grenzen** | `docTransparencyLimitsShort` **erweitern**: Blockly, Node-RED, Szenen/Logik-Adapter, **dynamische** State-IDs (Regex-Grenze) | `lib/i18n.js`, Admin-Systemübersicht |
+| **Änderungs-Narrativ** | Delta-UX ✅; optional **ein** Onboarding-Satz bei **großen** Inventar-Deltas (heute bewusst ohne) | `docChangeFormat.js`, Renderer |
+
+**Leitgedanke:** Stärkere Hebel sind **erzählbare Schicht** („was läuft von selbst / was hat sich geändert / wo endet AutoDoc“) und **Plattform-Brücken** — nicht primär mehr Kapitel oder DnD.
+
+#### D — Plattform & Referenz-Adapter (was nutzbar ist)
+
+> **Grundsatz:** Daten über **Objekte/States/Views** des js-controllers — **kein** Pflicht-Zugriff auf private Admin-HTTP-APIs. **Best Effort** klar kennzeichnen.
+
+##### js-controller
+
+| Quelle / API | Möglicher Nutzen für AutoDoc | Bereits / Stand |
+| ------------ | ----------------------------- | ---------------- |
+| `getObjectView(system, host\|instance\|schedule)` | Host-/Instanz-Landkarte, Zeitplan-Übersicht | ✅ weitgehend |
+| `system.config`, Host-States (RAM/CPU), Node/npm | Diagnose, Visitenkarte | ✅ |
+| **`system.adapter.*.alive` / `.connected`** | Kurzzeile User/Onboarding: Automatik/Instanz **nicht erreichbar** (faktenbasiert) | ⬜ Vorschlag |
+| **Schedule-Objekte / CRON** | Admin: Zeitplan-Landkarte; User: „Was läuft nachts?“ ohne Quelltext | 🟡 Teile in Discovery |
+| **Controller-Version, Redis vs. jsonl** | Diagnose + Hinweis **Medien** (nur URL/kleine SVG bei Redis) | 🟡 teilweise |
+| Weitere **`getObjectView`**-Views | Nur nach **Reconnaissance** — portabel und release-stabil | ❓ dokumentieren vor Bau |
+
+**Nicht Ziel:** Vollständiger Objektbaum oder ungefilterter State-/Skript-Graph ([Bewusst weggelassen](#bewusst-weggelassen)).
+
+##### ioBroker.admin
+
+| Fähigkeit | Möglicher Nutzen |
+| --------- | ---------------- |
+| **Device Manager** (`dm:` / Device Management) | Strukturierte Gerätelisten **pro Instanz** — Räume/User verständlicher („Gerät unter Adapter X“) |
+| **jsonConfig-Muster** | Nutzer-Doku (`docs/user-guide/`) an Tabs/Kochbücher anbinden — ✅ teilweise |
+| **Datenweg** | Geräte über **Objekte**, die DM-fähige Adapter schreiben — Reconnaissance: welche Adapter **deviceManagement** nutzen |
+
+**Pragmatischer MVP (Vorschlag):** `deviceMap` in Discovery anreichern, wo DM-Objekte existieren; **User-Raum-Kapitel** priorisiert Gerätenamen.
+
+##### ioBroker.javascript
+
+| Erweiterung | Nutzen | Grenze |
+| ----------- | ------ | ------ |
+| **Blockly** (`common.engine`) | Label „visuelles Skript — Quelltext nicht ausgewertet“ | Kein Blockly-Parser |
+| **Ordner / `lib/scriptGroups.js`** | Admin: Automatisierung nach Bereich | ✅ |
+| **Schedule-States der javascript-Instanz** | Verknüpfung Skript ↔ Zeitplan | ⬜ Vorschlag |
+| **KI Variante A** (`common.source`, opt-in) | User/Onboarding Erklärungen | ✅ |
+| **KI Variante B** (Backup) | Tiefe ohne Live-Last | an Backitup gekoppelt |
+
+##### ioBroker.backitup (Phase 5, zurückgestellt)
+
+- Archive **`*.tar.gz`** lesen (`iobroker-objects.json`, Skript-Inhalte).
+- **Lesbarer Mount-Pfad** oder lose **`sendTo`** (`list`, `getSystemInfo` — gegen aktuelle Backitup-Version prüfen).
+- **Gleiche KI-Pipeline** wie Variante A — **andere Quelle**; Doku bei ioBroker-Ausfall / Migration.
+
+##### Weitere Adapter (Best Effort, mit Transparenz)
+
+| Typ | Realistisch für AutoDoc |
+| --- | ------------------------ |
+| **scene / logic / node-red** | Instanz + enabled + Metadaten-Kurztext; Abschnitt **„Weitere Regel-Engines“** + Hinweis **nicht vollständig analysiert** |
+| **hm-rpc, zigbee, mqtt, …** | Inventar, Räume, Rollen, `connectionType`/`tier` | ✅ Kern |
+| **influx, grafana, sql** | Admin: Zeile „externe Datenhaltung vorhanden“ — **kein** DB-Inhalt |
+| **discovery** | Meta in Diagnose („Gerätesuche aktiv“) |
+
+#### E — Vorgeschlagene Umsetzungs-Reihenfolge (Diskussion 2026-05, nicht bindend)
+
+| Stufe | Paket | Begründung |
+| ----- | ----- | ---------- |
+| **1** | **Repositories-PR** + README-Hinweis Standardliste | Prozess, kein Feature-Bloat; schließt W4001 |
+| **2** | **„Automatisierung im Überblick“** (Admin) + **Transparenz** Blockly/Node-RED/Szenen | Merkliste #1 und #6; hoher Sinn pro Aufwand |
+| **3** | **Device-Manager-Anreicherung** (Best Effort) | Bessere Räume/User ohne neuen HTTP-Endpunkt |
+| **Danach** (nach Forum/Tester) | **Backup/Backitup** + KI-B; dann **DnD** oder **weitere Diagnose-Checks** | Priorität aus Rückmeldung |
+
+#### F — Bewusst nicht als „nächste“ Ausbaustufe
+
+Entspricht [Bewusst weggelassen](#bewusst-weggelassen) und [TODO — Bewusst weggelassen](TODO.md#anhang-a-erledigt): u. a. ungefilterte Groß-Graphen, vollständiges Live-AST aller Skripte, REST-API/Webhooks, Mobile App, Asset-Upload-Tab / eigener HTTP-Asset-Server (Medien-MVP: **URLs + kleine SVG**), Admin-React **ohne** konkreten jsonConfig-Engpass.
+
+---
 
 ### Skript-Quellcode-Analyse & Smarthome-Beschreibung durch KI
 
