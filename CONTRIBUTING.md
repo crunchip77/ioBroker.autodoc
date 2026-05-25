@@ -56,7 +56,39 @@ Typical messages while **ioBroker.repositories** PR is still open:
 - **W5042 (`puppeteer` used in source but missing from `dependencies`):** **`puppeteer` is intentionally listed under `optionalDependencies`** in `package.json` (with `@mermaid-js/mermaid-cli`). PDF export loads it via **`require('puppeteer')`** in **`lib/htmlToPdf.js`** only when present; adapters without Puppeteer/Chromium avoid a heavyweight default install — especially relevant on constrained hosts (e.g. Raspberry Pi). The repochecker rule appears to match **`dependencies` only**, not **`optionalDependencies`**, so this warning is a **known false positive** here. Do **not** add a second **`puppeteer`** entry under `dependencies` merely to silence W5042: ioBroker’s checker rejects listing the **same package in both `dependencies` and `optionalDependencies`**, and moving Puppeteer exclusively into **`dependencies`** would force Chromium downloads for everyone. Treat W5042 as **expected until** upstream repochecker counts **`optionalDependencies`** (or equivalent) as declared.
 - **`aiApiKey` (jsonConfig `password`):** listed under **`protectedNative`** and **`encryptedNative`** in **`io-package.json`** (ioBroker adapter security — W5057/W5058). Existing plain-text keys are re-encrypted when the user saves config in Admin.
 - **E8917 / W0066 (`@types/node`):** pin **`@types/node`** to the **Node 22** line (`^22.x`, matching **`engines.node`**) and add a Dependabot **`ignore`** for **`version-update:semver-major`** on **`@types/node`** in **`.github/dependabot.yml`** (see ioBroker.javascript / repochecker E8917).
-- **`puppeteer` Dependabot major:** also ignore **`version-update:semver-major`** for **`puppeteer`** — **25.x** breaks **`npm ci`** with **`@mermaid-js/mermaid-cli@11`** (peer **`^23 || ^24`** only); stay on **`^24.43.1`** until upstream allows 25.
+- **`puppeteer` Dependabot major:** also ignore **`version-update:semver-major`** for **`puppeteer`** in **`.github/dependabot.yml`** — see **[Optional Puppeteer + mermaid-cli](#optional-puppeteer-mermaid-cli)** below.
+
+<a id="optional-puppeteer-mermaid-cli"></a>
+
+### Optional Puppeteer + `@mermaid-js/mermaid-cli` (ioBroker policy)
+
+**Purpose:** PDF export (`lib/htmlToPdf.js`) and server-side Mermaid SVG (`lib/mermaidServerSvg.js` via **`mmdc`**) use headless Chromium. Both packages are **`optionalDependencies`** so default installs stay lightweight (relevant for constrained hosts, e.g. Raspberry Pi) — aligned with ioBroker practice for heavy browser stacks.
+
+**Current aligned pair (2026-05, verify in `package.json`):**
+
+| Package | Version | Role |
+| ------- | ------- | ---- |
+| **`puppeteer`** | **`^24.43.1`** | PDF + shared Chromium for **`mmdc`** |
+| **`@mermaid-js/mermaid-cli`** | **`11.15.0`** (pinned) | embed **`pre.mermaid`** as SVG during generation |
+
+**Why not Puppeteer 25 yet:** **`@mermaid-js/mermaid-cli@11.15.0`** declares **`peerDependencies.puppeteer: ^23 \|\| ^24`**. Puppeteer **25.x** causes **`npm ci` / ERESOLVE** on CI — not an adapter bug, but an upstream peer gap. **Do not merge** Dependabot PRs that bump **`puppeteer`** to **25** until **`mmdc`** peers **`^25`** (check with **`npm view @mermaid-js/mermaid-cli@latest peerDependencies`**). **`.github/dependabot.yml`** ignores **`puppeteer`** **`version-update:semver-major`** for that reason.
+
+**ioBroker Checker / `ioBroker.repositories` review — do not “fix” the wrong way:**
+
+| Message | Maintainer stance |
+| ------- | ----------------- |
+| **W5042** (`puppeteer` “missing” from **`dependencies`**) | **Expected false positive.** **`puppeteer`** is declared under **`optionalDependencies`**. Moving it to **`dependencies`** would force Chromium for all installs and can trigger checker errors (**same package in both `dependencies` and `optionalDependencies`**). **Document W5042 for reviewers; do not duplicate the entry.** |
+| **Failed Dependabot PR (puppeteer 25)** | Close or ignore; not a release blocker if **`main`** CI is green with **24 + mermaid-cli 11**. |
+| **`npm ci` on CI** | **`package-lock.json`** must include a full **`packages["node_modules/puppeteer"]`** entry. After dependency changes: fresh **`npm install`**, verify **`npm ci`** on clean **`node_modules`**, commit **`package.json`** + lock together. |
+
+**Upgrade procedure (when upstream allows Puppeteer 25):**
+
+1. Confirm **`@mermaid-js/mermaid-cli`** peer range includes **`^25`** (or upgrade **`mmdc`** first, then **`puppeteer`** in **one** PR).
+2. Regenerate lockfile; run **`npm ci`**, **`npm run lint`**, **`npm run check`**, **`npm test`** (Mermaid integration tests in **`mermaidServerSvg.test.js`**).
+3. Remove or narrow the Dependabot **`ignore`** for **`puppeteer`** major only when safe.
+4. Mention in release notes / **`common.news`** if install size or Node/Chromium requirements change.
+
+**For `ioBroker.repositories` PR text:** optional PDF/Mermaid features require **`npm install`** (or install with optional deps) in the adapter directory; core documentation generation works **without** Puppeteer. **W5042** and the Puppeteer **24/25** peer lock are **documented maintainer choices**, not checklist errors.
 
 **Important:** Never run **`npx iobroker …`** inside the adapter clone unless you intentionally bootstrap a controller there — it can overwrite **`package.json`**. Restore with **`git checkout -- package.json package-lock.json`** if that happens.
 

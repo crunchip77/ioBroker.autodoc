@@ -102,7 +102,7 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 
 **Synchron halten** (jedes Release): `package.json` **`version`**, `io-package.json` **`common.version`**, **`common.news`** (nur Versionen auf **npm**, Checker **E2004**), README-**Changelog**-Fenster — siehe **[CONTRIBUTING.md](CONTRIBUTING.md)** (**npm-Paketidentität**, **`npm run release`**).
 
-- [ ] [Adapter Checker](https://adapter-check.iobroker.in/) **ohne vermeidbare** Fehler nach Stand der Regeln (**E2000** und ähnliche harte Meldungen sollten mit Paket auf npm nicht dauerhaft bestehen); **W4001** erst nach **Merge** des **repositories**-PRs prüfen — verbleibende **Warnungen** (z. B. **W5042**) siehe **CONTRIBUTING.md**
+- [ ] [Adapter Checker](https://adapter-check.iobroker.in/) **ohne vermeidbare** Fehler nach Stand der Regeln (**E2000** und ähnliche harte Meldungen sollten mit Paket auf npm nicht dauerhaft bestehen); **W4001** erst nach **Merge** des **repositories**-PRs prüfen — **W5042** / Puppeteer‑25‑Peer‑Lock (**bewusst**, nicht „offen“): **[CONTRIBUTING — Optional Puppeteer + mermaid-cli](CONTRIBUTING.md#optional-puppeteer-mermaid-cli)**
 - [x] **npm**-Paketname **`iobroker.autodoc`** und Release-Prozess dokumentiert (**CONTRIBUTING.md**, [npm](https://www.npmjs.com/package/iobroker.autodoc))
 - [x] Erstes und **fortlaufende** **npm**-Releases: Versionen/`news`/README-Fenster über **`npm run release`** oder bewusst manueller Prozess synchron (**0.9.35** ff.; Stand siehe **`package.json`**, derzeit **`0.9.43`**)
 - [x] `npm publish` erfolgt im Release-Workflow (nicht „nur“ manuell lose zum ioBroker-Adapter)
@@ -150,7 +150,7 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 **Umsetzung:**
 
 - [x] **SVG-Rendering** bei Generierung über **`@mermaid-js/mermaid-cli`** (`lib/mermaidServerSvg.js`, optionalDependency) — pro `<pre class="mermaid">` in den drei HTML-Profilen; **light/dark** aus `htmlColorScheme` (**auto** → Default-Theme); ohne Paket bleibt **jsDelivr**-Mermaid wie bisher.
-- [x] **PDF aus HTML:** **`lib/htmlToPdf.js`** + optional **`puppeteer`** (^19 wie Mermaid-CLI), **`pdfExportAfterGeneration`**, **`action.exportPdf`** — Artefakte unter `/files` und optional `exportPath` (**0.9.33**, Best Effort ohne Puppeteer/OS-Chromium).
+- [x] **PDF aus HTML:** **`lib/htmlToPdf.js`** + optional **`puppeteer`** (**^24.x**, gemeinsam mit **`@mermaid-js/mermaid-cli` 11** — Peer-Lock, siehe **[CONTRIBUTING](CONTRIBUTING.md#optional-puppeteer-mermaid-cli)**), **`pdfExportAfterGeneration`**, **`action.exportPdf`** — Artefakte unter `/files` und optional `exportPath` (**0.9.33**, Best Effort ohne Puppeteer/OS-Chromium).
 
 **Festgehalten (Installation / Laufzeit — 2026-05):**
 
