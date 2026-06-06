@@ -250,5 +250,12 @@
 	"Docs link README HTML CSS": "README — HTML & CSS-Beispiele (GitHub)",
 	"Docs link README documentation overview basic": "Wiki DE — Projekt & Dokumentationssprache (Tab Grundeinstellungen, GitHub)",
 	"Docs link README documentation overview advanced": "Wiki DE — Sprache, Deltas & erweiterte Hinweise (Tab Erweitert, GitHub)",
-	"Docs link wiki German custom sections": "Wiki DE — Zusätzliche Markdown-Kapitel (JSON, GitHub)"
+	"Docs link wiki German custom sections": "Wiki DE — Zusätzliche Markdown-Kapitel (JSON, GitHub)",
+	"General notes about this installation (e.g. special setups, known issues)": "Allgemeine Hinweise zu dieser Installation (z. B. besondere Setups, bekannte Probleme)",
+	"Onboarding": "Onboarding",
+	"[ \"system\", \"adapters\", \"manual\" ]": "[ \"system\", \"adapters\", \"manual\" ]",
+	"[ \"welcome\", \"quickstart\", \"rooms\" ]": "[ \"welcome\", \"quickstart\", \"rooms\" ]",
+	"[ \"atAGlance\", \"rooms\", \"manual\" ]": "[ \"atAGlance\", \"rooms\", \"manual\" ]",
+	"[ { \"title\": \"DEMO title\", \"body\": \"Markdown only — replace DEMO text.\", \"profiles\": [ \"onboarding\" ] } ]": "[ { \"title\": \"DEMO title\", \"body\": \"Markdown only — replace DEMO text.\", \"profiles\": [ \"onboarding\" ] } ]",
+	"flowchart LR\n    DEMOROOM --> DEMOGW": "flowchart LR\n    DEMOROOM --> DEMOGW"
 }
