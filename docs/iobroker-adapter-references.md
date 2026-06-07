@@ -33,6 +33,16 @@ Konkrete Meldungen und Projekt-Workarounds immer im **eigenen** Repo (`CONTRIBUT
 - **npm:** Account, idealerweise **2FA**; Registry `https://registry.npmjs.org/`.
 - **GitHub Actions + npm:** „Trusted Publishing" (OIDC) ist Projekt-sache; ohne Einrichtung kann ein Workflow-Schritt scheitern oder übersprungen werden.
 
+## Übersetzungen / i18n
+
+ioBroker erwartet Übersetzungen in allen 10 Sprachen (en, de, ru, pt, nl, fr, it, es, pl, zh-cn). Workflow:
+
+1. **Basis:** `admin/i18n/en.json` als Quelle pflegen.
+2. **Maschinell vorübersetzen:** `npm run translate` (`@iobroker/adapter-dev`) übersetzt via Google Translate alle **fehlenden** Keys in die anderen Sprachen. Wichtig: nur fehlende Keys werden ergänzt — vorhandene (auch englisch-identische) werden übersprungen. Sollen alle neu übersetzt werden: Zieldatei vorher leeren oder `--rebuild` nutzen.
+3. **Community-Qualität:** Adapter bei [Weblate (weblate.iobroker.net)](https://weblate.iobroker.net) anmelden — dazu Issue in [ioBrokerTranslator/requests](https://github.com/ioBrokerTranslator/requests) erstellen. Voraussetzung: `npm run translate all` laufen lassen und committen, dann GitHub Webhook konfigurieren (Payload URL `https://weblate.iobroker.net/hooks/github/`). Weblate schickt danach automatisch PRs für Übersetzungsverbesserungen.
+- **E5606** (identische Übersetzungen): tritt auf wenn Sprachen englische Fallbacks enthalten — `npm run translate` nach dem Leeren der Dateien behebt das.
+- **de / fr** (oder andere manuell gepflegte Sprachen): bleiben bei `npm run translate` unverändert, wenn bereits alle Keys vorhanden sind.
+
 ## `ioBroker.repositories`
 
 PR auf **`sources-dist.json`** ist der Schritt für Sichtbarkeit in den **Standard-Adapterlisten** — **unabhängig** vom npm-Tarball. Zeitpunkt und Branch-Policy im jeweiligen Projekt abstimmen.

@@ -33,7 +33,7 @@ Diese Datei ist die **Arbeitsliste**: was **offen** ist steht oben; **erledigte*
 
 <a id="stand-uebersicht"></a>
 
-## Übersicht — Umsetzung vs. Rest (Stand der **Version** wie in `package.json` / `io-package.json`: derzeit **`0.9.43`** auf **`main`/`dev`** — **`npm` latest** gegen [npm — iobroker.autodoc](https://www.npmjs.com/package/iobroker.autodoc) prüfen; bei Releases diese Zeile + **Tabellen-Stichtag** mitziegen; Releases Version/`news`/Tag/GitHub wie in **[CONTRIBUTING](CONTRIBUTING.md#maintainer-checklist-release-order)**; Tabellen-Stichtag **2026-05-13** — Branch je nach Arbeitskopie, z. B. `main` / `dev`)
+## Übersicht — Umsetzung vs. Rest (Stand der **Version** wie in `package.json` / `io-package.json`: derzeit **`0.9.44`** auf **`main`/`dev`** — **`npm` latest** gegen [npm — iobroker.autodoc](https://www.npmjs.com/package/iobroker.autodoc) prüfen; bei Releases diese Zeile + **Tabellen-Stichtag** mitziegen; Releases Version/`news`/Tag/GitHub wie in **[CONTRIBUTING](CONTRIBUTING.md#maintainer-checklist-release-order)**; Tabellen-Stichtag **2026-06-07** — Branch je nach Arbeitskopie, z. B. `main` / `dev`)
 
 | Thema | Status | Kurz |
 | ----- | ------ | ---- |
@@ -77,7 +77,7 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 | 3 | **Phase 5.x.2** Quick Start / Raumguides | 🟡 Kern in **0.9.20**; **0.9.26** Feintuning Gäste kürzer + User-Link zum Räume-Kapitel; optional mehr: [§ 1.3 — 5.x.2](#phase-5x) |
 | 4 | **Phase 5.x.3** Mermaid (gestaffelt) | ✅ **Stufe 1** **0.9.27**; **Stufe 2** **0.9.28** (`autoMermaidHostGraph`): [§ 1.3 — 5.x.3](#phase-5x) |
 | 5 | **Phase 5:** PDF ✅ — **Backup** / **Rest Custom Templates** (DnD) | Backup **zurückgestellt** bis User-Resonanz nach Eintrag in **latest** (Repo); DnD weiter offen — [§ 1.2](#phase-5-features), [Backup/Backitup](#backup-backitup-festlegung) |
-| 6 | **npm** ✅ (**0.9.43** im Repo/on npm; weiter mit **`npm run release`** / **[CONTRIBUTING](CONTRIBUTING.md#maintainer-checklist-release-order)**: Commit → Publish → **`vx.y.z`**-Tag → GitHub Release → **`dev`** sync) + **ioBroker.repositories** 🟡 (**latest**‑PR oft noch auf Maintainer-Review) | [§ 1.1](#release-veroeffentlichung), [CONTRIBUTING.md](CONTRIBUTING.md) |
+| 6 | **npm** ✅ (**0.9.44** im Repo/on npm; weiter mit **`npm run release`** / **[CONTRIBUTING](CONTRIBUTING.md#maintainer-checklist-release-order)**: Commit → Publish → **`vx.y.z`**-Tag → GitHub Release → **`dev`** sync) + **ioBroker.repositories** 🟡 (**latest**‑PR oft noch auf Maintainer-Review) | [§ 1.1](#release-veroeffentlichung), [CONTRIBUTING.md](CONTRIBUTING.md) |
 
 <a id="backup-backitup-festlegung"></a>
 
