@@ -20,6 +20,8 @@ Gilt bei Arbeit an **Adapter-Runtime, Admin-UI, Metadaten oder Tests** (siehe `g
 
 Die **wiederverwendbare** Linksammlung und Checker-/release-script-Grundlagen liegen **im Repo** (versioniert): **[`docs/iobroker-adapter-references.md`](docs/iobroker-adapter-references.md)** — zum Kopieren oder als Vorlage für **andere Adapter**.
 
+**Regelkonform bauen:** Vor Änderungen an Runtime, Admin, Metadaten oder Release die **Gedächtnisstützen** in dieser Datei abgleichen — insbesondere [iobroker.dev](https://www.iobroker.dev), [Adapter Checker](https://adapter-check.iobroker.in/), [Coding Best Practices](https://github.com/ioBroker/ioBroker.repositories#development-and-coding-best-practices), [REVIEW_CHECKLIST](https://github.com/ioBroker/ioBroker.repositories/blob/master/REVIEW_CHECKLIST.md), [type-detector](https://github.com/ioBroker/ioBroker.type-detector). Keine Volltext-Spiegelung im Repo; bei Unklarheit **aktuelle** Quelltexte lesen, nicht nur Kurznotizen.
+
 ## Nur dieses Projekt
 
 - **Roadmap / Release-Checkliste:** [`TODO.md`](TODO.md) → **1.1** Release, **Anhang B**.

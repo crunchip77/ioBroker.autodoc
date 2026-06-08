@@ -4,13 +4,17 @@ This file is for **contributors in the Git repository**. It is intentionally **n
 
 ## References (ioBroker ecosystem)
 
-Adapter-neutral link collection (reusable across projects): [`docs/iobroker-adapter-references.md`](docs/iobroker-adapter-references.md).
+Adapter-neutral link collection (reusable across projects): [`docs/iobroker-adapter-references.md`](docs/iobroker-adapter-references.md) — **Gedächtnisstützen** for rule-compliant adapter work (not a full mirror of external docs).
 
-Use the links at the top of [`TODO.md`](TODO.md) (**Wichtige Referenzen**) while developing or reviewing changes:
+Use the links at the top of [`TODO.md`](TODO.md) (**Wichtige Referenzen**) while developing or reviewing changes — especially:
 
+- [ioBroker Developer Portal](https://www.iobroker.dev)
+- [Adapter Checker](https://adapter-check.iobroker.in/)
+- [ioBroker.repositories — Best Practices](https://github.com/ioBroker/ioBroker.repositories#development-and-coding-best-practices)
+- [REVIEW_CHECKLIST](https://github.com/ioBroker/ioBroker.repositories/blob/master/REVIEW_CHECKLIST.md)
+- [type-detector](https://github.com/ioBroker/ioBroker.type-detector)
 - [ioBroker AI Developer Guide](https://github.com/Jey-Cee/iobroker-ai-developer-guide)
 - [Adapter Creator](https://github.com/ioBroker/create-adapter)
-- [Adapter Checker](https://adapter-check.iobroker.in/)
 
 Roadmap and internal task tracking: [`TODO.md`](TODO.md), [`PLAN.md`](PLAN.md).
 
