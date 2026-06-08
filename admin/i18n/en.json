@@ -249,5 +249,13 @@
 	"Docs link README HTML CSS": "README — HTML custom CSS examples (GitHub)",
 	"Docs link README documentation overview basic": "DE user guide — Project & documentation language (Basics tab) (GitHub)",
 	"Docs link README documentation overview advanced": "DE user guide — Language effects & change deltas (Advanced tab) (GitHub)",
-	"Docs link wiki German custom sections": "German wiki — Custom Markdown chapters (JSON) (GitHub)"
+	"Docs link wiki German custom sections": "German wiki — Custom Markdown chapters (JSON) (GitHub)",
+	"How we run this home (your playbook)": "How we run this home (your playbook)",
+	"Step-by-step or bullet notes only you maintain: typical order of doing things, what must be done, what guests or family must not change (your words; nothing is invented automatically). Shown as its own section in family and guest docs.": "Step-by-step or bullet notes only you maintain: typical order of doing things, what must be done, what guests or family must not change (your words; nothing is invented automatically). Shown as its own section in family and guest docs.",
+	"Onboarding": "Onboarding",
+	"[ \"system\", \"adapters\", \"manual\" ]": "[ \"system\", \"adapters\", \"manual\" ]",
+	"[ \"welcome\", \"quickstart\", \"rooms\" ]": "[ \"welcome\", \"quickstart\", \"rooms\" ]",
+	"[ \"atAGlance\", \"rooms\", \"manual\" ]": "[ \"atAGlance\", \"rooms\", \"manual\" ]",
+	"[ { \"title\": \"DEMO title\", \"body\": \"Markdown only — replace DEMO text.\", \"profiles\": [ \"onboarding\" ] } ]": "[ { \"title\": \"DEMO title\", \"body\": \"Markdown only — replace DEMO text.\", \"profiles\": [ \"onboarding\" ] } ]",
+	"flowchart LR\n    DEMOROOM --> DEMOGW": "flowchart LR\n    DEMOROOM --> DEMOGW"
 }

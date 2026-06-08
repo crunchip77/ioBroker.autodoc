@@ -175,7 +175,7 @@ class Autodoc extends utils.Adapter {
 				await this.setStateAsync('info.nextGeneration', { val: next.toISOString(), ack: true });
 			};
 			await updateNextGeneration();
-			this.autoGenerateInterval = setInterval(async () => {
+			this.autoGenerateInterval = this.setInterval(async () => {
 				this.log.debug('Auto-generating documentation on schedule');
 				try {
 					await this.generateDocumentation('scheduled');
@@ -216,7 +216,7 @@ class Autodoc extends utils.Adapter {
 			clearTimeout(this.eventGenerateDebounce);
 		}
 
-		this.eventGenerateDebounce = setTimeout(async () => {
+		this.eventGenerateDebounce = this.setTimeout(async () => {
 			this.eventGenerateDebounce = null;
 			this.log.info('Regenerating documentation after adapter change');
 			try {
@@ -235,13 +235,13 @@ class Autodoc extends utils.Adapter {
 	onUnload(callback) {
 		// Clear periodic auto-generation timer
 		if (this.autoGenerateInterval) {
-			clearInterval(this.autoGenerateInterval);
+			this.clearInterval(this.autoGenerateInterval);
 			this.autoGenerateInterval = null;
 		}
 
 		// Clear event debounce timer
 		if (this.eventGenerateDebounce) {
-			clearTimeout(this.eventGenerateDebounce);
+			this.clearTimeout(this.eventGenerateDebounce);
 			this.eventGenerateDebounce = null;
 		}
 

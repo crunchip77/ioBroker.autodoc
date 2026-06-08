@@ -96,6 +96,25 @@ Typical messages while **ioBroker.repositories** PR is still open:
 
 **Important:** Never run **`npx iobroker …`** inside the adapter clone unless you intentionally bootstrap a controller there — it can overwrite **`package.json`**. Restore with **`git checkout -- package.json package-lock.json`** if that happens.
 
+<a id="object-hierarchy"></a>
+
+### Object hierarchy in `instanceObjects` (`io-package.json`)
+
+ioBroker requires every state to have a parent object (`type: "channel"` or `"device"`). Missing parent objects cause **E3009** during the `ioBroker.repositories` review object check — the adapter runs fine locally but the bot rejects the dump.
+
+**Rule:** for every group of states (`action.*`, `documentation.*`, `info.*`, `versioning.*`), add the corresponding channel object **before** the states in `instanceObjects`. Channels must appear first; states follow:
+
+```json
+"instanceObjects": [
+  { "_id": "info", "type": "channel", "common": { "name": { "en": "Information", "de": "Informationen" } }, "native": {} },
+  { "_id": "info.connection", "type": "state", "common": { ... }, "native": {} }
+]
+```
+
+Reference adapters: **telegram**, **backitup**, **dwd** — all define their `info` channel in `instanceObjects` with a multilingual `common.name`.
+
+`instanceObjects` is the right place for static objects that are always present. Use `setObjectNotExistsAsync` in `onReady`/`createStates()` only for objects that are dynamic or context-dependent (e.g. discovered devices).
+
 ### `package-lock.json` and `npm ci`
 
 CI (`ioBroker/testing-action-check`) runs **`npm ci`**. The optional **@mermaid-js/mermaid-cli** chain (Puppeteer / `chromium-bidi` / Mermaid) depends on versions that must appear as **full** `packages["node_modules/…"]` entries in the lockfile. The repo therefore uses **`overrides`** (`chromium-bidi` → pinned `devtools-protocol`) and explicit **devDependencies** (`cytoscape`, `d3-selection`, `devtools-protocol`) so Linux + Node 22/24 installs stay in sync.

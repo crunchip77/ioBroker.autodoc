@@ -244,6 +244,54 @@
   "objects": [],
   "instanceObjects": [
     {
+      "_id": "action",
+      "type": "channel",
+      "common": {
+        "name": {
+          "en": "Actions",
+          "de": "Aktionen",
+          "fr": "Actions"
+        }
+      },
+      "native": {}
+    },
+    {
+      "_id": "documentation",
+      "type": "channel",
+      "common": {
+        "name": {
+          "en": "Documentation",
+          "de": "Dokumentation",
+          "fr": "Documentation"
+        }
+      },
+      "native": {}
+    },
+    {
+      "_id": "info",
+      "type": "channel",
+      "common": {
+        "name": {
+          "en": "Information",
+          "de": "Informationen",
+          "fr": "Informations"
+        }
+      },
+      "native": {}
+    },
+    {
+      "_id": "versioning",
+      "type": "channel",
+      "common": {
+        "name": {
+          "en": "Versioning",
+          "de": "Versionierung",
+          "fr": "Versionnement"
+        }
+      },
+      "native": {}
+    },
+    {
       "_id": "info.connection",
       "type": "state",
       "common": {
