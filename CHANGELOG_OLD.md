@@ -2,7 +2,12 @@
 
 Histories for versions **no longer** in the **7-version** window shared by `common.news` in `io-package.json` and the main [`README.md`](README.md#changelog) changelog (Adapter Checker / **ioBroker.repositories**).
 
-The following **`###`** blocks were archived from **`README.md`** when **0.9.44** shipped so the main changelog lists **only** the same semver headings as **`common.news`**.
+The following **`###`** blocks were archived from **`README.md`** when **0.9.45** (or earlier) shipped so the main changelog lists **only** the same semver headings as **`common.news`**.
+
+### 0.9.35 (2026-05-08)
+
+- **npm:** publish **`iobroker.autodoc`** on the public registry so hosts can `npm install` the adapter tarball without cloning.
+- **README:** install table reflects **npm** plus Git; default-list installs still depended on **ioBroker.repositories** (unchanged at that release).
 
 ### 0.9.41 (2026-05-13)
 

@@ -222,11 +222,12 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 
 **Admin `common.news`** in `io-package.json` lists only versions **published on npm** (Adapter Checker **E2004**). The detailed sections below are the **user-facing** changelog (Git-era releases plus npm); older entries are in [`CHANGELOG_OLD.md`](CHANGELOG_OLD.md).
 
-### **WORK IN PROGRESS** (`dev` — before merge / next `npm run release`; fold into `### x.y.z` below or drop before publish)
+### **WORK IN PROGRESS**
 
-- **Liste / Checker:** Eintrag **`autodoc` → latest** unter **ioBroker.repositories** wartet weiter auf Maintainer-**Merge**; danach sollte **`W4001`** im Adapter Checker weg sein ([CONTRIBUTING](./CONTRIBUTING.md)), siehe **[TODO § 1.1](TODO.md#release-veroeffentlichung)**.
-- **Gehosteter Checker / iobroker.dev:** häufig **504** oder Timeouts; lokal `npm run adapter-check` kann **E9999** im **`--local`‑Pfad liefern (**CONTRIBUTING**) — Releases an **CI** und **`npm test`** festmachen, nicht nur an der Web-UI.
-- **Roadmap:** laufende Themen vor allem in **[`TODO.md`](TODO.md)** und **[`PLAN.md`](PLAN.md)**; diesen Abschnitt vor dem nächsten Release in eine neue **`### x.y.z`**-Sektion übernehmen oder kürzen.
+- **ioBroker conformance — object structure:** Added channel parent objects (`action`, `documentation`, `info`, `versioning`) to `instanceObjects` in `io-package.json` — required by ioBroker object checker (E3009) for **ioBroker.repositories** review.
+- **ioBroker conformance — timers:** `adapter.delay()` (ioBroker base class) for AI retry delays; `window.setTimeout` / `globalThis.setTimeout` in browser-side and utility code — no bare `setTimeout` in adapter runtime (E5005/W5004 fixes).
+- **i18n:** All 10 supported languages translated via `@iobroker/adapter-dev` (Google Translate); `de` and `fr` remain manually maintained. Missing keys synced across all locales.
+- **Dependencies:** `@iobroker/adapter-core` → 3.4.1, `cytoscape` → 3.34.0.
 
 ### 0.9.44 (2026-05-14)
 
@@ -259,11 +260,6 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 ### 0.9.36 (2026-05-09)
 
 - **npm / Checker:** tarball **0.9.36** matches **`main`**: **`common.news`** lists only npm-published versions (fixes **E2004** stale metadata from first **0.9.35** publish). README **Version:** line synced; no adapter runtime/UI changes.
-
-### 0.9.35 (2026-05-08)
-
-- **npm:** publish **`iobroker.autodoc`** on the public registry so hosts can `npm install` the adapter tarball without cloning.
-- **README:** install table reflects **npm** plus Git; default-list installs still depended on **ioBroker.repositories** (unchanged at that release).
 
 ## License
 
