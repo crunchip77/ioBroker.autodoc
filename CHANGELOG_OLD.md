@@ -174,6 +174,15 @@ The following **`###`** blocks were archived from **`README.md`** when **0.9.45*
 ### Earlier releases
 
 Changes for **0.9.4** and older: see **`git log`** and this file’s history in Git, or archived tags.
+## 0.9.37 (2026-05-10)
+
+- **Tooling:** `runPdfExport` initializes the PDF digest map with a typed empty collection so **`npm run check`** (TypeScript) passes; no change to PDF export behavior.
+- **Docs:** Adapter-neutral **[`docs/iobroker-adapter-references.md`](docs/iobroker-adapter-references.md)** linked from **`TODO.md`**, **`CONTRIBUTING.md`**, and the Cursor project rule; **`PLAN.md`** phase **5.x.1** aligned with **`TODO.md`** (MVP complete).
+- **Distribution (follow-up):** **ioBroker.repositories** — PR **`autodoc` → latest** eingereicht (**Merge ausstehend**); danach Eintrag in der **Standard-Adapterliste** neben **npm** und Git‑URL (siehe [TODO § 1.1](TODO.md#release-veroeffentlichung)).
+
+## 0.9.36 (2026-05-09)
+
+- **npm / Checker:** tarball **0.9.36** matches **`main`**: **`common.news`** lists only npm-published versions (fixes **E2004** stale metadata from first **0.9.35** publish). README **Version:** line synced; no adapter runtime/UI changes.
 
 ## 0.9.32 (2026-05-08)
 
