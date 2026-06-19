@@ -36,7 +36,7 @@ Diese Datei ist die **Arbeitsliste**: was **offen** ist steht oben; **erledigte*
 
 <a id="stand-uebersicht"></a>
 
-## Übersicht — Umsetzung vs. Rest (Stand der **Version** wie in `package.json` / `io-package.json`: derzeit **`0.9.44`** auf **`main`/`dev`** — **`npm` latest** gegen [npm — iobroker.autodoc](https://www.npmjs.com/package/iobroker.autodoc) prüfen; bei Releases diese Zeile + **Tabellen-Stichtag** mitziegen; Releases Version/`news`/Tag/GitHub wie in **[CONTRIBUTING](CONTRIBUTING.md#maintainer-checklist-release-order)**; Tabellen-Stichtag **2026-06-07** — Branch je nach Arbeitskopie, z. B. `main` / `dev`)
+## Übersicht — Umsetzung vs. Rest (Stand der **Version** wie in `package.json` / `io-package.json`: derzeit **`0.9.45`** auf **`main`/`dev`** — **`npm` latest** gegen [npm — iobroker.autodoc](https://www.npmjs.com/package/iobroker.autodoc) prüfen; bei Releases diese Zeile + **Tabellen-Stichtag** mitziegen; Releases Version/`news`/Tag/GitHub wie in **[CONTRIBUTING](CONTRIBUTING.md#maintainer-checklist-release-order)**; Tabellen-Stichtag **2026-06-18** — Branch je nach Arbeitskopie, z. B. `main` / `dev`)
 
 | Thema | Status | Kurz |
 | ----- | ------ | ---- |
@@ -54,7 +54,7 @@ Diese Datei ist die **Arbeitsliste**: was **offen** ist steht oben; **erledigte*
 | **Phase 5.x.3** Mermaid | ✅ | **0.9.27:** Stufe 1 — `manualMermaidDiagram`; **0.9.28:** Stufe 2 — `autoMermaidHostGraph`; **main:** `mermaidAuto` als eigene Chapter-ID (Auto-Topologie immer versteckt im Onboarding); **0.9.32:** Admin-Hilfen/JSON-Placeholder ergänzt |
 | **System-Visitenkarte** / Forum-Copy | ✅ | `textSendTo` **getForumCard** + State `info.forumCardPlain`; Diagnose-HTML nutzt `forumCard.js` |
 | **KI + Skript-Quellcode** | 🟡 | **A** umgesetzt (`aiAnalyzeScriptSources`); **B** an Backup gekoppelt — **gleicher Zeitpunkt** wie Backup ([§ 1.2](#phase-5-features)) |
-| **npm + ioBroker.repositories** | 🟡 | **npm:** Paket **`iobroker.autodoc`**, **Registry `latest` = `0.9.44`** (mit `npm view` gegen `package.json` abgleichen). **Repositories:** PR **`sources-dist.json`** — Objekt-Check ✅ (6.6.2026), Checker-Fixes auf `main` (PR [#22](https://github.com/crunchip77/ioBroker.autodoc/pull/22)), manueller Review mcm1957 ausstehend (Deadline 13.6.2026) — **Standard-Adapterliste** erst **nach Merge**. **Nach jedem erfolgreichen `npm publish`:** **`git tag`** + GitHub Release (**[CONTRIBUTING checklist](CONTRIBUTING.md#maintainer-checklist-release-order)**), nicht nur npm |
+| **npm + ioBroker.repositories** | 🟡 | **npm:** Paket **`iobroker.autodoc`**, **Registry `latest` = `0.9.45`** ✅ (18.6.2026, mit Provenance). **Repositories:** PR **`sources-dist.json`** — Objekt-Check ✅, Checker-Fixes ✅ (0.9.45), manueller Review mcm1957 ausstehend — **Standard-Adapterliste** erst **nach Merge**. **Nach jedem erfolgreichen `npm publish`:** **`git tag`** + GitHub Release (**[CONTRIBUTING checklist](CONTRIBUTING.md#maintainer-checklist-release-order)**), nicht nur npm |
 | **Dokumentations-Score** (Wartung — Checkliste mit echten Kriterien) | ✅ | **0.9.30–0.9.31:** Dreiteiliger Score (Datenerfassung / Manuelle Inhalte / Dokumentationstiefe); instancesWithoutRoom komplett raus; neue Checks: Diagramm, Räume m. Geräten, eigene Kapitel, KI-Provider — [§ 1.6](#dokumentations-score-checkliste) |
 | **Admin-Markdown: Diagnose-Kapitel** (Parität zu Admin-HTML) | ✅ | `renderDiagnosis` / `renderDiagnosisMarkdown` — TOC-Zeile, ausblendbar wie HTML; **dev:** Kapitel-Einleitung „Schnappschuss“; **Automatische Prüfungen** (Node-Heuristik) getrennt von **Allgemeine Erinnerungen** (OS-Hinweis). Details [§ 1.6](#admin-markdown-diagnose-optional), Anhang A |
 | **Admin-Konfig — Hilfen / Mini-Beispiele** (`manualMermaidDiagram`, JSON-Felder …) | 🟡 | **0.9.32** Mermaid-/States-/Hashes; **aktueller Repo-Stand:** weitere Mini-Beispiele in Hilfetexten (`jsonConfig` / i18n EN/DE/FR) — [§ 1.7](#admin-config-hilfen-beispiele); optional noch mehr Felder |
@@ -80,7 +80,7 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 | 3 | **Phase 5.x.2** Quick Start / Raumguides | 🟡 Kern in **0.9.20**; **0.9.26** Feintuning Gäste kürzer + User-Link zum Räume-Kapitel; optional mehr: [§ 1.3 — 5.x.2](#phase-5x) |
 | 4 | **Phase 5.x.3** Mermaid (gestaffelt) | ✅ **Stufe 1** **0.9.27**; **Stufe 2** **0.9.28** (`autoMermaidHostGraph`): [§ 1.3 — 5.x.3](#phase-5x) |
 | 5 | **Phase 5:** PDF ✅ — **Backup** / **Rest Custom Templates** (DnD) | Backup **zurückgestellt** bis User-Resonanz nach Eintrag in **latest** (Repo); DnD weiter offen — [§ 1.2](#phase-5-features), [Backup/Backitup](#backup-backitup-festlegung) |
-| 6 | **npm** ✅ (**0.9.44** im Repo/on npm; weiter mit **`npm run release`** / **[CONTRIBUTING](CONTRIBUTING.md#maintainer-checklist-release-order)**: Commit → Publish → **`vx.y.z`**-Tag → GitHub Release → **`dev`** sync) + **ioBroker.repositories** 🟡 (**latest**‑PR oft noch auf Maintainer-Review) | [§ 1.1](#release-veroeffentlichung), [CONTRIBUTING.md](CONTRIBUTING.md) |
+| 6 | **npm** ✅ (**0.9.45** im Repo/on npm (18.6.2026, mit Provenance); weiter mit **`npm run release`** / **[CONTRIBUTING](CONTRIBUTING.md#maintainer-checklist-release-order)**: Commit → Publish → **`vx.y.z`**-Tag → GitHub Release → **`dev`** sync) + **ioBroker.repositories** 🟡 (**latest**‑PR oft noch auf Maintainer-Review) | [§ 1.1](#release-veroeffentlichung), [CONTRIBUTING.md](CONTRIBUTING.md) |
 
 <a id="backup-backitup-festlegung"></a>
 
@@ -107,10 +107,10 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 
 - [ ] [Adapter Checker](https://adapter-check.iobroker.in/) **ohne vermeidbare** Fehler nach Stand der Regeln (**E2000** und ähnliche harte Meldungen sollten mit Paket auf npm nicht dauerhaft bestehen); **W4001** erst nach **Merge** des **repositories**-PRs prüfen — **W5042** / Puppeteer‑25‑Peer‑Lock (**bewusst**, nicht „offen“): **[CONTRIBUTING — Optional Puppeteer + mermaid-cli](CONTRIBUTING.md#optional-puppeteer-mermaid-cli)**
 - [x] **npm**-Paketname **`iobroker.autodoc`** und Release-Prozess dokumentiert (**CONTRIBUTING.md**, [npm](https://www.npmjs.com/package/iobroker.autodoc))
-- [x] Erstes und **fortlaufende** **npm**-Releases: Versionen/`news`/README-Fenster über **`npm run release`** oder bewusst manueller Prozess synchron (**0.9.35** ff.; Stand siehe **`package.json`**, derzeit **`0.9.43`**)
+- [x] Erstes und **fortlaufende** **npm**-Releases: Versionen/`news`/README-Fenster über **`npm run release`** oder bewusst manueller Prozess synchron (**0.9.35** ff.; Stand siehe **`package.json`**, derzeit **`0.9.45`**)
 - [x] `npm publish` erfolgt im Release-Workflow (nicht „nur“ manuell lose zum ioBroker-Adapter)
-- [x] **Git-Tags** zu veröffentlichten npm-Versionen (**v0.9.35** … **v0.9.43** im Repository, jeweils nach Publish/zur Parität npm)
-- [x] **GitHub Releases** — **bei jedem semver Release mitziehen**, damit **„Latest release“** auf GitHub **nicht hinter npm** liegt (**[CONTRIBUTING — Schritt 7](CONTRIBUTING.md#maintainer-checklist-release-order)**); **v0.9.43** erledigt
+- [x] **Git-Tags** zu veröffentlichten npm-Versionen (**v0.9.35** … **v0.9.45** im Repository, jeweils nach Publish/zur Parität npm)
+- [x] **GitHub Releases** — **bei jedem semver Release mitziehen**, damit **„Latest release“** auf GitHub **nicht hinter npm** liegt (**[CONTRIBUTING — Schritt 7](CONTRIBUTING.md#maintainer-checklist-release-order)**); **v0.9.45** ✅ (mit Provenance via CI-Workflow)
 - [ ] PR [ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories) (`sources-dist.json`) — **offen** — **autodoc** in **latest** (nach Merge: Checkbox setzen, § 1.1 und README ggf. „nachgezogen“ formulieren)
 
 - [x] **`dev` → `main`** (Fast-forward, **0.9.17** inkl. Presets, Kapitelreihenfolge, i18n-Id-Listen)
@@ -486,10 +486,10 @@ Der folgende Stand ist **historisch vollständig** (✅). Bei Abweichungsfragen 
 
 - [ ] Adapter Checker nach dem obigen Maßstab (**E2000** o. Ä. nicht dauerhaft; verbleibende **Warnings** dokumentiert — **CONTRIBUTING.md**)
 - [x] npm-Paket **`iobroker.autodoc`** und Maintainer-Abgleich (siehe **CONTRIBUTING.md**)
-- [x] Version + `news` bei jedem Release synchron (`package.json`, `io-package.json`, README-Changelog); derzeit **0.9.43**
+- [x] Version + `news` bei jedem Release synchron (`package.json`, `io-package.json`, README-Changelog); derzeit **0.9.45**
 - [x] `npm publish` im Release-Workflow
-- [x] Git-Tags **v0.9.35** … **v0.9.43** (nach jeweiligen Releases / Parität npm)
-- [x] **GitHub Releases** — **[CONTRIBUTING — Schritt 7](CONTRIBUTING.md#maintainer-checklist-release-order)** (nicht optional; bis **v0.9.43** mitgeführt)
+- [x] Git-Tags **v0.9.35** … **v0.9.45** (nach jeweiligen Releases / Parität npm)
+- [x] **GitHub Releases** — **[CONTRIBUTING — Schritt 7](CONTRIBUTING.md#maintainer-checklist-release-order)** (nicht optional; bis **v0.9.45** mitgeführt)
 - [ ] PR **ioBroker.repositories** **gemerged** (**latest** aktiv im Admin — weiterhin Maintainer/Review)
 
 Bereits erledigt:
