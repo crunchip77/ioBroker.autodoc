@@ -53,7 +53,7 @@
     "@iobroker/testing": "^5.2.2",
     "@tsconfig/node22": "^22.0.5",
     "@types/iobroker": "npm:@iobroker/types@^7.1.2",
-    "@types/node": "^22.19.0",
+    "@types/node": "^22.19.21",
     "cytoscape": "^3.34.0",
     "d3-selection": "^3.0.0",
     "devtools-protocol": "^0.0.1629771",
