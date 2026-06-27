@@ -223,6 +223,13 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 
 ### **WORK IN PROGRESS**
 
+- (mcm1957) `info.summary` state now outputs English text by default
+- (mcm1957) Periodic documentation generation switched from `setInterval` to `setTimeout`-at-end — prevents overlapping runs
+- (mcm1957) `autoGenerateInterval` code-level minimum clamp of 0.1 h with warning log
+- (mcm1957) README: GitHub install instruction removed (E6013)
+- (fix) `common.news` 0.9.37 / 0.9.38 / 0.9.44 translated into es, it, nl, pl, pt, ru, uk, zh-cn (E1144)
+- (fix) `admin` minimum version bumped to `>=7.8.23`
+
 ### 0.9.45 (2026-06-18)
 
 - **ioBroker conformance — object structure:** Added channel parent objects (`action`, `documentation`, `info`, `versioning`) to `instanceObjects` in `io-package.json` — required by ioBroker object checker (E3009) for **ioBroker.repositories** review.
