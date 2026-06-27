@@ -51,6 +51,7 @@
     "@iobroker/dev-server": "^0.8.0",
     "@iobroker/eslint-config": "^2.3.4",
     "@iobroker/testing": "^5.2.2",
+    "@iobroker/types": "^7.2.2",
     "@tsconfig/node22": "^22.0.5",
     "@types/iobroker": "npm:@iobroker/types@^7.1.2",
     "@types/node": "^22.19.21",
