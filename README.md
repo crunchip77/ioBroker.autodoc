@@ -220,6 +220,9 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 ## Changelog
 
 **Admin `common.news`** in `io-package.json` lists only versions **published on npm** (Adapter Checker **E2004**). The detailed sections below are the **user-facing** changelog (Git-era releases plus npm); older entries are in [`CHANGELOG_OLD.md`](CHANGELOG_OLD.md).
+
+### **WORK IN PROGRESS**
+
 ### 0.9.45 (2026-06-18)
 
 - **ioBroker conformance — object structure:** Added channel parent objects (`action`, `documentation`, `info`, `versioning`) to `instanceObjects` in `io-package.json` — required by ioBroker object checker (E3009) for **ioBroker.repositories** review.
