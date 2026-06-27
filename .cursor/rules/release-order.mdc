@@ -11,5 +11,10 @@ Whenever a Maintainer (or Agent) prepares or completes a **semver/npm release**:
 
 1. Use the **ordered checklist** in **[`CONTRIBUTING.md`](CONTRIBUTING.md)** → **§ Maintainer checklist — release order** (anchor **`#maintainer-checklist-release-order`**).
 2. **`npm publish` alone is incomplete:** after a successful **`npm`** publish for **`x.y.z`**, always arrange **`git tag` / `push tag` / GitHub Release** (**`gh release create`** or UI) unless the Maintainer explicitly skips parity for exceptional reasons.
+3. **Before handing the Maintainer `npm run release` commands**, verify these pre-conditions on `main`:
+   - `README.md` Changelog section contains `### **WORK IN PROGRESS**` (required by `@alcalzone/release-script` `changelog` plugin — missing it aborts immediately with `[ERR] The changelog placeholder is missing`).
+   - `package.json` and `io-package.json` versions match.
+   - `common.news` has at most 7 entries, all with real npm versions.
+   - Lint and TypeScript check pass (no new errors vs baseline).
 
-If in doubt: open **CONTRIBUTING** and walk the numbered steps — do not end the release task until **registry version** and **GitHub Releases “Latest”** both reflect **`x.y.z`** where intended.
+If in doubt: open **CONTRIBUTING** and walk the numbered steps — do not end the release task until **registry version** and **GitHub Releases "Latest"** both reflect **`x.y.z`** where intended.
