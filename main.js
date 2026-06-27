@@ -164,8 +164,16 @@ class Autodoc extends utils.Adapter {
 			);
 		}
 
-		// Setup periodic auto-generation if interval is configured
+		// Setup periodic auto-generation if interval is configured.
+		// Minimum 0.1 h (6 min) to avoid runaway AI cost from very short intervals.
 		if (this.config.autoGenerateInterval && this.config.autoGenerateInterval > 0) {
+			const MIN_INTERVAL_HOURS = 0.1;
+			if (this.config.autoGenerateInterval < MIN_INTERVAL_HOURS) {
+				this.log.warn(
+					`autoGenerateInterval ${this.config.autoGenerateInterval} h is below minimum ${MIN_INTERVAL_HOURS} h — using ${MIN_INTERVAL_HOURS} h`,
+				);
+				this.config.autoGenerateInterval = MIN_INTERVAL_HOURS;
+			}
 			const intervalMs = this.config.autoGenerateInterval * 60 * 60 * 1000;
 			this.log.info(
 				`Setting up automatic documentation generation every ${this.config.autoGenerateInterval} hours`,
@@ -175,7 +183,9 @@ class Autodoc extends utils.Adapter {
 				await this.setStateAsync('info.nextGeneration', { val: next.toISOString(), ack: true });
 			};
 			await updateNextGeneration();
-			this.autoGenerateInterval = this.setInterval(async () => {
+			// setTimeout-at-end pattern: the next run is only scheduled after the current one
+			// completes, preventing overlapping generation runs.
+			const scheduleNext = async () => {
 				this.log.debug('Auto-generating documentation on schedule');
 				try {
 					await this.generateDocumentation('scheduled');
@@ -183,7 +193,9 @@ class Autodoc extends utils.Adapter {
 					this.log.error(`Scheduled documentation generation failed: ${error.message}`);
 				}
 				await updateNextGeneration();
-			}, intervalMs);
+				this.autoGenerateInterval = this.setTimeout(scheduleNext, intervalMs);
+			};
+			this.autoGenerateInterval = this.setTimeout(scheduleNext, intervalMs);
 		}
 
 		await this.setStateAsync('info.connection', { val: true, ack: true });
@@ -235,7 +247,7 @@ class Autodoc extends utils.Adapter {
 	onUnload(callback) {
 		// Clear periodic auto-generation timer
 		if (this.autoGenerateInterval) {
-			this.clearInterval(this.autoGenerateInterval);
+			this.clearTimeout(this.autoGenerateInterval);
 			this.autoGenerateInterval = null;
 		}
 
@@ -623,7 +635,7 @@ class Autodoc extends utils.Adapter {
 	buildSummary(docModel) {
 		const stateSummary = docModel.appendices.stateSummary;
 
-		return `Dokumentation für "${docModel.system.projectName}" erzeugt: ${docModel.system.statistics.instanceCount} Instanzen, ${docModel.system.statistics.enabledInstanceCount} aktiviert, ${docModel.system.statistics.disabledInstanceCount} deaktiviert, ${stateSummary.total} State-Objekte (${stateSummary.writable} schreibbar, ${stateSummary.readonly} nur lesbar).`;
+		return `Documentation for "${docModel.system.projectName}" generated: ${docModel.system.statistics.instanceCount} instances (${docModel.system.statistics.enabledInstanceCount} enabled, ${docModel.system.statistics.disabledInstanceCount} disabled), ${stateSummary.total} state objects (${stateSummary.writable} writable, ${stateSummary.readonly} read-only).`;
 	}
 
 	/**

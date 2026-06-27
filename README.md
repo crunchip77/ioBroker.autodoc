@@ -4,13 +4,12 @@
 
 Automatically generates structured documentation (HTML, Markdown, JSON) for your ioBroker installation — on demand, on a schedule, or when the system changes.
 
-**Version:** 0.9.44
+**Version:** 0.9.45
 
 **Installation**
 
-1. Open **[ioBroker Admin](https://www.iobroker.net/#en/documentation)** and install **`iobroker.autodoc`** (see the [npm package](https://www.npmjs.com/package/iobroker.autodoc); **latest** on npm may lag behind this repo — check the registry version).
-2. Optional: clone or install from **[GitHub](https://github.com/crunchip77/ioBroker.autodoc)**.
-3. Official adapter index: **[ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories)** (**latest**). Maintainer workflow / PR: **[TODO — § 1.1 Release](TODO.md#release-veroeffentlichung)**.
+1. Open **[ioBroker Admin](https://www.iobroker.net/#en/documentation)** and install **`iobroker.autodoc`** from the adapter list.
+2. Official adapter index: **[ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories)** (**latest**). Maintainer workflow / PR: **[TODO — § 1.1 Release](TODO.md#release-veroeffentlichung)**.
 
 | | |
 | --- | --- |
