@@ -57,7 +57,7 @@
     "@types/node": "^22.20.1",
     "cytoscape": "^3.34.0",
     "d3-selection": "^3.0.0",
-    "devtools-protocol": "^0.0.1662358",
+    "devtools-protocol": "^0.0.1680125",
     "typescript": "~6.0.3"
   },
   "main": "main.js",
