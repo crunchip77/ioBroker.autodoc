@@ -144,7 +144,7 @@ German **scenario page** (“hide first vs reorder”, copy-paste walkthrough an
 **Reorder Admin** — put system overview directly after manual context:
 
 ```json
-["manual", "system", "adapters", "rooms", "scripts", "schedule", "userdata", "aliases", "maintenance", "diagnosis", "troubleshooting", "custom", "changelog", "appendices"]
+["manual", "system", "adapters", "rooms", "automationOverview", "scripts", "schedule", "userdata", "aliases", "maintenance", "diagnosis", "troubleshooting", "custom", "changelog", "appendices"]
 ```
 
 **Hide** Admin changelog and appendices:
