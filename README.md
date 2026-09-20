@@ -221,6 +221,14 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 
 **Admin `common.news`** in `io-package.json` lists only versions **published on npm** (Adapter Checker **E2004**). The detailed sections below are the **user-facing** changelog (Git-era releases plus npm); older entries are in [`CHANGELOG_OLD.md`](CHANGELOG_OLD.md).
 
+### **WORK IN PROGRESS**
+
+- **Repository checker (#60):** Maintainer contact email (E4052); README **`## License`** links to [`LICENSE`](./LICENSE) (E6034)
+- **CI:** Node.js **26.x** added to adapter test matrix (W3026)
+- **Release / provenance:** npm publish via GitHub Actions **`deploy`** job (Trusted Publishing) — fixes missing attestations from workstation **0.9.46** (E2008)
+- **Dependencies:** `@tsconfig/node22`, `@iobroker/adapter-core` bumps (Dependabot)
+- **Docs:** Maintainer notes for latest re-listing, stable deferred (#54), platform reconnaissance
+
 ### 0.9.46 (2026-06-28)
 
 - (mcm1957) `info.summary` state now outputs English text by default
