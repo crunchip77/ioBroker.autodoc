@@ -38,7 +38,10 @@ Wenn der Adapter **Rollen**, **Kanäle** oder **Gerätetypen** setzt oder prüft
 
 ## Typische Adapter-Checker-Themen (Kurz)
 
-- **W4001** („nicht in repositories"): **normal**, bis ein PR auf **`sources-dist.json`** gemerged ist — danach sollte die Meldung entfallen.
+- **W4001** („nicht in repositories"): **normal**, bis der Adapter **tatsächlich** in **`sources-dist.json`** steht. Ein einmal gemergter latest-PR reicht nicht, wenn der Eintrag später wieder fehlt — dann behandelt der Checker den Adapter oft als **neu** und **stuft** Warnings/Suggestions zu **Errors** hoch (`isNewAdapter` / `--strict`).
+- **E4052:** GitHub-**noreply**-Adressen (`…@users.noreply.github.com`) sind in Author/Copyright **unzulässig** — echte erreichbare Mail.
+- **E6034 / W6034:** README-Abschnitt **`## License`** braucht **Volltext** oder einen Markdown-Link auf **`LICENSE`**; **`## License`** soll die **letzte** `##`-Überschrift sein (**W6021**).
+- **E2008 / S2008 (npm Provenance):** `latest` auf npm soll mit **Trusted Publishing** (GitHub Actions OIDC) signiert sein. Ein Publish vom Arbeitsplatz erzeugt in der Regel **keine** Attestations — nächste Version über den **deploy**-Job.
 - **E2004** (`common.news`): nur **Versionen eintragen, die auf npm existieren**; ältere Git-only-Versionen nicht in `news` lassen.
 - **E2001**: für die zentrale Liste wird **Maintainer „bluefox"** als npm-Owner erwartet — `npm owner add bluefox <dein-paketname>` (Befehl aus Checker-Doku / Meldung prüfen).
 - **E3009 / fehlende Eltern-Objekte**: jeder State braucht ein Eltern-Objekt (`type: "channel"` oder `"device"`). Fehlen diese, meldet der Objekt-Checker beim `ioBroker.repositories`-Review **E3009** — ioBroker selbst läuft trotzdem, der Fehler fällt erst beim formalen Review auf. **Fix:** Channel-Objekte **vor** ihren States in `instanceObjects` (`io-package.json`) eintragen — Channel immer zuerst, dann die States darunter. Referenz-Adapter für das Muster: **telegram**, **backitup**, **dwd**.
@@ -57,7 +60,7 @@ Konkrete Meldungen und Projekt-Workarounds immer im **eigenen** Repo (`CONTRIBUT
 ## npm / GitHub (optional)
 
 - **npm:** Account, idealerweise **2FA**; Registry `https://registry.npmjs.org/`.
-- **GitHub Actions + npm:** „Trusted Publishing" (OIDC) ist Projekt-sache; ohne Einrichtung kann ein Workflow-Schritt scheitern oder übersprungen werden.
+- **GitHub Actions + npm:** **Trusted Publishing** (OIDC, `id-token: write`) ist der Weg zu **Provenance** (Checker **S2008** / bei neuen Adaptern oft **E2008**). Ein Publish vom Arbeitsplatz **vor** dem Tag überspringt den Deploy-Job oft — dann fehlt die Signatur.
 
 ## Übersetzungen / i18n
 

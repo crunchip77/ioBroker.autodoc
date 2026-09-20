@@ -34,7 +34,7 @@ Exports are written under `/files/autodoc.<instance>/` (latest HTML + rotated ti
 
 - **Node.js** ≥ 22 (see `package.json` → `engines`)
 - **ioBroker.js-controller** ≥ 6.0.11 (declared in `io-package.json` → `common.dependencies`)
-- **ioBroker Admin** ≥ 7.6.20 (declared in `io-package.json` → `common.globalDependencies`) — needed for the **json** configuration UI and `jsonConfig` features (e.g. `textSendTo`, collapsible panels)
+- **ioBroker Admin** ≥ 7.8.23 (declared in `io-package.json` → `common.globalDependencies`) — needed for the **json** configuration UI and `jsonConfig` features (e.g. `textSendTo`, collapsible panels)
 
 No other adapters are **required** for AutoDoc itself. Optional: a **web server** adapter if you want to open generated files from outside the Admin file browser; exports are always available under `/files/autodoc.<instance>/`. **PDF** profiles need the optional npm package **`puppeteer`** (bundled Chromium) installed in the adapter directory — see **Optional PDF export** below.
 
@@ -261,10 +261,12 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 
 [Older changelogs can be found there](CHANGELOG_OLD.md)
 
+<!-- Maintainer: Admin staticLinks — under chapter visibility: English README `#json-cookbook-snippets`, Wiki DE `#wiki-admin-json-cookbook`. Schnellzugriff in README.de; SCREENSHOTS table for PNG drift; Sync jsonConfig/i18n if URLs change. -->
+
 ## License
 
 MIT License
 
-<!-- Maintainer: Admin staticLinks — under chapter visibility: English README `#json-cookbook-snippets`, Wiki DE `#wiki-admin-json-cookbook`. Schnellzugriff in README.de; SCREENSHOTS table for PNG drift; Sync jsonConfig/i18n if URLs change. -->
+Copyright (c) 2026 crunchip77 <crunchip77@gmail.com>
 
-Copyright (c) 2026 crunchip77 <41550245+crunchip77@users.noreply.github.com>
+The complete license text is in the [LICENSE](./LICENSE) file.
