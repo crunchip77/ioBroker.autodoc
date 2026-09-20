@@ -351,6 +351,19 @@ Ergebnisse können in Erweiterungen von `discovery.js` / Hilfstexten münden —
 
 **Fortführung:** Aktuellen Stand von **js-controller**, **Admin** und **Referenz-/Default-Adaptern** (welche APIs liefern **tragfähige** Daten vs. nur Best Effort?) wie unter **Plattform-Reconnaissance** — bei größeren Releases oder Controller-/Admin-Sprüngen kurz gegenprüfen; Erkenntnisse ggf. hier oder in Issue/TODO nachziehen.
 
+##### Reconnaissance 2026-09-20 (Live-Host + Ökosystem)
+
+Abgleich gegen eine laufende Installation (MCP `system_info` / `list_adapters`) und aktuelle Admin-/MCP-Doku — **kein** Pflicht-Feature-Bau in diesem Schritt.
+
+| Komponente | Beobachteter Stand | Bedeutung für AutoDoc |
+| ---------- | ------------------ | --------------------- |
+| **js-controller** | **7.2.2** (Linie **7.x / Lucy**); AutoDoc deklariert weiter **`>= 6.0.11`** | **Minimum nicht anheben** — 6.x-Hosts bleiben unterstützt. Discovery weiter über **Objekte/Views**, nicht über interne Controller-APIs. |
+| **Admin** | **8.0.16**; AutoDoc **`admin >= 7.8.23`**, **`adminUI.config: json`** | **jsonConfig bleibt gültig.** Admin **8** bringt einen **KI-Assistenten** (unten rechts; MCP in Admin-Instanz, `native.disableMcp` aus). Das ist **Bedienung der Installation**, nicht AutoDocs **Doku-Generierung**. |
+| **web** | **9.1.4** | Unverändert: optionale Auslieferung der HTML-Exporte; AutoDoc schreibt weiter nach **`/files/`**. |
+| **javascript** | **10.2.5** | KI-Variante A (`common.source`) weiter gültig; kein Blockly-Parser. |
+| **iobroker.mcp** | **1.1.7** (Streamable HTTP `/mcp`, Session-Header) | Werkzeuge für **externe** KI-Clients (u. a. Cursor). **Kein** Ersatz für AutoDoc-Provider (Ollama/Groq/Anthropic) und **kein** Weg, ein Cursor-Abo als `aiApiKey` einzutragen. Optional später: im **Admin-Profil** Best-Effort-Hinweis „MCP-Instanz vorhanden“ — **nicht** priorisiert. |
+| **ioBroker.repositories** | **latest:** Eintrag **`autodoc` fehlt** in aktuellem **`sources-dist.json`** (obwohl PR **#5978** gemerged war). **stable:** bewusst **zurückgestellt** (zu wenige Tester, Issue **#54**). | Zuerst Checker-**Errors** (#60) schließen, dann **erneut latest** beantragen. Kein Stable-PR. |
+
 **Betrieb / GitHub-Doku (Support-Hinweis):** Sprünge zu `#…` auf `github.com` setzen **JavaScript** voraus — strenge Blocker (z. B. **NoScript** ohne Ausnahme für GitHub) können Hash-Scroll ausfallen lassen; Adapter-Links auf **`blob/<branch>/…`**, nicht `raw.githubusercontent.com`.
 
 ### Umsetzungs-Ideen (nicht priorisiert)
