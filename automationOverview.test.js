@@ -4,7 +4,7 @@ const { expect } = require('chai');
 const { buildAutomationOverview } = require('./lib/automationOverview');
 
 describe('automationOverview', () => {
-	it('merges scripts, schedule objects, and adapter cron into one list', () => {
+	it('lists only time-based items (no subscribe/blockly duplicate of Scripts chapter)', () => {
 		const overview = buildAutomationOverview({
 			scripts: {
 				scripts: [
@@ -45,13 +45,13 @@ describe('automationOverview', () => {
 		});
 
 		expect(overview.isEmpty).to.equal(false);
-		expect(overview.counts.total).to.equal(4);
+		expect(overview.counts.total).to.equal(3);
 		expect(overview.entries.map(e => e.kind)).to.deep.equal([
 			'script-cron',
-			'script-trigger',
 			'schedule-object',
 			'adapter-schedule',
 		]);
+		expect(overview.eventScriptCount).to.equal(1);
 	});
 
 	it('returns empty when nothing is found', () => {
