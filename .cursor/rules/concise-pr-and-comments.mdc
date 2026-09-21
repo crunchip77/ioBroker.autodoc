@@ -1,0 +1,32 @@
+---
+description: >-
+  Keep GitHub issues/PRs and adapter code comments minimal — no chat recaps, AI filler, or deferred-discussion notes in the repo.
+alwaysApply: true
+---
+
+# ioBroker.autodoc — concise PRs, issues, and comments
+
+## Pull requests
+
+- **Scope:** Only what this PR changes. No conversation recap, no roadmap, no “we also discussed …”.
+- **Body:** Short — typically **1–3 bullets** Summary + a **concrete Test plan** (commands or manual steps). No marketing tone, no AI preamble (“This PR enhances…”, “In this change we…”).
+- **Do not include:** rejected alternatives, future phases, issue-thread dumps, long architecture essays, duplicate README/PLAN text.
+- **Do not include:** what the AI/agent tested, CI/log excerpts, repochecker output (E/W codes, W4001, adapter-check summaries), “verified on real ioBroker”, Mermaid/Puppeteer status, or other meta checklists unless a maintainer **must** act on a specific failure.
+- **Title:** Imperative, specific (`fix(ci): prettier in automation overview`), not vague (`Improvements and fixes`).
+
+## Issues and GitHub comments
+
+- Factual and brief: repro / expected / actual / fix pointer.
+- No pasted agent transcripts, no step-by-step chat logs, no “for context we talked about Blockly…” unless it is **required** for the maintainer to act.
+
+## Code and JSDoc in the adapter
+
+- Comments explain **non-obvious code behavior** only — not session notes, not “Phase B deferred”, not “user asked for X but we chose Y”.
+- Do **not** add comments that restate PLAN/TODO/CONTRIBUTING or Cursor chat decisions.
+- Prefer self-explanatory names over comment blocks; satisfy lint without essay JSDoc (one short line per tag is enough).
+- i18n user-facing strings: clear for end users; no internal planning text.
+
+## Before push (agent)
+
+- `npm run lint` and relevant tests on touched code.
+- Re-read the diff: remove comment/PR noise that crept in from discussion.
