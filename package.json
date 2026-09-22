@@ -35,11 +35,11 @@
   },
   "dependencies": {
     "@iobroker/adapter-core": "^3.4.3",
-    "markdown-it": "^14.2.0",
+    "markdown-it": "^15.0.0",
     "qrcode": "^1.5.4"
   },
   "optionalDependencies": {
-    "@mermaid-js/mermaid-cli": "11.15.0",
+    "@mermaid-js/mermaid-cli": "11.16.0",
     "puppeteer": "^24.43.1"
   },
   "devDependencies": {

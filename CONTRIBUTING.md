@@ -81,9 +81,9 @@ Typical messages while **ioBroker.repositories** PR is still open:
 | Package | Version | Role |
 | ------- | ------- | ---- |
 | **`puppeteer`** | **`^24.43.1`** | PDF + shared Chromium for **`mmdc`** |
-| **`@mermaid-js/mermaid-cli`** | **`11.15.0`** (pinned) | embed **`pre.mermaid`** as SVG during generation |
+| **`@mermaid-js/mermaid-cli`** | **`11.16.0`** (pinned) | embed **`pre.mermaid`** as SVG during generation |
 
-**Why not Puppeteer 25 yet:** **`@mermaid-js/mermaid-cli@11.15.0`** declares **`peerDependencies.puppeteer: ^23 \|\| ^24`**. Puppeteer **25.x** causes **`npm ci` / ERESOLVE** on CI — not an adapter bug, but an upstream peer gap. **Do not merge** Dependabot PRs that bump **`puppeteer`** to **25** until **`mmdc`** peers **`^25`** (check with **`npm view @mermaid-js/mermaid-cli@latest peerDependencies`**). **`.github/dependabot.yml`** ignores **`puppeteer`** **`version-update:semver-major`** for that reason.
+**Puppeteer 25:** **`@mermaid-js/mermaid-cli@11.16.0`** peers **`^23 \|\| ^24 \|\| ^25`**. We stay on **Puppeteer 24** until a deliberate upgrade (lockfile, **`npm ci`**, Mermaid tests). **Do not merge** Dependabot **`puppeteer`** major bumps without that checklist. **`.github/dependabot.yml`** ignores **`puppeteer`** **`version-update:semver-major`** for that reason.
 
 **ioBroker Checker / `ioBroker.repositories` review — do not “fix” the wrong way:**
 
