@@ -34,6 +34,9 @@ describe('roomDeviceResolver', () => {
 			{ id: 'sonoff.0.Kueche.POWER', type: 'state', name: 'Kueche POWER' },
 			{ id: 'sonoff.0.Kueche', type: 'device', name: 'Kueche' },
 		]);
+		if (!best) {
+			throw new Error('Expected a best object');
+		}
 		expect(best.id).to.equal('sonoff.0.Kueche');
 		expect(best.name).to.equal('Kueche');
 	});
