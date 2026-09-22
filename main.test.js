@@ -52,6 +52,20 @@ describe('quickStartGuide', () => {
 		});
 	});
 
+	it('buildQuickStartGuide adds automationCount for enabled scripts (guest-friendly)', () => {
+		const g = buildQuickStartGuide({ totalRooms: 2, functions: [], rooms: [] }, {
+			scripts: [
+				{ enabled: true, name: 'a', triggerType: 'blockly', desc: '' },
+				{ enabled: false, name: 'b', triggerType: 'subscribe', desc: '' },
+			],
+		});
+		const auto = (g.systemItems || []).find(i => i.kind === 'automationCount');
+		expect(auto).to.exist;
+		expect(auto.n).to.equal(1);
+		expect((g.systemItems || [])[0].kind).to.equal('roomCount');
+		expect((g.systemItems || [])[1].kind).to.equal('automationCount');
+	});
+
 	it('buildQuickStartGuide orders script snapshot lines by description length (longer first)', () => {
 		const roomsBlock = { totalRooms: 0, functions: [], rooms: [] };
 		const scriptsBlock = {

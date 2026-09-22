@@ -59,4 +59,39 @@ describe('automationOverview', () => {
 		expect(overview.isEmpty).to.equal(true);
 		expect(overview.entries).to.have.length(0);
 	});
+
+	it('keeps chapter visible when only event scripts exist (transparency)', () => {
+		const overview = buildAutomationOverview({
+			scripts: {
+				scripts: [
+					{ id: 'script.js.A', enabled: true, triggerType: 'blockly', schedule: '' },
+					{ id: 'script.js.B', enabled: true, triggerType: 'subscribe', schedule: '' },
+				],
+			},
+			scheduleObjects: [],
+			adapters: { adapters: [] },
+		});
+		expect(overview.isEmpty).to.equal(false);
+		expect(overview.entries).to.have.length(0);
+		expect(overview.scriptStats.enabledTotal).to.equal(2);
+		expect(overview.scriptStats.byTrigger.blockly).to.equal(1);
+	});
+
+	it('detects rule-engine adapter instances for transparency', () => {
+		const overview = buildAutomationOverview({
+			scripts: { scripts: [] },
+			scheduleObjects: [],
+			adapters: {
+				adapters: [
+					{
+						name: 'scene',
+						title: 'Scene',
+						instances: [{ enabled: true }],
+					},
+				],
+			},
+		});
+		expect(overview.ruleEngines).to.have.length(1);
+		expect(overview.isEmpty).to.equal(false);
+	});
 });
