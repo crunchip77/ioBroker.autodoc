@@ -29,11 +29,12 @@ Langfristige inhaltliche Richtung (Zusammenhänge, Auto vs. Pflege, Forum-Feedba
 | Bereich | Kurz |
 | ------- | ---- |
 | Phasen 1–4, 0.9.x RC, Multihost, KI-Basis, Custom-Template-**Teile**, **`documentation.exportHashes`**, große **`documentation.*` nur Platzhalter (ab 0.9.39)**, Downloads aus `/files` | ✅ siehe [TODO.md — Übersichtstabelle](TODO.md#stand-uebersicht) |
-| Phase 5 (PDF ✅ **0.9.33**, Backup-Anbindung *zurückgestellt*, Custom-Templates-Rest) | 🟡 PDF erledigt — Backup bewusst später (Resonanz nach Repos-**latest**); DnD offen ([TODO Phase 5](TODO.md#phase-5-features)) |
-| Phase **5.x.2** Quick Start / Raumguides | 🟡 (Kern in 0.9.20, Fein-Sortierung/Länge offen — [TODO § 5.x.2](TODO.md#phase-5x)) |
-| **Inventar-Delta / Export-Sprache** (Admin-Hinweis optional aus, Changelog-Zeilen lokalisiert, User-Kurzinfo) | ✅ **`dev`** nach **0.9.39** — `hideAdminDeltaSinceLastRun`, `docChangeFormat`, README/TODO |
-| Phase **5.x.3** Mermaid | ✅ Stufe 1 **0.9.27**, Stufe 2 **0.9.28** — [TODO § 5.x.3](TODO.md#phase-5x) |
-| **npm-Release** + **ioBroker.repositories** | 🟡 — **npm** **`iobroker.autodoc`**: Registry **`latest` = `0.9.45`** (mit **`package.json`** / `npm view` abgleichen). **Zwischen** Releases: **Pre-Release**-Suffix (**E1036** vs **E2004**) nur wie in [CONTRIBUTING](CONTRIBUTING.md); **`repositories`**-**latest**: PR oft noch **offen**/Review — [TODO § 1.1](TODO.md#release-veroeffentlichung). **Nach Publish:** **Git tag + GitHub Release** (**[CONTRIBUTING checklist](CONTRIBUTING.md#maintainer-checklist-release-order)**) |
+| Phase 5 (PDF ✅ **0.9.33**, Backup *zurückgestellt*, Custom-Templates-Rest/DnD) | 🟡 — [TODO Phase 5](TODO.md#phase-5-features) |
+| Phase **5.x.2** Quick Start / Raumguides | 🟡 Kern **0.9.20**; Feinschliff **0.9.48** — optional mehr: [TODO § 5.x.2](TODO.md#phase-5x) |
+| **Phase B — Doku-UX** (Automatisierung, Raum/Funktion, HTML-Lesbarkeit) | ✅ **0.9.48** — README-Changelog |
+| **Inventar-Delta / Export-Sprache** | ✅ ab **0.9.39** — `hideAdminDeltaSinceLastRun`, `docChangeFormat` |
+| Phase **5.x.3** Mermaid | ✅ **0.9.27–0.9.28**; Linux-Hinweise **0.9.48** — [TODO § 5.x.3](TODO.md#phase-5x) |
+| **npm-Release** + **ioBroker.repositories** | 🟡 **npm** **`0.9.48`** ✅ (Provenance); **latest**-Eintrag fehlt (**W4001**) — [TODO § 1.1](TODO.md#release-veroeffentlichung) |
 | Phase **5.x.1** „Hybrid-Troubleshooting“ | ✅ **MVP in 0.9.18 / 0.9.19:** Freitext (`guestHelpNote` u. a.), **Kurzzeilen** + Doku-Links (Bookmark-URLs), **Node.js**-Checkliste + Snapshot-Hinweis (`lib/diagnosisSnapshot.js`) — [TODO § 5.x.1](TODO.md#phase-5x); **dev:** Admin **Betrieb – Referenz** + Diagnose-Copy (Schnappschuss / enge Checks) — optional später weitere Befund-Typen |
 | **Architektur:** Redis/jsonl, States, Medien/Grafiken ([Leitplanken](#architektur-grenzen), [Medien-MVP](#architektur-medien-mvp), [Nächste Schritte](#architektur-naechste-schritte)) | ✅ festgelegt | Umsetzung = README + Phase 5 / 5.x |
 | **System-Visitenkarte** „Forum kopieren“ | ✅ [Festlegung](#system-visitenkarte-festlegung) | ✅ **jsonConfig** `getForumCard`, State `info.forumCardPlain`, `lib/forumCard.js` + Diagnose-HTML |
@@ -70,7 +71,7 @@ Detaillierte **Checkboxen**: immer **[TODO.md](TODO.md)** zuerst; dieser PLAN li
 
 ## Release-Prozess (echter ioBroker-Release)
 
-**npm** `iobroker.autodoc`: **Version im Repo** siehe `package.json` / `io-package.json` (aktuell **`0.9.45`**). **Pre-Release-Suffix** zwischen Publishes nur wie in **[CONTRIBUTING — Abschnitt Maintainer-Versionierung („Between publishes“)](CONTRIBUTING.md#npm-package-identity-for-maintainers)** (Checker **E1036** vs **E2004**); vor **`npm publish`** **`news`** nur für **auf npm** geplante Versionen ergänzen. **`npm view iobroker.autodoc version`** gegen Repo abgleichen. **[ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories)** (**latest**): Eintrag per **PR** mit Maintainer — **Standard-Adapterliste** im Admin **nach Merge**; bis dahin Installation über **npm** oder **Git**/URL. URL-Installation von **`main`/`dev`** bleibt für Tester möglich.
+**npm** `iobroker.autodoc`: **Version im Repo** siehe `package.json` / `io-package.json` (aktuell **`0.9.48`**). **Pre-Release-Suffix** zwischen Publishes nur wie in **[CONTRIBUTING — Abschnitt Maintainer-Versionierung („Between publishes“)](CONTRIBUTING.md#npm-package-identity-for-maintainers)** (Checker **E1036** vs **E2004**); vor **`npm publish`** **`news`** nur für **auf npm** geplante Versionen ergänzen. **`npm view iobroker.autodoc version`** gegen Repo abgleichen. **[ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories)** (**latest**): Eintrag per **PR** mit Maintainer — **Standard-Adapterliste** im Admin **nach Merge**; bis dahin Installation über **npm** oder **Git**/URL. URL-Installation von **`main`/`dev`** bleibt für Tester möglich.
 
 **Reihenfolge (vollständig und nichts vergessen):** **[CONTRIBUTING.md — Maintainer checklist — release order](CONTRIBUTING.md#maintainer-checklist-release-order)** (**Tests → push `main` → `npm publish` → `git tag`/`push` → GitHub Release → `dev` sync**). Kurzfassung älterer Schritte bleibt hilfreich:
 
@@ -257,7 +258,7 @@ Echte Zielgruppen-Dokus statt "mehr oder weniger Detail vom selben Template".
 **Später ausbaufähig (nicht blockierend):** weitere Diagnose-Signal-Typen in dieselbe **„nur bei Befund“**-Logik, falls Daten tragfähig; keine Pflicht, den Hybrid um „KI-Notfallwissen“ zu erweitern.
 
 **2. Quick Start & Raumguides (strukturierter)**  
-MVP: im `documentModel` feste, kurze Blöcke (systemweit Top 3–5 Aktionen; pro Raum 2–3 Highlights); Renderer zeigt Kacheln/Listen statt nur Fließtext; KI höchstens zur Formulierung. Später: Sortierung/Relevanz (Kategorien/Funktionen), unterschiedliche Länge Onboarding vs. User.
+MVP ✅ **0.9.20**; Gäste kürzer **0.9.26**; Sortierung/Caps/Automations-Zähler **0.9.48**. Optional: weitere Caps/i18n — [TODO § 5.x.2](TODO.md#phase-5x).
 
 **Festlegung Sortierung Skript-Snapshot (`buildQuickStartGuide`):** Primär **längere erste Zeile** von `common.desc` (mehr Informationsgehalt). **Nicht** primär nach Trigger sortieren — kurze Beschreibungen kämen trotz „wichtigem“ Trigger nach oben. Bei **gleicher** Zeilenlänge: **`triggerType`** aus `DocumentModel.detectTriggerType` als Tie-Breaker (schedule → subscribe → on-start → blockly → unknown), danach Name — `lib/quickStartGuide.js`.
 
@@ -396,14 +397,14 @@ Abgleich gegen eine laufende Installation (MCP `system_info` / `list_adapters`) 
 | **Backup / [ioBroker.backitup](https://github.com/simatec/ioBroker.backitup)** | Offline/Migration, **KI-Skript Variante B**, Doku aus **`.tar.gz`** | Hoch | [TODO — Backup-Festlegung](TODO.md#backup-backitup-festlegung), [§ 1.2](TODO.md#phase-5-features) |
 | **Custom Templates — Drag-and-Drop** | Komfort Kapitelreihenfolge | Mittel | [Custom Templates](PLAN.md#custom-templates-detail); PLAN: **nachrangig** vs. Semantik |
 | **Admin-UI React** | Nur wenn **jsonConfig** für DnD, Live-Mermaid-Preview, Medien-Galerie **systematisch** zu eng | Hoch, optional | [TODO § 1.8](TODO.md#admin-react-optional) |
-| **Phase 5.x.2 — Feintuning** | Sortierung/Relevanz Quick Start, Caps Onboarding vs. User, weniger Doppelinfos | Klein–mittel | [TODO § 5.x.2](TODO.md#phase-5x) |
+| **Phase 5.x.2 — Feintuning** | Kern **0.9.48** ✅; optional: Caps, Doppelinfos | Klein | [TODO § 5.x.2](TODO.md#phase-5x) |
 | **Phase 5.x.1 — weitere Diagnose-Signale** | Auto-Checklisten **nur bei Befund** (wie Node.js heute via `lib/diagnosisSnapshot.js`) | Mittel | [TODO § 5.x.1](TODO.md#phase-5x), [Hybrid MVP](PLAN.md#phase-5x-plan) |
 
 #### C — Merkliste „Sinn der Doku“ (inhaltliche Vertiefung)
 
 | Lücke (PLAN) | Erster sinnvoller Schritt | Anknüpfung Code |
 | ------------ | ------------------------- | ---------------- |
-| **„Was automatisiert hier wirklich?“** | Admin-Kapitel **„Automatisierung im Überblick“**: Schedules + Skript-Trigger + Adapter-`schedule`/`restartSchedule` in **einer** Übersicht (kein Gesamtgraph) | `discovery.js`, `documentModel.js`, Renderer |
+| **„Was automatisiert hier wirklich?“** | ✅ **0.9.48:** Admin-Kapitel **„Automatisierung im Überblick“** + Transparenz-Grenzen (Blockly/Subscribe/Regel-Adapter) | `lib/automationOverview.js`, Renderer |
 | **Kuratierte „Warum“-Ebene** | Optionale **Halbpflichtfelder** (z. B. „Absicht in einem Satz“ pro Raum/Adapter) in `manualContext` / jsonConfig — strukturiert, nicht nur KI/Freitext | `parseManualContext`, Admin i18n |
 | **Transparenz der Grenzen** | `docTransparencyLimitsShort` **erweitern**: Blockly, Node-RED, Szenen/Logik-Adapter, **dynamische** State-IDs (Regex-Grenze) | `lib/i18n.js`, Admin-Systemübersicht |
 | **Änderungs-Narrativ** | Delta-UX ✅; optional **ein** Onboarding-Satz bei **großen** Inventar-Deltas (heute bewusst ohne) | `docChangeFormat.js`, Renderer |
@@ -467,7 +468,7 @@ Abgleich gegen eine laufende Installation (MCP `system_info` / `list_adapters`) 
 | Stufe | Paket | Begründung |
 | ----- | ----- | ---------- |
 | **1** | **Repositories-PR** + README-Hinweis Standardliste | Prozess, kein Feature-Bloat; schließt W4001 |
-| **2** | **„Automatisierung im Überblick“** (Admin) + **Transparenz** Blockly/Node-RED/Szenen | Merkliste #1 und #6; hoher Sinn pro Aufwand |
+| **2** | ~~**„Automatisierung im Überblick“** (Admin) + Transparenz~~ | ✅ **0.9.48** |
 | **3** | **Device-Manager-Anreicherung** (Best Effort) | Bessere Räume/User ohne neuen HTTP-Endpunkt |
 | **Danach** (nach Forum/Tester) | **Backup/Backitup** + KI-B; dann **DnD** oder **weitere Diagnose-Checks** | Priorität aus Rückmeldung |
 
@@ -785,7 +786,7 @@ Master → Slave1 (zigbee.0, hm-rpc.0)
 
 1. ~~**Nutzer-Doku (README)** — kurzer Abschnitt **„Medien & Redis“** (Soft-Limits, Fotos per URL, `metadata`; Details in PLAN) — **erledigt**.~~
 2. ~~**Festgelegte Features** aus [TODO § 1.5](TODO.md#todo-festlegt-umsetzung): **System-Visitenkarte** und **KI + Skriptquellcode Variante A** — **erledigt** (0.9.12).~~ **Variante B** (Backup-Analyse) bleibt an **Backup-Anbindung** ([TODO — Backitup](TODO.md#backup-backitup-festlegung), [§ 1.2](TODO.md#phase-5-features)) gekoppelt.
-3. **Feature-Reihenfolge (Projekt):** [TODO — abgestimmte Umsetzungsreihenfolge](TODO.md#offene-arbeit) — ~~**Custom Templates — Rest** (Admin chapter order, HTML presets — **0.9.17** auf `main`)~~; ~~**5.x.1** (Hybrid)~~, ~~**5.x.2** (Kern)~~, ~~**5.x.3** (Mermaid **0.9.27** / **0.9.28**)~~; ~~**PDF**~~ **0.9.33** ✅; **npm** **0.9.45** (Registry, mit Provenance) / Repo; **Meta** **`0.9.45`** (**`news`** seit **E2004**‑Fix nur noch npm‑Versionen); **ioBroker.repositories** 🟡 (**latest**-PR oft noch offen); **`documentationStatesMode`** entfällt — große **`documentation.*`** nur Platzhalter (**0.9.39**). **Nächster inhaltlicher Fokus:** Phase‑5‑**Rest** (**Backup** / Backitup, optional DnD Custom Templates) — [TODO § 1.2](TODO.md#phase-5-features). **Adapter Checker:** z. B. **W5042** — **CONTRIBUTING**.
+3. **Feature-Reihenfolge (Projekt):** [TODO — abgestimmte Umsetzungsreihenfolge](TODO.md#offene-arbeit) — ~~**5.x.1–5.x.3**~~, ~~**PDF**~~ **0.9.33** ✅, ~~**Phase B Doku-UX**~~ **0.9.48** ✅, **npm** **0.9.48** (Provenance). **Nächster inhaltlicher Fokus:** **ioBroker.repositories** (**W4001**), dann Phase‑5‑**Rest** (**Backup**/Backitup, optional DnD) — [TODO § 1.2](TODO.md#phase-5-features).
 4. **Adapter Checker** und **Listen-Updates** bei neuen npm-Versionen ([TODO § 1.1](TODO.md#release-veroeffentlichung)).
 5. ~~Optional **Default `documentationStatesMode`** auf `metadata` **mit** `io-package` news ([TODO § 1.4](TODO.md#nachzuege))~~ — **0.9.38** ✅; **0.9.39** entfernt `documentationStatesMode` / `full` vollständig
 6. **Optional später (nicht blockierend):** HTTP-Asset-Endpunkt, harte Limits, eigenes Asset-UI — nur bei **realem** Bedarf und dann als **Schicht-2-Erweiterung** im PLAN nachziehen.
@@ -811,6 +812,6 @@ Master → Slave1 (zigbee.0, hm-rpc.0)
 | Version    | Inhalt                                                                                                                   | Status     | Anmerkung                                                 |
 | ---------- | ------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------------------------------------------------- |
 | **v0.x**   | Basis: Adapter-Inventar, Export, Profile, Versionierung                                                                  | ✅ main    | interner Meilenstein                                      |
-| **v0.9.x** | RC: drei Profile, Aliase, UX-Akzente, RAM-Summe, Onboarding-Capabilities, Filter, Doku-Score-Erklärung, README (Changelog); Multihost; optional `exportPath`; **`documentation.exportHashes`**; ab **0.9.39** keine Volltext-Duplikation in großen `documentation.*`-States; Changelog u. a. `adapter_version`; ab **0.9.17** auf **`main`:** `htmlThemePreset`, `adminChapterOrderJson` (nur **Admin**-HTML/MD), i18n mit **vollständiger Kapitel-Id-Liste**; ab **0.9.18/0.9.19:** **5.x.1** Hybrid-Notfall (Kurzzeilen, Lesezeichen-Links, Node-Snapshot); ab **0.9.20:** **5.x.2** Quick Start / `atAGlance`; **`dev`:** Inventar-Delta (Admin optional ausblendbar), Export-Sprache für Changelog-/Vergleichseinzeiler, User-Kurzinfo bei Deltas | ✅ `main` (= `dev`, Fast-forward) | Vor **npm** mit Checker + README-Changelog abgleichen |
-| **npm/stable** | **npm** **`iobroker.autodoc`** (**0.9.45**) ✅; **ioBroker.repositories** (**latest**): PR oft noch **offen** (Standardliste nach Merge). Große Doku nur **`/files/`** + Platzhalter-States. | 🟡 npm ja / Liste nach Merge | Folge-Versionen: npm + **Tag/Release** (**[CONTRIBUTING](CONTRIBUTING.md#maintainer-checklist-release-order)**) + Listen-Update |
-| **v1.x**   | Phase 5: PDF, Backup, Custom Templates (Rest); Phase 5.x **Rest:** Feintuning 5.x.2, ggf. weitere Diagnose-Signale; **5.x.3** ✅ in **0.9.27–0.9.28** | ⬜ geplant | [TODO § 1.3](TODO.md#phase-5x) |
+| **v0.9.x** | RC-Features bis **0.9.48** (Profile, Multihost, KI, Custom-Template-Teile, 5.x.1–5.x.3, Phase B Doku-UX) — Details README-Changelog | ✅ `main` (= `dev`) | |
+| **npm/stable** | **npm** **`0.9.48`** ✅; **ioBroker.repositories** (**latest**): **W4001** offen. | 🟡 npm ja / Liste nach Merge | **[CONTRIBUTING](CONTRIBUTING.md#maintainer-checklist-release-order)** |
+| **v1.x**   | Phase 5-Rest (Backup, DnD); optional 5.x.2-Feinschliff, weitere Diagnose-Signale | ⬜ geplant | [TODO § 1.2–1.3](TODO.md#phase-5-features) |
