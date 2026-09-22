@@ -21,6 +21,20 @@ describe('guestScriptPrivacy', () => {
 });
 
 describe('quickStartGuide', () => {
+	it('sliceQuickStartForOnboarding drops automationCount (stat card shows scripts)', () => {
+		const full = {
+			hasContent: true,
+			systemItems: [
+				{ kind: 'roomCount', n: 3 },
+				{ kind: 'automationCount', n: 12 },
+				{ kind: 'function', name: 'Light', memberCount: 5 },
+			],
+			roomGuides: [],
+		};
+		const g = sliceQuickStartForOnboarding(full);
+		expect(g.systemItems.map(i => i.kind)).to.deep.equal(['roomCount', 'function']);
+	});
+
 	it('sliceQuickStartForOnboarding shortens lists for guest quick start', () => {
 		const full = {
 			hasContent: true,
@@ -66,6 +80,21 @@ describe('quickStartGuide', () => {
 		expect((g.systemItems || [])[1].kind).to.equal('automationCount');
 	});
 
+	it('buildQuickStartGuide caps script snapshot rows at two', () => {
+		const roomsBlock = { totalRooms: 0, functions: [], rooms: [] };
+		const scriptsBlock = {
+			scripts: ['a', 'b', 'c', 'd'].map((id, i) => ({
+				enabled: true,
+				name: id,
+				id,
+				desc: `Line ${i}`,
+				triggerType: 'unknown',
+			})),
+		};
+		const g = buildQuickStartGuide(roomsBlock, scriptsBlock);
+		expect((g.systemItems || []).filter(i => i.kind === 'script')).to.have.length(2);
+	});
+
 	it('buildQuickStartGuide orders script snapshot lines by description length (longer first)', () => {
 		const roomsBlock = { totalRooms: 0, functions: [], rooms: [] };
 		const scriptsBlock = {
@@ -77,7 +106,7 @@ describe('quickStartGuide', () => {
 		};
 		const g = buildQuickStartGuide(roomsBlock, scriptsBlock);
 		const scriptItems = (g.systemItems || []).filter(i => i.kind === 'script');
-		expect(scriptItems.map(i => i.name)).to.deep.equal(['aaa', 'mid', 'zzz']);
+		expect(scriptItems.map(i => i.name)).to.deep.equal(['aaa', 'mid']);
 	});
 
 	it('buildQuickStartGuide script order tie-breaks by name when first-line desc length matches', () => {
@@ -104,6 +133,29 @@ describe('quickStartGuide', () => {
 		const g = buildQuickStartGuide(roomsBlock, scriptsBlock);
 		const scriptItems = (g.systemItems || []).filter(i => i.kind === 'script');
 		expect(scriptItems.map(i => i.name)).to.deep.equal(['a', 'z']);
+	});
+
+	it('buildQuickStartGuide sorts rooms by deduplicated deviceCount', () => {
+		const g = buildQuickStartGuide(
+			{
+				totalRooms: 2,
+				functions: [],
+				rooms: [
+					{ name: 'Small', deviceCount: 1, devices: [{ deviceName: 'A', category: 'light', icon: '💡' }] },
+					{
+						name: 'Large',
+						deviceCount: 5,
+						devices: [
+							{ deviceName: 'D1', category: 'door', icon: '🚪' },
+							{ deviceName: 'D2', category: 'window', icon: '🪟' },
+						],
+					},
+				],
+			},
+			{ scripts: [] },
+		);
+		expect(g.roomGuides.map(r => r.name)).to.deep.equal(['Large', 'Small']);
+		expect(g.roomGuides[0].deviceCount).to.equal(5);
 	});
 
 	it('buildQuickStartGuide room highlights order by category relevance when no live values', () => {
