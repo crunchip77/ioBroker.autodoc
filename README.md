@@ -4,7 +4,7 @@
 
 Automatically generates structured documentation (HTML, Markdown, JSON) for your ioBroker installation — on demand, on a schedule, or when the system changes.
 
-**Version:** 0.9.47
+**Version:** 0.9.48
 
 **Installation**
 
@@ -221,6 +221,14 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 
 **Admin `common.news`** in `io-package.json` lists only versions **published on npm** (Adapter Checker **E2004**). The detailed sections below are the **user-facing** changelog (Git-era releases plus npm); older entries are in [`CHANGELOG_OLD.md`](CHANGELOG_OLD.md).
 
+### 0.9.48 (2026-09-22)
+
+- **Admin — Automation overview:** New **Automatisierung im Überblick** chapter collects time-based JavaScript CRON, ioBroker schedule objects, adapter schedule/restart CRON, and a transparent “what AutoDoc cannot list as a schedule” summary for Blockly/subscribe/rule-engine limits.
+- **User / Onboarding — automation clarity:** Family docs now keep automation summaries readable even when Blockly/scripts have no `common.desc`; Quick Start counts active JavaScript automations without exposing technical script names to guests.
+- **Rooms and functions:** User/Admin exports resolve room/function members through the ioBroker object hierarchy (State → Channel → Device), deduplicate common POWER/state duplicates, show better device names, and list **functions** with per-function devices like the room device hierarchy.
+- **HTML UX polish:** Connected systems, host topology, manual Mermaid diagrams, and function sections are collapsible where they would otherwise dominate the page; disclosure arrows use a more consistent muted style. Room notes now live in expanded room details instead of the compact Admin room table.
+- **Mermaid / offline SVG:** `@mermaid-js/mermaid-cli` bumped to 11.16.0; logs now point more clearly at missing Chromium libraries, and `scripts/install-chromium-deps-linux.sh` documents Linux/buanet package hints. Renderer marker: `2026.09.22.9`.
+
 ### 0.9.47 (2026-09-20)
 
 - **Repository checker (#60):** Maintainer contact email (E4052); README **`## License`** links to [`LICENSE`](./LICENSE) (E6034)
@@ -263,10 +271,6 @@ For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full c
 ### 0.9.42 (2026-05-13)
 
 - **npm / process:** Patch **0.9.42** — **no functional change** vs **0.9.38** (previous tarball on npm before **0.9.42**); `package.json` / `io-package.json` / README **`Version:`** aligned for npm publish only (release-script housekeeping).
-
-### 0.9.38 (2026-05-12)
-
-- **Advanced — storage (historical npm note):** release **0.9.38** introduced default **`metadata`** for **new** instances so full exports prefer **`/files/`** (`common.news`). **All** installs now behave like that **without** a toggle — **`documentationStatesMode`** was dropped in **0.9.39** (always placeholders + **`/files/`**).
 
 [Older changelogs can be found there](CHANGELOG_OLD.md)
 

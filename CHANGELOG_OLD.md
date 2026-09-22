@@ -4,6 +4,10 @@ Histories for versions **no longer** in the **7-version** window shared by `comm
 
 The following **`###`** blocks were archived from **`README.md`** when **0.9.45** (or earlier) shipped so the main changelog lists **only** the same semver headings as **`common.news`**.
 
+### 0.9.38 (2026-05-12)
+
+- **Advanced — storage (historical npm note):** release **0.9.38** introduced default **`metadata`** for **new** instances so full exports prefer **`/files/`** (`common.news`). **All** installs now behave like that **without** a toggle — **`documentationStatesMode`** was dropped in **0.9.39** (always placeholders + **`/files/`**).
+
 ### 0.9.35 (2026-05-08)
 
 - **npm:** publish **`iobroker.autodoc`** on the public registry so hosts can `npm install` the adapter tarball without cloning.
