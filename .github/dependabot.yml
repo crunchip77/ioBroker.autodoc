@@ -21,6 +21,10 @@ updates:
       - dependency-name: 'puppeteer'
         update-types:
           - 'version-update:semver-major'
+      # mermaid-cli 12+ requires puppeteer 25 -> upgrade both together manually (see CONTRIBUTING)
+      - dependency-name: '@mermaid-js/mermaid-cli'
+        update-types:
+          - 'version-update:semver-major'
 
   - package-ecosystem: 'github-actions'
     directory: '/'
