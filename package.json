@@ -56,7 +56,7 @@
     "@types/iobroker": "npm:@iobroker/types@^7.1.2",
     "@types/node": "^22.20.5",
     "cytoscape": "^3.35.0",
-    "d3-selection": "^3.0.0",
+    "d3-selection": "^3.0.1",
     "devtools-protocol": "^0.0.1718299",
     "typescript": "~6.0.3"
   },
