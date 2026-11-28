@@ -216,7 +216,8 @@ h2 { border-bottom-color: var(--link); }
 
 ### **WORK IN PROGRESS**
 
-- **Mermaid:** removed auto host topology (`autoMermaidHostGraph`). Manual diagram is **opt-in** (`enableManualMermaid`); existing instances that already have diagram text keep it until they turn the option off.
+- **Mermaid:** removed auto host topology (`autoMermaidHostGraph`). Manual diagram is **opt-in** (`enableManualMermaid`); existing instances that already have diagram text keep it until they turn the option off. `io-package.json` no longer defaults the flag to `false` (that would wipe diagrams on Git/npm upgrade).
+- **Context-Pack:** each generate writes compact `autodoc-context.json` under `/files/` (inventory, delta, rooms, forum card, maintenance gaps). Full model stays `autodoc-latest.json`.
 
 ### 0.9.48 (2026-09-22)
 

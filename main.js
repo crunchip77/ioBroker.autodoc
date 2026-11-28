@@ -19,6 +19,7 @@ const VersionTracker = require('./lib/versionTracker');
 const Notifier = require('./lib/notifier');
 const AiEnhancer = require('./lib/aiEnhancer');
 const { buildForumCard } = require('./lib/forumCard');
+const { buildContextPack } = require('./lib/contextPack');
 const { localizeCompareSummary } = require('./lib/docChangeFormat');
 
 /** Large exports live under adapter /files only; `documentation.*` body states use placeholders (see below). */
@@ -817,6 +818,10 @@ class Autodoc extends utils.Adapter {
 			// Keep autodoc-latest.html pointing to the admin profile for backward compat
 			await this.writeFileAsync(basePath, 'autodoc-latest.html', htmlAll.admin);
 
+			// Kleines Pack für Modelle/MCP — autodoc-latest.json bleibt das Vollmodell.
+			const contextPackJson = JSON.stringify(buildContextPack(docModel, this.i18n), null, 2);
+			await this.writeFileAsync(basePath, 'autodoc-context.json', contextPackJson);
+
 			// Rotate old timestamped files
 			const maxFiles = this.config.maxStoredFiles > 0 ? this.config.maxStoredFiles : 3;
 			await this.rotateFiles(basePath, maxFiles);
@@ -857,6 +862,7 @@ class Autodoc extends utils.Adapter {
 				'autodoc-latest.md': sha256HexUtf8(markdown),
 				'autodoc-latest.json': sha256HexUtf8(json),
 				'autodoc-admin.html': sha256HexUtf8(htmlAll.admin),
+				'autodoc-context.json': sha256HexUtf8(contextPackJson),
 			};
 			await this.setStateAsync('documentation.exportHashes', {
 				val: JSON.stringify(exportHashes),

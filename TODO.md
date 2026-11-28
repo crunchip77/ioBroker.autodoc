@@ -97,7 +97,7 @@ Ein Paket nach dem anderen. Begründung: [PLAN — Plattform](PLAN.md#plattform-
 
 ### 3.1 Plattform-Anschluss
 
-- [ ] **1 — Context-Pack** — kleines Artefakt unter `/files/` (Inventar-Kurz, Delta, Raum-/Gäste-Kurz, Forum-Karte, Lücken). `doc.json` bleibt Vollmodell.
+- [x] **1 — Context-Pack** — `autodoc-context.json` unter `/files/` (Inventar-Kurz, Delta, Raum-/Gäste-Kurz, Forum-Karte, Lücken). `autodoc-latest.json` bleibt Vollmodell.
 - [ ] **2 — `sendTo`-API** — zusätzlich zu `generateNow` / `cancelScriptSourceAi` / `getStatus` / `getForumCard`: z. B. `getContextPack`, `getExportMeta`, optional `getRoomBrief`.
 - [ ] **3 — `sendTo`-Absender** — wo Controller **≥ 7.2.5** den User setzt: `generateNow` nur mit passenden Rechten; ältere Controller unverändert.
 - [ ] **4 — React-Instanz** — [§ 3.2](#admin-react)

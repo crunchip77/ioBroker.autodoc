@@ -73,7 +73,8 @@ Produkt-Roadmap lebt in **TODO/PLAN**, nicht als GitHub-Issue-Kopie.
 | Große Doku nur `/files/`, States Platzhalter (ab 0.9.39), Delta-UX, Automatisierung-Überblick | ✅ **0.9.48** |
 | npm **0.9.48** + Provenance; **latest**-Liste | ✅ |
 | **stable**-Liste | ⬜ zurückgestellt — [TODO § 2](TODO.md#prozess) |
-| Context-Pack, `sendTo`-Erweiterung, React, `system.ai`, DM, `common.custom` | ⬜ [TODO § 3](TODO.md#naechste-features) |
+| Context-Pack (`autodoc-context.json`) | ✅ Datei pro Lauf; `sendTo` folgt |
+| `sendTo`-Erweiterung, React, `system.ai`, DM, `common.custom` | ⬜ [TODO § 3](TODO.md#naechste-features) |
 | Backup / KI-B | ⬜ zurückgestellt |
 
 ---
