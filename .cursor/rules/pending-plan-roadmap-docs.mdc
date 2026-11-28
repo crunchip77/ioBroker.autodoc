@@ -7,7 +7,7 @@ alwaysApply: false
 
 # ioBroker.autodoc — PLAN/TODO
 
-Bei Änderungen an **PLAN.md** / **TODO.md**: **`dev`** → commit → push → **`main`** sync ([`branch-dev-default.mdc`](branch-dev-default.mdc)).
+Bei Änderungen an **PLAN.md** / **TODO.md**: **`dev`** commit/push. **`main`** und npm sind spätere, getrennte Schritte ([`branch-dev-default.mdc`](branch-dev-default.mdc)).
 
 - **TODO** = offene Checkboxen + aktuelle Bot-/Listen-Tickets.
 - **PLAN** = Warum, Festlegungen, Architektur — keine Checker-Historie und keine abgeschlossenen Phasen 1–4.

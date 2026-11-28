@@ -2,7 +2,7 @@
 
 Arbeitsliste: **offen oben**, Erledigtes nur als Kurzüberblick. **Warum** und Architektur: [PLAN.md](PLAN.md). **Nutzer-Changelog:** [README.md](README.md). **Release/Checker-Details:** [CONTRIBUTING.md](CONTRIBUTING.md).
 
-Stand **2026-11-28**, Version **`0.9.48`** (`package.json` / `io-package.json`). Branch-Arbeit: **`dev`** → Merge **`main`**.
+Stand **2026-11-28**, Version **`0.9.48`**. Alltag **`dev`** → nach geprüftem Stand **`main`** → später npm/Listen ([CONTRIBUTING](CONTRIBUTING.md#maintainer-checklist-release-order)).
 
 | Datei | Rolle |
 | ----- | ----- |

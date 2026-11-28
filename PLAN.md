@@ -33,9 +33,11 @@ Erledigte Phasen **nicht** hier nacherzählen — README-Changelog und Git.
 
 ### Git
 
-- Alltag: **`dev`** committen und pushen, dann **`main`** nachziehen (Fast-forward wenn möglich).
-- **`npm run release`** nur auf **`main`** ([CONTRIBUTING](CONTRIBUTING.md#maintainer-checklist-release-order)).
-- Installation zum Testen: Git-URL `…/tarball/dev` bzw. `…/tarball/main`.
+Drei Stufen, nicht in einem Rutsch:
+
+1. **`dev`** — Fehler, Ausbau; commit/push; Test per `…/tarball/dev`.
+2. **`main`** — nach einem **geprüften Versionsstand** (Fast-forward), nicht nach jedem Commit.
+3. **npm / Listen** — eigener Schritt von **`main`**: [CONTRIBUTING — Release](CONTRIBUTING.md#maintainer-checklist-release-order).
 
 ### Issues, PRs, Bots
 

@@ -27,8 +27,13 @@ Roadmap and internal task tracking: [`TODO.md`](TODO.md), [`PLAN.md`](PLAN.md).
 
 ## Branch workflow (Git)
 
-- **Develop on `dev`:** use `git checkout dev` for everyday commits and experiments. Pushes: `git push origin dev`.
-- **Merge to `main` when stable:** when a version is ready for a broader default (URL installs from `main`, pre-release testing complete), merge into `main` and push, e.g. `git checkout main && git pull && git merge dev && git push origin main`, then return to `dev` for further work: `git checkout dev`. If `main` ever receives a hotfix alone, merge `main` back into `dev` so both branches stay aligned.
+Three **separate** steps:
+
+1. **`dev`:** everyday fixes and features. `git checkout dev`, commit, `git push origin dev`. Test with `…/tarball/dev`.
+2. **`main`:** after a **tested version cut** (not after every commit). `git checkout main && git pull && git merge --ff-only dev && git push origin main`, then `git checkout dev`. URL installs from `main` follow that cut.
+3. **npm / `ioBroker.repositories`:** later, from **`main`**, using **[Maintainer checklist — release order](#maintainer-checklist-release-order)**. Merging to `main` does **not** publish.
+
+If `main` ever receives a hotfix alone, merge `main` back into `dev` so both branches stay aligned.
 
 ## Local checks
 

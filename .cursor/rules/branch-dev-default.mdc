@@ -1,12 +1,16 @@
 ---
 description: >-
-  Develop on dev, then merge to main; trivial changes may fast-forward main immediately after dev.
+  Three steps: work on dev, merge main after a tested version cut, then npm/repo
+  release from main. Never auto-merge or auto-publish.
 alwaysApply: true
 ---
 
-# ioBroker.autodoc — branches
+# ioBroker.autodoc — branches and releases
 
-1. **Development** lives on **`dev`**: **`git checkout dev`**, commit, **`git push origin dev`**.
-2. **`main`** follows **`dev`**: after the work is pushed, **merge `dev` into `main`** (prefer **fast-forward** when history allows) and **`git push origin main`**, so **GitHub default branch** stays aligned.
-3. **Small / trivial changes** (typos, Cursor rules, trivial CI or docs): same flow — **always commit on `dev` first** — but you **may immediately** merge and push **`main`** in the same session (no separate release window required).
-4. **`npm run release`**, version bumps, tags, and **`release-order.mdc`** still target **`main`** per **`CONTRIBUTING`**. A rare **Maintainer-only hotfix** on **`main`** is allowed; afterward **merge `origin/main`** into **`dev`** and **`git push origin dev`**.
+Three **separate** steps. Do **not** collapse them into one “commit then also main then npm”.
+
+1. **`dev`** — Alltag: Fehler beheben, Adapter ausbauen. **`git checkout dev`**, commit, **`git push origin dev`**. Testen über Git-URL `…/tarball/dev`.
+2. **`main`** — erst nach einer **bestimmten, geprüften Version/Stand** (Install, Lint/Tests, kurzer Adapterlauf). Dann merge **`dev` → `main`** (Fast-forward wenn möglich), **`git push origin main`**, zurück auf **`dev`**. Nur wenn der Maintainer das **ausdrücklich** will — nicht nach jedem Commit, nicht bei bloßem „commit/push“.
+3. **npm / ioBroker.repositories** — **danach**, eigener Schritt von **`main`**: **[`CONTRIBUTING` — release order](../../CONTRIBUTING.md#maintainer-checklist-release-order)** (`npm run release`, Tag, GitHub Release, bei Bedarf Listen-PR). **`release-order.mdc`**. Kein Publish, nur weil `main` gerade aktualisiert wurde.
+
+**`npm run release`** nur auf **`main`**. Hotfix direkt auf **`main`**: selten, Maintainer-only; danach **`origin/main` → `dev`**.
