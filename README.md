@@ -4,23 +4,20 @@
 
 Automatically generates structured documentation (HTML, Markdown, JSON) for your ioBroker installation — on demand, on a schedule, or when the system changes.
 
-**Version:** 0.9.48
+**Version:** 0.9.48 · [Repository](https://github.com/crunchip77/ioBroker.autodoc) · [Issues](https://github.com/crunchip77/ioBroker.autodoc/issues) · ![Test and Release](https://github.com/crunchip77/ioBroker.autodoc/workflows/Test%20and%20Release/badge.svg)
 
-**Installation**
+## Contents
 
-1. Open **[ioBroker Admin](https://www.iobroker.net/#en/documentation)** and install **`iobroker.autodoc`** from the adapter list.
-2. Official adapter index: **[ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories)** (**latest**). Maintainer workflow / PR: **[TODO — § 1.1 Release](TODO.md#release-veroeffentlichung)**.
+- [What it does](#what-it-does)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Copy-paste examples](#copy-paste-examples) ([Mermaid](#mermaid-cookbook-examples) · [JSON](#json-cookbook-snippets) · [CSS](#html-custom-css-examples))
+- [Changelog](#changelog)
+- [License](#license)
 
-| | |
-| --- | --- |
-| **Repository** | [github.com/crunchip77/ioBroker.autodoc](https://github.com/crunchip77/ioBroker.autodoc) |
-| **Issues** | [GitHub Issues](https://github.com/crunchip77/ioBroker.autodoc/issues) |
+## What it does
 
-**CI:** ![Test and Release](https://github.com/crunchip77/ioBroker.autodoc/workflows/Test%20and%20Release/badge.svg)
-
-## Description
-
-The adapter scans adapters, hosts, rooms, functions, scripts, aliases, userdata, and related metadata, then writes **three profiles** in one run:
+One run scans adapters, hosts, rooms, functions, scripts, aliases, userdata, and related metadata, then writes **three profiles**:
 
 | Profile | Audience | Focus |
 | --- | --- | --- |
@@ -28,73 +25,80 @@ The adapter scans adapters, hosts, rooms, functions, scripts, aliases, userdata,
 | **User** | Household | Rooms, devices, automations in plain language |
 | **Onboarding** | Guests | Welcome, capabilities, QR / link to the latest HTML |
 
-Exports are written under `/files/autodoc.<instance>/` (latest HTML + rotated timestamped `.md` / `.html` / `.json`). Optional notifications and **opt-in AI** text (separate providers) can enrich the docs.
+Files land under `/files/autodoc.<instance>/` (latest HTML plus rotated `.md` / `.html` / `.json`). Optional notifications and **opt-in AI** (separate providers) can enrich the text.
 
-## Requirements
+- Standalone HTML per profile (search, dark mode, responsive layout)
+- Markdown + JSON export with configurable rotation
+- Maintenance hints (documentation score for open checklist items; disabled instances listed as inventory, not penalized)
+- Admin UI: **EN / DE / FR** complete; other locales use English until translated ([CONTRIBUTING](CONTRIBUTING.md#admin-ui-translations-i18n)). Generated wording follows **Documentation language**
+- Optional AI (Ollama, Groq, Anthropic, …) — strict opt-in
 
-- **Node.js** ≥ 22 (see `package.json` → `engines`)
-- **ioBroker.js-controller** ≥ 6.0.11 (declared in `io-package.json` → `common.dependencies`)
-- **ioBroker Admin** ≥ 7.8.23 (declared in `io-package.json` → `common.globalDependencies`) — needed for the **json** configuration UI and `jsonConfig` features (e.g. `textSendTo`, collapsible panels)
+## Installation
 
-No other adapters are **required** for AutoDoc itself. Optional: a **web server** adapter if you want to open generated files from outside the Admin file browser; exports are always available under `/files/autodoc.<instance>/`. **PDF** profiles need the optional npm package **`puppeteer`** (bundled Chromium) installed in the adapter directory — see **Optional PDF export** below.
+1. Open **[ioBroker Admin](https://www.iobroker.net/#en/documentation)** and install **`iobroker.autodoc`** from the adapter list.
+2. Official index: **[ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories)** (**latest**).
+
+**Requirements**
+
+- **Node.js** ≥ 22 (`package.json` → `engines`)
+- **ioBroker.js-controller** ≥ 6.0.11 (`io-package.json` → `common.dependencies`)
+- **ioBroker Admin** ≥ 7.8.23 (`common.globalDependencies`) — needed for the **json** configuration UI
+
+No other adapters are required. Optional: a **web** adapter to open generated files outside the Admin file browser. **PDF** needs optional **`puppeteer`** in the adapter directory — see [Optional PDF export](#optional-pdf-export-puppeteer).
+
+**Guides:** [operator overview (EN)](docs/user-guide/README.md) · [German config wiki](docs/user-guide/README.de.md) (tabs, screenshots, demo scenario).
 
 ## Configuration
 
+Configure the instance in **ioBroker Admin** (basics, manual notes, advanced, notifications, AI). Generation: manual, on startup, on a timer, or after adapter changes (debounced).
+
 ### Documentation instance overview
 
-Configure the instance in **ioBroker Admin** (tabs for basics, manual notes, advanced options, notifications, AI). Generation can be triggered manually, on startup, on a timer, and after adapter changes (debounced).
+**Documentation language** (Basic settings) sets headings and fixed wording in **all HTML profiles** and in Markdown. Inventory-comparison and **changelog** summary lines use that language on each regenerate — older stored changelog rows are shown in the **current** export language.
 
-**Documentation language** (Basic settings) drives headings and fixed wording in **all HTML profiles** and in Markdown. It also controls the **short summary lines** for inventory comparison (“changes since last run”) and for **changelog** cards when you regenerate — older stored changelog rows are shown in the **current** export language, not the language they had when saved.
+**Advanced → What to include & limits → Hide “changes since last run”** removes only the yellow delta box in **Admin** HTML/Markdown. Changelog, User, and Onboarding are unchanged. The **User / Family** profile adds a short everyday sentence when at least one inventory change was found (skipped on the first run). **Onboarding** has no such notice.
 
-In **Advanced → What to include & limits**, **Hide “changes since last run” in Admin exports** removes only the yellow delta box at the top of the **Admin** HTML system chapter and the matching subsection in **Admin** Markdown. The **Changelog** chapter, **User**, and **Onboarding** exports are not affected.
-
-The **User / Family** profile adds a brief everyday sentence after the title block when AutoDoc found **at least one** inventory change since the previous snapshot (skipped on the first run and when nothing changed). **Onboarding** does not include that extra notice.
-
-Short **orientation** for operators (install paths, tabs, exports, hashes, checker): **[`docs/user-guide/README.md`](docs/user-guide/README.md)** · **German** config wiki (tabs, screenshots, demo scenario): **[`docs/user-guide/README.de.md`](docs/user-guide/README.de.md)**.
-
-Useful **states** (selection): `action.generate`; **`action.exportPdf`** (writes **PDF** profiles from the latest HTML under `/files` when optional **`puppeteer`** is installed in the adapter directory — no full regeneration); `info.lastGeneration` / `info.nextGeneration`; `info.htmlUrlAdmin` / `info.htmlUrlUser` / `info.htmlUrlOnboarding`; `info.templateVersion` (HTML template / renderer alignment); `info.forumCardPlain` (plaintext “system card” for forums, updated when documentation is generated).
-
-**Exports & storage:** after each successful run, **`documentation.exportHashes`** holds **SHA-256 (hex)** for the latest MD / JSON / Admin HTML served from `/files`, and **merges digests for `autodoc-{admin,user,onboarding}.pdf`** whenever a PDF export step wrote those files. Canonical full Markdown, JSON model, and Admin HTML live **only** under **`/files/`** (`autodoc-latest.*`, profile HTML). The states **`documentation.markdown`**, **`documentation.html`**, and **`documentation.json`** hold **short placeholders** only — use **`info.htmlUrl*`**, **`/files/`**, or download actions for full text.
+| State | Role |
+| --- | --- |
+| `action.generate` | Run documentation |
+| `action.exportPdf` | PDF from the latest HTML under `/files` (needs **`puppeteer`**; no full regenerate) |
+| `info.lastGeneration` / `info.nextGeneration` | Last / next run |
+| `info.htmlUrlAdmin` / `info.htmlUrlUser` / `info.htmlUrlOnboarding` | Latest HTML URLs |
+| `info.templateVersion` | HTML template / renderer alignment |
+| `info.forumCardPlain` | Plaintext “system card” for forums (updated on generate) |
+| `documentation.exportHashes` | SHA-256 of latest MD / JSON / Admin HTML; PDF hashes merged after a PDF step |
+| `documentation.markdown` / `.html` / `.json` | **Short placeholders only** — full text is under `/files/` |
 
 ### Media, Redis, and state storage (short)
 
-- **Canonical exports** always live under **`/files/autodoc.<instance>/`** and are **overwritten** each run (no accumulation of old HTML versions there).
-- **`documentation.*` body states** are **placeholders only** (large payloads are not duplicated in the object database). Scripts and integrations that need **full text** read **`/files/`** or use **`info.htmlUrl*`** / download actions.
-- **Photos and large binaries:** do **not** store big images or blobs as **large state values** in ioBroker’s **object database** — **especially with Redis** (binary payloads inflate RAM). Use **external URLs** (your NAS, HTTP server) or small **inline SVG** diagrams; the same guideline keeps **jsonl** setups predictable. AutoDoc keeps **full** Markdown/HTML/JSON under **`/files/`**; **`documentation.markdown`**, **`documentation.html`**, and **`documentation.json`** are **short placeholders** only — not a media store.
-- Rationale, options, and future media work: [`PLAN.md` — Media (MVP) & limits](PLAN.md#architektur-medien-mvp) and [Architecture boundaries](PLAN.md#architektur-grenzen).
+- Canonical exports live under **`/files/autodoc.<instance>/`** and are **overwritten** each run.
+- Full Markdown, JSON, and Admin HTML are **only** under `/files/` (`autodoc-latest.*`, profile HTML). Scripts that need the full text should read `/files/` or `info.htmlUrl*`.
+- Do **not** store large photos or blobs as state values in the object database — **especially with Redis**. Use external URLs or small inline SVG.
 
 ### Public base URL
 
-The **Onboarding** HTML includes a QR code and a **Copy link** control. Both use the same target: the onboarding file under `/files/autodoc.<instance>/autodoc-onboarding.html`, prefixed with the **ioBroker base URL** from the adapter settings (**Advanced** tab: *ioBroker base URL (optional)*).
+Onboarding HTML has a QR code and **Copy link**. Both point at `/files/autodoc.<instance>/autodoc-onboarding.html`, prefixed with **ioBroker base URL** (**Advanced** → *ioBroker base URL (optional)*).
 
-- Set the base URL to what you use in the browser to reach ioBroker (scheme, host, port if needed), **without** a trailing slash. Examples: `https://home.example.com:8081`, `http://192.168.1.10:8081`.
-- If it is **empty or wrong**, guests scanning the QR code or using the copied link from another device may get a broken or internal-only URL. After changing it, run documentation generation again so the HTML is rebuilt.
+- Use the URL you open in the browser (scheme, host, port if needed), **no trailing slash**. Examples: `https://home.example.com:8081`, `http://192.168.1.10:8081`.
+- Empty or wrong → guests get a broken or LAN-only link. Generate again after changing it.
 
 ### Optional filesystem export (Docker / NAS)
 
-**Filesystem export path** writes the three HTML profiles to a real directory (in addition to ioBroker’s `/files/…` storage). In **Docker**, map a host folder into the container and set **export path** to the **container-side** path (not the Unraid/host path). See the field help in Admin for a short reminder.
+**Filesystem export path** writes the three HTML profiles to a real directory (in addition to `/files/…`). In **Docker**, map a host folder into the container and set the **container-side** path (not the Unraid/host path). See the field help in Admin.
 
 ### Optional PDF export (Puppeteer)
 
-**Best effort:** after a successful documentation run, you can create **`autodoc-admin.pdf`**, **`autodoc-user.pdf`**, and **`autodoc-onboarding.pdf`** from the same HTML that is stored under `/files/` (headless Chromium via **`puppeteer`**, declared as an **optional** npm dependency — same major line as **`@mermaid-js/mermaid-cli`**). Enable **Generate PDF after each documentation run** in **Advanced** next to the filesystem export, or trigger **`action.exportPdf`** manually. PDFs are written under **`/files/autodoc.<instance>/`** and mirrored to **Filesystem export path** when that path is set. **Embedded Mermaid SVG** (when mmdc ran during generation) prints without extra network; **jsDelivr** client Mermaid still needs internet during the PDF step. Without a working Chromium stack, PDF creation is skipped with a clear log line — HTML/Markdown generation is unaffected.
+**Best effort:** after a successful run, create `autodoc-admin.pdf`, `autodoc-user.pdf`, and `autodoc-onboarding.pdf` from the HTML under `/files/` (headless Chromium via optional **`puppeteer`** — same major line as **`@mermaid-js/mermaid-cli`**). Enable **Generate PDF after each documentation run** in **Advanced**, or trigger `action.exportPdf`. PDFs go under `/files/autodoc.<instance>/` and to the filesystem export path when set.
+
+Embedded Mermaid SVG (when `mmdc` ran) prints offline; jsDelivr client Mermaid still needs internet during PDF. Without Chromium, PDF is skipped with a log line — HTML/Markdown still run.
 
 ### AI context hints (guest vs resident)
 
-**AI context hints** are injected only into the LLM prompt; they are **not** printed in the documentation. For **guest onboarding**, prefer everyday facts. Heavy IT or project wording (adapters, repos, …) can cause the model to leak jargon into guest text; a **safety step** then replaces that AI block with neutral guest wording. That is intentional. The **resident / family** profile does not use the same guest-only restriction. Configure them in Admin under **KI documentation / AI documentation** (after enabling a provider); full wording appears in the hint above the field.
+**AI context hints** go into the LLM prompt only; they are **not** printed in the documentation. For **guest onboarding**, use everyday facts — IT/project wording can leak jargon; a safety step then replaces that AI block with neutral guest text. The **resident / family** profile does not use that restriction. Configure under **KI documentation / AI documentation** after enabling a provider.
 
-Copy-paste **examples** (field IDs, syntax): [**Mermaid**](#mermaid-cookbook-examples) · [**JSON arrays**](#json-cookbook-snippets) · [**Custom CSS**](#html-custom-css-examples). **Stable URLs** for bookmarks / Admin `staticLink`: **`blob/main/README.md#…`** — GitHub opens Markdown in **Preview** (readable); fragments match heading slugs below (same names as local `#…` links). Scroll-to-section is **best effort** in GitHub’s viewer; **repository root** URLs like `…/ioBroker.autodoc#json-cookbook-snippets` remain unreliable. After large README edits, **re-check slugs** against **`blob/main`**.
+## Copy-paste examples
 
-`https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#documentation-instance-overview`
-
-`https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#public-base-url`
-
-`https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#optional-pdf-export-puppeteer`
-
-`https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#mermaid-cookbook-examples`
-
-`https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#json-cookbook-snippets`
-
-`https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#html-custom-css-examples`
+Field IDs and syntax: [Mermaid](#mermaid-cookbook-examples) · [JSON arrays](#json-cookbook-snippets) · [Custom CSS](#html-custom-css-examples).
 
 <h3 id="mermaid-cookbook-examples">Mermaid cookbook examples</h3>
 
@@ -204,18 +208,7 @@ nav ul li a:hover { opacity: 0.92; }
 h2 { border-bottom-color: var(--link); }
 ```
 
-## Features (overview)
-
-- Discovery across instances, hosts, enums, scripts, aliases, userdata, system config
-- Standalone HTML per profile with search, dark mode, responsive layout
-- Markdown + JSON export and version history (rotation configurable)
-- Maintenance-oriented hints (documentation score for open checklist items; disabled instances listed as inventory, not penalized)
-- Multilingual Admin UI strings (EN / DE / FR full; more locales with English copy until translated — [CONTRIBUTING](CONTRIBUTING.md#admin-ui-translations-i18n)); generated documentation text follows **Documentation language**, including changelog/compare summary lines and optional inventory-change notices in User exports
-- Optional AI providers (e.g. Ollama, Groq, Anthropic) with strict opt-in
-
-For **roadmap and planning**: [`TODO.md`](TODO.md) (open work at the top, full completed checklists in the appendix) and [`PLAN.md`](PLAN.md) (vision, rationale, architecture brainstorming).
-
-**Contributing / releases:** see [`CONTRIBUTING.md`](CONTRIBUTING.md).
+**Contributing:** see [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 ## Changelog
 
