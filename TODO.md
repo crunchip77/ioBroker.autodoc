@@ -60,7 +60,8 @@ Diese Datei ist die **Arbeitsliste**: was **offen** ist steht oben; **erledigte*
 | **Admin-Markdown: Diagnose-Kapitel** (Parität zu Admin-HTML) | ✅ | `renderDiagnosis` / `renderDiagnosisMarkdown` — TOC-Zeile, ausblendbar wie HTML; **dev:** Kapitel-Einleitung „Schnappschuss“; **Automatische Prüfungen** (Node-Heuristik) getrennt von **Allgemeine Erinnerungen** (OS-Hinweis). Details [§ 1.6](#admin-markdown-diagnose-optional), Anhang A |
 | **Admin-Konfig — Hilfen / Mini-Beispiele** (`manualMermaidDiagram`, JSON-Felder …) | 🟡 | **0.9.32** Mermaid-/States-/Hashes; **aktueller Repo-Stand:** weitere Mini-Beispiele in Hilfetexten (`jsonConfig` / i18n EN/DE/FR) — [§ 1.7](#admin-config-hilfen-beispiele); optional noch mehr Felder |
 | **Nutzer-Handbuch / Wiki** (`docs/user-guide/`) | 🟡 | EN/DE **`README`** + **Wiki Schritt 6** (Ausblenden/Reihenfolge); Admin **`staticLink`**‑Paar unter Kapitelsichtbarkeit (JSON‑Kochbuch + Wiki); PNG + **SCREENSHOTS.md** — [§ 1.1b](#nutzer-handbuch-wiki); optional: weitere Sprachen |
-| **Admin-UI React** (statt/nur wo nötig neben `jsonConfig`) | *optional* | Nur wenn jsonConfig für geplante Features zu eng — [§ 1.8](#admin-react-optional) |
+| **Admin-UI React** (Instanz-Ansicht) | ⬜ Zielbild | jsonConfig bleibt bis Cutover lauffähig — [§ 1.8](#admin-react) |
+| **Plattform 2026-11** (Context-Pack, `sendTo`, `system.ai`, Geräte, `common.custom`) | ⬜ | Nacheinander — [§ 1.9](#plattform-2026-11) |
 
 ---
 
@@ -82,6 +83,7 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 | 4 | **Phase 5.x.3** Mermaid (gestaffelt) | ✅ **Stufe 1** **0.9.27**; **Stufe 2** **0.9.28** (`autoMermaidHostGraph`): [§ 1.3 — 5.x.3](#phase-5x) |
 | 5 | **Phase 5:** PDF ✅ — **Backup** / **Rest Custom Templates** (DnD) | Backup **zurückgestellt** bis User-Resonanz nach Eintrag in **latest** (Repo); DnD weiter offen — [§ 1.2](#phase-5-features), [Backup/Backitup](#backup-backitup-festlegung) |
 | 6 | **npm** ✅ **0.9.48** (Provenance). **latest** 🟡 Repos-PR. **stable** ⬜ später | [§ 1.1](#release-veroeffentlichung), [CONTRIBUTING.md](CONTRIBUTING.md) |
+| 7 | **Plattform-Anschluss** (Context-Pack → `sendTo` → React-Instanz → `system.ai` → …) | [§ 1.9](#plattform-2026-11), [PLAN](PLAN.md#plattform-ki-mcp-2026-11) |
 
 <a id="backup-backitup-festlegung"></a>
 
@@ -137,7 +139,7 @@ Reihenfolge bewusst knapp; Details und Begründungen: [PLAN.md — Phase 5.x](PL
 - [x] PDF-Export — **0.9.33:** optional **`puppeteer`**, `pdfExportAfterGeneration`, **`action.exportPdf`**, `/files` + `exportPath`; Merker / Randbed.: [§ 1.2a](#phase-5-pdf-offline-mermaid)
 - [ ] Backup-Anbindung — **zurückgestellt** (kein kurzfristiger Bau); Konzept: [Backup / ioBroker.backitup](#backup-backitup-festlegung) — **tar.gz**, Pfad und/oder `sendTo` Backitup; **KI + Skript Variante B** ebenfalls erst dann
 - [x] Custom Templates — **Reihenfolge User/Onboarding** (`userChapterOrderJson`, `onboardingChapterOrderJson`) — [PLAN.md — Custom Templates](PLAN.md#custom-templates-detail)
-- [ ] Custom Templates — **Rest**: Drag-and-Drop — [PLAN.md — Custom Templates](PLAN.md#custom-templates-detail)
+- [ ] Custom Templates — **Rest**: Drag-and-Drop — mit **React-Instanz** ([§ 1.8](#admin-react)), nicht als jsonConfig-Hack — [PLAN.md — Custom Templates](PLAN.md#custom-templates-detail)
 
 <a id="phase-5-pdf-offline-mermaid"></a>
 
@@ -286,13 +288,36 @@ Details: [PLAN — System-Visitenkarte](PLAN.md#system-visitenkarte-festlegung),
 - [x] **Export-Sprache / Inventar-Vergleich:** gespeicherte **Changelog**-Karten zeigen die Einzeiler-Zusammenfassung in der **aktuellen Dokumentationssprache** (`localizeCompareSummary`); **`compareVersions`-Summary** beim Speichern ebenfalls lokalisiert (`main.js`). **User**-Profil: kurzer Alltagssatz bei **mindestens einem** erkannten Delta (nicht Erstlauf, nicht „keine Änderung“) — HTML + Markdown; **Onboarding** ohne diesen Block.
 - [x] **Basic / Notify / Hide-Hinweise:** Dokumentationssprache (alle Profile + Markdown vs. Rohdaten), Adapter-Änderungen (30 s Debounce), Benachrichtigungen (erfolgreicher Lauf, Messaging-Instanz), ausführlichere **User/Onboarding hide hint** — EN/DE/FR + Keys in allen Locales; `jsonConfig`-`help` angepasst wo nötig.
 
-<a id="admin-react-optional"></a>
+<a id="admin-react"></a>
 
-### 1.8 Admin-UI — React statt / neben `jsonConfig`? *(optional — Zukunft)*
+### 1.8 Admin-UI — React-Instanzansicht *(Zielbild)*
 
-- [ ] *optional / nicht priorisiert* **Prüfen**, ob eine **React-basierte** Admin-Oberfläche (eigener Tab oder Teilersetzung) **je nach Bedarf** sinnvoll wird — z. B. wenn **jsonConfig** für geplante Features **systematisch** zu eng ist (schweres **DnD** für Kapitelreihenfolge, **Live-Preview** für Mermaid, **Medien-Galerie**/Upload-UI).
-- **Bis dahin:** bei **`jsonConfig.json` + `admin/i18n`** bleiben — weniger Build-/Wartungslast, idiomatisch für viele ioBroker-Adapter.
-- **Nicht** als kurzfristiges Ziel: Umstellung **ohne** konkrete UI-Anforderung, die sich mit jsonConfig nicht mehr sinnvoll abbilden lässt.
+> **Festlegung 2026-11-28:** Die **Instanz-Konfiguration** soll **React** werden (Admin-`adminUI` wie bei aktuellen Adaptern mit Custom-UI). **jsonConfig** bleibt **bis zum Cutover** die lauffähige Oberfläche — kein paralleles Doppelfeld-Chaos; ein Schema/`native`, eine UI. Begründung: [PLAN — Instanz-UI React](PLAN.md#admin-ui-react-zielbild).
+
+- [ ] **Ziel:** vollständige Instanz-Ansicht in **React** (Tabs analog heutiger jsonConfig: Basis, Doku-Texte, HTML/Kapitel, KI, Notify, Advanced)
+- [ ] **Cutover:** `io-package` `adminUI.config` auf React; jsonConfig nur noch Fallback oder entfernen, sobald die React-UI Feature-parität hat
+- [ ] **Nutzen der React-UI (warum nicht jsonConfig lassen):** Kapitel-**DnD**, lesbare Listen statt JSON-Strings, KI-Credential-UI (`@iobroker/ai-gui` / `system.ai`), Status/Generate-Fortschritt, später Mermaid-Vorschau
+- [ ] **i18n:** bestehende Keys aus `admin/i18n` wiederverwenden, nicht neu erfinden
+- [ ] **Nicht** in demselben Schritt: eigener MCP-Server, Asset-Upload-Galerie (Medien-MVP bleibt URLs + kleine SVG)
+
+Reihenfolge relativ zu § 1.9: **nach** Context-Pack/`sendTo` (kein UI-Zwang), **vor oder zusammen mit** `system.ai` (Credential-UI in React).
+
+<a id="plattform-2026-11"></a>
+
+### 1.9 Plattform-Anschluss (KI / MCP / Admin 8 / js-controller 7) — nacheinander
+
+> **Checkboxen für die nächste Umsetzungsphase.** Ein Punkt nach dem anderen; Details und Abgrenzung: [PLAN — Plattform 2026-11](PLAN.md#plattform-ki-mcp-2026-11). **latest**-Repos-PR bleibt [§ 1.1](#release-veroeffentlichung) (Prozess, parallel möglich). **Backup/Backitup** unverändert zurückgestellt.
+
+**Nicht bauen:** eigener MCP-Adapter; zweites Chat-UI; js-controller-Minimum nur wegen 7.2.5-Features anheben (User-Check **optional**, Fallback wie heute).
+
+- [ ] **1 — Context-Pack** — kleines, token-günstiges Artefakt unter `/files/` (Inventar-Kurz, Delta, Raum-/Gäste-Kurz, Forum-Karte, explizite Lücken). `doc.json` bleibt Vollmodell, nicht das LLM-Default.
+- [ ] **2 — `sendTo`-API** — zusätzlich zu `generateNow` / `cancelScriptSourceAi` / `getStatus` / `getForumCard`: z. B. `getContextPack`, `getExportMeta` (Pfad, Hash, Profil), optional `getRoomBrief`. Damit Admin-Assistent / `iobroker.mcp` die Doku **lesen**, statt den Objektbaum zu raten.
+- [ ] **3 — `sendTo`-Absender** — wo js-controller **≥ 7.2.5** den **User** in der Message setzt: `generateNow` (KI-Kosten) nur mit passenden Rechten; ältere Controller: Verhalten unverändert. Analog JavaScript-`execute`.
+- [ ] **4 — React-Instanz** — [§ 1.8](#admin-react)
+- [ ] **5 — KI über `system.ai` / `@iobroker/ai-core`** — Credential **system | manuell**; bestehende Provider (Ollama als OpenAI-kompatibel, Groq/Anthropic) nicht wegwerfen, sondern an den gemeinsamen Stack. AutoDoc bleibt **Batch-Doku**, kein zweiter Assistent. Opt-in + Secret-Heuristik bleiben.
+- [ ] **6 — Skript-KI umdrehen** — zuerst `common.desc` / vorhandene Editor-Kommentare; `common.source` nur für **Lücken**, nicht pauschal jeden Lauf. Blockly weiter nur Label. Variante B weiter an Backup gekoppelt.
+- [ ] **7 — Geräte** — Device Manager (`dm:`) / type-detector **Best Effort** in Discovery; User-Räume an Gerätenamen, Transparenz wo Adapter nicht mitspielen.
+- [ ] **8 — Absicht am Objekt** — optionales **`common.custom.autodoc`** (ein Satz pro Raum/Instanz), von Discovery gelesen; `manualContext` in AutoDoc-`native` bleibt Fallback, nicht die einzige Quelle.
 
 ---
 
@@ -301,7 +326,7 @@ Details: [PLAN — System-Visitenkarte](PLAN.md#system-visitenkarte-festlegung),
 | Bereich | Was schon da ist | Was „Phase 5.x“ / PLAN noch meint |
 | ------- | ---------------- | ---------------------------------- |
 | Notfall / Gäste | wie oben + Diagnose-Snapshot (Node) | Weitere Befund-Typen nur bei tragfähigen Daten |
-| Customization | `*HiddenChaptersJson`, `customDocSectionsJson`, `htmlThemePreset`, `adminChapterOrderJson` (Admin), Theme-Felder, Markdown-Export | Drag-Sort; **Backup** siehe Phase 5 (**zurückgestellt**) |
+| Customization | `*HiddenChaptersJson`, `customDocSectionsJson`, `htmlThemePreset`, `adminChapterOrderJson` (Admin), Theme-Felder, Markdown-Export | Drag-Sort in **React-Instanz** ([§ 1.8](#admin-react)); **Backup** Phase 5 (**zurückgestellt**) |
 | Forum-Hilfe | Diagnose-Block + **`getForumCard`** / State `info.forumCardPlain` (`lib/forumCard.js`) | Optional: spätere Template-„nur System“-HTML ([PLAN](PLAN.md#system-visitenkarte-festlegung)) |
 | Doku in States | `full` / `metadata`, Platzhalter, Dateizugriff, **exportHashes** | Nur **Kommunikation** (news), wenn Default wechselt |
 
@@ -309,7 +334,7 @@ Details: [PLAN — System-Visitenkarte](PLAN.md#system-visitenkarte-festlegung),
 
 ## 3. Zur Klärung (ohne feste Roadmap)
 
-Ausführlich: [PLAN.md — Zukunftsvision](PLAN.md#zukunftsvision) inkl. **[Merkliste — Produkt-Lücken & Plattform-Reconnaissance](PLAN.md#merkliste-produktluecken-platform)** (stückweise umsetzbar). **Diskussions-Nachzeichnung** (Checkliste Produktperspektive, nichts vergessen für Fortführung): [PLAN — Nachzeichnung 2026-05](PLAN.md#merkliste-nachzeichnung-2026-05). **Weitere Ausbaustufen** (Roadmap-Vorschlag js-controller/Admin/Adapter, Pakete 1–3): [PLAN — Weitere Möglichkeiten](PLAN.md#weitere-moeglichkeiten-roadmap-2026-05). **Medien, Redis/jsonl, States:** Arbeitsweise und Leitplanken sind festgelegt — [PLAN — Medien-MVP](PLAN.md#architektur-medien-mvp), [Architektur](PLAN.md#architektur-grenzen).
+Ausführlich: [PLAN.md — Zukunftsvision](PLAN.md#zukunftsvision) inkl. **[Merkliste](PLAN.md#merkliste-produktluecken-platform)** und **[Plattform 2026-11](PLAN.md#plattform-ki-mcp-2026-11)** (nächste Checkboxen: [§ 1.9](#plattform-2026-11)). **Nachzeichnung 2026-05:** [PLAN](PLAN.md#merkliste-nachzeichnung-2026-05). **Weitere Ausbaustufen:** [PLAN — Weitere Möglichkeiten](PLAN.md#weitere-moeglichkeiten-roadmap-2026-05). **Medien, Redis/jsonl, States:** [PLAN — Medien-MVP](PLAN.md#architektur-medien-mvp).
 
 ---
 
@@ -510,3 +535,4 @@ Bereits erledigt:
 - ❌ Analytics/Adapter-Popularität
 - ❌ Mobile App
 - ❌ Kollaborative Features
+- ❌ Eigener **MCP-Server** in AutoDoc (Admin-`/mcp` und `iobroker.mcp` sind die Schnittstelle; AutoDoc liefert Dateien + `sendTo`)

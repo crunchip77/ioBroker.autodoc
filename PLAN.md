@@ -21,7 +21,7 @@ Langfristige inhaltliche Richtung (Zusammenhänge, Auto vs. Pflege, Forum-Feedba
 | Datei | Zweck |
 | ----- | ----- |
 | **[TODO.md](TODO.md)** | **Offene** Punkte und **Klärungen** oben; **erledigte** Meilensteine im **Anhang** (vollständige Checklisten — nichts verloren) |
-| **PLAN.md** (hier) | Vision, technische und inhaltliche **Begründungen**, **Architektur** (Ist / Leitplanken im Abschnitt [Architektur](#architektur-grenzen); [Nächste Schritte](#architektur-naechste-schritte)), Forum-Brainstorming, **Festlegungen** ([System-Visitenkarte](#system-visitenkarte-festlegung), [KI + Skriptquellcode](#ki-skript-festlegung)), **[Produkt-Merkliste](#merkliste-produktluecken-platform)** und **[Weitere Möglichkeiten](#weitere-moeglichkeiten-roadmap-2026-05)** (unter [Zukunftsvision](#zukunftsvision)) |
+| **PLAN.md** (hier) | Vision, technische und inhaltliche **Begründungen**, **Architektur** (Ist / Leitplanken im Abschnitt [Architektur](#architektur-grenzen); [Nächste Schritte](#architektur-naechste-schritte)), Forum-Brainstorming, **Festlegungen** ([System-Visitenkarte](#system-visitenkarte-festlegung), [KI + Skriptquellcode](#ki-skript-festlegung), [Plattform KI/MCP 2026-11](#plattform-ki-mcp-2026-11), [React-Instanz](#admin-ui-react-zielbild)), **[Produkt-Merkliste](#merkliste-produktluecken-platform)** und **[Weitere Möglichkeiten](#weitere-moeglichkeiten-roadmap-2026-05)** (unter [Zukunftsvision](#zukunftsvision)) |
 | **[README.md](README.md)** | Nutzer-Dokumentation und **Changelog** (Release-Notizen) |
 
 ### Überblick — was umgesetzt ist vs. was noch offen ist
@@ -38,7 +38,9 @@ Langfristige inhaltliche Richtung (Zusammenhänge, Auto vs. Pflege, Forum-Feedba
 | Phase **5.x.1** „Hybrid-Troubleshooting“ | ✅ **MVP in 0.9.18 / 0.9.19:** Freitext (`guestHelpNote` u. a.), **Kurzzeilen** + Doku-Links (Bookmark-URLs), **Node.js**-Checkliste + Snapshot-Hinweis (`lib/diagnosisSnapshot.js`) — [TODO § 5.x.1](TODO.md#phase-5x); **dev:** Admin **Betrieb – Referenz** + Diagnose-Copy (Schnappschuss / enge Checks) — optional später weitere Befund-Typen |
 | **Architektur:** Redis/jsonl, States, Medien/Grafiken ([Leitplanken](#architektur-grenzen), [Medien-MVP](#architektur-medien-mvp), [Nächste Schritte](#architektur-naechste-schritte)) | ✅ festgelegt | Umsetzung = README + Phase 5 / 5.x |
 | **System-Visitenkarte** „Forum kopieren“ | ✅ [Festlegung](#system-visitenkarte-festlegung) | ✅ **jsonConfig** `getForumCard`, State `info.forumCardPlain`, `lib/forumCard.js` + Diagnose-HTML |
-| **KI + Skriptquellcode** | ✅ [Festlegung](#ki-skript-festlegung) | **A** ✅ (`aiAnalyzeScriptSources`); **B** ⬜ wie Backup **zurückgestellt** ([TODO Phase 5](TODO.md#phase-5-features)) |
+| **KI + Skriptquellcode** | ✅ [Festlegung](#ki-skript-festlegung) | **A** ✅ (`aiAnalyzeScriptSources`); **B** ⬜ wie Backup **zurückgestellt** ([TODO Phase 5](TODO.md#phase-5-features)); **Anschluss `system.ai`** ⬜ [§ Plattform 2026-11](#plattform-ki-mcp-2026-11) |
+| **Instanz-UI React** | ⬜ [Zielbild](#admin-ui-react-zielbild) | jsonConfig bis Cutover — [TODO § 1.8](TODO.md#admin-react) |
+| **Plattform KI / MCP / Admin 8** | ⬜ [Festlegung](#plattform-ki-mcp-2026-11) | Context-Pack, `sendTo`, Geräte, `common.custom` — [TODO § 1.9](TODO.md#plattform-2026-11) |
 
 Detaillierte **Checkboxen**: immer **[TODO.md](TODO.md)** zuerst; dieser PLAN liefert **Warum** und **Kontext**.
 
@@ -367,6 +369,47 @@ Abgleich gegen eine laufende Installation (MCP `system_info` / `list_adapters`) 
 
 **Betrieb / GitHub-Doku (Support-Hinweis):** Sprünge zu `#…` auf `github.com` setzen **JavaScript** voraus — strenge Blocker (z. B. **NoScript** ohne Ausnahme für GitHub) können Hash-Scroll ausfallen lassen; Adapter-Links auf **`blob/<branch>/…`**, nicht `raw.githubusercontent.com`.
 
+##### Reconnaissance 2026-11-28 (Admin 8.3 / `system.ai` / MCP / js-controller 7.2.5)
+
+Abgleich gegen Live-Host (`js-controller` **7.2.5**, Node **24**) und aktuelle Admin-/ai-core-/MCP-Doku. **Checkboxen:** [TODO § 1.9](TODO.md#plattform-2026-11).
+
+| Komponente | Beobachteter Stand | Bedeutung für AutoDoc |
+| ---------- | ------------------ | --------------------- |
+| **js-controller** | **7.2.5** (stable): `sendTo`/`sendToHost` tragen den **User**; **7.2.4** Node **26**. AutoDoc-Minimum weiter **`>= 6.0.11`** | User-Check bei teuren Commands **optional** (Fallback ohne User-Feld). Minimum **nicht** anheben. Discovery weiter über Objekte/Views. |
+| **Admin** | **8.x** (Linie 8.3+): KI-Assistent, eingebautes **MCP**, **Systemeinstellungen → KI** (`system.ai`, ein Provider, OpenRouter, OpenAI-kompatibel). Assistent arbeitet mit Rechten des fragenden Users | Assistent = **Bedienung**, nicht Doku-Batch. AutoDoc soll **Context-Pack + `sendTo`** liefern, damit der Assistent nicht den ganzen Objektbaum raten muss. |
+| **`@iobroker/ai-core` / `ai-gui`** | Geteilt von Admin, JavaScript **10.4.8+**, vis-2. Keys nur aus Config/`system.ai`, nie aus der Message | AutoDocs eigene Provider-Felder (`aiApiKey`, Groq/Ollama/Anthropic) **angleichen**, nicht dauerhaft parallel pflegen. |
+| **javascript** | **10.4+**: KI-Chat im Editor, `execute` prüft User (Controller ≥ 7.2.5) | Skript **erklären/kommentieren** ist Editor-Job. AutoDoc: `common.desc` lesen, Quelltext nur Lücken — nicht denselben Code nochmal an einen zweiten LLM-Key. |
+| **iobroker.mcp** / Admin-`/mcp` | Streamable HTTP; Write-Tools default aus; ACL des ioBroker-Users | **Kein** AutoDoc-MCP-Server. Clients lesen `/files/autodoc.*` und `sendTo`. |
+| **ioBroker.repositories** | **latest:** `autodoc` fehlt weiter (**W4001**) | Unverändert [TODO § 1.1](TODO.md#release-veroeffentlichung). |
+
+<a id="plattform-ki-mcp-2026-11"></a>
+
+### Plattform-Anschluss — KI, MCP, Admin 8 (Festlegung 2026-11-28)
+
+> **Rollen:** AutoDoc = **periodisches Systemgedächtnis** (HTML + kompaktes JSON). Admin-Assistent / MCP = **Gespräch und Aktion**. Keine zweite Chat-UI, kein eigener MCP-Adapter.
+
+| Thema | Beschluss |
+| ----- | ---------- |
+| **Context-Pack** | Zusätzlich zum vollen `doc.json` ein **kleines** Artefakt unter `/files/` (Inventar, Delta, Kurztexte, Lücken). Default für Modelle und `sendTo`. |
+| **`sendTo`** | Lesekommandos für Pack/Export-Meta/Raumkurz; `generateNow` mit User-Recht wo der Controller den User setzt. |
+| **KI-Provider** | Ziel: **`system.ai`** + optional manuelle Keys über **`@iobroker/ai-core`**. Opt-in, Secret-Heuristik, kein Admin-Profil-KI-Flut — wie [KI + Skript](#ki-skript-festlegung). |
+| **Skript-KI** | Variante A bleibt, **Datenquelle drehen**: zuerst Beschreibung/Kommentare, `common.source` nur Lücken. Variante B weiter Backup. |
+| **Geräte / Absicht** | DM/`type-detector` Best Effort; optionales **`common.custom.autodoc`** am Objekt (eine Quelle für Doku **und** Assistent). |
+| **Instanz-UI** | **React ist das Zielbild** — [unten](#admin-ui-react-zielbild). |
+| **Nicht** | Eigener MCP-Server; Cursor-Abo als `aiApiKey`; Controller-Minimum nur für User-Feld; Backup-Priorität unverändert. |
+
+Umsetzungsreihenfolge (ein Paket nach dem anderen): [TODO § 1.9](TODO.md#plattform-2026-11).
+
+<a id="admin-ui-react-zielbild"></a>
+
+### Instanz-UI — React (Zielbild, 2026-11-28)
+
+**jsonConfig** bleibt bis zum Cutover die **funktionierende** Instanzseite (viele Felder, i18n EN/DE/FR, `hidden`, `textSendTo`). Sie ist für diese Adapter-Dichte **nicht** die bessere Bedienung: Kapitelreihenfolge und Custom-Sections sind JSON-Strings, KI-Credentials passen nicht zum Admin-8-Muster (`@iobroker/ai-gui`), DnD und Live-Status sind nur mit Workarounds möglich.
+
+**Beschluss:** Die Instanz-Ansicht wird **React** (ein `native`-Schema, Feature-Parität, dann `adminUI.config` umstellen). Das ist **kein** optionaler Engpass-Check mehr. Medien-Galerie / Asset-Upload bleiben **außerhalb** (MVP: URLs + kleine SVG).
+
+Checkboxen: [TODO § 1.8](TODO.md#admin-react).
+
 ### Umsetzungs-Ideen (nicht priorisiert)
 
 | Richtung | Idee |
@@ -395,8 +438,9 @@ Abgleich gegen eine laufende Installation (MCP `system_info` / `list_adapters`) 
 | Thema | Sinn | Aufwand (grob) | Verweis |
 | ----- | ---- | -------------- | ------- |
 | **Backup / [ioBroker.backitup](https://github.com/simatec/ioBroker.backitup)** | Offline/Migration, **KI-Skript Variante B**, Doku aus **`.tar.gz`** | Hoch | [TODO — Backup-Festlegung](TODO.md#backup-backitup-festlegung), [§ 1.2](TODO.md#phase-5-features) |
-| **Custom Templates — Drag-and-Drop** | Komfort Kapitelreihenfolge | Mittel | [Custom Templates](PLAN.md#custom-templates-detail); PLAN: **nachrangig** vs. Semantik |
-| **Admin-UI React** | Nur wenn **jsonConfig** für DnD, Live-Mermaid-Preview, Medien-Galerie **systematisch** zu eng | Hoch, optional | [TODO § 1.8](TODO.md#admin-react-optional) |
+| **Custom Templates — Drag-and-Drop** | Komfort Kapitelreihenfolge | Mittel | mit **React-Instanz** ([Zielbild](#admin-ui-react-zielbild)); jsonConfig-JSON-Strings sind der Grund, nicht umgekehrt |
+| **Admin-UI React** | **Zielbild** Instanz-Konfig (DnD, Listen, `system.ai`-UI, Status) | Hoch | [TODO § 1.8](TODO.md#admin-react), [Festlegung](#admin-ui-react-zielbild) |
+| **Plattform 2026-11** | Context-Pack, `sendTo`, `system.ai`, Skript-KI-Quelle, DM, `common.custom` | Mittel–hoch, stückweise | [TODO § 1.9](TODO.md#plattform-2026-11), [Festlegung](#plattform-ki-mcp-2026-11) |
 | **Phase 5.x.2 — Feintuning** | Kern **0.9.48** ✅; optional: Caps, Doppelinfos | Klein | [TODO § 5.x.2](TODO.md#phase-5x) |
 | **Phase 5.x.1 — weitere Diagnose-Signale** | Auto-Checklisten **nur bei Befund** (wie Node.js heute via `lib/diagnosisSnapshot.js`) | Mittel | [TODO § 5.x.1](TODO.md#phase-5x), [Hybrid MVP](PLAN.md#phase-5x-plan) |
 
@@ -405,7 +449,7 @@ Abgleich gegen eine laufende Installation (MCP `system_info` / `list_adapters`) 
 | Lücke (PLAN) | Erster sinnvoller Schritt | Anknüpfung Code |
 | ------------ | ------------------------- | ---------------- |
 | **„Was automatisiert hier wirklich?“** | ✅ **0.9.48:** Admin-Kapitel **„Automatisierung im Überblick“** + Transparenz-Grenzen (Blockly/Subscribe/Regel-Adapter) | `lib/automationOverview.js`, Renderer |
-| **Kuratierte „Warum“-Ebene** | Optionale **Halbpflichtfelder** (z. B. „Absicht in einem Satz“ pro Raum/Adapter) in `manualContext` / jsonConfig — strukturiert, nicht nur KI/Freitext | `parseManualContext`, Admin i18n |
+| **Kuratierte „Warum“-Ebene** | Halbpflichtfelder **und** optionales **`common.custom.autodoc`** am Objekt (gleiche Absicht für Doku + Assistent); `manualContext` bleibt Fallback | `parseManualContext`, Discovery, [TODO § 1.9 Punkt 8](TODO.md#plattform-2026-11) |
 | **Transparenz der Grenzen** | `docTransparencyLimitsShort` **erweitern**: Blockly, Node-RED, Szenen/Logik-Adapter, **dynamische** State-IDs (Regex-Grenze) | `lib/i18n.js`, Admin-Systemübersicht |
 | **Änderungs-Narrativ** | Delta-UX ✅; optional **ein** Onboarding-Satz bei **großen** Inventar-Deltas (heute bewusst ohne) | `docChangeFormat.js`, Renderer |
 
@@ -433,7 +477,9 @@ Abgleich gegen eine laufende Installation (MCP `system_info` / `list_adapters`) 
 | Fähigkeit | Möglicher Nutzen |
 | --------- | ---------------- |
 | **Device Manager** (`dm:` / Device Management) | Strukturierte Gerätelisten **pro Instanz** — Räume/User verständlicher („Gerät unter Adapter X“) |
-| **jsonConfig-Muster** | Nutzer-Doku (`docs/user-guide/`) an Tabs/Kochbücher anbinden — ✅ teilweise |
+| **jsonConfig** | Bis React-Cutover gültig; Wiki/Hilfen daran gebunden — ✅ teilweise |
+| **React-Instanz + `@iobroker/ai-gui`** | Zielbild Bedienung; KI-Tab wie Systemeinstellungen | [Zielbild](#admin-ui-react-zielbild) |
+| **KI-Assistent / MCP** | Nutzt AutoDoc-**Context-Pack** und `sendTo`, ersetzt AutoDoc nicht | [Plattform 2026-11](#plattform-ki-mcp-2026-11) |
 | **Datenweg** | Geräte über **Objekte**, die DM-fähige Adapter schreiben — Reconnaissance: welche Adapter **deviceManagement** nutzen |
 
 **Pragmatischer MVP (Vorschlag):** `deviceMap` in Discovery anreichern, wo DM-Objekte existieren; **User-Raum-Kapitel** priorisiert Gerätenamen.
@@ -445,7 +491,7 @@ Abgleich gegen eine laufende Installation (MCP `system_info` / `list_adapters`) 
 | **Blockly** (`common.engine`) | Label „visuelles Skript — Quelltext nicht ausgewertet“ | Kein Blockly-Parser |
 | **Ordner / `lib/scriptGroups.js`** | Admin: Automatisierung nach Bereich | ✅ |
 | **Schedule-States der javascript-Instanz** | Verknüpfung Skript ↔ Zeitplan | ⬜ Vorschlag |
-| **KI Variante A** (`common.source`, opt-in) | User/Onboarding Erklärungen | ✅ |
+| **KI Variante A** | User/Onboarding; **künftig** zuerst `common.desc`, Quelle nur Lücken | ✅ live; ⬜ Quelle drehen [TODO § 1.9](TODO.md#plattform-2026-11) |
 | **KI Variante B** (Backup) | Tiefe ohne Live-Last | an Backitup gekoppelt |
 
 ##### ioBroker.backitup (Phase 5, zurückgestellt)
@@ -467,14 +513,16 @@ Abgleich gegen eine laufende Installation (MCP `system_info` / `list_adapters`) 
 
 | Stufe | Paket | Begründung |
 | ----- | ----- | ---------- |
-| **1** | **Repositories-PR** + README-Hinweis Standardliste | Prozess, kein Feature-Bloat; schließt W4001 |
+| **1** | **Repositories-PR** + README-Hinweis Standardliste | Prozess; schließt W4001 — [TODO § 1.1](TODO.md#release-veroeffentlichung) |
 | **2** | ~~**„Automatisierung im Überblick“** (Admin) + Transparenz~~ | ✅ **0.9.48** |
-| **3** | **Device-Manager-Anreicherung** (Best Effort) | Bessere Räume/User ohne neuen HTTP-Endpunkt |
-| **Danach** (nach Forum/Tester) | **Backup/Backitup** + KI-B; dann **DnD** oder **weitere Diagnose-Checks** | Priorität aus Rückmeldung |
+| **3** | **Context-Pack + `sendTo`** (optional User-Recht) | Assistent/MCP füttern — [TODO § 1.9](TODO.md#plattform-2026-11) Punkte 1–3 |
+| **4** | **React-Instanz** | Zielbild Bedienung — [TODO § 1.8](TODO.md#admin-react) |
+| **5** | **`system.ai` / ai-core**, dann Skript-Quelle, DM, `common.custom` | [TODO § 1.9](TODO.md#plattform-2026-11) Punkte 5–8 |
+| **Danach** (nach Forum/Tester) | **Backup/Backitup** + KI-B | unverändert zurückgestellt |
 
 #### F — Bewusst nicht als „nächste“ Ausbaustufe
 
-Entspricht [Bewusst weggelassen](#bewusst-weggelassen) und [TODO — Bewusst weggelassen](TODO.md#anhang-a-erledigt): u. a. ungefilterte Groß-Graphen, vollständiges Live-AST aller Skripte, REST-API/Webhooks, Mobile App, Asset-Upload-Tab / eigener HTTP-Asset-Server (Medien-MVP: **URLs + kleine SVG**), Admin-React **ohne** konkreten jsonConfig-Engpass.
+Entspricht [Bewusst weggelassen](#bewusst-weggelassen) und [TODO — Bewusst weggelassen](TODO.md#anhang-a-erledigt): u. a. ungefilterte Groß-Graphen, vollständiges Live-AST aller Skripte, REST-API/Webhooks, Mobile App, Asset-Upload-Tab / eigener HTTP-Asset-Server (Medien-MVP: **URLs + kleine SVG**), **eigener MCP-Server** in AutoDoc, zweites Chat-UI neben dem Admin-Assistenten. **React-Instanz** ist **kein** „weglassen“ mehr — [Zielbild](#admin-ui-react-zielbild).
 
 ---
 
@@ -503,6 +551,8 @@ Entspricht [Bewusst weggelassen](#bewusst-weggelassen) und [TODO — Bewusst weg
 | **Tiefe** | **Pro Skript** Kurztext (Pflicht, wenn Feature an); **eine** globale KI-Zusammenfassung optional; **Admin-Profil** keine zusätzliche KI-Flut (Metadaten + ggf. bestehende Tabellen reichen). |
 | **Darstellung** | **Erweiterung** des Skript-Kapitels / der Skript-Karten bei **User & Onboarding**; Admin unverändert oder nur technische Zusatzzeile ohne Marketing-Text. |
 | **Datenschutz** | **Opt-in** + klare README-Warnung; vor dem Senden **heuristische Redaktion** von Zeilen mit typischen Secret-Mustern (analog `filterNative()`-Denke) — **kein** Vollversprechen; Rest liegt bei **verantwortungsvollem Opt-in**. |
+| **Provider (2026-11)** | Laufzeit weiter eigene `native`-Felder, bis [Plattform-Anschluss](#plattform-ki-mcp-2026-11) auf **`system.ai` / `@iobroker/ai-core`** umstellt (Credential system \| manuell). |
+| **Skript-Quelle (2026-11)** | Künftig **zuerst** `common.desc` / vorhandene Kommentare; `common.source` nur Lücken — JavaScript-Editor-KI nicht verdoppeln. |
 
 ---
 
@@ -516,7 +566,7 @@ Entspricht [Bewusst weggelassen](#bewusst-weggelassen) und [TODO — Bewusst weg
 
 | Frage | Beschluss |
 | ----- | ---------- |
-| **Wo der Button?** | **Primär:** Button/Aktion in der **Adapter-Instanz** (**jsonConfig**) → kopiert in die **Zwischenablage**. Nutzer sind beim Schreiben von Forumsposts typischerweise in der **Admin-Oberfläche** — dort maximaler Nutzen. |
+| **Wo der Button?** | **Primär:** Button/Aktion in der **Adapter-Instanz** (heute **jsonConfig**, Ziel **React**) → kopiert in die **Zwischenablage**. Nutzer sind beim Schreiben von Forumsposts typischerweise in der **Admin-Oberfläche** — dort maximaler Nutzen. |
 | **Zusätzlich HTML?** | **Behalten:** bestehendes Snippet in der **generierten Admin-HTML** (wer nur die Doku offen hat). **Kein** muss für zwei identische Buttons; UI-Instanz ist die Hauptlösung. |
 | **Format** | **Plaintext** mit festem, gut lesbarem Layout (Überschriftenzeilen, Key: Value) — **Forum- und Markdown-freundlich**. **Kein** HTML in die Zwischenablage (vermeidet Formatierungsmüll in Foren). |
 | **Custom Templates (Ebene 1)** | **Kein** Ersatz für den Button: Kapitel-Auswahl kann später eine **„nur System“-Doku** erzeugen, ist aber **schwerer** als Copy-Paste für Foren. Visitenkarte ≠ Template-Thema. |
@@ -551,7 +601,7 @@ Custom Templates kann vieles bedeuten. Sinnvolle Scope-Abgrenzung nach Aufwand u
 - **Ebene 2 (Teil):** `htmlColorScheme` (auto / light / dark), `htmlHeaderLogoUrl` (https oder `/…`), `htmlFontStack`, `htmlExtraCss` — nur **exportiertes HTML**, nicht Markdown. **0.9.17:** `htmlThemePreset` — feste **Paletten** (default, high contrast, warm, slate) als CSS-Variablen, ohne dass Nutzer Roh-CSS schreiben müssen (ergänzt, ersetzt nicht `htmlExtraCss`).
 - **Ebene 1 (Teil):** `adminHiddenChaptersJson` — Kapitel im **Admin-HTML** ausblenden (und im **Markdown**, wenn Dokumentationsprofil Admin); optional **`custom`** für eigene Markdown-Kapitel. Zusätzlich **`userHiddenChaptersJson`** / **`onboardingHiddenChaptersJson`**; **`mermaidAuto`** als eigene Chapter-ID (auto-Topologie, immer versteckt im Onboarding). **0.9.17:** `adminChapterOrderJson` — **Reihenfolge** der **Admin**-Kapitel; **dev:** `userChapterOrderJson` / `onboardingChapterOrderJson` — Reihenfolge **User/Onboarding**-Kapitel (JSON-Liste, Merge mit Default).
 
-**Noch offen (bewusst):** Drag-and-drop, **PDF**, beliebig viele / editierbare **eigene** Presets, Ebene 4–5.
+**Noch offen (bewusst):** Drag-and-drop **mit React-Instanz** ([Zielbild](#admin-ui-react-zielbild)); beliebig viele / editierbare **eigene** Presets; Ebene 4–5. **PDF** ✅ 0.9.33.
 
 ---
 
