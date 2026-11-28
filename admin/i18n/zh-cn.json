@@ -257,5 +257,8 @@
 	"flowchart LR\n    DEMOROOM --> DEMOGW": "流程图LR\n    DEMOROOM --> DEMOGW",
 	"ioBroker base URL (optional)": "ioBroker 基本 URL（可选）",
 	"multihostDistribution": "主机分布",
-	"onboarding guest script names help": "关闭（默认）：访客登录仅显示有多少 JavaScript 自动化处于活动状态 - 没有内部脚本文件名，并且快速启动中没有每个脚本行（ioBroker common.desc 不是可靠的面向访客的“描述”）。开启：旧版 — “什么会自动运行？”中最多五个脚本名称加上一条简短的“更多跑步”线；快速入门仍可能像今天一样列出名称 + common.desc 的脚本。完整详细信息保留在管理员配置文件中。"
+	"onboarding guest script names help": "关闭（默认）：访客登录仅显示有多少 JavaScript 自动化处于活动状态 - 没有内部脚本文件名，并且快速启动中没有每个脚本行（ioBroker common.desc 不是可靠的面向访客的“描述”）。开启：旧版 — “什么会自动运行？”中最多五个脚本名称加上一条简短的“更多跑步”线；快速入门仍可能像今天一样列出名称 + common.desc 的脚本。完整详细信息保留在管理员配置文件中。",
+	"Include Mermaid diagram in documentation": "Include Mermaid diagram in documentation",
+	"Off by default. Enable only if you want to maintain a small diagram yourself. This is not an automatic wiring graph.": "Off by default. Enable only if you want to maintain a small diagram yourself. This is not an automatic wiring graph.",
+	"Your own Mermaid source (flowchart, sequence, …). HTML embeds SVG when @mermaid-js/mermaid-cli is installed; otherwise the browser may load Mermaid from jsDelivr. Markdown keeps a mermaid fence. Hide with chapter id mermaid. Tip: \flowchart LR uses page width.": "Your own Mermaid source (flowchart, sequence, …). HTML embeds SVG when @mermaid-js/mermaid-cli is installed; otherwise the browser may load Mermaid from jsDelivr. Markdown keeps a mermaid fence. Hide with chapter id mermaid. Tip: \flowchart LR uses page width."
 }

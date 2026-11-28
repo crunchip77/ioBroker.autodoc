@@ -45,7 +45,7 @@ Install via [npm **`iobroker.autodoc`**](https://www.npmjs.com/package/iobroker.
 
 *Capture: AutoDoc **0.9.43**, ioBroker Admin **≥ 7.6.20** (May **2026**).*
 
-**2/4 —** Playbook, optional **Mermaid** diagram, automatic host topology, emergency one-liners (WLAN / power / water).
+**2/4 —** Playbook, optional **Mermaid** diagram (checkbox), emergency one-liners (WLAN / power / water).
 
 ![My documentation — screenshot (2/4)](assets/screen-meine-dokumentation-admin-2.png)
 

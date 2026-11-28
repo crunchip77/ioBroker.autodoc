@@ -6,7 +6,7 @@ This file is for **contributors in the Git repository**. It is intentionally **n
 
 Adapter-neutral link collection (reusable across projects): [`docs/iobroker-adapter-references.md`](docs/iobroker-adapter-references.md) — **Gedächtnisstützen** for rule-compliant adapter work (not a full mirror of external docs).
 
-Use the links at the top of [`TODO.md`](TODO.md) (**Wichtige Referenzen**) while developing or reviewing changes — especially:
+Official links while developing or reviewing (also [`docs/iobroker-adapter-references.md`](docs/iobroker-adapter-references.md)):
 
 - [ioBroker Developer Portal](https://www.iobroker.dev)
 - [Adapter Checker](https://adapter-check.iobroker.in/)
@@ -51,11 +51,11 @@ npm run adapter-check
 
 This runs **`@iobroker/repochecker@5.11.1`** in **`--local`** mode against **`https://github.com/crunchip77/ioBroker.autodoc` `main`** (see `package.json` → **`adapter-check`**). **Note:** **`--local`** can hit **`[E9999] … reading 'includes'`** (tooling bug: first repo scan uses **`context.readFiles`** before it exists). The **hosted** checker ([Adapter Checker](https://adapter-check.iobroker.in/) / **`iobroker.dev`**) is an alternative but may return **504 Gateway Timeout** or fail under load — retry later, try branch **`main`**, or rely on **`npm run adapter-check`** and CI. Upgrade **`@iobroker/repochecker`** when a fixed release is available.
 
-Typical messages while **ioBroker.repositories** PR is still open:
+Typical checker messages (current tickets: [`TODO.md` — Prozess](TODO.md#prozess)):
 
 - **E1025 / E1042 (`extIcon`):** the checker **HTTP-fetches** **`common.extIcon`**. The file must **exist** at that URL and be a **valid** icon (also **≤ 512×512** px for **E1042**). Use the **`main`** raw GitHub URL (same commit users get from the default branch).
 - **E2000 (package not on npm):** the adapter **is** published as **`iobroker.autodoc`** (from **0.9.35**). If a checker run still reports **E2000**, retry after registry/index lag or compare with the [hosted Adapter Checker](https://adapter-check.iobroker.in/) for the same version tarball.
-- **W4001 (adapter not in `ioBroker.repositories` yet):** expected until **`autodoc`** is present in **`sources-dist.json`**. PR **[#5978](https://github.com/ioBroker/ioBroker.repositories/pull/5978)** was merged (2026-06-30); if a later checker run still reports W4001, the listing was **dropped** (common when the adapter is treated as **new** again after checker **errors**). Do **not** open a new latest-PR until **Issue #60** errors are gone. **Stable** (`sources-dist-stable.json`) stays **on hold** until there are enough testers (Issue **#54**).
+- **W4001 (adapter not in `ioBroker.repositories`):** only if **`autodoc` is missing** from **`sources-dist.json`**. As of **2026-11-28** the **latest** entry **is present** — do not open another latest-PR from outdated TODO notes. If W4001 returns, the listing was **dropped** (checker may treat the adapter as **new** again). **Stable** (`sources-dist-stable.json`) stays **on hold** until there are enough testers — comment on the current bot issue (e.g. **#74**); **do not close** those issues (the bot reopens them). Process: [`TODO.md` — Prozess](TODO.md#prozess), [`PLAN.md` — Issues/PRs/Bots](PLAN.md#wie-wir-arbeiten).
 - **E4052 (GitHub noreply email):** `users.noreply.github.com` is **not** accepted in `package.json` **`author.email`**, `io-package.json` **`common.authors`**, README copyright, or **LICENSE**. Use a **real mailbox** the Maintainer monitors (can be a dedicated public address). Changing it is a **Maintainer decision** — do not invent an address.
 - **E6034 / W6034 (README `## License`):** the section must contain the **full MIT text** (≥ 100 words) **or** a markdown link whose URL contains **`LICENSE`** (e.g. `[LICENSE](./LICENSE)`). Keep **`## License` as the last `##` heading** (W6021).
 - **E2008 / S2008 (npm provenance):** the **latest** npm tarball must have **provenance attestations**. That only happens when **`npm publish` runs in GitHub Actions** with **Trusted Publishing** (OIDC, `id-token: write`) — **not** after a workstation `npm publish`. **0.9.46** was published locally, so the skip-gate in **`deploy`** never ran **`testing-action-deploy`**. **Fix = next semver via CI** (see **Trusted publishing** below). While the adapter is **missing from latest**, the hosted checker may **promote** this suggestion to an **error**.

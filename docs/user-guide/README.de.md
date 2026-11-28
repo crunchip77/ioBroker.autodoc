@@ -222,11 +222,11 @@ Maximal **12** Einträge; sehr lange Texte werden beim Erzeugen gekürzt.
 
 <h3 id="wiki-step5-mermaid">Schritt 5 — Optional Mermaid (Tab „Meine Dokumentation“)</h3>
 
-Platzhalter im Feld überschreiben. **Copy-Paste-Diagramme:** **„Schnellzugriff“** → *Mermaid-Kochbuch*.
+Zuerst die Checkbox **Mermaid-Diagramm in die Dokumentation aufnehmen** einschalten, dann Platzhalter überschreiben. **Copy-Paste-Diagramme:** **„Schnellzugriff“** → *Mermaid-Kochbuch*.
 
 Mit installierter **Mermaid-CLI** werden Diagramme als **SVG** ins HTML eingebettet (offlinefreundlich). Ohne CLI oder bei Fehler bleibt `<pre class="mermaid">` und der Browser kann **jsDelivr** laden — siehe Admin-Hilfe.
 
-**Ausblenden:** Kapitel-IDs **`mermaid`** (manuell) und **`mermaidAuto`** (nur Auto-Host-Graph) in den jeweiligen **Ausblenden**-Listen.
+**Ausblenden:** Kapitel-Id **`mermaid`** in den jeweiligen **Ausblenden**-Listen.
 
 <h3 id="wiki-admin-json-cookbook">Schritt 6 — Kapitelreihenfolge oder ausblenden</h3>
 
@@ -239,7 +239,7 @@ Die **Felderhilfe (`?`)** bleibt die **Kanontabelle** der erlaubten englischen K
 
 ### Erster Griff: weniger Pflege durch Ausblenden
 
-Wenn ihr eine Doku nur **„kürzer“** haben wollt, probiert oft zuerst **Ausblenden** statt neue Sortierung zu pflegen („erst weglassen, dann umsortieren“). **Gültige Ids:** wie in den **`?`‑Tooltipps** beim jeweiligen JSON-Feld (**Admin**/User/Onboarding unterscheiden sich). Bei **Admin** gibt es zusätzlich die Ausblend-Id **`mermaidAuto`** (nur Auto-Host‑Topologie im Handbuchteil); das **von euch geschriebene** Mermaid liegt im Kapitel **`manual`** — es komplett zu entfernen geht dort über **`manual`** in der Ausblenden-Liste (wie jedes andere Admin‑Kapitel auch). Im **User**‑Profil nennen die Hilfen ausdrücklich **`mermaid`** und **`mermaidAuto`** eigene Listeinträge.
+Wenn ihr eine Doku nur **„kürzer“** haben wollt, probiert oft zuerst **Ausblenden** statt neue Sortierung zu pflegen („erst weglassen, dann umsortieren“). **Gültige Ids:** wie in den **`?`‑Tooltipps** beim jeweiligen JSON-Feld (**Admin**/User/Onboarding unterscheiden sich). Das **von euch geschriebene** Mermaid liegt im Admin-Kapitel **`manual`**; im **User**-Profil ist **`mermaid`** eine eigene Id.
 
 Copy-Paste‑Beispiele (z. B. nur Changelog weg oder User‑Skript‑Kapitel aus): **„Schnellzugriff“** → [JSON‑Kochbuch (engl. README)](https://github.com/crunchip77/ioBroker.autodoc/blob/main/README.md#json-cookbook-snippets).
 

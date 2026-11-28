@@ -102,7 +102,7 @@ Field IDs and syntax: [Mermaid](#mermaid-cookbook-examples) · [JSON arrays](#js
 
 <h3 id="mermaid-cookbook-examples">Mermaid cookbook examples</h3>
 
-Paste into **My documentation → Mermaid diagram** (`manualMermaidDiagram`). Use **plain line breaks** inside the field (no HTML). Prefer **`flowchart LR`** so wide diagrams fit the HTML page; very large graphs are hard to read — split concepts across separate diagrams if needed.
+Turn on **Include Mermaid diagram in documentation**, then paste into **Mermaid diagram** (`manualMermaidDiagram`). Use **plain line breaks** inside the field (no HTML). Prefer **`flowchart LR`** so wide diagrams fit the HTML page; very large graphs are hard to read — split concepts across separate diagrams if needed.
 
 **Embedded SVG:** when **`@mermaid-js/mermaid-cli`** is installed in the adapter directory and generation succeeds, diagrams become inline SVG in HTML (good for offline / PDF). If embedding fails or the CLI is missing, the export keeps a `<pre class="mermaid">` block and the browser may load Mermaid from jsDelivr — see **Optional PDF export** and **`docs/user-guide`** (“Optional Mermaid CLI”).
 
@@ -129,7 +129,7 @@ flowchart LR
 **Tips**
 
 - Stick to **supported Mermaid** constructs you have seen working elsewhere; exotic directives may break `mmdc`.
-- **Auto host topology** is separate (`autoMermaidHostGraph`); hide it with **`mermaidAuto`** in **Admin/User** hide lists (see `EXTRA_HIDDEN_CHAPTER_IDS` in `lib/docTemplateConfig.js`). The **manual** Mermaid diagram lives under **`manual`** on **Admin** — hide that chapter if you want it gone. On **User**, field help lists **`mermaid`** and **`mermaidAuto`** separately; on **Onboarding**, use **`mermaid`** for the owner diagram in the welcome area (see that tab’s help).
+- Mermaid is **opt-in**: enable **Include Mermaid diagram in documentation**, then paste source. Hide with chapter id **`mermaid`**. On **Admin** the diagram lives under **`manual`**; on **Onboarding** it is in the welcome area.
 
 <h3 id="json-cookbook-snippets">JSON cookbook snippets</h3>
 
@@ -141,7 +141,7 @@ German **scenario page** (“hide first vs reorder”, copy-paste walkthrough an
 
 | Profile | Order fields | Hidden fields | Notes |
 | --- | --- | --- | --- |
-| Admin | `adminChapterOrderJson` | `adminHiddenChaptersJson` | Order default: `manual`, `system`, …, `appendices`. Extra hide-only id: **`mermaidAuto`** (auto-host topology). The **manual** Mermaid diagram is part of **`manual`** — omit that chapter entirely to drop it from Admin exports. |
+| Admin | `adminChapterOrderJson` | `adminHiddenChaptersJson` | Order default: `manual`, `system`, …, `appendices`. Owner Mermaid (opt-in) is part of **`manual`**. |
 | User | `userChapterOrderJson` | `userHiddenChaptersJson` | Keys include `manual`, `ai`, `guestHelp`, `atAGlance`, `rooms`, `scripts`, `routines`, `ownerPlaybook`, `mermaid`, `adapters`, `custom`, `system`, `troubleshooting`. |
 | Onboarding | `onboardingChapterOrderJson` | `onboardingHiddenChaptersJson` | Keys include `welcome`, `quickstart`, `tips`, `guestHelp`, `stats`, `ai`, `capabilities`, `mermaid`, `rooms`, `routines`, `ownerPlaybook`, `automations`, `adapters`, `custom`, `hint`, `system`, `manual`. |
 
@@ -213,6 +213,10 @@ h2 { border-bottom-color: var(--link); }
 ## Changelog
 
 **Admin `common.news`** in `io-package.json` lists only versions **published on npm** (Adapter Checker **E2004**). The detailed sections below are the **user-facing** changelog (Git-era releases plus npm); older entries are in [`CHANGELOG_OLD.md`](CHANGELOG_OLD.md).
+
+### **WORK IN PROGRESS**
+
+- **Mermaid:** removed auto host topology (`autoMermaidHostGraph`). Manual diagram is **opt-in** (`enableManualMermaid`); existing instances that already have diagram text keep it until they turn the option off.
 
 ### 0.9.48 (2026-09-22)
 

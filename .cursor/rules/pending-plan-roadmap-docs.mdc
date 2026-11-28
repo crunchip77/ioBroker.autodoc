@@ -1,12 +1,14 @@
 ---
 description: >-
-  Roadmap section in PLAN.md / TODO.md was pushed 2026-05-24 (commit a731a6a).
-  Kept as historical note; no pending local doc commit.
+  PLAN.md / TODO.md were rewritten 2026-11-28 (structure, latest listing, bot/PR process).
+  Historical note only; no pending local doc commit required by this rule.
 alwaysApply: false
 ---
 
-# ioBroker.autodoc — PLAN/TODO Roadmap (erledigt 2026-05-24)
+# ioBroker.autodoc — PLAN/TODO
 
-**Erledigt:** Erweiterung **„Weitere Möglichkeiten — Roadmap-Vorschlag“** in **[PLAN.md](PLAN.md#weitere-moeglichkeiten-roadmap-2026-05)** und Querverweis in **TODO.md** § 3 — committed auf **`dev`/`main`** (`a731a6a`).
+Bei Änderungen an **PLAN.md** / **TODO.md**: **`dev`** → commit → push → **`main`** sync ([`branch-dev-default.mdc`](branch-dev-default.mdc)).
 
-Bei weiteren PLAN-/Roadmap-Änderungen: normal **`dev`** → commit → push → **`main`** sync ([`branch-dev-default.mdc`](branch-dev-default.mdc)).
+- **TODO** = offene Checkboxen + aktuelle Bot-/Listen-Tickets.
+- **PLAN** = Warum, Festlegungen, Architektur — keine Checker-Historie und keine abgeschlossenen Phasen 1–4.
+- Issues/PRs/Bots: [PLAN — Wie wir arbeiten](../../PLAN.md#wie-wir-arbeiten), [TODO — Prozess](../../TODO.md#prozess).
